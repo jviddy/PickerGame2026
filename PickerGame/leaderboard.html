@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard – Picker Game 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
+  <style>
+    /* ─── Tokens ──────────────────────────────────────────────────── */
+    :root {
+      --navy:       #0f2040;
+      --navy-light: #1b3a6b;
+      --gold:       #f5a623;
+      --gold-dark:  #d4891c;
+      --green:      #16a34a;
+      --green-bg:   #dcfce7;
+      --red:        #dc2626;
+      --red-bg:     #fee2e2;
+      --amber:      #d97706;
+      --amber-bg:   #fef3c7;
+      --gray-50:    #f9fafb;
+      --gray-100:   #f3f4f6;
+      --gray-200:   #e5e7eb;
+      --gray-400:   #9ca3af;
+      --gray-600:   #4b5563;
+      --gray-800:   #1f2937;
+      --white:      #ffffff;
+      --radius:     10px;
+      --shadow:     0 1px 4px rgba(0,0,0,0.10);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    /* ─── Base ──────────────────────────────────────────────────────*/
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    /* ─── Header ────────────────────────────────────────────────────*/
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--white); }
+
+    /* ─── Main container ────────────────────────────────────────────*/
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    /* ─── Page header ───────────────────────────────────────────────*/
+    .page-header {
+      margin-bottom: 24px;
+    }
+    .page-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    .page-header p {
+      color: var(--gray-600);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ─── Controls ──────────────────────────────────────────────────*/
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .sort-select {
+      padding: 9px 12px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .refresh-btn {
+      padding: 9px 16px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .refresh-btn:hover { background: var(--navy-light); }
+    .refresh-btn:disabled {
+      background: var(--gray-200);
+      color: var(--gray-400);
+      cursor: not-allowed;
+    }
+
+    .loading-msg {
+      padding: 12px 16px;
+      background: var(--amber-bg);
+      border: 1.5px solid var(--amber);
+      border-radius: var(--radius);
+      color: var(--amber);
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    .loading-msg.show { display: block; }
+
+    /* ─── Leaderboard table ───────────────────────────────────────–*/
+    .leaderboard {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .leaderboard-header {
+      display: grid;
+      grid-template-columns: 50px 1fr 100px 100px 120px;
+      gap: 16px;
+      padding: 16px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--navy-light);
+    }
+    @media (max-width: 768px) {
+      .leaderboard-header {
+        grid-template-columns: 40px 1fr 80px;
+        gap: 10px;
+        padding: 12px;
+        font-size: 0.75rem;
+      }
+      .leaderboard-header > :nth-child(n+4) { display: none; }
+    }
+
+    .leaderboard-row {
+      display: grid;
+      grid-template-columns: 50px 1fr 100px 100px 120px;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: 1px solid var(--gray-200);
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .leaderboard-row:hover { background: var(--gray-50); }
+    .leaderboard-row.expanded { background: var(--gray-50); }
+    @media (max-width: 768px) {
+      .leaderboard-row {
+        grid-template-columns: 40px 1fr 80px;
+        gap: 10px;
+        padding: 12px;
+      }
+      .leaderboard-row > :nth-child(4),
+      .leaderboard-row > :nth-child(5) { display: none; }
+    }
+
+    /* ─── Rank badge ─────────────────────────────────────────────––*/
+    .rank {
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-align: center;
+      color: var(--navy);
+    }
+    .rank.first { color: var(--gold); font-size: 1.6rem; }
+    .rank.second { color: #c0c0c0; font-size: 1.6rem; }
+    .rank.third { color: #cd7f32; font-size: 1.6rem; }
+
+    /* ─── Player info ─────────────────────────────────────────────––*/
+    .player-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .player-name {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .team-name {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+
+    /* ─── Score display ──────────────────────────────────────────––*/
+    .score-col {
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--green);
+    }
+    .team-count {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      font-weight: 600;
+    }
+    .tiebreaker-info {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    /* ─── Expanded details ───────────────────────────────────────––*/
+    .details {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 20px 16px;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+    }
+    .details.show { display: block; }
+
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .pick-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .pick-country {
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .pick-score {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+    .pick-detail {
+      font-size: 0.7rem;
+      color: var(--gray-400);
+      line-height: 1.3;
+    }
+
+    .tiebreaker-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.85rem;
+    }
+    .tiebreaker-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: var(--gray-600);
+    }
+
+    /* ─── Empty state ─────────────────────────────────────────────––*/
+    .empty-state {
+      padding: 48px 20px;
+      text-align: center;
+      color: var(--gray-600);
+    }
+    .empty-state h2 { margin: 0 0 8px; color: var(--navy); }
+    .empty-state p { margin: 0; }
+
+    /* ─── Error state ─────────────────────────────────────────────––*/
+    .error-msg {
+      padding: 16px;
+      background: var(--red-bg);
+      border: 1.5px solid var(--red);
+      border-radius: var(--radius);
+      color: var(--red);
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    /* Expand indicator */
+    .expand-icon {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-size: 1.1rem;
+    }
+    .leaderboard-row.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1 class="logo">Picker<span>Game</span> <span style="font-weight:400;color:rgba(255,255,255,0.6)">2026</span></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="entry.html">Enter</a>
+      <a href="schedule.html">Matches</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-header">
+    <h1>⚽ Leaderboard</h1>
+    <p>Current standings — calculated from live match results.</p>
+  </div>
+
+  <div class="controls">
+    <select class="sort-select" id="sortSelect">
+      <option value="points-desc">Sort: Points ↓</option>
+      <option value="points-asc">Sort: Points ↑</option>
+      <option value="name">Sort: Name A–Z</option>
+    </select>
+    <button class="refresh-btn" id="refreshBtn">🔄 Refresh</button>
+    <div class="loading-msg" id="loadingMsg">Refreshing leaderboard…</div>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+
+  <div class="leaderboard" id="leaderboard">
+    <div class="empty-state">
+      <h2>Loading leaderboard…</h2>
+      <p>Calculating scores from match results.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ─── Config ──────────────────────────────────────────── */
+  const DATA_URLS = {
+    teams:   './Data/teams.json',
+    entries: './Data/entries.json',
+    matches: './Data/matches.json',
+    results: './Data/results.json',
+    settings: './Data/settings.json'
+  };
+
+  let allTeams = [];
+  let allEntries = [];
+  let allMatches = [];
+  let allResults = [];
+  let settings = {};
+  let leaderboard = []; // cached calculated leaderboard
+
+  /* ─── DOM ─────────────────────────────────────────────── */
+  const leaderboardEl = document.getElementById('leaderboard');
+  const sortSelect = document.getElementById('sortSelect');
+  const refreshBtn = document.getElementById('refreshBtn');
+  const loadingMsg = document.getElementById('loadingMsg');
+  const errorMsg = document.getElementById('errorMsg');
+
+  /* ─── Data loading ────────────────────────────────────── */
+  async function loadAllData() {
+    try {
+      const responses = await Promise.all([
+        fetch(DATA_URLS.teams),
+        fetch(DATA_URLS.entries),
+        fetch(DATA_URLS.matches),
+        fetch(DATA_URLS.results),
+        fetch(DATA_URLS.settings)
+      ]);
+
+      const data = await Promise.all(responses.map(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      }));
+
+      allTeams = data[0];
+      allEntries = data[1];
+      allMatches = data[2];
+      allResults = data[3];
+      settings = data[4];
+
+      return true;
+    } catch (e) {
+      console.error('Error loading data:', e);
+      showError(`Failed to load data: ${e.message}`);
+      return false;
+    }
+  }
+
+  /* ─── Scoring logic ───────────────────────────────────– */
+  function getTeamIdByCountryName(countryName) {
+    const team = allTeams.find(t => t.countryName === countryName);
+    return team ? team.groupId : null;
+  }
+
+  function getTeamByCountryName(countryName) {
+    return allTeams.find(t => t.countryName === countryName);
+  }
+
+  function getMatchById(matchId) {
+    return allMatches.find(m => m.matchId === matchId);
+  }
+
+  function getResultById(matchId) {
+    return allResults.find(r => r.matchId === matchId);
+  }
+
+  function calculateTeamScore(countryName) {
+    const teamId = getTeamIdByCountryName(countryName);
+    if (!teamId) return { totalPoints: 0, breakdown: [] };
+
+    let totalPoints = 0;
+    const breakdown = [];
+    const { points: pointRules } = settings;
+
+    // Find all matches this team played in
+    const relevantMatches = allMatches.filter(m => m.homeTeam === teamId || m.awayTeam === teamId);
+
+    relevantMatches.forEach(match => {
+      const result = getResultById(match.matchId);
+      if (!result || result.homeScore === null || result.awayScore === null) {
+        // Match not played yet
+        return;
+      }
+
+      const isHome = match.homeTeam === teamId;
+      const opponentTeamId = isHome ? match.awayTeam : match.homeTeam;
+      const opponentTeam = allTeams.find(t => t.groupId === opponentTeamId);
+      const opponentName = opponentTeam ? opponentTeam.countryName : opponentTeamId;
+
+      let matchPoints = 0;
+      const details = { opponent: opponentName, points: 0, components: [] };
+
+      // Goals scored
+      const goalsFor = isHome ? result.homeScore : result.awayScore;
+      const goalsForPts = goalsFor * pointRules.goalScored;
+      matchPoints += goalsForPts;
+      details.components.push(`${goalsFor} goal${goalsFor !== 1 ? 's' : ''} = +${goalsForPts}`);
+
+      // Goals conceded
+      const goalsAgainst = isHome ? result.awayScore : result.homeScore;
+      const goalsAgainstPts = goalsAgainst * pointRules.goalConceded;
+      matchPoints += goalsAgainstPts;
+      details.components.push(`${goalsAgainst} conceded = ${goalsAgainstPts}`);
+
+      // Yellow cards
+      const yellowCards = isHome ? result.homeYellow : result.awayYellow;
+      if (yellowCards) {
+        const yellowPts = yellowCards * pointRules.yellowCard;
+        matchPoints += yellowPts;
+        details.components.push(`${yellowCards} yellow = ${yellowPts}`);
+      }
+
+      // Red cards
+      const redCards = isHome ? result.homeRed : result.awayRed;
+      if (redCards) {
+        const redPts = redCards * pointRules.redCard;
+        matchPoints += redPts;
+        details.components.push(`${redCards} red = ${redPts}`);
+      }
+
+      // Match result (win/draw)
+      const homeWins = result.homeScore > result.awayScore;
+      const awayWins = result.awayScore > result.homeScore;
+      const isDraw = result.homeScore === result.awayScore;
+
+      if (match.roundCode && match.roundCode.includes('GS')) {
+        // Group stage
+        if ((isHome && homeWins) || (!isHome && awayWins)) {
+          matchPoints += pointRules.win;
+          details.components.push(`Win = +${pointRules.win}`);
+        } else if (isDraw) {
+          matchPoints += pointRules.draw;
+          details.components.push(`Draw = +${pointRules.draw}`);
+        }
+      } else {
+        // Knockout: can have penalties
+        if ((isHome && homeWins) || (!isHome && awayWins)) {
+          matchPoints += pointRules.win;
+          details.components.push(`Win = +${pointRules.win}`);
+        } else if (isDraw) {
+          // Penalties in knockouts
+          const isWinnerAfterPenalties = (isHome && (result.homePenalties > result.awayPenalties)) ||
+                                         (!isHome && (result.awayPenalties > result.homePenalties));
+          if (isWinnerAfterPenalties) {
+            matchPoints += pointRules.win;
+            details.components.push(`Win (penalties) = +${pointRules.win}`);
+          }
+        }
+      }
+
+      // Qualification bonus (if they advanced)
+      const qualified = isHome ? result.homeQualified : result.awayQualified;
+      if (qualified) {
+        if (match.roundCode === 'GS1' || match.roundCode === 'GS2' || match.roundCode === 'GS3') {
+          // Group stage qualified to knockout
+          matchPoints += pointRules.qualifyKnockout;
+          details.components.push(`Advance = +${pointRules.qualifyKnockout}`);
+        } else if (match.roundCode !== 'Final') {
+          // Knockout advancement
+          matchPoints += pointRules.qualifyNextRound;
+          details.components.push(`Advance = +${pointRules.qualifyNextRound}`);
+        }
+      }
+
+      // Final win bonus
+      if (match.roundCode === 'Final' && ((isHome && homeWins) || (!isHome && awayWins))) {
+        matchPoints += pointRules.winFinal;
+        details.components.push(`Won Final = +${pointRules.winFinal}`);
+      }
+
+      details.points = matchPoints;
+      totalPoints += matchPoints;
+      breakdown.push(details);
+    });
+
+    return { totalPoints, breakdown };
+  }
+
+  function calculateLeaderboard() {
+    leaderboard = allEntries.map(entry => {
+      let totalScore = 0;
+      const teamScores = {};
+
+      // Calculate score for each selected team
+      entry.selectedTeams.forEach(countryName => {
+        const { totalPoints } = calculateTeamScore(countryName);
+        teamScores[countryName] = totalPoints;
+        totalScore += totalPoints;
+      });
+
+      return {
+        ...entry,
+        totalScore,
+        teamScores,
+        // Tiebreaker answers (if needed)
+        tb1: entry.tieBreakerAnswers ? entry.tieBreakerAnswers[0] : '',
+        tb2: entry.tieBreakerAnswers ? entry.tieBreakerAnswers[1] : ''
+      };
+    });
+
+    // Sort by points descending
+    leaderboard.sort((a, b) => b.totalScore - a.totalScore);
+  }
+
+  /* ─── Rendering ───────────────────────────────────────– */
+  function renderLeaderboard() {
+    if (leaderboard.length === 0) {
+      leaderboardEl.innerHTML = `
+        <div class="empty-state">
+          <h2>No entries yet</h2>
+          <p><a href="entry.html">Enter the game</a> to get on the leaderboard.</p>
+        </div>
+      `;
+      return;
+    }
+
+    let html = `
+      <div class="leaderboard-header">
+        <div>Rank</div>
+        <div>Player</div>
+        <div>Teams</div>
+        <div>Tiebreaker 1</div>
+        <div>Total Score</div>
+      </div>
+    `;
+
+    leaderboard.forEach((entry, idx) => {
+      const rank = idx + 1;
+      const rowId = `row-${idx}`;
+      let rankClass = '';
+      let rankEmoji = rank;
+      if (rank === 1) { rankClass = 'first'; rankEmoji = '🥇'; }
+      else if (rank === 2) { rankClass = 'second'; rankEmoji = '🥈'; }
+      else if (rank === 3) { rankClass = 'third'; rankEmoji = '🥉'; }
+
+      const teamCount = entry.selectedTeams.length;
+
+      html += `
+        <div class="leaderboard-row" id="${rowId}" data-entry-idx="${idx}">
+          <div class="rank ${rankClass}">${rankEmoji}</div>
+          <div class="player-info">
+            <div class="player-name">${escapeHtml(entry.entrantName)}</div>
+            <div class="team-name">${escapeHtml(entry.teamName)}</div>
+          </div>
+          <div class="team-count">${teamCount}</div>
+          <div class="tiebreaker-info">${escapeHtml(entry.tb1 || '—')}</div>
+          <div class="score-col">${entry.totalScore}</div>
+        </div>
+
+        <div class="details" id="details-${idx}">
+          <h3 style="margin:0 0 12px; font-size:1rem;">Selected Teams</h3>
+          <div class="picks-grid">
+            ${entry.selectedTeams.map(countryName => {
+              const score = entry.teamScores[countryName];
+              return `
+                <div class="pick-card">
+                  <div class="pick-country">${escapeHtml(countryName)}</div>
+                  <div class="pick-score">${score}</div>
+                  <div class="pick-detail">pts from ${entry.selectedTeams.length} picks</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          <div class="tiebreaker-section">
+            <strong>Tiebreaker Answers:</strong>
+            <div class="tiebreaker-item">
+              <span>Total goals in tournament:</span>
+              <strong>${escapeHtml(entry.tb1 || '—')}</strong>
+            </div>
+            <div class="tiebreaker-item">
+              <span>Last goal time (minutes):</span>
+              <strong>${escapeHtml(entry.tb2 || '—')}</strong>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    leaderboardEl.innerHTML = html;
+
+    // Add toggle listeners
+    document.querySelectorAll('.leaderboard-row').forEach((row, idx) => {
+      row.addEventListener('click', () => toggleDetails(row, idx));
+    });
+  }
+
+  function toggleDetails(rowEl, idx) {
+    const detailsEl = document.getElementById(`details-${idx}`);
+    const isExpanded = detailsEl.classList.contains('show');
+
+    // Close all
+    document.querySelectorAll('.details').forEach(d => d.classList.remove('show'));
+    document.querySelectorAll('.leaderboard-row').forEach(r => r.classList.remove('expanded'));
+
+    // Open this one if it wasn't open
+    if (!isExpanded) {
+      detailsEl.classList.add('show');
+      rowEl.classList.add('expanded');
+    }
+  }
+
+  function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return text.replace(/[&<>"']/g, m => map[m]);
+  }
+
+  /* ─── Utilities ───────────────────────────────────────– */
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('show');
+  }
+
+  function hideError() {
+    errorMsg.classList.remove('show');
+  }
+
+  /* ─── Event listeners ─────────────────────────────────– */
+  sortSelect.addEventListener('change', e => {
+    const sort = e.target.value;
+    if (sort === 'points-desc') {
+      leaderboard.sort((a, b) => b.totalScore - a.totalScore);
+    } else if (sort === 'points-asc') {
+      leaderboard.sort((a, b) => a.totalScore - b.totalScore);
+    } else if (sort === 'name') {
+      leaderboard.sort((a, b) => a.entrantName.localeCompare(b.entrantName));
+    }
+    renderLeaderboard();
+  });
+
+  refreshBtn.addEventListener('click', async () => {
+    refreshBtn.disabled = true;
+    loadingMsg.classList.add('show');
+    hideError();
+
+    if (await loadAllData()) {
+      calculateLeaderboard();
+      renderLeaderboard();
+    }
+
+    loadingMsg.classList.remove('show');
+    refreshBtn.disabled = false;
+  });
+
+  /* ─── Init ────────────────────────────────────────────– */
+  async function init() {
+    if (await loadAllData()) {
+      calculateLeaderboard();
+      renderLeaderboard();
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
