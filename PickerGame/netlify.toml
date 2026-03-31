@@ -1,0 +1,49 @@
+# Netlify Build & Deploy Configuration
+# Static World Cup Fantasy Site
+
+[build]
+  # Build command runs: validate data → score matches → compile UI
+  command = "npm run build"
+  # Vite outputs bundled site here
+  publish = "dist"
+  # Node version (explicit for reproduciblity)
+  node_version = "20.10.0"
+
+# Cache control headers for generated leaderboard data
+# Prevents stale standings during rapid score updates
+[[headers]]
+  for = "/data/generated/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=60, stale-while-revalidate=300"
+
+# Cache bundled assets aggressively (content-hashed by Vite)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML: revalidate frequently to discover new leaderboard updates
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+# Deploy context: production (main branch)
+[context.production]
+  # Default build command applies
+  command = "npm run build"
+
+# Optional: Deploy context for staging or feature branches
+# Useful for testing new scoring rules before production
+[context.deploy-preview]
+  command = "npm run build"
+
+# Optional: Deploy context for live preview branches
+[context.branch-deploy]
+  command = "npm run build"
+
+# Environment variables (set in Netlify UI or .env)
+# Optional automated trigger for external result updates
+# [env]
+#   WEBHOOK_SECRET = "value_from_netlify_ui"
+#   BUILD_HOOK_ID = "hook_id_for_programmatic_deploys"

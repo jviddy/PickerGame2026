@@ -1,0 +1,10 @@
+[
+  {
+    "entrantName": "Jane Smith",
+    "email": "jane@example.com",
+    "teamName": "Jane's XI",
+    "tieBreakerAnswers": ["145", "Mbappe"],
+    "selectedTeams": ["Brazil", "France", "England", "Spain", "Germany", "Argentina", "Italy", "Netherlands"],
+    "submittedAt": "2026-05-15T10:30:00Z"
+  }
+]

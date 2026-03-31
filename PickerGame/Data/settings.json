@@ -1,0 +1,25 @@
+{
+  "eventName": "Pickergame World Cup 2026",
+  "signupStart": "2026-05-01T00:00:00Z",
+  "signupEnd": "2026-06-10T23:59:59Z",
+  "teamsToPick": 8,
+  "budget": 130,
+  "numberOfTieBreakers": 2,
+  "tieBreakerQuestions": [
+    "How many total goals will be scored in the tournament?",
+    "Time of the last goals scored in the tournament (minutes)?"
+  ],
+  "tieBreakerValidationFormat": ["integer", "integer"],
+  "points": {
+    "win": 5,
+    "draw": 2,
+    "lose": 0,
+    "goalScored": 3,
+    "goalConceded": -2,
+    "yellowCard": -1,
+    "redCard": -2,
+    "qualifyKnockout": 10,
+    "qualifyNextRound": 5,
+    "winFinal": 15
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "entrantTeamName": "Jane's XI",
+    "entrantName": "Jane Smith",
+    "entrantEmail": "jane@example.com",
+    "totalPoints": 0,
+    "teamsRemaining": 8,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "teamBreakdown": [
+      {
+        "countryName": "Brazil",
+        "points": 0
+      },
+      {
+        "countryName": "France",
+        "points": 0
+      },
+      {
+        "countryName": "England",
+        "points": 0
+      },
+      {
+        "countryName": "Spain",
+        "points": 0
+      },
+      {
+        "countryName": "Germany",
+        "points": 0
+      },
+      {
+        "countryName": "Argentina",
+        "points": 0
+      },
+      {
+        "countryName": "Portugal",
+        "points": 0
+      },
+      {
+        "countryName": "Netherlands",
+        "points": 0
+      }
+    ],
+    "tieBreakers": [
+      "145",
+      "Mbappe"
+    ]
+  }
+]

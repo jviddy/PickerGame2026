@@ -1,0 +1,1202 @@
+[
+  {
+    "countryName": "Mexico",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "South Africa",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "South Korea",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "UEFA Path D winner[A]",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Canada",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "UEFA Path A winner[A]",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Qatar",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Switzerland",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Brazil",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Morocco",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Haiti",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Scotland",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "United States",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Paraguay",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Australia",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "UEFA Path C winner[A]",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Germany",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Curaçao",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Ivory Coast",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Ecuador",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Netherlands",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Japan",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "UEFA Path B winner[A]",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Tunisia",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Belgium",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Egypt",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Iran",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "New Zealand",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Spain",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Cape Verde",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Saudi Arabia",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Uruguay",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "France",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Senegal",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "IC Path 2 winner[A][C]",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Norway",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Argentina",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Algeria",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Austria",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Jordan",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Portugal",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "IC Path 1 winner[A][B]",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Uzbekistan",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Colombia",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "England",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Croatia",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Ghana",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  },
+  {
+    "countryName": "Panama",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    }
+  }
+]

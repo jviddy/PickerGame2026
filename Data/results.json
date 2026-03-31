@@ -1,0 +1,28 @@
+[
+  {
+    "matchId": "M001",
+    "homeScore": null,
+    "awayScore": null,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": null,
+    "awayYellow": null,
+    "homeRed": null,
+    "awayRed": null,
+    "homeQualified": false,
+    "awayQualified": false
+  },
+  {
+    "matchId": "M002",
+    "homeScore": null,
+    "awayScore": null,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": null,
+    "awayYellow": null,
+    "homeRed": null,
+    "awayRed": null,
+    "homeQualified": false,
+    "awayQualified": false
+  }
+]

@@ -1,0 +1,65 @@
+[
+    {
+        "matchId": "M001",
+        "date": "2026-06-11T19:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Mexico City",
+        "homeTeam": "A1",
+        "awayTeam": "A2"
+    },
+    {
+        "matchId": "M002",
+        "date": "2026-06-12T02:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Guadalajara",
+        "homeTeam": "A3",
+        "awayTeam": "A4"
+    },
+    {
+        "matchId": "M003",
+        "date": "2026-06-12T19:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Toronto",
+        "homeTeam": "B1",
+        "awayTeam": "B2"
+    },
+    {
+        "matchId": "M004",
+        "date": "2026-06-13T01:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Los Angeles",
+        "homeTeam": "D1",
+        "awayTeam": "D2"
+    },
+    {
+        "matchId": "M025",
+        "date": "2026-06-18T16:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Atlanta",
+        "homeTeam": "A4",
+        "awayTeam": "A2"
+    },
+    {
+        "matchId": "M090",
+        "date": "2026-07-04T17:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "L16",
+        "location": "Houston",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M104",
+        "date": "2026-07-19T19:00:00Z",
+        "round": "Final",
+        "roundCode": "F",
+        "location": "New York/New Jersey",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    }
+]

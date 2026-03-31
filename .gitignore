@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+**/node_modules/
 vendor/
 
 # Environment variables
@@ -22,6 +23,9 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Deprecated content
+archive/
 
 # Logs
 *.log
