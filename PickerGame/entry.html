@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enter – Picker Game 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
+  <style>
+    /* ─── Tokens ──────────────────────────────────────────────────── */
+    :root {
+      --navy:       #0f2040;
+      --navy-light: #1b3a6b;
+      --gold:       #f5a623;
+      --gold-dark:  #d4891c;
+      --green:      #16a34a;
+      --green-bg:   #dcfce7;
+      --red:        #dc2626;
+      --red-bg:     #fee2e2;
+      --amber:      #d97706;
+      --amber-bg:   #fef3c7;
+      --gray-50:    #f9fafb;
+      --gray-100:   #f3f4f6;
+      --gray-200:   #e5e7eb;
+      --gray-400:   #9ca3af;
+      --gray-600:   #4b5563;
+      --gray-800:   #1f2937;
+      --white:      #ffffff;
+      --radius:     10px;
+      --shadow:     0 1px 4px rgba(0,0,0,0.10);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.12);
+      --budget:     120;   /* keep in sync with JS */
+      --picks:      8;
+    }
+
+    /* ─── Base ──────────────────────────────────────────────────────*/
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    /* ─── Header ────────────────────────────────────────────────────*/
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--white); }
+
+    /* ─── Layout ────────────────────────────────────────────────────*/
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      grid-template-areas: "picker sidebar";
+      gap: 24px;
+      align-items: start;
+    }
+    .picker-col  { grid-area: picker; }
+    .sidebar-col { grid-area: sidebar; }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+        grid-template-areas: "sidebar" "picker";
+      }
+    }
+
+    /* ─── Picker header ─────────────────────────────────────────────*/
+    .picker-header {
+      margin-bottom: 16px;
+    }
+    .picker-header h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+    }
+    .picker-header p { margin: 0; color: var(--gray-600); font-size: 0.9rem; }
+
+    /* ─── Search + Filters ──────────────────────────────────────────*/
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+    .search-box {
+      flex: 1 1 200px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 9px 12px 9px 36px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-box input:focus { border-color: var(--navy-light); }
+    .search-box svg {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400); pointer-events: none;
+    }
+
+    .sort-select {
+      padding: 9px 12px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .group-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .group-btn {
+      padding: 5px 13px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      transition: all 0.15s;
+    }
+    .group-btn:hover { border-color: var(--navy-light); color: var(--navy); }
+    .group-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+
+    /* ─── Team grid ─────────────────────────────────────────────────*/
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 14px 10px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      user-select: none;
+    }
+    .team-card:hover:not(.disabled) {
+      border-color: var(--navy-light);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .team-card.selected {
+      border-color: var(--green);
+      background: var(--green-bg);
+      box-shadow: 0 0 0 3px rgba(22,163,74,0.2);
+    }
+    .team-card.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .team-card .check-badge {
+      display: none;
+      position: absolute;
+      top: 8px; right: 8px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      width: 20px; height: 20px;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .team-card.selected .check-badge { display: flex; }
+
+    .team-card .flag-wrap {
+      width: 56px; height: 40px;
+      margin: 0 auto 8px;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--gray-50);
+    }
+    .team-card .flag-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .team-card .team-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      line-height: 1.2;
+      margin-bottom: 6px;
+      min-height: 2.4em;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-card .team-cost {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 99px;
+      padding: 2px 10px;
+      font-size: 0.77rem;
+      font-weight: 700;
+    }
+    .team-card.selected .team-cost { background: var(--green); }
+    .team-card .team-rank {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* placeholder when no results */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--gray-400);
+      padding: 40px 0;
+      font-size: 0.95rem;
+    }
+
+    /* ─── Sidebar ───────────────────────────────────────────────────*/
+    .sidebar-col { position: sticky; top: 78px; }
+
+    .card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    /* Budget */
+    .budget-numbers {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .budget-remaining {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      transition: color 0.2s;
+    }
+    .budget-remaining.warn  { color: var(--amber); }
+    .budget-remaining.over  { color: var(--red); }
+    .budget-label { font-size: 0.8rem; color: var(--gray-400); }
+    .budget-bar-bg {
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .budget-bar {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--green);
+      transition: width 0.25s, background 0.25s;
+    }
+    .budget-bar.warn { background: var(--amber); }
+    .budget-bar.over { background: var(--red); }
+    .budget-detail {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Picks */
+    .picks-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .picks-header h3 { margin: 0; }
+    .picks-count {
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 99px;
+      padding: 2px 10px;
+    }
+    .picks-count.full { background: var(--green); }
+
+    .picks-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .picks-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: var(--gray-50);
+      font-size: 0.85rem;
+      font-weight: 600;
+      min-height: 38px;
+    }
+    .picks-list li.empty {
+      color: var(--gray-400);
+      font-weight: 400;
+      font-size: 0.82rem;
+      border: 1.5px dashed var(--gray-200);
+      background: transparent;
+    }
+    .picks-list li .pick-flag {
+      width: 28px; height: 20px;
+      border-radius: 3px;
+      object-fit: cover;
+      border: 1px solid var(--gray-200);
+      flex-shrink: 0;
+    }
+    .picks-list li .pick-name { flex: 1; }
+    .picks-list li .pick-cost { color: var(--gray-400); font-weight: 700; font-size: 0.78rem; }
+    .picks-list li .remove-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--gray-400); font-size: 14px; padding: 0 2px;
+      line-height: 1;
+      transition: color 0.15s;
+    }
+    .picks-list li .remove-btn:hover { color: var(--red); }
+
+    /* ─── Form ──────────────────────────────────────────────────────*/
+    .form-section h3 { margin: 0 0 14px; font-size: 1rem; font-weight: 800; }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+      background: var(--white);
+    }
+    .form-group input:focus { border-color: var(--navy-light); }
+    .form-group input.error { border-color: var(--red); }
+    .form-group .hint {
+      font-size: 0.76rem;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    .form-divider {
+      border: none;
+      border-top: 1.5px solid var(--gray-100);
+      margin: 18px 0;
+    }
+
+    .tiebreaker-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+    .tiebreaker-q {
+      font-size: 0.85rem;
+      color: var(--gray-800);
+      margin-bottom: 8px;
+    }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      letter-spacing: 0.02em;
+    }
+    .submit-btn:hover:not(:disabled) { background: var(--gold-dark); transform: translateY(-1px); }
+    .submit-btn:disabled {
+      background: var(--gray-200);
+      color: var(--gray-400);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Validation summary */
+    .form-errors {
+      background: var(--red-bg);
+      border: 1.5px solid var(--red);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: var(--red);
+      display: none;
+    }
+    .form-errors ul { margin: 6px 0 0; padding-left: 16px; }
+    .form-errors li { margin-bottom: 3px; }
+
+    /* Success state */
+    .success-panel {
+      display: none;
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .success-panel .tick {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    .success-panel h2 { margin: 0 0 8px; color: var(--green); }
+    .success-panel p { color: var(--gray-600); font-size: 0.9rem; margin: 0; }
+
+    /* Points info */
+    .points-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+    .pts-item {
+      display: flex;
+      justify-content: space-between;
+      background: var(--gray-50);
+      border-radius: 6px;
+      padding: 5px 9px;
+    }
+    .pts-val { font-weight: 700; }
+    .pts-val.pos { color: var(--green); }
+    .pts-val.neg { color: var(--red); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1 class="logo">Picker<span>Game</span> <span style="font-weight:400;color:rgba(255,255,255,0.6)">2026</span></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="schedule.html">Matches</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- ── LEFT: Team picker ─────────────────────────────────────── -->
+  <section class="picker-col">
+    <div class="picker-header">
+      <h1>Pick your 8 teams</h1>
+      <p>Select exactly 8 teams to support through the tournament. Stay within your £120m budget.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search teams…" autocomplete="off" />
+      </div>
+      <select class="sort-select" id="sortSelect">
+        <option value="group">Sort: Group</option>
+        <option value="cost-desc">Sort: Cost ↓</option>
+        <option value="cost-asc">Sort: Cost ↑</option>
+        <option value="rank">Sort: FIFA Rank</option>
+        <option value="alpha">Sort: A–Z</option>
+      </select>
+    </div>
+
+    <div class="group-filters" id="groupFilters">
+      <button class="group-btn active" data-group="all">All</button>
+      <!-- Group buttons generated by JS -->
+    </div>
+
+    <div class="team-grid" id="teamGrid">
+      <div class="no-results">Loading teams…</div>
+    </div>
+  </section>
+
+  <!-- ── RIGHT: Sidebar ────────────────────────────────────────── -->
+  <aside class="sidebar-col">
+
+    <!-- Budget tracker -->
+    <div class="card">
+      <h3>💰 Budget</h3>
+      <div class="budget-numbers">
+        <span class="budget-remaining" id="budgetRemaining">£120m</span>
+        <span class="budget-label">remaining</span>
+      </div>
+      <div class="budget-bar-bg">
+        <div class="budget-bar" id="budgetBar" style="width:100%"></div>
+      </div>
+      <div class="budget-detail">
+        <span>Spent: <strong id="budgetSpent">£0m</strong></span>
+        <span>Budget: <strong>£120m</strong></span>
+      </div>
+    </div>
+
+    <!-- Picks list -->
+    <div class="card">
+      <div class="picks-header">
+        <h3>⚽ Your picks</h3>
+        <span class="picks-count" id="picksCount">0 / 8</span>
+      </div>
+      <ul class="picks-list" id="picksList"></ul>
+    </div>
+
+    <!-- Entry form -->
+    <div class="card" id="entryFormCard">
+      <div class="form-section">
+        <h3>📋 Your details</h3>
+
+        <div class="form-errors" id="formErrors">
+          <strong>Please fix the following:</strong>
+          <ul id="formErrorsList"></ul>
+        </div>
+
+        <div class="form-group">
+          <label for="teamName">Team name</label>
+          <input type="text" id="teamName" placeholder="e.g. The Worldly Wanderers" maxlength="60" />
+        </div>
+        <div class="form-group">
+          <label for="playerName">Your name</label>
+          <input type="text" id="playerName" placeholder="e.g. Jamie" maxlength="60" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="you@example.com" />
+          <div class="hint">Used only to contact you — never shown publicly.</div>
+        </div>
+
+        <hr class="form-divider" />
+
+        <span class="tiebreaker-label">🔮 Tiebreakers</span>
+        <p style="font-size:0.8rem;color:var(--gray-600);margin:0 0 14px;">Used only if players are tied on points.</p>
+
+        <div class="form-group">
+          <div class="tiebreaker-q">How many total goals will be scored in the whole tournament?</div>
+          <input type="number" id="tb1" placeholder="e.g. 164" min="1" />
+        </div>
+        <div class="form-group">
+          <div class="tiebreaker-q">In what minute will the last goal be scored in the final? (excl. penalties)</div>
+          <input type="number" id="tb2" placeholder="e.g. 87" min="1" max="120" />
+        </div>
+
+        <hr class="form-divider" />
+
+        <button class="submit-btn" id="submitBtn" disabled>
+          Select 8 teams to continue
+        </button>
+      </div>
+
+      <!-- Success -->
+      <div class="success-panel" id="successPanel">
+        <div class="tick">✅</div>
+        <h2>Entry submitted!</h2>
+        <p>Thanks for entering — good luck! Check the leaderboard once the tournament starts.</p>
+      </div>
+    </div>
+
+    <!-- Points guide -->
+    <div class="card">
+      <h3>📊 Points guide</h3>
+      <div class="points-grid">
+        <div class="pts-item"><span>Group win</span><span class="pts-val pos">+5</span></div>
+        <div class="pts-item"><span>Draw</span><span class="pts-val pos">+2</span></div>
+        <div class="pts-item"><span>Goal scored</span><span class="pts-val pos">+3</span></div>
+        <div class="pts-item"><span>Goal conceded</span><span class="pts-val neg">-2</span></div>
+        <div class="pts-item"><span>Yellow card</span><span class="pts-val neg">-1</span></div>
+        <div class="pts-item"><span>Red card</span><span class="pts-val neg">-2</span></div>
+        <div class="pts-item"><span>Reach knockouts</span><span class="pts-val pos">+10</span></div>
+        <div class="pts-item"><span>Each KO round</span><span class="pts-val pos">+5</span></div>
+        <div class="pts-item"><span>Win the final</span><span class="pts-val pos">+15</span></div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+  /* ─── Config ──────────────────────────────────────────────── */
+  const BUDGET    = 120;
+  const MAX_PICKS = 8;
+  const SUBMIT_URL = null; // replace with your API endpoint when ready
+
+  /* ─── State ───────────────────────────────────────────────── */
+  let allTeams   = [];
+  let selected   = new Set(); // set of groupId
+  let activeGroup = 'all';
+  let searchQuery = '';
+  let sort        = 'group';
+
+  /* ─── DOM ─────────────────────────────────────────────────── */
+  const gridEl          = document.getElementById('teamGrid');
+  const groupFiltersEl  = document.getElementById('groupFilters');
+  const searchInput     = document.getElementById('searchInput');
+  const sortSelect      = document.getElementById('sortSelect');
+  const picksCountEl    = document.getElementById('picksCount');
+  const picksListEl     = document.getElementById('picksList');
+  const budgetRemEl     = document.getElementById('budgetRemaining');
+  const budgetBarEl     = document.getElementById('budgetBar');
+  const budgetSpentEl   = document.getElementById('budgetSpent');
+  const submitBtn       = document.getElementById('submitBtn');
+  const formErrors      = document.getElementById('formErrors');
+  const formErrorsList  = document.getElementById('formErrorsList');
+  const successPanel    = document.getElementById('successPanel');
+  const entryFormCard   = document.getElementById('entryFormCard');
+
+  /* ─── Load data ───────────────────────────────────────────── */
+  async function loadTeams() {
+    try {
+      const res = await fetch('./Data/teams.json');
+      if (!res.ok) throw new Error('fetch failed');
+      allTeams = await res.json();
+      buildGroupFilters();
+      render();
+    } catch (e) {
+      gridEl.innerHTML = '<div class="no-results">Failed to load teams. Please refresh.</div>';
+    }
+  }
+
+  /* ─── Build group filter buttons ──────────────────────────── */
+  function buildGroupFilters() {
+    const groups = [...new Set(allTeams.map(t => t.group))].sort();
+    groups.forEach(g => {
+      const btn = document.createElement('button');
+      btn.className = 'group-btn';
+      btn.dataset.group = g;
+      btn.textContent = `Group ${g}`;
+      btn.addEventListener('click', () => {
+        activeGroup = g;
+        document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        render();
+      });
+      groupFiltersEl.appendChild(btn);
+    });
+    // "All" button
+    groupFiltersEl.querySelector('[data-group="all"]').addEventListener('click', () => {
+      activeGroup = 'all';
+      document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+      groupFiltersEl.querySelector('[data-group="all"]').classList.add('active');
+      render();
+    });
+  }
+
+  /* ─── Derived helpers ─────────────────────────────────────── */
+  function getSelectedTeams() {
+    return allTeams.filter(t => selected.has(t.groupId));
+  }
+  function totalSpent() {
+    return getSelectedTeams().reduce((s, t) => s + t.cost, 0);
+  }
+  function budgetRemaining() {
+    return BUDGET - totalSpent();
+  }
+
+  /* ─── Render team cards ───────────────────────────────────── */
+  function filteredSorted() {
+    let list = allTeams.slice();
+
+    // group filter
+    if (activeGroup !== 'all') {
+      list = list.filter(t => t.group === activeGroup);
+    }
+    // search
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter(t => t.countryName.toLowerCase().includes(q));
+    }
+    // sort
+    switch (sort) {
+      case 'cost-desc': list.sort((a,b) => b.cost - a.cost); break;
+      case 'cost-asc':  list.sort((a,b) => a.cost - b.cost); break;
+      case 'rank':      list.sort((a,b) => a.fifaRank - b.fifaRank); break;
+      case 'alpha':     list.sort((a,b) => a.countryName.localeCompare(b.countryName)); break;
+      default: // group then groupId
+        list.sort((a,b) => a.groupId.localeCompare(b.groupId));
+    }
+    return list;
+  }
+
+  function render() {
+    const list = filteredSorted();
+    const spent = totalSpent();
+    const rem   = budgetRemaining();
+
+    gridEl.innerHTML = '';
+    if (list.length === 0) {
+      gridEl.innerHTML = '<div class="no-results">No teams match your search.</div>';
+    } else {
+      list.forEach(team => {
+        const isSelected  = selected.has(team.groupId);
+        const wouldExceed = !isSelected && (spent + team.cost > BUDGET);
+        const slotsFull   = !isSelected && selected.size >= MAX_PICKS;
+        const isDisabled  = wouldExceed || slotsFull;
+
+        const card = document.createElement('div');
+        card.className = 'team-card' +
+          (isSelected ? ' selected' : '') +
+          (isDisabled ? ' disabled' : '');
+        card.dataset.id = team.groupId;
+
+        card.innerHTML = `
+          <div class="check-badge">✓</div>
+          <div class="flag-wrap">
+            <img src="${team.flagUrl}" alt="${team.countryName}" loading="lazy" />
+          </div>
+          <div class="team-name">${team.countryName}</div>
+          <div class="team-cost">£${team.cost}m</div>
+          <div class="team-rank">FIFA #${team.fifaRank}</div>
+        `;
+
+        if (!isDisabled) {
+          card.addEventListener('click', () => toggleTeam(team));
+        }
+
+        gridEl.appendChild(card);
+      });
+    }
+
+    renderBudget(spent, rem);
+    renderPicks();
+    updateSubmitBtn();
+  }
+
+  function renderBudget(spent, rem) {
+    const pct = Math.max(0, (rem / BUDGET) * 100);
+    budgetSpentEl.textContent  = `£${spent}m`;
+    budgetRemEl.textContent    = `£${rem}m`;
+
+    const state = rem < 0 ? 'over' : rem < BUDGET * 0.2 ? 'warn' : '';
+    budgetRemEl.className  = 'budget-remaining ' + state;
+    budgetBarEl.className  = 'budget-bar ' + state;
+    budgetBarEl.style.width = pct + '%';
+  }
+
+  function renderPicks() {
+    picksListEl.innerHTML = '';
+    const picks = getSelectedTeams();
+    picksCountEl.textContent = `${picks.length} / ${MAX_PICKS}`;
+    picksCountEl.className = 'picks-count' + (picks.length === MAX_PICKS ? ' full' : '');
+
+    picks.forEach(t => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <img class="pick-flag" src="${t.flagUrl}" alt="${t.countryName}" />
+        <span class="pick-name">${t.countryName}</span>
+        <span class="pick-cost">£${t.cost}m</span>
+        <button class="remove-btn" title="Remove" data-id="${t.groupId}">✕</button>
+      `;
+      li.querySelector('.remove-btn').addEventListener('click', () => {
+        selected.delete(t.groupId);
+        render();
+      });
+      picksListEl.appendChild(li);
+    });
+
+    // empty slots
+    for (let i = picks.length; i < MAX_PICKS; i++) {
+      const li = document.createElement('li');
+      li.className = 'empty';
+      li.textContent = `Pick ${i + 1}`;
+      picksListEl.appendChild(li);
+    }
+  }
+
+  function updateSubmitBtn() {
+    const ready = selected.size === MAX_PICKS;
+    submitBtn.disabled = !ready;
+    submitBtn.textContent = ready
+      ? 'Submit entry →'
+      : `Select ${MAX_PICKS - selected.size} more team${MAX_PICKS - selected.size !== 1 ? 's' : ''} to continue`;
+  }
+
+  /* ─── Toggle team selection ───────────────────────────────── */
+  function toggleTeam(team) {
+    if (selected.has(team.groupId)) {
+      selected.delete(team.groupId);
+    } else {
+      if (selected.size >= MAX_PICKS) return;
+      if (totalSpent() + team.cost > BUDGET) return;
+      selected.add(team.groupId);
+    }
+    render();
+  }
+
+  /* ─── Event listeners ─────────────────────────────────────── */
+  searchInput.addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    render();
+  });
+
+  sortSelect.addEventListener('change', e => {
+    sort = e.target.value;
+    render();
+  });
+
+  /* ─── Form submission ─────────────────────────────────────── */
+  submitBtn.addEventListener('click', handleSubmit);
+
+  function validateForm() {
+    const errors = [];
+    const teamName   = document.getElementById('teamName').value.trim();
+    const playerName = document.getElementById('playerName').value.trim();
+    const email      = document.getElementById('email').value.trim();
+    const tb1        = document.getElementById('tb1').value.trim();
+    const tb2        = document.getElementById('tb2').value.trim();
+
+    if (selected.size !== MAX_PICKS)       errors.push(`Select exactly ${MAX_PICKS} teams.`);
+    if (budgetRemaining() < 0)             errors.push('You are over budget.');
+    if (!teamName)                         errors.push('Team name is required.');
+    if (!playerName)                       errors.push('Your name is required.');
+    if (!email || !email.includes('@'))    errors.push('A valid email address is required.');
+    if (!tb1 || isNaN(tb1) || +tb1 < 1)   errors.push('Enter a valid answer for tiebreaker 1.');
+    if (!tb2 || isNaN(tb2) || +tb2 < 1 || +tb2 > 120)
+                                           errors.push('Enter a valid minute (1–120) for tiebreaker 2.');
+    return errors;
+  }
+
+  async function handleSubmit() {
+    const errors = validateForm();
+    if (errors.length) {
+      formErrorsList.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
+      formErrors.style.display = 'block';
+      formErrors.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+    formErrors.style.display = 'none';
+
+    const payload = {
+      teamName:    document.getElementById('teamName').value.trim(),
+      playerName:  document.getElementById('playerName').value.trim(),
+      email:       document.getElementById('email').value.trim(),
+      tiebreaker1: +document.getElementById('tb1').value,
+      tiebreaker2: +document.getElementById('tb2').value,
+      picks:       getSelectedTeams().map(t => t.groupId),
+      submittedAt: new Date().toISOString(),
+    };
+
+    if (SUBMIT_URL) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+      try {
+        const res = await fetch(SUBMIT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('Server error');
+        showSuccess();
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit entry →';
+        formErrorsList.innerHTML = '<li>Something went wrong — please try again.</li>';
+        formErrors.style.display = 'block';
+      }
+    } else {
+      // Dev mode: log to console and show success
+      console.log('Entry payload:', payload);
+      showSuccess();
+    }
+  }
+
+  function showSuccess() {
+    document.querySelector('.form-section').style.display = 'none';
+    successPanel.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ─── Init ────────────────────────────────────────────────── */
+  loadTeams();
+</script>
+</body>
+</html>
