@@ -148,8 +148,8 @@
 
     .leaderboard-header {
       display: grid;
-      grid-template-columns: 50px 1fr 100px 100px 120px;
-      gap: 16px;
+      grid-template-columns: 50px 1fr 90px 90px 100px;
+      gap: 12px;
       padding: 16px;
       background: var(--navy);
       color: var(--white);
@@ -161,7 +161,7 @@
     }
     @media (max-width: 768px) {
       .leaderboard-header {
-        grid-template-columns: 40px 1fr 80px;
+        grid-template-columns: 40px 1fr 70px;
         gap: 10px;
         padding: 12px;
         font-size: 0.75rem;
@@ -171,8 +171,8 @@
 
     .leaderboard-row {
       display: grid;
-      grid-template-columns: 50px 1fr 100px 100px 120px;
-      gap: 16px;
+      grid-template-columns: 50px 1fr 90px 90px 100px;
+      gap: 12px;
       padding: 16px;
       border-bottom: 1px solid var(--gray-200);
       align-items: center;
@@ -183,12 +183,11 @@
     .leaderboard-row.expanded { background: var(--gray-50); }
     @media (max-width: 768px) {
       .leaderboard-row {
-        grid-template-columns: 40px 1fr 80px;
+        grid-template-columns: 40px 1fr 70px;
         gap: 10px;
         padding: 12px;
       }
-      .leaderboard-row > :nth-child(4),
-      .leaderboard-row > :nth-child(5) { display: none; }
+      .leaderboard-row > :nth-child(n+4) { display: none; }
     }
 
     /* ─── Rank badge ─────────────────────────────────────────────––*/
@@ -232,9 +231,13 @@
       font-weight: 600;
     }
     .tiebreaker-info {
+      display: none;
+    }
+    .cost-col {
       text-align: center;
-      font-size: 0.75rem;
-      color: var(--gray-400);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy);
     }
 
     /* ─── Expanded details ───────────────────────────────────────––*/
@@ -279,16 +282,47 @@
     }
 
     .tiebreaker-section {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--gray-200);
-      font-size: 0.85rem;
+      display: none;
     }
     .tiebreaker-item {
       display: flex;
       justify-content: space-between;
       margin-bottom: 8px;
       color: var(--gray-600);
+    }
+
+    .round-breakdown {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .round-breakdown h4 {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+    .round-scores {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .round-score-item {
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 6px;
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .round-score-label {
+      font-weight: 600;
+      color: var(--gray-600);
+      margin-bottom: 3px;
+    }
+    .round-score-value {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--green);
     }
 
     /* ─── Empty state ─────────────────────────────────────────────––*/
@@ -547,6 +581,169 @@
     return { totalPoints, breakdown };
   }
 
+  function calculateTeamsRemaining(selectedTeams) {
+    // Count how many selected teams are still in the tournament
+    let remaining = 0;
+    
+    selectedTeams.forEach(countryName => {
+      const teamId = getTeamIdByCountryName(countryName);
+      let isEliminated = false;
+
+      // Find all matches this team played in (in order by round)
+      const relevantMatches = allMatches
+        .filter(m => m.homeTeam === teamId || m.awayTeam === teamId)
+        .sort((a, b) => {
+          const roundOrder = ['GS1', 'GS2', 'GS3', 'RO16', 'QF', 'SF', 'Final'];
+          return roundOrder.indexOf(a.roundCode) - roundOrder.indexOf(b.roundCode);
+        });
+
+      // Check elimination by working through matches
+      relevantMatches.forEach(match => {
+        const result = getResultById(match.matchId);
+        if (!result) return; // Match not played yet
+        
+        const isHome = match.homeTeam === teamId;
+        const qualified = isHome ? result.homeQualified : result.awayQualified;
+        
+        // In group stage: team must be qualified to advance
+        if (match.roundCode.includes('GS')) {
+          if (!qualified) isEliminated = true;
+        } 
+        // In knockout: team must not lose (win or win on penalties)
+        else {
+          const homeWins = result.homeScore > result.awayScore;
+          const awayWins = result.awayScore > result.homeScore;
+          const isDraw = result.homeScore === result.awayScore;
+          
+          if ((isHome && !homeWins && !isDraw) || (!isHome && !awayWins && !isDraw)) {
+            // Lost in regular time
+            isEliminated = true;
+          } else if (isDraw && result.homePenalties !== null && result.awayPenalties !== null) {
+            // Lost on penalties
+            const wonPenalties = (isHome && result.homePenalties > result.awayPenalties) ||
+                                (!isHome && result.awayPenalties > result.homePenalties);
+            if (!wonPenalties) isEliminated = true;
+          }
+        }
+      });
+
+      if (!isEliminated) remaining++;
+    });
+
+    return remaining;
+  }
+
+  function getRoundBreakdownHtml(entry) {
+    // Organize scores by round
+    const roundScores = {};
+    const roundOrder = ['GS1', 'GS2', 'GS3', 'RO16', 'QF', 'SF', 'Final'];
+    const roundLabels = {
+      'GS1': 'Group Stage 1',
+      'GS2': 'Group Stage 2',
+      'GS3': 'Group Stage 3',
+      'RO16': 'Round of 16',
+      'QF': 'Quarter Finals',
+      'SF': 'Semi Finals',
+      'Final': 'Final'
+    };
+
+    // Initialize all rounds
+    roundOrder.forEach(r => roundScores[r] = 0);
+
+    // Calculate score per round for each team
+    entry.selectedTeams.forEach(countryName => {
+      const teamId = getTeamIdByCountryName(countryName);
+      const relevantMatches = allMatches.filter(m => m.homeTeam === teamId || m.awayTeam === teamId);
+
+      relevantMatches.forEach(match => {
+        const result = getResultById(match.matchId);
+        if (!result || result.homeScore === null) return; // Not played
+
+        const isHome = match.homeTeam === teamId;
+        const opponentTeamId = isHome ? match.awayTeam : match.homeTeam;
+        const opponentTeam = allTeams.find(t => t.groupId === opponentTeamId);
+        const opponentName = opponentTeam ? opponentTeam.countryName : opponentTeamId;
+
+        let matchPoints = 0;
+        const { points: pointRules } = settings;
+
+        // Goals scored
+        const goalsFor = isHome ? result.homeScore : result.awayScore;
+        matchPoints += goalsFor * pointRules.goalScored;
+
+        // Goals conceded
+        const goalsAgainst = isHome ? result.awayScore : result.homeScore;
+        matchPoints += goalsAgainst * pointRules.goalConceded;
+
+        // Yellow cards
+        const yellowCards = isHome ? result.homeYellow : result.awayYellow;
+        if (yellowCards) matchPoints += yellowCards * pointRules.yellowCard;
+
+        // Red cards
+        const redCards = isHome ? result.homeRed : result.awayRed;
+        if (redCards) matchPoints += redCards * pointRules.redCard;
+
+        // Match result
+        const homeWins = result.homeScore > result.awayScore;
+        const awayWins = result.awayScore > result.homeScore;
+        const isDraw = result.homeScore === result.awayScore;
+
+        if (match.roundCode.includes('GS')) {
+          if ((isHome && homeWins) || (!isHome && awayWins)) {
+            matchPoints += pointRules.win;
+          } else if (isDraw) {
+            matchPoints += pointRules.draw;
+          }
+        } else {
+          if ((isHome && homeWins) || (!isHome && awayWins)) {
+            matchPoints += pointRules.win;
+          } else if (isDraw) {
+            const isWinnerAfterPenalties = (isHome && result.homePenalties > result.awayPenalties) ||
+                                           (!isHome && result.awayPenalties > result.homePenalties);
+            if (isWinnerAfterPenalties) {
+              matchPoints += pointRules.win;
+            }
+          }
+        }
+
+        // Qualification bonus
+        const qualified = isHome ? result.homeQualified : result.awayQualified;
+        if (qualified) {
+          if (match.roundCode === 'GS1' || match.roundCode === 'GS2' || match.roundCode === 'GS3') {
+            matchPoints += pointRules.qualifyKnockout;
+          } else if (match.roundCode !== 'Final') {
+            matchPoints += pointRules.qualifyNextRound;
+          }
+        }
+
+        // Final win bonus
+        if (match.roundCode === 'Final' && ((isHome && homeWins) || (!isHome && awayWins))) {
+          matchPoints += pointRules.winFinal;
+        }
+
+        if (!roundScores[match.roundCode]) roundScores[match.roundCode] = 0;
+        roundScores[match.roundCode] += matchPoints;
+      });
+    });
+
+    // Generate HTML
+    let html = '<div class="round-breakdown"><h4>Score by Round</h4><div class="round-scores">';
+    roundOrder.forEach(round => {
+      const score = roundScores[round] || 0;
+      if (score > 0) { // Only show rounds with points
+        html += `
+          <div class="round-score-item">
+            <div class="round-score-label">${roundLabels[round]}</div>
+            <div class="round-score-value">${score}</div>
+          </div>
+        `;
+      }
+    });
+    html += '</div></div>';
+    
+    return html;
+  }
+
   function calculateLeaderboard() {
     leaderboard = allEntries.map(entry => {
       let totalScore = 0;
@@ -589,8 +786,8 @@
       <div class="leaderboard-header">
         <div>Rank</div>
         <div>Player</div>
-        <div>Teams</div>
-        <div>Tiebreaker 1</div>
+        <div>Teams Left</div>
+        <div>Cost</div>
         <div>Total Score</div>
       </div>
     `;
@@ -605,6 +802,11 @@
       else if (rank === 3) { rankClass = 'third'; rankEmoji = '🥉'; }
 
       const teamCount = entry.selectedTeams.length;
+      const teamsRemaining = calculateTeamsRemaining(entry.selectedTeams);
+      const totalCost = entry.selectedTeams.reduce((sum, teamName) => {
+        const team = getTeamByCountryName(teamName);
+        return sum + (team ? team.cost : 0);
+      }, 0);
 
       html += `
         <div class="leaderboard-row" id="${rowId}" data-entry-idx="${idx}">
@@ -613,8 +815,8 @@
             <div class="player-name">${escapeHtml(entry.entrantName)}</div>
             <div class="team-name">${escapeHtml(entry.teamName)}</div>
           </div>
-          <div class="team-count">${teamCount}</div>
-          <div class="tiebreaker-info">${escapeHtml(entry.tb1 || '—')}</div>
+          <div class="team-count">${teamsRemaining}/${teamCount}</div>
+          <div class="cost-col">£${totalCost}m</div>
           <div class="score-col">${entry.totalScore}</div>
         </div>
 
@@ -632,6 +834,7 @@
               `;
             }).join('')}
           </div>
+          ${getRoundBreakdownHtml(entry)}
           <div class="tiebreaker-section">
             <strong>Tiebreaker Answers:</strong>
             <div class="tiebreaker-item">

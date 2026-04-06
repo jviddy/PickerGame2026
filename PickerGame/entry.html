@@ -89,8 +89,68 @@
     @media (max-width: 900px) {
       .page {
         grid-template-columns: 1fr;
-        grid-template-areas: "sidebar" "picker";
+        grid-template-areas: "picker" "sidebar";
+        padding-top: 12px;
       }
+      .sidebar-col {
+        position: static;
+      }
+      /* hide the full budget card inside sidebar on mobile — replaced by the sticky bar */
+      .sidebar-col .budget-card { display: none; }
+    }
+
+    /* ─── Mobile sticky budget bar ──────────────────────────────────*/
+    #mobileBudgetBar {
+      display: none;
+    }
+    @media (max-width: 900px) {
+      #mobileBudgetBar {
+        display: block;
+        position: sticky;
+        top: 58px;   /* sits flush under the header */
+        z-index: 90;
+        background: var(--navy);
+        color: var(--white);
+        padding: 8px 16px 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      }
+      .mbb-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 5px;
+      }
+      .mbb-remaining {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+      .mbb-remaining.warn { color: var(--amber); }
+      .mbb-remaining.over { color: var(--red); }
+      .mbb-picks {
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.15);
+        border-radius: 99px;
+        padding: 2px 10px;
+        white-space: nowrap;
+      }
+      .mbb-picks.full { background: var(--green); }
+      .mbb-bar-bg {
+        height: 4px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .mbb-bar {
+        height: 100%;
+        border-radius: 99px;
+        background: var(--gold);
+        transition: width 0.25s, background 0.25s;
+      }
+      .mbb-bar.warn { background: var(--amber); }
+      .mbb-bar.over { background: var(--red); }
     }
 
     /* ─── Picker header ─────────────────────────────────────────────*/
@@ -510,6 +570,15 @@
   </div>
 </header>
 
+<!-- Mobile sticky budget bar — sits below nav, hidden on desktop -->
+<div id="mobileBudgetBar">
+  <div class="mbb-row">
+    <span class="mbb-remaining" id="mbbRemaining">£120m remaining</span>
+    <span class="mbb-picks" id="mbbPicks">0 / 8 picks</span>
+  </div>
+  <div class="mbb-bar-bg"><div class="mbb-bar" id="mbbBar" style="width:100%"></div></div>
+</div>
+
 <div class="page">
 
   <!-- ── LEFT: Team picker ─────────────────────────────────────── -->
@@ -548,8 +617,8 @@
   <!-- ── RIGHT: Sidebar ────────────────────────────────────────── -->
   <aside class="sidebar-col">
 
-    <!-- Budget tracker -->
-    <div class="card">
+    <!-- Budget tracker (desktop only — mobile uses sticky bar above) -->
+    <div class="card budget-card">
       <h3>💰 Budget</h3>
       <div class="budget-numbers">
         <span class="budget-remaining" id="budgetRemaining">£120m</span>
@@ -788,6 +857,7 @@
     }
 
     renderBudget(spent, rem);
+    renderMobileBudget(spent, rem);
     renderPicks();
     updateSubmitBtn();
   }
@@ -801,6 +871,23 @@
     budgetRemEl.className  = 'budget-remaining ' + state;
     budgetBarEl.className  = 'budget-bar ' + state;
     budgetBarEl.style.width = pct + '%';
+  }
+
+  function renderMobileBudget(spent, rem) {
+    const pct   = Math.max(0, (rem / BUDGET) * 100);
+    const state = rem < 0 ? 'over' : rem < BUDGET * 0.2 ? 'warn' : '';
+    const picks = selected.size;
+
+    const mbbRem  = document.getElementById('mbbRemaining');
+    const mbbBar  = document.getElementById('mbbBar');
+    const mbbPicks = document.getElementById('mbbPicks');
+
+    mbbRem.textContent   = `£${rem}m remaining`;
+    mbbRem.className     = 'mbb-remaining ' + state;
+    mbbBar.className     = 'mbb-bar ' + state;
+    mbbBar.style.width   = pct + '%';
+    mbbPicks.textContent = `${picks} / ${MAX_PICKS} picks`;
+    mbbPicks.className   = 'mbb-picks' + (picks === MAX_PICKS ? ' full' : '');
   }
 
   function renderPicks() {
