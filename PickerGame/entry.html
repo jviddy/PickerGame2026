@@ -45,13 +45,14 @@
 
     /* ─── Header ────────────────────────────────────────────────────*/
     header {
-      background: var(--navy);
+      background:
+        linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
       color: var(--white);
       padding: 0 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 10px rgba(11,79,47,0.24);
     }
     .header-inner {
       max-width: 1400px;
@@ -202,6 +203,39 @@
       outline: none;
       cursor: pointer;
     }
+    .sort-select:disabled {
+      color: var(--gray-400);
+      background: var(--gray-50);
+      cursor: not-allowed;
+    }
+    .compact-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 12px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .compact-toggle-btn:hover {
+      border-color: var(--navy-light);
+      background: var(--green-bg);
+    }
+    .compact-toggle-btn.active {
+      border-color: var(--navy-light);
+      background: var(--navy);
+      color: var(--white);
+    }
+    @media (max-width: 900px) {
+      .compact-toggle-btn {
+        display: none;
+      }
+    }
 
     /* ─── Team grid ─────────────────────────────────────────────────*/
     .team-grid {
@@ -214,6 +248,10 @@
       grid-template-columns: 1fr;
       gap: 8px;
     }
+    .team-grid.compact-grouped {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
     .group-section {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -223,9 +261,24 @@
       padding: 5px;
       background: rgba(255,255,255,0.55);
     }
+    .team-grid.compact-grouped .group-section {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: 6px;
+    }
     @media (min-width: 1200px) {
       .team-grid.grouped {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (min-width: 1050px) {
+      .team-grid.compact-grouped {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    @media (min-width: 1400px) {
+      .team-grid.compact-grouped {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
       }
     }
 
@@ -330,9 +383,54 @@
       color: var(--gray-400);
       margin: 0 0 0 4px;
     }
+    .team-grid.compact-grouped .team-card {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr) auto;
+      gap: 7px;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 7px;
+      text-align: left;
+    }
+    .team-grid.compact-grouped .team-card .flag-wrap {
+      width: 30px;
+      height: 20px;
+      margin: 0;
+      border-radius: 3px;
+    }
+    .team-grid.compact-grouped .team-card .team-name {
+      display: block;
+      min-height: 0;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 0.76rem;
+      line-height: 1.1;
+    }
+    .team-grid.compact-grouped .team-card .team-rank {
+      display: none;
+    }
+    .team-grid.compact-grouped .team-card .team-cost {
+      justify-self: end;
+      padding: 2px 7px;
+      font-size: 0.68rem;
+      white-space: nowrap;
+    }
+    .team-grid.compact-grouped .team-card .check-badge {
+      top: 50%;
+      right: 6px;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+    }
+    .team-grid.compact-grouped .team-card.selected .team-cost {
+      padding-right: 18px;
+    }
 
     @media (max-width: 1320px) {
-      .team-grid:not(.grouped) {
+      .team-grid:not(.grouped):not(.compact-grouped) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
     }
@@ -343,6 +441,7 @@
         gap: 6px;
       }
       .team-grid.grouped,
+      .team-grid.compact-grouped,
       .group-section {
         grid-template-columns: 1fr;
       }
@@ -697,6 +796,9 @@
         <option value="cost-asc">Sort: Cost ↑</option>
         <option value="alpha">Sort: A–Z</option>
       </select>
+      <button class="compact-toggle-btn active" id="compactToggleBtn" type="button" aria-pressed="true">
+        Expanded view
+      </button>
     </div>
 
     <div class="team-grid" id="teamGrid">
@@ -815,11 +917,13 @@
   let selected   = new Set(); // set of groupId
   let searchQuery = '';
   let sort        = 'group';
+  let compactGroups = true;
 
   /* ─── DOM ─────────────────────────────────────────────────── */
   const gridEl          = document.getElementById('teamGrid');
   const searchInput     = document.getElementById('searchInput');
   const sortSelect      = document.getElementById('sortSelect');
+  const compactToggleBtn = document.getElementById('compactToggleBtn');
   const picksCountEl    = document.getElementById('picksCount');
   const picksListEl     = document.getElementById('picksList');
   const budgetRemEl     = document.getElementById('budgetRemaining');
@@ -916,25 +1020,35 @@
     const list = filteredSorted();
     const spent = totalSpent();
     const rem   = budgetRemaining();
+    const useGroupedLayout = sort === 'group' || compactGroups;
+    const renderList = compactGroups
+      ? [...list].sort((a, b) => a.groupId.localeCompare(b.groupId))
+      : list;
 
     gridEl.innerHTML = '';
-    gridEl.classList.toggle('grouped', sort === 'group');
-    if (list.length === 0) {
+    gridEl.classList.toggle('grouped', sort === 'group' && !compactGroups);
+    gridEl.classList.toggle('compact-grouped', compactGroups);
+    sortSelect.disabled = compactGroups;
+    compactToggleBtn.classList.toggle('active', compactGroups);
+    compactToggleBtn.setAttribute('aria-pressed', String(compactGroups));
+    compactToggleBtn.textContent = compactGroups ? 'Expanded view' : 'Compact view';
+
+    if (renderList.length === 0) {
       gridEl.innerHTML = '<div class="no-results">No teams match your search.</div>';
     } else {
-      if (sort === 'group') {
-        const groups = [...new Set(list.map(team => team.group))];
+      if (useGroupedLayout) {
+        const groups = [...new Set(renderList.map(team => team.group))];
         groups.forEach(group => {
           const section = document.createElement('section');
           section.className = 'group-section';
           section.appendChild(createGroupHeading(group));
-          list
+          renderList
             .filter(team => team.group === group)
             .forEach(team => section.appendChild(createTeamCard(team, spent)));
           gridEl.appendChild(section);
         });
       } else {
-        list.forEach(team => {
+        renderList.forEach(team => {
           gridEl.appendChild(createTeamCard(team, spent));
         });
       }
@@ -1032,6 +1146,11 @@
 
   sortSelect.addEventListener('change', e => {
     sort = e.target.value;
+    render();
+  });
+
+  compactToggleBtn.addEventListener('click', () => {
+    compactGroups = !compactGroups;
     render();
   });
 

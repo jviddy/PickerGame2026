@@ -12,8 +12,8 @@
         "countryName": "South Africa",
         "group": "A",
         "groupId": "A2",
-        "fifaRank": 61,
-        "cost": 13,
+        "fifaRank": 60,
+        "cost": 9,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/60px-Flag_of_South_Africa.svg.png"
     },
@@ -21,44 +21,44 @@
         "countryName": "South Korea",
         "group": "A",
         "groupId": "A3",
-        "fifaRank": 22,
-        "cost": 29,
+        "fifaRank": 25,
+        "cost": 26,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/60px-Flag_of_South_Korea.svg.png"
     },
     {
-        "countryName": "UEFA Path D winner[A]",
+        "countryName": "Czechia",
         "group": "A",
         "groupId": "A4",
-        "fifaRank": 90,
-        "cost": 3,
+        "fifaRank": 41,
+        "cost": 16,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_None.svg/60px-Flag_of_None.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/60px-Flag_of_the_Czech_Republic.svg.png"
     },
     {
         "countryName": "Canada",
         "group": "B",
         "groupId": "B1",
-        "fifaRank": 27,
-        "cost": 25,
+        "fifaRank": 30,
+        "cost": 22,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Canada.svg/60px-Flag_of_Canada.svg.png"
     },
     {
-        "countryName": "UEFA Path A winner[A]",
+        "countryName": "Bosnia and Herzegovina",
         "group": "B",
         "groupId": "B2",
-        "fifaRank": 87,
+        "fifaRank": 65,
         "cost": 6,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_None.svg/60px-Flag_of_None.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/60px-Flag_of_Bosnia_and_Herzegovina.svg.png"
     },
     {
         "countryName": "Qatar",
         "group": "B",
         "groupId": "B3",
-        "fifaRank": 51,
-        "cost": 15,
+        "fifaRank": 55,
+        "cost": 11,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/60px-Flag_of_Qatar.svg.png"
     },
@@ -66,8 +66,8 @@
         "countryName": "Switzerland",
         "group": "B",
         "groupId": "B4",
-        "fifaRank": 17,
-        "cost": 33,
+        "fifaRank": 19,
+        "cost": 31,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/60px-Flag_of_Switzerland.svg.png"
     },
@@ -76,7 +76,7 @@
         "group": "C",
         "groupId": "C1",
         "fifaRank": 5,
-        "cost": 44,
+        "cost": 43,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/60px-Flag_of_Brazil.svg.png"
     },
@@ -84,8 +84,8 @@
         "countryName": "Morocco",
         "group": "C",
         "groupId": "C2",
-        "fifaRank": 11,
-        "cost": 38,
+        "fifaRank": 8,
+        "cost": 41,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/60px-Flag_of_Morocco.svg.png"
     },
@@ -93,8 +93,8 @@
         "countryName": "Haiti",
         "group": "C",
         "groupId": "C3",
-        "fifaRank": 84,
-        "cost": 8,
+        "fifaRank": 83,
+        "cost": 2,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/60px-Flag_of_Haiti.svg.png"
     },
@@ -102,8 +102,8 @@
         "countryName": "Scotland",
         "group": "C",
         "groupId": "C4",
-        "fifaRank": 36,
-        "cost": 20,
+        "fifaRank": 43,
+        "cost": 15,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Scotland.svg/60px-Flag_of_Scotland.svg.png"
     },
@@ -111,8 +111,8 @@
         "countryName": "United States",
         "group": "D",
         "groupId": "D1",
-        "fifaRank": 14,
-        "cost": 36,
+        "fifaRank": 16,
+        "cost": 34,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/60px-Flag_of_the_United_States.svg.png"
     },
@@ -120,8 +120,8 @@
         "countryName": "Paraguay",
         "group": "D",
         "groupId": "D2",
-        "fifaRank": 39,
-        "cost": 19,
+        "fifaRank": 40,
+        "cost": 17,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/60px-Flag_of_Paraguay.svg.png"
     },
@@ -129,26 +129,26 @@
         "countryName": "Australia",
         "group": "D",
         "groupId": "D3",
-        "fifaRank": 26,
-        "cost": 26,
+        "fifaRank": 27,
+        "cost": 25,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Australia.svg/60px-Flag_of_Australia.svg.png"
     },
     {
-        "countryName": "UEFA Path C winner[A]",
+        "countryName": "Türkiye",
         "group": "D",
         "groupId": "D4",
-        "fifaRank": 89,
-        "cost": 4,
+        "fifaRank": 22,
+        "cost": 29,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_None.svg/60px-Flag_of_None.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/60px-Flag_of_Turkey.svg.png"
     },
     {
         "countryName": "Germany",
         "group": "E",
         "groupId": "E1",
-        "fifaRank": 9,
-        "cost": 40,
+        "fifaRank": 10,
+        "cost": 39,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/60px-Flag_of_Germany.svg.png"
     },
@@ -157,18 +157,18 @@
         "group": "E",
         "groupId": "E2",
         "fifaRank": 82,
-        "cost": 9,
+        "cost": 3,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_Curaçao.svg/60px-Flag_of_Curaçao.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1//Flag_of_Curaçao.svg/60px-Flag_of_Curacao.svg.png"
     },
     {
         "countryName": "Ivory Coast",
         "group": "E",
         "groupId": "E3",
-        "fifaRank": 42,
-        "cost": 17,
+        "fifaRank": 34,
+        "cost": 19,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Ivory_Coast.svg/60px-Flag_of_Ivory_Coast.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Côte_d%27Ivoire.svg/60px-Flag_of_Côte_d%27Ivoire.svg.png"
     },
     {
         "countryName": "Ecuador",
@@ -198,20 +198,20 @@
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/60px-Flag_of_Japan.svg.png"
     },
     {
-        "countryName": "UEFA Path B winner[A]",
+        "countryName": "Sweden",
         "group": "F",
         "groupId": "F3",
-        "fifaRank": 88,
-        "cost": 5,
+        "fifaRank": 38,
+        "cost": 18,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_None.svg/60px-Flag_of_None.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/60px-Flag_of_Sweden.svg.png"
     },
     {
         "countryName": "Tunisia",
         "group": "F",
         "groupId": "F4",
-        "fifaRank": 40,
-        "cost": 18,
+        "fifaRank": 44,
+        "cost": 14,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/60px-Flag_of_Tunisia.svg.png"
     },
@@ -219,8 +219,8 @@
         "countryName": "Belgium",
         "group": "G",
         "groupId": "G1",
-        "fifaRank": 8,
-        "cost": 41,
+        "fifaRank": 9,
+        "cost": 40,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/60px-Flag_of_Belgium.svg.png"
     },
@@ -228,8 +228,8 @@
         "countryName": "Egypt",
         "group": "G",
         "groupId": "G2",
-        "fifaRank": 34,
-        "cost": 22,
+        "fifaRank": 29,
+        "cost": 23,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/60px-Flag_of_Egypt.svg.png"
     },
@@ -237,7 +237,7 @@
         "countryName": "Iran",
         "group": "G",
         "groupId": "G3",
-        "fifaRank": 20,
+        "fifaRank": 21,
         "cost": 30,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flag_of_Iran.svg/60px-Flag_of_Iran.svg.png"
@@ -246,8 +246,8 @@
         "countryName": "New Zealand",
         "group": "G",
         "groupId": "G4",
-        "fifaRank": 86,
-        "cost": 7,
+        "fifaRank": 85,
+        "cost": 1,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/60px-Flag_of_New_Zealand.svg.png"
     },
@@ -255,8 +255,8 @@
         "countryName": "Spain",
         "group": "H",
         "groupId": "H1",
-        "fifaRank": 1,
-        "cost": 48,
+        "fifaRank": 2,
+        "cost": 47,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/60px-Flag_of_Spain.svg.png"
     },
@@ -264,8 +264,8 @@
         "countryName": "Cape Verde",
         "group": "H",
         "groupId": "H2",
-        "fifaRank": 68,
-        "cost": 11,
+        "fifaRank": 69,
+        "cost": 5,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Flag_of_Cape_Verde.svg/60px-Flag_of_Cape_Verde.svg.png"
     },
@@ -273,8 +273,8 @@
         "countryName": "Saudi Arabia",
         "group": "H",
         "groupId": "H3",
-        "fifaRank": 60,
-        "cost": 14,
+        "fifaRank": 61,
+        "cost": 8,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/60px-Flag_of_Saudi_Arabia.svg.png"
     },
@@ -282,8 +282,8 @@
         "countryName": "Uruguay",
         "group": "H",
         "groupId": "H4",
-        "fifaRank": 16,
-        "cost": 34,
+        "fifaRank": 17,
+        "cost": 33,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/60px-Flag_of_Uruguay.svg.png"
     },
@@ -291,8 +291,8 @@
         "countryName": "France",
         "group": "I",
         "groupId": "I1",
-        "fifaRank": 3,
-        "cost": 46,
+        "fifaRank": 1,
+        "cost": 48,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/60px-Flag_of_France.svg.png"
     },
@@ -300,26 +300,26 @@
         "countryName": "Senegal",
         "group": "I",
         "groupId": "I2",
-        "fifaRank": 19,
-        "cost": 31,
+        "fifaRank": 14,
+        "cost": 36,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/60px-Flag_of_Senegal.svg.png"
     },
     {
-        "countryName": "IC Path 2 winner[A][C]",
+        "countryName": "Iraq",
         "group": "I",
         "groupId": "I3",
-        "fifaRank": 92,
-        "cost": 1,
+        "fifaRank": 57,
+        "cost": 10,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_None.svg/60px-Flag_of_None.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Flag_of_Iraq.svg/60px-Flag_of_Iraq.svg.png"
     },
     {
         "countryName": "Norway",
         "group": "I",
         "groupId": "I4",
-        "fifaRank": 29,
-        "cost": 24,
+        "fifaRank": 31,
+        "cost": 21,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/60px-Flag_of_Norway.svg.png"
     },
@@ -327,8 +327,8 @@
         "countryName": "Argentina",
         "group": "J",
         "groupId": "J1",
-        "fifaRank": 2,
-        "cost": 47,
+        "fifaRank": 3,
+        "cost": 46,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/60px-Flag_of_Argentina.svg.png"
     },
@@ -336,8 +336,8 @@
         "countryName": "Algeria",
         "group": "J",
         "groupId": "J2",
-        "fifaRank": 35,
-        "cost": 21,
+        "fifaRank": 28,
+        "cost": 24,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/60px-Flag_of_Algeria.svg.png"
     },
@@ -354,8 +354,8 @@
         "countryName": "Jordan",
         "group": "J",
         "groupId": "J4",
-        "fifaRank": 66,
-        "cost": 12,
+        "fifaRank": 63,
+        "cost": 7,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_Jordan.svg/60px-Flag_of_Jordan.svg.png"
     },
@@ -363,26 +363,26 @@
         "countryName": "Portugal",
         "group": "K",
         "groupId": "K1",
-        "fifaRank": 6,
+        "fifaRank": 5,
         "cost": 43,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/60px-Flag_of_Portugal.svg.png"
     },
     {
-        "countryName": "IC Path 1 winner[A][B]",
+        "countryName": "DR Congo",
         "group": "K",
         "groupId": "K2",
-        "fifaRank": 91,
-        "cost": 2,
+        "fifaRank": 46,
+        "cost": 13,
         "active": 1,
-        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Flag_of_None.svg/60px-Flag_of_None.svg.png"
+        "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Flag_of_Republic_of_the_Congo.svg/60px-Flag_of_Republic_of_the_Congo.svg.png"
     },
     {
         "countryName": "Uzbekistan",
         "group": "K",
         "groupId": "K3",
         "fifaRank": 50,
-        "cost": 16,
+        "cost": 12,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/60px-Flag_of_Uzbekistan.svg.png"
     },
@@ -408,8 +408,8 @@
         "countryName": "Croatia",
         "group": "L",
         "groupId": "L2",
-        "fifaRank": 10,
-        "cost": 39,
+        "fifaRank": 11,
+        "cost": 38,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Flag_of_Croatia.svg/60px-Flag_of_Croatia.svg.png"
     },
@@ -417,8 +417,8 @@
         "countryName": "Ghana",
         "group": "L",
         "groupId": "L3",
-        "fifaRank": 72,
-        "cost": 10,
+        "fifaRank": 74,
+        "cost": 4,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Ghana.svg/60px-Flag_of_Ghana.svg.png"
     },
@@ -426,8 +426,8 @@
         "countryName": "Panama",
         "group": "L",
         "groupId": "L4",
-        "fifaRank": 30,
-        "cost": 23,
+        "fifaRank": 33,
+        "cost": 20,
         "active": 1,
         "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/60px-Flag_of_Panama.svg.png"
     }
