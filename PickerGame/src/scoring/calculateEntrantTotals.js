@@ -13,7 +13,12 @@ import { isKnockoutRound, getEmptyRoundScores } from './roundMapping.js';
  * @param {any} results - Results array
  * @returns {boolean} True if team is eliminated
  */
-function isTeamEliminated(teamName, matches, results) {
+function isTeamEliminated(teamName, teams, matches, results) {
+  const team = teams.find((candidate) => candidate.countryName === teamName);
+  if (!team) {
+    return false;
+  }
+
   // Build result lookup by matchId for quick access
   const resultsByMatchId = new Map();
   results.forEach((result) => {
@@ -29,20 +34,46 @@ function isTeamEliminated(teamName, matches, results) {
       continue;
     }
     
-    const isHomeTeam = match.homeTeam === teamName;
-    const isAwayTeam = match.awayTeam === teamName;
+    const isHomeTeam = match.homeTeam === team.groupId || match.homeTeam === team.countryName;
+    const isAwayTeam = match.awayTeam === team.groupId || match.awayTeam === team.countryName;
     
     if (!isHomeTeam && !isAwayTeam) {
       continue;
     }
     
+    if (result.homeScore === null || result.awayScore === null) {
+      continue;
+    }
+
     const qualified = isHomeTeam ? result.homeQualified : result.awayQualified;
-    const roundKey = match.round;
+    const roundKey = match.roundCode || match.round;
     
     // If this is a knockout match and team didn't qualify, team is eliminated
     if (isKnockoutRound(roundKey) && !qualified) {
       return true;
     }
+  }
+
+  const groupMatches = matches.filter((match) => {
+    const isHomeTeam = match.homeTeam === team.groupId || match.homeTeam === team.countryName;
+    const isAwayTeam = match.awayTeam === team.groupId || match.awayTeam === team.countryName;
+    const roundKey = match.roundCode || match.round;
+    return roundKey?.startsWith('GS') && (isHomeTeam || isAwayTeam);
+  });
+
+  const playedGroupMatches = groupMatches.filter((match) => {
+    const result = resultsByMatchId.get(match.matchId);
+    return result && result.homeScore !== null && result.awayScore !== null;
+  });
+
+  if (groupMatches.length && playedGroupMatches.length === groupMatches.length) {
+    const qualifiedFromAnyGroupMatch = playedGroupMatches.some((match) => {
+      const result = resultsByMatchId.get(match.matchId);
+      const isHomeTeam = match.homeTeam === team.groupId || match.homeTeam === team.countryName;
+      return isHomeTeam ? result.homeQualified : result.awayQualified;
+    });
+
+    return !qualifiedFromAnyGroupMatch;
   }
   
   return false;
@@ -135,7 +166,7 @@ export function calculateEntrantTotals(entries, teamPoints, teams, matches, resu
     
     // Determine teams still in competition
     entry.selectedTeams.forEach((teamName) => {
-      if (!isTeamEliminated(teamName, matches, results)) {
+      if (!isTeamEliminated(teamName, teams, matches, results)) {
         teamsRemaining += 1;
       }
     });
@@ -147,6 +178,7 @@ export function calculateEntrantTotals(entries, teamPoints, teams, matches, resu
       totalPoints,
       teamsRemaining,
       byRound,
+      selectedTeams: entry.selectedTeams,
       teamBreakdown: teamBreakdown.sort((a, b) => b.points - a.points),
       tieBreakers: entry.tieBreakerAnswers || [],
     };

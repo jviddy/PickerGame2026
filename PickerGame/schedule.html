@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matches - Picker Game 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <style>
+    :root {
+      --navy:       #0b4f2f;
+      --navy-light: #147a45;
+      --gold:       #f2c94c;
+      --gold-dark:  #c99a1c;
+      --green:      #22a861;
+      --green-bg:   #e4f7eb;
+      --red:        #dc2626;
+      --red-bg:     #fee2e2;
+      --amber:      #c86b2c;
+      --amber-bg:   #fff1dc;
+      --gray-50:    #f9fafb;
+      --gray-100:   #f3f4f6;
+      --gray-200:   #e5e7eb;
+      --gray-400:   #9ca3af;
+      --gray-600:   #4b5563;
+      --gray-800:   #1f2937;
+      --white:      #ffffff;
+      --radius:     10px;
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: 0; }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    nav a:hover,
+    nav a.active { color: var(--white); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 18px;
+    }
+    .page-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    .page-header p {
+      color: var(--gray-600);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .time-badge {
+      border: 1.5px solid var(--navy-light);
+      border-radius: 99px;
+      background: var(--green-bg);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 900;
+      padding: 7px 11px;
+      white-space: nowrap;
+    }
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .group-toggle {
+      display: inline-flex;
+      gap: 4px;
+      padding: 3px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+    }
+    .group-toggle-btn {
+      border: none;
+      border-radius: 99px;
+      background: transparent;
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 900;
+      padding: 6px 10px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .group-toggle-btn.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .group-toggle-btn:not(.active):hover {
+      background: var(--green-bg);
+    }
+
+    .error-msg {
+      display: none;
+      padding: 12px 14px;
+      border: 1.5px solid var(--red);
+      border-radius: var(--radius);
+      background: var(--red-bg);
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .error-msg.show { display: block; }
+
+    .round-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .round-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+      border-bottom: 2px solid var(--navy-light);
+    }
+    .round-heading h2 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .round-count {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .match-card {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) minmax(210px, 0.8fr);
+      column-gap: 14px;
+      row-gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .match-card:last-child { border-bottom: none; }
+    .match-card.played { background: linear-gradient(90deg, var(--green-bg), var(--white) 18%); }
+    .match-meta {
+      color: var(--gray-600);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+    .match-date {
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 0.82rem;
+    }
+    .match-time {
+      display: inline-flex;
+      margin-top: 4px;
+      padding: 2px 7px;
+      border-radius: 99px;
+      background: var(--green-bg);
+      color: var(--navy);
+      font-weight: 900;
+    }
+    .match-location {
+      margin-top: 7px;
+      color: var(--gray-600);
+    }
+
+    .match-main {
+      min-width: 0;
+    }
+    .teams {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 10px;
+    }
+    .team {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .team.away {
+      justify-content: flex-end;
+      text-align: right;
+    }
+    .team-name {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 0.92rem;
+    }
+    .flag {
+      width: 24px;
+      height: 17px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.08);
+      object-fit: cover;
+      flex: 0 0 auto;
+      background: var(--gray-100);
+    }
+    .flag.placeholder {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-400);
+      font-size: 0.65rem;
+      font-weight: 900;
+    }
+    .scoreline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      min-width: 70px;
+    }
+    .score {
+      color: var(--navy);
+      font-size: 1.1rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .score.pending {
+      color: var(--gray-400);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    .penalties {
+      color: var(--amber);
+      font-size: 0.68rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .match-flags {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      min-height: 16px;
+      margin-top: 7px;
+    }
+    .red-card-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--red);
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .red-square {
+      display: inline-block;
+      width: 9px;
+      height: 12px;
+      border-radius: 1px;
+      background: var(--red);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+    }
+
+    .points-panel {
+      align-self: center;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--gray-50);
+      padding: 8px;
+      min-width: 0;
+    }
+    .points-empty {
+      color: var(--gray-600);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .points-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .points-total {
+      color: var(--green);
+      font-size: 0.88rem;
+    }
+    .points-team {
+      display: grid;
+      grid-template-columns: minmax(0, 86px) minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 6px;
+      padding-top: 6px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .points-team:first-of-type {
+      padding-top: 0;
+      border-top: none;
+    }
+    .points-team + .points-team { margin-top: 6px; }
+    .points-team-name {
+      color: var(--navy);
+      font-size: 0.74rem;
+      font-weight: 900;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .point-chips {
+      display: flex;
+      gap: 3px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+    .point-chip {
+      display: inline-flex;
+      gap: 3px;
+      align-items: center;
+      border: 1px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      color: var(--gray-600);
+      font-size: 0.64rem;
+      font-weight: 800;
+      line-height: 1;
+      padding: 2px 5px;
+    }
+    .point-chip.positive { color: var(--navy); background: var(--green-bg); }
+    .point-chip.negative { color: var(--red); background: var(--red-bg); }
+    .team-point-total {
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .loading {
+      padding: 28px 14px;
+      color: var(--gray-600);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .page-header {
+        display: block;
+      }
+      .time-badge {
+        display: inline-flex;
+        margin-top: 12px;
+      }
+      .header-actions {
+        align-items: flex-start;
+        margin-top: 12px;
+      }
+      .time-badge {
+        margin-top: 0;
+      }
+      .match-card {
+        grid-template-columns: 1fr;
+      }
+      .match-meta {
+        display: grid;
+        grid-template-columns: auto auto minmax(0, 1fr);
+        gap: 8px;
+        align-items: center;
+      }
+      .match-time { margin-top: 0; }
+      .match-location {
+        margin-top: 0;
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    @media (max-width: 560px) {
+      header { padding: 0 14px; }
+      nav a {
+        margin-left: 12px;
+        font-size: 0.82rem;
+      }
+      .container { padding: 18px 10px; }
+      .page-header h1 { font-size: 1.45rem; }
+      .match-card { padding: 10px; }
+      .match-meta {
+        grid-template-columns: 1fr auto;
+      }
+      .match-location {
+        grid-column: 1 / -1;
+        text-align: left;
+      }
+      .teams {
+        grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
+        gap: 6px;
+      }
+      .team {
+        gap: 5px;
+      }
+      .team-name {
+        font-size: 0.78rem;
+      }
+      .flag {
+        width: 20px;
+        height: 14px;
+      }
+      .score {
+        font-size: 0.95rem;
+      }
+      .points-team {
+        grid-template-columns: minmax(0, 70px) minmax(0, 1fr) auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1 class="logo">Picker<span>Game</span> 2026</h1>
+    <nav>
+      <a href="entry.html">Enter</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="schedule.html" class="active">Matches</a>
+      <a href="countries.html">Countries</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-header">
+    <div>
+      <h1>Matches</h1>
+      <p>Fixtures, results, cards, penalties and PickerGame points by match.</p>
+    </div>
+    <div class="header-actions">
+      <div class="time-badge">All dates and kick-off times shown in BST</div>
+      <div class="group-toggle" aria-label="Group matches by">
+        <button class="group-toggle-btn active" id="groupByRoundBtn" type="button">By round</button>
+        <button class="group-toggle-btn" id="groupByGroupBtn" type="button">By group</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+  <div id="matchesRoot">
+    <div class="loading">Loading matches...</div>
+  </div>
+</main>
+
+<script>
+  const DATA_URLS = {
+    teams: './Data/teams.json',
+    matches: './Data/matches.json',
+    results: './Data/results.json',
+    settings: './Data/settings.json'
+  };
+
+  const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
+  const GROUP_ORDER = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+  const matchesRoot = document.getElementById('matchesRoot');
+  const errorMsg = document.getElementById('errorMsg');
+  const groupByRoundBtn = document.getElementById('groupByRoundBtn');
+  const groupByGroupBtn = document.getElementById('groupByGroupBtn');
+
+  let teams = [];
+  let matches = [];
+  let results = [];
+  let settings = {};
+  let groupMode = 'round';
+
+  async function loadJson(url) {
+    const response = await fetch(`${url}?v=${Date.now()}`);
+    if (!response.ok) throw new Error(`Could not load ${url}`);
+    return response.json();
+  }
+
+  async function loadData() {
+    try {
+      [teams, matches, results, settings] = await Promise.all([
+        loadJson(DATA_URLS.teams),
+        loadJson(DATA_URLS.matches),
+        loadJson(DATA_URLS.results),
+        loadJson(DATA_URLS.settings)
+      ]);
+      return true;
+    } catch (error) {
+      showError(error.message);
+      return false;
+    }
+  }
+
+  function showError(message) {
+    errorMsg.textContent = message;
+    errorMsg.classList.add('show');
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[char]));
+  }
+
+  function getTeam(teamRef) {
+    return teams.find(team => team.groupId === teamRef || team.countryName === teamRef);
+  }
+
+  function getTeamName(teamRef) {
+    return getTeam(teamRef)?.countryName || teamRef || 'TBA';
+  }
+
+  function getResult(matchId) {
+    return results.find(result => result.matchId === matchId);
+  }
+
+  function isPlayed(result) {
+    return result && result.homeScore !== null && result.awayScore !== null;
+  }
+
+  function formatDateParts(isoDate) {
+    const date = new Date(isoDate);
+    return {
+      day: new Intl.DateTimeFormat('en-GB', {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short',
+        timeZone: 'Europe/London'
+      }).format(date),
+      time: new Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23',
+        timeZone: 'Europe/London'
+      }).format(date)
+    };
+  }
+
+  function renderFlag(teamRef, side) {
+    const team = getTeam(teamRef);
+    if (!team?.flagUrl) {
+      return `<span class="flag placeholder" aria-label="${escapeHtml(side)} team flag">?</span>`;
+    }
+    return `<img class="flag" src="${team.flagUrl}" alt="${escapeHtml(team.countryName)} flag" loading="lazy" />`;
+  }
+
+  function getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, roundCode) {
+    if (goalsFor > goalsAgainst) return 'win';
+    if (goalsFor < goalsAgainst) return 'loss';
+    if (!roundCode.includes('GS') && penaltiesFor !== null && penaltiesAgainst !== null) {
+      return penaltiesFor > penaltiesAgainst ? 'win' : 'loss';
+    }
+    return 'draw';
+  }
+
+  function calculateSidePoints(match, result, side) {
+    const isHome = side === 'home';
+    const goalsFor = isHome ? result.homeScore : result.awayScore;
+    const goalsAgainst = isHome ? result.awayScore : result.homeScore;
+    const penaltiesFor = isHome ? result.homePenalties : result.awayPenalties;
+    const penaltiesAgainst = isHome ? result.awayPenalties : result.homePenalties;
+    const yellowCards = isHome ? result.homeYellow : result.awayYellow;
+    const redCards = isHome ? result.homeRed : result.awayRed;
+    const qualified = isHome ? result.homeQualified : result.awayQualified;
+    const pointRules = settings.points || {};
+    const items = [];
+
+    const addItem = (label, value) => {
+      if (!value) return;
+      items.push({ label, value });
+    };
+
+    const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
+    if (resultType === 'win') addItem('Win', pointRules.win || 0);
+    if (resultType === 'draw') addItem('Draw', pointRules.draw || 0);
+
+    addItem('GF', goalsFor * (pointRules.goalScored || 0));
+    addItem('GA', goalsAgainst * (pointRules.goalConceded || 0));
+    addItem('YC', (yellowCards || 0) * (pointRules.yellowCard || 0));
+    addItem('RC', (redCards || 0) * (pointRules.redCard || 0));
+
+    if (qualified) {
+      if (match.roundCode === 'GS1' || match.roundCode === 'GS2' || match.roundCode === 'GS3') {
+        addItem('Qual', pointRules.qualifyKnockout || 0);
+      } else if (match.roundCode !== 'F') {
+        addItem('Advance', pointRules.qualifyNextRound || 0);
+      }
+    }
+
+    if (match.roundCode === 'F' && resultType === 'win') {
+      addItem('Final', pointRules.winFinal || 0);
+    }
+
+    const total = items.reduce((sum, item) => sum + item.value, 0);
+    return { items, total };
+  }
+
+  function renderPointChips(items) {
+    if (!items.length) return '<span class="point-chip">0</span>';
+    return items.map(item => `
+      <span class="point-chip ${item.value < 0 ? 'negative' : 'positive'}">
+        <span>${escapeHtml(item.label)}</span>
+        <strong>${item.value > 0 ? '+' : ''}${item.value}</strong>
+      </span>
+    `).join('');
+  }
+
+  function renderPointsPanel(match, result) {
+    if (!isPlayed(result)) {
+      return '<div class="points-panel"><div class="points-empty">PickerGame points appear here once the match is played.</div></div>';
+    }
+
+    const home = calculateSidePoints(match, result, 'home');
+    const away = calculateSidePoints(match, result, 'away');
+    const matchTotal = home.total + away.total;
+
+    return `
+      <div class="points-panel">
+        <div class="points-title">
+          <span>PickerGame points</span>
+          <span class="points-total">${matchTotal > 0 ? '+' : ''}${matchTotal} total</span>
+        </div>
+        ${renderPointsTeam(getTeamName(match.homeTeam), home)}
+        ${renderPointsTeam(getTeamName(match.awayTeam), away)}
+      </div>
+    `;
+  }
+
+  function renderPointsTeam(teamName, points) {
+    return `
+      <div class="points-team">
+        <div class="points-team-name" title="${escapeHtml(teamName)}">${escapeHtml(teamName)}</div>
+        <div class="point-chips">${renderPointChips(points.items)}</div>
+        <div class="team-point-total">${points.total > 0 ? '+' : ''}${points.total}</div>
+      </div>
+    `;
+  }
+
+  function renderScoreline(match, result) {
+    if (!isPlayed(result)) {
+      return '<div class="scoreline"><div class="score pending">v</div></div>';
+    }
+
+    const hasPenalties = result.homePenalties !== null && result.awayPenalties !== null;
+    return `
+      <div class="scoreline">
+        <div class="score">${result.homeScore} - ${result.awayScore}</div>
+        ${hasPenalties ? `<div class="penalties">Pens ${result.homePenalties} - ${result.awayPenalties}</div>` : ''}
+      </div>
+    `;
+  }
+
+  function renderRedCards(result) {
+    if (!isPlayed(result)) return '';
+    const homeRed = result.homeRed || 0;
+    const awayRed = result.awayRed || 0;
+    const totalRed = homeRed + awayRed;
+    if (!totalRed) return '';
+
+    return `
+      <div class="match-flags">
+        <span class="red-card-note" title="Red cards">
+          ${Array.from({ length: totalRed }, () => '<span class="red-square"></span>').join('')}
+          <span>${totalRed} red</span>
+        </span>
+      </div>
+    `;
+  }
+
+  function renderMatch(match) {
+    const result = getResult(match.matchId);
+    const dateParts = formatDateParts(match.date);
+    const playedClass = isPlayed(result) ? ' played' : '';
+
+    return `
+      <article class="match-card${playedClass}">
+        <div class="match-meta">
+          <div>
+            <div class="match-date">${escapeHtml(dateParts.day)}</div>
+            <div class="match-time">${escapeHtml(dateParts.time)} BST</div>
+          </div>
+          <div class="match-location">${escapeHtml(match.location)}</div>
+        </div>
+        <div class="match-main">
+          <div class="teams">
+            <div class="team home">
+              ${renderFlag(match.homeTeam, 'Home')}
+              <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamName(match.homeTeam))}</span>
+            </div>
+            ${renderScoreline(match, result)}
+            <div class="team away">
+              <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamName(match.awayTeam))}</span>
+              ${renderFlag(match.awayTeam, 'Away')}
+            </div>
+          </div>
+          ${renderRedCards(result)}
+        </div>
+        ${renderPointsPanel(match, result)}
+      </article>
+    `;
+  }
+
+  function sortByKickoff(a, b) {
+    return new Date(a.date) - new Date(b.date);
+  }
+
+  function groupMatchesByRound() {
+    const sorted = [...matches].sort((a, b) => {
+      const roundDiff = ROUND_ORDER.indexOf(a.roundCode) - ROUND_ORDER.indexOf(b.roundCode);
+      if (roundDiff !== 0) return roundDiff;
+      return sortByKickoff(a, b);
+    });
+
+    return sorted.reduce((groups, match) => {
+      const key = match.roundCode || match.round;
+      if (!groups.has(key)) {
+        groups.set(key, { title: match.round || key, matches: [] });
+      }
+      groups.get(key).matches.push(match);
+      return groups;
+    }, new Map());
+  }
+
+  function getMatchGroup(match) {
+    if (!match.roundCode?.includes('GS')) {
+      return { key: 'KO', title: 'Knockout matches' };
+    }
+
+    const homeGroup = getTeam(match.homeTeam)?.group;
+    const awayGroup = getTeam(match.awayTeam)?.group;
+    const group = homeGroup || awayGroup;
+    return group ? { key: group, title: `Group ${group}` } : { key: 'TBA', title: 'Group TBA' };
+  }
+
+  function groupMatchesByGroup() {
+    const sorted = [...matches].sort((a, b) => {
+      const aGroup = getMatchGroup(a).key;
+      const bGroup = getMatchGroup(b).key;
+      const aIndex = GROUP_ORDER.includes(aGroup) ? GROUP_ORDER.indexOf(aGroup) : GROUP_ORDER.length;
+      const bIndex = GROUP_ORDER.includes(bGroup) ? GROUP_ORDER.indexOf(bGroup) : GROUP_ORDER.length;
+      if (aIndex !== bIndex) return aIndex - bIndex;
+      return sortByKickoff(a, b);
+    });
+
+    return sorted.reduce((groups, match) => {
+      const matchGroup = getMatchGroup(match);
+      if (!groups.has(matchGroup.key)) {
+        groups.set(matchGroup.key, { title: matchGroup.title, matches: [] });
+      }
+      groups.get(matchGroup.key).matches.push(match);
+      return groups;
+    }, new Map());
+  }
+
+  function updateGroupButtons() {
+    groupByRoundBtn.classList.toggle('active', groupMode === 'round');
+    groupByGroupBtn.classList.toggle('active', groupMode === 'group');
+  }
+
+  function renderMatches() {
+    const groups = groupMode === 'round' ? groupMatchesByRound() : groupMatchesByGroup();
+    matchesRoot.innerHTML = Array.from(groups.values()).map(group => `
+      <section class="round-section">
+        <div class="round-heading">
+          <h2>${escapeHtml(group.title)}</h2>
+          <span class="round-count">${group.matches.length} matches</span>
+        </div>
+        ${group.matches.map(renderMatch).join('')}
+      </section>
+    `).join('');
+  }
+
+  groupByRoundBtn.addEventListener('click', () => {
+    groupMode = 'round';
+    updateGroupButtons();
+    renderMatches();
+  });
+
+  groupByGroupBtn.addEventListener('click', () => {
+    groupMode = 'group';
+    updateGroupButtons();
+    renderMatches();
+  });
+
+  async function init() {
+    updateGroupButtons();
+    if (await loadData()) {
+      renderMatches();
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

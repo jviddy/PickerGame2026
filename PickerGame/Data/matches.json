@@ -4,7 +4,7 @@
         "date": "2026-06-11T19:00:00Z",
         "round": "Group Stage 1",
         "roundCode": "GS1",
-        "location": "Mexico City",
+        "location": "Estadio Azteca, Mexico City",
         "homeTeam": "A1",
         "awayTeam": "A2"
     },
@@ -13,7 +13,7 @@
         "date": "2026-06-12T02:00:00Z",
         "round": "Group Stage 1",
         "roundCode": "GS1",
-        "location": "Guadalajara",
+        "location": "Estadio Akron, Guadalajara",
         "homeTeam": "A3",
         "awayTeam": "A4"
     },
@@ -22,7 +22,7 @@
         "date": "2026-06-12T19:00:00Z",
         "round": "Group Stage 1",
         "roundCode": "GS1",
-        "location": "Toronto",
+        "location": "BMO Field, Toronto",
         "homeTeam": "B1",
         "awayTeam": "B2"
     },
@@ -31,25 +31,898 @@
         "date": "2026-06-13T01:00:00Z",
         "round": "Group Stage 1",
         "roundCode": "GS1",
-        "location": "Los Angeles",
+        "location": "SoFi Stadium, Los Angeles",
         "homeTeam": "D1",
         "awayTeam": "D2"
+    },
+    {
+        "matchId": "M005",
+        "date": "2026-06-14T01:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "C3",
+        "awayTeam": "C4"
+    },
+    {
+        "matchId": "M006",
+        "date": "2026-06-13T04:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "D3",
+        "awayTeam": "D4"
+    },
+    {
+        "matchId": "M007",
+        "date": "2026-06-13T22:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "C1",
+        "awayTeam": "C2"
+    },
+    {
+        "matchId": "M008",
+        "date": "2026-06-13T19:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Levi's Stadium, San Francisco Bay Area",
+        "homeTeam": "B3",
+        "awayTeam": "B4"
+    },
+    {
+        "matchId": "M009",
+        "date": "2026-06-14T23:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Lincoln Financial Field, Philadelphia",
+        "homeTeam": "E3",
+        "awayTeam": "E4"
+    },
+    {
+        "matchId": "M010",
+        "date": "2026-06-14T17:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "E1",
+        "awayTeam": "E2"
+    },
+    {
+        "matchId": "M011",
+        "date": "2026-06-14T20:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "F1",
+        "awayTeam": "F2"
+    },
+    {
+        "matchId": "M012",
+        "date": "2026-06-15T02:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Estadio BBVA, Monterrey",
+        "homeTeam": "F3",
+        "awayTeam": "F4"
+    },
+    {
+        "matchId": "M013",
+        "date": "2026-06-15T22:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Hard Rock Stadium, Miami",
+        "homeTeam": "H3",
+        "awayTeam": "H4"
+    },
+    {
+        "matchId": "M014",
+        "date": "2026-06-15T16:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "H1",
+        "awayTeam": "H2"
+    },
+    {
+        "matchId": "M015",
+        "date": "2026-06-16T01:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "G3",
+        "awayTeam": "G4"
+    },
+    {
+        "matchId": "M016",
+        "date": "2026-06-15T19:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Lumen Field, Seattle",
+        "homeTeam": "G1",
+        "awayTeam": "G2"
+    },
+    {
+        "matchId": "M017",
+        "date": "2026-06-16T19:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "I1",
+        "awayTeam": "I2"
+    },
+    {
+        "matchId": "M018",
+        "date": "2026-06-16T22:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "I3",
+        "awayTeam": "I4"
+    },
+    {
+        "matchId": "M019",
+        "date": "2026-06-17T01:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Arrowhead Stadium, Kansas City",
+        "homeTeam": "J1",
+        "awayTeam": "J2"
+    },
+    {
+        "matchId": "M020",
+        "date": "2026-06-16T04:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Levi's Stadium, San Francisco Bay Area",
+        "homeTeam": "J3",
+        "awayTeam": "J4"
+    },
+    {
+        "matchId": "M021",
+        "date": "2026-06-17T23:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "BMO Field, Toronto",
+        "homeTeam": "L3",
+        "awayTeam": "L4"
+    },
+    {
+        "matchId": "M022",
+        "date": "2026-06-17T20:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "L1",
+        "awayTeam": "L2"
+    },
+    {
+        "matchId": "M023",
+        "date": "2026-06-17T17:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "K1",
+        "awayTeam": "K2"
+    },
+    {
+        "matchId": "M024",
+        "date": "2026-06-18T02:00:00Z",
+        "round": "Group Stage 1",
+        "roundCode": "GS1",
+        "location": "Estadio Azteca, Mexico City",
+        "homeTeam": "K3",
+        "awayTeam": "K4"
     },
     {
         "matchId": "M025",
         "date": "2026-06-18T16:00:00Z",
         "round": "Group Stage 2",
         "roundCode": "GS2",
-        "location": "Atlanta",
+        "location": "Mercedes-Benz Stadium, Atlanta",
         "homeTeam": "A4",
         "awayTeam": "A2"
+    },
+    {
+        "matchId": "M026",
+        "date": "2026-06-18T19:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "B4",
+        "awayTeam": "B2"
+    },
+    {
+        "matchId": "M027",
+        "date": "2026-06-18T22:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "B1",
+        "awayTeam": "B3"
+    },
+    {
+        "matchId": "M028",
+        "date": "2026-06-19T01:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Estadio Akron, Guadalajara",
+        "homeTeam": "A1",
+        "awayTeam": "A3"
+    },
+    {
+        "matchId": "M029",
+        "date": "2026-06-20T01:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Lincoln Financial Field, Philadelphia",
+        "homeTeam": "C1",
+        "awayTeam": "C4"
+    },
+    {
+        "matchId": "M030",
+        "date": "2026-06-19T22:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "C3",
+        "awayTeam": "C2"
+    },
+    {
+        "matchId": "M031",
+        "date": "2026-06-20T03:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Levi's Stadium, San Francisco Bay Area",
+        "homeTeam": "D4",
+        "awayTeam": "D2"
+    },
+    {
+        "matchId": "M032",
+        "date": "2026-06-19T19:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Lumen Field, Seattle",
+        "homeTeam": "D1",
+        "awayTeam": "D3"
+    },
+    {
+        "matchId": "M033",
+        "date": "2026-06-20T20:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "BMO Field, Toronto",
+        "homeTeam": "E1",
+        "awayTeam": "E3"
+    },
+    {
+        "matchId": "M034",
+        "date": "2026-06-21T00:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Arrowhead Stadium, Kansas City",
+        "homeTeam": "E2",
+        "awayTeam": "E4"
+    },
+    {
+        "matchId": "M035",
+        "date": "2026-06-20T17:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "F1",
+        "awayTeam": "F3"
+    },
+    {
+        "matchId": "M036",
+        "date": "2026-06-20T04:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Estadio BBVA, Monterrey",
+        "homeTeam": "F2",
+        "awayTeam": "F4"
+    },
+    {
+        "matchId": "M037",
+        "date": "2026-06-21T22:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Hard Rock Stadium, Miami",
+        "homeTeam": "H3",
+        "awayTeam": "H4"
+    },
+    {
+        "matchId": "M038",
+        "date": "2026-06-21T16:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "H1",
+        "awayTeam": "H2"
+    },
+    {
+        "matchId": "M039",
+        "date": "2026-06-21T19:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "G1",
+        "awayTeam": "G2"
+    },
+    {
+        "matchId": "M040",
+        "date": "2026-06-22T01:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "G3",
+        "awayTeam": "G4"
+    },
+    {
+        "matchId": "M041",
+        "date": "2026-06-23T00:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "I3",
+        "awayTeam": "I4"
+    },
+    {
+        "matchId": "M042",
+        "date": "2026-06-22T21:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Lincoln Financial Field, Philadelphia",
+        "homeTeam": "I1",
+        "awayTeam": "I2"
+    },
+    {
+        "matchId": "M043",
+        "date": "2026-06-22T17:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "J1",
+        "awayTeam": "J2"
+    },
+    {
+        "matchId": "M044",
+        "date": "2026-06-23T03:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Levi's Stadium, San Francisco Bay Area",
+        "homeTeam": "J3",
+        "awayTeam": "J4"
+    },
+    {
+        "matchId": "M045",
+        "date": "2026-06-23T20:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "L1",
+        "awayTeam": "L2"
+    },
+    {
+        "matchId": "M046",
+        "date": "2026-06-23T23:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "BMO Field, Toronto",
+        "homeTeam": "L3",
+        "awayTeam": "L4"
+    },
+    {
+        "matchId": "M047",
+        "date": "2026-06-23T17:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "K1",
+        "awayTeam": "K2"
+    },
+    {
+        "matchId": "M048",
+        "date": "2026-06-24T02:00:00Z",
+        "round": "Group Stage 2",
+        "roundCode": "GS2",
+        "location": "Estadio Akron, Guadalajara",
+        "homeTeam": "K3",
+        "awayTeam": "K4"
+    },
+    {
+        "matchId": "M049",
+        "date": "2026-06-24T22:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Hard Rock Stadium, Miami",
+        "homeTeam": "C3",
+        "awayTeam": "C1"
+    },
+    {
+        "matchId": "M050",
+        "date": "2026-06-24T22:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "C2",
+        "awayTeam": "C4"
+    },
+    {
+        "matchId": "M051",
+        "date": "2026-06-24T19:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "B4",
+        "awayTeam": "B1"
+    },
+    {
+        "matchId": "M052",
+        "date": "2026-06-24T19:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Lumen Field, Seattle",
+        "homeTeam": "B2",
+        "awayTeam": "B3"
+    },
+    {
+        "matchId": "M053",
+        "date": "2026-06-25T01:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Estadio Azteca, Mexico City",
+        "homeTeam": "A4",
+        "awayTeam": "A1"
+    },
+    {
+        "matchId": "M054",
+        "date": "2026-06-25T01:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Estadio BBVA, Monterrey",
+        "homeTeam": "A2",
+        "awayTeam": "A3"
+    },
+    {
+        "matchId": "M055",
+        "date": "2026-06-25T20:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Lincoln Financial Field, Philadelphia",
+        "homeTeam": "E3",
+        "awayTeam": "E1"
+    },
+    {
+        "matchId": "M056",
+        "date": "2026-06-25T20:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "E2",
+        "awayTeam": "E4"
+    },
+    {
+        "matchId": "M057",
+        "date": "2026-06-25T23:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "F2",
+        "awayTeam": "F1"
+    },
+    {
+        "matchId": "M058",
+        "date": "2026-06-25T23:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Arrowhead Stadium, Kansas City",
+        "homeTeam": "F3",
+        "awayTeam": "F4"
+    },
+    {
+        "matchId": "M059",
+        "date": "2026-06-26T02:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "D2",
+        "awayTeam": "D1"
+    },
+    {
+        "matchId": "M060",
+        "date": "2026-06-26T02:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Levi's Stadium, San Francisco Bay Area",
+        "homeTeam": "D4",
+        "awayTeam": "D3"
+    },
+    {
+        "matchId": "M061",
+        "date": "2026-06-26T19:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "I2",
+        "awayTeam": "I1"
+    },
+    {
+        "matchId": "M062",
+        "date": "2026-06-26T19:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "BMO Field, Toronto",
+        "homeTeam": "I4",
+        "awayTeam": "I3"
+    },
+    {
+        "matchId": "M063",
+        "date": "2026-06-27T03:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Lumen Field, Seattle",
+        "homeTeam": "G2",
+        "awayTeam": "G1"
+    },
+    {
+        "matchId": "M064",
+        "date": "2026-06-27T03:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "G4",
+        "awayTeam": "G3"
+    },
+    {
+        "matchId": "M065",
+        "date": "2026-06-27T00:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "H2",
+        "awayTeam": "H1"
+    },
+    {
+        "matchId": "M066",
+        "date": "2026-06-27T00:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Estadio Akron, Guadalajara",
+        "homeTeam": "H4",
+        "awayTeam": "H3"
+    },
+    {
+        "matchId": "M067",
+        "date": "2026-06-27T21:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "L2",
+        "awayTeam": "L1"
+    },
+    {
+        "matchId": "M068",
+        "date": "2026-06-27T21:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Lincoln Financial Field, Philadelphia",
+        "homeTeam": "L3",
+        "awayTeam": "L4"
+    },
+    {
+        "matchId": "M069",
+        "date": "2026-06-28T02:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Arrowhead Stadium, Kansas City",
+        "homeTeam": "J2",
+        "awayTeam": "J1"
+    },
+    {
+        "matchId": "M070",
+        "date": "2026-06-28T02:00:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "J4",
+        "awayTeam": "J3"
+    },
+    {
+        "matchId": "M071",
+        "date": "2026-06-27T23:30:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Hard Rock Stadium, Miami",
+        "homeTeam": "K2",
+        "awayTeam": "K1"
+    },
+    {
+        "matchId": "M072",
+        "date": "2026-06-27T23:30:00Z",
+        "round": "Group Stage 3",
+        "roundCode": "GS3",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "K4",
+        "awayTeam": "K3"
+    },
+    {
+        "matchId": "M073",
+        "date": "2026-06-28T19:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "2A",
+        "awayTeam": "2B"
+    },
+    {
+        "matchId": "M074",
+        "date": "2026-06-29T20:30:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "1E",
+        "awayTeam": "3ABCDF"
+    },
+    {
+        "matchId": "M075",
+        "date": "2026-06-30T01:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Estadio BBVA, Monterrey",
+        "homeTeam": "1F",
+        "awayTeam": "2C"
+    },
+    {
+        "matchId": "M076",
+        "date": "2026-06-29T17:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "1C",
+        "awayTeam": "2F"
+    },
+    {
+        "matchId": "M077",
+        "date": "2026-06-30T21:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "1I",
+        "awayTeam": "3CDFGH"
+    },
+    {
+        "matchId": "M078",
+        "date": "2026-06-30T17:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "2E",
+        "awayTeam": "2I"
+    },
+    {
+        "matchId": "M079",
+        "date": "2026-07-01T01:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Estadio Azteca, Mexico City",
+        "homeTeam": "1A",
+        "awayTeam": "3CEFHI"
+    },
+    {
+        "matchId": "M080",
+        "date": "2026-07-01T16:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "1L",
+        "awayTeam": "3EHIJK"
+    },
+    {
+        "matchId": "M081",
+        "date": "2026-07-02T00:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Levi's Stadium, San Francisco Bay Area",
+        "homeTeam": "1D",
+        "awayTeam": "3BEFIJ"
+    },
+    {
+        "matchId": "M082",
+        "date": "2026-07-01T20:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Lumen Field, Seattle",
+        "homeTeam": "1G",
+        "awayTeam": "3AEHIJ"
+    },
+    {
+        "matchId": "M083",
+        "date": "2026-07-02T23:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "BMO Field, Toronto",
+        "homeTeam": "2K",
+        "awayTeam": "2L"
+    },
+    {
+        "matchId": "M084",
+        "date": "2026-07-02T19:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "1H",
+        "awayTeam": "2J"
+    },
+    {
+        "matchId": "M085",
+        "date": "2026-07-03T03:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "1B",
+        "awayTeam": "3EFGIJ"
+    },
+    {
+        "matchId": "M086",
+        "date": "2026-07-03T22:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Hard Rock Stadium, Miami",
+        "homeTeam": "1J",
+        "awayTeam": "2H"
+    },
+    {
+        "matchId": "M087",
+        "date": "2026-07-04T01:30:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "Arrowhead Stadium, Kansas City",
+        "homeTeam": "1K",
+        "awayTeam": "3DEIJL"
+    },
+    {
+        "matchId": "M088",
+        "date": "2026-07-03T18:00:00Z",
+        "round": "Round of 32",
+        "roundCode": "R32",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "2D",
+        "awayTeam": "2G"
+    },
+    {
+        "matchId": "M089",
+        "date": "2026-07-04T21:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "Lincoln Financial Field, Philadelphia",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
     },
     {
         "matchId": "M090",
         "date": "2026-07-04T17:00:00Z",
         "round": "Round of 16",
-        "roundCode": "L16",
-        "location": "Houston",
+        "roundCode": "R16",
+        "location": "NRG Stadium, Houston",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M091",
+        "date": "2026-07-05T20:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "MetLife Stadium, New York/New Jersey",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M092",
+        "date": "2026-07-06T00:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "Estadio Azteca, Mexico City",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M093",
+        "date": "2026-07-06T19:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M094",
+        "date": "2026-07-07T00:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "Lumen Field, Seattle",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M095",
+        "date": "2026-07-07T16:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M096",
+        "date": "2026-07-07T20:00:00Z",
+        "round": "Round of 16",
+        "roundCode": "R16",
+        "location": "BC Place, Vancouver",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M097",
+        "date": "2026-07-09T20:00:00Z",
+        "round": "Quarter-final",
+        "roundCode": "QF",
+        "location": "Gillette Stadium, Boston",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M098",
+        "date": "2026-07-10T19:00:00Z",
+        "round": "Quarter-final",
+        "roundCode": "QF",
+        "location": "SoFi Stadium, Los Angeles",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M099",
+        "date": "2026-07-11T21:00:00Z",
+        "round": "Quarter-final",
+        "roundCode": "QF",
+        "location": "Hard Rock Stadium, Miami",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M100",
+        "date": "2026-07-12T01:00:00Z",
+        "round": "Quarter-final",
+        "roundCode": "QF",
+        "location": "Arrowhead Stadium, Kansas City",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M101",
+        "date": "2026-07-14T19:00:00Z",
+        "round": "Semi-final",
+        "roundCode": "SF",
+        "location": "AT&T Stadium, Dallas",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M102",
+        "date": "2026-07-15T19:00:00Z",
+        "round": "Semi-final",
+        "roundCode": "SF",
+        "location": "Mercedes-Benz Stadium, Atlanta",
+        "homeTeam": "TBA",
+        "awayTeam": "TBA"
+    },
+    {
+        "matchId": "M103",
+        "date": "2026-07-18T21:00:00Z",
+        "round": "Third Place Play-off",
+        "roundCode": "TPP",
+        "location": "Hard Rock Stadium, Miami",
         "homeTeam": "TBA",
         "awayTeam": "TBA"
     },
@@ -58,7 +931,7 @@
         "date": "2026-07-19T19:00:00Z",
         "round": "Final",
         "roundCode": "F",
-        "location": "New York/New Jersey",
+        "location": "MetLife Stadium, New York/New Jersey",
         "homeTeam": "TBA",
         "awayTeam": "TBA"
     }

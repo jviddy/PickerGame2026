@@ -3,8 +3,88 @@
     "entrantName": "Jane Smith",
     "email": "jane@example.com",
     "teamName": "Jane's XI",
-    "tieBreakerAnswers": ["145", "Mbappe"],
+    "tieBreakerAnswers": ["145", "87"],
     "selectedTeams": ["Brazil", "France", "England", "Spain", "Germany", "Argentina", "Portugal", "Netherlands"],
     "submittedAt": "2026-05-15T10:30:00Z"
+  },
+  {
+    "entrantName": "Tom Le Page",
+    "email": "tom@example.com",
+    "teamName": "Island Press",
+    "tieBreakerAnswers": ["156", "91"],
+    "selectedTeams": ["Mexico", "Canada", "Brazil", "United States", "Germany", "Netherlands", "Belgium", "England"],
+    "submittedAt": "2026-05-16T09:12:00Z"
+  },
+  {
+    "entrantName": "Aisha Khan",
+    "email": "aisha@example.com",
+    "teamName": "Golden Bootleggers",
+    "tieBreakerAnswers": ["162", "84"],
+    "selectedTeams": ["France", "Senegal", "Morocco", "Egypt", "Spain", "Portugal", "Argentina", "Uruguay"],
+    "submittedAt": "2026-05-16T11:45:00Z"
+  },
+  {
+    "entrantName": "Ben Carter",
+    "email": "ben@example.com",
+    "teamName": "VAR Decisions",
+    "tieBreakerAnswers": ["149", "76"],
+    "selectedTeams": ["England", "Croatia", "Ghana", "Panama", "Brazil", "Germany", "Japan", "South Korea"],
+    "submittedAt": "2026-05-17T14:05:00Z"
+  },
+  {
+    "entrantName": "Maya Patel",
+    "email": "maya@example.com",
+    "teamName": "Pitch Perfect",
+    "tieBreakerAnswers": ["171", "103"],
+    "selectedTeams": ["Spain", "Uruguay", "Cape Verde", "Saudi Arabia", "Portugal", "Colombia", "France", "Norway"],
+    "submittedAt": "2026-05-18T08:22:00Z"
+  },
+  {
+    "entrantName": "Lucas Martin",
+    "email": "lucas@example.com",
+    "teamName": "Set Piece FC",
+    "tieBreakerAnswers": ["138", "68"],
+    "selectedTeams": ["Argentina", "Austria", "Algeria", "Jordan", "Netherlands", "Belgium", "United States", "Paraguay"],
+    "submittedAt": "2026-05-18T19:40:00Z"
+  },
+  {
+    "entrantName": "Sophie Green",
+    "email": "sophie@example.com",
+    "teamName": "Clean Sheet Society",
+    "tieBreakerAnswers": ["152", "89"],
+    "selectedTeams": ["France", "England", "Germany", "Spain", "Croatia", "Switzerland", "Morocco", "Japan"],
+    "submittedAt": "2026-05-19T10:18:00Z"
+  },
+  {
+    "entrantName": "Noah Wilson",
+    "email": "noah@example.com",
+    "teamName": "Extra Time Elite",
+    "tieBreakerAnswers": ["166", "112"],
+    "selectedTeams": ["Portugal", "Brazil", "Argentina", "Uruguay", "Mexico", "Canada", "Australia", "Tunisia"],
+    "submittedAt": "2026-05-19T15:33:00Z"
+  },
+  {
+    "entrantName": "Emily De Garis",
+    "email": "emily@example.com",
+    "teamName": "The Late Winners",
+    "tieBreakerAnswers": ["158", "94"],
+    "selectedTeams": ["Netherlands", "Belgium", "Egypt", "Iran", "United States", "Brazil", "France", "Colombia"],
+    "submittedAt": "2026-05-20T12:07:00Z"
+  },
+  {
+    "entrantName": "Oscar Brown",
+    "email": "oscar@example.com",
+    "teamName": "Nutmeg County",
+    "tieBreakerAnswers": ["143", "81"],
+    "selectedTeams": ["Germany", "Ecuador", "Ivory Coast", "Curaçao", "Spain", "England", "Portugal", "Senegal"],
+    "submittedAt": "2026-05-21T17:25:00Z"
+  },
+  {
+    "entrantName": "Grace Evans",
+    "email": "grace@example.com",
+    "teamName": "Group Stage Heroes",
+    "tieBreakerAnswers": ["169", "107"],
+    "selectedTeams": ["Mexico", "South Korea", "UEFA Path D winner[A]", "Canada", "Scotland", "Qatar", "Norway", "Austria"],
+    "submittedAt": "2026-05-22T09:55:00Z"
   }
 ]

@@ -9,16 +9,16 @@
   <style>
     /* ─── Tokens ──────────────────────────────────────────────────── */
     :root {
-      --navy:       #0f2040;
-      --navy-light: #1b3a6b;
-      --gold:       #f5a623;
-      --gold-dark:  #d4891c;
-      --green:      #16a34a;
-      --green-bg:   #dcfce7;
+      --navy:       #0b4f2f;
+      --navy-light: #147a45;
+      --gold:       #f2c94c;
+      --gold-dark:  #c99a1c;
+      --green:      #22a861;
+      --green-bg:   #e4f7eb;
       --red:        #dc2626;
       --red-bg:     #fee2e2;
-      --amber:      #d97706;
-      --amber-bg:   #fef3c7;
+      --amber:      #c86b2c;
+      --amber-bg:   #fff1dc;
       --gray-50:    #f9fafb;
       --gray-100:   #f3f4f6;
       --gray-200:   #e5e7eb;
@@ -29,7 +29,7 @@
       --radius:     10px;
       --shadow:     0 1px 4px rgba(0,0,0,0.10);
       --shadow-md:  0 4px 16px rgba(0,0,0,0.12);
-      --budget:     120;   /* keep in sync with JS */
+      --budget:     150;   /* keep in sync with JS */
       --picks:      8;
     }
 
@@ -61,7 +61,7 @@
       justify-content: space-between;
       height: 58px;
     }
-    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: 0; }
     .logo span { color: var(--gold); }
     nav a {
       color: rgba(255,255,255,0.75);
@@ -74,13 +74,13 @@
 
     /* ─── Layout ────────────────────────────────────────────────────*/
     .page {
-      max-width: 1400px;
+      max-width: 1500px;
       margin: 0 auto;
-      padding: 24px 16px;
+      padding: 18px 16px;
       display: grid;
-      grid-template-columns: 1fr 360px;
+      grid-template-columns: minmax(0, 1fr) 330px;
       grid-template-areas: "picker sidebar";
-      gap: 24px;
+      gap: 18px;
       align-items: start;
     }
     .picker-col  { grid-area: picker; }
@@ -155,7 +155,7 @@
 
     /* ─── Picker header ─────────────────────────────────────────────*/
     .picker-header {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .picker-header h1 {
       font-size: 1.5rem;
@@ -168,8 +168,8 @@
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 12px;
       align-items: center;
     }
     .search-box {
@@ -203,42 +203,61 @@
       cursor: pointer;
     }
 
-    .group-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-    .group-btn {
-      padding: 5px 13px;
-      border: 1.5px solid var(--gray-200);
-      border-radius: 99px;
-      background: var(--white);
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--gray-600);
-      transition: all 0.15s;
-    }
-    .group-btn:hover { border-color: var(--navy-light); color: var(--navy); }
-    .group-btn.active {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: var(--white);
-    }
-
     /* ─── Team grid ─────────────────────────────────────────────────*/
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 5px;
+    }
+
+    .team-grid.grouped {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .group-section {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 5px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 5px;
+      background: rgba(255,255,255,0.55);
+    }
+    @media (min-width: 1200px) {
+      .team-grid.grouped {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .group-heading {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 1px;
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .group-heading:first-child { margin-top: 0; }
+    .group-heading::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--gray-200);
+    }
+    .group-heading span {
+      background: var(--green-bg);
+      border: 1px solid rgba(34, 168, 97, 0.24);
+      border-radius: 99px;
+      padding: 2px 8px;
     }
 
     .team-card {
       background: var(--white);
-      border: 2px solid var(--gray-200);
+      border: 1.5px solid var(--gray-200);
       border-radius: var(--radius);
-      padding: 14px 10px 12px;
+      padding: 5px 6px;
       text-align: center;
       cursor: pointer;
       transition: all 0.15s;
@@ -248,7 +267,7 @@
     .team-card:hover:not(.disabled) {
       border-color: var(--navy-light);
       box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
     .team-card.selected {
       border-color: var(--green);
@@ -262,11 +281,11 @@
     .team-card .check-badge {
       display: none;
       position: absolute;
-      top: 8px; right: 8px;
+      top: 6px; right: 6px;
       background: var(--green);
       color: var(--white);
       border-radius: 50%;
-      width: 20px; height: 20px;
+      width: 16px; height: 16px;
       align-items: center;
       justify-content: center;
       font-size: 11px;
@@ -274,8 +293,8 @@
     .team-card.selected .check-badge { display: flex; }
 
     .team-card .flag-wrap {
-      width: 56px; height: 40px;
-      margin: 0 auto 8px;
+      width: 32px; height: 21px;
+      margin: 0 auto 3px;
       overflow: hidden;
       border-radius: 4px;
       border: 1px solid var(--gray-200);
@@ -287,12 +306,12 @@
       object-fit: cover;
     }
     .team-card .team-name {
-      font-size: 0.82rem;
+      font-size: 0.68rem;
       font-weight: 700;
       color: var(--gray-800);
-      line-height: 1.2;
-      margin-bottom: 6px;
-      min-height: 2.4em;
+      line-height: 1.05;
+      margin-bottom: 3px;
+      min-height: 2.1em;
       display: flex; align-items: center; justify-content: center;
     }
     .team-card .team-cost {
@@ -300,15 +319,76 @@
       background: var(--navy);
       color: var(--white);
       border-radius: 99px;
-      padding: 2px 10px;
-      font-size: 0.77rem;
+      padding: 1px 6px;
+      font-size: 0.64rem;
       font-weight: 700;
     }
     .team-card.selected .team-cost { background: var(--green); }
     .team-card .team-rank {
-      font-size: 0.72rem;
+      display: inline-block;
+      font-size: 0.62rem;
       color: var(--gray-400);
-      margin-top: 4px;
+      margin: 0 0 0 4px;
+    }
+
+    @media (max-width: 1320px) {
+      .team-grid:not(.grouped) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .team-grid.grouped,
+      .group-section {
+        grid-template-columns: 1fr;
+      }
+      .team-card {
+        border-width: 2px;
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        padding: 8px 10px;
+        text-align: left;
+      }
+      .team-card .flag-wrap {
+        width: 42px;
+        height: 28px;
+        margin: 0;
+      }
+      .team-card .team-name {
+        display: block;
+        font-size: 0.88rem;
+        line-height: 1.2;
+        margin: 0;
+        min-height: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .team-card .team-rank {
+        display: none;
+      }
+      .team-card .team-cost {
+        padding: 3px 9px;
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+      .team-card .check-badge {
+        top: 50%;
+        right: 76px;
+        transform: translateY(-50%);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* placeholder when no results */
@@ -321,7 +401,22 @@
     }
 
     /* ─── Sidebar ───────────────────────────────────────────────────*/
-    .sidebar-col { position: sticky; top: 78px; }
+    .sidebar-col {
+      position: sticky;
+      top: 76px;
+      align-self: start;
+      max-height: calc(100vh - 92px);
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+    @media (max-width: 900px) {
+      .sidebar-col {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
+      }
+    }
 
     .card {
       background: var(--white);
@@ -447,7 +542,7 @@
       font-weight: 700;
       color: var(--gray-600);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       margin-bottom: 5px;
     }
     .form-group input {
@@ -480,7 +575,7 @@
       font-weight: 700;
       color: var(--gray-600);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       margin-bottom: 5px;
     }
     .tiebreaker-q {
@@ -501,7 +596,7 @@
       font-weight: 800;
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
-      letter-spacing: 0.02em;
+      letter-spacing: 0;
     }
     .submit-btn:hover:not(:disabled) { background: var(--gold-dark); transform: translateY(-1px); }
     .submit-btn:disabled {
@@ -566,6 +661,7 @@
       <a href="index.html">Home</a>
       <a href="leaderboard.html">Leaderboard</a>
       <a href="schedule.html">Matches</a>
+      <a href="countries.html">Countries</a>
     </nav>
   </div>
 </header>
@@ -573,7 +669,7 @@
 <!-- Mobile sticky budget bar — sits below nav, hidden on desktop -->
 <div id="mobileBudgetBar">
   <div class="mbb-row">
-    <span class="mbb-remaining" id="mbbRemaining">£120m remaining</span>
+    <span class="mbb-remaining" id="mbbRemaining">£150m remaining</span>
     <span class="mbb-picks" id="mbbPicks">0 / 8 picks</span>
   </div>
   <div class="mbb-bar-bg"><div class="mbb-bar" id="mbbBar" style="width:100%"></div></div>
@@ -585,7 +681,7 @@
   <section class="picker-col">
     <div class="picker-header">
       <h1>Pick your 8 teams</h1>
-      <p>Select exactly 8 teams to support through the tournament. Stay within your £120m budget.</p>
+      <p>Select exactly 8 teams to support through the tournament. Stay within your £150m budget.</p>
     </div>
 
     <div class="toolbar">
@@ -599,14 +695,8 @@
         <option value="group">Sort: Group</option>
         <option value="cost-desc">Sort: Cost ↓</option>
         <option value="cost-asc">Sort: Cost ↑</option>
-        <option value="rank">Sort: FIFA Rank</option>
         <option value="alpha">Sort: A–Z</option>
       </select>
-    </div>
-
-    <div class="group-filters" id="groupFilters">
-      <button class="group-btn active" data-group="all">All</button>
-      <!-- Group buttons generated by JS -->
     </div>
 
     <div class="team-grid" id="teamGrid">
@@ -621,7 +711,7 @@
     <div class="card budget-card">
       <h3>💰 Budget</h3>
       <div class="budget-numbers">
-        <span class="budget-remaining" id="budgetRemaining">£120m</span>
+        <span class="budget-remaining" id="budgetRemaining">£150m</span>
         <span class="budget-label">remaining</span>
       </div>
       <div class="budget-bar-bg">
@@ -629,7 +719,7 @@
       </div>
       <div class="budget-detail">
         <span>Spent: <strong id="budgetSpent">£0m</strong></span>
-        <span>Budget: <strong>£120m</strong></span>
+        <span>Budget: <strong>£150m</strong></span>
       </div>
     </div>
 
@@ -716,20 +806,18 @@
 
 <script>
   /* ─── Config ──────────────────────────────────────────────── */
-  const BUDGET    = 120;
+  const BUDGET    = 150;
   const MAX_PICKS = 8;
   const SUBMIT_URL = null; // replace with your API endpoint when ready
 
   /* ─── State ───────────────────────────────────────────────── */
   let allTeams   = [];
   let selected   = new Set(); // set of groupId
-  let activeGroup = 'all';
   let searchQuery = '';
   let sort        = 'group';
 
   /* ─── DOM ─────────────────────────────────────────────────── */
   const gridEl          = document.getElementById('teamGrid');
-  const groupFiltersEl  = document.getElementById('groupFilters');
   const searchInput     = document.getElementById('searchInput');
   const sortSelect      = document.getElementById('sortSelect');
   const picksCountEl    = document.getElementById('picksCount');
@@ -749,36 +837,10 @@
       const res = await fetch('./Data/teams.json');
       if (!res.ok) throw new Error('fetch failed');
       allTeams = await res.json();
-      buildGroupFilters();
       render();
     } catch (e) {
       gridEl.innerHTML = '<div class="no-results">Failed to load teams. Please refresh.</div>';
     }
-  }
-
-  /* ─── Build group filter buttons ──────────────────────────── */
-  function buildGroupFilters() {
-    const groups = [...new Set(allTeams.map(t => t.group))].sort();
-    groups.forEach(g => {
-      const btn = document.createElement('button');
-      btn.className = 'group-btn';
-      btn.dataset.group = g;
-      btn.textContent = `Group ${g}`;
-      btn.addEventListener('click', () => {
-        activeGroup = g;
-        document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        render();
-      });
-      groupFiltersEl.appendChild(btn);
-    });
-    // "All" button
-    groupFiltersEl.querySelector('[data-group="all"]').addEventListener('click', () => {
-      activeGroup = 'all';
-      document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
-      groupFiltersEl.querySelector('[data-group="all"]').classList.add('active');
-      render();
-    });
   }
 
   /* ─── Derived helpers ─────────────────────────────────────── */
@@ -796,10 +858,6 @@
   function filteredSorted() {
     let list = allTeams.slice();
 
-    // group filter
-    if (activeGroup !== 'all') {
-      list = list.filter(t => t.group === activeGroup);
-    }
     // search
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
@@ -809,12 +867,49 @@
     switch (sort) {
       case 'cost-desc': list.sort((a,b) => b.cost - a.cost); break;
       case 'cost-asc':  list.sort((a,b) => a.cost - b.cost); break;
-      case 'rank':      list.sort((a,b) => a.fifaRank - b.fifaRank); break;
       case 'alpha':     list.sort((a,b) => a.countryName.localeCompare(b.countryName)); break;
       default: // group then groupId
         list.sort((a,b) => a.groupId.localeCompare(b.groupId));
     }
     return list;
+  }
+
+  function createTeamCard(team, spent) {
+    const isSelected  = selected.has(team.groupId);
+    const wouldExceed = !isSelected && (spent + team.cost > BUDGET);
+    const slotsFull   = !isSelected && selected.size >= MAX_PICKS;
+    const isDisabled  = wouldExceed || slotsFull;
+
+    const card = document.createElement('div');
+    card.className = 'team-card' +
+      (isSelected ? ' selected' : '') +
+      (isDisabled ? ' disabled' : '');
+    card.dataset.id = team.groupId;
+
+    card.innerHTML = `
+      <div class="check-badge">✓</div>
+      <div class="flag-wrap">
+        <img src="${team.flagUrl}" alt="${team.countryName}" loading="lazy" />
+      </div>
+      <div class="team-name">${team.countryName}</div>
+      <div class="team-cost">£${team.cost}m</div>
+      <div class="team-rank">FIFA #${team.fifaRank}</div>
+    `;
+
+    if (!isDisabled) {
+      card.addEventListener('click', () => toggleTeam(team));
+    }
+
+    return card;
+  }
+
+  function createGroupHeading(group) {
+    const heading = document.createElement('div');
+    heading.className = 'group-heading';
+    const label = document.createElement('span');
+    label.textContent = `Group ${group}`;
+    heading.appendChild(label);
+    return heading;
   }
 
   function render() {
@@ -823,37 +918,26 @@
     const rem   = budgetRemaining();
 
     gridEl.innerHTML = '';
+    gridEl.classList.toggle('grouped', sort === 'group');
     if (list.length === 0) {
       gridEl.innerHTML = '<div class="no-results">No teams match your search.</div>';
     } else {
-      list.forEach(team => {
-        const isSelected  = selected.has(team.groupId);
-        const wouldExceed = !isSelected && (spent + team.cost > BUDGET);
-        const slotsFull   = !isSelected && selected.size >= MAX_PICKS;
-        const isDisabled  = wouldExceed || slotsFull;
-
-        const card = document.createElement('div');
-        card.className = 'team-card' +
-          (isSelected ? ' selected' : '') +
-          (isDisabled ? ' disabled' : '');
-        card.dataset.id = team.groupId;
-
-        card.innerHTML = `
-          <div class="check-badge">✓</div>
-          <div class="flag-wrap">
-            <img src="${team.flagUrl}" alt="${team.countryName}" loading="lazy" />
-          </div>
-          <div class="team-name">${team.countryName}</div>
-          <div class="team-cost">£${team.cost}m</div>
-          <div class="team-rank">FIFA #${team.fifaRank}</div>
-        `;
-
-        if (!isDisabled) {
-          card.addEventListener('click', () => toggleTeam(team));
-        }
-
-        gridEl.appendChild(card);
-      });
+      if (sort === 'group') {
+        const groups = [...new Set(list.map(team => team.group))];
+        groups.forEach(group => {
+          const section = document.createElement('section');
+          section.className = 'group-section';
+          section.appendChild(createGroupHeading(group));
+          list
+            .filter(team => team.group === group)
+            .forEach(team => section.appendChild(createTeamCard(team, spent)));
+          gridEl.appendChild(section);
+        });
+      } else {
+        list.forEach(team => {
+          gridEl.appendChild(createTeamCard(team, spent));
+        });
+      }
     }
 
     renderBudget(spent, rem);

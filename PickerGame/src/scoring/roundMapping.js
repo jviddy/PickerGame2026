@@ -36,16 +36,24 @@ const ROUND_VARIANTS = {
   'semi-final': 'SF',
   'semifinal': 'SF',
   'sf': 'SF',
+
+  'third place': 'TPP',
+  'third-place': 'TPP',
+  'third place play-off': 'TPP',
+  'third-place play-off': 'TPP',
+  'third place playoff': 'TPP',
+  'third-place playoff': 'TPP',
+  'tpp': 'TPP',
   
   'final': 'F',
   'f': 'F',
 };
 
 /** @type {string[]} Canonical round keys in order */
-const CANONICAL_ROUNDS = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'F'];
+const CANONICAL_ROUNDS = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
 
 /** @type {string[]} Knockout stage rounds */
-const KNOCKOUT_ROUNDS = ['R32', 'R16', 'QF', 'SF', 'F'];
+const KNOCKOUT_ROUNDS = ['R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
 
 /**
  * Normalise a round string to canonical form

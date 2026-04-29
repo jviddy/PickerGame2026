@@ -9,16 +9,16 @@
   <style>
     /* ─── Tokens ──────────────────────────────────────────────────── */
     :root {
-      --navy:       #0f2040;
-      --navy-light: #1b3a6b;
-      --gold:       #f5a623;
-      --gold-dark:  #d4891c;
-      --green:      #16a34a;
-      --green-bg:   #dcfce7;
+      --navy:       #0b4f2f;
+      --navy-light: #147a45;
+      --gold:       #f2c94c;
+      --gold-dark:  #c99a1c;
+      --green:      #22a861;
+      --green-bg:   #e4f7eb;
       --red:        #dc2626;
       --red-bg:     #fee2e2;
-      --amber:      #d97706;
-      --amber-bg:   #fef3c7;
+      --amber:      #c86b2c;
+      --amber-bg:   #fff1dc;
       --gray-50:    #f9fafb;
       --gray-100:   #f3f4f6;
       --gray-200:   #e5e7eb;
@@ -59,7 +59,7 @@
       justify-content: space-between;
       height: 58px;
     }
-    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: 0; }
     .logo span { color: var(--gold); }
     nav a {
       color: rgba(255,255,255,0.75);
@@ -92,51 +92,27 @@
       font-size: 0.95rem;
     }
 
-    /* ─── Controls ──────────────────────────────────────────────────*/
-    .controls {
+    .view-toggle {
       display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: -8px 0 14px;
     }
-    .sort-select {
-      padding: 9px 12px;
+    .view-toggle-btn {
       border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius);
+      border-radius: 99px;
       background: var(--white);
-      font-size: 0.9rem;
-      outline: none;
+      color: var(--navy);
       cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 7px 12px;
+      transition: border-color 0.15s, background 0.15s;
     }
-    .refresh-btn {
-      padding: 9px 16px;
-      background: var(--navy);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.15s;
+    .view-toggle-btn:hover {
+      border-color: var(--navy-light);
+      background: var(--green-bg);
     }
-    .refresh-btn:hover { background: var(--navy-light); }
-    .refresh-btn:disabled {
-      background: var(--gray-200);
-      color: var(--gray-400);
-      cursor: not-allowed;
-    }
-
-    .loading-msg {
-      padding: 12px 16px;
-      background: var(--amber-bg);
-      border: 1.5px solid var(--amber);
-      border-radius: var(--radius);
-      color: var(--amber);
-      font-weight: 600;
-      text-align: center;
-      display: none;
-    }
-    .loading-msg.show { display: block; }
 
     /* ─── Leaderboard table ───────────────────────────────────────–*/
     .leaderboard {
@@ -148,32 +124,34 @@
 
     .leaderboard-header {
       display: grid;
-      grid-template-columns: 50px 1fr 90px 90px 100px;
-      gap: 12px;
-      padding: 16px;
+      grid-template-columns: 50px minmax(0, 1fr) minmax(220px, 0.9fr) 70px 80px;
+      gap: 10px;
+      padding: 10px 14px;
       background: var(--navy);
       color: var(--white);
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0;
       border-bottom: 2px solid var(--navy-light);
     }
     @media (max-width: 768px) {
       .leaderboard-header {
-        grid-template-columns: 40px 1fr 70px;
-        gap: 10px;
-        padding: 12px;
-        font-size: 0.75rem;
+        grid-template-columns: 32px minmax(0, 1fr) 52px;
+        gap: 6px;
+        padding: 8px 10px;
+        font-size: 0.68rem;
       }
-      .leaderboard-header > :nth-child(n+4) { display: none; }
+      .leaderboard-header > :nth-child(3),
+      .leaderboard-header > :nth-child(4) { display: none; }
     }
 
     .leaderboard-row {
       display: grid;
-      grid-template-columns: 50px 1fr 90px 90px 100px;
-      gap: 12px;
-      padding: 16px;
+      grid-template-columns: 50px minmax(0, 1fr) minmax(220px, 0.9fr) 70px 80px;
+      column-gap: 10px;
+      row-gap: 6px;
+      padding: 9px 14px 10px;
       border-bottom: 1px solid var(--gray-200);
       align-items: center;
       cursor: pointer;
@@ -181,63 +159,316 @@
     }
     .leaderboard-row:hover { background: var(--gray-50); }
     .leaderboard-row.expanded { background: var(--gray-50); }
+    .leaderboard-row.milestone-row {
+      background: var(--gray-50);
+    }
+    .leaderboard-row.milestone-row:hover,
+    .leaderboard-row.milestone-row.expanded {
+      background: var(--gray-100);
+    }
     @media (max-width: 768px) {
       .leaderboard-row {
-        grid-template-columns: 40px 1fr 70px;
-        gap: 10px;
-        padding: 12px;
+        grid-template-columns: 32px minmax(0, 1fr) 52px;
+        column-gap: 6px;
+        row-gap: 5px;
+        padding: 8px 10px;
       }
-      .leaderboard-row > :nth-child(n+4) { display: none; }
+      .team-count { display: none; }
     }
 
     /* ─── Rank badge ─────────────────────────────────────────────––*/
     .rank {
+      grid-column: 1;
+      grid-row: 1 / span 2;
       font-weight: 800;
-      font-size: 1.4rem;
+      font-size: 1.05rem;
       text-align: center;
       color: var(--navy);
     }
-    .rank.first { color: var(--gold); font-size: 1.6rem; }
-    .rank.second { color: #c0c0c0; font-size: 1.6rem; }
-    .rank.third { color: #cd7f32; font-size: 1.6rem; }
+    .rank.first { color: var(--gold); font-size: 1.25rem; }
+    .rank.second { color: #c0c0c0; font-size: 1.25rem; }
+    .rank.third { color: #cd7f32; font-size: 1.25rem; }
 
     /* ─── Player info ─────────────────────────────────────────────––*/
     .player-info {
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      grid-column: 2;
+      grid-row: 1;
+      align-items: baseline;
+      gap: 8px;
+      min-width: 0;
     }
     .player-name {
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 0.92rem;
       color: var(--navy);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .team-name {
-      font-size: 0.8rem;
+      font-size: 0.74rem;
       color: var(--gray-600);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     /* ─── Score display ──────────────────────────────────────────––*/
     .score-col {
+      grid-column: 5;
+      grid-row: 1 / span 2;
       text-align: center;
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.05rem;
       color: var(--green);
     }
     .team-count {
+      grid-column: 4;
+      grid-row: 1 / span 2;
+      align-self: center;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: var(--gray-600);
       font-weight: 600;
     }
-    .tiebreaker-info {
+    .selected-teams {
+      display: flex;
+      grid-column: 2 / 5;
+      grid-row: 2;
+      flex-wrap: nowrap;
+      gap: 4px;
+      align-items: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .team-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+      padding: 2px 5px 2px 3px;
+      border: 1px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--gray-50);
+      color: var(--navy);
+      font-size: 0.68rem;
+      font-weight: 800;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+    .team-chip img {
+      width: 18px;
+      height: 13px;
+      border-radius: 2px;
+      object-fit: cover;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .team-chip.eliminated {
+      color: var(--gray-400);
+      background: var(--gray-100);
+    }
+    .team-chip.eliminated img {
+      filter: grayscale(1);
+      opacity: 0.52;
+    }
+    .team-points {
+      color: var(--green);
+      font-weight: 900;
+    }
+    .round-breakdown-inline {
+      display: flex;
+      grid-column: 2 / 5;
+      grid-row: 2;
+      flex-wrap: nowrap;
+      gap: 4px;
+      align-items: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .round-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 6px;
+      border: 1px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--gray-50);
+      color: var(--navy);
+      font-size: 0.68rem;
+      font-weight: 800;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+    .round-chip-score {
+      color: var(--green);
+      font-weight: 900;
+    }
+    @media (max-width: 768px) {
+      .score-col {
+        grid-column: 3;
+      }
+      .selected-teams {
+        grid-column: 2 / 3;
+        gap: 3px;
+      }
+      .round-breakdown-inline {
+        grid-column: 2 / 3;
+        gap: 3px;
+      }
+      .team-chip {
+        padding: 0;
+        border: none;
+        background: transparent;
+      }
+      .team-chip img {
+        width: 14px;
+        height: 10px;
+      }
+      .team-chip span {
+        display: none;
+      }
+    }
+
+    .leaderboard.compact .leaderboard-header {
+      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 64px;
+      padding: 7px 12px;
+      font-size: 0.68rem;
+    }
+    .leaderboard.compact .leaderboard-row {
+      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 64px;
+      column-gap: 8px;
+      row-gap: 0;
+      padding: 6px 12px;
+    }
+    .leaderboard.compact .rank {
+      grid-row: 1;
+      font-size: 0.9rem;
+    }
+    .leaderboard.compact .rank.first,
+    .leaderboard.compact .rank.second,
+    .leaderboard.compact .rank.third {
+      font-size: 1rem;
+    }
+    .leaderboard.compact .player-info {
+      grid-row: 1;
+      gap: 6px;
+    }
+    .leaderboard.compact .player-name {
+      font-size: 0.82rem;
+    }
+    .leaderboard.compact .team-name {
+      font-size: 0.68rem;
+    }
+    .leaderboard.compact .selected-teams {
+      grid-column: 3;
+      grid-row: 1;
+      gap: 2px;
+    }
+    .leaderboard.compact .round-breakdown-inline {
+      grid-column: 3;
+      grid-row: 1;
+      gap: 2px;
+    }
+    .leaderboard.compact .team-chip {
+      padding: 1px 5px 1px 2px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .leaderboard.compact .round-chip {
+      padding: 1px 5px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-50);
+      font-size: 0.62rem;
+    }
+    .leaderboard.compact .team-chip img {
+      width: 15px;
+      height: 11px;
+    }
+    .leaderboard.compact .team-chip span {
       display: none;
     }
-    .cost-col {
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--navy);
+    @media (min-width: 900px) {
+      .leaderboard.compact .team-chip {
+        gap: 3px;
+      }
+      .leaderboard.compact .team-chip .team-code {
+        display: inline;
+        font-size: 0.62rem;
+      }
+      .leaderboard.compact .team-chip .team-points {
+        display: none;
+      }
+    }
+    @media (min-width: 1000px) {
+      .leaderboard.compact .team-chip .team-points {
+        display: inline;
+        font-size: 0.62rem;
+      }
+    }
+    .leaderboard.compact .team-count {
+      grid-column: 4;
+      grid-row: 1;
+      font-size: 0.7rem;
+    }
+    .leaderboard.compact .score-col {
+      grid-column: 5;
+      grid-row: 1;
+      font-size: 0.92rem;
+    }
+    @media (max-width: 768px) {
+      .view-toggle {
+        justify-content: stretch;
+        margin-top: -6px;
+      }
+      .view-toggle-btn {
+        width: 100%;
+      }
+      .leaderboard.compact .leaderboard-header {
+        grid-template-columns: 30px minmax(0, 1fr) 44px;
+        gap: 6px;
+        padding: 7px 10px;
+      }
+      .leaderboard.compact .leaderboard-header > :nth-child(3),
+      .leaderboard.compact .leaderboard-header > :nth-child(4) {
+        display: none;
+      }
+      .leaderboard.compact .leaderboard-row {
+        grid-template-columns: 30px minmax(0, 1fr) 44px;
+        gap: 6px;
+        padding: 6px 10px;
+      }
+      .leaderboard.compact .selected-teams,
+      .leaderboard.compact .round-breakdown-inline,
+      .leaderboard.compact .team-count {
+        display: none;
+      }
+      .leaderboard.compact.round-mode .leaderboard-row {
+        row-gap: 4px;
+      }
+      .leaderboard.compact.round-mode .round-breakdown-inline {
+        display: flex;
+        grid-column: 2 / 4;
+        grid-row: 2;
+        overflow-x: auto;
+        padding-bottom: 1px;
+      }
+      .leaderboard.compact.round-mode .round-chip {
+        gap: 3px;
+        font-size: 0.58rem;
+        padding: 1px 5px;
+        border: 1px solid var(--gray-200);
+        background: var(--gray-50);
+      }
+      .leaderboard.compact .score-col {
+        grid-column: 3;
+      }
+      .leaderboard.compact .team-name {
+        display: none;
+      }
+    }
+    .tiebreaker-info {
+      display: none;
     }
 
     /* ─── Expanded details ───────────────────────────────────────––*/
@@ -367,6 +598,7 @@
       <a href="index.html">Home</a>
       <a href="entry.html">Enter</a>
       <a href="schedule.html">Matches</a>
+      <a href="countries.html">Countries</a>
     </nav>
   </div>
 </header>
@@ -377,19 +609,14 @@
     <p>Current standings — calculated from live match results.</p>
   </div>
 
-  <div class="controls">
-    <select class="sort-select" id="sortSelect">
-      <option value="points-desc">Sort: Points ↓</option>
-      <option value="points-asc">Sort: Points ↑</option>
-      <option value="name">Sort: Name A–Z</option>
-    </select>
-    <button class="refresh-btn" id="refreshBtn">🔄 Refresh</button>
-    <div class="loading-msg" id="loadingMsg">Refreshing leaderboard…</div>
+  <div class="view-toggle">
+    <button class="view-toggle-btn" id="scoreModeToggleBtn" type="button">Round scores</button>
+    <button class="view-toggle-btn" id="viewToggleBtn" type="button">Detailed view</button>
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
 
-  <div class="leaderboard" id="leaderboard">
+  <div class="leaderboard compact" id="leaderboard">
     <div class="empty-state">
       <h2>Loading leaderboard…</h2>
       <p>Calculating scores from match results.</p>
@@ -401,24 +628,32 @@
   /* ─── Config ──────────────────────────────────────────── */
   const DATA_URLS = {
     teams:   './Data/teams.json',
-    entries: './Data/entries.json',
-    matches: './Data/matches.json',
-    results: './Data/results.json',
-    settings: './Data/settings.json'
+    teamPoints: './Data/teamPoints.json',
+    entrantTotals: './Data/entrantTotals.json'
+  };
+  const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
+  const ROUND_LABELS = {
+    GS1: 'Group Stage 1',
+    GS2: 'Group Stage 2',
+    GS3: 'Group Stage 3',
+    R32: 'Round of 32',
+    R16: 'Round of 16',
+    QF: 'Quarter-finals',
+    SF: 'Semi-finals',
+    TPP: 'Third Place',
+    F: 'Final',
   };
 
   let allTeams = [];
-  let allEntries = [];
-  let allMatches = [];
-  let allResults = [];
-  let settings = {};
+  let teamPoints = [];
   let leaderboard = []; // cached calculated leaderboard
+  let isCompactView = true;
+  let scoreDisplayMode = 'countries';
 
   /* ─── DOM ─────────────────────────────────────────────── */
   const leaderboardEl = document.getElementById('leaderboard');
-  const sortSelect = document.getElementById('sortSelect');
-  const refreshBtn = document.getElementById('refreshBtn');
-  const loadingMsg = document.getElementById('loadingMsg');
+  const viewToggleBtn = document.getElementById('viewToggleBtn');
+  const scoreModeToggleBtn = document.getElementById('scoreModeToggleBtn');
   const errorMsg = document.getElementById('errorMsg');
 
   /* ─── Data loading ────────────────────────────────────── */
@@ -426,10 +661,8 @@
     try {
       const responses = await Promise.all([
         fetch(DATA_URLS.teams),
-        fetch(DATA_URLS.entries),
-        fetch(DATA_URLS.matches),
-        fetch(DATA_URLS.results),
-        fetch(DATA_URLS.settings)
+        fetch(DATA_URLS.teamPoints),
+        fetch(DATA_URLS.entrantTotals)
       ]);
 
       const data = await Promise.all(responses.map(r => {
@@ -438,10 +671,25 @@
       }));
 
       allTeams = data[0];
-      allEntries = data[1];
-      allMatches = data[2];
-      allResults = data[3];
-      settings = data[4];
+      teamPoints = data[1];
+      leaderboard = data[2].map(entry => {
+        const teamScores = {};
+        entry.teamBreakdown.forEach(team => {
+          teamScores[team.countryName] = team.points;
+        });
+
+        return {
+          entrantName: entry.entrantName,
+          teamName: entry.entrantTeamName,
+          totalScore: entry.totalPoints,
+          teamsRemaining: entry.teamsRemaining,
+          selectedTeams: entry.selectedTeams || entry.teamBreakdown.map(team => team.countryName),
+          teamScores,
+          roundScores: entry.byRound || {},
+          tb1: entry.tieBreakers ? entry.tieBreakers[0] : '',
+          tb2: entry.tieBreakers ? entry.tieBreakers[1] : '',
+        };
+      });
 
       return true;
     } catch (e) {
@@ -451,289 +699,74 @@
     }
   }
 
-  /* ─── Scoring logic ───────────────────────────────────– */
-  function getTeamIdByCountryName(countryName) {
-    const team = allTeams.find(t => t.countryName === countryName);
-    return team ? team.groupId : null;
-  }
-
   function getTeamByCountryName(countryName) {
     return allTeams.find(t => t.countryName === countryName);
   }
 
-  function getMatchById(matchId) {
-    return allMatches.find(m => m.matchId === matchId);
+  function isTeamEliminated(countryName) {
+    const points = teamPoints.find(team => team.countryName === countryName);
+    return points ? points.inCompetition === false : false;
   }
 
-  function getResultById(matchId) {
-    return allResults.find(r => r.matchId === matchId);
+  function getTeamAbbreviation(countryName) {
+    const overrides = {
+      'United States': 'USA',
+      'South Africa': 'RSA',
+      'South Korea': 'KOR',
+      'Czech Republic': 'CZE',
+      'New Zealand': 'NZL',
+      'Saudi Arabia': 'KSA',
+      'Ivory Coast': 'CIV',
+      'Cape Verde': 'CPV',
+      'Netherlands': 'NED',
+    };
+
+    if (overrides[countryName]) return overrides[countryName];
+    return countryName.replace(/\[.*?\]/g, '').replace(/[^A-Za-z]/g, '').slice(0, 3).toUpperCase();
   }
 
-  function calculateTeamScore(countryName) {
-    const teamId = getTeamIdByCountryName(countryName);
-    if (!teamId) return { totalPoints: 0, breakdown: [] };
-
-    let totalPoints = 0;
-    const breakdown = [];
-    const { points: pointRules } = settings;
-
-    // Find all matches this team played in
-    const relevantMatches = allMatches.filter(m => m.homeTeam === teamId || m.awayTeam === teamId);
-
-    relevantMatches.forEach(match => {
-      const result = getResultById(match.matchId);
-      if (!result || result.homeScore === null || result.awayScore === null) {
-        // Match not played yet
-        return;
-      }
-
-      const isHome = match.homeTeam === teamId;
-      const opponentTeamId = isHome ? match.awayTeam : match.homeTeam;
-      const opponentTeam = allTeams.find(t => t.groupId === opponentTeamId);
-      const opponentName = opponentTeam ? opponentTeam.countryName : opponentTeamId;
-
-      let matchPoints = 0;
-      const details = { opponent: opponentName, points: 0, components: [] };
-
-      // Goals scored
-      const goalsFor = isHome ? result.homeScore : result.awayScore;
-      const goalsForPts = goalsFor * pointRules.goalScored;
-      matchPoints += goalsForPts;
-      details.components.push(`${goalsFor} goal${goalsFor !== 1 ? 's' : ''} = +${goalsForPts}`);
-
-      // Goals conceded
-      const goalsAgainst = isHome ? result.awayScore : result.homeScore;
-      const goalsAgainstPts = goalsAgainst * pointRules.goalConceded;
-      matchPoints += goalsAgainstPts;
-      details.components.push(`${goalsAgainst} conceded = ${goalsAgainstPts}`);
-
-      // Yellow cards
-      const yellowCards = isHome ? result.homeYellow : result.awayYellow;
-      if (yellowCards) {
-        const yellowPts = yellowCards * pointRules.yellowCard;
-        matchPoints += yellowPts;
-        details.components.push(`${yellowCards} yellow = ${yellowPts}`);
-      }
-
-      // Red cards
-      const redCards = isHome ? result.homeRed : result.awayRed;
-      if (redCards) {
-        const redPts = redCards * pointRules.redCard;
-        matchPoints += redPts;
-        details.components.push(`${redCards} red = ${redPts}`);
-      }
-
-      // Match result (win/draw)
-      const homeWins = result.homeScore > result.awayScore;
-      const awayWins = result.awayScore > result.homeScore;
-      const isDraw = result.homeScore === result.awayScore;
-
-      if (match.roundCode && match.roundCode.includes('GS')) {
-        // Group stage
-        if ((isHome && homeWins) || (!isHome && awayWins)) {
-          matchPoints += pointRules.win;
-          details.components.push(`Win = +${pointRules.win}`);
-        } else if (isDraw) {
-          matchPoints += pointRules.draw;
-          details.components.push(`Draw = +${pointRules.draw}`);
-        }
-      } else {
-        // Knockout: can have penalties
-        if ((isHome && homeWins) || (!isHome && awayWins)) {
-          matchPoints += pointRules.win;
-          details.components.push(`Win = +${pointRules.win}`);
-        } else if (isDraw) {
-          // Penalties in knockouts
-          const isWinnerAfterPenalties = (isHome && (result.homePenalties > result.awayPenalties)) ||
-                                         (!isHome && (result.awayPenalties > result.homePenalties));
-          if (isWinnerAfterPenalties) {
-            matchPoints += pointRules.win;
-            details.components.push(`Win (penalties) = +${pointRules.win}`);
-          }
-        }
-      }
-
-      // Qualification bonus (if they advanced)
-      const qualified = isHome ? result.homeQualified : result.awayQualified;
-      if (qualified) {
-        if (match.roundCode === 'GS1' || match.roundCode === 'GS2' || match.roundCode === 'GS3') {
-          // Group stage qualified to knockout
-          matchPoints += pointRules.qualifyKnockout;
-          details.components.push(`Advance = +${pointRules.qualifyKnockout}`);
-        } else if (match.roundCode !== 'Final') {
-          // Knockout advancement
-          matchPoints += pointRules.qualifyNextRound;
-          details.components.push(`Advance = +${pointRules.qualifyNextRound}`);
-        }
-      }
-
-      // Final win bonus
-      if (match.roundCode === 'Final' && ((isHome && homeWins) || (!isHome && awayWins))) {
-        matchPoints += pointRules.winFinal;
-        details.components.push(`Won Final = +${pointRules.winFinal}`);
-      }
-
-      details.points = matchPoints;
-      totalPoints += matchPoints;
-      breakdown.push(details);
-    });
-
-    return { totalPoints, breakdown };
+  function getSelectedTeamsHtml(selectedTeams, teamScores = {}) {
+    return `
+      <div class="selected-teams">
+        ${selectedTeams.map(countryName => {
+          const team = getTeamByCountryName(countryName);
+          const eliminated = isTeamEliminated(countryName);
+          const flagUrl = team ? team.flagUrl : '';
+          const points = teamScores[countryName] || 0;
+          return `
+            <span class="team-chip${eliminated ? ' eliminated' : ''}" title="${escapeHtml(countryName)}">
+              <img src="${flagUrl}" alt="${escapeHtml(countryName)}" loading="lazy" />
+              <span class="team-code">${getTeamAbbreviation(countryName)}</span>
+              <span class="team-points">${points}</span>
+            </span>
+          `;
+        }).join('')}
+      </div>
+    `;
   }
 
-  function calculateTeamsRemaining(selectedTeams) {
-    // Count how many selected teams are still in the tournament
-    let remaining = 0;
-    
-    selectedTeams.forEach(countryName => {
-      const teamId = getTeamIdByCountryName(countryName);
-      let isEliminated = false;
-
-      // Find all matches this team played in (in order by round)
-      const relevantMatches = allMatches
-        .filter(m => m.homeTeam === teamId || m.awayTeam === teamId)
-        .sort((a, b) => {
-          const roundOrder = ['GS1', 'GS2', 'GS3', 'RO16', 'QF', 'SF', 'Final'];
-          return roundOrder.indexOf(a.roundCode) - roundOrder.indexOf(b.roundCode);
-        });
-
-      // Check elimination by working through matches
-      relevantMatches.forEach(match => {
-        const result = getResultById(match.matchId);
-        if (!result) return; // Match not played yet
-        
-        const isHome = match.homeTeam === teamId;
-        const qualified = isHome ? result.homeQualified : result.awayQualified;
-        
-        // In group stage: team must be qualified to advance
-        if (match.roundCode.includes('GS')) {
-          if (!qualified) isEliminated = true;
-        } 
-        // In knockout: team must not lose (win or win on penalties)
-        else {
-          const homeWins = result.homeScore > result.awayScore;
-          const awayWins = result.awayScore > result.homeScore;
-          const isDraw = result.homeScore === result.awayScore;
-          
-          if ((isHome && !homeWins && !isDraw) || (!isHome && !awayWins && !isDraw)) {
-            // Lost in regular time
-            isEliminated = true;
-          } else if (isDraw && result.homePenalties !== null && result.awayPenalties !== null) {
-            // Lost on penalties
-            const wonPenalties = (isHome && result.homePenalties > result.awayPenalties) ||
-                                (!isHome && result.awayPenalties > result.homePenalties);
-            if (!wonPenalties) isEliminated = true;
-          }
-        }
-      });
-
-      if (!isEliminated) remaining++;
-    });
-
-    return remaining;
+  function getEntryRoundScoresHtml(roundScores) {
+    return `
+      <div class="round-breakdown-inline">
+        ${ROUND_ORDER.map(round => `
+          <span class="round-chip" title="${ROUND_LABELS[round] || round}">
+            <span>${round}</span>
+            <span class="round-chip-score">${roundScores[round] || 0}</span>
+          </span>
+        `).join('')}
+      </div>
+    `;
   }
 
   function getRoundBreakdownHtml(entry) {
-    // Organize scores by round
-    const roundScores = {};
-    const roundOrder = ['GS1', 'GS2', 'GS3', 'RO16', 'QF', 'SF', 'Final'];
-    const roundLabels = {
-      'GS1': 'Group Stage 1',
-      'GS2': 'Group Stage 2',
-      'GS3': 'Group Stage 3',
-      'RO16': 'Round of 16',
-      'QF': 'Quarter Finals',
-      'SF': 'Semi Finals',
-      'Final': 'Final'
-    };
-
-    // Initialize all rounds
-    roundOrder.forEach(r => roundScores[r] = 0);
-
-    // Calculate score per round for each team
-    entry.selectedTeams.forEach(countryName => {
-      const teamId = getTeamIdByCountryName(countryName);
-      const relevantMatches = allMatches.filter(m => m.homeTeam === teamId || m.awayTeam === teamId);
-
-      relevantMatches.forEach(match => {
-        const result = getResultById(match.matchId);
-        if (!result || result.homeScore === null) return; // Not played
-
-        const isHome = match.homeTeam === teamId;
-        const opponentTeamId = isHome ? match.awayTeam : match.homeTeam;
-        const opponentTeam = allTeams.find(t => t.groupId === opponentTeamId);
-        const opponentName = opponentTeam ? opponentTeam.countryName : opponentTeamId;
-
-        let matchPoints = 0;
-        const { points: pointRules } = settings;
-
-        // Goals scored
-        const goalsFor = isHome ? result.homeScore : result.awayScore;
-        matchPoints += goalsFor * pointRules.goalScored;
-
-        // Goals conceded
-        const goalsAgainst = isHome ? result.awayScore : result.homeScore;
-        matchPoints += goalsAgainst * pointRules.goalConceded;
-
-        // Yellow cards
-        const yellowCards = isHome ? result.homeYellow : result.awayYellow;
-        if (yellowCards) matchPoints += yellowCards * pointRules.yellowCard;
-
-        // Red cards
-        const redCards = isHome ? result.homeRed : result.awayRed;
-        if (redCards) matchPoints += redCards * pointRules.redCard;
-
-        // Match result
-        const homeWins = result.homeScore > result.awayScore;
-        const awayWins = result.awayScore > result.homeScore;
-        const isDraw = result.homeScore === result.awayScore;
-
-        if (match.roundCode.includes('GS')) {
-          if ((isHome && homeWins) || (!isHome && awayWins)) {
-            matchPoints += pointRules.win;
-          } else if (isDraw) {
-            matchPoints += pointRules.draw;
-          }
-        } else {
-          if ((isHome && homeWins) || (!isHome && awayWins)) {
-            matchPoints += pointRules.win;
-          } else if (isDraw) {
-            const isWinnerAfterPenalties = (isHome && result.homePenalties > result.awayPenalties) ||
-                                           (!isHome && result.awayPenalties > result.homePenalties);
-            if (isWinnerAfterPenalties) {
-              matchPoints += pointRules.win;
-            }
-          }
-        }
-
-        // Qualification bonus
-        const qualified = isHome ? result.homeQualified : result.awayQualified;
-        if (qualified) {
-          if (match.roundCode === 'GS1' || match.roundCode === 'GS2' || match.roundCode === 'GS3') {
-            matchPoints += pointRules.qualifyKnockout;
-          } else if (match.roundCode !== 'Final') {
-            matchPoints += pointRules.qualifyNextRound;
-          }
-        }
-
-        // Final win bonus
-        if (match.roundCode === 'Final' && ((isHome && homeWins) || (!isHome && awayWins))) {
-          matchPoints += pointRules.winFinal;
-        }
-
-        if (!roundScores[match.roundCode]) roundScores[match.roundCode] = 0;
-        roundScores[match.roundCode] += matchPoints;
-      });
-    });
-
-    // Generate HTML
+    const roundScores = entry.roundScores || {};
     let html = '<div class="round-breakdown"><h4>Score by Round</h4><div class="round-scores">';
-    roundOrder.forEach(round => {
+    ROUND_ORDER.forEach(round => {
       const score = roundScores[round] || 0;
       if (score > 0) { // Only show rounds with points
         html += `
           <div class="round-score-item">
-            <div class="round-score-label">${roundLabels[round]}</div>
+            <div class="round-score-label">${ROUND_LABELS[round] || round}</div>
             <div class="round-score-value">${score}</div>
           </div>
         `;
@@ -742,32 +775,6 @@
     html += '</div></div>';
     
     return html;
-  }
-
-  function calculateLeaderboard() {
-    leaderboard = allEntries.map(entry => {
-      let totalScore = 0;
-      const teamScores = {};
-
-      // Calculate score for each selected team
-      entry.selectedTeams.forEach(countryName => {
-        const { totalPoints } = calculateTeamScore(countryName);
-        teamScores[countryName] = totalPoints;
-        totalScore += totalPoints;
-      });
-
-      return {
-        ...entry,
-        totalScore,
-        teamScores,
-        // Tiebreaker answers (if needed)
-        tb1: entry.tieBreakerAnswers ? entry.tieBreakerAnswers[0] : '',
-        tb2: entry.tieBreakerAnswers ? entry.tieBreakerAnswers[1] : ''
-      };
-    });
-
-    // Sort by points descending
-    leaderboard.sort((a, b) => b.totalScore - a.totalScore);
   }
 
   /* ─── Rendering ───────────────────────────────────────– */
@@ -785,10 +792,10 @@
     let html = `
       <div class="leaderboard-header">
         <div>Rank</div>
-        <div>Player</div>
+        <div>Team</div>
+        <div>${scoreDisplayMode === 'countries' ? 'Picks' : 'Rounds'}</div>
         <div>Teams Left</div>
-        <div>Cost</div>
-        <div>Total Score</div>
+        <div>Score</div>
       </div>
     `;
 
@@ -802,21 +809,19 @@
       else if (rank === 3) { rankClass = 'third'; rankEmoji = '🥉'; }
 
       const teamCount = entry.selectedTeams.length;
-      const teamsRemaining = calculateTeamsRemaining(entry.selectedTeams);
-      const totalCost = entry.selectedTeams.reduce((sum, teamName) => {
-        const team = getTeamByCountryName(teamName);
-        return sum + (team ? team.cost : 0);
-      }, 0);
+      const teamsRemaining = entry.teamsRemaining;
 
       html += `
-        <div class="leaderboard-row" id="${rowId}" data-entry-idx="${idx}">
+        <div class="leaderboard-row${rank % 10 === 0 ? ' milestone-row' : ''}" id="${rowId}" data-entry-idx="${idx}">
           <div class="rank ${rankClass}">${rankEmoji}</div>
           <div class="player-info">
-            <div class="player-name">${escapeHtml(entry.entrantName)}</div>
-            <div class="team-name">${escapeHtml(entry.teamName)}</div>
+            <div class="player-name">${escapeHtml(entry.teamName)}</div>
+            <div class="team-name">${escapeHtml(entry.entrantName)}</div>
           </div>
+          ${scoreDisplayMode === 'countries'
+            ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
+            : getEntryRoundScoresHtml(entry.roundScores)}
           <div class="team-count">${teamsRemaining}/${teamCount}</div>
-          <div class="cost-col">£${totalCost}m</div>
           <div class="score-col">${entry.totalScore}</div>
         </div>
 
@@ -888,37 +893,32 @@
     errorMsg.classList.remove('show');
   }
 
-  /* ─── Event listeners ─────────────────────────────────– */
-  sortSelect.addEventListener('change', e => {
-    const sort = e.target.value;
-    if (sort === 'points-desc') {
-      leaderboard.sort((a, b) => b.totalScore - a.totalScore);
-    } else if (sort === 'points-asc') {
-      leaderboard.sort((a, b) => a.totalScore - b.totalScore);
-    } else if (sort === 'name') {
-      leaderboard.sort((a, b) => a.entrantName.localeCompare(b.entrantName));
-    }
-    renderLeaderboard();
+  function updateViewMode() {
+    leaderboardEl.classList.toggle('compact', isCompactView);
+    viewToggleBtn.textContent = isCompactView ? 'Detailed view' : 'Compact view';
+  }
+
+  function updateScoreModeButton() {
+    scoreModeToggleBtn.textContent = scoreDisplayMode === 'countries' ? 'Round scores' : 'Country scores';
+    leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
+  }
+
+  viewToggleBtn.addEventListener('click', () => {
+    isCompactView = !isCompactView;
+    updateViewMode();
   });
 
-  refreshBtn.addEventListener('click', async () => {
-    refreshBtn.disabled = true;
-    loadingMsg.classList.add('show');
-    hideError();
-
-    if (await loadAllData()) {
-      calculateLeaderboard();
-      renderLeaderboard();
-    }
-
-    loadingMsg.classList.remove('show');
-    refreshBtn.disabled = false;
+  scoreModeToggleBtn.addEventListener('click', () => {
+    scoreDisplayMode = scoreDisplayMode === 'countries' ? 'rounds' : 'countries';
+    updateScoreModeButton();
+    renderLeaderboard();
   });
 
   /* ─── Init ────────────────────────────────────────────– */
   async function init() {
+    updateViewMode();
+    updateScoreModeButton();
     if (await loadAllData()) {
-      calculateLeaderboard();
       renderLeaderboard();
     }
   }

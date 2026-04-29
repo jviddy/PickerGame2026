@@ -1,105 +1,105 @@
 Match Number,Round Number,Date,Location,Home Team,Away Team,Group
-1,1,11/06/2026 19:00,Mexico City Stadium,A1,A2,Group A
-2,1,12/06/2026 2:00,Guadalajara Stadium,A3,A4,Group A
-3,1,12/06/2026 19:00,Toronto Stadium,B1,B2,Group B
-4,1,13/06/2026 01:00,Los Angeles Stadium,D1,D2,Group D
-8,1,13/06/2026 19:00,San Francisco Bay Area Stadium,B3,B4,Group B
-7,1,13/06/2026 22:00,New York/New Jersey Stadium,C1,C2,Group C
-5,1,14/06/2026 01:00,Boston Stadium,C3,C4,Group C
-6,1,14/06/2026 04:00,BC Place Vancouver,D3,D4,Group D
-10,1,14/06/2026 17:00,Houston Stadium,E1,E2,Group E
-11,1,14/06/2026 20:00,Dallas Stadium,F1,F2,Group F
-9,1,14/06/2026 23:00,Philadelphia Stadium,E3,E4,Group E
-12,1,15/06/2026 02:00,Monterrey Stadium,F3,F4,Group F
-14,1,15/06/2026 16:00,Atlanta Stadium,H1,H2,Group H
-16,1,15/06/2026 19:00,Seattle Stadium,G1,G2,Group G
-13,1,15/06/2026 22:00,Miami Stadium,H3,H4,Group H
-15,1,16/06/2026 01:00,Los Angeles Stadium,G3,G4,Group G
-17,1,16/06/2026 19:00,New York/New Jersey Stadium,I1,I2,Group I
-18,1,16/06/2026 22:00,Boston Stadium,I3,I4,Group I
-19,1,17/06/2026 01:00,Kansas City Stadium,J1,J2,Group J
-20,1,17/06/2026 04:00,San Francisco Bay Area Stadium,J3,J4,Group J
-23,1,17/06/2026 17:00,Houston Stadium,K1,K2,Group K
-22,1,17/06/2026 20:00,Dallas Stadium,L1,L2,Group L
-21,1,17/06/2026 23:00,Toronto Stadium,L3,L4,Group L
-24,1,18/06/2026 02:00,Mexico City Stadium,K3,K4,Group K
-25,2,18/06/2026 16:00,Atlanta Stadium,A4,A2,Group A
-26,2,18/06/2026 19:00,Los Angeles Stadium,B4,B2,Group B
-27,2,18/06/2026 22:00,BC Place Vancouver,B1,B3,Group B
-28,2,19/06/2026 01:00,Guadalajara Stadium,A1,A3,Group A
-32,2,19/06/2026 19:00,Seattle Stadium,D1,D3,Group D
-30,2,19/06/2026 22:00,Boston Stadium,C3,C2,Group C
-29,2,20/06/2026 01:00,Philadelphia Stadium,C1,C4,Group C
-31,2,20/06/2026 04:00,San Francisco Bay Area Stadium,D4,D2,Group D
-35,2,20/06/2026 17:00,Houston Stadium,F1,F3,Group F
-33,2,20/06/2026 20:00,Toronto Stadium,E1,E3,Group E
-34,2,21/06/2026 00:00,Kansas City Stadium,E2,E4,Group E
-36,2,21/06/2026 04:00,Monterrey Stadium,F2,F4,Group F
-38,2,21/06/2026 16:00,Atlanta Stadium,H1,H2,Group H
-39,2,21/06/2026 19:00,Los Angeles Stadium,G1,G2,Group G
-37,2,21/06/2026 22:00,Miami Stadium,H3,H4,Group H
-40,2,22/06/2026 01:00,BC Place Vancouver,G3,G4,Group G
-43,2,22/06/2026 17:00,Dallas Stadium,J1,J2,Group J
-42,2,22/06/2026 21:00,Philadelphia Stadium,I1,I2,Group I
-41,2,23/06/2026 00:00,New York/New Jersey Stadium,I3,I4,Group I
-44,2,23/06/2026 03:00,San Francisco Bay Area Stadium,J3,J4,Group J
-47,2,23/06/2026 17:00,Houston Stadium,K1,K2,Group K
-45,2,23/06/2026 20:00,Boston Stadium,L1,L2,Group L
-46,2,23/06/2026 23:00,Toronto Stadium,L3,L4,Group L
-48,2,24/06/2026 02:00,Guadalajara Stadium,K3,K4,Group K
-51,3,24/06/2026 19:00,BC Place Vancouver,B4,B1,Group B
-52,3,24/06/2026 19:00,Seattle Stadium,B2,B3,Group B
-49,3,24/06/2026 22:00,Miami Stadium,C3,C1,Group C
-50,3,24/06/2026 22:00,Atlanta Stadium,C2,C4,Group C
-53,3,25/06/2026 01:00,Mexico City Stadium,A4,A1,Group A
-54,3,25/06/2026 01:00,Monterrey Stadium,A2,A3,Group A
-55,3,25/06/2026 20:00,Philadelphia Stadium,E3,E1,Group E
-56,3,25/06/2026 20:00,New York/New Jersey Stadium,E2,E4,Group E
-57,3,25/06/2026 23:00,Dallas Stadium,F2,F1,Group F
-58,3,25/06/2026 23:00,Kansas City Stadium,F3,F4,Group F
-59,3,26/06/2026 02:00,Los Angeles Stadium,D2,D1,Group D
-60,3,26/06/2026 02:00,San Francisco Bay Area Stadium,D4,D3,Group D
-61,3,26/06/2026 19:00,Boston Stadium,I2,I1,Group I
-62,3,26/06/2026 19:00,Toronto Stadium,I4,I3,Group I
-65,3,27/06/2026 00:00,Houston Stadium,H2,H1,Group H
-66,3,27/06/2026 00:00,Guadalajara Stadium,H4,H3,Group H
-63,3,27/06/2026 03:00,Seattle Stadium,G2,G1,Group G
-64,3,27/06/2026 03:00,BC Place Vancouver,G4,G3,Group G
-67,3,27/06/2026 21:00,New York/New Jersey Stadium,L2,L1,Group L
-68,3,27/06/2026 21:00,Philadelphia Stadium,L3,L4,Group L
-71,3,27/06/2026 23:30,Miami Stadium,K2,K1,Group K
-72,3,27/06/2026 23:30,Atlanta Stadium,K4,K3,Group K
-69,3,28/06/2026 02:00,Kansas City Stadium,J2,J1,Group J
-70,3,28/06/2026 02:00,Dallas Stadium,J4,J3,Group J
-73,L32,28/06/2026 19:00,Los Angeles Stadium,2A,2B,L32_1
-76,L32,29/06/2026 17:00,Houston Stadium,1C,2F,L32_2 
-74,L32,29/06/2026 20:30,Boston Stadium,1E,3ABCDF,L32_3
-75,L32,30/06/2026 01:00,Monterrey Stadium,1F,2C,L32_4
-78,L32,30/06/2026 17:00,Dallas Stadium,2E,2I,L32_5
-77,L32,30/06/2026 21:00,New York/New Jersey Stadium,1I,3CDFGH,L32_6
-79,L32,01/07/2026 1:00,Mexico City Stadium,1A,3CEFHI,L32_7
-80,L32,01/07/2026 16:00,Atlanta Stadium,1L,3EHIJK,L32_8
-82,L32,01/07/2026 20:00,Seattle Stadium,1G,3AEHIJ,L32_9
-81,L32,02/07/2026 0:00,San Francisco Bay Area Stadium,1D,3BEFIJ,L32_10
-84,L32,02/07/2026 19:00,Los Angeles Stadium,1H,2J,L32_11
-83,L32,02/07/2026 23:00,Toronto Stadium,2K,2L,L32_12
-85,L32,03/07/2026 3:00,BC Place Vancouver,1B,3EFGIJ,L32_13
-88,L32,03/07/2026 18:00,Dallas Stadium,2D,2G,L32_14
-86,L32,03/07/2026 22:00,Miami Stadium,1J,2H,L32_15
-87,L32,04/07/2026 1:30,Kansas City Stadium,1K,3DEIJL,L32_16
-90,L16,04/07/2026 17:00,Houston Stadium,To be announced,To be announced,L16_1
-89,L16,04/07/2026 21:00,Philadelphia Stadium,To be announced,To be announced,L16_2
-91,L16,05/07/2026 20:00,New York/New Jersey Stadium,To be announced,To be announced,L16_3
-92,L16,06/07/2026 0:00,Mexico City Stadium,To be announced,To be announced,L16_4
-93,L16,06/07/2026 19:00,Dallas Stadium,To be announced,To be announced,L16_5
-94,L16,07/07/2026 0:00,Seattle Stadium,To be announced,To be announced,L16_6
-95,L16,07/07/2026 16:00,Atlanta Stadium,To be announced,To be announced,L16_7
-96,L16,07/07/2026 20:00,BC Place Vancouver,To be announced,To be announced,L16_8
-97,QF,09/07/2026 20:00,Boston Stadium,To be announced,To be announced,QF_1
-98,QF,10/07/2026 19:00,Los Angeles Stadium,To be announced,To be announced,QF_2
-99,QF,11/07/2026 21:00,Miami Stadium,To be announced,To be announced,QF_3
-100,QF,12/07/2026 1:00,Kansas City Stadium,To be announced,To be announced,QF_4
-101,SF,14/07/2026 19:00,Dallas Stadium,To be announced,To be announced,SF_1
-102,SF,15/07/2026 19:00,Atlanta Stadium,To be announced,To be announced,SF_2
-103,TPP,18/07/2026 21:00,Miami Stadium,To be announced,To be announced,TPP
-104,F,19/07/2026 19:00,New York/New Jersey Stadium,To be announced,To be announced,F
+1,1,11/06/2026 20:00,"Estadio Azteca, Mexico City",A1,A2,Group A
+2,1,12/06/2026 03:00,"Estadio Akron, Guadalajara",A3,A4,Group A
+3,1,12/06/2026 20:00,"BMO Field, Toronto",B1,B2,Group B
+4,1,13/06/2026 02:00,"SoFi Stadium, Los Angeles",D1,D2,Group D
+8,1,13/06/2026 20:00,"Levi's Stadium, San Francisco Bay Area",B3,B4,Group B
+7,1,13/06/2026 23:00,"MetLife Stadium, New York/New Jersey",C1,C2,Group C
+5,1,14/06/2026 02:00,"Gillette Stadium, Boston",C3,C4,Group C
+6,1,13/06/2026 05:00,"BC Place, Vancouver",D3,D4,Group D
+10,1,14/06/2026 18:00,"NRG Stadium, Houston",E1,E2,Group E
+11,1,14/06/2026 21:00,"AT&T Stadium, Dallas",F1,F2,Group F
+9,1,15/06/2026 00:00,"Lincoln Financial Field, Philadelphia",E3,E4,Group E
+12,1,15/06/2026 03:00,"Estadio BBVA, Monterrey",F3,F4,Group F
+14,1,15/06/2026 17:00,"Mercedes-Benz Stadium, Atlanta",H1,H2,Group H
+16,1,15/06/2026 20:00,"Lumen Field, Seattle",G1,G2,Group G
+13,1,15/06/2026 23:00,"Hard Rock Stadium, Miami",H3,H4,Group H
+15,1,16/06/2026 02:00,"SoFi Stadium, Los Angeles",G3,G4,Group G
+17,1,16/06/2026 20:00,"MetLife Stadium, New York/New Jersey",I1,I2,Group I
+18,1,16/06/2026 23:00,"Gillette Stadium, Boston",I3,I4,Group I
+19,1,17/06/2026 02:00,"Arrowhead Stadium, Kansas City",J1,J2,Group J
+20,1,16/06/2026 05:00,"Levi's Stadium, San Francisco Bay Area",J3,J4,Group J
+23,1,17/06/2026 18:00,"NRG Stadium, Houston",K1,K2,Group K
+22,1,17/06/2026 21:00,"AT&T Stadium, Dallas",L1,L2,Group L
+21,1,18/06/2026 00:00,"BMO Field, Toronto",L3,L4,Group L
+24,1,18/06/2026 03:00,"Estadio Azteca, Mexico City",K3,K4,Group K
+25,2,18/06/2026 17:00,"Mercedes-Benz Stadium, Atlanta",A4,A2,Group A
+26,2,18/06/2026 20:00,"SoFi Stadium, Los Angeles",B4,B2,Group B
+27,2,18/06/2026 23:00,"BC Place, Vancouver",B1,B3,Group B
+28,2,19/06/2026 02:00,"Estadio Akron, Guadalajara",A1,A3,Group A
+32,2,19/06/2026 20:00,"Lumen Field, Seattle",D1,D3,Group D
+30,2,19/06/2026 23:00,"Gillette Stadium, Boston",C3,C2,Group C
+29,2,20/06/2026 02:00,"Lincoln Financial Field, Philadelphia",C1,C4,Group C
+31,2,20/06/2026 04:00,"Levi's Stadium, San Francisco Bay Area",D4,D2,Group D
+35,2,20/06/2026 18:00,"NRG Stadium, Houston",F1,F3,Group F
+33,2,20/06/2026 21:00,"BMO Field, Toronto",E1,E3,Group E
+34,2,21/06/2026 01:00,"Arrowhead Stadium, Kansas City",E2,E4,Group E
+36,2,20/06/2026 05:00,"Estadio BBVA, Monterrey",F2,F4,Group F
+38,2,21/06/2026 17:00,"Mercedes-Benz Stadium, Atlanta",H1,H2,Group H
+39,2,21/06/2026 20:00,"SoFi Stadium, Los Angeles",G1,G2,Group G
+37,2,21/06/2026 23:00,"Hard Rock Stadium, Miami",H3,H4,Group H
+40,2,22/06/2026 02:00,"BC Place, Vancouver",G3,G4,Group G
+43,2,22/06/2026 18:00,"AT&T Stadium, Dallas",J1,J2,Group J
+42,2,22/06/2026 22:00,"Lincoln Financial Field, Philadelphia",I1,I2,Group I
+41,2,23/06/2026 01:00,"MetLife Stadium, New York/New Jersey",I3,I4,Group I
+44,2,23/06/2026 04:00,"Levi's Stadium, San Francisco Bay Area",J3,J4,Group J
+47,2,23/06/2026 18:00,"NRG Stadium, Houston",K1,K2,Group K
+45,2,23/06/2026 21:00,"Gillette Stadium, Boston",L1,L2,Group L
+46,2,24/06/2026 00:00,"BMO Field, Toronto",L3,L4,Group L
+48,2,24/06/2026 03:00,"Estadio Akron, Guadalajara",K3,K4,Group K
+51,3,24/06/2026 20:00,"BC Place, Vancouver",B4,B1,Group B
+52,3,24/06/2026 20:00,"Lumen Field, Seattle",B2,B3,Group B
+49,3,24/06/2026 23:00,"Hard Rock Stadium, Miami",C3,C1,Group C
+50,3,24/06/2026 23:00,"Mercedes-Benz Stadium, Atlanta",C2,C4,Group C
+53,3,25/06/2026 02:00,"Estadio Azteca, Mexico City",A4,A1,Group A
+54,3,25/06/2026 02:00,"Estadio BBVA, Monterrey",A2,A3,Group A
+55,3,25/06/2026 21:00,"Lincoln Financial Field, Philadelphia",E3,E1,Group E
+56,3,25/06/2026 21:00,"MetLife Stadium, New York/New Jersey",E2,E4,Group E
+57,3,26/06/2026 00:00,"AT&T Stadium, Dallas",F2,F1,Group F
+58,3,26/06/2026 00:00,"Arrowhead Stadium, Kansas City",F3,F4,Group F
+59,3,26/06/2026 03:00,"SoFi Stadium, Los Angeles",D2,D1,Group D
+60,3,26/06/2026 03:00,"Levi's Stadium, San Francisco Bay Area",D4,D3,Group D
+61,3,26/06/2026 20:00,"Gillette Stadium, Boston",I2,I1,Group I
+62,3,26/06/2026 20:00,"BMO Field, Toronto",I4,I3,Group I
+65,3,27/06/2026 01:00,"NRG Stadium, Houston",H2,H1,Group H
+66,3,27/06/2026 01:00,"Estadio Akron, Guadalajara",H4,H3,Group H
+63,3,27/06/2026 04:00,"Lumen Field, Seattle",G2,G1,Group G
+64,3,27/06/2026 04:00,"BC Place, Vancouver",G4,G3,Group G
+67,3,27/06/2026 22:00,"MetLife Stadium, New York/New Jersey",L2,L1,Group L
+68,3,27/06/2026 22:00,"Lincoln Financial Field, Philadelphia",L3,L4,Group L
+71,3,28/06/2026 00:30,"Hard Rock Stadium, Miami",K2,K1,Group K
+72,3,28/06/2026 00:30,"Mercedes-Benz Stadium, Atlanta",K4,K3,Group K
+69,3,28/06/2026 03:00,"Arrowhead Stadium, Kansas City",J2,J1,Group J
+70,3,28/06/2026 03:00,"AT&T Stadium, Dallas",J4,J3,Group J
+73,L32,28/06/2026 20:00,"SoFi Stadium, Los Angeles",2A,2B,L32_1
+76,L32,29/06/2026 18:00,"NRG Stadium, Houston",1C,2F,L32_2 
+74,L32,29/06/2026 21:30,"Gillette Stadium, Boston",1E,3ABCDF,L32_3
+75,L32,30/06/2026 02:00,"Estadio BBVA, Monterrey",1F,2C,L32_4
+78,L32,30/06/2026 18:00,"AT&T Stadium, Dallas",2E,2I,L32_5
+77,L32,30/06/2026 22:00,"MetLife Stadium, New York/New Jersey",1I,3CDFGH,L32_6
+79,L32,01/07/2026 02:00,"Estadio Azteca, Mexico City",1A,3CEFHI,L32_7
+80,L32,01/07/2026 17:00,"Mercedes-Benz Stadium, Atlanta",1L,3EHIJK,L32_8
+82,L32,01/07/2026 21:00,"Lumen Field, Seattle",1G,3AEHIJ,L32_9
+81,L32,02/07/2026 01:00,"Levi's Stadium, San Francisco Bay Area",1D,3BEFIJ,L32_10
+84,L32,02/07/2026 20:00,"SoFi Stadium, Los Angeles",1H,2J,L32_11
+83,L32,03/07/2026 00:00,"BMO Field, Toronto",2K,2L,L32_12
+85,L32,03/07/2026 04:00,"BC Place, Vancouver",1B,3EFGIJ,L32_13
+88,L32,03/07/2026 19:00,"AT&T Stadium, Dallas",2D,2G,L32_14
+86,L32,03/07/2026 23:00,"Hard Rock Stadium, Miami",1J,2H,L32_15
+87,L32,04/07/2026 02:30,"Arrowhead Stadium, Kansas City",1K,3DEIJL,L32_16
+90,L16,04/07/2026 18:00,"NRG Stadium, Houston",To be announced,To be announced,L16_1
+89,L16,04/07/2026 22:00,"Lincoln Financial Field, Philadelphia",To be announced,To be announced,L16_2
+91,L16,05/07/2026 21:00,"MetLife Stadium, New York/New Jersey",To be announced,To be announced,L16_3
+92,L16,06/07/2026 01:00,"Estadio Azteca, Mexico City",To be announced,To be announced,L16_4
+93,L16,06/07/2026 20:00,"AT&T Stadium, Dallas",To be announced,To be announced,L16_5
+94,L16,07/07/2026 01:00,"Lumen Field, Seattle",To be announced,To be announced,L16_6
+95,L16,07/07/2026 17:00,"Mercedes-Benz Stadium, Atlanta",To be announced,To be announced,L16_7
+96,L16,07/07/2026 21:00,"BC Place, Vancouver",To be announced,To be announced,L16_8
+97,QF,09/07/2026 21:00,"Gillette Stadium, Boston",To be announced,To be announced,QF_1
+98,QF,10/07/2026 20:00,"SoFi Stadium, Los Angeles",To be announced,To be announced,QF_2
+99,QF,11/07/2026 22:00,"Hard Rock Stadium, Miami",To be announced,To be announced,QF_3
+100,QF,12/07/2026 02:00,"Arrowhead Stadium, Kansas City",To be announced,To be announced,QF_4
+101,SF,14/07/2026 20:00,"AT&T Stadium, Dallas",To be announced,To be announced,SF_1
+102,SF,15/07/2026 20:00,"Mercedes-Benz Stadium, Atlanta",To be announced,To be announced,SF_2
+103,TPP,18/07/2026 22:00,"Hard Rock Stadium, Miami",To be announced,To be announced,TPP
+104,F,19/07/2026 20:00,"MetLife Stadium, New York/New Jersey",To be announced,To be announced,F
