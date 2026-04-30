@@ -910,7 +910,7 @@
   /* ─── Config ──────────────────────────────────────────────── */
   const BUDGET    = 150;
   const MAX_PICKS = 8;
-  const SUBMIT_URL = null; // replace with your API endpoint when ready
+  const SUBMIT_URL = '/api/entries';
 
   /* ─── State ───────────────────────────────────────────────── */
   let allTeams   = [];
@@ -1188,11 +1188,14 @@
 
     const payload = {
       teamName:    document.getElementById('teamName').value.trim(),
-      playerName:  document.getElementById('playerName').value.trim(),
+      entrantName: document.getElementById('playerName').value.trim(),
       email:       document.getElementById('email').value.trim(),
-      tiebreaker1: +document.getElementById('tb1').value,
-      tiebreaker2: +document.getElementById('tb2').value,
-      picks:       getSelectedTeams().map(t => t.groupId),
+      selectedTeams: getSelectedTeams().map(t => t.countryName),
+      selectedTeamIds: getSelectedTeams().map(t => t.groupId),
+      tieBreakerAnswers: [
+        document.getElementById('tb1').value.trim(),
+        document.getElementById('tb2').value.trim(),
+      ],
       submittedAt: new Date().toISOString(),
     };
 
@@ -1205,12 +1208,15 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
-        if (!res.ok) throw new Error('Server error');
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.ok === false) {
+          throw new Error((data.errors || ['Server error']).join(' '));
+        }
         showSuccess();
-      } catch {
+      } catch (error) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit entry →';
-        formErrorsList.innerHTML = '<li>Something went wrong — please try again.</li>';
+        formErrorsList.innerHTML = `<li>${error.message || 'Something went wrong — please try again.'}</li>`;
         formErrors.style.display = 'block';
       }
     } else {

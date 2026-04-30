@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PickerGame Admin</title>
+  <style>
+    :root {
+      --pitch: #0b4f2f;
+      --pitch-mid: #167a49;
+      --pitch-bright: #22a861;
+      --lime: #8fcf45;
+      --ink: #1f2933;
+      --muted: #64748b;
+      --line: #d9e2dc;
+      --soft: #f5f8f6;
+      --gold: #d79a2b;
+      --danger: #b91c1c;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef4f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
+      box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      letter-spacing: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 28px));
+      margin: 18px auto 40px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto auto;
+      gap: 10px;
+      padding: 14px;
+      align-items: end;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    button {
+      min-height: 40px;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 14px;
+      color: var(--white);
+      background: var(--pitch-mid);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:hover:not(:disabled) { background: var(--pitch); }
+    button:disabled { cursor: not-allowed; opacity: 0.55; }
+    .publish { background: var(--gold); color: #2f2205; }
+    .publish:hover:not(:disabled) { background: #bd8520; }
+
+    .status {
+      min-height: 22px;
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--pitch); }
+
+    .summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+      background: var(--white);
+    }
+
+    th,
+    td {
+      padding: 9px 10px;
+      border-top: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.9rem;
+    }
+
+    th {
+      color: var(--muted);
+      background: #fbfcfb;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(10n) {
+      background: #f2f4f3;
+    }
+
+    .team-name {
+      font-weight: 900;
+      color: var(--pitch);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .picks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-width: 420px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: #eaf4ee;
+      color: var(--pitch);
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .empty {
+      padding: 28px 14px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .summary {
+        display: block;
+      }
+
+      .nav { margin-top: 10px; justify-content: flex-start; }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>PickerGame Admin</h1>
+      <nav class="nav" aria-label="Admin navigation">
+        <a href="entry.html">Entry</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="countries.html">Countries</a>
+        <a href="schedule.html">Matches</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="controls">
+        <label>
+          Admin token
+          <input id="adminToken" type="password" autocomplete="current-password" />
+        </label>
+        <button id="loadBtn" type="button">Load entries</button>
+        <button id="publishBtn" class="publish" type="button" disabled>Publish entries</button>
+      </div>
+      <div id="status" class="status">Enter your admin token to review submitted entries.</div>
+      <div class="summary">
+        <span id="entryCount">0 entries</span>
+        <span id="latestEntry">No submissions loaded</span>
+      </div>
+      <div class="table-wrap">
+        <table aria-label="Submitted entries">
+          <thead>
+            <tr>
+              <th>Team</th>
+              <th>Entrant</th>
+              <th>Email</th>
+              <th>Cost</th>
+              <th>Tiebreakers</th>
+              <th>Picks</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="entriesBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="empty">No entries loaded.</div>
+    </section>
+  </main>
+
+  <script>
+    const tokenInput = document.getElementById('adminToken');
+    const loadBtn = document.getElementById('loadBtn');
+    const publishBtn = document.getElementById('publishBtn');
+    const statusEl = document.getElementById('status');
+    const entryCountEl = document.getElementById('entryCount');
+    const latestEntryEl = document.getElementById('latestEntry');
+    const entriesBody = document.getElementById('entriesBody');
+    const emptyState = document.getElementById('emptyState');
+
+    const savedToken = localStorage.getItem('pickerGameAdminToken') || '';
+    tokenInput.value = savedToken;
+
+    function setStatus(message, type = '') {
+      statusEl.textContent = message;
+      statusEl.className = `status ${type}`.trim();
+    }
+
+    function getToken() {
+      return tokenInput.value.trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function formatDate(value) {
+      if (!value) return '';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString('en-GB', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      });
+    }
+
+    function renderEntries(entries) {
+      entriesBody.innerHTML = entries.map((entry) => {
+        const picks = (entry.selectedTeams || [])
+          .map((team) => `<span class="pill">${escapeHtml(team)}</span>`)
+          .join('');
+        const tiebreakers = (entry.tieBreakerAnswers || [])
+          .map(escapeHtml)
+          .join(' / ');
+
+        return `
+          <tr>
+            <td>
+              <div class="team-name">${escapeHtml(entry.teamName)}</div>
+              <div class="muted">${escapeHtml(entry.id)}</div>
+            </td>
+            <td>${escapeHtml(entry.entrantName)}</td>
+            <td>${escapeHtml(entry.email)}</td>
+            <td>£${escapeHtml(entry.totalCost)}m</td>
+            <td>${tiebreakers}</td>
+            <td><div class="picks">${picks}</div></td>
+            <td>${escapeHtml(formatDate(entry.submittedAt))}</td>
+          </tr>
+        `;
+      }).join('');
+
+      emptyState.style.display = entries.length ? 'none' : 'block';
+      entryCountEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
+      latestEntryEl.textContent = entries[0]
+        ? `Latest: ${formatDate(entries[0].submittedAt)}`
+        : 'No submissions loaded';
+      publishBtn.disabled = false;
+    }
+
+    async function requestJson(url, options = {}) {
+      const token = getToken();
+      if (!token) throw new Error('Enter your admin token.');
+
+      localStorage.setItem('pickerGameAdminToken', token);
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          ...(options.headers || {}),
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || data.ok === false) {
+        throw new Error((data.errors || ['Request failed.']).join(' '));
+      }
+
+      return data;
+    }
+
+    async function loadEntries() {
+      loadBtn.disabled = true;
+      publishBtn.disabled = true;
+      setStatus('Loading entries...');
+
+      try {
+        const data = await requestJson('/api/admin/entries');
+        renderEntries(data.entries || []);
+        setStatus('Entries loaded.', 'success');
+      } catch (error) {
+        entriesBody.innerHTML = '';
+        emptyState.style.display = 'block';
+        setStatus(error.message, 'error');
+      } finally {
+        loadBtn.disabled = false;
+      }
+    }
+
+    async function publishEntries() {
+      publishBtn.disabled = true;
+      setStatus('Starting publish workflow...');
+
+      try {
+        await requestJson('/api/admin/publish', { method: 'POST' });
+        setStatus('Publish started. The leaderboard will update after the workflow finishes.', 'success');
+      } catch (error) {
+        setStatus(error.message, 'error');
+      } finally {
+        publishBtn.disabled = false;
+      }
+    }
+
+    loadBtn.addEventListener('click', loadEntries);
+    publishBtn.addEventListener('click', publishEntries);
+
+    if (savedToken) {
+      loadEntries();
+    }
+  </script>
+</body>
+</html>

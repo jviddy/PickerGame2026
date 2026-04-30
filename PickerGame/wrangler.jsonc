@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "pickergame2026",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-04-29",
+  "d1_databases": [
+    {
+      "binding": "ENTRIES_DB",
+      "database_name": "pickergame2026-entries",
+      "database_id": "1b582368-edeb-4c02-aa8f-1d5a5a765b1e"
+    }
+  ]
+}
