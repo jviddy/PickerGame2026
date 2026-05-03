@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match Results Admin - PickerGame 2026</title>
+  <style>
+    :root {
+      --pitch: #0b4f2f;
+      --pitch-mid: #167a49;
+      --pitch-bright: #22a861;
+      --lime: #8fcf45;
+      --ink: #1f2933;
+      --muted: #64748b;
+      --line: #d9e2dc;
+      --soft: #f5f8f6;
+      --gold: #d79a2b;
+      --danger: #b91c1c;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef4f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
+      box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      letter-spacing: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+    }
+
+    main {
+      width: min(1280px, calc(100% - 28px));
+      margin: 18px auto 44px;
+    }
+
+    .toolbar,
+    .match-list,
+    .editor {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 170px 170px;
+      gap: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+      align-items: end;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 9px;
+      color: var(--ink);
+      font: inherit;
+      background: var(--white);
+    }
+
+    button {
+      min-height: 38px;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--white);
+      background: var(--pitch-mid);
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    button:hover:not(:disabled) { background: var(--pitch); }
+    button:disabled { cursor: not-allowed; opacity: 0.55; }
+
+    .status {
+      min-height: 22px;
+      margin: -4px 0 14px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--pitch); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(420px, 0.95fr) minmax(420px, 1.05fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .match-list {
+      overflow: hidden;
+    }
+
+    .list-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      color: var(--white);
+      background: var(--pitch);
+      font-weight: 900;
+    }
+
+    .matches {
+      max-height: calc(100vh - 190px);
+      overflow: auto;
+    }
+
+    .match-row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr) 70px;
+      gap: 9px;
+      width: 100%;
+      min-height: 54px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: var(--white);
+      text-align: left;
+    }
+
+    .match-row:nth-child(10n) { background: #f2f4f3; }
+    .match-row.active { background: #e6f5eb; }
+    .match-row.played .match-id { color: var(--pitch); }
+
+    .match-id {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .fixture {
+      min-width: 0;
+      font-size: 0.9rem;
+      font-weight: 900;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .score-tag {
+      justify-self: end;
+      align-self: center;
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: var(--pitch);
+      background: #eaf4ee;
+      font-size: 0.78rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .score-tag.pending {
+      color: var(--muted);
+      background: var(--soft);
+    }
+
+    .editor {
+      position: sticky;
+      top: 78px;
+      overflow: hidden;
+    }
+
+    .editor-head {
+      padding: 13px 14px;
+      color: var(--white);
+      background: var(--pitch);
+    }
+
+    .editor-head h2 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+    }
+
+    .editor-head .meta { color: rgba(255, 255, 255, 0.8); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .section-title {
+      grid-column: 1 / -1;
+      margin: 4px 0 -2px;
+      color: var(--pitch);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      grid-column: 1 / -1;
+    }
+
+    .check-row label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 9px;
+      color: var(--ink);
+      text-transform: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .check-row input {
+      width: 16px;
+      min-height: 16px;
+    }
+
+    .preview {
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+      padding: 12px 14px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .points-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 10px;
+    }
+
+    .points-card h3 {
+      margin: 0 0 8px;
+      color: var(--pitch);
+      font-size: 0.92rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .point-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 3px 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .point-line strong { color: var(--ink); }
+    .point-line.total {
+      margin-top: 6px;
+      padding-top: 7px;
+      border-top: 1px solid var(--line);
+      color: var(--pitch);
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 12px 14px 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .empty {
+      padding: 40px 14px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    @media (max-width: 960px) {
+      .toolbar,
+      .layout,
+      .form-grid,
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .editor { position: static; }
+      .matches { max-height: none; }
+      .check-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>Match Results Admin</h1>
+      <nav class="nav" aria-label="Admin navigation">
+        <a href="admin.html">Entries Admin</a>
+        <a href="schedule.html">Matches</a>
+        <a href="countries.html">Countries</a>
+        <a href="leaderboard.html">Leaderboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="toolbar">
+      <label>
+        Admin token
+        <input id="adminToken" type="password" autocomplete="current-password" />
+      </label>
+      <label>
+        Round
+        <select id="roundFilter"></select>
+      </label>
+      <label>
+        Status
+        <select id="statusFilter">
+          <option value="all">All matches</option>
+          <option value="pending">Pending</option>
+          <option value="played">Played</option>
+        </select>
+      </label>
+    </section>
+
+    <div id="status" class="status">Loading matches...</div>
+
+    <section class="layout">
+      <div class="match-list">
+        <div class="list-head">
+          <span>Matches</span>
+          <span id="matchCount">0</span>
+        </div>
+        <div id="matchesList" class="matches"></div>
+      </div>
+
+      <div id="editor" class="editor">
+        <div class="empty">Select a match to enter or update its result.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
+    const DATA_URLS = {
+      matches: './Data/matches.json',
+      teams: './Data/teams.json',
+      results: './Data/results.json',
+      settings: './Data/settings.json'
+    };
+
+    const tokenInput = document.getElementById('adminToken');
+    const roundFilter = document.getElementById('roundFilter');
+    const statusFilter = document.getElementById('statusFilter');
+    const statusEl = document.getElementById('status');
+    const matchesList = document.getElementById('matchesList');
+    const matchCount = document.getElementById('matchCount');
+    const editor = document.getElementById('editor');
+
+    let matches = [];
+    let teams = [];
+    let results = [];
+    let settings = {};
+    let selectedMatchId = null;
+
+    tokenInput.value = localStorage.getItem('pickerGameAdminToken') || '';
+
+    function setStatus(message, type = '') {
+      statusEl.textContent = message;
+      statusEl.className = `status ${type}`.trim();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[char]));
+    }
+
+    async function loadJson(url) {
+      const response = await fetch(`${url}?v=${Date.now()}`);
+      if (!response.ok) throw new Error(`Could not load ${url}`);
+      return response.json();
+    }
+
+    function getTeam(teamRef) {
+      return teams.find(team => team.groupId === teamRef || team.countryName === teamRef);
+    }
+
+    function getTeamName(teamRef) {
+      return getTeam(teamRef)?.countryName || teamRef || 'TBA';
+    }
+
+    function getResult(matchId) {
+      return results.find(result => result.matchId === matchId);
+    }
+
+    function isPlayed(result) {
+      return result && result.homeScore !== null && result.awayScore !== null;
+    }
+
+    function formatDate(isoDate) {
+      return new Intl.DateTimeFormat('en-GB', {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23',
+        timeZone: 'Europe/London'
+      }).format(new Date(isoDate));
+    }
+
+    function getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, roundCode) {
+      if (goalsFor > goalsAgainst) return 'win';
+      if (goalsFor < goalsAgainst) return 'loss';
+      if (!String(roundCode).includes('GS') && penaltiesFor !== null && penaltiesAgainst !== null) {
+        return penaltiesFor > penaltiesAgainst ? 'win' : 'loss';
+      }
+      return 'draw';
+    }
+
+    function toNumber(value, allowNull = false) {
+      if (value === '' || value === null || value === undefined) return allowNull ? null : 0;
+      const number = Number(value);
+      return Number.isFinite(number) ? number : 0;
+    }
+
+    function calculateSidePoints(match, result, side) {
+      const isHome = side === 'home';
+      const goalsFor = isHome ? result.homeScore : result.awayScore;
+      const goalsAgainst = isHome ? result.awayScore : result.homeScore;
+      const penaltiesFor = isHome ? result.homePenalties : result.awayPenalties;
+      const penaltiesAgainst = isHome ? result.awayPenalties : result.homePenalties;
+      const yellowCards = isHome ? result.homeYellow : result.awayYellow;
+      const redCards = isHome ? result.homeRed : result.awayRed;
+      const qualified = isHome ? result.homeQualified : result.awayQualified;
+      const pointRules = settings.points || {};
+      const rows = [];
+      const categories = {
+        result: 0,
+        goalsScored: goalsFor * (pointRules.goalScored || 0),
+        goalsConceded: goalsAgainst * (pointRules.goalConceded || 0),
+        penalties: 0,
+        disciplinary: ((yellowCards || 0) * (pointRules.yellowCard || 0)) + ((redCards || 0) * (pointRules.redCard || 0)),
+        roundQualification: 0
+      };
+
+      const add = (label, value) => {
+        if (value) rows.push({ label, value });
+      };
+
+      const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
+      if (resultType === 'win') categories.result = pointRules.win || 0;
+      if (resultType === 'draw') categories.result = pointRules.draw || 0;
+
+      if (qualified) {
+        categories.roundQualification = String(match.roundCode).includes('GS')
+          ? pointRules.qualifyKnockout || 0
+          : match.roundCode === 'F' ? 0 : pointRules.qualifyNextRound || 0;
+      }
+
+      if (match.roundCode === 'F' && resultType === 'win') {
+        categories.roundQualification += pointRules.winFinal || 0;
+      }
+
+      add(resultType === 'win' ? 'Win' : resultType === 'draw' ? 'Draw' : 'Loss', categories.result);
+      add('Goals scored', categories.goalsScored);
+      add('Goals conceded', categories.goalsConceded);
+      add('Cards', categories.disciplinary);
+      add('Qualification', categories.roundQualification);
+
+      const total = Object.values(categories).reduce((sum, value) => sum + value, 0);
+      return { rows, categories, total };
+    }
+
+    function readFormResult() {
+      return {
+        matchId: selectedMatchId,
+        homeScore: toNumber(document.getElementById('homeScore')?.value),
+        awayScore: toNumber(document.getElementById('awayScore')?.value),
+        homePenalties: toNumber(document.getElementById('homePenalties')?.value, true),
+        awayPenalties: toNumber(document.getElementById('awayPenalties')?.value, true),
+        homeYellow: toNumber(document.getElementById('homeYellow')?.value),
+        awayYellow: toNumber(document.getElementById('awayYellow')?.value),
+        homeRed: toNumber(document.getElementById('homeRed')?.value),
+        awayRed: toNumber(document.getElementById('awayRed')?.value),
+        homeQualified: Boolean(document.getElementById('homeQualified')?.checked),
+        awayQualified: Boolean(document.getElementById('awayQualified')?.checked)
+      };
+    }
+
+    function renderPointRows(points) {
+      const rows = points.rows.length ? points.rows : [{ label: 'No points', value: 0 }];
+      return rows.map(row => `
+        <div class="point-line">
+          <span>${escapeHtml(row.label)}</span>
+          <strong>${row.value > 0 ? '+' : ''}${row.value}</strong>
+        </div>
+      `).join('') + `
+        <div class="point-line total">
+          <span>Total</span>
+          <strong>${points.total > 0 ? '+' : ''}${points.total}</strong>
+        </div>
+      `;
+    }
+
+    function updatePreview() {
+      const match = matches.find(item => item.matchId === selectedMatchId);
+      if (!match) return;
+      const previewResult = readFormResult();
+      const home = calculateSidePoints(match, previewResult, 'home');
+      const away = calculateSidePoints(match, previewResult, 'away');
+      document.getElementById('homePreview').innerHTML = renderPointRows(home);
+      document.getElementById('awayPreview').innerHTML = renderPointRows(away);
+    }
+
+    function renderEditor(match) {
+      const result = getResult(match.matchId) || {};
+      const homeName = getTeamName(match.homeTeam);
+      const awayName = getTeamName(match.awayTeam);
+      editor.innerHTML = `
+        <div class="editor-head">
+          <h2>${escapeHtml(homeName)} v ${escapeHtml(awayName)}</h2>
+          <div class="meta">${escapeHtml(match.matchId)} · ${escapeHtml(match.roundCode)} · ${escapeHtml(formatDate(match.date))} BST</div>
+        </div>
+        <div class="form-grid">
+          <div class="section-title">Goals</div>
+          <label>${escapeHtml(homeName)}<input id="homeScore" type="number" min="0" step="1" value="${result.homeScore ?? ''}" /></label>
+          <label>${escapeHtml(awayName)}<input id="awayScore" type="number" min="0" step="1" value="${result.awayScore ?? ''}" /></label>
+          <label>Home pens<input id="homePenalties" type="number" min="0" step="1" value="${result.homePenalties ?? ''}" /></label>
+          <label>Away pens<input id="awayPenalties" type="number" min="0" step="1" value="${result.awayPenalties ?? ''}" /></label>
+
+          <div class="section-title">Cards</div>
+          <label>Home yellow<input id="homeYellow" type="number" min="0" step="1" value="${result.homeYellow ?? 0}" /></label>
+          <label>Away yellow<input id="awayYellow" type="number" min="0" step="1" value="${result.awayYellow ?? 0}" /></label>
+          <label>Home red<input id="homeRed" type="number" min="0" step="1" value="${result.homeRed ?? 0}" /></label>
+          <label>Away red<input id="awayRed" type="number" min="0" step="1" value="${result.awayRed ?? 0}" /></label>
+
+          <div class="section-title">Qualification</div>
+          <div class="check-row">
+            <label><input id="homeQualified" type="checkbox" ${result.homeQualified ? 'checked' : ''} /> ${escapeHtml(homeName)} qualified</label>
+            <label><input id="awayQualified" type="checkbox" ${result.awayQualified ? 'checked' : ''} /> ${escapeHtml(awayName)} qualified</label>
+          </div>
+        </div>
+        <div class="preview">
+          <div class="preview-grid">
+            <div class="points-card">
+              <h3>${escapeHtml(homeName)}</h3>
+              <div id="homePreview"></div>
+            </div>
+            <div class="points-card">
+              <h3>${escapeHtml(awayName)}</h3>
+              <div id="awayPreview"></div>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="submitResult" type="button">Submit result and publish</button>
+        </div>
+      `;
+
+      editor.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', updatePreview);
+        input.addEventListener('change', updatePreview);
+      });
+      document.getElementById('submitResult').addEventListener('click', submitResult);
+      updatePreview();
+    }
+
+    function getFilteredMatches() {
+      const round = roundFilter.value;
+      const status = statusFilter.value;
+      return [...matches]
+        .filter(match => round === 'all' || match.roundCode === round)
+        .filter(match => {
+          const played = isPlayed(getResult(match.matchId)) || match.played;
+          if (status === 'played') return played;
+          if (status === 'pending') return !played;
+          return true;
+        })
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+
+    function renderMatches() {
+      const filtered = getFilteredMatches();
+      matchCount.textContent = `${filtered.length} matches`;
+      matchesList.innerHTML = filtered.map(match => {
+        const result = getResult(match.matchId) || match.result;
+        const played = isPlayed(result);
+        const score = played ? `${result.homeScore}-${result.awayScore}` : 'Pending';
+        return `
+          <button class="match-row ${played ? 'played' : ''} ${selectedMatchId === match.matchId ? 'active' : ''}" type="button" data-match-id="${escapeHtml(match.matchId)}">
+            <span class="match-id">${escapeHtml(match.matchId)}<br>${escapeHtml(match.roundCode)}</span>
+            <span>
+              <span class="fixture">${escapeHtml(getTeamName(match.homeTeam))} v ${escapeHtml(getTeamName(match.awayTeam))}</span>
+              <span class="meta">${escapeHtml(formatDate(match.date))} BST · ${escapeHtml(match.location)}</span>
+            </span>
+            <span class="score-tag ${played ? '' : 'pending'}">${escapeHtml(score)}</span>
+          </button>
+        `;
+      }).join('');
+
+      matchesList.querySelectorAll('.match-row').forEach(row => {
+        row.addEventListener('click', () => {
+          selectedMatchId = row.dataset.matchId;
+          renderMatches();
+          renderEditor(matches.find(match => match.matchId === selectedMatchId));
+        });
+      });
+    }
+
+    async function submitResult() {
+      const token = tokenInput.value.trim();
+      if (!token) {
+        setStatus('Enter your admin token before submitting.', 'error');
+        return;
+      }
+
+      const result = readFormResult();
+      if (result.homeScore === null || result.awayScore === null) {
+        setStatus('Enter both goals scores before submitting.', 'error');
+        return;
+      }
+
+      localStorage.setItem('pickerGameAdminToken', token);
+      document.getElementById('submitResult').disabled = true;
+      setStatus('Saving result and starting publish...');
+
+      try {
+        const response = await fetch('/api/admin/results', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(result)
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || data.ok === false) {
+          throw new Error((data.errors || ['Could not save result.']).join(' '));
+        }
+
+        const index = results.findIndex(item => item.matchId === result.matchId);
+        if (index >= 0) results[index] = result;
+        else results.push(result);
+        renderMatches();
+        setStatus('Result saved. The publish workflow has started.', 'success');
+      } catch (error) {
+        setStatus(error.message, 'error');
+      } finally {
+        const button = document.getElementById('submitResult');
+        if (button) button.disabled = false;
+      }
+    }
+
+    function populateFilters() {
+      roundFilter.innerHTML = '<option value="all">All rounds</option>' +
+        ROUND_ORDER.map(round => `<option value="${round}">${round}</option>`).join('');
+      roundFilter.addEventListener('change', renderMatches);
+      statusFilter.addEventListener('change', renderMatches);
+    }
+
+    async function init() {
+      try {
+        [matches, teams, results, settings] = await Promise.all([
+          loadJson(DATA_URLS.matches),
+          loadJson(DATA_URLS.teams),
+          loadJson(DATA_URLS.results),
+          loadJson(DATA_URLS.settings)
+        ]);
+        populateFilters();
+        renderMatches();
+        setStatus('Select a match to enter or update its result.');
+      } catch (error) {
+        setStatus(error.message, 'error');
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

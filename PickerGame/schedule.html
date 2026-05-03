@@ -656,9 +656,9 @@
       return '<div class="points-panel"><div class="points-empty">PickerGame points appear here once the match is played.</div></div>';
     }
 
-    const home = calculateSidePoints(match, result, 'home');
-    const away = calculateSidePoints(match, result, 'away');
-    const matchTotal = home.total + away.total;
+    const home = match.pickerGamePoints?.home || calculateSidePoints(match, result, 'home');
+    const away = match.pickerGamePoints?.away || calculateSidePoints(match, result, 'away');
+    const matchTotal = match.pickerGamePoints?.total ?? (home.total + away.total);
 
     return `
       <div class="points-panel">
@@ -714,7 +714,7 @@
   }
 
   function renderMatch(match) {
-    const result = getResult(match.matchId);
+    const result = match.result || getResult(match.matchId);
     const dateParts = formatDateParts(match.date);
     const playedClass = isPlayed(result) ? ' played' : '';
 

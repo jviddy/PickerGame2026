@@ -399,7 +399,7 @@
 
 <script>
   const DATA_URLS = {
-    countryScores: './Data/countryScores.json'
+    teams: './Data/teams.json'
   };
 
   const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
@@ -430,7 +430,8 @@
 
   async function loadData() {
     try {
-      countryScores = await loadJson(DATA_URLS.countryScores);
+      const teams = await loadJson(DATA_URLS.teams);
+      countryScores = teams.map(normaliseTeamScore);
       return true;
     } catch (error) {
       showError(error.message);
@@ -487,6 +488,38 @@
     return sorted;
   }
 
+  function normaliseTeamScore(team) {
+    const byRound = {};
+    const detailsByRound = {};
+    ROUND_ORDER.forEach(round => {
+      byRound[round] = 0;
+      detailsByRound[round] = [];
+    });
+
+    (team.scoresByRound || []).forEach(roundScore => {
+      const round = roundScore.roundCode;
+      byRound[round] = roundScore.total || 0;
+      detailsByRound[round] = (roundScore.matches || []).map(match => ({
+        matchId: match.matchId,
+        date: match.date || '',
+        roundCode: round,
+        fixture: match.fixture,
+        points: {
+          items: match.points || [],
+          total: match.total || 0
+        }
+      }));
+    });
+
+    return {
+      ...team,
+      totalPoints: team.totalPoints || 0,
+      inCompetition: team.inCompetition !== false,
+      byRound,
+      detailsByRound
+    };
+  }
+
   function renderPointChips(items) {
     if (!items.length) return '<span class="point-chip">0</span>';
     return items.map(item => `
@@ -512,7 +545,7 @@
                   <div class="breakdown-match">
                     <div>
                       <div class="breakdown-fixture" title="${escapeHtml(detail.fixture)}">${escapeHtml(detail.fixture)}</div>
-                      <div class="breakdown-date">${escapeHtml(formatDate(detail.date))} BST</div>
+                    <div class="breakdown-date">${detail.date ? `${escapeHtml(formatDate(detail.date))} BST` : escapeHtml(detail.matchId)}</div>
                     </div>
                     <div class="point-chips">${renderPointChips(detail.points.items)}</div>
                     <div class="breakdown-total">${detail.points.total > 0 ? '+' : ''}${detail.points.total}</div>

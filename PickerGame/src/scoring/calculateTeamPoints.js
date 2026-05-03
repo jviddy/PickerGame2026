@@ -258,6 +258,13 @@ export function calculateTeamPoints(settings, teams, matches, results) {
     } else if (homeGoals < awayGoals) {
       homeResult = 'loss';
       awayResult = 'win';
+    } else if (
+      isKnockoutRound(canonicalRound) &&
+      result.homePenalties !== null &&
+      result.awayPenalties !== null
+    ) {
+      homeResult = result.homePenalties > result.awayPenalties ? 'win' : 'loss';
+      awayResult = result.awayPenalties > result.homePenalties ? 'win' : 'loss';
     } else {
       homeResult = 'draw';
       awayResult = 'draw';

@@ -13,6 +13,7 @@ const staticFiles = [
   'schedule.html',
   'countries.html',
   'admin.html',
+  'admin-results.html',
 ];
 
 const indexHtml = `<!DOCTYPE html>

@@ -10,7 +10,12 @@ import { fileURLToPath } from 'url';
 import { loadAllInputs, writeJSON } from '../src/scoring/io.js';
 import { calculateTeamPoints } from '../src/scoring/calculateTeamPoints.js';
 import { calculateEntrantTotals } from '../src/scoring/calculateEntrantTotals.js';
-import { calculateCountryScores, calculateMatchPoints } from '../src/scoring/calculateCountryScores.js';
+import {
+  calculateCountryScores,
+  calculateMatchPoints,
+  calculateScoredMatches,
+  calculateScoredTeams,
+} from '../src/scoring/calculateCountryScores.js';
 
 // ESM __dirname equivalent
 const __filename = fileURLToPath(import.meta.url);
@@ -71,7 +76,13 @@ async function main() {
     // Calculate match score display data
     console.log('\n🧾 Computing match point breakdowns...');
     const matchPoints = calculateMatchPoints(settings, teams, matches, results);
+    const scoredMatches = calculateScoredMatches(settings, teams, matches, results);
     console.log(`✓ Calculated match points for ${formatNumber(matchPoints.length)} matches`);
+
+    // Store country score breakdowns on teams for the UI and static data
+    console.log('\n🗂️ Updating team score records...');
+    const scoredTeams = calculateScoredTeams(settings, teams, matches, results);
+    console.log(`✓ Added round score records to ${formatNumber(scoredTeams.length)} teams`);
     
     // Calculate entrant totals
     console.log('\n🏆 Computing entrant totals...');
@@ -94,6 +105,8 @@ async function main() {
 
     for (const outputDir of outputDirs) {
       const outputs = [
+        ['teams.json', scoredTeams],
+        ['matches.json', scoredMatches],
         ['teamPoints.json', teamPoints],
         ['entrantTotals.json', entrantTotals],
         ['countryScores.json', countryScores],
