@@ -7,9 +7,90 @@
     "location": "Estadio Azteca, Mexico City",
     "homeTeam": "A1",
     "awayTeam": "A2",
-    "played": false,
-    "result": null,
-    "pickerGamePoints": null
+    "played": true,
+    "result": {
+      "homeScore": 1,
+      "awayScore": 2,
+      "homePenalties": null,
+      "awayPenalties": null,
+      "wentToPenalties": false,
+      "homeYellow": 0,
+      "awayYellow": 0,
+      "homeRed": 0,
+      "awayRed": 0,
+      "homeQualified": false,
+      "awayQualified": false
+    },
+    "pickerGamePoints": {
+      "home": {
+        "resultType": "loss",
+        "goalsFor": 1,
+        "goalsAgainst": 2,
+        "penaltiesFor": null,
+        "penaltiesAgainst": null,
+        "yellowCards": 0,
+        "redCards": 0,
+        "qualified": false,
+        "categories": {
+          "result": 0,
+          "goalsScored": 3,
+          "goalsConceded": -4,
+          "penalties": 0,
+          "disciplinary": 0,
+          "qualification": 0
+        },
+        "items": [
+          {
+            "label": "GF",
+            "value": 3,
+            "category": "goalsScored"
+          },
+          {
+            "label": "GA",
+            "value": -4,
+            "category": "goalsConceded"
+          }
+        ],
+        "total": -1
+      },
+      "away": {
+        "resultType": "win",
+        "goalsFor": 2,
+        "goalsAgainst": 1,
+        "penaltiesFor": null,
+        "penaltiesAgainst": null,
+        "yellowCards": 0,
+        "redCards": 0,
+        "qualified": false,
+        "categories": {
+          "result": 5,
+          "goalsScored": 6,
+          "goalsConceded": -2,
+          "penalties": 0,
+          "disciplinary": 0,
+          "qualification": 0
+        },
+        "items": [
+          {
+            "label": "Win",
+            "value": 5,
+            "category": "result"
+          },
+          {
+            "label": "GF",
+            "value": 6,
+            "category": "goalsScored"
+          },
+          {
+            "label": "GA",
+            "value": -2,
+            "category": "goalsConceded"
+          }
+        ],
+        "total": 9
+      },
+      "total": 8
+    }
   },
   {
     "matchId": "M002",
@@ -19,9 +100,90 @@
     "location": "Estadio Akron, Guadalajara",
     "homeTeam": "A3",
     "awayTeam": "A4",
-    "played": false,
-    "result": null,
-    "pickerGamePoints": null
+    "played": true,
+    "result": {
+      "homeScore": 3,
+      "awayScore": 2,
+      "homePenalties": null,
+      "awayPenalties": null,
+      "wentToPenalties": false,
+      "homeYellow": 0,
+      "awayYellow": 0,
+      "homeRed": 0,
+      "awayRed": 0,
+      "homeQualified": false,
+      "awayQualified": false
+    },
+    "pickerGamePoints": {
+      "home": {
+        "resultType": "win",
+        "goalsFor": 3,
+        "goalsAgainst": 2,
+        "penaltiesFor": null,
+        "penaltiesAgainst": null,
+        "yellowCards": 0,
+        "redCards": 0,
+        "qualified": false,
+        "categories": {
+          "result": 5,
+          "goalsScored": 9,
+          "goalsConceded": -4,
+          "penalties": 0,
+          "disciplinary": 0,
+          "qualification": 0
+        },
+        "items": [
+          {
+            "label": "Win",
+            "value": 5,
+            "category": "result"
+          },
+          {
+            "label": "GF",
+            "value": 9,
+            "category": "goalsScored"
+          },
+          {
+            "label": "GA",
+            "value": -4,
+            "category": "goalsConceded"
+          }
+        ],
+        "total": 10
+      },
+      "away": {
+        "resultType": "loss",
+        "goalsFor": 2,
+        "goalsAgainst": 3,
+        "penaltiesFor": null,
+        "penaltiesAgainst": null,
+        "yellowCards": 0,
+        "redCards": 0,
+        "qualified": false,
+        "categories": {
+          "result": 0,
+          "goalsScored": 6,
+          "goalsConceded": -6,
+          "penalties": 0,
+          "disciplinary": 0,
+          "qualification": 0
+        },
+        "items": [
+          {
+            "label": "GF",
+            "value": 6,
+            "category": "goalsScored"
+          },
+          {
+            "label": "GA",
+            "value": -6,
+            "category": "goalsConceded"
+          }
+        ],
+        "total": 0
+      },
+      "total": 10
+    }
   },
   {
     "matchId": "M003",

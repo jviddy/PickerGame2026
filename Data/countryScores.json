@@ -8,29 +8,56 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/60px-Flag_of_Mexico.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": -1,
     "pointsTotals": {
       "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsScored": 3,
+      "goalsConceded": -4,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": -1
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -1,
+        "matches": [
+          {
+            "matchId": "M001",
+            "date": "2026-06-11T19:00:00Z",
+            "fixture": "Mexico v South Africa",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -1
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -130,7 +157,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": -1,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -141,7 +168,45 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M001",
+          "date": "2026-06-11T19:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Mexico v South Africa",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -1
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -161,29 +226,61 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/60px-Flag_of_South_Africa.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 9,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 5,
+      "goalsScored": 6,
+      "goalsConceded": -2,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 9
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 5,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 9,
+        "matches": [
+          {
+            "matchId": "M001",
+            "date": "2026-06-11T19:00:00Z",
+            "fixture": "Mexico v South Africa",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 9
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -283,7 +380,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 9,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -294,7 +391,50 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M001",
+          "date": "2026-06-11T19:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Mexico v South Africa",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 5,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 9
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -314,29 +454,61 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/60px-Flag_of_South_Korea.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 10,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 5,
+      "goalsScored": 9,
+      "goalsConceded": -4,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 10
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 10,
+        "matches": [
+          {
+            "matchId": "M002",
+            "date": "2026-06-12T02:00:00Z",
+            "fixture": "South Korea v Czechia",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 10
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -436,7 +608,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 10,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -447,7 +619,50 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M002",
+          "date": "2026-06-12T02:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "South Korea v Czechia",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 5,
+              "goalsScored": 9,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 10
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -470,8 +685,8 @@
     "totalPoints": 0,
     "pointsTotals": {
       "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsScored": 6,
+      "goalsConceded": -6,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
@@ -482,14 +697,41 @@
       {
         "roundCode": "GS1",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
         "total": 0,
-        "matches": []
+        "matches": [
+          {
+            "matchId": "M002",
+            "date": "2026-06-12T02:00:00Z",
+            "fixture": "South Korea v Czechia",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 0
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -600,7 +842,45 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M002",
+          "date": "2026-06-12T02:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "South Korea v Czechia",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 0
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],

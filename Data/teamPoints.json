@@ -1,9 +1,9 @@
 [
   {
-    "countryName": "Mexico",
-    "totalPoints": 0,
+    "countryName": "South Korea",
+    "totalPoints": 10,
     "byRound": {
-      "GS1": 0,
+      "GS1": 10,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -14,10 +14,10 @@
       "F": 0
     },
     "byCategory": {
-      "win": 0,
+      "win": 5,
       "draw": 0,
-      "scoring": 0,
-      "conceding": 0,
+      "scoring": 9,
+      "conceding": -4,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
@@ -28,9 +28,9 @@
   },
   {
     "countryName": "South Africa",
-    "totalPoints": 0,
+    "totalPoints": 9,
     "byRound": {
-      "GS1": 0,
+      "GS1": 9,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -41,37 +41,10 @@
       "F": 0
     },
     "byCategory": {
-      "win": 0,
+      "win": 5,
       "draw": 0,
-      "scoring": 0,
-      "conceding": 0,
-      "yellowCard": 0,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "South Korea",
-    "totalPoints": 0,
-    "byRound": {
-      "GS1": 0,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 0,
-      "scoring": 0,
-      "conceding": 0,
+      "scoring": 6,
+      "conceding": -2,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
@@ -97,8 +70,8 @@
     "byCategory": {
       "win": 0,
       "draw": 0,
-      "scoring": 0,
-      "conceding": 0,
+      "scoring": 6,
+      "conceding": -6,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
@@ -1287,6 +1260,33 @@
       "draw": 0,
       "scoring": 0,
       "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Mexico",
+    "totalPoints": -1,
+    "byRound": {
+      "GS1": -1,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 3,
+      "conceding": -4,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
