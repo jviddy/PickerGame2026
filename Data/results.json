@@ -1,14 +1,14 @@
 [
   {
     "matchId": "M001",
-    "homeScore": null,
-    "awayScore": null,
+    "homeScore": 1,
+    "awayScore": 2,
     "homePenalties": null,
     "awayPenalties": null,
-    "homeYellow": null,
-    "awayYellow": null,
-    "homeRed": null,
-    "awayRed": null,
+    "homeYellow": 0,
+    "awayYellow": 0,
+    "homeRed": 0,
+    "awayRed": 0,
     "homeQualified": false,
     "awayQualified": false
   },
