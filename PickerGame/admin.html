@@ -85,7 +85,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto auto auto;
+      grid-template-columns: minmax(220px, 1fr) auto auto;
       gap: 10px;
       padding: 14px;
       align-items: end;
@@ -305,8 +305,7 @@
           <input id="adminToken" type="password" autocomplete="current-password" />
         </label>
         <button id="loadBtn" type="button">Load entries</button>
-        <button id="saveBtn" class="save-btn" type="button" disabled>Save payment status</button>
-        <button id="publishBtn" class="publish" type="button" disabled>Publish entries</button>
+        <button id="updateBtn" class="publish" type="button" disabled>Update status</button>
       </div>
       <div class="filter-bar">
         <span>Filter:</span>
@@ -344,8 +343,7 @@
   <script>
     const tokenInput = document.getElementById('adminToken');
     const loadBtn = document.getElementById('loadBtn');
-    const saveBtn = document.getElementById('saveBtn');
-    const publishBtn = document.getElementById('publishBtn');
+    const updateBtn = document.getElementById('updateBtn');
     const statusEl = document.getElementById('status');
     const entryCountEl = document.getElementById('entryCount');
     const latestEntryEl = document.getElementById('latestEntry');
@@ -426,8 +424,7 @@
       latestEntryEl.textContent = entries[0]
         ? `Latest: ${formatDate(entries[0].submittedAt)}`
         : 'No submissions loaded';
-      saveBtn.disabled = false;
-      publishBtn.disabled = false;
+      updateBtn.disabled = false;
     }
 
     async function requestJson(url, options = {}) {
@@ -448,8 +445,7 @@
 
     async function loadEntries() {
       loadBtn.disabled = true;
-      saveBtn.disabled = true;
-      publishBtn.disabled = true;
+      updateBtn.disabled = true;
       setStatus('Loading entries...');
 
       try {
@@ -466,9 +462,9 @@
       }
     }
 
-    async function savePaidStatus() {
-      saveBtn.disabled = true;
-      setStatus('Saving payment statuses and starting publish...');
+    async function updateStatus() {
+      updateBtn.disabled = true;
+      setStatus('Saving payment statuses and publishing...');
 
       const paidIds = getCheckedPaidIds();
 
@@ -478,28 +474,13 @@
           body: JSON.stringify({ paidIds }),
         });
 
-        // Update in-memory state to reflect new paid status
         allEntries = allEntries.map((e) => ({ ...e, paid: paidIds.includes(e.id) }));
         renderEntries(allEntries);
-        setStatus(`Payment statuses saved (${paidIds.length} paid). Publish workflow started.`, 'success');
+        setStatus(`Updated: ${paidIds.length} paid. Publish workflow started.`, 'success');
       } catch (error) {
         setStatus(error.message, 'error');
       } finally {
-        saveBtn.disabled = false;
-      }
-    }
-
-    async function publishEntries() {
-      publishBtn.disabled = true;
-      setStatus('Starting publish workflow...');
-
-      try {
-        await requestJson('/api/admin/publish', { method: 'POST' });
-        setStatus('Publish started. The leaderboard will update after the workflow finishes.', 'success');
-      } catch (error) {
-        setStatus(error.message, 'error');
-      } finally {
-        publishBtn.disabled = false;
+        updateBtn.disabled = false;
       }
     }
 
@@ -513,8 +494,7 @@
     });
 
     loadBtn.addEventListener('click', loadEntries);
-    saveBtn.addEventListener('click', savePaidStatus);
-    publishBtn.addEventListener('click', publishEntries);
+    updateBtn.addEventListener('click', updateStatus);
 
     if (savedToken) loadEntries();
   </script>
