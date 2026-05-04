@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entries – PickerGame 2026</title>
+  <style>
+    :root {
+      --pitch: #0b4f2f;
+      --pitch-mid: #167a49;
+      --pitch-bright: #22a861;
+      --lime: #8fcf45;
+      --ink: #1f2933;
+      --muted: #64748b;
+      --line: #d9e2dc;
+      --soft: #f5f8f6;
+      --gold: #d79a2b;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #eef4f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      color: var(--white);
+      background: linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
+      box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+    }
+
+    main {
+      width: min(900px, calc(100% - 28px));
+      margin: 24px auto 48px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--pitch);
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 11px 16px;
+      text-align: left;
+      border-top: 1px solid var(--line);
+      font-size: 0.92rem;
+    }
+
+    th {
+      color: var(--muted);
+      background: #fbfcfb;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 800;
+    }
+
+    .team-name {
+      font-weight: 800;
+      color: var(--pitch);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .badge-paid {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-pending {
+      background: #f1f5f9;
+      color: var(--muted);
+    }
+
+    .empty {
+      padding: 36px 18px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .error {
+      padding: 36px 18px;
+      text-align: center;
+      color: #b91c1c;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .topbar-inner { display: block; }
+      .nav { margin-top: 10px; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>PickerGame 2026</h1>
+      <nav class="nav" aria-label="Site navigation">
+        <a href="entry.html">Enter</a>
+        <a href="entries.html" aria-current="page">Entries</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="countries.html">Countries</a>
+        <a href="schedule.html">Matches</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Entries</h2>
+        <span id="countEl" class="count"></span>
+      </div>
+      <div id="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Team name</th>
+              <th>Person</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="entriesBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyEl" class="empty" style="display:none">No entries yet.</div>
+      <div id="errorEl" class="error" style="display:none"></div>
+    </div>
+  </main>
+
+  <script>
+    const entriesBody = document.getElementById('entriesBody');
+    const countEl = document.getElementById('countEl');
+    const emptyEl = document.getElementById('emptyEl');
+    const errorEl = document.getElementById('errorEl');
+    const tableWrap = document.getElementById('tableWrap');
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (c) => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]
+      ));
+    }
+
+    function render(entries) {
+      if (!entries.length) {
+        tableWrap.style.display = 'none';
+        emptyEl.style.display = 'block';
+        countEl.textContent = '0 entries';
+        return;
+      }
+
+      countEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
+      entriesBody.innerHTML = entries.map((e) => {
+        const badge = e.paid
+          ? '<span class="badge badge-paid">Paid</span>'
+          : '<span class="badge badge-pending">Pending</span>';
+        return `
+          <tr>
+            <td class="team-name">${escapeHtml(e.teamName)}</td>
+            <td>${escapeHtml(e.entrantName)}</td>
+            <td>${badge}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function init() {
+      try {
+        const response = await fetch(`./Data/publicEntries.json?v=${Date.now()}`);
+        if (!response.ok) throw new Error('Could not load entries.');
+        const entries = await response.json();
+        render(entries);
+      } catch (error) {
+        tableWrap.style.display = 'none';
+        errorEl.textContent = error.message;
+        errorEl.style.display = 'block';
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

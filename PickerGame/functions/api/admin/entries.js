@@ -21,6 +21,7 @@ function mapEntry(row) {
     tieBreakerAnswers: parseJsonField(row.tie_breaker_answers_json, []),
     totalCost: row.total_cost,
     submittedAt: row.created_at,
+    paid: Boolean(row.paid),
   };
 }
 
@@ -49,7 +50,8 @@ export async function onRequestGet(context) {
           selected_team_ids_json,
           tie_breaker_answers_json,
           total_cost,
-          created_at
+          created_at,
+          paid
         FROM entries
         ORDER BY created_at DESC
       `)

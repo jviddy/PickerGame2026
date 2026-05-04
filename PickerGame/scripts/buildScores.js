@@ -84,16 +84,22 @@ async function main() {
     const scoredTeams = calculateScoredTeams(settings, teams, matches, results);
     console.log(`✓ Added round score records to ${formatNumber(scoredTeams.length)} teams`);
     
-    // Calculate entrant totals
+    // Calculate entrant totals (paid entries only for leaderboard)
     console.log('\n🏆 Computing entrant totals...');
+    const paidEntries = entries.filter((e) => e.paid);
     const entrantTotals = calculateEntrantTotals(
-      entries,
+      paidEntries,
       teamPoints,
       teams,
       matches,
       results,
     );
-    console.log(`✓ Calculated totals for ${formatNumber(entries.length)} entrants`);
+    console.log(`✓ Calculated totals for ${formatNumber(paidEntries.length)} paid entrants (${formatNumber(entries.length)} total)`);
+
+    // Build public entries list (all entries, public fields only)
+    const publicEntries = entries
+      .map((e) => ({ teamName: e.teamName, entrantName: e.entrantName, paid: Boolean(e.paid) }))
+      .sort((a, b) => (b.paid - a.paid) || a.entrantName.localeCompare(b.entrantName));
     
     // Write output files
     console.log('\n💾 Writing output files...');
@@ -111,6 +117,7 @@ async function main() {
         ['entrantTotals.json', entrantTotals],
         ['countryScores.json', countryScores],
         ['matchPoints.json', matchPoints],
+        ['publicEntries.json', publicEntries],
       ];
 
       for (const [fileName, data] of outputs) {

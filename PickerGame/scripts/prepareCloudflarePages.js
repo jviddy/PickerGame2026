@@ -9,6 +9,7 @@ const distDir = path.join(projectRoot, 'dist');
 
 const staticFiles = [
   'entry.html',
+  'entries.html',
   'leaderboard.html',
   'schedule.html',
   'countries.html',

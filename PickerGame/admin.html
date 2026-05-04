@@ -33,8 +33,7 @@
       top: 0;
       z-index: 10;
       color: var(--white);
-      background:
-        linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
+      background: linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
       box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
     }
 
@@ -86,7 +85,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto auto;
+      grid-template-columns: minmax(220px, 1fr) auto auto auto;
       gap: 10px;
       padding: 14px;
       align-items: end;
@@ -101,7 +100,8 @@
       text-transform: uppercase;
     }
 
-    input {
+    input[type="text"],
+    input[type="password"] {
       width: 100%;
       min-height: 40px;
       border: 1px solid var(--line);
@@ -121,12 +121,44 @@
       font: inherit;
       font-weight: 800;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     button:hover:not(:disabled) { background: var(--pitch); }
     button:disabled { cursor: not-allowed; opacity: 0.55; }
+
+    .save-btn { background: var(--pitch-bright); }
+    .save-btn:hover:not(:disabled) { background: var(--pitch-mid); }
     .publish { background: var(--gold); color: #2f2205; }
     .publish:hover:not(:disabled) { background: #bd8520; }
+
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      padding: 0 14px 12px;
+      align-items: center;
+    }
+
+    .filter-bar span {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 2px;
+    }
+
+    .filter-btn {
+      min-height: 30px;
+      padding: 4px 12px;
+      background: var(--soft);
+      color: var(--muted);
+      border: 1px solid var(--line);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .filter-btn:hover:not(:disabled) { background: #e2eae5; }
+    .filter-btn.active { background: var(--pitch-mid); color: var(--white); border-color: var(--pitch-mid); }
 
     .status {
       min-height: 22px;
@@ -157,12 +189,11 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 900px;
+      min-width: 960px;
       background: var(--white);
     }
 
-    th,
-    td {
+    th, td {
       padding: 9px 10px;
       border-top: 1px solid var(--line);
       text-align: left;
@@ -178,9 +209,31 @@
       white-space: nowrap;
     }
 
-    tbody tr:nth-child(10n) {
-      background: #f2f4f3;
+    tbody tr:nth-child(10n) { background: #f2f4f3; }
+
+    td.paid-cell {
+      text-align: center;
+      vertical-align: middle;
+      width: 48px;
     }
+
+    input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      accent-color: var(--pitch-mid);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .badge-paid { background: #dcfce7; color: #166534; }
+    .badge-pending { background: #f1f5f9; color: var(--muted); }
 
     .team-name {
       font-weight: 900;
@@ -221,20 +274,11 @@
     }
 
     @media (max-width: 760px) {
-      .topbar-inner,
-      .summary {
-        display: block;
-      }
-
+      .topbar-inner, .summary { display: block; }
       .nav { margin-top: 10px; justify-content: flex-start; }
-
-      .controls {
-        grid-template-columns: 1fr;
-      }
-
-      button {
-        width: 100%;
-      }
+      .controls { grid-template-columns: 1fr; }
+      button { width: 100%; }
+      .filter-bar { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -245,6 +289,7 @@
       <nav class="nav" aria-label="Admin navigation">
         <a href="admin-results.html">Results Admin</a>
         <a href="entry.html">Entry</a>
+        <a href="entries.html">Entries</a>
         <a href="leaderboard.html">Leaderboard</a>
         <a href="countries.html">Countries</a>
         <a href="schedule.html">Matches</a>
@@ -260,7 +305,14 @@
           <input id="adminToken" type="password" autocomplete="current-password" />
         </label>
         <button id="loadBtn" type="button">Load entries</button>
+        <button id="saveBtn" class="save-btn" type="button" disabled>Save payment status</button>
         <button id="publishBtn" class="publish" type="button" disabled>Publish entries</button>
+      </div>
+      <div class="filter-bar">
+        <span>Filter:</span>
+        <button class="filter-btn active" data-filter="all" type="button">All</button>
+        <button class="filter-btn" data-filter="paid" type="button">Paid</button>
+        <button class="filter-btn" data-filter="pending" type="button">Pending</button>
       </div>
       <div id="status" class="status">Enter your admin token to review submitted entries.</div>
       <div class="summary">
@@ -271,6 +323,8 @@
         <table aria-label="Submitted entries">
           <thead>
             <tr>
+              <th>Paid</th>
+              <th>Status</th>
               <th>Team</th>
               <th>Entrant</th>
               <th>Email</th>
@@ -290,6 +344,7 @@
   <script>
     const tokenInput = document.getElementById('adminToken');
     const loadBtn = document.getElementById('loadBtn');
+    const saveBtn = document.getElementById('saveBtn');
     const publishBtn = document.getElementById('publishBtn');
     const statusEl = document.getElementById('status');
     const entryCountEl = document.getElementById('entryCount');
@@ -299,6 +354,9 @@
 
     const savedToken = localStorage.getItem('pickerGameAdminToken') || '';
     tokenInput.value = savedToken;
+
+    let allEntries = [];
+    let activeFilter = 'all';
 
     function setStatus(message, type = '') {
       statusEl.textContent = message;
@@ -311,34 +369,44 @@
 
     function escapeHtml(value) {
       return String(value ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     }
 
     function formatDate(value) {
       if (!value) return '';
       const date = new Date(value);
       if (Number.isNaN(date.getTime())) return value;
-      return date.toLocaleString('en-GB', {
-        dateStyle: 'medium',
-        timeStyle: 'short',
-      });
+      return date.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+    }
+
+    function getCheckedPaidIds() {
+      return Array.from(entriesBody.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((cb) => cb.dataset.entryId);
     }
 
     function renderEntries(entries) {
-      entriesBody.innerHTML = entries.map((entry) => {
+      const filtered = entries.filter((e) => {
+        if (activeFilter === 'paid') return e.paid;
+        if (activeFilter === 'pending') return !e.paid;
+        return true;
+      });
+
+      entriesBody.innerHTML = filtered.map((entry) => {
         const picks = (entry.selectedTeams || [])
           .map((team) => `<span class="pill">${escapeHtml(team)}</span>`)
           .join('');
-        const tiebreakers = (entry.tieBreakerAnswers || [])
-          .map(escapeHtml)
-          .join(' / ');
+        const tiebreakers = (entry.tieBreakerAnswers || []).map(escapeHtml).join(' / ');
+        const badge = entry.paid
+          ? '<span class="badge badge-paid">Paid</span>'
+          : '<span class="badge badge-pending">Pending</span>';
 
         return `
           <tr>
+            <td class="paid-cell">
+              <input type="checkbox" data-entry-id="${escapeHtml(entry.id)}" ${entry.paid ? 'checked' : ''} aria-label="Mark ${escapeHtml(entry.teamName)} as paid" />
+            </td>
+            <td>${badge}</td>
             <td>
               <div class="team-name">${escapeHtml(entry.teamName)}</div>
               <div class="muted">${escapeHtml(entry.id)}</div>
@@ -353,43 +421,41 @@
         `;
       }).join('');
 
-      emptyState.style.display = entries.length ? 'none' : 'block';
-      entryCountEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
+      emptyState.style.display = filtered.length ? 'none' : 'block';
+      entryCountEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'} · ${entries.filter((e) => e.paid).length} paid`;
       latestEntryEl.textContent = entries[0]
         ? `Latest: ${formatDate(entries[0].submittedAt)}`
         : 'No submissions loaded';
+      saveBtn.disabled = false;
       publishBtn.disabled = false;
     }
 
     async function requestJson(url, options = {}) {
       const token = getToken();
       if (!token) throw new Error('Enter your admin token.');
-
       localStorage.setItem('pickerGameAdminToken', token);
+
       const response = await fetch(url, {
         ...options,
-        headers: {
-          ...(options.headers || {}),
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { ...(options.headers || {}), 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       });
       const data = await response.json().catch(() => ({}));
-
       if (!response.ok || data.ok === false) {
         throw new Error((data.errors || ['Request failed.']).join(' '));
       }
-
       return data;
     }
 
     async function loadEntries() {
       loadBtn.disabled = true;
+      saveBtn.disabled = true;
       publishBtn.disabled = true;
       setStatus('Loading entries...');
 
       try {
         const data = await requestJson('/api/admin/entries');
-        renderEntries(data.entries || []);
+        allEntries = data.entries || [];
+        renderEntries(allEntries);
         setStatus('Entries loaded.', 'success');
       } catch (error) {
         entriesBody.innerHTML = '';
@@ -397,6 +463,29 @@
         setStatus(error.message, 'error');
       } finally {
         loadBtn.disabled = false;
+      }
+    }
+
+    async function savePaidStatus() {
+      saveBtn.disabled = true;
+      setStatus('Saving payment statuses and starting publish...');
+
+      const paidIds = getCheckedPaidIds();
+
+      try {
+        await requestJson('/api/admin/update-paid', {
+          method: 'POST',
+          body: JSON.stringify({ paidIds }),
+        });
+
+        // Update in-memory state to reflect new paid status
+        allEntries = allEntries.map((e) => ({ ...e, paid: paidIds.includes(e.id) }));
+        renderEntries(allEntries);
+        setStatus(`Payment statuses saved (${paidIds.length} paid). Publish workflow started.`, 'success');
+      } catch (error) {
+        setStatus(error.message, 'error');
+      } finally {
+        saveBtn.disabled = false;
       }
     }
 
@@ -414,12 +503,20 @@
       }
     }
 
+    document.querySelectorAll('.filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        renderEntries(allEntries);
+      });
+    });
+
     loadBtn.addEventListener('click', loadEntries);
+    saveBtn.addEventListener('click', savePaidStatus);
     publishBtn.addEventListener('click', publishEntries);
 
-    if (savedToken) {
-      loadEntries();
-    }
+    if (savedToken) loadEntries();
   </script>
 </body>
 </html>

@@ -12,8 +12,8 @@ const workspaceRoot = path.resolve(projectRoot, '..');
 const databaseName = 'pickergame2026-entries';
 
 const selectEntriesSql = [
-  'SELECT team_name, entrant_name, email,',
-  'selected_teams_json, tie_breaker_answers_json, created_at',
+  'SELECT id, team_name, entrant_name, email,',
+  'selected_teams_json, tie_breaker_answers_json, created_at, paid',
   'FROM entries',
   'ORDER BY created_at ASC',
 ].join(' ');
@@ -41,6 +41,7 @@ function parseJsonField(value, fallback, fieldName) {
 
 function toEntry(row) {
   return {
+    id: row.id,
     entrantName: row.entrant_name,
     email: row.email,
     teamName: row.team_name,
@@ -51,6 +52,7 @@ function toEntry(row) {
     ),
     selectedTeams: parseJsonField(row.selected_teams_json, [], 'selected teams'),
     submittedAt: row.created_at,
+    paid: Boolean(row.paid),
   };
 }
 
