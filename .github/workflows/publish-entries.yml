@@ -7,6 +7,14 @@ on:
         description: What started this publish
         required: false
         default: manual
+  push:
+    branches: [main]
+    paths:
+      - 'PickerGame/**.html'
+      - 'PickerGame/functions/**'
+      - 'PickerGame/scripts/**'
+      - 'PickerGame/src/**'
+      - '.github/workflows/publish-entries.yml'
 
 jobs:
   publish:
