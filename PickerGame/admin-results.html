@@ -457,6 +457,14 @@
       return response.json();
     }
 
+    async function loadJsonWithFallback(primaryUrl, fallbackUrl) {
+      try {
+        const response = await fetch(`${primaryUrl}?v=${Date.now()}`);
+        if (response.ok) return response.json();
+      } catch (_) {}
+      return loadJson(fallbackUrl);
+    }
+
     function getTeam(teamRef) {
       return teams.find(team => team.groupId === teamRef || team.countryName === teamRef);
     }
@@ -752,7 +760,7 @@
         [matches, teams, results, settings] = await Promise.all([
           loadJson(DATA_URLS.matches),
           loadJson(DATA_URLS.teams),
-          loadJson(DATA_URLS.results),
+          loadJsonWithFallback(DATA_URLS.results, './Data/results.json'),
           loadJson(DATA_URLS.settings)
         ]);
         populateFilters();
