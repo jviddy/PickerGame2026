@@ -416,7 +416,7 @@
     const DATA_URLS = {
       matches: './Data/matches.json',
       teams: './Data/teams.json',
-      results: './Data/results.json',
+      results: '/api/results',
       settings: './Data/settings.json'
     };
 
@@ -730,6 +730,7 @@
         if (index >= 0) results[index] = result;
         else results.push(result);
         renderMatches();
+        renderEditor(matches.find(m => m.matchId === result.matchId));
         setStatus('Result saved. The publish workflow has started.', 'success');
       } catch (error) {
         setStatus(error.message, 'error');
