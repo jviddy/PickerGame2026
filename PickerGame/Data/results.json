@@ -5,9 +5,9 @@
     "awayScore": 4,
     "homePenalties": null,
     "awayPenalties": null,
-    "homeYellow": 0,
+    "homeYellow": 1,
     "awayYellow": 0,
-    "homeRed": 0,
+    "homeRed": 1,
     "awayRed": 0,
     "homeQualified": false,
     "awayQualified": false
