@@ -218,13 +218,25 @@
     }
     .team {
       display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      min-width: 0;
+    }
+    .team.away {
+      align-items: flex-end;
+      text-align: right;
+    }
+    .team-identity {
+      display: flex;
       align-items: center;
       gap: 8px;
       min-width: 0;
     }
-    .team.away {
-      justify-content: flex-end;
-      text-align: right;
+    .team-cards {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
     }
     .team-name {
       min-width: 0;
@@ -275,13 +287,6 @@
       font-size: 0.68rem;
       font-weight: 900;
       white-space: nowrap;
-    }
-    .match-flags {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      min-height: 16px;
-      margin-top: 7px;
     }
     .card-note {
       display: inline-flex;
@@ -712,31 +717,27 @@
     `;
   }
 
-  function renderCards(result) {
+  function renderTeamCards(result, side) {
     if (!isPlayed(result)) return '';
-    const totalYellow = (result.homeYellow || 0) + (result.awayYellow || 0);
-    const totalRed = (result.homeRed || 0) + (result.awayRed || 0);
-    if (!totalYellow && !totalRed) return '';
+    const yellow = side === 'home' ? (result.homeYellow || 0) : (result.awayYellow || 0);
+    const red = side === 'home' ? (result.homeRed || 0) : (result.awayRed || 0);
+    if (!yellow && !red) return '';
 
     const parts = [];
-    if (totalYellow) {
-      parts.push(`
-        <span class="card-note yellow" title="Yellow cards">
-          ${Array.from({ length: totalYellow }, () => '<span class="card-square yellow"></span>').join('')}
-          <span>${totalYellow} yellow</span>
-        </span>
-      `);
-    }
-    if (totalRed) {
-      parts.push(`
-        <span class="card-note red" title="Red cards">
-          ${Array.from({ length: totalRed }, () => '<span class="card-square red"></span>').join('')}
-          <span>${totalRed} red</span>
-        </span>
-      `);
-    }
+    if (yellow) parts.push(`
+      <span class="card-note yellow" title="${yellow} yellow card${yellow !== 1 ? 's' : ''}">
+        ${Array.from({ length: yellow }, () => '<span class="card-square yellow"></span>').join('')}
+        <span>${yellow}</span>
+      </span>
+    `);
+    if (red) parts.push(`
+      <span class="card-note red" title="${red} red card${red !== 1 ? 's' : ''}">
+        ${Array.from({ length: red }, () => '<span class="card-square red"></span>').join('')}
+        <span>${red}</span>
+      </span>
+    `);
 
-    return `<div class="match-flags">${parts.join('')}</div>`;
+    return `<div class="team-cards">${parts.join('')}</div>`;
   }
 
   function renderMatch(match) {
@@ -757,16 +758,21 @@
         <div class="match-main">
           <div class="teams">
             <div class="team home">
-              ${renderFlag(match.homeTeam, 'Home')}
-              <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamName(match.homeTeam))}</span>
+              <div class="team-identity">
+                ${renderFlag(match.homeTeam, 'Home')}
+                <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamName(match.homeTeam))}</span>
+              </div>
+              ${renderTeamCards(result, 'home')}
             </div>
             ${renderScoreline(match, result)}
             <div class="team away">
-              <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamName(match.awayTeam))}</span>
-              ${renderFlag(match.awayTeam, 'Away')}
+              <div class="team-identity">
+                <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamName(match.awayTeam))}</span>
+                ${renderFlag(match.awayTeam, 'Away')}
+              </div>
+              ${renderTeamCards(result, 'away')}
             </div>
           </div>
-          ${renderCards(result)}
         </div>
         ${renderPointsPanel(match, result)}
       </article>
