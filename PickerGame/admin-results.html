@@ -600,7 +600,7 @@
         editor.innerHTML = '<div class="empty">Select a match to enter or update its result.</div>';
         return;
       }
-      const result = getResult(match.matchId) || {};
+      const result = getDisplayResult(match) || {};
       const homeName = getTeamName(match.homeTeam);
       const awayName = getTeamName(match.awayTeam);
       editor.innerHTML = `
