@@ -557,11 +557,17 @@
   }
 
   function getResult(matchId) {
-    return results.find(result => result.matchId === matchId);
+    if (!matchId || !Array.isArray(results)) return null;
+    return results.find(result => result && result.matchId === matchId) || null;
   }
 
   function isPlayed(result) {
-    return result && result.homeScore !== null && result.awayScore !== null;
+    return Boolean(result && result.homeScore !== null && result.awayScore !== null);
+  }
+
+  function getDisplayResult(match) {
+    if (!match) return null;
+    return match.result || getResult(match.matchId) || null;
   }
 
   function formatDateParts(isoDate) {
@@ -714,7 +720,8 @@
   }
 
   function renderMatch(match) {
-    const result = match.result || getResult(match.matchId);
+    if (!match) return '';
+    const result = getDisplayResult(match);
     const dateParts = formatDateParts(match.date);
     const playedClass = isPlayed(result) ? ' played' : '';
 
@@ -757,7 +764,7 @@
       return sortByKickoff(a, b);
     });
 
-    return sorted.reduce((groups, match) => {
+    return sorted.filter(Boolean).reduce((groups, match) => {
       const key = match.roundCode || match.round;
       if (!groups.has(key)) {
         groups.set(key, { title: match.round || key, matches: [] });
@@ -779,7 +786,7 @@
   }
 
   function groupMatchesByGroup() {
-    const sorted = [...matches].sort((a, b) => {
+    const sorted = [...matches].filter(Boolean).sort((a, b) => {
       const aGroup = getMatchGroup(a).key;
       const bGroup = getMatchGroup(b).key;
       const aIndex = GROUP_ORDER.includes(aGroup) ? GROUP_ORDER.indexOf(aGroup) : GROUP_ORDER.length;

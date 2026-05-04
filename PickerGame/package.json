@@ -11,7 +11,7 @@
     "entries:publish": "npm run entries:export && npm run deploy:cloudflare",
     "build:score": "node scripts/buildScores.js",
     "build:static": "npm run build:score && node scripts/prepareCloudflarePages.js",
-    "deploy:cloudflare": "npm run build:static && wrangler pages deploy dist --project-name=pickergame2026",
+    "deploy:cloudflare": "npm run build:static && npx wrangler pages deploy dist --project-name=pickergame2026",
     "build": "npm run build:score && vite build",
     "preview": "vite preview"
   },

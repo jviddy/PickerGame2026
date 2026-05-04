@@ -466,11 +466,17 @@
     }
 
     function getResult(matchId) {
-      return results.find(result => result.matchId === matchId);
+      if (!matchId || !Array.isArray(results)) return null;
+      return results.find(result => result && result.matchId === matchId) || null;
     }
 
     function isPlayed(result) {
-      return result && result.homeScore !== null && result.awayScore !== null;
+      return Boolean(result && result.homeScore !== null && result.awayScore !== null);
+    }
+
+    function getDisplayResult(match) {
+      if (!match) return null;
+      return getResult(match.matchId) || match.result || null;
     }
 
     function formatDate(isoDate) {
@@ -590,6 +596,10 @@
     }
 
     function renderEditor(match) {
+      if (!match) {
+        editor.innerHTML = '<div class="empty">Select a match to enter or update its result.</div>';
+        return;
+      }
       const result = getResult(match.matchId) || {};
       const homeName = getTeamName(match.homeTeam);
       const awayName = getTeamName(match.awayTeam);
@@ -646,9 +656,10 @@
       const round = roundFilter.value;
       const status = statusFilter.value;
       return [...matches]
+        .filter(Boolean)
         .filter(match => round === 'all' || match.roundCode === round)
         .filter(match => {
-          const played = isPlayed(getResult(match.matchId)) || match.played;
+          const played = isPlayed(getDisplayResult(match)) || match.played;
           if (status === 'played') return played;
           if (status === 'pending') return !played;
           return true;
@@ -660,7 +671,7 @@
       const filtered = getFilteredMatches();
       matchCount.textContent = `${filtered.length} matches`;
       matchesList.innerHTML = filtered.map(match => {
-        const result = getResult(match.matchId) || match.result;
+        const result = getDisplayResult(match);
         const played = isPlayed(result);
         const score = played ? `${result.homeScore}-${result.awayScore}` : 'Pending';
         return `
