@@ -869,7 +869,7 @@
         </div>
         <div class="form-group">
           <div class="tiebreaker-q">In what minute will the last goal be scored in the final? (excl. penalties)</div>
-          <input type="number" id="tb2" placeholder="e.g. 87" min="1" max="120" />
+          <input type="number" id="tb2" placeholder="e.g. 87" min="1" max="150" />
         </div>
 
         <hr class="form-divider" />
@@ -1171,8 +1171,8 @@
     if (!playerName)                       errors.push('Your name is required.');
     if (!email || !email.includes('@'))    errors.push('A valid email address is required.');
     if (!tb1 || isNaN(tb1) || +tb1 < 1)   errors.push('Enter a valid answer for tiebreaker 1.');
-    if (!tb2 || isNaN(tb2) || +tb2 < 1 || +tb2 > 120)
-                                           errors.push('Enter a valid minute (1–120) for tiebreaker 2.');
+    if (!tb2 || isNaN(tb2) || +tb2 < 1 || +tb2 > 150)
+                                           errors.push('Enter a valid minute (1–150) for tiebreaker 2.');
     return errors;
   }
 

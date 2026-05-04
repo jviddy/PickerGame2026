@@ -536,7 +536,7 @@
 
     return `
       <tr class="details-row">
-        <td colspan="${ROUND_ORDER.length + 4}">
+        <td colspan="${ROUND_ORDER.length + 3}">
           <div class="round-detail">
             <div class="round-detail-title">${escapeHtml(title)}</div>
             ${details.length ? `
@@ -566,7 +566,6 @@
         <thead>
           <tr>
             <th class="country-heading">Country</th>
-            <th>Rank</th>
             <th>Status</th>
             ${ROUND_ORDER.map(round => `<th title="${escapeHtml(ROUND_LABELS[round])}">${escapeHtml(round)}</th>`).join('')}
             <th>Total</th>
@@ -586,7 +585,6 @@
                     </div>
                   </div>
                 </td>
-                <td class="rank-cell">${escapeHtml(country.fifaRank)}</td>
                 <td><span class="status-pill ${country.inCompetition ? '' : 'out'}">${country.inCompetition ? 'In' : 'Out'}</span></td>
                 ${ROUND_ORDER.map(round => {
                   const score = country.byRound[round] || 0;

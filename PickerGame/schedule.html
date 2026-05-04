@@ -283,22 +283,24 @@
       min-height: 16px;
       margin-top: 7px;
     }
-    .red-card-note {
+    .card-note {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      color: var(--red);
       font-size: 0.72rem;
       font-weight: 800;
     }
-    .red-square {
+    .card-note.red { color: var(--red); }
+    .card-note.yellow { color: var(--gold-dark); }
+    .card-square {
       display: inline-block;
       width: 9px;
       height: 12px;
       border-radius: 1px;
-      background: var(--red);
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
     }
+    .card-square.red { background: var(--red); }
+    .card-square.yellow { background: var(--gold); }
 
     .points-panel {
       align-self: center;
@@ -710,21 +712,31 @@
     `;
   }
 
-  function renderRedCards(result) {
+  function renderCards(result) {
     if (!isPlayed(result)) return '';
-    const homeRed = result.homeRed || 0;
-    const awayRed = result.awayRed || 0;
-    const totalRed = homeRed + awayRed;
-    if (!totalRed) return '';
+    const totalYellow = (result.homeYellow || 0) + (result.awayYellow || 0);
+    const totalRed = (result.homeRed || 0) + (result.awayRed || 0);
+    if (!totalYellow && !totalRed) return '';
 
-    return `
-      <div class="match-flags">
-        <span class="red-card-note" title="Red cards">
-          ${Array.from({ length: totalRed }, () => '<span class="red-square"></span>').join('')}
+    const parts = [];
+    if (totalYellow) {
+      parts.push(`
+        <span class="card-note yellow" title="Yellow cards">
+          ${Array.from({ length: totalYellow }, () => '<span class="card-square yellow"></span>').join('')}
+          <span>${totalYellow} yellow</span>
+        </span>
+      `);
+    }
+    if (totalRed) {
+      parts.push(`
+        <span class="card-note red" title="Red cards">
+          ${Array.from({ length: totalRed }, () => '<span class="card-square red"></span>').join('')}
           <span>${totalRed} red</span>
         </span>
-      </div>
-    `;
+      `);
+    }
+
+    return `<div class="match-flags">${parts.join('')}</div>`;
   }
 
   function renderMatch(match) {
@@ -754,7 +766,7 @@
               ${renderFlag(match.awayTeam, 'Away')}
             </div>
           </div>
-          ${renderRedCards(result)}
+          ${renderCards(result)}
         </div>
         ${renderPointsPanel(match, result)}
       </article>
