@@ -9,10 +9,10 @@
   <style>
     /* ─── Tokens ──────────────────────────────────────────────────── */
     :root {
-      --navy:       #0b4f2f;
-      --navy-light: #147a45;
-      --gold:       #f2c94c;
-      --gold-dark:  #c99a1c;
+      --navy:       #1a3352;
+      --navy-light: #2d5a8e;
+      --gold:       #e86f2c;
+      --gold-dark:  #c4561a;
       --green:      #22a861;
       --green-bg:   #e4f7eb;
       --red:        #dc2626;
@@ -46,7 +46,7 @@
     /* ─── Header ────────────────────────────────────────────────────*/
     header {
       background:
-        linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
+        linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
       color: var(--white);
       padding: 0 20px;
       position: sticky;
@@ -732,7 +732,72 @@
     .success-panel h2 { margin: 0 0 8px; color: var(--green); }
     .success-panel p { color: var(--gray-600); font-size: 0.9rem; margin: 0; }
 
-    /* Points info */
+    /* ─── Intro modal ──────────────────────────────────────────────*/
+    .intro-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.65);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(2px);
+    }
+    .intro-overlay.hidden { display: none; }
+    .intro-box {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      padding: 32px;
+      max-width: 480px;
+      width: 100%;
+    }
+    .intro-box h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .intro-box .intro-sub {
+      color: var(--gray-600);
+      margin: 0 0 20px;
+      font-size: 0.9rem;
+    }
+    .intro-rules {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .intro-rules li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .intro-rules li .icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .intro-dismiss {
+      width: 100%;
+      padding: 13px;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .intro-dismiss:hover { background: var(--gold-dark); }
+
+  /* Points info */
     .points-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -752,6 +817,22 @@
   </style>
 </head>
 <body>
+
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-box" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <h2 id="introTitle">Welcome to PickerGame 2026</h2>
+    <p class="intro-sub">Pick 8 countries to support through the FIFA World Cup. Score points every time your teams win, score, or advance.</p>
+    <ul class="intro-rules">
+      <li><span class="icon">🏳️</span><span>Pick exactly <strong>8 countries</strong> from the 48 in the tournament</span></li>
+      <li><span class="icon">💰</span><span>Stay within your <strong>£150m squad budget</strong> — popular teams cost more</span></li>
+      <li><span class="icon">⚽</span><span>Earn points for wins, goals scored, clean sheets, and knockout qualification</span></li>
+      <li><span class="icon">🃏</span><span>Yellow and red cards <strong>cost you points</strong>, so pick disciplined teams</span></li>
+      <li><span class="icon">🏆</span><span>Top of the leaderboard when the final whistle blows wins the pot</span></li>
+      <li><span class="icon">💳</span><span>Entry fee applies — only paid entries appear on the leaderboard</span></li>
+    </ul>
+    <button class="intro-dismiss" id="introClose">Let me pick my teams →</button>
+  </div>
+</div>
 
 <header>
   <div class="header-inner">
@@ -1231,6 +1312,22 @@
     successPanel.style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  /* ─── Intro modal ─────────────────────────────────────────── */
+  (function () {
+    const overlay = document.getElementById('introOverlay');
+    const closeBtn = document.getElementById('introClose');
+    if (localStorage.getItem('pickerGameIntroDismissed')) {
+      overlay.classList.add('hidden');
+    }
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      localStorage.setItem('pickerGameIntroDismissed', '1');
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeBtn.click();
+    });
+  })();
 
   /* ─── Init ────────────────────────────────────────────────── */
   loadTeams();

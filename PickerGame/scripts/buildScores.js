@@ -86,7 +86,7 @@ async function main() {
     
     // Calculate entrant totals (paid entries only for leaderboard)
     console.log('\n🏆 Computing entrant totals...');
-    const paidEntries = entries.filter((e) => e.paid);
+    const paidEntries = entries.filter((e) => e.paid && !e.removed);
     const entrantTotals = calculateEntrantTotals(
       paidEntries,
       teamPoints,
@@ -98,6 +98,7 @@ async function main() {
 
     // Build public entries list (all entries, public fields only)
     const publicEntries = entries
+      .filter((e) => !e.removed)
       .map((e) => ({ teamName: e.teamName, entrantName: e.entrantName, paid: Boolean(e.paid) }))
       .sort((a, b) => (b.paid - a.paid) || a.entrantName.localeCompare(b.entrantName));
     

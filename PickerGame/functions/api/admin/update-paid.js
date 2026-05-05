@@ -19,17 +19,18 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: false, errors: ['GitHub publish token is not configured.'] }, 500);
   }
 
-  let paidIds;
+  let paidIds, removedIds;
   try {
     const body = await context.request.json();
     if (!Array.isArray(body.paidIds)) throw new Error('paidIds must be an array.');
     paidIds = body.paidIds.map((id) => String(id));
+    removedIds = Array.isArray(body.removedIds) ? body.removedIds.map((id) => String(id)) : [];
   } catch (error) {
     return jsonResponse({ ok: false, errors: [error.message || 'Invalid request body.'] }, 400);
   }
 
   try {
-    const stmts = [context.env.ENTRIES_DB.prepare('UPDATE entries SET paid = 0')];
+    const stmts = [context.env.ENTRIES_DB.prepare('UPDATE entries SET paid = 0, removed = 0')];
     if (paidIds.length > 0) {
       const placeholders = paidIds.map(() => '?').join(', ');
       stmts.push(
@@ -38,10 +39,18 @@ export async function onRequestPost(context) {
           .bind(...paidIds),
       );
     }
+    if (removedIds.length > 0) {
+      const placeholders = removedIds.map(() => '?').join(', ');
+      stmts.push(
+        context.env.ENTRIES_DB
+          .prepare(`UPDATE entries SET removed = 1 WHERE id IN (${placeholders})`)
+          .bind(...removedIds),
+      );
+    }
     await context.env.ENTRIES_DB.batch(stmts);
   } catch (error) {
     console.error(error);
-    return jsonResponse({ ok: false, errors: ['Could not update payment statuses.'] }, 500);
+    return jsonResponse({ ok: false, errors: ['Could not update statuses.'] }, 500);
   }
 
   const repository = context.env.GITHUB_REPOSITORY || DEFAULT_REPOSITORY;

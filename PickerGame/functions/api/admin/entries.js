@@ -22,6 +22,7 @@ function mapEntry(row) {
     totalCost: row.total_cost,
     submittedAt: row.created_at,
     paid: Boolean(row.paid),
+    removed: Boolean(row.removed),
   };
 }
 
@@ -51,7 +52,8 @@ export async function onRequestGet(context) {
           tie_breaker_answers_json,
           total_cost,
           created_at,
-          paid
+          paid,
+          removed
         FROM entries
         ORDER BY created_at DESC
       `)

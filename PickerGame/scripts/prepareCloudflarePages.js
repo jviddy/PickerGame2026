@@ -13,8 +13,10 @@ const staticFiles = [
   'leaderboard.html',
   'schedule.html',
   'countries.html',
+  'blog.html',
   'admin.html',
   'admin-results.html',
+  'admin-blog.html',
 ];
 
 const indexHtml = `<!DOCTYPE html>

@@ -13,7 +13,7 @@ const databaseName = 'pickergame2026-entries';
 
 const selectEntriesSql = [
   'SELECT id, team_name, entrant_name, email,',
-  'selected_teams_json, tie_breaker_answers_json, created_at, paid',
+  'selected_teams_json, tie_breaker_answers_json, created_at, paid, removed',
   'FROM entries',
   'ORDER BY created_at ASC',
 ].join(' ');
@@ -53,6 +53,7 @@ function toEntry(row) {
     selectedTeams: parseJsonField(row.selected_teams_json, [], 'selected teams'),
     submittedAt: row.created_at,
     paid: Boolean(row.paid),
+    removed: Boolean(row.removed),
   };
 }
 

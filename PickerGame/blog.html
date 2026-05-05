@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updates – PickerGame 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <style>
+    :root {
+      --navy:       #1a3352;
+      --navy-light: #2d5a8e;
+      --gold:       #e86f2c;
+      --green:      #16a34a;
+      --gray-100:   #f0f4f8;
+      --gray-200:   #e2e8f0;
+      --gray-400:   #94a3b8;
+      --gray-600:   #475569;
+      --gray-800:   #1e293b;
+      --white:      #ffffff;
+      --radius:     10px;
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      color: var(--white);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+    nav a:hover, nav a.active { color: var(--white); }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+    .page-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: var(--navy);
+    }
+    .page-sub {
+      color: var(--gray-600);
+      margin: 0 0 28px;
+      font-size: 0.95rem;
+    }
+
+    .post {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    .post-date {
+      color: var(--gray-400);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .post-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 16px;
+    }
+    .post-body {
+      color: var(--gray-800);
+      line-height: 1.75;
+      font-size: 0.96rem;
+    }
+    .post-body p { margin: 0 0 1em; }
+    .post-body p:last-child { margin-bottom: 0; }
+
+    .empty, .loading {
+      text-align: center;
+      color: var(--gray-400);
+      padding: 60px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .post { padding: 20px; }
+      header { padding: 0 14px; }
+      nav a { margin-left: 12px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1 class="logo">Picker<span>Game</span> 2026</h1>
+    <nav>
+      <a href="entry.html">Enter</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="schedule.html">Matches</a>
+      <a href="blog.html" class="active">Updates</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1 class="page-title">Updates</h1>
+  <p class="page-sub">News and updates from the PickerGame organiser.</p>
+  <div id="postsRoot"><div class="loading">Loading updates…</div></div>
+</main>
+
+<script>
+  const postsRoot = document.getElementById('postsRoot');
+
+  function escapeHtml(v) {
+    return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  }
+
+  function formatDate(iso) {
+    return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+  }
+
+  function renderBody(text) {
+    return text
+      .split(/\n{2,}/)
+      .map(para => `<p>${escapeHtml(para.trim()).replace(/\n/g, '<br>')}</p>`)
+      .join('');
+  }
+
+  async function init() {
+    try {
+      const res = await fetch(`./Data/posts.json?v=${Date.now()}`);
+      if (!res.ok) throw new Error();
+      const posts = await res.json();
+      if (!posts.length) {
+        postsRoot.innerHTML = '<div class="empty">No updates yet — check back soon.</div>';
+        return;
+      }
+      postsRoot.innerHTML = posts.map(post => `
+        <article class="post">
+          <div class="post-date">${escapeHtml(formatDate(post.publishedAt))}</div>
+          <h2 class="post-title">${escapeHtml(post.title)}</h2>
+          <div class="post-body">${renderBody(post.body)}</div>
+        </article>
+      `).join('');
+    } catch {
+      postsRoot.innerHTML = '<div class="empty">Could not load updates.</div>';
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

@@ -6,10 +6,10 @@
   <title>PickerGame Admin</title>
   <style>
     :root {
-      --pitch: #0b4f2f;
-      --pitch-mid: #167a49;
-      --pitch-bright: #22a861;
-      --lime: #8fcf45;
+      --pitch: #1a3352;
+      --pitch-mid: #2d5a8e;
+      --pitch-bright: #3d7bc4;
+      --lime: #5a9fd4;
       --ink: #1f2933;
       --muted: #64748b;
       --line: #d9e2dc;
@@ -24,7 +24,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #eef4f0;
+      background: #f0f4f8;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -33,7 +33,7 @@
       top: 0;
       z-index: 10;
       color: var(--white);
-      background: linear-gradient(135deg, #167a49 0%, #22a861 58%, #8fcf45 100%);
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
       box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
     }
 
@@ -234,6 +234,29 @@
 
     .badge-paid { background: #dcfce7; color: #166534; }
     .badge-pending { background: #f1f5f9; color: var(--muted); }
+    .badge-removed { background: #fef2f2; color: #991b1b; }
+
+    tr.removed-row td { opacity: 0.45; }
+    tr.removed-row .team-name { text-decoration: line-through; }
+
+    .remove-btn {
+      min-height: 28px;
+      padding: 3px 10px;
+      font-size: 0.76rem;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    .remove-btn:hover:not(:disabled) { background: #fecaca; }
+    .restore-btn {
+      min-height: 28px;
+      padding: 3px 10px;
+      font-size: 0.76rem;
+      background: var(--soft);
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    .restore-btn:hover:not(:disabled) { background: #e2eae5; }
 
     .team-name {
       font-weight: 900;
@@ -312,6 +335,7 @@
         <button class="filter-btn active" data-filter="all" type="button">All</button>
         <button class="filter-btn" data-filter="paid" type="button">Paid</button>
         <button class="filter-btn" data-filter="pending" type="button">Pending</button>
+        <button class="filter-btn" data-filter="removed" type="button">Removed</button>
       </div>
       <div id="status" class="status">Enter your admin token to review submitted entries.</div>
       <div class="summary">
@@ -324,6 +348,7 @@
             <tr>
               <th>Paid</th>
               <th>Status</th>
+              <th></th>
               <th>Team</th>
               <th>Entrant</th>
               <th>Email</th>
@@ -383,11 +408,16 @@
         .map((cb) => cb.dataset.entryId);
     }
 
+    function getRemovedIds() {
+      return allEntries.filter((e) => e.removed).map((e) => e.id);
+    }
+
     function renderEntries(entries) {
       const filtered = entries.filter((e) => {
-        if (activeFilter === 'paid') return e.paid;
-        if (activeFilter === 'pending') return !e.paid;
-        return true;
+        if (activeFilter === 'paid') return e.paid && !e.removed;
+        if (activeFilter === 'pending') return !e.paid && !e.removed;
+        if (activeFilter === 'removed') return e.removed;
+        return !e.removed; // "all" hides removed by default
       });
 
       entriesBody.innerHTML = filtered.map((entry) => {
@@ -395,16 +425,22 @@
           .map((team) => `<span class="pill">${escapeHtml(team)}</span>`)
           .join('');
         const tiebreakers = (entry.tieBreakerAnswers || []).map(escapeHtml).join(' / ');
-        const badge = entry.paid
-          ? '<span class="badge badge-paid">Paid</span>'
-          : '<span class="badge badge-pending">Pending</span>';
+        const badge = entry.removed
+          ? '<span class="badge badge-removed">Removed</span>'
+          : entry.paid
+            ? '<span class="badge badge-paid">Paid</span>'
+            : '<span class="badge badge-pending">Pending</span>';
+        const removeBtn = entry.removed
+          ? `<button class="restore-btn" type="button" data-entry-id="${escapeHtml(entry.id)}">Restore</button>`
+          : `<button class="remove-btn" type="button" data-entry-id="${escapeHtml(entry.id)}">Remove</button>`;
 
         return `
-          <tr>
+          <tr class="${entry.removed ? 'removed-row' : ''}">
             <td class="paid-cell">
-              <input type="checkbox" data-entry-id="${escapeHtml(entry.id)}" ${entry.paid ? 'checked' : ''} aria-label="Mark ${escapeHtml(entry.teamName)} as paid" />
+              <input type="checkbox" data-entry-id="${escapeHtml(entry.id)}" ${entry.paid && !entry.removed ? 'checked' : ''} ${entry.removed ? 'disabled' : ''} aria-label="Mark ${escapeHtml(entry.teamName)} as paid" />
             </td>
             <td>${badge}</td>
+            <td>${removeBtn}</td>
             <td>
               <div class="team-name">${escapeHtml(entry.teamName)}</div>
               <div class="muted">${escapeHtml(entry.id)}</div>
@@ -419,8 +455,20 @@
         `;
       }).join('');
 
+      // Wire remove/restore buttons
+      entriesBody.querySelectorAll('.remove-btn, .restore-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.entryId;
+          allEntries = allEntries.map((e) =>
+            e.id === id ? { ...e, removed: !e.removed, paid: e.removed ? e.paid : false } : e,
+          );
+          renderEntries(allEntries);
+        });
+      });
+
       emptyState.style.display = filtered.length ? 'none' : 'block';
-      entryCountEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'} · ${entries.filter((e) => e.paid).length} paid`;
+      const active = entries.filter((e) => !e.removed);
+      entryCountEl.textContent = `${active.length} active · ${active.filter((e) => e.paid).length} paid · ${entries.filter((e) => e.removed).length} removed`;
       latestEntryEl.textContent = entries[0]
         ? `Latest: ${formatDate(entries[0].submittedAt)}`
         : 'No submissions loaded';
@@ -467,16 +515,21 @@
       setStatus('Saving payment statuses and publishing...');
 
       const paidIds = getCheckedPaidIds();
+      const removedIds = getRemovedIds();
 
       try {
         await requestJson('/api/admin/update-paid', {
           method: 'POST',
-          body: JSON.stringify({ paidIds }),
+          body: JSON.stringify({ paidIds, removedIds }),
         });
 
-        allEntries = allEntries.map((e) => ({ ...e, paid: paidIds.includes(e.id) }));
+        allEntries = allEntries.map((e) => ({
+          ...e,
+          paid: paidIds.includes(e.id),
+          removed: removedIds.includes(e.id),
+        }));
         renderEntries(allEntries);
-        setStatus(`Updated: ${paidIds.length} paid. Publish workflow started.`, 'success');
+        setStatus(`Updated: ${paidIds.length} paid, ${removedIds.length} removed. Publish started.`, 'success');
       } catch (error) {
         setStatus(error.message, 'error');
       } finally {
