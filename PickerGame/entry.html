@@ -797,6 +797,20 @@
     }
     .intro-dismiss:hover { background: var(--gold-dark); }
 
+  /* Deadline closed banner */
+  .closed-banner {
+    background: var(--red-bg);
+    border: 2px solid var(--red);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    text-align: center;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  .closed-banner strong { display: block; font-size: 1.2rem; margin-bottom: 6px; }
+
   /* Points info */
     .points-grid {
       display: grid;
@@ -838,10 +852,12 @@
   <div class="header-inner">
     <h1 class="logo">Picker<span>Game</span> <span style="font-weight:400;color:rgba(255,255,255,0.6)">2026</span></h1>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="entries.html">Entries</a>
       <a href="leaderboard.html">Leaderboard</a>
       <a href="schedule.html">Matches</a>
+      <a href="tables.html">Tables</a>
       <a href="countries.html">Countries</a>
+      <a href="blog.html">Updates</a>
     </nav>
   </div>
 </header>
@@ -992,6 +1008,7 @@
   const BUDGET    = 150;
   const MAX_PICKS = 8;
   const SUBMIT_URL = '/api/entries';
+  const DEADLINE  = new Date('2026-06-11T19:00:00Z'); // 20:00 BST
 
   /* ─── State ───────────────────────────────────────────────── */
   let allTeams   = [];
@@ -1039,14 +1056,26 @@
     return BUDGET - totalSpent();
   }
 
+  function getTeamAbbreviation(countryName) {
+    const overrides = {
+      'United States': 'USA', 'South Africa': 'RSA', 'South Korea': 'KOR',
+      'Czech Republic': 'CZE', 'New Zealand': 'NZL', 'Saudi Arabia': 'KSA',
+      'Ivory Coast': 'CIV', 'Cape Verde': 'CPV', 'Netherlands': 'NED',
+    };
+    return overrides[countryName] || countryName.replace(/\[.*?\]/g, '').replace(/[^A-Za-z]/g, '').slice(0, 3).toUpperCase();
+  }
+
   /* ─── Render team cards ───────────────────────────────────── */
   function filteredSorted() {
     let list = allTeams.slice();
 
-    // search
+    // search (name or 3-letter code)
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
-      list = list.filter(t => t.countryName.toLowerCase().includes(q));
+      list = list.filter(t =>
+        t.countryName.toLowerCase().includes(q) ||
+        getTeamAbbreviation(t.countryName).toLowerCase().startsWith(q)
+      );
     }
     // sort
     switch (sort) {
@@ -1109,7 +1138,6 @@
     gridEl.innerHTML = '';
     gridEl.classList.toggle('grouped', sort === 'group' && !compactGroups);
     gridEl.classList.toggle('compact-grouped', compactGroups);
-    sortSelect.disabled = compactGroups;
     compactToggleBtn.classList.toggle('active', compactGroups);
     compactToggleBtn.setAttribute('aria-pressed', String(compactGroups));
     compactToggleBtn.textContent = compactGroups ? 'Expanded view' : 'Compact view';
@@ -1329,7 +1357,25 @@
     });
   })();
 
+  /* ─── Deadline check ─────────────────────────────────────── */
+  function checkDeadline() {
+    if (new Date() < DEADLINE) return;
+    // Entries closed — replace form with closed banner
+    const formCard = document.getElementById('entryFormCard');
+    formCard.innerHTML = `
+      <div class="closed-banner">
+        <strong>Entries are now closed</strong>
+        The deadline was 20:00 BST on 11 June 2026. Check the leaderboard to see the standings.
+      </div>
+    `;
+    // Also disable team selection
+    const teamGrid = document.getElementById('teamGrid');
+    teamGrid.style.pointerEvents = 'none';
+    teamGrid.style.opacity = '0.5';
+  }
+
   /* ─── Init ────────────────────────────────────────────────── */
+  checkDeadline();
   loadTeams();
 </script>
 </body>

@@ -13,6 +13,7 @@ const staticFiles = [
   'leaderboard.html',
   'schedule.html',
   'countries.html',
+  'tables.html',
   'blog.html',
   'admin.html',
   'admin-results.html',

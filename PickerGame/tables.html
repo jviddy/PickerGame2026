@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Tables – Picker Game 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <style>
+    :root {
+      --navy:       #1a3352;
+      --navy-light: #2d5a8e;
+      --gold:       #e86f2c;
+      --green:      #22a861;
+      --green-bg:   #e4f7eb;
+      --red:        #dc2626;
+      --gray-50:    #f9fafb;
+      --gray-100:   #f3f4f6;
+      --gray-200:   #e5e7eb;
+      --gray-400:   #9ca3af;
+      --gray-600:   #4b5563;
+      --gray-800:   #1f2937;
+      --white:      #ffffff;
+      --radius:     10px;
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      color: var(--white);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    nav a.active, nav a:hover { color: var(--white); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    .page-header {
+      margin-bottom: 24px;
+    }
+    .page-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0 0 6px;
+    }
+    .page-header p {
+      color: var(--gray-600);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .group-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .group-card-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 10px 14px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    thead th {
+      background: var(--gray-50);
+      color: var(--gray-600);
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 7px 10px;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    thead th.country-col { text-align: left; min-width: 140px; }
+
+    tbody tr {
+      border-bottom: 1px solid var(--gray-200);
+      transition: background 0.12s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--gray-50); }
+
+    tbody td {
+      padding: 8px 10px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    tbody td.country-col {
+      text-align: left;
+    }
+
+    .team-identity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .team-flag {
+      width: 24px;
+      height: 16px;
+      border-radius: 2px;
+      object-fit: cover;
+      border: 1px solid var(--gray-200);
+      flex-shrink: 0;
+    }
+    .team-name-text {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pts-cell {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 0.9rem;
+    }
+
+    .result-w { color: var(--green); font-weight: 700; }
+    .result-d { color: var(--gray-600); font-weight: 700; }
+    .result-l { color: var(--red); font-weight: 700; }
+
+    .gd-pos { color: var(--green); }
+    .gd-neg { color: var(--red); }
+
+    /* Qualified / eliminated styling */
+    tr.qualified td.team-name-text { color: var(--green); }
+    tr.eliminated-row { opacity: 0.55; }
+
+    .loading, .error {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gray-400);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .error { color: var(--red); }
+
+    @media (max-width: 768px) {
+      nav a { margin-left: 12px; font-size: 0.82rem; }
+      .groups-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1 class="logo">Picker<span>Game</span> <span style="font-weight:400;color:rgba(255,255,255,0.6)">2026</span></h1>
+    <nav>
+      <a href="entry.html">Enter</a>
+      <a href="entries.html">Entries</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="schedule.html">Matches</a>
+      <a href="tables.html" class="active">Tables</a>
+      <a href="countries.html">Countries</a>
+      <a href="blog.html">Updates</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-header">
+    <h1>📋 Group Tables</h1>
+    <p>FIFA World Cup 2026 group stage standings. Points: Win = 3, Draw = 1, Loss = 0.</p>
+  </div>
+  <div id="tablesWrap">
+    <div class="loading">Loading group tables…</div>
+  </div>
+</div>
+
+<script>
+  const GS_ROUNDS = new Set(['GS1', 'GS2', 'GS3']);
+
+  async function loadData() {
+    const [teamsRes, matchesRes] = await Promise.all([
+      fetch('./Data/teams.json'),
+      fetch('./Data/matches.json'),
+    ]);
+    if (!teamsRes.ok || !matchesRes.ok) throw new Error('Failed to load data');
+    return {
+      teams:   await teamsRes.json(),
+      matches: await matchesRes.json(),
+    };
+  }
+
+  function buildTables(teams, matches) {
+    // Initialise rows keyed by groupId
+    const rows = {};
+    teams.forEach(t => {
+      rows[t.groupId] = {
+        groupId:     t.groupId,
+        group:       t.group,
+        countryName: t.countryName,
+        flagUrl:     t.flagUrl,
+        inCompetition: t.inCompetition !== false,
+        played: 0, wins: 0, draws: 0, losses: 0,
+        goalsFor: 0, goalsAgainst: 0, points: 0,
+      };
+    });
+
+    // Process group stage matches only
+    matches.filter(m => m.played && GS_ROUNDS.has(m.roundCode) && m.result).forEach(m => {
+      const home = rows[m.homeTeam];
+      const away = rows[m.awayTeam];
+      if (!home || !away) return;
+
+      const hg = m.result.homeScore ?? 0;
+      const ag = m.result.awayScore ?? 0;
+
+      home.played++;    away.played++;
+      home.goalsFor    += hg; home.goalsAgainst += ag;
+      away.goalsFor    += ag; away.goalsAgainst += hg;
+
+      if (hg > ag) {
+        home.wins++;    home.points += 3;
+        away.losses++;
+      } else if (hg < ag) {
+        away.wins++;    away.points += 3;
+        home.losses++;
+      } else {
+        home.draws++;   home.points += 1;
+        away.draws++;   away.points += 1;
+      }
+    });
+
+    // Group by group letter
+    const groups = {};
+    Object.values(rows).forEach(row => {
+      if (!groups[row.group]) groups[row.group] = [];
+      groups[row.group].push(row);
+    });
+
+    // Sort each group: pts desc, GD desc, GF desc, name asc
+    Object.values(groups).forEach(g => {
+      g.sort((a, b) => {
+        if (b.points !== a.points) return b.points - a.points;
+        const gdA = a.goalsFor - a.goalsAgainst;
+        const gdB = b.goalsFor - b.goalsAgainst;
+        if (gdB !== gdA) return gdB - gdA;
+        if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+        return a.countryName.localeCompare(b.countryName);
+      });
+    });
+
+    return groups;
+  }
+
+  function renderGroups(groups) {
+    const sortedGroupKeys = Object.keys(groups).sort();
+    const wrap = document.getElementById('tablesWrap');
+
+    if (sortedGroupKeys.length === 0) {
+      wrap.innerHTML = '<div class="error">No group stage data available yet.</div>';
+      return;
+    }
+
+    wrap.innerHTML = `<div class="groups-grid">${
+      sortedGroupKeys.map(groupKey => renderGroupCard(groupKey, groups[groupKey])).join('')
+    }</div>`;
+  }
+
+  function renderGroupCard(groupKey, rows) {
+    const rowsHtml = rows.map((row, i) => {
+      const gd = row.goalsFor - row.goalsAgainst;
+      const gdStr = gd > 0 ? `+${gd}` : String(gd);
+      const gdClass = gd > 0 ? 'gd-pos' : gd < 0 ? 'gd-neg' : '';
+      const elim = !row.inCompetition ? ' class="eliminated-row"' : '';
+      return `
+        <tr${elim}>
+          <td class="country-col">
+            <div class="team-identity">
+              <img class="team-flag" src="${esc(row.flagUrl)}" alt="${esc(row.countryName)}" loading="lazy" />
+              <span class="team-name-text">${esc(row.countryName)}</span>
+            </div>
+          </td>
+          <td>${row.played}</td>
+          <td class="result-w">${row.wins}</td>
+          <td class="result-d">${row.draws}</td>
+          <td class="result-l">${row.losses}</td>
+          <td>${row.goalsFor}</td>
+          <td>${row.goalsAgainst}</td>
+          <td class="${gdClass}">${gdStr}</td>
+          <td class="pts-cell">${row.points}</td>
+        </tr>
+      `;
+    }).join('');
+
+    return `
+      <div class="group-card">
+        <div class="group-card-header">Group ${esc(groupKey)}</div>
+        <table>
+          <thead>
+            <tr>
+              <th class="country-col">Country</th>
+              <th title="Played">P</th>
+              <th title="Wins">W</th>
+              <th title="Draws">D</th>
+              <th title="Losses">L</th>
+              <th title="Goals For">F</th>
+              <th title="Goals Against">A</th>
+              <th title="Goal Difference">GD</th>
+              <th title="Points">Pts</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function esc(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return String(text ?? '').replace(/[&<>"']/g, m => map[m]);
+  }
+
+  async function init() {
+    try {
+      const { teams, matches } = await loadData();
+      const groups = buildTables(teams, matches);
+      renderGroups(groups);
+    } catch (e) {
+      document.getElementById('tablesWrap').innerHTML =
+        `<div class="error">Failed to load data: ${e.message}</div>`;
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

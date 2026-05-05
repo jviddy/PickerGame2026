@@ -1,0 +1,17 @@
+[
+  {
+    "teamName": "test3",
+    "entrantName": "test",
+    "paid": true
+  },
+  {
+    "teamName": "test 2",
+    "entrantName": "jamie",
+    "paid": false
+  },
+  {
+    "teamName": "jamie test",
+    "entrantName": "Jamie",
+    "paid": false
+  }
+]
