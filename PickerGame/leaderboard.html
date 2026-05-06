@@ -425,163 +425,128 @@
     }
     .error-msg.show { display: block; }
 
-    /* ─── Modal overlay ──────────────────────────────────────────–*/
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15,23,42,0.55);
-      z-index: 200;
+    /* ─── Inline row expansion ───────────────────────────────────*/
+    .leaderboard-row.expanded { background: var(--green-bg); }
+    .leaderboard-row.expanded:hover { background: var(--green-bg); }
+
+    .row-expansion {
+      grid-column: 1 / -1;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      padding: 10px 12px;
+      animation: expand-in 0.15s ease;
+    }
+    @keyframes expand-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .expansion-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 16px;
-      backdrop-filter: blur(2px);
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
     }
-    .modal-overlay.hidden { display: none; }
-    .modal-box {
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-      padding: 0;
-      max-width: 480px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 20px 20px 16px;
-      border-bottom: 1px solid var(--gray-200);
-      position: sticky;
-      top: 0;
-      background: var(--white);
-      border-radius: 14px 14px 0 0;
-    }
-    .modal-header img {
-      width: 40px;
-      height: 27px;
-      border-radius: 4px;
+    .expansion-header img {
+      width: 28px; height: 19px;
+      border-radius: 3px;
       object-fit: cover;
       border: 1px solid var(--gray-200);
       flex-shrink: 0;
     }
-    .modal-header-text { flex: 1; min-width: 0; }
-    .modal-title {
-      font-size: 1.1rem;
+    .expansion-title {
       font-weight: 800;
+      font-size: 0.85rem;
       color: var(--navy);
-      margin: 0;
     }
-    .modal-subtitle {
-      font-size: 0.8rem;
+    .expansion-subtitle {
+      font-size: 0.72rem;
       color: var(--gray-600);
-      margin: 2px 0 0;
+      margin-left: auto;
     }
-    .modal-close {
+    .expansion-close {
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 1.4rem;
       color: var(--gray-400);
-      padding: 0 4px;
+      font-size: 1.1rem;
       line-height: 1;
-      transition: color 0.15s;
+      padding: 0 4px;
       flex-shrink: 0;
     }
-    .modal-close:hover { color: var(--gray-800); }
-    .modal-body { padding: 20px; }
-
-    /* Country modal stats grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 16px;
+    .expansion-close:hover { color: var(--gray-800); }
+    .expansion-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
     }
-    .stat-item {
+    .expansion-stat {
       background: var(--gray-50);
       border: 1px solid var(--gray-200);
-      border-radius: 8px;
-      padding: 10px;
+      border-radius: 6px;
+      padding: 5px 8px;
       text-align: center;
+      min-width: 40px;
     }
-    .stat-value {
-      font-size: 1.4rem;
+    .expansion-stat-val {
+      font-size: 0.95rem;
       font-weight: 800;
       color: var(--navy);
       line-height: 1;
     }
-    .stat-value.pos { color: var(--green); }
-    .stat-value.neg { color: var(--red); }
-    .stat-value.amber { color: var(--amber); }
-    .stat-label {
-      font-size: 0.68rem;
+    .expansion-stat-val.pos { color: var(--green); }
+    .expansion-stat-val.neg { color: var(--red); }
+    .expansion-stat-val.amber { color: var(--amber); }
+    .expansion-stat-lbl {
+      font-size: 0.6rem;
       color: var(--gray-600);
-      margin-top: 3px;
-      text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-
-    /* Modal round scores */
-    .modal-section-title {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--navy);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin: 0 0 10px;
-      padding-top: 12px;
-      border-top: 1px solid var(--gray-200);
+      margin-top: 2px;
     }
-    .modal-round-list {
+    .expansion-rounds {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      flex-wrap: wrap;
+      gap: 4px;
     }
-    .modal-round-item {
+    .expansion-round-item {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-size: 0.82rem;
-    }
-    .modal-round-label { color: var(--gray-600); font-weight: 600; }
-    .modal-round-score { font-weight: 800; color: var(--green); }
-    .modal-round-score.neg { color: var(--red); }
-
-    /* Round popup per-country list */
-    .modal-country-list {
-      display: flex;
-      flex-direction: column;
       gap: 5px;
-    }
-    .modal-country-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
       background: var(--gray-50);
       border: 1px solid var(--gray-200);
       border-radius: 6px;
-      font-size: 0.85rem;
+      padding: 3px 8px;
+      font-size: 0.75rem;
     }
-    .modal-country-item img {
-      width: 24px;
-      height: 16px;
+    .expansion-round-lbl { color: var(--gray-600); font-weight: 600; }
+    .expansion-round-score { font-weight: 800; color: var(--green); }
+    .expansion-round-score.neg { color: var(--red); }
+    .expansion-country-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .expansion-country-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px 3px 4px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+    .expansion-country-chip img {
+      width: 20px; height: 13px;
       border-radius: 2px;
       object-fit: cover;
       border: 1px solid var(--gray-200);
-      flex-shrink: 0;
     }
-    .modal-country-name { flex: 1; font-weight: 700; color: var(--navy); }
-    .modal-country-score { font-weight: 800; color: var(--green); }
-    .modal-country-score.neg { color: var(--red); }
+    .expansion-country-chip .c-name { color: var(--navy); font-weight: 700; }
+    .expansion-country-chip .c-score { color: var(--green); font-weight: 800; }
+    .expansion-country-chip .c-score.neg { color: var(--red); }
   </style>
   <script src="ticker.js" defer></script>
 </head>
@@ -622,15 +587,6 @@
   </div>
 </div>
 
-<!-- Country detail modal -->
-<div class="modal-overlay hidden" id="countryModal">
-  <div class="modal-box" id="countryModalBox"></div>
-</div>
-
-<!-- Round detail modal -->
-<div class="modal-overlay hidden" id="roundModal">
-  <div class="modal-box" id="roundModalBox"></div>
-</div>
 
 <script>
   /* ─── Config ──────────────────────────────────────────────── */
@@ -652,35 +608,35 @@
   let teamPoints = [];
   let leaderboard = [];
   let allMatches = null;
-  let pointsBaseline = {}; // entrantTeamName+entrantName → baselinePoints
+  let pointsBaseline = {};
   let scoreDisplayMode = 'countries';
   let picksFilter = '';
+  let expandedChipEl = null;
+  let expandedExpansionEl = null;
 
   /* ─── DOM ─────────────────────────────────────────────────── */
-  const leaderboardEl    = document.getElementById('leaderboard');
+  const leaderboardEl      = document.getElementById('leaderboard');
   const scoreModeToggleBtn = document.getElementById('scoreModeToggleBtn');
-  const errorMsg         = document.getElementById('errorMsg');
-  const countryModal     = document.getElementById('countryModal');
-  const countryModalBox  = document.getElementById('countryModalBox');
-  const roundModal       = document.getElementById('roundModal');
-  const roundModalBox    = document.getElementById('roundModalBox');
+  const errorMsg           = document.getElementById('errorMsg');
 
   /* ─── Data loading ────────────────────────────────────────── */
   async function loadAllData() {
     try {
-      const [teamsRes, pointsRes, totalsRes] = await Promise.all([
+      const [teamsRes, pointsRes, totalsRes, matchesRes] = await Promise.all([
         fetch(DATA_URLS.teams),
         fetch(DATA_URLS.teamPoints),
         fetch(DATA_URLS.entrantTotals),
+        fetch(DATA_URLS.matches),
       ]);
 
       const [teamsData, pointsData, totalsData] = await Promise.all([
-        teamsRes.ok ? teamsRes.json() : Promise.reject(new Error(`teams: HTTP ${teamsRes.status}`)),
+        teamsRes.ok  ? teamsRes.json()  : Promise.reject(new Error(`teams: HTTP ${teamsRes.status}`)),
         pointsRes.ok ? pointsRes.json() : Promise.reject(new Error(`teamPoints: HTTP ${pointsRes.status}`)),
         totalsRes.ok ? totalsRes.json() : Promise.reject(new Error(`entrantTotals: HTTP ${totalsRes.status}`)),
       ]);
 
-      // Load baseline for points-since-yesterday (non-fatal if missing)
+      allMatches = matchesRes.ok ? await matchesRes.json() : null;
+
       try {
         const baselineRes = await fetch(DATA_URLS.baseline);
         if (baselineRes.ok) {
@@ -697,13 +653,13 @@
         const teamScores = {};
         entry.teamBreakdown.forEach(team => { teamScores[team.countryName] = team.points; });
         return {
-          entrantName:   entry.entrantName,
-          teamName:      entry.entrantTeamName,
-          totalScore:    entry.totalPoints,
+          entrantName:    entry.entrantName,
+          teamName:       entry.entrantTeamName,
+          totalScore:     entry.totalPoints,
           teamsRemaining: entry.teamsRemaining,
-          selectedTeams: entry.selectedTeams || entry.teamBreakdown.map(t => t.countryName),
+          selectedTeams:  entry.selectedTeams || entry.teamBreakdown.map(t => t.countryName),
           teamScores,
-          roundScores:   entry.byRound || {},
+          roundScores:    entry.byRound || {},
         };
       });
 
@@ -712,14 +668,6 @@
       showError(`Failed to load data: ${e.message}`);
       return false;
     }
-  }
-
-  async function loadMatches() {
-    if (allMatches) return allMatches;
-    const res = await fetch(DATA_URLS.matches);
-    if (!res.ok) throw new Error(`matches: HTTP ${res.status}`);
-    allMatches = await res.json();
-    return allMatches;
   }
 
   /* ─── Helpers ─────────────────────────────────────────────── */
@@ -796,10 +744,189 @@
     `;
   }
 
-  /* ─── Rendering ───────────────────────────────────────────– */
-  function renderLeaderboard() {
+  /* ─── Inline expansion ────────────────────────────────────── */
+  function closeExpansion() {
+    if (expandedExpansionEl) {
+      expandedExpansionEl.remove();
+      expandedExpansionEl = null;
+    }
+    if (expandedChipEl) {
+      expandedChipEl.closest('.leaderboard-row')?.classList.remove('expanded');
+      expandedChipEl = null;
+    }
+  }
+
+  function showCountryExpansion(chip) {
+    const countryName = chip.dataset.country;
+    if (expandedChipEl === chip) { closeExpansion(); return; }
+    closeExpansion();
+
+    const team = allTeams.find(t => t.countryName === countryName);
+    if (!team) return;
+
+    let played = 0, wins = 0, draws = 0, losses = 0, goalsFor = 0, goalsAgainst = 0;
+    (team.scoresByRound || []).forEach(round => {
+      (round.matches || []).forEach(m => {
+        played++;
+        goalsFor     += m.goalsFor     || 0;
+        goalsAgainst += m.goalsAgainst || 0;
+        if (m.result === 'win')       wins++;
+        else if (m.result === 'draw') draws++;
+        else if (m.result === 'loss') losses++;
+      });
+    });
+
+    let yellowCards = 0, redCards = 0;
+    if (allMatches) {
+      allMatches.filter(m => m.played && m.result).forEach(m => {
+        if (m.homeTeam === team.groupId) {
+          yellowCards += m.result.homeYellow || 0;
+          redCards    += m.result.homeRed    || 0;
+        } else if (m.awayTeam === team.groupId) {
+          yellowCards += m.result.awayYellow || 0;
+          redCards    += m.result.awayRed    || 0;
+        }
+      });
+    }
+
+    const roundItems = (team.scoresByRound || [])
+      .filter(r => r.total !== 0)
+      .map(r => {
+        const neg = r.total < 0;
+        return `
+          <div class="expansion-round-item">
+            <span class="expansion-round-lbl">${ROUND_LABELS[r.roundCode] || r.roundCode}</span>
+            <span class="expansion-round-score${neg ? ' neg' : ''}">${r.total > 0 ? '+' : ''}${r.total}</span>
+          </div>
+        `;
+      }).join('');
+
+    const div = document.createElement('div');
+    div.className = 'row-expansion';
+    div.innerHTML = `
+      <div class="expansion-header">
+        <img src="${escapeHtml(team.flagUrl)}" alt="${escapeHtml(countryName)}" />
+        <span class="expansion-title">${escapeHtml(countryName)}</span>
+        <span class="expansion-subtitle">Group ${escapeHtml(team.group)} · £${team.cost}m · ${team.totalPoints} pts</span>
+        <button class="expansion-close" aria-label="Close">×</button>
+      </div>
+      <div class="expansion-stats">
+        <div class="expansion-stat"><div class="expansion-stat-val">${played}</div><div class="expansion-stat-lbl">Played</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val pos">${wins}</div><div class="expansion-stat-lbl">W</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val">${draws}</div><div class="expansion-stat-lbl">D</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val neg">${losses}</div><div class="expansion-stat-lbl">L</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val pos">${goalsFor}</div><div class="expansion-stat-lbl">GF</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val neg">${goalsAgainst}</div><div class="expansion-stat-lbl">GA</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val amber">${yellowCards}</div><div class="expansion-stat-lbl">🟨</div></div>
+        <div class="expansion-stat"><div class="expansion-stat-val neg">${redCards}</div><div class="expansion-stat-lbl">🟥</div></div>
+      </div>
+      ${roundItems ? `<div class="expansion-rounds">${roundItems}</div>` : ''}
+    `;
+    div.querySelector('.expansion-close').addEventListener('click', closeExpansion);
+
+    const rowEl = chip.closest('.leaderboard-row');
+    rowEl.appendChild(div);
+    rowEl.classList.add('expanded');
+    expandedChipEl = chip;
+    expandedExpansionEl = div;
+  }
+
+  function showRoundExpansion(chip) {
+    if (expandedChipEl === chip) { closeExpansion(); return; }
+    closeExpansion();
+
+    const entryIdx  = parseInt(chip.dataset.entryIdx, 10);
+    const roundCode = chip.dataset.round;
+    const entry = leaderboard[entryIdx];
+    if (!entry) return;
+
+    const roundLabel = ROUND_LABELS[roundCode] || roundCode;
+    const chips = entry.selectedTeams.map(countryName => {
+      const team = allTeams.find(t => t.countryName === countryName);
+      const roundData = team?.scoresByRound?.find(r => r.roundCode === roundCode);
+      const pts = roundData?.total ?? null;
+      const ptsDisplay = pts === null ? '—' : (pts > 0 ? `+${pts}` : String(pts));
+      const flagUrl = team ? team.flagUrl : '';
+      const neg = pts !== null && pts < 0;
+      return `
+        <div class="expansion-country-chip">
+          <img src="${escapeHtml(flagUrl)}" alt="${escapeHtml(countryName)}" />
+          <span class="c-name">${escapeHtml(countryName)}</span>
+          <span class="c-score${neg ? ' neg' : ''}">${ptsDisplay}</span>
+        </div>
+      `;
+    }).join('');
+
+    const div = document.createElement('div');
+    div.className = 'row-expansion';
+    div.innerHTML = `
+      <div class="expansion-header">
+        <span class="expansion-title">${escapeHtml(roundLabel)}</span>
+        <span class="expansion-subtitle">${escapeHtml(entry.teamName)} — ${escapeHtml(entry.entrantName)}</span>
+        <button class="expansion-close" aria-label="Close">×</button>
+      </div>
+      <div class="expansion-country-grid">${chips}</div>
+    `;
+    div.querySelector('.expansion-close').addEventListener('click', closeExpansion);
+
+    const rowEl = chip.closest('.leaderboard-row');
+    rowEl.appendChild(div);
+    rowEl.classList.add('expanded');
+    expandedChipEl = chip;
+    expandedExpansionEl = div;
+  }
+
+  /* ─── Rendering ───────────────────────────────────────────── */
+  function renderAll() {
+    closeExpansion();
+    leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
+    if (!document.getElementById('lb-header')) {
+      leaderboardEl.innerHTML = '<div id="lb-header"></div><div id="lb-body"></div>';
+    }
+    renderHeader();
+    renderBody();
+  }
+
+  function renderHeader() {
+    const headerEl = document.getElementById('lb-header');
+    if (!headerEl) return;
+    const picksLabel = scoreDisplayMode === 'countries' ? 'Picks' : 'Rounds';
+    const filterHtml = scoreDisplayMode === 'countries' ? `
+      <input class="picks-filter" id="picksFilterInput"
+             placeholder="filter by country…"
+             value="${escapeHtml(picksFilter)}" />
+    ` : '';
+    headerEl.innerHTML = `
+      <div class="leaderboard-header">
+        <div>Rank</div>
+        <div>Team</div>
+        <div class="picks-filter-wrap">
+          <span>${picksLabel}</span>
+          ${filterHtml}
+        </div>
+        <div>Left</div>
+        <div>Score</div>
+      </div>
+    `;
+    if (scoreDisplayMode === 'countries') {
+      const filterInput = document.getElementById('picksFilterInput');
+      if (filterInput) {
+        filterInput.addEventListener('input', e => {
+          picksFilter = e.target.value;
+          renderBody();
+        });
+      }
+    }
+  }
+
+  function renderBody() {
+    const bodyEl = document.getElementById('lb-body');
+    if (!bodyEl) return;
+    expandedChipEl = null;
+    expandedExpansionEl = null;
+
     if (leaderboard.length === 0) {
-      leaderboardEl.innerHTML = `
+      bodyEl.innerHTML = `
         <div class="empty-state">
           <h2>No entries yet</h2>
           <p><a href="entry.html">Enter the game</a> to get on the leaderboard.</p>
@@ -808,9 +935,8 @@
       return;
     }
 
-    // Apply picks filter
     let filtered = leaderboard;
-    if (picksFilter) {
+    if (scoreDisplayMode === 'countries' && picksFilter) {
       const q = picksFilter.toLowerCase();
       filtered = leaderboard.filter(entry =>
         entry.selectedTeams.some(name =>
@@ -820,24 +946,8 @@
       );
     }
 
-    const picksLabel = scoreDisplayMode === 'countries' ? 'Picks' : 'Rounds';
-
-    let html = `
-      <div class="leaderboard-header">
-        <div>Rank</div>
-        <div>Team</div>
-        <div class="picks-filter-wrap">
-          <span>${picksLabel}</span>
-          <input class="picks-filter" id="picksFilterInput"
-                 placeholder="filter by country…"
-                 value="${escapeHtml(picksFilter)}" />
-        </div>
-        <div>Left</div>
-        <div>Score</div>
-      </div>
-    `;
-
-    filtered.forEach((entry, idx) => {
+    let html = '';
+    filtered.forEach(entry => {
       const originalRank = leaderboard.indexOf(entry) + 1;
       let rankClass = '', rankEmoji = originalRank;
       if (originalRank === 1) { rankClass = 'first';  rankEmoji = '🥇'; }
@@ -845,7 +955,6 @@
       else if (originalRank === 3) { rankClass = 'third';  rankEmoji = '🥉'; }
 
       const entryIdx = leaderboard.indexOf(entry);
-
       html += `
         <div class="leaderboard-row${originalRank % 10 === 0 ? ' milestone-row' : ''}">
           <div class="rank ${rankClass}">${rankEmoji}</div>
@@ -874,177 +983,28 @@
       `;
     }
 
-    leaderboardEl.innerHTML = html;
-    leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
-
-    // Wire up picks filter input
-    const filterInput = document.getElementById('picksFilterInput');
-    if (filterInput) {
-      filterInput.addEventListener('input', e => {
-        picksFilter = e.target.value.trim();
-        renderLeaderboard();
-      });
-      // Restore focus if filtering
-      if (picksFilter) filterInput.focus();
-    }
-
-    // Event delegation for chip clicks
-    leaderboardEl.addEventListener('click', handleChipClick, { once: true });
-    // Re-attach each render via delegation on the element itself
+    bodyEl.innerHTML = html;
   }
 
   /* ─── Chip click event delegation ────────────────────────── */
   leaderboardEl.addEventListener('click', handleChipClick);
 
   function handleChipClick(e) {
+    if (e.target.closest('.expansion-close')) return;
     const countryChip = e.target.closest('.team-chip[data-country]');
     if (countryChip) {
       e.stopPropagation();
-      showCountryModal(countryChip.dataset.country);
+      showCountryExpansion(countryChip);
       return;
     }
     const roundChip = e.target.closest('.round-chip[data-round]');
     if (roundChip) {
       e.stopPropagation();
-      showRoundModal(parseInt(roundChip.dataset.entryIdx, 10), roundChip.dataset.round);
+      showRoundExpansion(roundChip);
     }
   }
 
-  /* ─── Country modal ───────────────────────────────────────── */
-  async function showCountryModal(countryName) {
-    const team = allTeams.find(t => t.countryName === countryName);
-    if (!team) return;
-
-    // Compute match stats from scoresByRound
-    let played = 0, wins = 0, draws = 0, losses = 0, goalsFor = 0, goalsAgainst = 0;
-    (team.scoresByRound || []).forEach(round => {
-      (round.matches || []).forEach(m => {
-        played++;
-        goalsFor    += m.goalsFor    || 0;
-        goalsAgainst += m.goalsAgainst || 0;
-        if (m.result === 'win')      wins++;
-        else if (m.result === 'draw') draws++;
-        else if (m.result === 'loss') losses++;
-      });
-    });
-
-    // Get card stats from matches.json (lazy loaded)
-    let yellowCards = 0, redCards = 0;
-    try {
-      const matches = await loadMatches();
-      matches.filter(m => m.played && m.result).forEach(m => {
-        if (m.homeTeam === team.groupId) {
-          yellowCards += m.result.homeYellow || 0;
-          redCards    += m.result.homeRed    || 0;
-        } else if (m.awayTeam === team.groupId) {
-          yellowCards += m.result.awayYellow || 0;
-          redCards    += m.result.awayRed    || 0;
-        }
-      });
-    } catch (_) { /* cards unavailable */ }
-
-    // Round breakdown (PickerGame points)
-    const roundRows = (team.scoresByRound || [])
-      .filter(r => r.total !== 0)
-      .map(r => {
-        const neg = r.total < 0;
-        return `
-          <div class="modal-round-item">
-            <span class="modal-round-label">${ROUND_LABELS[r.roundCode] || r.roundCode}</span>
-            <span class="modal-round-score${neg ? ' neg' : ''}">${r.total > 0 ? '+' : ''}${r.total}</span>
-          </div>
-        `;
-      }).join('');
-
-    countryModalBox.innerHTML = `
-      <div class="modal-header">
-        <img src="${escapeHtml(team.flagUrl)}" alt="${escapeHtml(countryName)}" />
-        <div class="modal-header-text">
-          <div class="modal-title">${escapeHtml(countryName)}</div>
-          <div class="modal-subtitle">Group ${escapeHtml(team.group)} · ${team.totalPoints} pts · Cost £${team.cost}m</div>
-        </div>
-        <button class="modal-close" id="closeCountryModal" aria-label="Close">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="stats-grid">
-          <div class="stat-item"><div class="stat-value">${played}</div><div class="stat-label">Played</div></div>
-          <div class="stat-item"><div class="stat-value pos">${wins}</div><div class="stat-label">Wins</div></div>
-          <div class="stat-item"><div class="stat-value">${draws}</div><div class="stat-label">Draws</div></div>
-          <div class="stat-item"><div class="stat-value neg">${losses}</div><div class="stat-label">Losses</div></div>
-          <div class="stat-item"><div class="stat-value pos">${goalsFor}</div><div class="stat-label">Goals For</div></div>
-          <div class="stat-item"><div class="stat-value neg">${goalsAgainst}</div><div class="stat-label">Goals Ag.</div></div>
-          <div class="stat-item"><div class="stat-value amber">${yellowCards}</div><div class="stat-label">Yellow</div></div>
-          <div class="stat-item"><div class="stat-value neg">${redCards}</div><div class="stat-label">Red</div></div>
-          <div class="stat-item"><div class="stat-value pos">${team.totalPoints}</div><div class="stat-label">PG Pts</div></div>
-        </div>
-        ${roundRows ? `
-          <div class="modal-section-title">PickerGame points by round</div>
-          <div class="modal-round-list">${roundRows}</div>
-        ` : ''}
-      </div>
-    `;
-
-    countryModal.classList.remove('hidden');
-    document.getElementById('closeCountryModal').addEventListener('click', closeCountryModal);
-  }
-
-  function closeCountryModal() {
-    countryModal.classList.add('hidden');
-  }
-
-  countryModal.addEventListener('click', e => {
-    if (e.target === countryModal) closeCountryModal();
-  });
-
-  /* ─── Round modal ─────────────────────────────────────────── */
-  function showRoundModal(entryIdx, roundCode) {
-    const entry = leaderboard[entryIdx];
-    if (!entry) return;
-
-    const roundLabel = ROUND_LABELS[roundCode] || roundCode;
-
-    const countryRows = entry.selectedTeams.map(countryName => {
-      const team = allTeams.find(t => t.countryName === countryName);
-      const roundData = team?.scoresByRound?.find(r => r.roundCode === roundCode);
-      const pts = roundData?.total ?? null;
-      const ptsDisplay = pts === null ? '—' : (pts > 0 ? `+${pts}` : String(pts));
-      const flagUrl = team ? team.flagUrl : '';
-      const neg = pts !== null && pts < 0;
-      return `
-        <div class="modal-country-item">
-          <img src="${escapeHtml(flagUrl)}" alt="${escapeHtml(countryName)}" />
-          <span class="modal-country-name">${escapeHtml(countryName)}</span>
-          <span class="modal-country-score${neg ? ' neg' : ''}">${ptsDisplay}</span>
-        </div>
-      `;
-    }).join('');
-
-    roundModalBox.innerHTML = `
-      <div class="modal-header">
-        <div class="modal-header-text">
-          <div class="modal-title">${escapeHtml(roundLabel)}</div>
-          <div class="modal-subtitle">${escapeHtml(entry.teamName)} — ${escapeHtml(entry.entrantName)}</div>
-        </div>
-        <button class="modal-close" id="closeRoundModal" aria-label="Close">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-country-list">${countryRows}</div>
-      </div>
-    `;
-
-    roundModal.classList.remove('hidden');
-    document.getElementById('closeRoundModal').addEventListener('click', closeRoundModal);
-  }
-
-  function closeRoundModal() {
-    roundModal.classList.add('hidden');
-  }
-
-  roundModal.addEventListener('click', e => {
-    if (e.target === roundModal) closeRoundModal();
-  });
-
-  /* ─── Utilities ───────────────────────────────────────────– */
+  /* ─── Utilities ───────────────────────────────────────────── */
   function showError(msg) {
     errorMsg.textContent = msg;
     errorMsg.classList.add('show');
@@ -1057,19 +1017,19 @@
 
   scoreModeToggleBtn.addEventListener('click', () => {
     scoreDisplayMode = scoreDisplayMode === 'countries' ? 'rounds' : 'countries';
+    picksFilter = '';
     updateScoreModeButton();
-    renderLeaderboard();
+    renderAll();
   });
 
-  /* ─── Keyboard close ──────────────────────────────────────── */
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeCountryModal(); closeRoundModal(); }
+    if (e.key === 'Escape') closeExpansion();
   });
 
-  /* ─── Init ────────────────────────────────────────────────– */
+  /* ─── Init ────────────────────────────────────────────────── */
   async function init() {
     updateScoreModeButton();
-    if (await loadAllData()) renderLeaderboard();
+    if (await loadAllData()) renderAll();
   }
 
   init();

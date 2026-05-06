@@ -1,8 +1,8 @@
 /* site-wide match/results scrolling ticker */
 (async function () {
   const ROUND_LABELS = {
-    GS1: 'Group Stage 1', GS2: 'Group Stage 2', GS3: 'Group Stage 3',
-    R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: 'Third Place', F: 'Final',
+    GS1: 'GS1', GS2: 'GS2', GS3: 'GS3',
+    R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: 'TPP', F: 'Final',
   };
 
   /* ── inject styles ───────────────────────────────────────── */
