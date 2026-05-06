@@ -15,6 +15,7 @@ const staticFiles = [
   'countries.html',
   'tables.html',
   'blog.html',
+  'ticker.js',
   'admin.html',
   'admin-results.html',
   'admin-blog.html',

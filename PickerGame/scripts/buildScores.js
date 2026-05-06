@@ -5,6 +5,7 @@
  * Usage: node buildScores.js
  */
 
+import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { loadAllInputs, writeJSON } from '../src/scoring/io.js';
@@ -104,11 +105,46 @@ async function main() {
     
     // Write output files
     console.log('\n💾 Writing output files...');
-    
+
     const outputDirs = [
       dataDir,
       path.resolve(projectRoot, 'Data'),
     ];
+
+    // Daily snapshot: save current entrantTotals as baseline before overwriting
+    // Baseline updates once per UTC day so leaderboard can show "change since yesterday"
+    const todayUTC = new Date().toISOString().slice(0, 10);
+    let baselineUpdated = false;
+    for (const outputDir of outputDirs) {
+      const baselinePath = path.join(outputDir, 'pointsBaseline.json');
+      const totalsPath   = path.join(outputDir, 'entrantTotals.json');
+      try {
+        let needsUpdate = true;
+        try {
+          const existing = JSON.parse(await fs.readFile(baselinePath, 'utf8'));
+          if (existing[0]?.baselineDate === todayUTC) needsUpdate = false;
+        } catch (_) { /* baseline doesn't exist yet */ }
+
+        if (needsUpdate) {
+          try {
+            const prevTotals = JSON.parse(await fs.readFile(totalsPath, 'utf8'));
+            if (prevTotals.length > 0) {
+              const baseline = prevTotals.map(e => ({
+                entrantTeamName: e.entrantTeamName,
+                entrantName:     e.entrantName,
+                totalPoints:     e.totalPoints,
+                baselineDate:    todayUTC,
+              }));
+              await writeJSON(baselinePath, baseline);
+              if (!baselineUpdated) {
+                console.log(`✓ Updated daily points baseline for ${todayUTC}`);
+                baselineUpdated = true;
+              }
+            }
+          } catch (_) { /* no existing totals to snapshot */ }
+        }
+      } catch (_) {}
+    }
 
     for (const outputDir of outputDirs) {
       const outputs = [

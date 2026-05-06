@@ -1,0 +1,166 @@
+/* site-wide match/results scrolling ticker */
+(async function () {
+  const ROUND_LABELS = {
+    GS1: 'Group Stage 1', GS2: 'Group Stage 2', GS3: 'Group Stage 3',
+    R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: 'Third Place', F: 'Final',
+  };
+
+  /* ── inject styles ───────────────────────────────────────── */
+  const style = document.createElement('style');
+  style.textContent = `
+    #site-ticker {
+      background: #0e2340;
+      overflow: hidden;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 58px;
+      z-index: 90;
+      user-select: none;
+    }
+    #site-ticker::before, #site-ticker::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 40px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    #site-ticker::before { left: 0; background: linear-gradient(to right, #0e2340, transparent); }
+    #site-ticker::after  { right: 0; background: linear-gradient(to left, #0e2340, transparent); }
+    #ticker-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    #site-ticker:hover #ticker-track { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    .ticker-item.fixture { color: rgba(255,255,255,0.65); }
+    .ticker-item .ticker-badge {
+      font-size: 0.64rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 99px;
+      letter-spacing: 0.02em;
+    }
+    .ticker-item.result .ticker-badge { background: #22a861; color: #fff; }
+    .ticker-item.fixture .ticker-badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+    .ticker-score { font-weight: 800; color: #fff; }
+    .ticker-sep { color: rgba(255,255,255,0.2); padding: 0 4px; font-size: 0.7rem; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  /* ── create DOM ──────────────────────────────────────────── */
+  const wrap = document.createElement('div');
+  wrap.id = 'site-ticker';
+  const track = document.createElement('div');
+  track.id = 'ticker-track';
+  wrap.appendChild(track);
+
+  const header = document.querySelector('header');
+  if (!header) return;
+  header.insertAdjacentElement('afterend', wrap);
+
+  /* ── load data ───────────────────────────────────────────── */
+  let teams, matches;
+  try {
+    const [tr, mr] = await Promise.all([
+      fetch('./Data/teams.json'),
+      fetch('./Data/matches.json'),
+    ]);
+    if (!tr.ok || !mr.ok) throw new Error('fetch failed');
+    [teams, matches] = await Promise.all([tr.json(), mr.json()]);
+  } catch (_) {
+    wrap.remove();
+    return;
+  }
+
+  /* ── build lookup ────────────────────────────────────────── */
+  const nameOf = {};
+  teams.forEach(t => { nameOf[t.groupId] = t.countryName; });
+
+  const todayUTC = new Date().toISOString().slice(0, 10);
+
+  /* ── today's fixtures (unplayed, kickoff today in UTC) ────── */
+  const todayFixtures = matches
+    .filter(m => !m.played && m.date && m.date.slice(0, 10) === todayUTC)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  /* ── last 5 results (played, most recent first) ───────────── */
+  const recentResults = matches
+    .filter(m => m.played && m.result)
+    .slice(-5)
+    .reverse();
+
+  if (todayFixtures.length === 0 && recentResults.length === 0) {
+    wrap.remove();
+    return;
+  }
+
+  /* ── build ticker items ───────────────────────────────────── */
+  const items = [];
+
+  todayFixtures.forEach(m => {
+    const kickoff = new Date(m.date).toLocaleTimeString('en-GB', {
+      hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London',
+    });
+    const home = nameOf[m.homeTeam] || m.homeTeam;
+    const away = nameOf[m.awayTeam] || m.awayTeam;
+    const round = ROUND_LABELS[m.roundCode] || m.roundCode;
+    items.push(`
+      <span class="ticker-item fixture">
+        <span class="ticker-badge">${esc(round)}</span>
+        <span>${esc(home)} vs ${esc(away)}</span>
+        <span style="color:rgba(255,255,255,0.45)">${kickoff} BST</span>
+      </span>
+      <span class="ticker-sep">•</span>
+    `);
+  });
+
+  recentResults.forEach(m => {
+    const home = nameOf[m.homeTeam] || m.homeTeam;
+    const away = nameOf[m.awayTeam] || m.awayTeam;
+    const r = m.result;
+    const round = ROUND_LABELS[m.roundCode] || m.roundCode;
+    items.push(`
+      <span class="ticker-item result">
+        <span class="ticker-badge">${esc(round)}</span>
+        <span>${esc(home)}</span>
+        <span class="ticker-score">${r.homeScore}–${r.awayScore}</span>
+        <span>${esc(away)}</span>
+      </span>
+      <span class="ticker-sep">•</span>
+    `);
+  });
+
+  /* ── duplicate for seamless loop ─────────────────────────── */
+  const html = items.join('');
+  track.innerHTML = html + html;
+
+  /* ── set animation duration based on content ─────────────── */
+  const duration = Math.max(18, items.length * 6);
+  track.style.animation = `ticker-scroll ${duration}s linear infinite`;
+
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c])
+    );
+  }
+})();

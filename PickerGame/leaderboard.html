@@ -243,6 +243,10 @@
       font-weight: 800;
       font-size: 0.92rem;
       color: var(--green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
     }
     .team-count {
       grid-column: 4;
@@ -389,6 +393,16 @@
       .leaderboard.round-mode .score-col { grid-column: 3; }
       .team-name { display: none; }
     }
+
+    /* ─── Points delta ───────────────────────────────────────────–*/
+    .delta {
+      font-size: 0.58rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .delta.pos { color: var(--green); }
+    .delta.neg { color: var(--red); }
+    .delta.zero { color: var(--gray-400); }
 
     /* ─── Empty / Error states ───────────────────────────────────––*/
     .empty-state {
@@ -569,6 +583,7 @@
     .modal-country-score { font-weight: 800; color: var(--green); }
     .modal-country-score.neg { color: var(--red); }
   </style>
+  <script src="ticker.js" defer></script>
 </head>
 <body>
 
@@ -578,7 +593,9 @@
     <nav>
       <a href="entry.html">Enter</a>
       <a href="entries.html">Entries</a>
+      <a href="leaderboard.html">Leaderboard</a>
       <a href="schedule.html">Matches</a>
+      <a href="tables.html">Tables</a>
       <a href="countries.html">Countries</a>
       <a href="blog.html">Updates</a>
     </nav>
@@ -622,6 +639,7 @@
     teamPoints:    './Data/teamPoints.json',
     entrantTotals: './Data/entrantTotals.json',
     matches:       './Data/matches.json',
+    baseline:      './Data/pointsBaseline.json',
   };
   const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
   const ROUND_LABELS = {
@@ -634,6 +652,7 @@
   let teamPoints = [];
   let leaderboard = [];
   let allMatches = null;
+  let pointsBaseline = {}; // entrantTeamName+entrantName → baselinePoints
   let scoreDisplayMode = 'countries';
   let picksFilter = '';
 
@@ -660,6 +679,17 @@
         pointsRes.ok ? pointsRes.json() : Promise.reject(new Error(`teamPoints: HTTP ${pointsRes.status}`)),
         totalsRes.ok ? totalsRes.json() : Promise.reject(new Error(`entrantTotals: HTTP ${totalsRes.status}`)),
       ]);
+
+      // Load baseline for points-since-yesterday (non-fatal if missing)
+      try {
+        const baselineRes = await fetch(DATA_URLS.baseline);
+        if (baselineRes.ok) {
+          const baselineData = await baselineRes.json();
+          baselineData.forEach(e => {
+            pointsBaseline[e.entrantTeamName + '|' + e.entrantName] = e.totalPoints;
+          });
+        }
+      } catch (_) {}
 
       allTeams   = teamsData;
       teamPoints = pointsData;
@@ -714,6 +744,17 @@
   function escapeHtml(text) {
     const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
     return String(text ?? '').replace(/[&<>"']/g, m => map[m]);
+  }
+
+  /* ─── Points delta ────────────────────────────────────────── */
+  function getDeltaHtml(entry) {
+    const key = entry.teamName + '|' + entry.entrantName;
+    if (!(key in pointsBaseline)) return '';
+    const delta = entry.totalScore - pointsBaseline[key];
+    if (delta === 0) return '<span class="delta zero">—</span>';
+    return delta > 0
+      ? `<span class="delta pos">▲${delta}</span>`
+      : `<span class="delta neg">▼${Math.abs(delta)}</span>`;
   }
 
   /* ─── Row fragment builders ───────────────────────────────── */
@@ -816,7 +857,10 @@
             ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
           <div class="team-count">${entry.teamsRemaining}/${entry.selectedTeams.length}</div>
-          <div class="score-col">${entry.totalScore}</div>
+          <div class="score-col">
+            <span>${entry.totalScore}</span>
+            ${getDeltaHtml(entry)}
+          </div>
         </div>
       `;
     });
