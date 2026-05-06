@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "entrantTeamName": "test3",
+    "entrantName": "test",
+    "entrantEmail": "test3@gmail.com",
+    "totalPoints": 36,
+    "teamsRemaining": 8,
+    "byRound": {
+      "GS1": 36,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Mexico",
+      "South Africa",
+      "South Korea",
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Qatar",
+      "Morocco",
+      "Haiti"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Mexico",
+        "points": 15
+      },
+      {
+        "countryName": "South Korea",
+        "points": 10
+      },
+      {
+        "countryName": "Morocco",
+        "points": 10
+      },
+      {
+        "countryName": "Haiti",
+        "points": 5
+      },
+      {
+        "countryName": "Czechia",
+        "points": 0
+      },
+      {
+        "countryName": "Qatar",
+        "points": 0
+      },
+      {
+        "countryName": "South Africa",
+        "points": -2
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": -2
+      }
+    ],
+    "tieBreakers": [
+      "123",
+      "23"
+    ]
+  }
+]

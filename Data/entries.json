@@ -1,1 +1,71 @@
-[]
+[
+  {
+    "id": "df5f0641-45ac-4ea2-9e20-b1247a241373",
+    "entrantName": "Jamie",
+    "email": "jamie@vidamour.com",
+    "teamName": "jamie test",
+    "tieBreakerAnswers": [
+      "123",
+      "32"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "South Africa",
+      "Qatar",
+      "Haiti",
+      "Jordan",
+      "Uzbekistan",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-05-04T09:26:31.170Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "82d8b4a2-c234-4d75-8101-195565222925",
+    "entrantName": "jamie",
+    "email": "jviddy@vidamour.com",
+    "teamName": "test 2",
+    "tieBreakerAnswers": [
+      "321",
+      "23"
+    ],
+    "selectedTeams": [
+      "Haiti",
+      "Australia",
+      "Curaçao",
+      "Ivory Coast",
+      "Cape Verde",
+      "Iraq",
+      "Austria",
+      "DR Congo"
+    ],
+    "submittedAt": "2026-05-04T09:28:40.050Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "e5db5262-4855-4a2e-a7cb-3ff7a6b5e1e3",
+    "entrantName": "test",
+    "email": "test3@gmail.com",
+    "teamName": "test3",
+    "tieBreakerAnswers": [
+      "123",
+      "23"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "South Africa",
+      "South Korea",
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Qatar",
+      "Morocco",
+      "Haiti"
+    ],
+    "submittedAt": "2026-05-04T20:31:28.693Z",
+    "paid": true,
+    "removed": false
+  }
+]

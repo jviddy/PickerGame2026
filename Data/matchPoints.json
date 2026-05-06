@@ -5,51 +5,20 @@
     "homeTeam": "A1",
     "awayTeam": "A2",
     "homePoints": {
-      "resultType": "loss",
-      "goalsFor": 1,
-      "goalsAgainst": 2,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 3,
-        "goalsConceded": -4,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GF",
-          "value": 3,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -4,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": -1
-    },
-    "awayPoints": {
       "resultType": "win",
-      "goalsFor": 2,
-      "goalsAgainst": 1,
+      "goalsFor": 7,
+      "goalsAgainst": 4,
       "penaltiesFor": null,
       "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
+      "yellowCards": 1,
+      "redCards": 1,
       "qualified": false,
       "categories": {
         "result": 5,
-        "goalsScored": 6,
-        "goalsConceded": -2,
+        "goalsScored": 21,
+        "goalsConceded": -8,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "qualification": 0
       },
       "items": [
@@ -60,18 +29,59 @@
         },
         {
           "label": "GF",
-          "value": 6,
+          "value": 21,
           "category": "goalsScored"
         },
         {
           "label": "GA",
+          "value": -8,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        },
+        {
+          "label": "RC",
           "value": -2,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 15
+    },
+    "awayPoints": {
+      "resultType": "loss",
+      "goalsFor": 4,
+      "goalsAgainst": 7,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 12,
+        "goalsConceded": -14,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GF",
+          "value": 12,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -14,
           "category": "goalsConceded"
         }
       ],
-      "total": 9
+      "total": -2
     },
-    "totalPoints": 8
+    "totalPoints": 13
   },
   {
     "matchId": "M002",
@@ -149,48 +159,393 @@
   },
   {
     "matchId": "M003",
-    "played": false,
+    "played": true,
     "homeTeam": "B1",
     "awayTeam": "B2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "win",
+      "goalsFor": 1,
+      "goalsAgainst": 0,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 5,
+        "goalsScored": 3,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        }
+      ],
+      "total": 8
+    },
+    "awayPoints": {
+      "resultType": "loss",
+      "goalsFor": 0,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": -2
+    },
+    "totalPoints": 6
   },
   {
     "matchId": "M004",
-    "played": false,
+    "played": true,
     "homeTeam": "D1",
     "awayTeam": "D2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "draw",
+      "goalsFor": 1,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 2
+    },
+    "awayPoints": {
+      "resultType": "draw",
+      "goalsFor": 1,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 3
+    },
+    "totalPoints": 5
   },
   {
     "matchId": "M005",
-    "played": false,
+    "played": true,
     "homeTeam": "C3",
     "awayTeam": "C4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "draw",
+      "goalsFor": 3,
+      "goalsAgainst": 3,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 9,
+        "goalsConceded": -6,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 9,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -6,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 5
+    },
+    "awayPoints": {
+      "resultType": "draw",
+      "goalsFor": 3,
+      "goalsAgainst": 3,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 9,
+        "goalsConceded": -6,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 9,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -6,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 4
+    },
+    "totalPoints": 9
   },
   {
     "matchId": "M006",
-    "played": false,
+    "played": true,
     "homeTeam": "D3",
     "awayTeam": "D4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "loss",
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GF",
+          "value": 6,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -6,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 0
+    },
+    "awayPoints": {
+      "resultType": "win",
+      "goalsFor": 3,
+      "goalsAgainst": 2,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 9,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -4,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 9
+    },
+    "totalPoints": 9
   },
   {
     "matchId": "M007",
-    "played": false,
+    "played": true,
     "homeTeam": "C1",
     "awayTeam": "C2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "loss",
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GF",
+          "value": 6,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -6,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": -1
+    },
+    "awayPoints": {
+      "resultType": "win",
+      "goalsFor": 3,
+      "goalsAgainst": 2,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 9,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -4,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 10
+    },
+    "totalPoints": 9
   },
   {
     "matchId": "M008",
@@ -320,12 +675,92 @@
   },
   {
     "matchId": "M022",
-    "played": false,
+    "played": true,
     "homeTeam": "L1",
     "awayTeam": "L2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "loss",
+      "goalsFor": 2,
+      "goalsAgainst": 3,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 1,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
+        "penalties": 0,
+        "disciplinary": -3,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GF",
+          "value": 6,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -6,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        },
+        {
+          "label": "RC",
+          "value": -2,
+          "category": "disciplinary"
+        }
+      ],
+      "total": -3
+    },
+    "awayPoints": {
+      "resultType": "win",
+      "goalsFor": 3,
+      "goalsAgainst": 2,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 2,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
+        "penalties": 0,
+        "disciplinary": -2,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 9,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -4,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -2,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 8
+    },
+    "totalPoints": 5
   },
   {
     "matchId": "M023",
