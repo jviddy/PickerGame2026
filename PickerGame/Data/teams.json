@@ -4,192 +4,34 @@
     "group": "A",
     "groupId": "A1",
     "fifaRank": 15,
-    "cost": 35,
+    "cost": 24,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/60px-Flag_of_Mexico.svg.png",
     "inCompetition": true,
-    "totalPoints": -1,
-    "scoresByRound": [
-      {
-        "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 3,
-        "goalsConceded": -4,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": -1,
-        "matches": [
-          {
-            "matchId": "M001",
-            "date": "2026-06-11T19:00:00Z",
-            "fixture": "Mexico v South Africa",
-            "result": "loss",
-            "goalsFor": 1,
-            "goalsAgainst": 2,
-            "penaltiesFor": null,
-            "penaltiesAgainst": null,
-            "yellowCards": 0,
-            "redCards": 0,
-            "qualified": false,
-            "points": [
-              {
-                "label": "GF",
-                "value": 3,
-                "category": "goalsScored"
-              },
-              {
-                "label": "GA",
-                "value": -4,
-                "category": "goalsConceded"
-              }
-            ],
-            "total": -1
-          }
-        ]
-      },
-      {
-        "roundCode": "GS2",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "GS3",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "R32",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "R16",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "QF",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "SF",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "TPP",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      },
-      {
-        "roundCode": "F",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
-      }
-    ],
-    "pointsTotals": {
-      "result": 0,
-      "goalsScored": 3,
-      "goalsConceded": -4,
-      "penalties": 0,
-      "disciplinary": 0,
-      "roundQualification": 0,
-      "qualification": 0,
-      "total": -1
-    }
-  },
-  {
-    "countryName": "South Africa",
-    "group": "A",
-    "groupId": "A2",
-    "fifaRank": 60,
-    "cost": 9,
-    "active": 1,
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/60px-Flag_of_South_Africa.svg.png",
-    "inCompetition": true,
-    "totalPoints": 9,
+    "totalPoints": 15,
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 5,
-        "goalsScored": 6,
-        "goalsConceded": -2,
+        "goalsScored": 21,
+        "goalsConceded": -8,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 9,
+        "total": 15,
         "matches": [
           {
             "matchId": "M001",
             "date": "2026-06-11T19:00:00Z",
             "fixture": "Mexico v South Africa",
             "result": "win",
-            "goalsFor": 2,
-            "goalsAgainst": 1,
+            "goalsFor": 7,
+            "goalsAgainst": 4,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 0,
-            "redCards": 0,
+            "yellowCards": 1,
+            "redCards": 1,
             "qualified": false,
             "points": [
               {
@@ -199,16 +41,26 @@
               },
               {
                 "label": "GF",
-                "value": 6,
+                "value": 21,
                 "category": "goalsScored"
               },
               {
                 "label": "GA",
-                "value": -2,
+                "value": -8,
                 "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
               }
             ],
-            "total": 9
+            "total": 15
           }
         ]
       },
@@ -311,13 +163,171 @@
     ],
     "pointsTotals": {
       "result": 5,
-      "goalsScored": 6,
-      "goalsConceded": -2,
+      "goalsScored": 21,
+      "goalsConceded": -8,
+      "penalties": 0,
+      "disciplinary": -3,
+      "roundQualification": 0,
+      "qualification": 0,
+      "total": 15
+    }
+  },
+  {
+    "countryName": "South Africa",
+    "group": "A",
+    "groupId": "A2",
+    "fifaRank": 60,
+    "cost": 5,
+    "active": 1,
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/60px-Flag_of_South_Africa.svg.png",
+    "inCompetition": true,
+    "totalPoints": -2,
+    "scoresByRound": [
+      {
+        "roundCode": "GS1",
+        "result": 0,
+        "goalsScored": 12,
+        "goalsConceded": -14,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M001",
+            "date": "2026-06-11T19:00:00Z",
+            "fixture": "Mexico v South Africa",
+            "result": "loss",
+            "goalsFor": 4,
+            "goalsAgainst": 7,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 12,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -14,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -2
+          }
+        ]
+      },
+      {
+        "roundCode": "GS2",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "GS3",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "R32",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "R16",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "QF",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "SF",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "TPP",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      },
+      {
+        "roundCode": "F",
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "roundQualification": 0,
+        "qualification": 0,
+        "total": 0,
+        "matches": []
+      }
+    ],
+    "pointsTotals": {
+      "result": 0,
+      "goalsScored": 12,
+      "goalsConceded": -14,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 9
+      "total": -2
     }
   },
   {
@@ -325,7 +335,7 @@
     "group": "A",
     "groupId": "A3",
     "fifaRank": 25,
-    "cost": 26,
+    "cost": 17,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/60px-Flag_of_South_Korea.svg.png",
     "inCompetition": true,
@@ -488,7 +498,7 @@
     "group": "A",
     "groupId": "A4",
     "fifaRank": 41,
-    "cost": 16,
+    "cost": 11,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/60px-Flag_of_the_Czech_Republic.svg.png",
     "inCompetition": true,
@@ -646,23 +656,50 @@
     "group": "B",
     "groupId": "B1",
     "fifaRank": 30,
-    "cost": 22,
+    "cost": 14,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Canada.svg/60px-Flag_of_Canada.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 8,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
+        "result": 5,
+        "goalsScored": 3,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 8,
+        "matches": [
+          {
+            "matchId": "M003",
+            "date": "2026-06-12T19:00:00Z",
+            "fixture": "Canada v Bosnia and Herzegovina",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              }
+            ],
+            "total": 8
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -762,14 +799,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
+      "result": 5,
+      "goalsScored": 3,
       "goalsConceded": 0,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 8
     }
   },
   {
@@ -777,23 +814,45 @@
     "group": "B",
     "groupId": "B2",
     "fifaRank": 65,
-    "cost": 6,
+    "cost": 4,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/60px-Flag_of_Bosnia_and_Herzegovina.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": -2,
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M003",
+            "date": "2026-06-12T19:00:00Z",
+            "fixture": "Canada v Bosnia and Herzegovina",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -895,12 +954,12 @@
     "pointsTotals": {
       "result": 0,
       "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsConceded": -2,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": -2
     }
   },
   {
@@ -908,7 +967,7 @@
     "group": "B",
     "groupId": "B3",
     "fifaRank": 55,
-    "cost": 11,
+    "cost": 7,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/60px-Flag_of_Qatar.svg.png",
     "inCompetition": true,
@@ -1039,7 +1098,7 @@
     "group": "B",
     "groupId": "B4",
     "fifaRank": 19,
-    "cost": 31,
+    "cost": 21,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/60px-Flag_of_Switzerland.svg.png",
     "inCompetition": true,
@@ -1170,23 +1229,55 @@
     "group": "C",
     "groupId": "C1",
     "fifaRank": 5,
-    "cost": 43,
+    "cost": 29,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/60px-Flag_of_Brazil.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": -1,
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -1,
+        "matches": [
+          {
+            "matchId": "M007",
+            "date": "2026-06-13T22:00:00Z",
+            "fixture": "Brazil v Morocco",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1287,13 +1378,13 @@
     ],
     "pointsTotals": {
       "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsScored": 6,
+      "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": -1
     }
   },
   {
@@ -1301,23 +1392,55 @@
     "group": "C",
     "groupId": "C2",
     "fifaRank": 8,
-    "cost": 41,
+    "cost": 27,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/60px-Flag_of_Morocco.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 10,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 10,
+        "matches": [
+          {
+            "matchId": "M007",
+            "date": "2026-06-13T22:00:00Z",
+            "fixture": "Brazil v Morocco",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 10
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1417,14 +1540,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 5,
+      "goalsScored": 9,
+      "goalsConceded": -4,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 10
     }
   },
   {
@@ -1432,23 +1555,55 @@
     "group": "C",
     "groupId": "C3",
     "fifaRank": 83,
-    "cost": 2,
+    "cost": 1,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/60px-Flag_of_Haiti.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 5,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 9,
+        "goalsConceded": -6,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 5,
+        "matches": [
+          {
+            "matchId": "M005",
+            "date": "2026-06-14T01:00:00Z",
+            "fixture": "Haiti v Scotland",
+            "result": "draw",
+            "goalsFor": 3,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 5
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1548,14 +1703,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 9,
+      "goalsConceded": -6,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 5
     }
   },
   {
@@ -1563,23 +1718,60 @@
     "group": "C",
     "groupId": "C4",
     "fifaRank": 43,
-    "cost": 15,
+    "cost": 10,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Scotland.svg/60px-Flag_of_Scotland.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 4,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 9,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 4,
+        "matches": [
+          {
+            "matchId": "M005",
+            "date": "2026-06-14T01:00:00Z",
+            "fixture": "Haiti v Scotland",
+            "result": "draw",
+            "goalsFor": 3,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 4
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1679,14 +1871,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 9,
+      "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 4
     }
   },
   {
@@ -1694,23 +1886,60 @@
     "group": "D",
     "groupId": "D1",
     "fifaRank": 16,
-    "cost": 34,
+    "cost": 22,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/60px-Flag_of_the_United_States.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 2,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 2,
+        "matches": [
+          {
+            "matchId": "M004",
+            "date": "2026-06-13T01:00:00Z",
+            "fixture": "United States v Paraguay",
+            "result": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 2
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1810,14 +2039,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 3,
+      "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 2
     }
   },
   {
@@ -1825,23 +2054,55 @@
     "group": "D",
     "groupId": "D2",
     "fifaRank": 40,
-    "cost": 17,
+    "cost": 11,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/60px-Flag_of_Paraguay.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 3,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 3,
+        "matches": [
+          {
+            "matchId": "M004",
+            "date": "2026-06-13T01:00:00Z",
+            "fixture": "United States v Paraguay",
+            "result": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 3
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1941,14 +2202,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 3,
+      "goalsConceded": -2,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 3
     }
   },
   {
@@ -1956,7 +2217,7 @@
     "group": "D",
     "groupId": "D3",
     "fifaRank": 27,
-    "cost": 25,
+    "cost": 15,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Australia.svg/60px-Flag_of_Australia.svg.png",
     "inCompetition": true,
@@ -1965,14 +2226,41 @@
       {
         "roundCode": "GS1",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
         "total": 0,
-        "matches": []
+        "matches": [
+          {
+            "matchId": "M006",
+            "date": "2026-06-13T04:00:00Z",
+            "fixture": "Australia v Türkiye",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 0
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -2073,8 +2361,8 @@
     ],
     "pointsTotals": {
       "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsScored": 6,
+      "goalsConceded": -6,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
@@ -2087,23 +2375,60 @@
     "group": "D",
     "groupId": "D4",
     "fifaRank": 22,
-    "cost": 29,
+    "cost": 19,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/60px-Flag_of_Turkey.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 9,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 9,
+        "matches": [
+          {
+            "matchId": "M006",
+            "date": "2026-06-13T04:00:00Z",
+            "fixture": "Australia v Türkiye",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 9
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -2203,14 +2528,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 5,
+      "goalsScored": 9,
+      "goalsConceded": -4,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 9
     }
   },
   {
@@ -2218,7 +2543,7 @@
     "group": "E",
     "groupId": "E1",
     "fifaRank": 10,
-    "cost": 39,
+    "cost": 27,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/60px-Flag_of_Germany.svg.png",
     "inCompetition": true,
@@ -2349,7 +2674,7 @@
     "group": "E",
     "groupId": "E2",
     "fifaRank": 82,
-    "cost": 3,
+    "cost": 1,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1//Flag_of_Curaçao.svg/60px-Flag_of_Curacao.svg.png",
     "inCompetition": true,
@@ -2480,7 +2805,7 @@
     "group": "E",
     "groupId": "E3",
     "fifaRank": 34,
-    "cost": 19,
+    "cost": 13,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Côte_d%27Ivoire.svg/60px-Flag_of_Côte_d%27Ivoire.svg.png",
     "inCompetition": true,
@@ -2611,7 +2936,7 @@
     "group": "E",
     "groupId": "E4",
     "fifaRank": 23,
-    "cost": 28,
+    "cost": 18,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/60px-Flag_of_Ecuador.svg.png",
     "inCompetition": true,
@@ -2742,7 +3067,7 @@
     "group": "F",
     "groupId": "F1",
     "fifaRank": 7,
-    "cost": 42,
+    "cost": 29,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/60px-Flag_of_the_Netherlands.svg.png",
     "inCompetition": true,
@@ -2873,7 +3198,7 @@
     "group": "F",
     "groupId": "F2",
     "fifaRank": 18,
-    "cost": 32,
+    "cost": 22,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/60px-Flag_of_Japan.svg.png",
     "inCompetition": true,
@@ -3004,7 +3329,7 @@
     "group": "F",
     "groupId": "F3",
     "fifaRank": 38,
-    "cost": 18,
+    "cost": 12,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/60px-Flag_of_Sweden.svg.png",
     "inCompetition": true,
@@ -3135,7 +3460,7 @@
     "group": "F",
     "groupId": "F4",
     "fifaRank": 44,
-    "cost": 14,
+    "cost": 10,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/60px-Flag_of_Tunisia.svg.png",
     "inCompetition": true,
@@ -3266,7 +3591,7 @@
     "group": "G",
     "groupId": "G1",
     "fifaRank": 9,
-    "cost": 40,
+    "cost": 27,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/60px-Flag_of_Belgium.svg.png",
     "inCompetition": true,
@@ -3397,7 +3722,7 @@
     "group": "G",
     "groupId": "G2",
     "fifaRank": 29,
-    "cost": 23,
+    "cost": 15,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/60px-Flag_of_Egypt.svg.png",
     "inCompetition": true,
@@ -3528,7 +3853,7 @@
     "group": "G",
     "groupId": "G3",
     "fifaRank": 21,
-    "cost": 30,
+    "cost": 20,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flag_of_Iran.svg/60px-Flag_of_Iran.svg.png",
     "inCompetition": true,
@@ -3790,7 +4115,7 @@
     "group": "H",
     "groupId": "H1",
     "fifaRank": 2,
-    "cost": 47,
+    "cost": 32,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/60px-Flag_of_Spain.svg.png",
     "inCompetition": true,
@@ -3921,7 +4246,7 @@
     "group": "H",
     "groupId": "H2",
     "fifaRank": 69,
-    "cost": 5,
+    "cost": 2,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Flag_of_Cape_Verde.svg/60px-Flag_of_Cape_Verde.svg.png",
     "inCompetition": true,
@@ -4052,7 +4377,7 @@
     "group": "H",
     "groupId": "H3",
     "fifaRank": 61,
-    "cost": 8,
+    "cost": 5,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/60px-Flag_of_Saudi_Arabia.svg.png",
     "inCompetition": true,
@@ -4183,7 +4508,7 @@
     "group": "H",
     "groupId": "H4",
     "fifaRank": 17,
-    "cost": 33,
+    "cost": 23,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Uruguay.svg/60px-Flag_of_Uruguay.svg.png",
     "inCompetition": true,
@@ -4314,7 +4639,7 @@
     "group": "I",
     "groupId": "I1",
     "fifaRank": 1,
-    "cost": 48,
+    "cost": 32,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/60px-Flag_of_France.svg.png",
     "inCompetition": true,
@@ -4445,7 +4770,7 @@
     "group": "I",
     "groupId": "I2",
     "fifaRank": 14,
-    "cost": 36,
+    "cost": 24,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/60px-Flag_of_Senegal.svg.png",
     "inCompetition": true,
@@ -4576,7 +4901,7 @@
     "group": "I",
     "groupId": "I3",
     "fifaRank": 57,
-    "cost": 10,
+    "cost": 6,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Flag_of_Iraq.svg/60px-Flag_of_Iraq.svg.png",
     "inCompetition": true,
@@ -4707,7 +5032,7 @@
     "group": "I",
     "groupId": "I4",
     "fifaRank": 31,
-    "cost": 21,
+    "cost": 14,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/60px-Flag_of_Norway.svg.png",
     "inCompetition": true,
@@ -4838,7 +5163,7 @@
     "group": "J",
     "groupId": "J1",
     "fifaRank": 3,
-    "cost": 46,
+    "cost": 30,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/60px-Flag_of_Argentina.svg.png",
     "inCompetition": true,
@@ -4969,7 +5294,7 @@
     "group": "J",
     "groupId": "J2",
     "fifaRank": 28,
-    "cost": 24,
+    "cost": 15,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/60px-Flag_of_Algeria.svg.png",
     "inCompetition": true,
@@ -5100,7 +5425,7 @@
     "group": "J",
     "groupId": "J3",
     "fifaRank": 24,
-    "cost": 27,
+    "cost": 16,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/60px-Flag_of_Austria.svg.png",
     "inCompetition": true,
@@ -5231,7 +5556,7 @@
     "group": "J",
     "groupId": "J4",
     "fifaRank": 63,
-    "cost": 7,
+    "cost": 4,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_Jordan.svg/60px-Flag_of_Jordan.svg.png",
     "inCompetition": true,
@@ -5362,7 +5687,7 @@
     "group": "K",
     "groupId": "K1",
     "fifaRank": 5,
-    "cost": 43,
+    "cost": 31,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/60px-Flag_of_Portugal.svg.png",
     "inCompetition": true,
@@ -5493,7 +5818,7 @@
     "group": "K",
     "groupId": "K2",
     "fifaRank": 46,
-    "cost": 13,
+    "cost": 9,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/60px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
     "inCompetition": true,
@@ -5624,7 +5949,7 @@
     "group": "K",
     "groupId": "K3",
     "fifaRank": 50,
-    "cost": 12,
+    "cost": 8,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/60px-Flag_of_Uzbekistan.svg.png",
     "inCompetition": true,
@@ -5755,7 +6080,7 @@
     "group": "K",
     "groupId": "K4",
     "fifaRank": 13,
-    "cost": 37,
+    "cost": 25,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/60px-Flag_of_Colombia.svg.png",
     "inCompetition": true,
@@ -5886,23 +6211,60 @@
     "group": "L",
     "groupId": "L1",
     "fifaRank": 4,
-    "cost": 45,
+    "cost": 30,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/60px-Flag_of_England.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": -3,
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -3,
+        "matches": [
+          {
+            "matchId": "M022",
+            "date": "2026-06-17T20:00:00Z",
+            "fixture": "England v Croatia",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 1,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -6003,13 +6365,13 @@
     ],
     "pointsTotals": {
       "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsScored": 6,
+      "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -3,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": -3
     }
   },
   {
@@ -6017,23 +6379,60 @@
     "group": "L",
     "groupId": "L2",
     "fifaRank": 11,
-    "cost": 38,
+    "cost": 26,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Flag_of_Croatia.svg/60px-Flag_of_Croatia.svg.png",
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 8,
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 5,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 8,
+        "matches": [
+          {
+            "matchId": "M022",
+            "date": "2026-06-17T20:00:00Z",
+            "fixture": "England v Croatia",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 8
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -6133,14 +6532,14 @@
       }
     ],
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 5,
+      "goalsScored": 9,
+      "goalsConceded": -4,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -2,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 8
     }
   },
   {
@@ -6148,7 +6547,7 @@
     "group": "L",
     "groupId": "L3",
     "fifaRank": 74,
-    "cost": 4,
+    "cost": 3,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Ghana.svg/60px-Flag_of_Ghana.svg.png",
     "inCompetition": true,
@@ -6279,7 +6678,7 @@
     "group": "L",
     "groupId": "L4",
     "fifaRank": 33,
-    "cost": 20,
+    "cost": 13,
     "active": 1,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/60px-Flag_of_Panama.svg.png",
     "inCompetition": true,

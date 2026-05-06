@@ -3,13 +3,16 @@
   "signupStart": "2026-05-01T00:00:00Z",
   "signupEnd": "2026-06-10T23:59:59Z",
   "teamsToPick": 8,
-  "budget": 150,
+  "budget": 125,
   "numberOfTieBreakers": 2,
   "tieBreakerQuestions": [
     "How many total goals will be scored in the tournament?",
     "Time of the last goals scored in the tournament (minutes)?"
   ],
-  "tieBreakerValidationFormat": ["integer", "integer"],
+  "tieBreakerValidationFormat": [
+    "integer",
+    "integer"
+  ],
   "points": {
     "win": 5,
     "draw": 2,
