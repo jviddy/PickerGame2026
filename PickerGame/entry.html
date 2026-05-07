@@ -1247,11 +1247,20 @@
   }
 
   function updateSubmitBtn() {
-    const ready = selected.size === MAX_PICKS;
+    const teamsFull   = selected.size === MAX_PICKS;
+    const teamName    = document.getElementById('teamName').value.trim();
+    const playerName  = document.getElementById('playerName').value.trim();
+    const email       = document.getElementById('email').value.trim();
+    const formFilled  = teamName && playerName && email.includes('@');
+    const ready       = teamsFull && formFilled;
     submitBtn.disabled = !ready;
-    submitBtn.textContent = ready
-      ? 'Submit entry →'
-      : `Select ${MAX_PICKS - selected.size} more team${MAX_PICKS - selected.size !== 1 ? 's' : ''} to continue`;
+    if (!teamsFull) {
+      submitBtn.textContent = `Select ${MAX_PICKS - selected.size} more team${MAX_PICKS - selected.size !== 1 ? 's' : ''} to continue`;
+    } else if (!formFilled) {
+      submitBtn.textContent = 'Fill in your details to continue';
+    } else {
+      submitBtn.textContent = 'Submit entry →';
+    }
   }
 
   /* ─── Randomize ──────────────────────────────────────────── */
@@ -1312,6 +1321,10 @@
   });
 
   document.getElementById('randomBtn').addEventListener('click', randomize);
+
+  ['teamName', 'playerName', 'email'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateSubmitBtn);
+  });
 
   /* ─── Form submission ─────────────────────────────────────── */
   submitBtn.addEventListener('click', handleSubmit);
