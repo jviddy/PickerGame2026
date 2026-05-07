@@ -515,10 +515,15 @@
       }));
     });
 
+    const matchesPlayed = (team.scoresByRound || []).reduce(
+      (sum, r) => sum + (r.matches || []).length, 0
+    );
+
     return {
       ...team,
       totalPoints: team.totalPoints || 0,
       inCompetition: team.inCompetition !== false,
+      matchesPlayed,
       byRound,
       detailsByRound
     };
@@ -540,7 +545,7 @@
 
     return `
       <tr class="details-row">
-        <td colspan="${ROUND_ORDER.length + 3}">
+        <td colspan="${ROUND_ORDER.length + 4}">
           <div class="round-detail">
             <div class="round-detail-title">${escapeHtml(title)}</div>
             ${details.length ? `
@@ -571,6 +576,7 @@
           <tr>
             <th class="country-heading">Country</th>
             <th>Status</th>
+            <th title="Matches played">Pld</th>
             ${ROUND_ORDER.map(round => `<th title="${escapeHtml(ROUND_LABELS[round])}">${escapeHtml(round)}</th>`).join('')}
             <th>Total</th>
           </tr>
@@ -590,6 +596,7 @@
                   </div>
                 </td>
                 <td><span class="status-pill ${country.inCompetition ? '' : 'out'}">${country.inCompetition ? 'In' : 'Out'}</span></td>
+                <td class="rank-cell">${country.matchesPlayed}</td>
                 ${ROUND_ORDER.map(round => {
                   const score = country.byRound[round] || 0;
                   const active = isOpen && openDetail.round === round;

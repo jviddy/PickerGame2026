@@ -586,6 +586,19 @@
       padding: 2px 10px;
     }
     .picks-count.full { background: var(--green); }
+    .picks-header-left { display: flex; align-items: center; gap: 8px; }
+    .random-btn {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      color: var(--navy);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .random-btn:hover { border-color: var(--gold); background: var(--amber-bg); }
 
     .picks-list {
       list-style: none;
@@ -926,7 +939,10 @@
     <!-- Picks list -->
     <div class="card">
       <div class="picks-header">
-        <h3>⚽ Your picks</h3>
+        <div class="picks-header-left">
+          <h3>⚽ Your picks</h3>
+          <button class="random-btn" id="randomBtn" type="button" title="Pick 8 random teams and fill tiebreakers">🎲 Random</button>
+        </div>
         <span class="picks-count" id="picksCount">0 / 8</span>
       </div>
       <ul class="picks-list" id="picksList"></ul>
@@ -1202,7 +1218,7 @@
 
   function renderPicks() {
     picksListEl.innerHTML = '';
-    const picks = getSelectedTeams();
+    const picks = getSelectedTeams().sort((a, b) => b.cost - a.cost);
     picksCountEl.textContent = `${picks.length} / ${MAX_PICKS}`;
     picksCountEl.className = 'picks-count' + (picks.length === MAX_PICKS ? ' full' : '');
 
@@ -1238,6 +1254,35 @@
       : `Select ${MAX_PICKS - selected.size} more team${MAX_PICKS - selected.size !== 1 ? 's' : ''} to continue`;
   }
 
+  /* ─── Randomize ──────────────────────────────────────────── */
+  function randomize(attempt = 0) {
+    if (attempt > 20) return;
+    selected.clear();
+    const shuffled = [...allTeams].sort(() => Math.random() - 0.5);
+    let rem = BUDGET;
+    for (const team of shuffled) {
+      if (selected.size === MAX_PICKS) break;
+      if (team.cost <= rem) {
+        selected.add(team.groupId);
+        rem -= team.cost;
+      }
+    }
+    if (selected.size < MAX_PICKS) { randomize(attempt + 1); return; }
+
+    // Tiebreaker 1: goals (240–310, biased ~275–285)
+    const goals = Math.round(
+      (Math.random() + Math.random() + Math.random() + Math.random()) / 4 * 70 + 245
+    );
+    // Tiebreaker 2: minute of last goal (60–115, 75% chance ≤95)
+    const minute = Math.random() < 0.75
+      ? Math.round(60 + Math.random() * 35)
+      : Math.round(95 + Math.random() * 20);
+
+    document.getElementById('tb1').value = goals;
+    document.getElementById('tb2').value = minute;
+    render();
+  }
+
   /* ─── Toggle team selection ───────────────────────────────── */
   function toggleTeam(team) {
     if (selected.has(team.groupId)) {
@@ -1265,6 +1310,8 @@
     compactGroups = !compactGroups;
     render();
   });
+
+  document.getElementById('randomBtn').addEventListener('click', randomize);
 
   /* ─── Form submission ─────────────────────────────────────── */
   submitBtn.addEventListener('click', handleSubmit);
