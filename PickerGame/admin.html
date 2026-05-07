@@ -404,8 +404,21 @@
     }
 
     function getCheckedPaidIds() {
-      return Array.from(entriesBody.querySelectorAll('input[type="checkbox"]:checked'))
-        .map((cb) => cb.dataset.entryId);
+      // IDs ticked in the current (possibly filtered) view
+      const visibleChecked = new Set(
+        Array.from(entriesBody.querySelectorAll('input[type="checkbox"]:checked'))
+          .map((cb) => cb.dataset.entryId)
+      );
+      // IDs of entries that are rendered (whether checked or not)
+      const renderedIds = new Set(
+        Array.from(entriesBody.querySelectorAll('input[type="checkbox"]'))
+          .map((cb) => cb.dataset.entryId)
+      );
+      // Paid entries not currently visible — preserve them unchanged
+      const hiddenPaidIds = allEntries
+        .filter((e) => e.paid && !e.removed && !renderedIds.has(e.id))
+        .map((e) => e.id);
+      return [...visibleChecked, ...hiddenPaidIds];
     }
 
     function getRemovedIds() {
