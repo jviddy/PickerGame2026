@@ -1,3 +1,5 @@
+import { buildConfirmationEmail } from '../email-confirmation.js';
+
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
 };
@@ -98,6 +100,36 @@ function validateEntry(entry, teams, settings) {
   };
 }
 
+async function sendConfirmationEmail(env, data) {
+  if (!env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not configured — skipping confirmation email');
+    return;
+  }
+  try {
+    const { subject, html, text } = buildConfirmationEmail(data);
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'PickerGame <pickergame@vidamour.com>',
+        to: [data.email],
+        subject,
+        html,
+        text,
+      }),
+    });
+    if (!res.ok) {
+      const body = await res.text();
+      console.error('Resend error', res.status, body);
+    }
+  } catch (err) {
+    console.error('Failed to send confirmation email:', err);
+  }
+}
+
 export async function onRequestOptions() {
   return new Response(null, {
     status: 204,
@@ -191,6 +223,20 @@ export async function onRequestPost(context) {
         now,
       )
       .run();
+
+    const leaderboardUrl = new URL('/leaderboard', request.url).href;
+    context.waitUntil(
+      sendConfirmationEmail(env, {
+        entrantName: entry.entrantName,
+        teamName: entry.teamName,
+        email: entry.email,
+        selectedTeams,
+        tieBreakerAnswers,
+        tieBreakerQuestions: settings.tieBreakerQuestions || [],
+        totalCost: validation.totalCost,
+        leaderboardUrl,
+      })
+    );
 
     return jsonResponse({
       ok: true,
