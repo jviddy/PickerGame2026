@@ -1,5 +1,6 @@
 /* site-wide match/results scrolling ticker */
 (async function () {
+  const TICKER_MODE = document.body.dataset.tickerMode;
   const ROUND_LABELS = {
     GS1: 'GS1', GS2: 'GS2', GS3: 'GS3',
     R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: 'TPP', F: 'Final',
@@ -77,6 +78,35 @@
   const header = document.querySelector('header');
   if (!header) return;
   header.insertAdjacentElement('afterend', wrap);
+
+  /* ── points guide mode (entry page) ─────────────────────── */
+  if (TICKER_MODE === 'points') {
+    const POINTS_ITEMS = [
+      { label: 'Win',                  value: '+5 pts',  color: '#22a861' },
+      { label: 'Draw',                 value: '+2 pts',  color: '#f0a500' },
+      { label: 'Loss',                 value: '0 pts',   color: 'rgba(255,255,255,0.5)' },
+      { label: 'Goal scored',          value: '+3 pts',  color: '#22a861' },
+      { label: 'Goal conceded',        value: '-2 pts',  color: '#e05555' },
+      { label: 'Yellow card',          value: '-1 pt',   color: '#f0a500' },
+      { label: 'Red card',             value: '-2 pts',  color: '#e05555' },
+      { label: 'Qualify to knockouts', value: '+10 pts', color: '#22a861' },
+      { label: 'Progress each round',  value: '+5 pts',  color: '#22a861' },
+      { label: 'Win the final',        value: '+15 pts', color: '#ffd700' },
+    ];
+    const items = POINTS_ITEMS.map(p => `
+      <span class="ticker-item">
+        <span class="ticker-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)">POINTS</span>
+        <span>${p.label}</span>
+        <span class="ticker-score" style="color:${p.color}">${p.value}</span>
+      </span>
+      <span class="ticker-sep">•</span>
+    `).join('');
+    const html = items + items;
+    track.innerHTML = html;
+    const duration = Math.max(30, POINTS_ITEMS.length * 4);
+    track.style.animation = `ticker-scroll ${duration}s linear infinite`;
+    return;
+  }
 
   /* ── load data ───────────────────────────────────────────── */
   let teams, matches;
