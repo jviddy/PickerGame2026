@@ -60,6 +60,21 @@
       transition: color 0.15s;
     }
     nav a.active, nav a:hover { color: var(--white); }
+    .nav-select {
+      display: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .nav-select option { color: #000; }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .nav-select { display: block; }
+    }
 
     .container {
       max-width: 1200px;
@@ -206,6 +221,15 @@
       <a href="countries.html">Countries</a>
       <a href="blog.html">Updates</a>
     </nav>
+    <select class="nav-select" onchange="location.href=this.value" aria-label="Navigate">
+      <option value="entry.html">Enter</option>
+      <option value="entries.html">Entries</option>
+      <option value="leaderboard.html">Leaderboard</option>
+      <option value="schedule.html">Matches</option>
+      <option value="tables.html" selected>Tables</option>
+      <option value="countries.html">Countries</option>
+      <option value="blog.html">Updates</option>
+    </select>
   </div>
 </header>
 
