@@ -82,7 +82,7 @@ function validateEntry(entry, teams, settings) {
     .filter(Boolean)
     .reduce((sum, team) => sum + Number(team.cost || 0), 0);
   if (totalCost > budget) {
-    errors.push(`Team cost exceeds the £${budget}m budget.`);
+    errors.push(`Team cost exceeds the MX$${budget}bn budget.`);
   }
 
   const tieBreakerCount = Number(settings.numberOfTieBreakers || 2);

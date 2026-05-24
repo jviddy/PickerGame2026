@@ -75,7 +75,7 @@ export function buildConfirmationEmail({
               </tr>
               <tr>
                 <td style="padding:5px 0;color:#666;">Total cost</td>
-                <td style="padding:5px 0;color:#333;">£${totalCost}m</td>
+                <td style="padding:5px 0;color:#333;">MX$${totalCost}bn</td>
               </tr>
             </table>
 
@@ -129,7 +129,7 @@ YOUR ENTRY
 ----------
 Team name:    ${teamName}
 Registered as: ${entrantName}
-Total cost:   £${totalCost}m
+Total cost:   MX$${totalCost}bn
 
 YOUR PICKS
 ----------

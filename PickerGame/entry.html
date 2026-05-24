@@ -868,7 +868,7 @@
     <p class="intro-sub">Pick 8 countries to support through the FIFA World Cup. Score points every time your teams win, score, or advance.</p>
     <ul class="intro-rules">
       <li><span class="icon">🏳️</span><span>Pick exactly <strong>8 countries</strong> from the 48 in the tournament</span></li>
-      <li><span class="icon">💰</span><span>Stay within your <strong>£135m squad budget</strong> — popular teams cost more</span></li>
+      <li><span class="icon">💰</span><span>Stay within your <strong>MX$135bn squad budget</strong> — popular teams cost more</span></li>
       <li><span class="icon">⚽</span><span>Earn points for wins, goals scored, clean sheets, and knockout qualification</span></li>
       <li><span class="icon">🃏</span><span>Yellow and red cards <strong>cost you points</strong>, so pick disciplined teams</span></li>
       <li><span class="icon">🏆</span><span>Top of the leaderboard when the final whistle blows wins the pot</span></li>
@@ -904,7 +904,7 @@
 <!-- Mobile sticky budget bar — sits below nav, hidden on desktop -->
 <div id="mobileBudgetBar">
   <div class="mbb-row">
-    <span class="mbb-remaining" id="mbbRemaining">£135m remaining</span>
+    <span class="mbb-remaining" id="mbbRemaining">MX$135bn remaining</span>
     <span class="mbb-picks" id="mbbPicks">0 / 8 picks</span>
   </div>
   <div class="mbb-bar-bg"><div class="mbb-bar" id="mbbBar" style="width:100%"></div></div>
@@ -916,7 +916,7 @@
   <section class="picker-col">
     <div class="picker-header">
       <h1>Pick your 8 teams</h1>
-      <p>Select exactly 8 teams to support through the tournament. Stay within your £135m budget.</p>
+      <p>Select exactly 8 teams to support through the tournament. Stay within your MX$135bn budget.</p>
     </div>
 
     <div class="toolbar">
@@ -949,15 +949,15 @@
     <div class="card budget-card">
       <h3>💰 Budget</h3>
       <div class="budget-numbers">
-        <span class="budget-remaining" id="budgetRemaining">£135m</span>
+        <span class="budget-remaining" id="budgetRemaining">MX$135bn</span>
         <span class="budget-label">remaining</span>
       </div>
       <div class="budget-bar-bg">
         <div class="budget-bar" id="budgetBar" style="width:100%"></div>
       </div>
       <div class="budget-detail">
-        <span>Spent: <strong id="budgetSpent">£0m</strong></span>
-        <span>Budget: <strong>£135m</strong></span>
+        <span>Spent: <strong id="budgetSpent">MX$0bn</strong></span>
+        <span>Budget: <strong>MX$135bn</strong></span>
       </div>
     </div>
 
@@ -1148,7 +1148,7 @@
         <img src="${team.flagUrl}" alt="${team.countryName}" loading="lazy" />
       </div>
       <div class="team-name">${team.countryName}</div>
-      <div class="team-cost">£${team.cost}m</div>
+      <div class="team-cost">MX$${team.cost}bn</div>
       <div class="team-rank">FIFA #${team.fifaRank}</div>
     `;
 
@@ -1215,8 +1215,8 @@
 
   function renderBudget(spent, rem) {
     const pct = Math.max(0, (rem / BUDGET) * 100);
-    budgetSpentEl.textContent  = `£${spent}m`;
-    budgetRemEl.textContent    = `£${rem}m`;
+    budgetSpentEl.textContent  = `MX$${spent}bn`;
+    budgetRemEl.textContent    = `MX$${rem}bn`;
 
     const state = rem < 0 ? 'over' : rem < BUDGET * 0.2 ? 'warn' : '';
     budgetRemEl.className  = 'budget-remaining ' + state;
@@ -1233,7 +1233,7 @@
     const mbbBar  = document.getElementById('mbbBar');
     const mbbPicks = document.getElementById('mbbPicks');
 
-    mbbRem.textContent   = `£${rem}m remaining`;
+    mbbRem.textContent   = `MX$${rem}bn remaining`;
     mbbRem.className     = 'mbb-remaining ' + state;
     mbbBar.className     = 'mbb-bar ' + state;
     mbbBar.style.width   = pct + '%';
@@ -1252,7 +1252,7 @@
       li.innerHTML = `
         <img class="pick-flag" src="${t.flagUrl}" alt="${t.countryName}" />
         <span class="pick-name">${t.countryName}</span>
-        <span class="pick-cost">£${t.cost}m</span>
+        <span class="pick-cost">MX$${t.cost}bn</span>
         <button class="remove-btn" title="Remove" data-id="${t.groupId}">✕</button>
       `;
       li.querySelector('.remove-btn').addEventListener('click', () => {
