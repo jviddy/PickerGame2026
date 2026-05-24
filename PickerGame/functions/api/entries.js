@@ -1,5 +1,8 @@
 import { buildConfirmationEmail } from '../email-confirmation.js';
 
+const ENTRY_OPEN  = new Date('2026-05-29T08:00:00Z').getTime();
+const ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
+
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
 };
@@ -148,6 +151,20 @@ export async function onRequestPost(context) {
       ok: false,
       errors: ['Entry database is not configured.'],
     }, 500);
+  }
+
+  const now = Date.now();
+  if (now < ENTRY_OPEN) {
+    return jsonResponse({
+      ok: false,
+      errors: ['Entries are not yet open. They open at 9:00 BST on 29 May 2026.'],
+    }, 403);
+  }
+  if (now >= ENTRY_CLOSE) {
+    return jsonResponse({
+      ok: false,
+      errors: ['Entries are now closed.'],
+    }, 403);
   }
 
   let payload;
