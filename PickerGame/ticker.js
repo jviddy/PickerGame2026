@@ -90,8 +90,8 @@
       { label: 'Yellow card',          value: '-1 pt',   color: '#f0a500' },
       { label: 'Red card',             value: '-2 pts',  color: '#e05555' },
       { label: 'Qualify to knockouts', value: '+10 pts', color: '#22a861' },
-      { label: 'Progress each round',  value: '+5 pts',  color: '#22a861' },
-      { label: 'Win the final',        value: '+15 pts', color: '#ffd700' },
+      { label: 'Win a knockout match',  value: '+10 pts', color: '#22a861' },
+      { label: 'Win the final',        value: '+10 pts', color: '#ffd700' },
     ];
     const items = POINTS_ITEMS.map(p => `
       <span class="ticker-item">
