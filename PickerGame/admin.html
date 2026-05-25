@@ -329,6 +329,7 @@
         </label>
         <button id="loadBtn" type="button">Load entries</button>
         <button id="updateBtn" class="publish" type="button" disabled>Update status</button>
+        <button id="copyEmailsBtn" type="button" disabled>Copy emails</button>
       </div>
       <div class="filter-bar">
         <span>Filter:</span>
@@ -369,6 +370,7 @@
     const tokenInput = document.getElementById('adminToken');
     const loadBtn = document.getElementById('loadBtn');
     const updateBtn = document.getElementById('updateBtn');
+    const copyEmailsBtn = document.getElementById('copyEmailsBtn');
     const statusEl = document.getElementById('status');
     const entryCountEl = document.getElementById('entryCount');
     const latestEntryEl = document.getElementById('latestEntry');
@@ -486,7 +488,19 @@
         ? `Latest: ${formatDate(entries[0].submittedAt)}`
         : 'No submissions loaded';
       updateBtn.disabled = false;
+      copyEmailsBtn.disabled = false;
     }
+
+    copyEmailsBtn.addEventListener('click', async () => {
+      const emails = allEntries
+        .filter(e => !e.removed)
+        .map(e => e.email)
+        .join(', ');
+      await navigator.clipboard.writeText(emails);
+      const orig = copyEmailsBtn.textContent;
+      copyEmailsBtn.textContent = 'Copied!';
+      setTimeout(() => { copyEmailsBtn.textContent = orig; }, 2000);
+    });
 
     async function requestJson(url, options = {}) {
       const token = getToken();
