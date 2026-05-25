@@ -51,9 +51,9 @@ export function buildConfirmationEmail({
 
         <!-- Header -->
         <tr>
-          <td style="background:#1a472a;padding:30px 40px;text-align:center;">
-            <h1 style="margin:0;color:#ffffff;font-size:26px;">⚽ PickerGame</h1>
-            <p style="margin:6px 0 0;color:#90c98a;font-size:14px;">World Cup 2026 Edition</p>
+          <td style="background:linear-gradient(135deg,#1a3352 0%,#1e4070 100%);padding:28px 40px;text-align:center;">
+            <h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-0.5px;color:#ffffff;">Picker<span style="color:#e86f2c;">Game</span> <span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:22px;">2026</span></h1>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.6);font-size:13px;letter-spacing:0.03em;">World Cup 2026 Edition</p>
           </td>
         </tr>
 
