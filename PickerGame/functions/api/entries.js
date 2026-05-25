@@ -1,6 +1,6 @@
 import { buildConfirmationEmail } from '../email-confirmation.js';
 
-const ENTRY_OPEN  = new Date('2026-05-29T08:00:00Z').getTime();
+const ENTRY_OPEN  = new Date('2026-05-01T00:00:00Z').getTime(); // TEMP: moved back for testing
 const ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
 
 const JSON_HEADERS = {
