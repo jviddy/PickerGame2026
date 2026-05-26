@@ -1,6 +1,6 @@
 import { buildConfirmationEmail } from '../email-confirmation.js';
 
-const ENTRY_OPEN  = new Date('2026-05-01T00:00:00Z').getTime(); // TEMP: moved back for testing
+const ENTRY_OPEN  = new Date('2026-05-01T00:00:00Z').getTime(); // TODO: revert to 2026-05-29T08:00:00Z before launch
 const ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
 
 const JSON_HEADERS = {
@@ -193,15 +193,30 @@ export async function onRequestPost(context) {
       }, 400);
     }
 
-    const existing = await env.ENTRIES_DB
-      .prepare('SELECT id FROM entries WHERE email_normalized = ? LIMIT 1')
-      .bind(emailNormalised)
+    const entrantNameNormalised = entry.entrantName.toLowerCase();
+    const teamNameNormalised = entry.teamName.toLowerCase();
+
+    const existingCombo = await env.ENTRIES_DB
+      .prepare('SELECT id FROM entries WHERE email_normalized = ? AND entrant_name_normalized = ? LIMIT 1')
+      .bind(emailNormalised, entrantNameNormalised)
       .first();
 
-    if (existing) {
+    if (existingCombo) {
       return jsonResponse({
         ok: false,
-        errors: ['An entry has already been submitted for this email address.'],
+        errors: ['An entry with this name and email address has already been submitted.'],
+      }, 409);
+    }
+
+    const existingTeamName = await env.ENTRIES_DB
+      .prepare('SELECT id FROM entries WHERE team_name_normalized = ? LIMIT 1')
+      .bind(teamNameNormalised)
+      .first();
+
+    if (existingTeamName) {
+      return jsonResponse({
+        ok: false,
+        errors: ['This team name is already taken. Please choose a different name.'],
       }, 409);
     }
 
@@ -216,7 +231,9 @@ export async function onRequestPost(context) {
         INSERT INTO entries (
           id,
           team_name,
+          team_name_normalized,
           entrant_name,
+          entrant_name_normalized,
           email,
           email_normalized,
           selected_teams_json,
@@ -225,12 +242,14 @@ export async function onRequestPost(context) {
           total_cost,
           created_at
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `)
       .bind(
         entryId,
         entry.teamName,
+        teamNameNormalised,
         entry.entrantName,
+        entrantNameNormalised,
         entry.email,
         emailNormalised,
         JSON.stringify(selectedTeams),

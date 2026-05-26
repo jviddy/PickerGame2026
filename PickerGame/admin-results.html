@@ -359,6 +359,81 @@
       .matches { max-height: none; }
       .check-row { grid-template-columns: 1fr; }
     }
+
+    .group-qual-section {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .group-qual-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .group-qual-note {
+      font-weight: 400;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .group-qual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      padding: 16px;
+    }
+
+    .group-card {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .group-card-head {
+      background: var(--pitch);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 6px 10px;
+    }
+
+    .group-card-body { padding: 4px 0; }
+
+    .group-team-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .group-team-row:hover { background: var(--soft); }
+
+    .group-team-row input[type="checkbox"] {
+      width: 14px;
+      min-height: 14px;
+      cursor: pointer;
+    }
+
+    .group-team-row label { cursor: pointer; flex: 1; }
+
+    .group-qual-actions {
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      text-align: right;
+    }
   </style>
 </head>
 <body>
@@ -407,6 +482,17 @@
 
       <div id="editor" class="editor">
         <div class="empty">Select a match to enter or update its result.</div>
+      </div>
+    </section>
+
+    <section class="group-qual-section">
+      <div class="group-qual-head">
+        <span>Group Stage Qualification</span>
+        <span class="group-qual-note">Set after all group matches are complete. Check every team that has qualified for the knockout stage, then submit.</span>
+      </div>
+      <div id="groupQualGrid" class="group-qual-grid"></div>
+      <div class="group-qual-actions">
+        <button id="submitGroupQual" type="button">Save qualification and publish</button>
       </div>
     </section>
   </main>
@@ -563,6 +649,8 @@
     }
 
     function readFormResult() {
+      const homeQualEl = document.getElementById('homeQualified');
+      const awayQualEl = document.getElementById('awayQualified');
       return {
         matchId: selectedMatchId,
         homeScore: toNumber(document.getElementById('homeScore')?.value),
@@ -573,8 +661,8 @@
         awayYellow: toNumber(document.getElementById('awayYellow')?.value),
         homeRed: toNumber(document.getElementById('homeRed')?.value),
         awayRed: toNumber(document.getElementById('awayRed')?.value),
-        homeQualified: Boolean(document.getElementById('homeQualified')?.checked),
-        awayQualified: Boolean(document.getElementById('awayQualified')?.checked)
+        ...(homeQualEl ? { homeQualified: Boolean(homeQualEl.checked) } : {}),
+        ...(awayQualEl ? { awayQualified: Boolean(awayQualEl.checked) } : {}),
       };
     }
 
@@ -629,11 +717,12 @@
           <label>Home red<input id="homeRed" type="number" min="0" step="1" value="${result.homeRed ?? 0}" /></label>
           <label>Away red<input id="awayRed" type="number" min="0" step="1" value="${result.awayRed ?? 0}" /></label>
 
+          ${!String(match.roundCode).includes('GS') ? `
           <div class="section-title">Qualification</div>
           <div class="check-row">
             <label><input id="homeQualified" type="checkbox" ${result.homeQualified ? 'checked' : ''} /> ${escapeHtml(homeName)} qualified</label>
             <label><input id="awayQualified" type="checkbox" ${result.awayQualified ? 'checked' : ''} /> ${escapeHtml(awayName)} qualified</label>
-          </div>
+          </div>` : ''}
         </div>
         <div class="preview">
           <div class="preview-grid">
@@ -755,6 +844,88 @@
       statusFilter.addEventListener('change', renderMatches);
     }
 
+    function isTeamQualified(teamId) {
+      for (const result of results) {
+        const match = matches.find(m => m.matchId === result.matchId);
+        if (!match) continue;
+        if (match.homeTeam === teamId && result.homeQualified) return true;
+        if (match.awayTeam === teamId && result.awayQualified) return true;
+      }
+      return false;
+    }
+
+    function renderGroupQual() {
+      const groups = {};
+      teams.forEach(team => {
+        groups[team.group] = groups[team.group] || [];
+        groups[team.group].push(team);
+      });
+
+      document.getElementById('groupQualGrid').innerHTML = Object.keys(groups).sort().map(group => {
+        const groupTeams = groups[group];
+        return `
+          <div class="group-card">
+            <div class="group-card-head">Group ${escapeHtml(group)}</div>
+            <div class="group-card-body">
+              ${groupTeams.map(team => `
+                <div class="group-team-row">
+                  <input type="checkbox" id="gq_${escapeHtml(team.groupId)}" value="${escapeHtml(team.groupId)}" ${isTeamQualified(team.groupId) ? 'checked' : ''} />
+                  <label for="gq_${escapeHtml(team.groupId)}">${escapeHtml(team.countryName)}</label>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function submitGroupQual() {
+      const token = tokenInput.value.trim();
+      if (!token) {
+        setStatus('Enter your admin token before submitting.', 'error');
+        return;
+      }
+
+      const qualifiedTeamIds = Array.from(
+        document.querySelectorAll('#groupQualGrid input[type="checkbox"]:checked')
+      ).map(cb => cb.value);
+
+      document.getElementById('submitGroupQual').disabled = true;
+      setStatus('Saving group qualification...');
+
+      try {
+        const response = await fetch('/api/admin/group-qualification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ qualifiedTeamIds }),
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || data.ok === false) {
+          throw new Error((data.errors || ['Could not save group qualification.']).join(' '));
+        }
+
+        if (data.updatedResults) {
+          for (const updated of data.updatedResults) {
+            const index = results.findIndex(r => r.matchId === updated.matchId);
+            if (index >= 0) results[index] = updated;
+            else results.push(updated);
+          }
+        }
+
+        setStatus('Group qualification saved. The publish workflow has started.', 'success');
+        renderGroupQual();
+        if (selectedMatchId) renderEditor(matches.find(m => m.matchId === selectedMatchId));
+      } catch (error) {
+        setStatus(error.message, 'error');
+      } finally {
+        const button = document.getElementById('submitGroupQual');
+        if (button) button.disabled = false;
+      }
+    }
+
     async function init() {
       try {
         [matches, teams, results, settings] = await Promise.all([
@@ -765,6 +936,8 @@
         ]);
         populateFilters();
         renderMatches();
+        renderGroupQual();
+        document.getElementById('submitGroupQual').addEventListener('click', submitGroupQual);
         setStatus('Select a match to enter or update its result.');
       } catch (error) {
         setStatus(error.message, 'error');

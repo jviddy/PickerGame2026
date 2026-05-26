@@ -392,6 +392,30 @@
       .selected-teams,
       .round-breakdown-inline,
       .team-count { display: none; }
+
+      /* Countries mode: show chips in row 2, hide entrant name */
+      .leaderboard.countries-mode .leaderboard-row { row-gap: 4px; }
+      .leaderboard.countries-mode .selected-teams {
+        display: flex;
+        grid-column: 2 / 4;
+        grid-row: 2;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        gap: 2px;
+      }
+      .leaderboard.countries-mode .team-chip {
+        padding: 1px 3px 1px 2px;
+        border: 1px solid var(--gray-200);
+        background: var(--gray-50);
+      }
+      .leaderboard.countries-mode .team-chip img { width: 12px; height: 9px; }
+      .leaderboard.countries-mode .team-chip .team-points {
+        display: inline;
+        font-size: 0.55rem;
+      }
+      .leaderboard.countries-mode .team-name { display: none; }
+
+      /* Round mode: show round chips in row 2, hide entrant name */
       .leaderboard.round-mode .leaderboard-row { row-gap: 4px; }
       .leaderboard.round-mode .round-breakdown-inline {
         display: flex;
@@ -406,7 +430,7 @@
         padding: 1px 5px;
       }
       .leaderboard.round-mode .score-col { grid-column: 3; }
-      .team-name { display: none; }
+      .leaderboard.round-mode .team-name { display: none; }
     }
 
     /* ─── Points delta ───────────────────────────────────────────–*/
@@ -905,6 +929,7 @@
   function renderAll() {
     closeExpansion();
     leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
+    leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
     if (!document.getElementById('lb-header')) {
       leaderboardEl.innerHTML = '<div id="lb-header"></div><div id="lb-body"></div>';
     }
@@ -1038,6 +1063,7 @@
   function updateScoreModeButton() {
     scoreModeToggleBtn.textContent = scoreDisplayMode === 'countries' ? 'Round scores' : 'Country scores';
     leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
+    leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
   }
 
   scoreModeToggleBtn.addEventListener('click', () => {

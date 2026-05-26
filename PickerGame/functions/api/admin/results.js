@@ -21,7 +21,7 @@ function normaliseNumber(value, allowNull = false) {
 function normaliseResult(payload) {
   if (!payload.matchId) throw new Error('Match ID is required.');
 
-  return {
+  const result = {
     matchId: String(payload.matchId),
     homeScore: normaliseNumber(payload.homeScore),
     awayScore: normaliseNumber(payload.awayScore),
@@ -31,9 +31,13 @@ function normaliseResult(payload) {
     awayYellow: normaliseNumber(payload.awayYellow),
     homeRed: normaliseNumber(payload.homeRed),
     awayRed: normaliseNumber(payload.awayRed),
-    homeQualified: Boolean(payload.homeQualified),
-    awayQualified: Boolean(payload.awayQualified),
   };
+
+  // Only include qualification if explicitly provided; omitting preserves existing values on merge
+  if (payload.homeQualified !== undefined) result.homeQualified = Boolean(payload.homeQualified);
+  if (payload.awayQualified !== undefined) result.awayQualified = Boolean(payload.awayQualified);
+
+  return result;
 }
 
 function encodeBase64(value) {
@@ -99,9 +103,13 @@ async function writeGithubJson(repository, branch, path, sha, data, message, tok
 
 function updateResults(results, nextResult) {
   const existingIndex = results.findIndex((result) => result.matchId === nextResult.matchId);
+  // Merge with existing so omitted fields (e.g. qualification set by group-qualification endpoint) are preserved
+  const existing = existingIndex >= 0 ? results[existingIndex] : {};
+  const merged = { ...existing, ...nextResult };
+
   const updated = existingIndex >= 0
-    ? results.map((result, index) => index === existingIndex ? nextResult : result)
-    : [...results, nextResult];
+    ? results.map((result, index) => index === existingIndex ? merged : result)
+    : [...results, merged];
 
   return updated.sort((a, b) => {
     const aNumber = Number(String(a.matchId).replace(/\D/g, ''));
