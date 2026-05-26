@@ -1087,14 +1087,6 @@
   const successPanel    = document.getElementById('successPanel');
   const entryFormCard   = document.getElementById('entryFormCard');
 
-  let hasScrolledToForm = false;
-
-  function scrollToEntryForm() {
-    if (!entryFormCard) return;
-    const headerHeight = document.querySelector('header')?.offsetHeight ?? 58;
-    const y = entryFormCard.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  }
 
   /* ─── Load data ───────────────────────────────────────────── */
   async function loadTeams() {
@@ -1354,17 +1346,12 @@
   function toggleTeam(team) {
     if (selected.has(team.groupId)) {
       selected.delete(team.groupId);
-      hasScrolledToForm = false;
     } else {
       if (selected.size >= MAX_PICKS) return;
       if (totalSpent() + team.cost > BUDGET) return;
       selected.add(team.groupId);
     }
     render();
-    if (selected.size === MAX_PICKS && !hasScrolledToForm) {
-      hasScrolledToForm = true;
-      setTimeout(scrollToEntryForm, 80);
-    }
   }
 
   /* ─── Event listeners ─────────────────────────────────────── */
