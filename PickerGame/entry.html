@@ -760,17 +760,45 @@
     .form-errors li { margin-bottom: 3px; }
 
     /* Success state */
-    .success-panel {
-      display: none;
-      text-align: center;
-      padding: 32px 20px;
+    .success-panel { display: none; padding: 20px 0 4px; }
+    .success-tick { font-size: 2.2rem; text-align: center; margin-bottom: 8px; }
+    .success-title { margin: 0 0 4px; color: var(--green); text-align: center; }
+    .success-sub {
+      color: var(--gray-600); font-size: 0.82rem;
+      text-align: center; margin: 0 0 18px; line-height: 1.5;
     }
-    .success-panel .tick {
-      font-size: 3rem;
-      margin-bottom: 12px;
+    .success-section-head {
+      font-size: 0.72rem; font-weight: 900; text-transform: uppercase;
+      color: var(--gray-600); letter-spacing: 0.04em; margin: 0 0 5px;
     }
-    .success-panel h2 { margin: 0 0 8px; color: var(--green); }
-    .success-panel p { color: var(--gray-600); font-size: 0.9rem; margin: 0; }
+    .success-table {
+      width: 100%; background: var(--gray-50);
+      border: 1px solid var(--gray-200); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 14px; border-collapse: collapse;
+    }
+    .success-table td {
+      padding: 6px 11px; font-size: 0.82rem;
+      border-bottom: 1px solid var(--gray-200); vertical-align: top;
+    }
+    .success-table tr:last-child td { border-bottom: none; }
+    .success-table td:first-child { color: var(--gray-600); white-space: nowrap; width: 1%; }
+    .success-table td:last-child { color: var(--navy); font-weight: 700; word-break: break-word; }
+    .success-picks {
+      list-style: none; margin: 0 0 14px; padding: 0;
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .success-pick {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 11px; border-bottom: 1px solid var(--gray-200); font-size: 0.82rem;
+    }
+    .success-pick:last-child { border-bottom: none; }
+    .success-flag {
+      width: 22px; height: 15px; border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.08); object-fit: cover; flex: 0 0 auto;
+    }
+    .success-country { flex: 1; color: var(--navy); font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .success-cost { color: var(--gray-600); font-size: 0.76rem; font-weight: 700; }
 
     /* ─── Intro modal ──────────────────────────────────────────────*/
     .intro-overlay {
@@ -1030,12 +1058,8 @@
         </button>
       </div>
 
-      <!-- Success -->
-      <div class="success-panel" id="successPanel">
-        <div class="tick">✅</div>
-        <h2>Entry submitted!</h2>
-        <p>Thanks for entering — good luck! Check the leaderboard once the tournament starts.</p>
-      </div>
+      <!-- Success (populated by JS) -->
+      <div class="success-panel" id="successPanel"></div>
     </div>
 
     <!-- Points guide -->
@@ -1434,7 +1458,7 @@
         if (!res.ok || data.ok === false) {
           throw new Error((data.errors || ['Server error']).join(' '));
         }
-        showSuccess();
+        showSuccess(payload);
       } catch (error) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit entry →';
@@ -1444,11 +1468,44 @@
     } else {
       // Dev mode: log to console and show success
       console.log('Entry payload:', payload);
-      showSuccess();
+      showSuccess(payload);
     }
   }
 
-  function showSuccess() {
+  function showSuccess(payload) {
+    const picks = getSelectedTeams().sort((a, b) => b.cost - a.cost);
+    const totalCost = picks.reduce((s, t) => s + t.cost, 0);
+
+    const pickRows = picks.map(t => `
+      <li class="success-pick">
+        <img class="success-flag" src="${escapeHtml(t.flagUrl)}" alt="" />
+        <span class="success-country">${escapeHtml(t.countryName)}</span>
+        <span class="success-cost">$${t.cost}b</span>
+      </li>`).join('');
+
+    successPanel.innerHTML = `
+      <div class="success-tick">✅</div>
+      <h2 class="success-title">Entry submitted!</h2>
+      <p class="success-sub">A confirmation email is on its way to ${escapeHtml(payload.email)}.</p>
+
+      <div class="success-section-head">Your entry</div>
+      <table class="success-table">
+        <tr><td>Team name</td><td>${escapeHtml(payload.teamName)}</td></tr>
+        <tr><td>Name</td><td>${escapeHtml(payload.entrantName)}</td></tr>
+        <tr><td>Email</td><td>${escapeHtml(payload.email)}</td></tr>
+        <tr><td>Budget spent</td><td>MX$${totalCost}bn of MX$135bn</td></tr>
+      </table>
+
+      <div class="success-section-head">Your picks</div>
+      <ul class="success-picks">${pickRows}</ul>
+
+      <div class="success-section-head">Tiebreakers</div>
+      <table class="success-table">
+        <tr><td>Total goals</td><td>${escapeHtml(payload.tieBreakerAnswers[0])}</td></tr>
+        <tr><td>Minute of last final goal</td><td>${escapeHtml(payload.tieBreakerAnswers[1])}</td></tr>
+      </table>
+    `;
+
     document.querySelector('.form-section').style.display = 'none';
     successPanel.style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
