@@ -175,18 +175,36 @@
       background: var(--navy);
       color: var(--white);
       border-bottom: 2px solid var(--navy-light);
+      cursor: pointer;
+      user-select: none;
     }
+    .round-heading:hover { background: var(--navy-light); }
+    .round-section.collapsed .round-heading { border-bottom: none; }
     .round-heading h2 {
       margin: 0;
       font-size: 0.9rem;
       font-weight: 900;
       text-transform: uppercase;
     }
+    .round-heading-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .round-count {
       color: rgba(255,255,255,0.78);
       font-size: 0.76rem;
       font-weight: 800;
     }
+    .round-toggle {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1;
+      transition: transform 0.18s;
+      display: inline-block;
+    }
+    .round-section.collapsed .round-toggle { transform: rotate(-90deg); }
+    .round-section.collapsed .match-card { display: none; }
 
     .match-card {
       display: grid;
@@ -865,18 +883,41 @@
     groupByGroupBtn.classList.toggle('active', groupMode === 'group');
   }
 
+  function isGroupComplete(groupMatches) {
+    return groupMatches.length > 0 && groupMatches.every(m => isPlayed(getDisplayResult(m)));
+  }
+
   function renderMatches() {
     const groups = groupMode === 'round' ? groupMatchesByRound() : groupMatchesByGroup();
-    matchesRoot.innerHTML = Array.from(groups.values()).map(group => `
-      <section class="round-section">
-        <div class="round-heading">
-          <h2>${escapeHtml(group.title)}</h2>
-          <span class="round-count">${group.matches.length} matches</span>
-        </div>
-        ${group.matches.map(renderMatch).join('')}
-      </section>
-    `).join('');
+    matchesRoot.innerHTML = Array.from(groups.values()).map(group => {
+      const complete = isGroupComplete(group.matches);
+      const playedCount = group.matches.filter(m => isPlayed(getDisplayResult(m))).length;
+      const countLabel = complete
+        ? `${group.matches.length} matches · complete`
+        : playedCount > 0
+          ? `${playedCount}/${group.matches.length} played`
+          : `${group.matches.length} matches`;
+      return `
+        <section class="round-section${complete ? ' collapsed' : ''}">
+          <div class="round-heading">
+            <h2>${escapeHtml(group.title)}</h2>
+            <div class="round-heading-right">
+              <span class="round-count">${escapeHtml(countLabel)}</span>
+              <span class="round-toggle">▾</span>
+            </div>
+          </div>
+          ${group.matches.map(renderMatch).join('')}
+        </section>
+      `;
+    }).join('');
   }
+
+  matchesRoot.addEventListener('click', e => {
+    const heading = e.target.closest('.round-heading');
+    if (heading) {
+      heading.closest('.round-section').classList.toggle('collapsed');
+    }
+  });
 
   groupByRoundBtn.addEventListener('click', () => {
     groupMode = 'round';
