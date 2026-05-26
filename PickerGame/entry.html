@@ -1087,6 +1087,15 @@
   const successPanel    = document.getElementById('successPanel');
   const entryFormCard   = document.getElementById('entryFormCard');
 
+  let hasScrolledToForm = false;
+
+  function scrollToEntryForm() {
+    if (!entryFormCard) return;
+    const headerHeight = document.querySelector('header')?.offsetHeight ?? 58;
+    const y = entryFormCard.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
   /* ─── Load data ───────────────────────────────────────────── */
   async function loadTeams() {
     try {
@@ -1294,13 +1303,19 @@
     const teamName    = document.getElementById('teamName').value.trim();
     const playerName  = document.getElementById('playerName').value.trim();
     const email       = document.getElementById('email').value.trim();
+    const tb1         = document.getElementById('tb1').value.trim();
+    const tb2         = document.getElementById('tb2').value.trim();
     const formFilled  = teamName && playerName && email.includes('@');
-    const ready       = teamsFull && formFilled;
+    const tbFilled    = tb1 && !isNaN(tb1) && +tb1 >= 1 &&
+                        tb2 && !isNaN(tb2) && +tb2 >= 1 && +tb2 <= 150;
+    const ready       = teamsFull && formFilled && tbFilled;
     submitBtn.disabled = !ready;
     if (!teamsFull) {
       submitBtn.textContent = `Select ${MAX_PICKS - selected.size} more team${MAX_PICKS - selected.size !== 1 ? 's' : ''} to continue`;
     } else if (!formFilled) {
       submitBtn.textContent = 'Fill in your details to continue';
+    } else if (!tbFilled) {
+      submitBtn.textContent = 'Fill in the tiebreakers to continue';
     } else {
       submitBtn.textContent = 'Submit entry →';
     }
@@ -1339,12 +1354,17 @@
   function toggleTeam(team) {
     if (selected.has(team.groupId)) {
       selected.delete(team.groupId);
+      hasScrolledToForm = false;
     } else {
       if (selected.size >= MAX_PICKS) return;
       if (totalSpent() + team.cost > BUDGET) return;
       selected.add(team.groupId);
     }
     render();
+    if (selected.size === MAX_PICKS && !hasScrolledToForm) {
+      hasScrolledToForm = true;
+      setTimeout(scrollToEntryForm, 80);
+    }
   }
 
   /* ─── Event listeners ─────────────────────────────────────── */
@@ -1365,7 +1385,7 @@
 
   document.getElementById('randomBtn').addEventListener('click', randomize);
 
-  ['teamName', 'playerName', 'email'].forEach(id => {
+  ['teamName', 'playerName', 'email', 'tb1', 'tb2'].forEach(id => {
     document.getElementById(id).addEventListener('input', updateSubmitBtn);
   });
 
