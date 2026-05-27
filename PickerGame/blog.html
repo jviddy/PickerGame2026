@@ -178,6 +178,8 @@
   }
 
   function renderBody(text) {
+    // If the content contains HTML tags, render it directly
+    if (/<[a-z][\s\S]*>/i.test(text)) return text;
     return text
       .split(/\n{2,}/)
       .map(para => `<p>${escapeHtml(para.trim()).replace(/\n/g, '<br>')}</p>`)
