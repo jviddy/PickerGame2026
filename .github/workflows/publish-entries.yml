@@ -14,6 +14,7 @@ on:
       - 'PickerGame/functions/**'
       - 'PickerGame/scripts/**'
       - 'PickerGame/src/**'
+      - 'Data/**'
       - '.github/workflows/publish-entries.yml'
 
 jobs:
