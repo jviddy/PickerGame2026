@@ -163,6 +163,17 @@ async function main() {
         console.log(`✓ Written: ${filePath}`);
       }
     }
+
+    // Copy pass-through files from root Data/ to PickerGame/Data/
+    const passThroughFiles = ['posts.json', 'settings.json'];
+    for (const fileName of passThroughFiles) {
+      const src = path.join(dataDir, fileName);
+      const dest = path.join(path.resolve(projectRoot, 'Data'), fileName);
+      try {
+        await fs.copyFile(src, dest);
+        console.log(`✓ Copied: ${fileName}`);
+      } catch (_) {}
+    }
     
     // Summary report
     console.log('\n' + '='.repeat(50));
