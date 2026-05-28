@@ -559,6 +559,20 @@
     .expansion-round-lbl { color: var(--gray-600); font-weight: 600; }
     .expansion-round-score { font-weight: 800; color: var(--green); }
     .expansion-round-score.neg { color: var(--red); }
+    .expansion-section-lbl {
+      font-size: 0.6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gray-400);
+      margin: 8px 0 4px;
+    }
+    .expansion-section-lbl:first-child { margin-top: 0; }
+    .expansion-divider {
+      border: none;
+      border-top: 1px solid var(--gray-200);
+      margin: 8px 0;
+    }
     .expansion-country-grid {
       display: flex;
       flex-wrap: wrap;
@@ -887,20 +901,66 @@
     if (!entry) return;
 
     const roundLabel = ROUND_LABELS[roundCode] || roundCode;
-    const chips = entry.selectedTeams.map(countryName => {
+
+    // ── Aggregate point categories across all selected teams for this round ──
+    const cats = { result: 0, goalsScored: 0, goalsConceded: 0, disciplinary: 0, qualification: 0 };
+    entry.selectedTeams.forEach(countryName => {
+      const team = allTeams.find(t => t.countryName === countryName);
+      const rd = team?.scoresByRound?.find(r => r.roundCode === roundCode);
+      if (!rd) return;
+      cats.result       += rd.result       || 0;
+      cats.goalsScored  += rd.goalsScored  || 0;
+      cats.goalsConceded+= rd.goalsConceded|| 0;
+      cats.disciplinary += rd.disciplinary || 0;
+      cats.qualification+= rd.roundQualification || rd.qualification || 0;
+    });
+    const grandTotal = Object.values(cats).reduce((s, v) => s + v, 0);
+
+    function fmtStat(val) { return val > 0 ? `+${val}` : String(val); }
+    function statCls(val) { return val > 0 ? 'pos' : val < 0 ? 'neg' : ''; }
+
+    const typeRow = `
+      <div class="expansion-stats" style="margin-bottom:4px;">
+        <div class="expansion-stat">
+          <div class="expansion-stat-val ${statCls(cats.result)}">${fmtStat(cats.result)}</div>
+          <div class="expansion-stat-lbl">Results</div>
+        </div>
+        <div class="expansion-stat">
+          <div class="expansion-stat-val ${statCls(cats.goalsScored)}">${fmtStat(cats.goalsScored)}</div>
+          <div class="expansion-stat-lbl">Goals +</div>
+        </div>
+        <div class="expansion-stat">
+          <div class="expansion-stat-val ${statCls(cats.goalsConceded)}">${fmtStat(cats.goalsConceded)}</div>
+          <div class="expansion-stat-lbl">Goals −</div>
+        </div>
+        <div class="expansion-stat">
+          <div class="expansion-stat-val ${statCls(cats.disciplinary)}">${fmtStat(cats.disciplinary)}</div>
+          <div class="expansion-stat-lbl">Cards</div>
+        </div>
+        ${cats.qualification !== 0 ? `
+        <div class="expansion-stat">
+          <div class="expansion-stat-val ${statCls(cats.qualification)}">${fmtStat(cats.qualification)}</div>
+          <div class="expansion-stat-lbl">Qual</div>
+        </div>` : ''}
+        <div class="expansion-stat" style="border-color:var(--navy-light);">
+          <div class="expansion-stat-val ${statCls(grandTotal)}">${fmtStat(grandTotal)}</div>
+          <div class="expansion-stat-lbl">Total</div>
+        </div>
+      </div>`;
+
+    // ── Per-country chips ────────────────────────────────────────────────────
+    const countryChips = entry.selectedTeams.map(countryName => {
       const team = allTeams.find(t => t.countryName === countryName);
       const roundData = team?.scoresByRound?.find(r => r.roundCode === roundCode);
       const pts = roundData?.total ?? null;
       const ptsDisplay = pts === null ? '—' : (pts > 0 ? `+${pts}` : String(pts));
-      const flagUrl = team ? team.flagUrl : '';
       const neg = pts !== null && pts < 0;
       return `
         <div class="expansion-country-chip">
-          <img src="${escapeHtml(flagUrl)}" alt="${escapeHtml(countryName)}" />
+          <img src="${escapeHtml(team?.flagUrl || '')}" alt="${escapeHtml(countryName)}" />
           <span class="c-name">${escapeHtml(countryName)}</span>
           <span class="c-score${neg ? ' neg' : ''}">${ptsDisplay}</span>
-        </div>
-      `;
+        </div>`;
     }).join('');
 
     const div = document.createElement('div');
@@ -911,7 +971,11 @@
         <span class="expansion-subtitle">${escapeHtml(entry.teamName)} — ${escapeHtml(entry.entrantName)}</span>
         <button class="expansion-close" aria-label="Close">×</button>
       </div>
-      <div class="expansion-country-grid">${chips}</div>
+      <div class="expansion-section-lbl">By type</div>
+      ${typeRow}
+      <hr class="expansion-divider">
+      <div class="expansion-section-lbl">By country</div>
+      <div class="expansion-country-grid">${countryChips}</div>
     `;
     div.querySelector('.expansion-close').addEventListener('click', closeExpansion);
 
