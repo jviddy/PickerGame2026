@@ -1472,6 +1472,10 @@
     }
   }
 
+  function escapeHtml(v) {
+    return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
   function showSuccess(payload) {
     const picks = getSelectedTeams().sort((a, b) => b.cost - a.cost);
     const totalCost = picks.reduce((s, t) => s + t.cost, 0);
