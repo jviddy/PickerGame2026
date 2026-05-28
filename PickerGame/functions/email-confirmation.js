@@ -2,11 +2,11 @@
 // Edit the content here — subject, body copy, bank details, styling.
 // The function receives all entry data and returns { subject, html, text }.
 
-const BANK_DETAILS = `Bank:           [YOUR BANK NAME]
-Account Name:   [YOUR NAME]
-Sort Code:      [XX-XX-XX]
-Account Number: [XXXXXXXX]
-Reference:      Your team name`;
+const BANK_DETAILS = `Amount:         £10
+Account Name:   Jamie Vidamour
+Sort Code:      04-00-75
+Account Number: 78265568
+Reference:      Your name`;
 
 export function buildConfirmationEmail({
   entrantName,
@@ -93,7 +93,7 @@ export function buildConfirmationEmail({
 
             <!-- Payment -->
             <h2 style="color:#1a472a;font-size:18px;margin:24px 0 10px;">How to Pay</h2>
-            <p style="color:#555;">To appear on the leaderboard your entry fee must be paid. Please transfer using the details below — use your team name as the reference.</p>
+            <p style="color:#555;">To appear on the leaderboard your entry fee must be paid. Please transfer using the details below — use your name as a reference, but remember that there may be 7 Dave's entering.</p>
             <pre style="background:#f5f5f5;border:1px solid #e0e0e0;border-radius:6px;padding:16px;font-size:13px;color:#333;line-height:1.6;white-space:pre-wrap;">${BANK_DETAILS}</pre>
 
             <!-- Leaderboard -->
@@ -142,7 +142,7 @@ ${tiebreakersText}
 HOW TO PAY
 ----------
 To appear on the leaderboard your entry fee must be paid.
-Please transfer using the details below — use your team name as the reference.
+Please transfer using the details below — use your name as the reference, but remember that there may be 7 Dave's entering.
 
 ${BANK_DETAILS}
 
