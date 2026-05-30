@@ -4,7 +4,7 @@
 const ENTRY_OPEN  = new Date('2026-05-29T08:00:00Z').getTime();
 const ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
 
-const ENTRY_PAGES = new Set(['entry.html', 'entries.html', 'schedule.html']);
+const ENTRY_PAGES = new Set(['entry.html', 'entries.html', 'schedule.html', 'blog.html']);
 const POST_PAGES  = new Set(['leaderboard.html', 'schedule.html', 'tables.html', 'countries.html', 'blog.html']);
 
 export async function onRequest({ request, next }) {
