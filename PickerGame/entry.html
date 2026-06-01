@@ -1240,6 +1240,7 @@
           section.appendChild(createGroupHeading(group));
           renderList
             .filter(team => team.group === group)
+            .sort((a, b) => b.cost - a.cost)
             .forEach(team => section.appendChild(createTeamCard(team, spent)));
           gridEl.appendChild(section);
         });
