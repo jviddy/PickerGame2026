@@ -24,5 +24,11 @@ export async function onRequest({ request, next }) {
 
   if (allowed.has(page)) return next();
 
+  // During entry phase, redirect leaderboard links to the entries list
+  const entryPhase = now < ENTRY_CLOSE;
+  if (entryPhase && page === 'leaderboard.html') {
+    return Response.redirect(new URL('entries.html', url).href, 302);
+  }
+
   return Response.redirect(new URL(fallback, url).href, 302);
 }
