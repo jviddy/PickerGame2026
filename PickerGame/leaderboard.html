@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard – Picker Game 2026</title>
+  <script>
+    // Redirect to entries list during entry phase
+    if (Date.now() < new Date('2026-06-11T19:00:00Z').getTime()) {
+      location.replace('entries.html');
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
   <style>
