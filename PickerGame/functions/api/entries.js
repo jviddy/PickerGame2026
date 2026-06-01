@@ -292,7 +292,7 @@ export async function onRequestGet(context) {
   const { env } = context;
   try {
     const { results } = await env.ENTRIES_DB
-      .prepare('SELECT team_name, entrant_name, paid FROM entries WHERE removed = 0 ORDER BY paid DESC, entrant_name ASC')
+      .prepare('SELECT team_name, entrant_name, paid FROM entries WHERE removed = 0 ORDER BY created_at DESC')
       .all();
     const entries = results.map(r => ({
       teamName: r.team_name,
