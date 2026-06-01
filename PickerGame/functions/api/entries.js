@@ -288,6 +288,24 @@ export async function onRequestPost(context) {
   }
 }
 
+export async function onRequestGet(context) {
+  const { env } = context;
+  try {
+    const { results } = await env.ENTRIES_DB
+      .prepare('SELECT team_name, entrant_name, paid FROM entries WHERE removed = 0 ORDER BY paid DESC, entrant_name ASC')
+      .all();
+    const entries = results.map(r => ({
+      teamName: r.team_name,
+      entrantName: r.entrant_name,
+      paid: Boolean(r.paid),
+    }));
+    return jsonResponse({ ok: true, entries });
+  } catch (error) {
+    console.error(error);
+    return jsonResponse({ ok: false, errors: ['Could not load entries.'] }, 500);
+  }
+}
+
 export async function onRequest() {
   return jsonResponse({
     ok: false,
