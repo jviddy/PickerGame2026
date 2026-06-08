@@ -19,38 +19,31 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: false, errors: ['GitHub publish token is not configured.'] }, 500);
   }
 
-  let paidIds, removedIds;
+  // Accept explicit per-entry updates: [{id, paid, removed}]
+  let updates;
   try {
     const body = await context.request.json();
-    if (!Array.isArray(body.paidIds)) throw new Error('paidIds must be an array.');
-    paidIds = body.paidIds.map((id) => String(id));
-    removedIds = Array.isArray(body.removedIds) ? body.removedIds.map((id) => String(id)) : [];
+    if (!Array.isArray(body.updates)) throw new Error('updates must be an array.');
+    updates = body.updates.map(({ id, paid, removed }) => ({
+      id: String(id),
+      paid: Boolean(paid) ? 1 : 0,
+      removed: Boolean(removed) ? 1 : 0,
+    }));
   } catch (error) {
     return jsonResponse({ ok: false, errors: [error.message || 'Invalid request body.'] }, 400);
   }
 
   try {
-    await context.env.ENTRIES_DB
-      .prepare('UPDATE entries SET paid = 0, removed = 0')
-      .run();
-
+    // Update in batches of 50 to stay under D1's variable limit
     const CHUNK = 50;
-    for (let i = 0; i < paidIds.length; i += CHUNK) {
-      const chunk = paidIds.slice(i, i + CHUNK);
-      const placeholders = chunk.map(() => '?').join(', ');
-      await context.env.ENTRIES_DB
-        .prepare(`UPDATE entries SET paid = 1 WHERE id IN (${placeholders})`)
-        .bind(...chunk)
-        .run();
-    }
-
-    for (let i = 0; i < removedIds.length; i += CHUNK) {
-      const chunk = removedIds.slice(i, i + CHUNK);
-      const placeholders = chunk.map(() => '?').join(', ');
-      await context.env.ENTRIES_DB
-        .prepare(`UPDATE entries SET removed = 1 WHERE id IN (${placeholders})`)
-        .bind(...chunk)
-        .run();
+    for (let i = 0; i < updates.length; i += CHUNK) {
+      const chunk = updates.slice(i, i + CHUNK);
+      const stmts = chunk.map(({ id, paid, removed }) =>
+        context.env.ENTRIES_DB
+          .prepare('UPDATE entries SET paid = ?, removed = ? WHERE id = ?')
+          .bind(paid, removed, id),
+      );
+      await context.env.ENTRIES_DB.batch(stmts);
     }
   } catch (error) {
     console.error(error);

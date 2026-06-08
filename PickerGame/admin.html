@@ -541,22 +541,29 @@
       updateBtn.disabled = true;
       setStatus('Saving payment statuses and publishing...');
 
-      const paidIds = getCheckedPaidIds();
-      const removedIds = getRemovedIds();
+      // Build explicit per-entry updates from current DOM + allEntries state
+      const visibleState = {};
+      entriesBody.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+        visibleState[cb.dataset.entryId] = cb.checked;
+      });
+
+      const updates = allEntries.map((e) => {
+        const key = String(e.id);
+        const paid = e.removed ? false : (key in visibleState ? visibleState[key] : e.paid);
+        return { id: e.id, paid, removed: e.removed };
+      });
 
       try {
         await requestJson('/api/admin/update-paid', {
           method: 'POST',
-          body: JSON.stringify({ paidIds, removedIds }),
+          body: JSON.stringify({ updates }),
         });
 
-        allEntries = allEntries.map((e) => ({
-          ...e,
-          paid: paidIds.includes(e.id),
-          removed: removedIds.includes(e.id),
-        }));
-        renderEntries(allEntries);
-        setStatus(`Updated: ${paidIds.length} paid, ${removedIds.length} removed. Publish started.`, 'success');
+        // Reload from DB to ensure we have the authoritative state
+        await loadEntries();
+        const paidCount = allEntries.filter((e) => e.paid && !e.removed).length;
+        const removedCount = allEntries.filter((e) => e.removed).length;
+        setStatus(`Updated: ${paidCount} paid, ${removedCount} removed. Publish started.`, 'success');
       } catch (error) {
         setStatus(error.message, 'error');
       } finally {
