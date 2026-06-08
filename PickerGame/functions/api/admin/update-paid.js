@@ -30,27 +30,28 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const stmts = [context.env.ENTRIES_DB.prepare('UPDATE entries SET paid = 0, removed = 0')];
+    await context.env.ENTRIES_DB
+      .prepare('UPDATE entries SET paid = 0, removed = 0')
+      .run();
+
     if (paidIds.length > 0) {
       const placeholders = paidIds.map(() => '?').join(', ');
-      stmts.push(
-        context.env.ENTRIES_DB
-          .prepare(`UPDATE entries SET paid = 1 WHERE id IN (${placeholders})`)
-          .bind(...paidIds),
-      );
+      await context.env.ENTRIES_DB
+        .prepare(`UPDATE entries SET paid = 1 WHERE id IN (${placeholders})`)
+        .bind(...paidIds)
+        .run();
     }
+
     if (removedIds.length > 0) {
       const placeholders = removedIds.map(() => '?').join(', ');
-      stmts.push(
-        context.env.ENTRIES_DB
-          .prepare(`UPDATE entries SET removed = 1 WHERE id IN (${placeholders})`)
-          .bind(...removedIds),
-      );
+      await context.env.ENTRIES_DB
+        .prepare(`UPDATE entries SET removed = 1 WHERE id IN (${placeholders})`)
+        .bind(...removedIds)
+        .run();
     }
-    await context.env.ENTRIES_DB.batch(stmts);
   } catch (error) {
     console.error(error);
-    return jsonResponse({ ok: false, errors: ['Could not update statuses.'] }, 500);
+    return jsonResponse({ ok: false, errors: [error.message || 'Could not update statuses.'] }, 500);
   }
 
   const repository = context.env.GITHUB_REPOSITORY || DEFAULT_REPOSITORY;
