@@ -34,19 +34,22 @@ export async function onRequestPost(context) {
       .prepare('UPDATE entries SET paid = 0, removed = 0')
       .run();
 
-    if (paidIds.length > 0) {
-      const placeholders = paidIds.map(() => '?').join(', ');
+    const CHUNK = 50;
+    for (let i = 0; i < paidIds.length; i += CHUNK) {
+      const chunk = paidIds.slice(i, i + CHUNK);
+      const placeholders = chunk.map(() => '?').join(', ');
       await context.env.ENTRIES_DB
         .prepare(`UPDATE entries SET paid = 1 WHERE id IN (${placeholders})`)
-        .bind(...paidIds)
+        .bind(...chunk)
         .run();
     }
 
-    if (removedIds.length > 0) {
-      const placeholders = removedIds.map(() => '?').join(', ');
+    for (let i = 0; i < removedIds.length; i += CHUNK) {
+      const chunk = removedIds.slice(i, i + CHUNK);
+      const placeholders = chunk.map(() => '?').join(', ');
       await context.env.ENTRIES_DB
         .prepare(`UPDATE entries SET removed = 1 WHERE id IN (${placeholders})`)
-        .bind(...removedIds)
+        .bind(...chunk)
         .run();
     }
   } catch (error) {
