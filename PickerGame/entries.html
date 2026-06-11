@@ -292,7 +292,7 @@
       <div class="find-bar">
         <span class="find-icon">🔍</span>
         <input type="text" class="find-input" id="emailFindInput"
-               placeholder="Enter your email to highlight your teams"
+               placeholder="Search by email or team name…"
                autocomplete="off" />
         <span class="find-status" id="findStatus"></span>
         <button class="find-clear" id="findClear" title="Clear" hidden>✕</button>
@@ -327,7 +327,8 @@
     const findClear    = document.getElementById('findClear');
 
     let emailHashes    = {};
-    let highlightedTeams = new Set();
+    let emailMatchTeams = new Set();
+    let searchFilter   = '';
     let pinnedTeams    = new Set(JSON.parse(localStorage.getItem('pg2026_pins') || '[]'));
     let allEntries     = [];
 
@@ -349,29 +350,37 @@
       } catch (_) {}
     }
 
-    async function findByEmail(raw) {
+    async function handleSearch(raw) {
+      searchFilter = raw;
       findClear.hidden = !raw;
       if (!raw.trim()) {
-        highlightedTeams = new Set();
+        emailMatchTeams = new Set();
         findStatus.textContent = '';
         findStatus.className = 'find-status';
-        applyHighlights();
+        renderEntries();
         return;
       }
-      const hash = await hashEmail(raw);
-      const teams = emailHashes[hash] || [];
-      highlightedTeams = new Set(teams);
-      applyHighlights();
-      if (teams.length) {
-        findStatus.textContent = `Found ${teams.length === 1 ? '1 team' : teams.length + ' teams'}`;
-        findStatus.className = 'find-status found';
-      } else if (raw.includes('@')) {
-        findStatus.textContent = 'No teams found';
-        findStatus.className = 'find-status notfound';
+      if (raw.includes('@')) {
+        const hash = await hashEmail(raw);
+        emailMatchTeams = new Set(emailHashes[hash] || []);
+        const count = emailMatchTeams.size;
+        findStatus.textContent = count ? `${count} ${count === 1 ? 'team' : 'teams'} found` : 'No teams found';
+        findStatus.className = count ? 'find-status found' : 'find-status notfound';
       } else {
-        findStatus.textContent = '';
-        findStatus.className = 'find-status';
+        emailMatchTeams = new Set();
+        const q = raw.toLowerCase().trim();
+        const count = allEntries.filter(e => e.teamName.toLowerCase().includes(q)).length;
+        findStatus.textContent = count ? `${count} ${count === 1 ? 'match' : 'matches'}` : 'No matches';
+        findStatus.className = count ? 'find-status found' : 'find-status notfound';
       }
+      renderEntries();
+    }
+
+    function getFilteredEntries() {
+      const q = searchFilter.trim().toLowerCase();
+      if (!q) return allEntries;
+      if (searchFilter.includes('@')) return allEntries.filter(e => emailMatchTeams.has(e.teamName));
+      return allEntries.filter(e => e.teamName.toLowerCase().includes(q));
     }
 
     function savePins() {
@@ -387,29 +396,30 @@
 
     function applyHighlights() {
       document.querySelectorAll('#entriesBody tr[data-team]').forEach(row => {
-        const team = row.dataset.team;
-        const hl  = highlightedTeams.has(team);
-        const pin = pinnedTeams.has(team);
-        row.classList.toggle('row-highlighted', hl);
-        row.classList.toggle('row-pinned', pin && !hl);
+        const pin = pinnedTeams.has(row.dataset.team);
+        row.classList.toggle('row-pinned', pin);
         const star = row.querySelector('.star-btn');
         if (star) star.classList.toggle('pinned', pin);
       });
     }
 
-    function render(entries) {
-      allEntries = entries;
-      if (!entries.length) {
+    function renderEntries() {
+      const entries = getFilteredEntries();
+      const total = allEntries.length;
+      if (!total) {
         tableWrap.style.display = 'none';
         emptyEl.style.display = 'block';
         countEl.textContent = '0 entries';
         return;
       }
-      countEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
+      tableWrap.style.display = '';
+      emptyEl.style.display = 'none';
+      countEl.textContent = entries.length < total
+        ? `${entries.length} of ${total} entries`
+        : `${total} ${total === 1 ? 'entry' : 'entries'}`;
       entriesBody.innerHTML = entries.map(e => {
-        const hl  = highlightedTeams.has(e.teamName);
         const pin = pinnedTeams.has(e.teamName);
-        const classes = [hl && 'row-highlighted', pin && !hl && 'row-pinned'].filter(Boolean).join(' ');
+        const classes = pin ? 'row-pinned' : '';
         const badge = e.paid
           ? '<span class="badge badge-paid">Paid</span>'
           : '<span class="badge badge-pending">Pending</span>';
@@ -434,19 +444,15 @@
       if (star) togglePin(star.dataset.team);
     });
 
-    // Email find
+    // Search bar
     let findTimer = null;
     emailInput.addEventListener('input', () => {
       clearTimeout(findTimer);
-      findTimer = setTimeout(() => findByEmail(emailInput.value), 350);
+      findTimer = setTimeout(() => handleSearch(emailInput.value), 350);
     });
     findClear.addEventListener('click', () => {
       emailInput.value = '';
-      highlightedTeams = new Set();
-      findStatus.textContent = '';
-      findStatus.className = 'find-status';
-      findClear.hidden = true;
-      applyHighlights();
+      handleSearch('');
     });
 
     async function init() {
@@ -456,7 +462,8 @@
         if (!response.ok) throw new Error('Could not load entries.');
         const data = await response.json();
         if (!data.ok) throw new Error(data.errors?.[0] || 'Could not load entries.');
-        render(data.entries);
+        allEntries = data.entries;
+        renderEntries();
       } catch (error) {
         tableWrap.style.display = 'none';
         errorEl.textContent = error.message;
