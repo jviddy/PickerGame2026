@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "matchId": "M001",
+    "homeScore": 2,
+    "awayScore": 0,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": 1,
+    "awayYellow": 1,
+    "homeRed": 2,
+    "awayRed": 1
+  }
+]
