@@ -6,6 +6,7 @@ const ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
 
 const ENTRY_PAGES = new Set(['entry.html', 'entries.html', 'schedule.html', 'blog.html']);
 const POST_PAGES  = new Set(['leaderboard.html', 'schedule.html', 'tables.html', 'countries.html', 'blog.html']);
+const ADMIN_PAGES = new Set(['admin.html', 'admin-results.html', 'admin-blog.html', 'admin-email.html']);
 
 export async function onRequest({ request, next }) {
   const url  = new URL(request.url);
@@ -13,6 +14,9 @@ export async function onRequest({ request, next }) {
 
   // Pass through everything except named HTML pages
   if (!page.endsWith('.html')) return next();
+
+  // Admin pages are always accessible regardless of phase
+  if (ADMIN_PAGES.has(page)) return next();
 
   const now = Date.now();
 
