@@ -82,10 +82,11 @@ export async function onRequestPost(context) {
   }
 
   // Fetch recipient emails from D1
-  const isPaidOnly = audience === 'paid';
-  const sql = isPaidOnly
+  const sql = audience === 'paid'
     ? 'SELECT DISTINCT email, entrant_name FROM entries WHERE paid = 1 AND removed = 0 AND email IS NOT NULL AND email != \'\''
-    : 'SELECT DISTINCT email, entrant_name FROM entries WHERE removed = 0 AND email IS NOT NULL AND email != \'\'';
+    : audience === 'pending'
+      ? 'SELECT DISTINCT email, entrant_name FROM entries WHERE paid = 0 AND removed = 0 AND email IS NOT NULL AND email != \'\''
+      : 'SELECT DISTINCT email, entrant_name FROM entries WHERE removed = 0 AND email IS NOT NULL AND email != \'\'';
 
   const { results } = await context.env.ENTRIES_DB.prepare(sql).all();
 
@@ -157,16 +158,19 @@ export async function onRequestGet(context) {
     return jsonResponse({ ok: false, errors: ['Entry database is not configured.'] }, 500);
   }
 
-  const [allRes, paidRes] = await Promise.all([
+  const [allRes, paidRes, pendingRes] = await Promise.all([
     context.env.ENTRIES_DB
       .prepare('SELECT COUNT(DISTINCT email) as n FROM entries WHERE removed = 0 AND email IS NOT NULL AND email != \'\'')
       .first(),
     context.env.ENTRIES_DB
       .prepare('SELECT COUNT(DISTINCT email) as n FROM entries WHERE paid = 1 AND removed = 0 AND email IS NOT NULL AND email != \'\'')
       .first(),
+    context.env.ENTRIES_DB
+      .prepare('SELECT COUNT(DISTINCT email) as n FROM entries WHERE paid = 0 AND removed = 0 AND email IS NOT NULL AND email != \'\'')
+      .first(),
   ]);
 
-  return jsonResponse({ ok: true, all: allRes?.n ?? 0, paid: paidRes?.n ?? 0 });
+  return jsonResponse({ ok: true, all: allRes?.n ?? 0, paid: paidRes?.n ?? 0, pending: pendingRes?.n ?? 0 });
 }
 
 export async function onRequest() {

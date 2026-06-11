@@ -189,6 +189,7 @@
         <label>Audience</label>
         <div class="audience-row">
           <button class="audience-btn active" data-audience="paid" id="audiencePaid">Paid only</button>
+          <button class="audience-btn" data-audience="pending" id="audiencePending">Pending only</button>
           <button class="audience-btn" data-audience="all" id="audienceAll">All entrants</button>
         </div>
         <div class="recipient-count" id="recipientCount">Loading recipient count…</div>
@@ -275,7 +276,7 @@
   const confirmSend     = document.getElementById('confirmSend');
 
   let audience = 'paid';
-  let counts = { all: 0, paid: 0 };
+  let counts = { all: 0, paid: 0, pending: 0 };
   let pendingSend = null;
 
   // Audience toggle
@@ -289,7 +290,7 @@
   });
 
   function updateCountLabel() {
-    const n = audience === 'paid' ? counts.paid : counts.all;
+    const n = audience === 'paid' ? counts.paid : audience === 'pending' ? counts.pending : counts.all;
     recipientCount.textContent = counts.paid === 0 && counts.all === 0
       ? 'Loading…'
       : `${n} recipient${n !== 1 ? 's' : ''} will receive this email`;
@@ -303,7 +304,7 @@
       });
       if (res.ok) {
         const data = await res.json();
-        counts = { all: data.all, paid: data.paid };
+        counts = { all: data.all, paid: data.paid, pending: data.pending };
         updateCountLabel();
       }
     } catch (_) {}
