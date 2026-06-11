@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send Update Email – PickerGame 2026</title>
+  <style>
+    :root {
+      --navy:   #1a3352;
+      --mid:    #2d5a8e;
+      --accent: #e86f2c;
+      --green:  #22a861;
+      --red:    #b91c1c;
+      --ink:    #1e293b;
+      --muted:  #64748b;
+      --line:   #e2e8f0;
+      --soft:   #f8fafc;
+      --white:  #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: #f0f4f8;
+      color: var(--ink);
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      color: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; max-width: 1100px; margin: 0 auto; padding: 14px 18px;
+    }
+    h1 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.6rem); }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a {
+      color: var(--white); text-decoration: none; font-weight: 700;
+      font-size: 0.85rem; padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.35); border-radius: 6px;
+    }
+    .nav a:hover { background: rgba(255,255,255,0.1); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1100px;
+      margin: 24px auto 60px;
+      padding: 0 16px;
+    }
+    @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.07);
+      overflow: hidden;
+    }
+    .panel-head {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .panel-head h2 { margin: 0; font-size: 0.95rem; color: var(--navy); }
+    .panel-body { padding: 18px; }
+
+    label {
+      display: block;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; color: var(--muted); margin-bottom: 5px;
+    }
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input[type="text"]:focus, textarea:focus, select:focus { border-color: var(--navy); }
+    textarea { resize: vertical; min-height: 140px; line-height: 1.5; }
+
+    .field { margin-bottom: 16px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-hint { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    .audience-row {
+      display: flex; gap: 8px;
+    }
+    .audience-btn {
+      flex: 1; padding: 9px 10px; border: 1.5px solid var(--line);
+      border-radius: 6px; background: var(--white); color: var(--ink);
+      font-size: 0.88rem; font-weight: 700; cursor: pointer;
+      text-align: center; transition: border-color 0.15s, background 0.15s;
+    }
+    .audience-btn.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    .audience-btn:hover:not(.active) { border-color: var(--mid); }
+    .recipient-count {
+      margin-top: 8px; font-size: 0.8rem; font-weight: 700; color: var(--muted);
+    }
+    .recipient-count.loaded { color: var(--green); }
+
+    .actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .btn {
+      padding: 11px 18px; border: none; border-radius: 6px;
+      font-size: 0.92rem; font-weight: 800; cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      text-align: center;
+    }
+    .btn:hover { opacity: 0.88; }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-secondary { background: var(--soft); color: var(--navy); border: 1.5px solid var(--line); }
+    .btn-danger { background: #dc2626; color: var(--white); }
+
+    .status-msg {
+      margin-top: 12px; padding: 10px 14px; border-radius: 6px;
+      font-size: 0.88rem; font-weight: 700; display: none;
+    }
+    .status-msg.show { display: block; }
+    .status-msg.success { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-msg.error   { background: #fee2e2; color: var(--red); border: 1px solid #fca5a5; }
+    .status-msg.info    { background: #eff6ff; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Preview iframe */
+    .preview-frame {
+      width: 100%; height: 600px;
+      border: none; border-radius: 4px;
+      background: #f4f4f4;
+    }
+    .preview-placeholder {
+      padding: 48px 20px; text-align: center;
+      color: var(--muted); font-size: 0.9rem;
+    }
+
+    .confirm-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5); z-index: 200;
+      align-items: center; justify-content: center;
+    }
+    .confirm-overlay.show { display: flex; }
+    .confirm-box {
+      background: var(--white); border-radius: 10px;
+      padding: 28px 32px; max-width: 420px; width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .confirm-box h3 { margin: 0 0 10px; color: var(--navy); }
+    .confirm-box p { margin: 0 0 20px; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+    .confirm-actions { display: flex; gap: 10px; }
+    .confirm-actions .btn { flex: 1; }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <h1>PickerGame 2026 — Send Update</h1>
+    <nav class="nav">
+      <a href="admin.html">Entries</a>
+      <a href="admin-results.html">Results</a>
+      <a href="admin-blog.html">Blog</a>
+      <a href="admin-email.html" style="background:rgba(255,255,255,0.15);">Email</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- Left: Compose -->
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Compose</h2>
+    </div>
+    <div class="panel-body">
+
+      <div class="field">
+        <label>Audience</label>
+        <div class="audience-row">
+          <button class="audience-btn active" data-audience="paid" id="audiencePaid">Paid only</button>
+          <button class="audience-btn" data-audience="all" id="audienceAll">All entrants</button>
+        </div>
+        <div class="recipient-count" id="recipientCount">Loading recipient count…</div>
+      </div>
+
+      <div class="field">
+        <label for="subjectInput">Subject line</label>
+        <input type="text" id="subjectInput"
+               value="PickerGame World Cup 2026 — Update"
+               placeholder="PickerGame World Cup 2026 — Update" />
+      </div>
+
+      <div class="field">
+        <label for="headingInput">Email heading</label>
+        <input type="text" id="headingInput"
+               value="Mid-tournament update"
+               placeholder="Mid-tournament update" />
+      </div>
+
+      <div class="field">
+        <label for="bodyInput">Message body</label>
+        <textarea id="bodyInput" rows="10"
+                  placeholder="Write your update here. Use blank lines to separate paragraphs."></textarea>
+        <div class="field-hint">Plain text — blank lines become new paragraphs. HTML is supported if needed.</div>
+      </div>
+
+      <div class="field">
+        <label for="leaderboardUrl">Leaderboard button URL <span style="font-weight:400;text-transform:none">(leave blank to omit)</span></label>
+        <input type="text" id="leaderboardUrl"
+               value="https://pickergame.vidamour.com/leaderboard.html" />
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary" id="previewBtn">Preview email</button>
+        <button class="btn btn-secondary" id="testBtn">Send test to jamie@vidamour.com</button>
+        <button class="btn btn-danger" id="sendBtn">Send to all recipients</button>
+      </div>
+
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+  </div>
+
+  <!-- Right: Preview -->
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Preview</h2>
+    </div>
+    <div id="previewWrap">
+      <div class="preview-placeholder">Click "Preview email" to see how it will look.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Confirm send dialog -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <h3>Confirm send</h3>
+    <p id="confirmText"></p>
+    <div class="confirm-actions">
+      <button class="btn btn-secondary" id="confirmCancel">Cancel</button>
+      <button class="btn btn-danger" id="confirmSend">Yes, send it</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ADMIN_TOKEN = localStorage.getItem('pg_admin_token') || prompt('Admin token:');
+  if (ADMIN_TOKEN) localStorage.setItem('pg_admin_token', ADMIN_TOKEN);
+
+  const subjectInput    = document.getElementById('subjectInput');
+  const headingInput    = document.getElementById('headingInput');
+  const bodyInput       = document.getElementById('bodyInput');
+  const leaderboardUrl  = document.getElementById('leaderboardUrl');
+  const recipientCount  = document.getElementById('recipientCount');
+  const previewBtn      = document.getElementById('previewBtn');
+  const testBtn         = document.getElementById('testBtn');
+  const sendBtn         = document.getElementById('sendBtn');
+  const statusMsg       = document.getElementById('statusMsg');
+  const previewWrap     = document.getElementById('previewWrap');
+  const confirmOverlay  = document.getElementById('confirmOverlay');
+  const confirmText     = document.getElementById('confirmText');
+  const confirmCancel   = document.getElementById('confirmCancel');
+  const confirmSend     = document.getElementById('confirmSend');
+
+  let audience = 'paid';
+  let counts = { all: 0, paid: 0 };
+  let pendingSend = null;
+
+  // Audience toggle
+  document.querySelectorAll('.audience-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.audience-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      audience = btn.dataset.audience;
+      updateCountLabel();
+    });
+  });
+
+  function updateCountLabel() {
+    const n = audience === 'paid' ? counts.paid : counts.all;
+    recipientCount.textContent = counts.paid === 0 && counts.all === 0
+      ? 'Loading…'
+      : `${n} recipient${n !== 1 ? 's' : ''} will receive this email`;
+    recipientCount.className = 'recipient-count' + (n > 0 ? ' loaded' : '');
+  }
+
+  async function loadCounts() {
+    try {
+      const res = await fetch('/api/admin/send-update', {
+        headers: { 'X-Admin-Token': ADMIN_TOKEN },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        counts = { all: data.all, paid: data.paid };
+        updateCountLabel();
+      }
+    } catch (_) {}
+  }
+
+  function getPayload(testOnly) {
+    return {
+      subject:      subjectInput.value.trim(),
+      heading:      headingInput.value.trim(),
+      body:         bodyInput.value.trim(),
+      leaderboardUrl: leaderboardUrl.value.trim(),
+      audience,
+      testOnly: Boolean(testOnly),
+    };
+  }
+
+  function showStatus(msg, type) {
+    statusMsg.textContent = msg;
+    statusMsg.className = `status-msg show ${type}`;
+  }
+
+  function clearStatus() {
+    statusMsg.className = 'status-msg';
+  }
+
+  function validate() {
+    const p = getPayload(false);
+    if (!p.subject) { showStatus('Subject is required.', 'error'); return false; }
+    if (!p.heading) { showStatus('Heading is required.', 'error'); return false; }
+    if (!p.body)    { showStatus('Body is required.', 'error'); return false; }
+    return true;
+  }
+
+  // Preview
+  previewBtn.addEventListener('click', () => {
+    if (!validate()) return;
+    clearStatus();
+    const p = getPayload(false);
+    const html = buildPreviewHtml(p.heading, p.body, p.leaderboardUrl);
+    previewWrap.innerHTML = `<iframe class="preview-frame" srcdoc="${escAttr(html)}"></iframe>`;
+  });
+
+  // Test send
+  testBtn.addEventListener('click', async () => {
+    if (!validate()) return;
+    testBtn.disabled = true;
+    testBtn.textContent = 'Sending test…';
+    showStatus('Sending test email to jamie@vidamour.com…', 'info');
+    try {
+      const res = await fetch('/api/admin/send-update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Token': ADMIN_TOKEN,
+        },
+        body: JSON.stringify(getPayload(true)),
+      });
+      const data = await res.json();
+      if (data.ok) showStatus('Test email sent to jamie@vidamour.com — check your inbox.', 'success');
+      else showStatus('Error: ' + (data.errors?.[0] || 'Unknown error'), 'error');
+    } catch (e) {
+      showStatus('Network error: ' + e.message, 'error');
+    } finally {
+      testBtn.disabled = false;
+      testBtn.textContent = 'Send test to jamie@vidamour.com';
+    }
+  });
+
+  // Send to all — show confirm dialog
+  sendBtn.addEventListener('click', () => {
+    if (!validate()) return;
+    const n = audience === 'paid' ? counts.paid : counts.all;
+    const audienceLabel = audience === 'paid' ? 'paid entrants' : 'all entrants';
+    confirmText.textContent = `This will send "${subjectInput.value.trim()}" to ${n} ${audienceLabel}. This cannot be undone.`;
+    pendingSend = getPayload(false);
+    confirmOverlay.classList.add('show');
+  });
+
+  confirmCancel.addEventListener('click', () => {
+    confirmOverlay.classList.remove('show');
+    pendingSend = null;
+  });
+
+  confirmSend.addEventListener('click', async () => {
+    confirmOverlay.classList.remove('show');
+    if (!pendingSend) return;
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
+    showStatus('Sending…', 'info');
+    try {
+      const res = await fetch('/api/admin/send-update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Token': ADMIN_TOKEN,
+        },
+        body: JSON.stringify(pendingSend),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showStatus(`✓ Sent to ${data.sent} recipient${data.sent !== 1 ? 's' : ''}.` +
+          (data.errors?.length ? ` (${data.errors.length} batch error(s) — check console)` : ''), 'success');
+        if (data.errors) console.error('Batch errors:', data.errors);
+      } else {
+        showStatus('Error: ' + (data.errors?.[0] || 'Unknown error'), 'error');
+      }
+    } catch (e) {
+      showStatus('Network error: ' + e.message, 'error');
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send to all recipients';
+      pendingSend = null;
+    }
+  });
+
+  // Close overlay on backdrop click
+  confirmOverlay.addEventListener('click', e => {
+    if (e.target === confirmOverlay) {
+      confirmOverlay.classList.remove('show');
+      pendingSend = null;
+    }
+  });
+
+  function escAttr(str) {
+    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  }
+
+  function buildPreviewHtml(heading, body, url) {
+    const bodyHtml = body
+      .split(/\n{2,}/)
+      .map(p => `<p style="color:#555;line-height:1.7;margin:0 0 14px;">${p.trim().replace(/\n/g, '<br>')}</p>`)
+      .join('\n');
+
+    const btnHtml = url
+      ? `<p style="text-align:center;margin:28px 0 0;">
+           <a href="${url}" style="background:#1a3352;color:#ffffff;padding:13px 30px;border-radius:6px;
+              text-decoration:none;font-weight:bold;font-size:15px;display:inline-block;">View Leaderboard</a>
+         </p>`
+      : '';
+
+    return `<!DOCTYPE html><html><head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:30px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:8px;overflow:hidden;max-width:560px;width:100%;">
+        <tr><td style="background:linear-gradient(135deg,#1a3352 0%,#1e4070 100%);padding:28px 40px;text-align:center;">
+          <h1 style="margin:0;font-size:28px;font-weight:800;color:#fff;">
+            Picker<span style="color:#e86f2c;">Game</span>
+            <span style="font-weight:400;color:rgba(255,255,255,0.6);font-size:22px;">2026</span>
+          </h1>
+          <p style="margin:8px 0 0;color:rgba(255,255,255,0.6);font-size:13px;">World Cup 2026 Edition</p>
+        </td></tr>
+        <tr><td style="padding:30px 40px;">
+          <h2 style="color:#1a3352;font-size:20px;margin:0 0 16px;">${heading}</h2>
+          ${bodyHtml}
+          ${btnHtml}
+        </td></tr>
+        <tr><td style="background:#f9f9f9;padding:20px 40px;text-align:center;border-top:1px solid #e0e0e0;">
+          <p style="margin:0;font-size:12px;color:#999;">
+            Questions? Reply to this email or contact
+            <a href="mailto:pickergame@vidamour.com" style="color:#1a3352;">pickergame@vidamour.com</a>
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+  }
+
+  loadCounts();
+</script>
+</body>
+</html>
