@@ -8,7 +8,7 @@ const BATCH_SIZE = 90; // Resend batch limit is 100; stay under it
 function buildHtml(heading, body, leaderboardUrl) {
   const bodyHtml = body
     .split(/\n{2,}/)
-    .map(para => `<p style="color:#555;line-height:1.7;margin:0 0 14px;">${para.trim().replace(/\n/g, '<br>')}</p>`)
+    .map(para => `<p style="color:#555;line-height:1.6;margin:0 0 8px;">${para.trim().replace(/\n/g, '<br>')}</p>`)
     .join('\n');
 
   return `<!DOCTYPE html>
