@@ -184,11 +184,18 @@ export function calculateEntrantTotals(entries, teamPoints, teams, matches, resu
     };
   });
   
-  // Sort by total points (descending), then by teams remaining (descending)
+  // Total goals scored so far (for tiebreaker)
+  const actualTotalGoals = results.reduce((sum, r) => {
+    if (r.homeScore != null && r.awayScore != null) return sum + r.homeScore + r.awayScore;
+    return sum;
+  }, 0);
+
+  // Sort: points DESC → closest goals guess ASC → teams remaining DESC
   return entrantTotals.sort((a, b) => {
-    if (b.totalPoints !== a.totalPoints) {
-      return b.totalPoints - a.totalPoints;
-    }
+    if (b.totalPoints !== a.totalPoints) return b.totalPoints - a.totalPoints;
+    const aGoalsDiff = Math.abs((parseInt(a.tieBreakers[0], 10) || 0) - actualTotalGoals);
+    const bGoalsDiff = Math.abs((parseInt(b.tieBreakers[0], 10) || 0) - actualTotalGoals);
+    if (aGoalsDiff !== bGoalsDiff) return aGoalsDiff - bGoalsDiff;
     return b.teamsRemaining - a.teamsRemaining;
   });
 }

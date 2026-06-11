@@ -104,6 +104,15 @@ async function main() {
       .map((e) => ({ teamName: e.teamName, entrantName: e.entrantName, paid: Boolean(e.paid) }))
       .sort((a, b) => (b.paid - a.paid) || a.entrantName.localeCompare(b.entrantName));
 
+    // Tournament stats for display on leaderboard
+    const playedResults = results.filter(r => r.homeScore != null && r.awayScore != null);
+    const tournamentStats = {
+      gamesPlayed:      playedResults.length,
+      totalGoals:       playedResults.reduce((s, r) => s + r.homeScore + r.awayScore, 0),
+      totalYellowCards: playedResults.reduce((s, r) => s + (r.homeYellow || 0) + (r.awayYellow || 0), 0),
+      totalRedCards:    playedResults.reduce((s, r) => s + (r.homeRed || 0) + (r.awayRed || 0), 0),
+    };
+
     // Build email hash lookup: SHA-256(normalised email) → [teamName, ...]
     // Hashes are safe to ship publicly — emails cannot be reversed from them
     const emailHashes = {};
@@ -167,6 +176,7 @@ async function main() {
         ['matchPoints.json', matchPoints],
         ['publicEntries.json', publicEntries],
         ['emailHashes.json', emailHashes],
+        ['tournamentStats.json', tournamentStats],
       ];
 
       for (const [fileName, data] of outputs) {
