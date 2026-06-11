@@ -5,6 +5,7 @@
  * Usage: node buildScores.js
  */
 
+import crypto from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -102,6 +103,16 @@ async function main() {
       .filter((e) => !e.removed)
       .map((e) => ({ teamName: e.teamName, entrantName: e.entrantName, paid: Boolean(e.paid) }))
       .sort((a, b) => (b.paid - a.paid) || a.entrantName.localeCompare(b.entrantName));
+
+    // Build email hash lookup: SHA-256(normalised email) → [teamName, ...]
+    // Hashes are safe to ship publicly — emails cannot be reversed from them
+    const emailHashes = {};
+    for (const entry of entries) {
+      if (!entry.email || entry.removed) continue;
+      const hash = crypto.createHash('sha256').update(entry.email.toLowerCase().trim()).digest('hex');
+      if (!emailHashes[hash]) emailHashes[hash] = [];
+      if (!emailHashes[hash].includes(entry.teamName)) emailHashes[hash].push(entry.teamName);
+    }
     
     // Write output files
     console.log('\n💾 Writing output files...');
@@ -155,6 +166,7 @@ async function main() {
         ['countryScores.json', countryScores],
         ['matchPoints.json', matchPoints],
         ['publicEntries.json', publicEntries],
+        ['emailHashes.json', emailHashes],
       ];
 
       for (const [fileName, data] of outputs) {

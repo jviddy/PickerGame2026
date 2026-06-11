@@ -603,6 +603,92 @@
     .expansion-country-chip .c-name { color: var(--navy); font-weight: 700; }
     .expansion-country-chip .c-score { color: var(--green); font-weight: 800; }
     .expansion-country-chip .c-score.neg { color: var(--red); }
+
+    /* ─── Find bar ───────────────────────────────────────────────*/
+    .find-bar {
+      background: #f8faff;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .find-icon { color: var(--gray-600); font-size: 0.9rem; flex-shrink: 0; }
+    .find-input {
+      flex: 1;
+      min-width: 180px;
+      padding: 7px 12px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 99px;
+      font-size: 0.85rem;
+      outline: none;
+      color: var(--gray-800);
+      background: var(--white);
+    }
+    .find-input:focus { border-color: var(--navy-light); }
+    .find-input::placeholder { color: var(--gray-400); }
+    .find-status { font-size: 0.78rem; font-weight: 700; color: var(--gray-600); white-space: nowrap; }
+    .find-status.found { color: var(--green); }
+    .find-status.notfound { color: var(--red); }
+    .find-clear {
+      background: none; border: none; cursor: pointer;
+      color: var(--gray-400); font-size: 1rem; padding: 2px 4px; line-height: 1; border-radius: 3px;
+    }
+    .find-clear:hover { color: var(--gray-800); }
+    .find-private { font-size: 0.7rem; color: var(--gray-400); white-space: nowrap; }
+
+    /* ─── Star button ────────────────────────────────────────────*/
+    .star-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--gray-200); font-size: 0.95rem; padding: 0;
+      line-height: 1; transition: color 0.12s, transform 0.1s;
+    }
+    .star-btn:hover { color: #f59e0b; transform: scale(1.2); }
+    .star-btn.pinned { color: #f59e0b; }
+
+    /* ─── Row highlight states ───────────────────────────────────*/
+    .leaderboard-row.row-highlighted { background: #fffbeb !important; box-shadow: inset 3px 0 0 #f59e0b; }
+    .leaderboard-row.row-pinned { background: #f0f9ff !important; box-shadow: inset 3px 0 0 #3b82f6; }
+    .leaderboard-row.row-highlighted.row-pinned { background: #fffbeb !important; box-shadow: inset 3px 0 0 #f59e0b; }
+    .leaderboard-row.row-highlighted:hover,
+    .leaderboard-row.row-pinned:hover { filter: brightness(0.97); }
+
+    /* ─── My picks mini panel ────────────────────────────────────*/
+    .my-picks-panel {
+      background: var(--white);
+      border: 1.5px solid #3b82f6;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .my-picks-header {
+      padding: 7px 12px;
+      background: #3b82f6;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .my-picks-hint { font-weight: 400; opacity: 0.8; font-size: 0.7rem; }
+    .my-picks-row {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) 60px;
+      gap: 10px;
+      padding: 7px 12px;
+      border-bottom: 1px solid #bfdbfe;
+      align-items: center;
+      font-size: 0.84rem;
+    }
+    .my-picks-row:last-child { border-bottom: none; }
+    .my-picks-rank { font-weight: 800; color: var(--navy); text-align: center; font-size: 0.78rem; }
+    .my-picks-name { font-weight: 800; color: var(--navy); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .my-picks-sub { font-size: 0.7rem; color: var(--gray-600); }
+    .my-picks-score { font-weight: 800; color: var(--green); text-align: right; }
   </style>
   <script src="ticker.js" defer></script>
   <script src="/nav-phase.js"></script>
@@ -645,6 +731,26 @@
 
   <div class="error-msg" id="errorMsg"></div>
 
+  <!-- Find by email -->
+  <div class="find-bar">
+    <span class="find-icon">🔍</span>
+    <input type="text" class="find-input" id="emailFindInput"
+           placeholder="Enter your email to highlight your teams"
+           autocomplete="off" />
+    <span class="find-status" id="findStatus"></span>
+    <button class="find-clear" id="findClear" title="Clear" hidden>✕</button>
+    <span class="find-private">🔒 never leaves your browser</span>
+  </div>
+
+  <!-- Pinned entries mini panel -->
+  <div class="my-picks-panel" id="myPicksPanel" hidden>
+    <div class="my-picks-header">
+      <span>⭐ My picks</span>
+      <span class="my-picks-hint">click ★ on any row to pin it</span>
+    </div>
+    <div id="myPicksRows"></div>
+  </div>
+
   <div class="leaderboard" id="leaderboard">
     <div class="empty-state">
       <h2>Loading leaderboard…</h2>
@@ -680,10 +786,20 @@
   let expandedChipEl = null;
   let expandedExpansionEl = null;
 
+  // Find / pin state
+  let emailHashes = {};
+  let highlightedTeams = new Set();
+  let pinnedTeams = new Set(JSON.parse(localStorage.getItem('pg2026_pins') || '[]'));
+
   /* ─── DOM ─────────────────────────────────────────────────── */
   const leaderboardEl      = document.getElementById('leaderboard');
   const scoreModeToggleBtn = document.getElementById('scoreModeToggleBtn');
   const errorMsg           = document.getElementById('errorMsg');
+  const emailInput         = document.getElementById('emailFindInput');
+  const findStatus         = document.getElementById('findStatus');
+  const findClear          = document.getElementById('findClear');
+  const myPicksPanel       = document.getElementById('myPicksPanel');
+  const myPicksRows        = document.getElementById('myPicksRows');
 
   /* ─── Data loading ────────────────────────────────────────── */
   async function loadAllData() {
@@ -992,6 +1108,98 @@
     expandedExpansionEl = div;
   }
 
+  /* ─── Find / pin helpers ──────────────────────────────────── */
+  async function hashEmail(email) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(email.toLowerCase().trim()));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function loadEmailHashes() {
+    try {
+      const res = await fetch('./Data/emailHashes.json');
+      if (res.ok) emailHashes = await res.json();
+    } catch (_) {}
+  }
+
+  async function findByEmail(raw) {
+    findClear.hidden = !raw;
+    if (!raw.trim()) {
+      highlightedTeams = new Set();
+      findStatus.textContent = '';
+      findStatus.className = 'find-status';
+      applyHighlights();
+      return;
+    }
+    const hash = await hashEmail(raw);
+    const teams = emailHashes[hash] || [];
+    highlightedTeams = new Set(teams);
+    applyHighlights();
+    if (teams.length) {
+      findStatus.textContent = `Found ${teams.length === 1 ? '1 team' : teams.length + ' teams'}`;
+      findStatus.className = 'find-status found';
+    } else if (raw.includes('@')) {
+      findStatus.textContent = 'No teams found';
+      findStatus.className = 'find-status notfound';
+    } else {
+      findStatus.textContent = '';
+      findStatus.className = 'find-status';
+    }
+  }
+
+  function savePins() {
+    localStorage.setItem('pg2026_pins', JSON.stringify([...pinnedTeams]));
+  }
+
+  function togglePin(teamName) {
+    if (pinnedTeams.has(teamName)) pinnedTeams.delete(teamName);
+    else pinnedTeams.add(teamName);
+    savePins();
+    applyHighlights();
+    renderMiniPanel();
+  }
+
+  function applyHighlights() {
+    document.querySelectorAll('.leaderboard-row[data-team-name]').forEach(row => {
+      const team = row.dataset.teamName;
+      const hl  = highlightedTeams.has(team);
+      const pin = pinnedTeams.has(team);
+      row.classList.toggle('row-highlighted', hl);
+      row.classList.toggle('row-pinned', pin && !hl);
+      const star = row.querySelector('.star-btn');
+      if (star) star.classList.toggle('pinned', pin);
+    });
+  }
+
+  function renderMiniPanel() {
+    if (!pinnedTeams.size || !leaderboard.length) {
+      myPicksPanel.hidden = true;
+      return;
+    }
+    const pinned = leaderboard
+      .map((entry, idx) => ({ entry, rank: idx + 1 }))
+      .filter(({ entry }) => pinnedTeams.has(entry.teamName));
+
+    if (!pinned.length) { myPicksPanel.hidden = true; return; }
+
+    myPicksPanel.hidden = false;
+    myPicksRows.innerHTML = pinned.map(({ entry, rank }) => {
+      let rankDisplay = rank;
+      if (rank === 1) rankDisplay = '🥇';
+      else if (rank === 2) rankDisplay = '🥈';
+      else if (rank === 3) rankDisplay = '🥉';
+      return `
+        <div class="my-picks-row">
+          <div class="my-picks-rank">${rankDisplay}</div>
+          <div>
+            <div class="my-picks-name">${escapeHtml(entry.teamName)}</div>
+            <div class="my-picks-sub">${escapeHtml(entry.entrantName)}</div>
+          </div>
+          <div class="my-picks-score">${entry.totalScore} pts</div>
+        </div>
+      `;
+    }).join('');
+  }
+
   /* ─── Rendering ───────────────────────────────────────────── */
   function renderAll() {
     closeExpansion();
@@ -1002,6 +1210,7 @@
     }
     renderHeader();
     renderBody();
+    renderMiniPanel();
   }
 
   function renderHeader() {
@@ -1072,9 +1281,22 @@
       else if (originalRank === 3) { rankClass = 'third';  rankEmoji = '🥉'; }
 
       const entryIdx = leaderboard.indexOf(entry);
+      const hl  = highlightedTeams.has(entry.teamName);
+      const pin = pinnedTeams.has(entry.teamName);
+      const rowClasses = [
+        originalRank % 10 === 0 ? 'milestone-row' : '',
+        hl  ? 'row-highlighted' : '',
+        pin && !hl ? 'row-pinned' : '',
+      ].filter(Boolean).join(' ');
       html += `
-        <div class="leaderboard-row${originalRank % 10 === 0 ? ' milestone-row' : ''}">
-          <div class="rank ${rankClass}">${rankEmoji}</div>
+        <div class="leaderboard-row${rowClasses ? ' ' + rowClasses : ''}"
+             data-team-name="${escapeHtml(entry.teamName)}">
+          <div class="rank ${rankClass}" style="display:flex;flex-direction:column;align-items:center;gap:1px;">
+            <button class="star-btn${pin ? ' pinned' : ''}"
+                    data-team="${escapeHtml(entry.teamName)}"
+                    title="${pin ? 'Unpin' : 'Pin to My picks'}">★</button>
+            ${rankEmoji}
+          </div>
           <div class="player-info">
             <div class="player-name">${escapeHtml(entry.teamName)}</div>
             <div class="team-name">${escapeHtml(entry.entrantName)}</div>
@@ -1108,6 +1330,12 @@
 
   function handleChipClick(e) {
     if (e.target.closest('.expansion-close')) return;
+    const starBtn = e.target.closest('.star-btn[data-team]');
+    if (starBtn) {
+      e.stopPropagation();
+      togglePin(starBtn.dataset.team);
+      return;
+    }
     const countryChip = e.target.closest('.team-chip[data-country]');
     if (countryChip) {
       e.stopPropagation();
@@ -1120,6 +1348,21 @@
       showRoundExpansion(roundChip);
     }
   }
+
+  // Find bar event listeners
+  let findTimer = null;
+  emailInput.addEventListener('input', () => {
+    clearTimeout(findTimer);
+    findTimer = setTimeout(() => findByEmail(emailInput.value), 350);
+  });
+  findClear.addEventListener('click', () => {
+    emailInput.value = '';
+    highlightedTeams = new Set();
+    findStatus.textContent = '';
+    findStatus.className = 'find-status';
+    findClear.hidden = true;
+    applyHighlights();
+  });
 
   /* ─── Utilities ───────────────────────────────────────────── */
   function showError(msg) {
@@ -1147,6 +1390,7 @@
   /* ─── Init ────────────────────────────────────────────────── */
   async function init() {
     updateScoreModeButton();
+    await loadEmailHashes();
     if (await loadAllData()) renderAll();
   }
 

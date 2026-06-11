@@ -9,13 +9,15 @@
       --pitch: #1a3352;
       --pitch-mid: #2d5a8e;
       --pitch-bright: #3d7bc4;
-      --lime: #5a9fd4;
       --ink: #1f2933;
       --muted: #64748b;
       --line: #d9e2dc;
       --soft: #f5f8f6;
       --gold: #d79a2b;
       --white: #ffffff;
+      --amber: #f59e0b;
+      --amber-bg: #fffbeb;
+      --blue-bg: #f0f9ff;
     }
 
     * { box-sizing: border-box; }
@@ -57,7 +59,6 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-
     .nav a {
       color: var(--white);
       text-decoration: none;
@@ -105,31 +106,83 @@
       align-items: center;
       gap: 12px;
     }
-
     .panel-head h2 {
       margin: 0;
       font-size: 1rem;
       color: var(--pitch);
     }
-
     .count {
       color: var(--muted);
       font-size: 0.85rem;
       font-weight: 700;
     }
 
+    /* Find bar */
+    .find-bar {
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #f8faff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .find-icon {
+      color: var(--muted);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .find-input {
+      flex: 1;
+      min-width: 180px;
+      padding: 7px 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 99px;
+      font-size: 0.85rem;
+      outline: none;
+      color: var(--ink);
+      background: var(--white);
+    }
+    .find-input:focus { border-color: var(--pitch); }
+    .find-input::placeholder { color: #aab4c4; }
+    .find-status {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .find-status.found { color: #166534; }
+    .find-status.notfound { color: #b91c1c; }
+    .find-clear {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 1rem;
+      padding: 2px 4px;
+      border-radius: 4px;
+      line-height: 1;
+    }
+    .find-clear:hover { color: var(--ink); }
+    .find-private {
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
     }
-
     th, td {
       padding: 11px 16px;
       text-align: left;
       border-top: 1px solid var(--line);
       font-size: 0.92rem;
     }
-
     th {
       color: var(--muted);
       background: #fbfcfb;
@@ -138,12 +191,10 @@
       letter-spacing: 0.04em;
       font-weight: 800;
     }
-
-    .team-name {
+    .team-name-cell {
       font-weight: 800;
       color: var(--pitch);
     }
-
     .badge {
       display: inline-block;
       padding: 3px 10px;
@@ -151,16 +202,39 @@
       font-size: 0.76rem;
       font-weight: 800;
     }
-
     .badge-paid {
       background: #dcfce7;
       color: #166534;
     }
-
     .badge-pending {
       background: #f1f5f9;
       color: var(--muted);
     }
+
+    /* Star column */
+    .star-col {
+      width: 36px;
+      text-align: center;
+      padding: 8px 4px !important;
+    }
+    .star-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #d1d5db;
+      font-size: 1.05rem;
+      padding: 2px 4px;
+      line-height: 1;
+      transition: color 0.12s, transform 0.1s;
+      border-radius: 3px;
+    }
+    .star-btn:hover { color: var(--amber); transform: scale(1.18); }
+    .star-btn.pinned { color: var(--amber); }
+
+    /* Row highlight states */
+    tr.row-highlighted td { background: var(--amber-bg) !important; box-shadow: inset 3px 0 0 var(--amber); }
+    tr.row-pinned td { background: var(--blue-bg) !important; }
+    tr.row-highlighted.row-pinned td { background: var(--amber-bg) !important; box-shadow: inset 3px 0 0 var(--amber); }
 
     .empty {
       padding: 36px 18px;
@@ -168,7 +242,6 @@
       color: var(--muted);
       font-weight: 700;
     }
-
     .error {
       padding: 36px 18px;
       text-align: center;
@@ -179,6 +252,7 @@
     @media (max-width: 600px) {
       .topbar-inner { display: block; }
       .nav { margin-top: 10px; justify-content: flex-start; }
+      .find-private { display: none; }
     }
   </style>
   <script src="ticker.js" defer></script>
@@ -215,10 +289,20 @@
         <h2>Entries</h2>
         <span id="countEl" class="count"></span>
       </div>
+      <div class="find-bar">
+        <span class="find-icon">🔍</span>
+        <input type="text" class="find-input" id="emailFindInput"
+               placeholder="Enter your email to highlight your teams"
+               autocomplete="off" />
+        <span class="find-status" id="findStatus"></span>
+        <button class="find-clear" id="findClear" title="Clear" hidden>✕</button>
+        <span class="find-private">🔒 never leaves your browser</span>
+      </div>
       <div id="tableWrap">
         <table>
           <thead>
             <tr>
+              <th class="star-col"></th>
               <th>Team name</th>
               <th>Person</th>
               <th>Status</th>
@@ -233,34 +317,110 @@
   </main>
 
   <script>
-    const entriesBody = document.getElementById('entriesBody');
-    const countEl = document.getElementById('countEl');
-    const emptyEl = document.getElementById('emptyEl');
-    const errorEl = document.getElementById('errorEl');
-    const tableWrap = document.getElementById('tableWrap');
+    const entriesBody  = document.getElementById('entriesBody');
+    const countEl      = document.getElementById('countEl');
+    const emptyEl      = document.getElementById('emptyEl');
+    const errorEl      = document.getElementById('errorEl');
+    const tableWrap    = document.getElementById('tableWrap');
+    const emailInput   = document.getElementById('emailFindInput');
+    const findStatus   = document.getElementById('findStatus');
+    const findClear    = document.getElementById('findClear');
+
+    let emailHashes    = {};
+    let highlightedTeams = new Set();
+    let pinnedTeams    = new Set(JSON.parse(localStorage.getItem('pg2026_pins') || '[]'));
+    let allEntries     = [];
 
     function escapeHtml(value) {
-      return String(value ?? '').replace(/[&<>"']/g, (c) => (
-        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]
-      ));
+      return String(value ?? '').replace(/[&<>"']/g, c =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c])
+      );
+    }
+
+    async function hashEmail(email) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(email.toLowerCase().trim()));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function loadEmailHashes() {
+      try {
+        const res = await fetch('./Data/emailHashes.json');
+        if (res.ok) emailHashes = await res.json();
+      } catch (_) {}
+    }
+
+    async function findByEmail(raw) {
+      findClear.hidden = !raw;
+      if (!raw.trim()) {
+        highlightedTeams = new Set();
+        findStatus.textContent = '';
+        findStatus.className = 'find-status';
+        applyHighlights();
+        return;
+      }
+      const hash = await hashEmail(raw);
+      const teams = emailHashes[hash] || [];
+      highlightedTeams = new Set(teams);
+      applyHighlights();
+      if (teams.length) {
+        findStatus.textContent = `Found ${teams.length === 1 ? '1 team' : teams.length + ' teams'}`;
+        findStatus.className = 'find-status found';
+      } else if (raw.includes('@')) {
+        findStatus.textContent = 'No teams found';
+        findStatus.className = 'find-status notfound';
+      } else {
+        findStatus.textContent = '';
+        findStatus.className = 'find-status';
+      }
+    }
+
+    function savePins() {
+      localStorage.setItem('pg2026_pins', JSON.stringify([...pinnedTeams]));
+    }
+
+    function togglePin(teamName) {
+      if (pinnedTeams.has(teamName)) pinnedTeams.delete(teamName);
+      else pinnedTeams.add(teamName);
+      savePins();
+      applyHighlights();
+    }
+
+    function applyHighlights() {
+      document.querySelectorAll('#entriesBody tr[data-team]').forEach(row => {
+        const team = row.dataset.team;
+        const hl  = highlightedTeams.has(team);
+        const pin = pinnedTeams.has(team);
+        row.classList.toggle('row-highlighted', hl);
+        row.classList.toggle('row-pinned', pin && !hl);
+        const star = row.querySelector('.star-btn');
+        if (star) star.classList.toggle('pinned', pin);
+      });
     }
 
     function render(entries) {
+      allEntries = entries;
       if (!entries.length) {
         tableWrap.style.display = 'none';
         emptyEl.style.display = 'block';
         countEl.textContent = '0 entries';
         return;
       }
-
       countEl.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
-      entriesBody.innerHTML = entries.map((e) => {
+      entriesBody.innerHTML = entries.map(e => {
+        const hl  = highlightedTeams.has(e.teamName);
+        const pin = pinnedTeams.has(e.teamName);
+        const classes = [hl && 'row-highlighted', pin && !hl && 'row-pinned'].filter(Boolean).join(' ');
         const badge = e.paid
           ? '<span class="badge badge-paid">Paid</span>'
           : '<span class="badge badge-pending">Pending</span>';
         return `
-          <tr>
-            <td class="team-name">${escapeHtml(e.teamName)}</td>
+          <tr data-team="${escapeHtml(e.teamName)}"${classes ? ` class="${classes}"` : ''}>
+            <td class="star-col">
+              <button class="star-btn${pin ? ' pinned' : ''}"
+                      data-team="${escapeHtml(e.teamName)}"
+                      title="${pin ? 'Remove from favourites' : 'Add to favourites'}">★</button>
+            </td>
+            <td class="team-name-cell">${escapeHtml(e.teamName)}</td>
             <td>${escapeHtml(e.entrantName)}</td>
             <td>${badge}</td>
           </tr>
@@ -268,9 +428,31 @@
       }).join('');
     }
 
+    // Star click delegation
+    entriesBody.addEventListener('click', e => {
+      const star = e.target.closest('.star-btn');
+      if (star) togglePin(star.dataset.team);
+    });
+
+    // Email find
+    let findTimer = null;
+    emailInput.addEventListener('input', () => {
+      clearTimeout(findTimer);
+      findTimer = setTimeout(() => findByEmail(emailInput.value), 350);
+    });
+    findClear.addEventListener('click', () => {
+      emailInput.value = '';
+      highlightedTeams = new Set();
+      findStatus.textContent = '';
+      findStatus.className = 'find-status';
+      findClear.hidden = true;
+      applyHighlights();
+    });
+
     async function init() {
+      await loadEmailHashes();
       try {
-        const response = await fetch(`/api/entries`);
+        const response = await fetch('/api/entries');
         if (!response.ok) throw new Error('Could not load entries.');
         const data = await response.json();
         if (!data.ok) throw new Error(data.errors?.[0] || 'Could not load entries.');
