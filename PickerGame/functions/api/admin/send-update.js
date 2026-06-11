@@ -6,9 +6,14 @@ const FROM = 'PickerGame <pickergame@vidamour.com>';
 const BATCH_SIZE = 90; // Resend batch limit is 100; stay under it
 
 function buildHtml(heading, body, leaderboardUrl) {
+  const BLOCK_RE = /^\s*<(table|thead|tbody|tr|ul|ol|li|div|h[1-6]|blockquote|pre|hr)/i;
   const bodyHtml = body
     .split(/\n{2,}/)
-    .map(para => `<p style="color:#555;line-height:1.6;margin:0 0 8px;">${para.trim().replace(/\n/g, '<br>')}</p>`)
+    .map(para => {
+      const t = para.trim();
+      if (BLOCK_RE.test(t)) return t;
+      return `<p style="color:#555;line-height:1.6;margin:0 0 8px;">${t.replace(/\n/g, '<br>')}</p>`;
+    })
     .join('\n');
 
   return `<!DOCTYPE html>
