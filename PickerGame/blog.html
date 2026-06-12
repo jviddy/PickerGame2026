@@ -73,10 +73,15 @@
     }
 
     .container {
-      max-width: 760px;
+      max-width: 1060px;
       margin: 0 auto;
       padding: 28px 16px 60px;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      grid-template-rows: auto 1fr;
+      column-gap: 28px;
     }
+    .page-header { grid-column: 1 / -1; }
     .page-title {
       font-size: 1.8rem;
       font-weight: 800;
@@ -89,12 +94,15 @@
       font-size: 0.95rem;
     }
 
+    .posts-col { min-width: 0; }
+
     .post {
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: var(--shadow-md);
       padding: 28px 32px;
       margin-bottom: 20px;
+      scroll-margin-top: 100px;
     }
     .post-date {
       color: var(--gray-400);
@@ -118,6 +126,59 @@
     .post-body p { margin: 0 0 1em; }
     .post-body p:last-child { margin-bottom: 0; }
 
+    /* ── sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      align-self: start;
+    }
+    .sidebar-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-400);
+      margin: 0 0 10px;
+    }
+    .sidebar-list { list-style: none; margin: 0; padding: 0; }
+    .sidebar-item { border-bottom: 1px solid var(--gray-200); }
+    .sidebar-item:last-child { border-bottom: none; }
+    .sidebar-link {
+      display: block;
+      padding: 9px 10px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.35;
+      border-radius: 4px;
+      transition: background 0.12s;
+    }
+    .sidebar-link:hover { background: var(--gray-50); }
+    .sidebar-link.read { color: var(--gray-400); font-weight: 600; }
+    .sidebar-date {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--gray-400);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .sidebar-link.active-post .sidebar-date { color: var(--accent); }
+    .sidebar-unread-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+      position: relative; top: -1px;
+    }
+    .sidebar-link.read .sidebar-unread-dot { display: none; }
+
     .empty, .loading {
       text-align: center;
       color: var(--gray-400);
@@ -126,7 +187,9 @@
       font-weight: 700;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 760px) {
+      .container { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
       .post { padding: 20px; }
       header { padding: 0 14px; }
       nav a { margin-left: 12px; font-size: 0.82rem; }
@@ -161,28 +224,49 @@
 </header>
 
 <main class="container">
-  <h1 class="page-title">Updates</h1>
-  <p class="page-sub">News and updates from the PickerGame organiser.</p>
-  <div id="postsRoot"><div class="loading">Loading updates…</div></div>
+  <div class="page-header">
+    <h1 class="page-title">Updates</h1>
+    <p class="page-sub">News and updates from the PickerGame organiser.</p>
+  </div>
+  <div class="posts-col" id="postsRoot"><div class="loading">Loading updates…</div></div>
+  <aside class="sidebar" id="sidebar" hidden></aside>
 </main>
 
 <script>
   const postsRoot = document.getElementById('postsRoot');
+  const sidebar   = document.getElementById('sidebar');
+  const READ_KEY  = 'pg2026_read_posts';
 
-  function escapeHtml(v) {
+  function esc(v) {
     return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   }
 
   function formatDate(iso) {
-    return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+    return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(iso));
+  }
+
+  function formatDateShort(iso) {
+    return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date(iso));
+  }
+
+  function getReadSet() {
+    try { return new Set(JSON.parse(localStorage.getItem(READ_KEY) || '[]')); } catch { return new Set(); }
+  }
+
+  function markRead(id) {
+    const s = getReadSet();
+    if (s.has(id)) return;
+    s.add(id);
+    localStorage.setItem(READ_KEY, JSON.stringify([...s]));
+    const link = sidebar.querySelector(`.sidebar-link[data-id="${id}"]`);
+    if (link) link.classList.add('read');
   }
 
   function renderBody(text) {
-    // If the content contains HTML tags, render it directly
     if (/<[a-z][\s\S]*>/i.test(text)) return text;
     return text
       .split(/\n{2,}/)
-      .map(para => `<p>${escapeHtml(para.trim()).replace(/\n/g, '<br>')}</p>`)
+      .map(para => `<p>${esc(para.trim()).replace(/\n/g, '<br>')}</p>`)
       .join('');
   }
 
@@ -195,13 +279,60 @@
         postsRoot.innerHTML = '<div class="empty">No updates yet — check back soon.</div>';
         return;
       }
+
+      const readSet = getReadSet();
+
+      // Main posts
       postsRoot.innerHTML = posts.map(post => `
-        <article class="post">
-          <div class="post-date">${escapeHtml(formatDate(post.publishedAt))}</div>
-          <h2 class="post-title">${escapeHtml(post.title)}</h2>
+        <article class="post" id="post-${esc(post.id)}" data-post-id="${esc(post.id)}">
+          <div class="post-date">${esc(formatDate(post.publishedAt))}</div>
+          <h2 class="post-title">${esc(post.title)}</h2>
           <div class="post-body">${renderBody(post.body)}</div>
         </article>
       `).join('');
+
+      // Sidebar
+      sidebar.hidden = false;
+      sidebar.innerHTML = `
+        <p class="sidebar-title">In this section</p>
+        <ul class="sidebar-list">
+          ${posts.map(post => {
+            const isRead = readSet.has(String(post.id));
+            return `
+              <li class="sidebar-item">
+                <a class="sidebar-link${isRead ? ' read' : ''}" href="#post-${esc(post.id)}" data-id="${esc(post.id)}">
+                  <span class="sidebar-unread-dot"></span>${esc(post.title)}
+                  <span class="sidebar-date">${esc(formatDateShort(post.publishedAt))}</span>
+                </a>
+              </li>
+            `;
+          }).join('')}
+        </ul>
+      `;
+
+      // Sidebar link clicks: mark as read
+      sidebar.addEventListener('click', e => {
+        const link = e.target.closest('.sidebar-link[data-id]');
+        if (link) markRead(link.dataset.id);
+      });
+
+      // IntersectionObserver: mark posts as read when they scroll into view
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.dataset.postId;
+            if (id) markRead(id);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.post[data-post-id]').forEach(el => observer.observe(el));
+
+      // Scroll to hash if present
+      if (location.hash) {
+        const target = document.querySelector(location.hash);
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
     } catch {
       postsRoot.innerHTML = '<div class="empty">Could not load updates.</div>';
     }
