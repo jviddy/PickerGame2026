@@ -1,566 +1,72 @@
 [
   {
     "matchId": "M001",
-    "played": true,
-    "homeTeam": "A1",
-    "awayTeam": "A2",
-    "homePoints": {
-      "resultType": "win",
-      "goalsFor": 7,
-      "goalsAgainst": 4,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 1,
-      "redCards": 1,
-      "qualified": false,
-      "categories": {
-        "result": 5,
-        "goalsScored": 21,
-        "goalsConceded": -8,
-        "penalties": 0,
-        "disciplinary": -3,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Win",
-          "value": 5,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 21,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -8,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -1,
-          "category": "disciplinary"
-        },
-        {
-          "label": "RC",
-          "value": -2,
-          "category": "disciplinary"
-        }
-      ],
-      "total": 15
-    },
-    "awayPoints": {
-      "resultType": "loss",
-      "goalsFor": 4,
-      "goalsAgainst": 7,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 12,
-        "goalsConceded": -14,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GF",
-          "value": 12,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -14,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": -2
-    },
-    "totalPoints": 13
-  },
-  {
-    "matchId": "M002",
-    "played": true,
-    "homeTeam": "A3",
-    "awayTeam": "A4",
-    "homePoints": {
-      "resultType": "win",
-      "goalsFor": 3,
-      "goalsAgainst": 2,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 5,
-        "goalsScored": 9,
-        "goalsConceded": -4,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Win",
-          "value": 5,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 9,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -4,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": 10
-    },
-    "awayPoints": {
-      "resultType": "loss",
-      "goalsFor": 2,
-      "goalsAgainst": 3,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 6,
-        "goalsConceded": -6,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GF",
-          "value": 6,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -6,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": 0
-    },
-    "totalPoints": 10
-  },
-  {
-    "matchId": "M003",
-    "played": true,
-    "homeTeam": "B1",
-    "awayTeam": "B2",
-    "homePoints": {
-      "resultType": "win",
-      "goalsFor": 1,
-      "goalsAgainst": 0,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 5,
-        "goalsScored": 3,
-        "goalsConceded": 0,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Win",
-          "value": 5,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 3,
-          "category": "goalsScored"
-        }
-      ],
-      "total": 8
-    },
-    "awayPoints": {
-      "resultType": "loss",
-      "goalsFor": 0,
-      "goalsAgainst": 1,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": -2,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GA",
-          "value": -2,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": -2
-    },
-    "totalPoints": 6
-  },
-  {
-    "matchId": "M004",
-    "played": true,
-    "homeTeam": "D1",
-    "awayTeam": "D2",
-    "homePoints": {
-      "resultType": "draw",
-      "goalsFor": 1,
-      "goalsAgainst": 1,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 1,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 2,
-        "goalsScored": 3,
-        "goalsConceded": -2,
-        "penalties": 0,
-        "disciplinary": -1,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Draw",
-          "value": 2,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 3,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -2,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -1,
-          "category": "disciplinary"
-        }
-      ],
-      "total": 2
-    },
-    "awayPoints": {
-      "resultType": "draw",
-      "goalsFor": 1,
-      "goalsAgainst": 1,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 2,
-        "goalsScored": 3,
-        "goalsConceded": -2,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Draw",
-          "value": 2,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 3,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -2,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": 3
-    },
-    "totalPoints": 5
-  },
-  {
-    "matchId": "M005",
-    "played": true,
-    "homeTeam": "C3",
-    "awayTeam": "C4",
-    "homePoints": {
-      "resultType": "draw",
-      "goalsFor": 3,
-      "goalsAgainst": 3,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 2,
-        "goalsScored": 9,
-        "goalsConceded": -6,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Draw",
-          "value": 2,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 9,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -6,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": 5
-    },
-    "awayPoints": {
-      "resultType": "draw",
-      "goalsFor": 3,
-      "goalsAgainst": 3,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 1,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 2,
-        "goalsScored": 9,
-        "goalsConceded": -6,
-        "penalties": 0,
-        "disciplinary": -1,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Draw",
-          "value": 2,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 9,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -6,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -1,
-          "category": "disciplinary"
-        }
-      ],
-      "total": 4
-    },
-    "totalPoints": 9
-  },
-  {
-    "matchId": "M006",
-    "played": true,
-    "homeTeam": "D3",
-    "awayTeam": "D4",
-    "homePoints": {
-      "resultType": "loss",
-      "goalsFor": 2,
-      "goalsAgainst": 3,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 6,
-        "goalsConceded": -6,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GF",
-          "value": 6,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -6,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": 0
-    },
-    "awayPoints": {
-      "resultType": "win",
-      "goalsFor": 3,
-      "goalsAgainst": 2,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 1,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 5,
-        "goalsScored": 9,
-        "goalsConceded": -4,
-        "penalties": 0,
-        "disciplinary": -1,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Win",
-          "value": 5,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 9,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -4,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -1,
-          "category": "disciplinary"
-        }
-      ],
-      "total": 9
-    },
-    "totalPoints": 9
-  },
-  {
-    "matchId": "M007",
-    "played": true,
-    "homeTeam": "C1",
-    "awayTeam": "C2",
-    "homePoints": {
-      "resultType": "loss",
-      "goalsFor": 2,
-      "goalsAgainst": 3,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 1,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 6,
-        "goalsConceded": -6,
-        "penalties": 0,
-        "disciplinary": -1,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GF",
-          "value": 6,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -6,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -1,
-          "category": "disciplinary"
-        }
-      ],
-      "total": -1
-    },
-    "awayPoints": {
-      "resultType": "win",
-      "goalsFor": 3,
-      "goalsAgainst": 2,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 0,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 5,
-        "goalsScored": 9,
-        "goalsConceded": -4,
-        "penalties": 0,
-        "disciplinary": 0,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Win",
-          "value": 5,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 9,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -4,
-          "category": "goalsConceded"
-        }
-      ],
-      "total": 10
-    },
-    "totalPoints": 9
-  },
-  {
-    "matchId": "M008",
     "played": false,
-    "homeTeam": "B3",
-    "awayTeam": "B4",
+    "homeTeam": "Mexico",
+    "awayTeam": "South Africa",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
   },
   {
-    "matchId": "M009",
+    "matchId": "M002",
     "played": false,
-    "homeTeam": "E3",
-    "awayTeam": "E4",
+    "homeTeam": "South Korea",
+    "awayTeam": "Czechia",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M003",
+    "played": false,
+    "homeTeam": "Canada",
+    "awayTeam": "Bosnia and Herzegovina",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M004",
+    "played": false,
+    "homeTeam": "United States",
+    "awayTeam": "Paraguay",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M008",
+    "played": false,
+    "homeTeam": "Qatar",
+    "awayTeam": "Switzerland",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M007",
+    "played": false,
+    "homeTeam": "Brazil",
+    "awayTeam": "Morocco",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M005",
+    "played": false,
+    "homeTeam": "Haiti",
+    "awayTeam": "Scotland",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M006",
+    "played": false,
+    "homeTeam": "Australia",
+    "awayTeam": "Türkiye",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -568,8 +74,8 @@
   {
     "matchId": "M010",
     "played": false,
-    "homeTeam": "E1",
-    "awayTeam": "E2",
+    "homeTeam": "Germany",
+    "awayTeam": "Curaçao",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -577,8 +83,17 @@
   {
     "matchId": "M011",
     "played": false,
-    "homeTeam": "F1",
-    "awayTeam": "F2",
+    "homeTeam": "Netherlands",
+    "awayTeam": "Japan",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M009",
+    "played": false,
+    "homeTeam": "Ivory Coast",
+    "awayTeam": "Ecuador",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -586,17 +101,8 @@
   {
     "matchId": "M012",
     "played": false,
-    "homeTeam": "F3",
-    "awayTeam": "F4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M013",
-    "played": false,
-    "homeTeam": "H3",
-    "awayTeam": "H4",
+    "homeTeam": "Sweden",
+    "awayTeam": "Tunisia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -604,17 +110,8 @@
   {
     "matchId": "M014",
     "played": false,
-    "homeTeam": "H1",
-    "awayTeam": "H2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M015",
-    "played": false,
-    "homeTeam": "G3",
-    "awayTeam": "G4",
+    "homeTeam": "Spain",
+    "awayTeam": "Cape Verde",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -622,8 +119,26 @@
   {
     "matchId": "M016",
     "played": false,
-    "homeTeam": "G1",
-    "awayTeam": "G2",
+    "homeTeam": "Belgium",
+    "awayTeam": "Egypt",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M013",
+    "played": false,
+    "homeTeam": "Saudi Arabia",
+    "awayTeam": "Uruguay",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M015",
+    "played": false,
+    "homeTeam": "Iran",
+    "awayTeam": "New Zealand",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -631,8 +146,8 @@
   {
     "matchId": "M017",
     "played": false,
-    "homeTeam": "I1",
-    "awayTeam": "I2",
+    "homeTeam": "France",
+    "awayTeam": "Senegal",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -640,8 +155,8 @@
   {
     "matchId": "M018",
     "played": false,
-    "homeTeam": "I3",
-    "awayTeam": "I4",
+    "homeTeam": "Iraq",
+    "awayTeam": "Norway",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -649,8 +164,8 @@
   {
     "matchId": "M019",
     "played": false,
-    "homeTeam": "J1",
-    "awayTeam": "J2",
+    "homeTeam": "Argentina",
+    "awayTeam": "Algeria",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -658,8 +173,26 @@
   {
     "matchId": "M020",
     "played": false,
-    "homeTeam": "J3",
-    "awayTeam": "J4",
+    "homeTeam": "Austria",
+    "awayTeam": "Jordan",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M023",
+    "played": false,
+    "homeTeam": "Portugal",
+    "awayTeam": "DR Congo",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M022",
+    "played": false,
+    "homeTeam": "England",
+    "awayTeam": "Croatia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -667,106 +200,8 @@
   {
     "matchId": "M021",
     "played": false,
-    "homeTeam": "L3",
-    "awayTeam": "L4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M022",
-    "played": true,
-    "homeTeam": "L1",
-    "awayTeam": "L2",
-    "homePoints": {
-      "resultType": "loss",
-      "goalsFor": 2,
-      "goalsAgainst": 3,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 1,
-      "redCards": 1,
-      "qualified": false,
-      "categories": {
-        "result": 0,
-        "goalsScored": 6,
-        "goalsConceded": -6,
-        "penalties": 0,
-        "disciplinary": -3,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "GF",
-          "value": 6,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -6,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -1,
-          "category": "disciplinary"
-        },
-        {
-          "label": "RC",
-          "value": -2,
-          "category": "disciplinary"
-        }
-      ],
-      "total": -3
-    },
-    "awayPoints": {
-      "resultType": "win",
-      "goalsFor": 3,
-      "goalsAgainst": 2,
-      "penaltiesFor": null,
-      "penaltiesAgainst": null,
-      "yellowCards": 2,
-      "redCards": 0,
-      "qualified": false,
-      "categories": {
-        "result": 5,
-        "goalsScored": 9,
-        "goalsConceded": -4,
-        "penalties": 0,
-        "disciplinary": -2,
-        "qualification": 0
-      },
-      "items": [
-        {
-          "label": "Win",
-          "value": 5,
-          "category": "result"
-        },
-        {
-          "label": "GF",
-          "value": 9,
-          "category": "goalsScored"
-        },
-        {
-          "label": "GA",
-          "value": -4,
-          "category": "goalsConceded"
-        },
-        {
-          "label": "YC",
-          "value": -2,
-          "category": "disciplinary"
-        }
-      ],
-      "total": 8
-    },
-    "totalPoints": 5
-  },
-  {
-    "matchId": "M023",
-    "played": false,
-    "homeTeam": "K1",
-    "awayTeam": "K2",
+    "homeTeam": "Ghana",
+    "awayTeam": "Panama",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -774,8 +209,8 @@
   {
     "matchId": "M024",
     "played": false,
-    "homeTeam": "K3",
-    "awayTeam": "K4",
+    "homeTeam": "Uzbekistan",
+    "awayTeam": "Colombia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -783,8 +218,8 @@
   {
     "matchId": "M025",
     "played": false,
-    "homeTeam": "A4",
-    "awayTeam": "A2",
+    "homeTeam": "Czechia",
+    "awayTeam": "South Africa",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -792,8 +227,8 @@
   {
     "matchId": "M026",
     "played": false,
-    "homeTeam": "B4",
-    "awayTeam": "B2",
+    "homeTeam": "Switzerland",
+    "awayTeam": "Bosnia and Herzegovina",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -801,8 +236,8 @@
   {
     "matchId": "M027",
     "played": false,
-    "homeTeam": "B1",
-    "awayTeam": "B3",
+    "homeTeam": "Canada",
+    "awayTeam": "Qatar",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -810,35 +245,8 @@
   {
     "matchId": "M028",
     "played": false,
-    "homeTeam": "A1",
-    "awayTeam": "A3",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M029",
-    "played": false,
-    "homeTeam": "C1",
-    "awayTeam": "C4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M030",
-    "played": false,
-    "homeTeam": "C3",
-    "awayTeam": "C2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M031",
-    "played": false,
-    "homeTeam": "D4",
-    "awayTeam": "D2",
+    "homeTeam": "Mexico",
+    "awayTeam": "South Korea",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -846,26 +254,35 @@
   {
     "matchId": "M032",
     "played": false,
-    "homeTeam": "D1",
-    "awayTeam": "D3",
+    "homeTeam": "United States",
+    "awayTeam": "Australia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
   },
   {
-    "matchId": "M033",
+    "matchId": "M030",
     "played": false,
-    "homeTeam": "E1",
-    "awayTeam": "E3",
+    "homeTeam": "Scotland",
+    "awayTeam": "Morocco",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
   },
   {
-    "matchId": "M034",
+    "matchId": "M029",
     "played": false,
-    "homeTeam": "E2",
-    "awayTeam": "E4",
+    "homeTeam": "Brazil",
+    "awayTeam": "Haiti",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M031",
+    "played": false,
+    "homeTeam": "Türkiye",
+    "awayTeam": "Paraguay",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -873,8 +290,26 @@
   {
     "matchId": "M035",
     "played": false,
-    "homeTeam": "F1",
-    "awayTeam": "F3",
+    "homeTeam": "Netherlands",
+    "awayTeam": "Sweden",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M033",
+    "played": false,
+    "homeTeam": "Germany",
+    "awayTeam": "Ivory Coast",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M034",
+    "played": false,
+    "homeTeam": "Ecuador",
+    "awayTeam": "Curaçao",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -882,17 +317,8 @@
   {
     "matchId": "M036",
     "played": false,
-    "homeTeam": "F2",
-    "awayTeam": "F4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M037",
-    "played": false,
-    "homeTeam": "H3",
-    "awayTeam": "H4",
+    "homeTeam": "Tunisia",
+    "awayTeam": "Japan",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -900,8 +326,8 @@
   {
     "matchId": "M038",
     "played": false,
-    "homeTeam": "H1",
-    "awayTeam": "H2",
+    "homeTeam": "Spain",
+    "awayTeam": "Saudi Arabia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -909,8 +335,17 @@
   {
     "matchId": "M039",
     "played": false,
-    "homeTeam": "G1",
-    "awayTeam": "G2",
+    "homeTeam": "Belgium",
+    "awayTeam": "Iran",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M037",
+    "played": false,
+    "homeTeam": "Uruguay",
+    "awayTeam": "Cape Verde",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -918,26 +353,8 @@
   {
     "matchId": "M040",
     "played": false,
-    "homeTeam": "G3",
-    "awayTeam": "G4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M041",
-    "played": false,
-    "homeTeam": "I3",
-    "awayTeam": "I4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M042",
-    "played": false,
-    "homeTeam": "I1",
-    "awayTeam": "I2",
+    "homeTeam": "New Zealand",
+    "awayTeam": "Egypt",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -945,8 +362,26 @@
   {
     "matchId": "M043",
     "played": false,
-    "homeTeam": "J1",
-    "awayTeam": "J2",
+    "homeTeam": "Argentina",
+    "awayTeam": "Austria",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M042",
+    "played": false,
+    "homeTeam": "France",
+    "awayTeam": "Iraq",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M041",
+    "played": false,
+    "homeTeam": "Norway",
+    "awayTeam": "Senegal",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -954,26 +389,8 @@
   {
     "matchId": "M044",
     "played": false,
-    "homeTeam": "J3",
-    "awayTeam": "J4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M045",
-    "played": false,
-    "homeTeam": "L1",
-    "awayTeam": "L2",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M046",
-    "played": false,
-    "homeTeam": "L3",
-    "awayTeam": "L4",
+    "homeTeam": "Jordan",
+    "awayTeam": "Algeria",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -981,8 +398,26 @@
   {
     "matchId": "M047",
     "played": false,
-    "homeTeam": "K1",
-    "awayTeam": "K2",
+    "homeTeam": "Portugal",
+    "awayTeam": "Uzbekistan",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M045",
+    "played": false,
+    "homeTeam": "England",
+    "awayTeam": "Ghana",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M046",
+    "played": false,
+    "homeTeam": "Panama",
+    "awayTeam": "Croatia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -990,26 +425,8 @@
   {
     "matchId": "M048",
     "played": false,
-    "homeTeam": "K3",
-    "awayTeam": "K4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M049",
-    "played": false,
-    "homeTeam": "C3",
-    "awayTeam": "C1",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M050",
-    "played": false,
-    "homeTeam": "C2",
-    "awayTeam": "C4",
+    "homeTeam": "Colombia",
+    "awayTeam": "DR Congo",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1017,8 +434,8 @@
   {
     "matchId": "M051",
     "played": false,
-    "homeTeam": "B4",
-    "awayTeam": "B1",
+    "homeTeam": "Switzerland",
+    "awayTeam": "Canada",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1026,8 +443,26 @@
   {
     "matchId": "M052",
     "played": false,
-    "homeTeam": "B2",
-    "awayTeam": "B3",
+    "homeTeam": "Bosnia and Herzegovina",
+    "awayTeam": "Qatar",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M049",
+    "played": false,
+    "homeTeam": "Scotland",
+    "awayTeam": "Brazil",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M050",
+    "played": false,
+    "homeTeam": "Morocco",
+    "awayTeam": "Haiti",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1035,8 +470,8 @@
   {
     "matchId": "M053",
     "played": false,
-    "homeTeam": "A4",
-    "awayTeam": "A1",
+    "homeTeam": "Czechia",
+    "awayTeam": "Mexico",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1044,8 +479,8 @@
   {
     "matchId": "M054",
     "played": false,
-    "homeTeam": "A2",
-    "awayTeam": "A3",
+    "homeTeam": "South Africa",
+    "awayTeam": "South Korea",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1053,8 +488,8 @@
   {
     "matchId": "M055",
     "played": false,
-    "homeTeam": "E3",
-    "awayTeam": "E1",
+    "homeTeam": "Curaçao",
+    "awayTeam": "Ivory Coast",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1062,8 +497,8 @@
   {
     "matchId": "M056",
     "played": false,
-    "homeTeam": "E2",
-    "awayTeam": "E4",
+    "homeTeam": "Ecuador",
+    "awayTeam": "Germany",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1071,8 +506,8 @@
   {
     "matchId": "M057",
     "played": false,
-    "homeTeam": "F2",
-    "awayTeam": "F1",
+    "homeTeam": "Japan",
+    "awayTeam": "Sweden",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1080,8 +515,8 @@
   {
     "matchId": "M058",
     "played": false,
-    "homeTeam": "F3",
-    "awayTeam": "F4",
+    "homeTeam": "Tunisia",
+    "awayTeam": "Netherlands",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1089,8 +524,8 @@
   {
     "matchId": "M059",
     "played": false,
-    "homeTeam": "D2",
-    "awayTeam": "D1",
+    "homeTeam": "Türkiye",
+    "awayTeam": "United States",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1098,8 +533,8 @@
   {
     "matchId": "M060",
     "played": false,
-    "homeTeam": "D4",
-    "awayTeam": "D3",
+    "homeTeam": "Paraguay",
+    "awayTeam": "Australia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1107,8 +542,8 @@
   {
     "matchId": "M061",
     "played": false,
-    "homeTeam": "I2",
-    "awayTeam": "I1",
+    "homeTeam": "Norway",
+    "awayTeam": "France",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1116,26 +551,8 @@
   {
     "matchId": "M062",
     "played": false,
-    "homeTeam": "I4",
-    "awayTeam": "I3",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M063",
-    "played": false,
-    "homeTeam": "G2",
-    "awayTeam": "G1",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M064",
-    "played": false,
-    "homeTeam": "G4",
-    "awayTeam": "G3",
+    "homeTeam": "Senegal",
+    "awayTeam": "Iraq",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1143,8 +560,8 @@
   {
     "matchId": "M065",
     "played": false,
-    "homeTeam": "H2",
-    "awayTeam": "H1",
+    "homeTeam": "Cape Verde",
+    "awayTeam": "Saudi Arabia",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1152,8 +569,26 @@
   {
     "matchId": "M066",
     "played": false,
-    "homeTeam": "H4",
-    "awayTeam": "H3",
+    "homeTeam": "Uruguay",
+    "awayTeam": "Spain",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M063",
+    "played": false,
+    "homeTeam": "Egypt",
+    "awayTeam": "Iran",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M064",
+    "played": false,
+    "homeTeam": "New Zealand",
+    "awayTeam": "Belgium",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1161,8 +596,8 @@
   {
     "matchId": "M067",
     "played": false,
-    "homeTeam": "L2",
-    "awayTeam": "L1",
+    "homeTeam": "Panama",
+    "awayTeam": "England",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1170,26 +605,8 @@
   {
     "matchId": "M068",
     "played": false,
-    "homeTeam": "L3",
-    "awayTeam": "L4",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M069",
-    "played": false,
-    "homeTeam": "J2",
-    "awayTeam": "J1",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M070",
-    "played": false,
-    "homeTeam": "J4",
-    "awayTeam": "J3",
+    "homeTeam": "Croatia",
+    "awayTeam": "Ghana",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1197,8 +614,8 @@
   {
     "matchId": "M071",
     "played": false,
-    "homeTeam": "K2",
-    "awayTeam": "K1",
+    "homeTeam": "Colombia",
+    "awayTeam": "Portugal",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1206,8 +623,26 @@
   {
     "matchId": "M072",
     "played": false,
-    "homeTeam": "K4",
-    "awayTeam": "K3",
+    "homeTeam": "DR Congo",
+    "awayTeam": "Uzbekistan",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M069",
+    "played": false,
+    "homeTeam": "Algeria",
+    "awayTeam": "Austria",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M070",
+    "played": false,
+    "homeTeam": "Jordan",
+    "awayTeam": "Argentina",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1217,6 +652,15 @@
     "played": false,
     "homeTeam": "2A",
     "awayTeam": "2B",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M076",
+    "played": false,
+    "homeTeam": "1C",
+    "awayTeam": "2F",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1240,10 +684,10 @@
     "totalPoints": 0
   },
   {
-    "matchId": "M076",
+    "matchId": "M078",
     "played": false,
-    "homeTeam": "1C",
-    "awayTeam": "2F",
+    "homeTeam": "2E",
+    "awayTeam": "2I",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1253,15 +697,6 @@
     "played": false,
     "homeTeam": "1I",
     "awayTeam": "3CDFGH",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M078",
-    "played": false,
-    "homeTeam": "2E",
-    "awayTeam": "2I",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1285,15 +720,6 @@
     "totalPoints": 0
   },
   {
-    "matchId": "M081",
-    "played": false,
-    "homeTeam": "1D",
-    "awayTeam": "3BEFIJ",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
     "matchId": "M082",
     "played": false,
     "homeTeam": "1G",
@@ -1303,10 +729,10 @@
     "totalPoints": 0
   },
   {
-    "matchId": "M083",
+    "matchId": "M081",
     "played": false,
-    "homeTeam": "2K",
-    "awayTeam": "2L",
+    "homeTeam": "1D",
+    "awayTeam": "3BEFIJ",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1321,10 +747,28 @@
     "totalPoints": 0
   },
   {
+    "matchId": "M083",
+    "played": false,
+    "homeTeam": "2K",
+    "awayTeam": "2L",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
     "matchId": "M085",
     "played": false,
     "homeTeam": "1B",
     "awayTeam": "3EFGIJ",
+    "homePoints": null,
+    "awayPoints": null,
+    "totalPoints": 0
+  },
+  {
+    "matchId": "M088",
+    "played": false,
+    "homeTeam": "2D",
+    "awayTeam": "2G",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1348,10 +792,10 @@
     "totalPoints": 0
   },
   {
-    "matchId": "M088",
+    "matchId": "M090",
     "played": false,
-    "homeTeam": "2D",
-    "awayTeam": "2G",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1359,17 +803,8 @@
   {
     "matchId": "M089",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
-  },
-  {
-    "matchId": "M090",
-    "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1377,8 +812,8 @@
   {
     "matchId": "M091",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1386,8 +821,8 @@
   {
     "matchId": "M092",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1395,8 +830,8 @@
   {
     "matchId": "M093",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1404,8 +839,8 @@
   {
     "matchId": "M094",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1413,8 +848,8 @@
   {
     "matchId": "M095",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1422,8 +857,8 @@
   {
     "matchId": "M096",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1431,8 +866,8 @@
   {
     "matchId": "M097",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1440,8 +875,8 @@
   {
     "matchId": "M098",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1449,8 +884,8 @@
   {
     "matchId": "M099",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1458,8 +893,8 @@
   {
     "matchId": "M100",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1467,8 +902,8 @@
   {
     "matchId": "M101",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1476,8 +911,8 @@
   {
     "matchId": "M102",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1485,8 +920,8 @@
   {
     "matchId": "M103",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0
@@ -1494,8 +929,8 @@
   {
     "matchId": "M104",
     "played": false,
-    "homeTeam": "TBA",
-    "awayTeam": "TBA",
+    "homeTeam": "TBD",
+    "awayTeam": "TBD",
     "homePoints": null,
     "awayPoints": null,
     "totalPoints": 0

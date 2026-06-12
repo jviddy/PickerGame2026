@@ -1,9 +1,9 @@
 [
   {
     "countryName": "Mexico",
-    "totalPoints": 15,
+    "totalPoints": 0,
     "byRound": {
-      "GS1": 15,
+      "GS1": 0,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -14,117 +14,9 @@
       "F": 0
     },
     "byCategory": {
-      "win": 5,
+      "win": 0,
       "draw": 0,
-      "scoring": 21,
-      "conceding": -8,
-      "yellowCard": -1,
-      "redCard": -2,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "South Korea",
-    "totalPoints": 10,
-    "byRound": {
-      "GS1": 10,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 5,
-      "draw": 0,
-      "scoring": 9,
-      "conceding": -4,
-      "yellowCard": 0,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Morocco",
-    "totalPoints": 10,
-    "byRound": {
-      "GS1": 10,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 5,
-      "draw": 0,
-      "scoring": 9,
-      "conceding": -4,
-      "yellowCard": 0,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Türkiye",
-    "totalPoints": 9,
-    "byRound": {
-      "GS1": 9,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 5,
-      "draw": 0,
-      "scoring": 9,
-      "conceding": -4,
-      "yellowCard": -1,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Canada",
-    "totalPoints": 8,
-    "byRound": {
-      "GS1": 8,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 5,
-      "draw": 0,
-      "scoring": 3,
+      "scoring": 0,
       "conceding": 0,
       "yellowCard": 0,
       "redCard": 0,
@@ -135,10 +27,10 @@
     "inCompetition": true
   },
   {
-    "countryName": "Croatia",
-    "totalPoints": 8,
+    "countryName": "South Africa",
+    "totalPoints": 0,
     "byRound": {
-      "GS1": 8,
+      "GS1": 0,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -149,37 +41,10 @@
       "F": 0
     },
     "byCategory": {
-      "win": 5,
+      "win": 0,
       "draw": 0,
-      "scoring": 9,
-      "conceding": -4,
-      "yellowCard": -2,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Haiti",
-    "totalPoints": 5,
-    "byRound": {
-      "GS1": 5,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 2,
-      "scoring": 9,
-      "conceding": -6,
+      "scoring": 0,
+      "conceding": 0,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
@@ -189,10 +54,10 @@
     "inCompetition": true
   },
   {
-    "countryName": "Scotland",
-    "totalPoints": 4,
+    "countryName": "South Korea",
+    "totalPoints": 0,
     "byRound": {
-      "GS1": 4,
+      "GS1": 0,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -204,64 +69,10 @@
     },
     "byCategory": {
       "win": 0,
-      "draw": 2,
-      "scoring": 9,
-      "conceding": -6,
-      "yellowCard": -1,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Paraguay",
-    "totalPoints": 3,
-    "byRound": {
-      "GS1": 3,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 2,
-      "scoring": 3,
-      "conceding": -2,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
       "yellowCard": 0,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "United States",
-    "totalPoints": 2,
-    "byRound": {
-      "GS1": 2,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 2,
-      "scoring": 3,
-      "conceding": -2,
-      "yellowCard": -1,
       "redCard": 0,
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
@@ -286,8 +97,62 @@
     "byCategory": {
       "win": 0,
       "draw": 0,
-      "scoring": 6,
-      "conceding": -6,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Canada",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Bosnia and Herzegovina",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
@@ -351,6 +216,168 @@
     "inCompetition": true
   },
   {
+    "countryName": "Brazil",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Morocco",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Haiti",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Scotland",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "United States",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Paraguay",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
     "countryName": "Australia",
     "totalPoints": 0,
     "byRound": {
@@ -367,8 +394,35 @@
     "byCategory": {
       "win": 0,
       "draw": 0,
-      "scoring": 6,
-      "conceding": -6,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Türkiye",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
       "yellowCard": 0,
       "redCard": 0,
       "qualifyKnockout": 0,
@@ -1134,6 +1188,60 @@
     "inCompetition": true
   },
   {
+    "countryName": "England",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
+    "countryName": "Croatia",
+    "totalPoints": 0,
+    "byRound": {
+      "GS1": 0,
+      "GS2": 0,
+      "GS3": 0,
+      "R32": 0,
+      "R16": 0,
+      "QF": 0,
+      "SF": 0,
+      "TPP": 0,
+      "F": 0
+    },
+    "byCategory": {
+      "win": 0,
+      "draw": 0,
+      "scoring": 0,
+      "conceding": 0,
+      "yellowCard": 0,
+      "redCard": 0,
+      "qualifyKnockout": 0,
+      "qualifyNextRound": 0,
+      "winFinal": 0
+    },
+    "inCompetition": true
+  },
+  {
     "countryName": "Ghana",
     "totalPoints": 0,
     "byRound": {
@@ -1181,114 +1289,6 @@
       "conceding": 0,
       "yellowCard": 0,
       "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Brazil",
-    "totalPoints": -1,
-    "byRound": {
-      "GS1": -1,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 0,
-      "scoring": 6,
-      "conceding": -6,
-      "yellowCard": -1,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "South Africa",
-    "totalPoints": -2,
-    "byRound": {
-      "GS1": -2,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 0,
-      "scoring": 12,
-      "conceding": -14,
-      "yellowCard": 0,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "Bosnia and Herzegovina",
-    "totalPoints": -2,
-    "byRound": {
-      "GS1": -2,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 0,
-      "scoring": 0,
-      "conceding": -2,
-      "yellowCard": 0,
-      "redCard": 0,
-      "qualifyKnockout": 0,
-      "qualifyNextRound": 0,
-      "winFinal": 0
-    },
-    "inCompetition": true
-  },
-  {
-    "countryName": "England",
-    "totalPoints": -3,
-    "byRound": {
-      "GS1": -3,
-      "GS2": 0,
-      "GS3": 0,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
-      "TPP": 0,
-      "F": 0
-    },
-    "byCategory": {
-      "win": 0,
-      "draw": 0,
-      "scoring": 6,
-      "conceding": -6,
-      "yellowCard": -1,
-      "redCard": -2,
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0

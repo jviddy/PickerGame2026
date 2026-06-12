@@ -22,7 +22,7 @@
     "yellowCard": -1,
     "redCard": -2,
     "qualifyKnockout": 10,
-    "qualifyNextRound": 5,
-    "winFinal": 15
+    "qualifyNextRound": 10,
+    "winFinal": 10
   }
 }

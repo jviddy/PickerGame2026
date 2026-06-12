@@ -1,71 +1,4326 @@
 [
   {
-    "id": "df5f0641-45ac-4ea2-9e20-b1247a241373",
-    "entrantName": "Jamie",
-    "email": "jamie@vidamour.com",
-    "teamName": "jamie test",
+    "id": "eb8aa7e4-ab72-48fa-b08f-3c830d1548ca",
+    "entrantName": "Richard Cranch",
+    "email": "richard.cranch@canaccord.com",
+    "teamName": "Spain in the Arse",
     "tieBreakerAnswers": [
-      "123",
-      "32"
+      "277",
+      "94"
     ],
     "selectedTeams": [
-      "Mexico",
-      "South Africa",
-      "Qatar",
-      "Haiti",
-      "Jordan",
-      "Uzbekistan",
+      "Bosnia and Herzegovina",
+      "Scotland",
+      "Ivory Coast",
+      "Sweden",
+      "France",
+      "Portugal",
       "England",
       "Ghana"
     ],
-    "submittedAt": "2026-05-04T09:26:31.170Z",
-    "paid": false,
+    "submittedAt": "2026-06-01T11:26:52.472Z",
+    "paid": true,
     "removed": false
   },
   {
-    "id": "82d8b4a2-c234-4d75-8101-195565222925",
-    "entrantName": "jamie",
-    "email": "jviddy@vidamour.com",
-    "teamName": "test 2",
-    "tieBreakerAnswers": [
-      "321",
-      "23"
-    ],
-    "selectedTeams": [
-      "Haiti",
-      "Australia",
-      "Curaçao",
-      "Ivory Coast",
-      "Cape Verde",
-      "Iraq",
-      "Austria",
-      "DR Congo"
-    ],
-    "submittedAt": "2026-05-04T09:28:40.050Z",
-    "paid": false,
-    "removed": false
-  },
-  {
-    "id": "e5db5262-4855-4a2e-a7cb-3ff7a6b5e1e3",
+    "id": "6a415049-a491-4cc7-8c74-ff8a31b47fc8",
     "entrantName": "test",
-    "email": "test3@gmail.com",
-    "teamName": "test3",
+    "email": "jamie@vidamour.com",
+    "teamName": "test",
     "tieBreakerAnswers": [
-      "123",
-      "23"
+      "186",
+      "87"
     ],
     "selectedTeams": [
       "Mexico",
       "South Africa",
       "South Korea",
       "Czechia",
+      "Canada",
+      "Bosnia and Herzegovina",
+      "Qatar",
+      "Switzerland"
+    ],
+    "submittedAt": "2026-06-01T13:26:02.825Z",
+    "paid": false,
+    "removed": true
+  },
+  {
+    "id": "0c6ca870-c372-4748-bc83-7667da5af37f",
+    "entrantName": "Matt Swatton",
+    "email": "matt.swatton@canaccord.com",
+    "teamName": "The Boffinators",
+    "tieBreakerAnswers": [
+      "189",
+      "37"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Paraguay",
+      "Sweden",
+      "Spain",
+      "France",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-01T13:33:40.390Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "7f431351-c29c-48bb-837a-707c7e841b7f",
+    "entrantName": "Neil",
+    "email": "neil.stevens@canaccord.com",
+    "teamName": "8th place",
+    "tieBreakerAnswers": [
+      "280",
+      "34"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Brazil",
+      "Haiti",
+      "Germany",
+      "Curaçao",
+      "New Zealand",
+      "France",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-01T13:34:59.482Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "06ea9e9d-208e-4743-9c5c-680e3c8d5816",
+    "entrantName": "Lucy",
+    "email": "lucy.vidamour@canaccord.com",
+    "teamName": "VAR Oversight Committee",
+    "tieBreakerAnswers": [
+      "170",
+      "80"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Brazil",
+      "United States",
+      "Paraguay",
+      "Japan",
+      "New Zealand",
+      "Saudi Arabia",
+      "England"
+    ],
+    "submittedAt": "2026-06-01T13:39:53.521Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "7581155d-8959-4136-b8fd-58a08d1b55e0",
+    "entrantName": "Aimee Tough",
+    "email": "aimee.tough@canaccord.com",
+    "teamName": "Tough Luck",
+    "tieBreakerAnswers": [
+      "170",
+      "62"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Haiti",
+      "Australia",
+      "Sweden",
+      "Spain",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-01T13:41:41.530Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "961d24ff-31e5-4cf9-b262-22162a1b3a94",
+    "entrantName": "Mark",
+    "email": "mark.mcgill@canaccord.com",
+    "teamName": "Aye Right UTD",
+    "tieBreakerAnswers": [
+      "280",
+      "83"
+    ],
+    "selectedTeams": [
+      "Morocco",
+      "Haiti",
+      "Scotland",
+      "Germany",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Jordan"
+    ],
+    "submittedAt": "2026-06-01T13:42:15.392Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "45c48aaa-0e0b-4407-9259-47208dd093b5",
+    "entrantName": "Ben",
+    "email": "Ben.Wilson@canaccord.com",
+    "teamName": "Player 1",
+    "tieBreakerAnswers": [
+      "162",
+      "77"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Norway",
+      "Argentina",
+      "DR Congo",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T13:49:04.282Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "66a6e1c5-cded-4eff-ad69-8f3fba57efa1",
+    "entrantName": "Dani",
+    "email": "danielle.sparkes@canaccord.com",
+    "teamName": "Player 2",
+    "tieBreakerAnswers": [
+      "162",
+      "77"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Norway",
+      "Argentina",
+      "DR Congo",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T13:49:04.565Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d17805fd-9bbc-40ca-ae32-5b2763a098db",
+    "entrantName": "Kate dlR",
+    "email": "Kate.delaRue@canaccord.com",
+    "teamName": "World What Now",
+    "tieBreakerAnswers": [
+      "160",
+      "92"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Scotland",
+      "United States",
+      "Ivory Coast",
+      "Tunisia",
+      "France",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T13:49:33.710Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "fb21208a-d8af-405e-8253-f3bb39236c2c",
+    "entrantName": "Geoff Marson",
+    "email": "geoff.marson@canaccord.ccom",
+    "teamName": "When Harry met Sonny",
+    "tieBreakerAnswers": [
+      "301",
+      "96"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Canada",
+      "Brazil",
+      "Scotland",
+      "United States",
+      "New Zealand",
+      "France",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T13:53:49.489Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "f42b7959-f597-4b3a-aa1e-da86f81cb788",
+    "entrantName": "KK",
+    "email": "Kaspars.Krzanovics@canaccord.com",
+    "teamName": "Baguettes with Croissants",
+    "tieBreakerAnswers": [
+      "186",
+      "74"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Haiti",
+      "Curaçao",
+      "Belgium",
+      "Cape Verde",
+      "France",
+      "Argentina",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-01T13:54:37.422Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "00e451c6-efe3-4e7a-9d68-dd88c70bd165",
+    "entrantName": "Ceri",
+    "email": "Ceri.Turton@canaccord.com",
+    "teamName": "Turton's terrible teams",
+    "tieBreakerAnswers": [
+      "180",
+      "90"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Switzerland",
+      "Scotland",
+      "New Zealand",
+      "France",
+      "Iraq",
+      "Argentina",
+      "Uzbekistan"
+    ],
+    "submittedAt": "2026-06-01T14:01:30.927Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "f00e6654-c56a-4e06-bb4c-b9476f897d34",
+    "entrantName": "Ben",
+    "email": "benchandler@hotmail.co.uk",
+    "teamName": "Top Bin",
+    "tieBreakerAnswers": [
+      "185",
+      "82"
+    ],
+    "selectedTeams": [
+      "Haiti",
+      "Curaçao",
+      "Japan",
+      "Cape Verde",
+      "France",
+      "Argentina",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:06:35.047Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "08efbcfd-09b2-48cb-a570-2860cf3c2292",
+    "entrantName": "Becky",
+    "email": "Becky.Falla@canaccord.com",
+    "teamName": "The Anti-Football Alliance",
+    "tieBreakerAnswers": [
+      "151",
+      "83"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Canada",
+      "Morocco",
+      "United States",
+      "Uruguay",
+      "Iraq",
+      "Austria",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:10:39.350Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "fbf97ade-b81c-4b86-9a8c-1fa14a41987b",
+    "entrantName": "Aled",
+    "email": "aled.jones@canaccord.com",
+    "teamName": "ABE",
+    "tieBreakerAnswers": [
+      "290",
+      "78"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Canada",
+      "Switzerland",
+      "Scotland",
+      "Ivory Coast",
+      "Ecuador",
+      "Spain",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:11:17.835Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "26b483d2-aa0d-4fce-8505-028f2e7c11a3",
+    "entrantName": "Carl",
+    "email": "carl.ham-howes@canaccord.com",
+    "teamName": "Carlos 74",
+    "tieBreakerAnswers": [
+      "320",
+      "94"
+    ],
+    "selectedTeams": [
+      "Scotland",
+      "Paraguay",
+      "Curaçao",
+      "Japan",
+      "Egypt",
+      "France",
+      "Norway",
+      "England"
+    ],
+    "submittedAt": "2026-06-01T14:12:24.683Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b4ad2f52-6ad0-423f-8852-214fa708c0f2",
+    "entrantName": "Lars de Garis",
+    "email": "laurence.degaris@canaccord.com",
+    "teamName": "Uncontrolled Dribbling",
+    "tieBreakerAnswers": [
+      "117",
+      "77"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Haiti",
+      "Netherlands",
+      "New Zealand",
+      "Spain",
+      "Saudi Arabia",
+      "Argentina",
+      "England"
+    ],
+    "submittedAt": "2026-06-01T14:21:44.734Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "fffe4350-8659-4182-9dea-1bad6f30c339",
+    "entrantName": "Pearl Le Cras",
+    "email": "pearl.lecras@canaccord.com",
+    "teamName": "Full Samba, Zero Hair, Maximum Flair FC",
+    "tieBreakerAnswers": [
+      "280",
+      "112"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Germany",
+      "Curaçao",
+      "Sweden",
+      "New Zealand",
+      "France",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:22:43.612Z",
+    "paid": false,
+    "removed": true
+  },
+  {
+    "id": "e4bc4f29-c1d5-409e-8c01-34bed5115256",
+    "entrantName": "Kirsty B",
+    "email": "kirsty.bougourd@canaccord.com",
+    "teamName": "Chicken Tikka MoSalah",
+    "tieBreakerAnswers": [
+      "175",
+      "85"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Paraguay",
+      "Japan",
+      "Uruguay",
+      "France",
+      "Colombia",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:23:24.937Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "02ad26a4-e0a5-4e2e-a8f1-0de43b39149f",
+    "entrantName": "Claire",
+    "email": "Claire.Wakefield@canaccord.com",
+    "teamName": "Van Hecke Of A Team",
+    "tieBreakerAnswers": [
+      "98",
+      "67"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Brazil",
+      "Haiti",
+      "Sweden",
+      "Egypt",
+      "Spain",
+      "France",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:30:32.090Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b8106f9b-9ea1-4f2d-a5d5-bbf9cb0ba152",
+    "entrantName": "Will Holmes",
+    "email": "william.holmes@canaccord.com",
+    "teamName": "World Cup Willie",
+    "tieBreakerAnswers": [
+      "200",
+      "70"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Scotland",
+      "Ivory Coast",
+      "Spain",
+      "Argentina",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:31:14.359Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "09d5038d-434a-4985-90ba-7afbee8530d4",
+    "entrantName": "Rob Daily",
+    "email": "rob.daily@canaccord.com",
+    "teamName": "My Name is 'arry Kane",
+    "tieBreakerAnswers": [
+      "225",
+      "86"
+    ],
+    "selectedTeams": [
+      "Haiti",
+      "United States",
+      "Curaçao",
+      "Ivory Coast",
+      "Spain",
+      "France",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T14:50:45.993Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "02960f5a-0d36-4329-8d41-d28f7aecab7f",
+    "entrantName": "Jonny B",
+    "email": "jonathan@burnard.gg",
+    "teamName": "Slabheads Revenge",
+    "tieBreakerAnswers": [
+      "262",
+      "78"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Curaçao",
+      "Japan",
+      "New Zealand",
+      "Cape Verde",
+      "Uruguay",
+      "France"
+    ],
+    "submittedAt": "2026-06-01T14:50:53.045Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "67200b43-b5d0-4273-878b-21d599f7c6ee",
+    "entrantName": "Tom Lihou",
+    "email": "tom.lihou@canaccord.com",
+    "teamName": "When life gives you Lammens",
+    "tieBreakerAnswers": [
+      "304",
+      "72"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Türkiye",
+      "Ivory Coast",
+      "Japan",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-01T15:05:18.986Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "734a5665-b8b2-4417-b1c1-2542815ae6ef",
+    "entrantName": "Darren Loveridge",
+    "email": "dloveridgegg@gmail.com",
+    "teamName": "Kimmich Impossible",
+    "tieBreakerAnswers": [
+      "184",
+      "67"
+    ],
+    "selectedTeams": [
+      "Scotland",
+      "Germany",
+      "Egypt",
+      "Cape Verde",
+      "France",
+      "Austria",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T15:12:14.231Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a272dd18-a0d2-46db-9471-5fa388aca000",
+    "entrantName": "Emma",
+    "email": "emma.renouf@canaccord.com",
+    "teamName": "One team to rule them all",
+    "tieBreakerAnswers": [
+      "174",
+      "74"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Germany",
+      "Tunisia",
+      "Egypt",
+      "Spain",
+      "Uruguay",
+      "Iraq",
+      "DR Congo"
+    ],
+    "submittedAt": "2026-06-01T15:16:14.657Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "927cf97c-6d5f-4bca-928c-ceadaaa439e4",
+    "entrantName": "Harry Collas",
+    "email": "harry.collas@canaccord.com",
+    "teamName": "Ctrl Alt De Ligt",
+    "tieBreakerAnswers": [
+      "282",
+      "77"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Bosnia and Herzegovina",
+      "Scotland",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-01T15:20:09.370Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "ebb79de8-e909-4ef9-8bc3-8915a3d0bb9e",
+    "entrantName": "Lex English",
+    "email": "alex.english@canaccord.com",
+    "teamName": "Beetroot",
+    "tieBreakerAnswers": [
+      "225",
+      "24"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "United States",
+      "Paraguay",
+      "Germany",
+      "Egypt",
+      "Norway",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-01T15:20:23.364Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "613330ec-86cd-4155-ad4e-bde033686cc6",
+    "entrantName": "AJ",
+    "email": "Arabella.Jones@canaccord.com",
+    "teamName": "The Slot Thickens",
+    "tieBreakerAnswers": [
+      "239",
+      "78"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Jordan",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T15:37:46.158Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bbfdb170-0ff2-4b54-8e9f-c13d5d2e5179",
+    "entrantName": "Dave Moore",
+    "email": "David.Moore@canaccord.com",
+    "teamName": "The Vartic Monkeys",
+    "tieBreakerAnswers": [
+      "275",
+      "65"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Morocco",
+      "Paraguay",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T15:38:25.462Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "79f5798c-c3df-4349-88ea-ef45e7268f44",
+    "entrantName": "Sam",
+    "email": "sam.worthington@canaccord.com",
+    "teamName": "Sam Worthington",
+    "tieBreakerAnswers": [
+      "281",
+      "94"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Switzerland",
+      "Brazil",
+      "Ecuador",
+      "Sweden",
+      "Norway",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-01T16:09:32.051Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "94ff2eb5-cf31-419c-9d1b-710008a82a2f",
+    "entrantName": "Matt Bichard",
+    "email": "frobard1759@hotmail.co.uk",
+    "teamName": "Silly Goose FC",
+    "tieBreakerAnswers": [
+      "256",
+      "64"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Switzerland",
+      "Saudi Arabia",
+      "Norway",
+      "Argentina",
+      "Austria",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T17:39:11.951Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4382db32-6f9a-474a-bf7c-f1205efb16c3",
+    "entrantName": "Clare",
+    "email": "clare.duncan@canaccord.com",
+    "teamName": "Tartan in the USA",
+    "tieBreakerAnswers": [
+      "325",
+      "86"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Scotland",
+      "Türkiye",
+      "Ivory Coast",
+      "Spain",
+      "France",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T18:02:34.223Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d61cf4c6-5c0d-446b-8a19-4a02417f59c6",
+    "entrantName": "Oliver Viney",
+    "email": "Oliver_viney@hotmail.com",
+    "teamName": "Tuchel for School",
+    "tieBreakerAnswers": [
+      "349",
+      "63"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Türkiye",
+      "Germany",
+      "Belgium",
+      "New Zealand",
+      "Spain",
+      "Norway"
+    ],
+    "submittedAt": "2026-06-01T19:38:59.708Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9570d51d-784d-4b9c-88f8-c3ed05d4fb09",
+    "entrantName": "Lisa Vidamour",
+    "email": "lisa.vidamour@canaccord.com",
+    "teamName": "Accidental Champion",
+    "tieBreakerAnswers": [
+      "167",
+      "62"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Türkiye",
+      "Ecuador",
+      "Sweden",
+      "France",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T20:24:31.750Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "742bbf4d-5802-49f2-a8fe-29f6d4422ec4",
+    "entrantName": "James",
+    "email": "JamesWV2010@hotmail.com",
+    "teamName": "No Kane No Gain",
+    "tieBreakerAnswers": [
+      "193",
+      "82"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Bosnia and Herzegovina",
+      "Türkiye",
+      "Germany",
+      "Belgium",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T20:35:32.797Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d2525fef-a1a1-4794-afd9-ffb87632bfc5",
+    "entrantName": "Aaron D",
+    "email": "a.j.dougherty@outlook.com",
+    "teamName": "IM2 GOOD",
+    "tieBreakerAnswers": [
+      "228",
+      "68"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "United States",
+      "Sweden",
+      "Saudi Arabia",
+      "Senegal",
+      "Portugal",
+      "DR Congo",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-01T22:53:24.398Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "315dd409-e2f0-44ac-82ba-783150ca6efc",
+    "entrantName": "Lawrence Peterman",
+    "email": "lawrence.peterman@canaccord.com",
+    "teamName": "South West Sixers",
+    "tieBreakerAnswers": [
+      "180",
+      "69"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Canada",
+      "Brazil",
+      "Paraguay",
+      "Tunisia",
+      "Norway",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T06:38:23.318Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "f5c78728-9074-4bf4-8c03-0f5c75ac5fa3",
+    "entrantName": "Nick H",
+    "email": "nicholas.hanks@canaccord.com",
+    "teamName": "Eze Like Sunday Morning",
+    "tieBreakerAnswers": [
+      "271",
+      "64"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Scotland",
+      "Türkiye",
+      "Curaçao",
+      "Cape Verde",
+      "Argentina",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-02T07:30:25.981Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "32b00e2b-e05c-457f-ae45-a36879f2c1a8",
+    "entrantName": "Lewis Drummy",
+    "email": "lewis.drummy@canaccord.com",
+    "teamName": "99 problems but a pitch ain't one",
+    "tieBreakerAnswers": [
+      "312",
+      "84"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Paraguay",
+      "Germany",
+      "Japan",
+      "Egypt",
+      "Saudi Arabia",
+      "Norway",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-02T07:43:20.079Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "8bbacc7f-70db-40c0-acea-10f08e9f8c38",
+    "entrantName": "Stuart Dickson",
+    "email": "stuart.dickson@canaccord.com",
+    "teamName": "The McTominaytor",
+    "tieBreakerAnswers": [
+      "280",
+      "88"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Bosnia and Herzegovina",
+      "Morocco",
+      "Ecuador",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T08:24:32.360Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "3d142331-0cf3-4f69-8b31-f36ec5ced44d",
+    "entrantName": "Paul",
+    "email": "Paul.French@canaccord.com",
+    "teamName": "Frenchy's Ballers",
+    "tieBreakerAnswers": [
+      "276",
+      "68"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Germany",
+      "Netherlands",
+      "Japan",
+      "Norway",
+      "Jordan",
+      "England"
+    ],
+    "submittedAt": "2026-06-02T09:15:30.235Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "12542a2b-6138-4f94-bc1f-f597bf1888db",
+    "entrantName": "Hadyn",
+    "email": "Hadyn.McLarney@canaccord.com",
+    "teamName": "Cape Verde Ultras",
+    "tieBreakerAnswers": [
+      "170",
+      "87"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Türkiye",
+      "Ecuador",
+      "Cape Verde",
+      "France",
+      "Senegal",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T09:33:19.756Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bef89c85-cd3a-46a5-b4ab-f43bf0f10905",
+    "entrantName": "Michael",
+    "email": "michael.clark@canaccord.com",
+    "teamName": "Gaffa Cakes",
+    "tieBreakerAnswers": [
+      "342",
+      "112"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Scotland",
+      "Japan",
+      "Egypt",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "England"
+    ],
+    "submittedAt": "2026-06-02T09:36:08.856Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "636c9603-bc82-46cb-b466-0b29af42bc37",
+    "entrantName": "Tom Rogers",
+    "email": "tom.rogers@canaccord.com",
+    "teamName": "Men With Van De Ven",
+    "tieBreakerAnswers": [
+      "270",
+      "88"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T10:24:25.969Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "23c5c50b-ee5e-4cf3-81aa-684d97adb716",
+    "entrantName": "Kevin",
+    "email": "kevin_pinto95@hotmail.com",
+    "teamName": "Kevstar95",
+    "tieBreakerAnswers": [
+      "280",
+      "80"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Brazil",
+      "Australia",
+      "Sweden",
+      "New Zealand",
+      "Argentina",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T10:45:26.666Z",
+    "paid": false,
+    "removed": true
+  },
+  {
+    "id": "0059ba3b-0e41-4b27-9ae1-e917d2426bea",
+    "entrantName": "Andy",
+    "email": "andy.finch@canaccord.com",
+    "teamName": "The Fighting Finches",
+    "tieBreakerAnswers": [
+      "278",
+      "82"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Tunisia",
+      "Spain",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T11:09:32.625Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d8af5bf4-187a-4c12-bdcc-009b41f8422b",
+    "entrantName": "Ric Carter",
+    "email": "rick.carter@canaccord.com",
+    "teamName": "Ball Ball Ball, Footy Footy Footy",
+    "tieBreakerAnswers": [
+      "278",
+      "105"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T11:12:50.443Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "1581c43e-81db-4c9c-b6e8-71057d23ebf8",
+    "entrantName": "Kevin Pinto",
+    "email": "kevinpinto_95@hotmail.com",
+    "teamName": "No Ronaldo No Party",
+    "tieBreakerAnswers": [
+      "280",
+      "81"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Scotland",
+      "Australia",
+      "Sweden",
+      "New Zealand",
+      "Cape Verde",
+      "France",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-02T11:29:46.245Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9dd914b8-f01f-405b-8900-9374bdd67ed8",
+    "entrantName": "Iain",
+    "email": "iain.mackenzie@canaccord.com",
+    "teamName": "FIFA Flyers",
+    "tieBreakerAnswers": [
+      "352",
+      "78"
+    ],
+    "selectedTeams": [
+      "Switzerland",
+      "Scotland",
+      "Australia",
+      "Spain",
+      "Cape Verde",
+      "Norway",
+      "Algeria",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-02T11:39:27.436Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "971d0d09-a76b-4612-8d83-0e5409c71461",
+    "entrantName": "Quacky",
+    "email": "antonino.ferreira@canaccord.com",
+    "teamName": "Same Duck, New Luck",
+    "tieBreakerAnswers": [
+      "203",
+      "86"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Brazil",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "Argentina",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T12:05:30.917Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4f5bdde7-32b4-4ddb-b45f-01c8b13f6ea5",
+    "entrantName": "Artur",
+    "email": "arthastic@gmail.com",
+    "teamName": "FAJGAMAS",
+    "tieBreakerAnswers": [
+      "174",
+      "87"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Morocco",
+      "Germany",
+      "Japan",
+      "France",
+      "Algeria",
+      "Jordan",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T12:31:33.177Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4f6cf8d1-a52a-4014-acfb-424a74b3fd90",
+    "entrantName": "Becca",
+    "email": "Rebecca.LeTissier@canaccord.com",
+    "teamName": "Who Ate All Dapays?",
+    "tieBreakerAnswers": [
+      "207",
+      "73"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Haiti",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-02T13:30:37.439Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "3b442391-5a06-4709-8971-1076ac25d249",
+    "entrantName": "Archie",
+    "email": "archie.robins@canaccord.com",
+    "teamName": "Arch Rivals FC",
+    "tieBreakerAnswers": [
+      "282",
+      "86"
+    ],
+    "selectedTeams": [
+      "Switzerland",
+      "United States",
+      "Tunisia",
+      "New Zealand",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-02T13:48:14.068Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "2dc6db24-0764-48bd-a15c-279f9cbbbd5f",
+    "entrantName": "Mason",
+    "email": "masonaf25@gmail.com",
+    "teamName": "Got your tissues ready?",
+    "tieBreakerAnswers": [
+      "265",
+      "85"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Scotland",
+      "Türkiye",
+      "Ecuador",
+      "Sweden",
+      "Belgium",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-02T15:48:01.654Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "88993079-806e-4e7c-8303-3138ab56f995",
+    "entrantName": "Steve Kett",
+    "email": "steve.kett@canaccord.com",
+    "teamName": "It's Coming Home !",
+    "tieBreakerAnswers": [
+      "275",
+      "79"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Scotland",
+      "Netherlands",
+      "Japan",
+      "Egypt",
+      "New Zealand",
+      "Norway",
+      "Algeria"
+    ],
+    "submittedAt": "2026-06-02T15:50:05.497Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b6d69742-f45f-49e4-b9b0-3c035553dbbf",
+    "entrantName": "Chris",
+    "email": "lihou.chris@gmail.com",
+    "teamName": "Striker 190",
+    "tieBreakerAnswers": [
+      "277",
+      "81"
+    ],
+    "selectedTeams": [
       "Bosnia and Herzegovina",
       "Qatar",
       "Morocco",
-      "Haiti"
+      "Ivory Coast",
+      "Egypt",
+      "Spain",
+      "Saudi Arabia",
+      "France"
     ],
-    "submittedAt": "2026-05-04T20:31:28.693Z",
+    "submittedAt": "2026-06-02T16:01:40.452Z",
     "paid": true,
+    "removed": false
+  },
+  {
+    "id": "13153e6d-615e-4949-ae9f-def5f6a35815",
+    "entrantName": "Jack",
+    "email": "Jack.Burchell@canaccord.com",
+    "teamName": "Card Tricks, Sing-Songs & Quizzes",
+    "tieBreakerAnswers": [
+      "251",
+      "72"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Saudi Arabia",
+      "Argentina",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T16:33:47.432Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "3d2e8039-c3b7-4639-bd0e-38e48df52411",
+    "entrantName": "Dee",
+    "email": "dee.lihou@gmail.com",
+    "teamName": "Dalkey",
+    "tieBreakerAnswers": [
+      "281",
+      "77"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Morocco",
+      "Japan",
+      "Cape Verde",
+      "France",
+      "Algeria",
+      "Colombia",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-02T16:50:29.798Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5d32d2e3-4105-44a8-ac2d-a45f3a8d5b0b",
+    "entrantName": "Ant Fairbrother",
+    "email": "antonyf28@gmail.com",
+    "teamName": "What should I put here?",
+    "tieBreakerAnswers": [
+      "266",
+      "66"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Qatar",
+      "Brazil",
+      "Türkiye",
+      "Germany",
+      "Curaçao",
+      "Belgium",
+      "Norway"
+    ],
+    "submittedAt": "2026-06-02T17:34:22.456Z",
+    "paid": false,
+    "removed": true
+  },
+  {
+    "id": "2a5c49ea-c13b-499a-9433-17aa1ca32af8",
+    "entrantName": "Michael Hall",
+    "email": "michael.hall@canaccord.com",
+    "teamName": "Southend Badgers",
+    "tieBreakerAnswers": [
+      "234",
+      "84"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Curaçao",
+      "Japan",
+      "Egypt",
+      "Cape Verde",
+      "France",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-03T08:01:38.915Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "553cbbd3-aeda-42ce-813d-1fceb596dd85",
+    "entrantName": "Ryan Howlett",
+    "email": "rjhowlett@gmail.com",
+    "teamName": "Expected Disappointments (xD)",
+    "tieBreakerAnswers": [
+      "291",
+      "113"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Germany",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-03T08:13:34.891Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "3157167b-bb65-4dad-b674-1636ebdc172a",
+    "entrantName": "Jon Bennet",
+    "email": "jonbennet01@gmail.com",
+    "teamName": "J 'It's coming home' B",
+    "tieBreakerAnswers": [
+      "190",
+      "55"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Paraguay",
+      "Ecuador",
+      "France",
+      "Norway",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-03T10:21:15.045Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b8764911-b3f3-4f8a-9671-495f1cb3b00e",
+    "entrantName": "Conor Bell",
+    "email": "conor.bell@canaccord.com",
+    "teamName": "Bilbao Baggins",
+    "tieBreakerAnswers": [
+      "250",
+      "55"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Haiti",
+      "Ecuador",
+      "Spain",
+      "Norway",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-03T12:21:42.552Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bb1a2e9a-1d5a-4cf5-a95a-56ff1d5ad92a",
+    "entrantName": "Rob",
+    "email": "robert.llewellin@canaccord.com",
+    "teamName": "It's coming home",
+    "tieBreakerAnswers": [
+      "280",
+      "96"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Bosnia and Herzegovina",
+      "Netherlands",
+      "Egypt",
+      "Saudi Arabia",
+      "France",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-03T12:48:42.435Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "435aca95-5488-4f11-807e-3001a825ec60",
+    "entrantName": "Jamie V",
+    "email": "jamie.vidamour@canaccord.com",
+    "teamName": "El Presidente",
+    "tieBreakerAnswers": [
+      "275",
+      "75"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Haiti",
+      "Germany",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-03T13:41:36.410Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bf3eccdf-b029-46f6-8f06-f6e6ce1ba8f0",
+    "entrantName": "Leigh",
+    "email": "leighmorris@cwgsy.net",
+    "teamName": "Mullins Bay FC",
+    "tieBreakerAnswers": [
+      "364",
+      "71"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Morocco",
+      "New Zealand",
+      "France",
+      "Norway",
+      "Portugal",
+      "DR Congo",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-03T14:20:01.699Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5b4b8321-96ff-4282-b564-dbfb14577d26",
+    "entrantName": "Paul Philp",
+    "email": "paul.philp@canaccord.com",
+    "teamName": "Suffolk Punch",
+    "tieBreakerAnswers": [
+      "273",
+      "86"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Scotland",
+      "United States",
+      "Germany",
+      "Sweden",
+      "Belgium",
+      "Norway",
+      "DR Congo"
+    ],
+    "submittedAt": "2026-06-03T15:41:31.213Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "0cc3d551-130f-4b7c-8883-b82d962d756c",
+    "entrantName": "Vidi",
+    "email": "Steven.vidamour@trustford.co.uk",
+    "teamName": "Not expecting a lot",
+    "tieBreakerAnswers": [
+      "202",
+      "74"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-03T21:08:24.684Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "3e81efb1-ff8a-4a05-bfbb-ed44cca6347b",
+    "entrantName": "Tom",
+    "email": "tom.humphries@canaccord.com",
+    "teamName": "Last place here I come",
+    "tieBreakerAnswers": [
+      "301",
+      "78"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Bosnia and Herzegovina",
+      "Ecuador",
+      "Japan",
+      "New Zealand",
+      "Spain",
+      "France"
+    ],
+    "submittedAt": "2026-06-04T07:31:23.380Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5916595a-ab9a-4a75-9609-582acce1590e",
+    "entrantName": "Stan",
+    "email": "delarue@suremail.gg",
+    "teamName": "Stan the man",
+    "tieBreakerAnswers": [
+      "249",
+      "116"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Curaçao",
+      "Tunisia",
+      "Uruguay",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-04T09:57:44.700Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4a32d7c0-6b1e-41fa-a33d-323827f295ee",
+    "entrantName": "Debbie Bruce",
+    "email": "debbie.bruce@canaccord.com",
+    "teamName": "Pitch Perfect",
+    "tieBreakerAnswers": [
+      "179",
+      "86"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Curaçao",
+      "Japan",
+      "Egypt",
+      "Spain",
+      "Senegal",
+      "Iraq",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T10:38:26.282Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "30ac9006-ffec-4e94-8e2e-25ec2f11c982",
+    "entrantName": "Tony Rogers",
+    "email": "tony.rogers@canaccord.com",
+    "teamName": "The Mara Donar Kebabs",
+    "tieBreakerAnswers": [
+      "208",
+      "77"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "Australia",
+      "Japan",
+      "Sweden",
+      "New Zealand",
+      "Senegal",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T11:55:53.684Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "f0dd63f9-585b-4396-b58e-eb88ca817213",
+    "entrantName": "Candice",
+    "email": "Candice.LeTissier@canaccord.com",
+    "teamName": "Not so Hotspur",
+    "tieBreakerAnswers": [
+      "213",
+      "13"
+    ],
+    "selectedTeams": [
+      "Scotland",
+      "Australia",
+      "Sweden",
+      "New Zealand",
+      "France",
+      "Jordan",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T11:56:19.206Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "794337f8-1c22-4411-be15-3e512b7489b6",
+    "entrantName": "Jade",
+    "email": "Jade.Letissier@canaccord.com",
+    "teamName": "Emerald Jade",
+    "tieBreakerAnswers": [
+      "150",
+      "60"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "United States",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "Uruguay",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-04T12:06:04.339Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "216f7948-c501-40a6-b247-374202788d8e",
+    "entrantName": "Jill",
+    "email": "Jill.stephenson@canaccord.com",
+    "teamName": "One More Goal",
+    "tieBreakerAnswers": [
+      "158",
+      "74"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "Austria",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T12:20:14.505Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "754f0d56-08dc-44da-bab2-2bf8cc8b29e1",
+    "entrantName": "Lihou 2",
+    "email": "lihou.chris@gmail.com",
+    "teamName": "8 it",
+    "tieBreakerAnswers": [
+      "182",
+      "62"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Qatar",
+      "Curaçao",
+      "Japan",
+      "New Zealand",
+      "Spain",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T13:58:39.730Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "f0fa0878-85e0-42ae-adf8-de61ec9887cd",
+    "entrantName": "Ant Fairbrother",
+    "email": "antony.fairbrother@canaccord.com",
+    "teamName": "Wirtz Case Scenario",
+    "tieBreakerAnswers": [
+      "253",
+      "67"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Haiti",
+      "Germany",
+      "Sweden",
+      "Uruguay",
+      "Portugal",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-04T15:06:55.252Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "081722b3-74ad-4910-9e36-657b9196d860",
+    "entrantName": "Stephen",
+    "email": "stephen.prout@canaccord.com",
+    "teamName": "It's called football",
+    "tieBreakerAnswers": [
+      "283",
+      "82"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Qatar",
+      "Paraguay",
+      "Curaçao",
+      "Sweden",
+      "Spain",
+      "Senegal",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T16:04:31.737Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "13923bc3-2e8d-40d8-92a6-b86be25bf6bd",
+    "entrantName": "Ben",
+    "email": "ben.merrien@canaccord.com",
+    "teamName": "Goal Diggers",
+    "tieBreakerAnswers": [
+      "277",
+      "84"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Australia",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "Norway",
+      "Panama"
+    ],
+    "submittedAt": "2026-06-04T16:05:42.358Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "568224b9-e360-4418-98f5-a4a8e0bafa7e",
+    "entrantName": "Eli",
+    "email": "elias@vidamour.com",
+    "teamName": "FATpiggyunited",
+    "tieBreakerAnswers": [
+      "274",
+      "78"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Qatar",
+      "Türkiye",
+      "Ecuador",
+      "Sweden",
+      "New Zealand",
+      "Argentina",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-04T16:56:45.757Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "95ebad94-96ba-4b61-adf1-27d7cb47b74d",
+    "entrantName": "Lauren",
+    "email": "lauren.vidamour@outlook.com",
+    "teamName": "Laurenaldo FC",
+    "tieBreakerAnswers": [
+      "178",
+      "87"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Haiti",
+      "Curaçao",
+      "Spain",
+      "France",
+      "Jordan",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-04T18:19:22.130Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "2d9f892d-62ca-4c4c-bb1d-a470ec916493",
+    "entrantName": "Brad & Leah",
+    "email": "leahpmoore@gmail.com",
+    "teamName": "Hakuna Matata FC",
+    "tieBreakerAnswers": [
+      "176",
+      "79"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Morocco",
+      "Japan",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Saudi Arabia",
+      "France"
+    ],
+    "submittedAt": "2026-06-04T19:50:36.464Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "ed7c099b-bd8b-4609-85e8-fa7a1c211bc9",
+    "entrantName": "Sophie",
+    "email": "sophie.mahy@canaccord.com",
+    "teamName": "The Profit Prophets",
+    "tieBreakerAnswers": [
+      "184",
+      "81"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Brazil",
+      "Curaçao",
+      "Japan",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "Algeria"
+    ],
+    "submittedAt": "2026-06-05T10:14:25.153Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5a5ab45b-fd54-4c87-ad4a-7ec9a8c93e1b",
+    "entrantName": "Jamie Drummond",
+    "email": "jamieadrummond@hotmail.com",
+    "teamName": "Tartan Army",
+    "tieBreakerAnswers": [
+      "200",
+      "80"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Scotland",
+      "Ivory Coast",
+      "Sweden",
+      "Saudi Arabia",
+      "France",
+      "England"
+    ],
+    "submittedAt": "2026-06-05T10:18:13.408Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "665c7b1f-1449-49bb-baa1-941a61f56421",
+    "entrantName": "Luke Pattimore",
+    "email": "pattimore95@hotmail.com",
+    "teamName": "It's coming home!!",
+    "tieBreakerAnswers": [
+      "230",
+      "75"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Brazil",
+      "Curaçao",
+      "Japan",
+      "New Zealand",
+      "Saudi Arabia",
+      "Argentina",
+      "England"
+    ],
+    "submittedAt": "2026-06-05T10:33:25.992Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9fea7af7-69f2-4481-b6b9-e01423fcaecb",
+    "entrantName": "Phil",
+    "email": "phil.pragnell@canaccord.com",
+    "teamName": "Jumpers for Goal Posts",
+    "tieBreakerAnswers": [
+      "528",
+      "82"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Paraguay",
+      "Germany",
+      "Tunisia",
+      "Norway",
+      "Algeria"
+    ],
+    "submittedAt": "2026-06-05T11:08:50.983Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bd6b0fdb-8fc3-4dd6-852f-a025476a660a",
+    "entrantName": "Ethan",
+    "email": "ethan.bruce-davies@outlook.com",
+    "teamName": "Purple Reina",
+    "tieBreakerAnswers": [
+      "189",
+      "78"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-06T16:10:18.690Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9d5acb13-04d6-4ef7-88fc-a15907132dc7",
+    "entrantName": "Michael",
+    "email": "Michael.Heyes@canaccord.com",
+    "teamName": "World In Motion",
+    "tieBreakerAnswers": [
+      "180",
+      "77"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Brazil",
+      "Scotland",
+      "Türkiye",
+      "Ivory Coast",
+      "Sweden",
+      "Spain",
+      "DR Congo"
+    ],
+    "submittedAt": "2026-06-08T07:38:11.672Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "247037dd-a488-4a6c-aaa4-8d7edae674e9",
+    "entrantName": "Darren",
+    "email": "Darren.Batiste@canaccord.com",
+    "teamName": "Ødegaardians of the Galaxy",
+    "tieBreakerAnswers": [
+      "277",
+      "76"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Haiti",
+      "United States",
+      "Spain",
+      "Norway",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T08:50:15.053Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "3e8e1ac2-6870-4b22-8841-aa4625a43be3",
+    "entrantName": "James Torode",
+    "email": "james.torode@canaccord.com",
+    "teamName": "No Idea FC",
+    "tieBreakerAnswers": [
+      "281",
+      "101"
+    ],
+    "selectedTeams": [
+      "Switzerland",
+      "Brazil",
+      "Haiti",
+      "United States",
+      "Germany",
+      "New Zealand",
+      "Argentina",
+      "Jordan"
+    ],
+    "submittedAt": "2026-06-08T08:55:06.583Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bbb44efa-e3c7-4904-a914-a591e1418f2f",
+    "entrantName": "Ina Hardy",
+    "email": "Ian.Hardy@Canaccord.com",
+    "teamName": "Guernsey goal diggers",
+    "tieBreakerAnswers": [
+      "245",
+      "84"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Scotland",
+      "Australia",
+      "Ivory Coast",
+      "Netherlands",
+      "Saudi Arabia",
+      "Austria",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T11:10:42.326Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4d45c134-6a7b-4b57-bb61-62dbcdee091d",
+    "entrantName": "Mark Le Prevost",
+    "email": "mlep@suremail.gg",
+    "teamName": "Hopeful eleven",
+    "tieBreakerAnswers": [
+      "278",
+      "78"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Sweden",
+      "Spain",
+      "France",
+      "Norway",
+      "DR Congo",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T12:14:22.029Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9ceee88e-be20-4974-8b21-bc7954395d33",
+    "entrantName": "Colin Mather",
+    "email": "colinmather2600@gmail.com",
+    "teamName": "Biased North American",
+    "tieBreakerAnswers": [
+      "247",
+      "76"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Canada",
+      "United States",
+      "Curaçao",
+      "Netherlands",
+      "New Zealand",
+      "Norway",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T12:22:00.332Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5b0725d8-e984-44e5-9f8d-d8205a15d370",
+    "entrantName": "Alex",
+    "email": "alex_snashall@hotmail.com",
+    "teamName": "Snash International",
+    "tieBreakerAnswers": [
+      "112",
+      "81"
+    ],
+    "selectedTeams": [
+      "Paraguay",
+      "Sweden",
+      "Egypt",
+      "France",
+      "Norway",
+      "Austria",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T12:42:20.762Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "95182345-f1b3-42bd-b5d7-df3c937d1255",
+    "entrantName": "Finlay Harley",
+    "email": "finlayharley1000@gmail.com",
+    "teamName": "The Pitch Generals",
+    "tieBreakerAnswers": [
+      "223",
+      "79"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Brazil",
+      "Sweden",
+      "New Zealand",
+      "France",
+      "Austria",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T12:47:53.716Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "af8eaa4b-b04b-4097-837e-7100381a39a4",
+    "entrantName": "Akos",
+    "email": "akos.dietrich@canaccord.com",
+    "teamName": "Duration United",
+    "tieBreakerAnswers": [
+      "272",
+      "78"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Australia",
+      "Ivory Coast",
+      "France",
+      "Argentina",
+      "DR Congo",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:01:10.779Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a0412c1d-2498-43b9-855d-49bb063e26c3",
+    "entrantName": "Niall Hingston",
+    "email": "thehingstons@gmail.com",
+    "teamName": "Make football great again",
+    "tieBreakerAnswers": [
+      "263",
+      "64"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Scotland",
+      "Türkiye",
+      "Netherlands",
+      "Japan",
+      "France",
+      "Norway"
+    ],
+    "submittedAt": "2026-06-08T13:07:58.397Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "8c173318-2789-4ec7-a368-dc064c4320c2",
+    "entrantName": "Ed Peck",
+    "email": "ed.peck@canaccord.com",
+    "teamName": "Lop sided",
+    "tieBreakerAnswers": [
+      "285",
+      "70"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Iraq",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T13:08:32.304Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "2f602980-3f33-4597-9e66-ebd330b4d969",
+    "entrantName": "Ben H",
+    "email": "ben.harding@canaccord.com",
+    "teamName": "The Walking Red Flags",
+    "tieBreakerAnswers": [
+      "175",
+      "78"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Switzerland",
+      "Morocco",
+      "Türkiye",
+      "Japan",
+      "Tunisia",
+      "Iraq",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-08T13:10:37.766Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "0c2dff67-4556-4c06-aaca-e55580037830",
+    "entrantName": "Jason",
+    "email": "Jason.Robilliard@canaccord.com",
+    "teamName": "The Lucky Eight",
+    "tieBreakerAnswers": [
+      "267",
+      "79"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Sweden",
+      "Spain",
+      "Saudi Arabia",
+      "Norway",
+      "Argentina",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T13:13:33.198Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "8ce65e76-4d89-41dd-a314-be1e4f5698cf",
+    "entrantName": "KAsia",
+    "email": "Katarzyna.Gomes@canaccord.com",
+    "teamName": "Queen K",
+    "tieBreakerAnswers": [
+      "317",
+      "67"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Czechia",
+      "Haiti",
+      "Sweden",
+      "Belgium",
+      "Spain",
+      "France",
+      "Norway"
+    ],
+    "submittedAt": "2026-06-08T13:17:57.356Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "e6a6139e-a386-40fa-9c53-f736e5dff63a",
+    "entrantName": "Adrian Kemp",
+    "email": "adrian.kemp@canaccord.com",
+    "teamName": "Kempes Winners",
+    "tieBreakerAnswers": [
+      "260",
+      "78"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:20:37.181Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "8d37db50-a6f3-4a01-8bf5-9b9fe96bf148",
+    "entrantName": "Samantha Rashid",
+    "email": "samantha.rashid@canaccord.com",
+    "teamName": "Taxation's Trailblazers",
+    "tieBreakerAnswers": [
+      "170",
+      "93"
+    ],
+    "selectedTeams": [
+      "Ecuador",
+      "Japan",
+      "Spain",
+      "France",
+      "Iraq",
+      "Norway",
+      "Uzbekistan",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:25:37.914Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d263cdea-1869-42f6-855a-de5938e7a820",
+    "entrantName": "Sasha",
+    "email": "Sasha.Leahy@canaccord.com",
+    "teamName": "S TEAM",
+    "tieBreakerAnswers": [
+      "153",
+      "97"
+    ],
+    "selectedTeams": [
+      "Haiti",
+      "United States",
+      "Curaçao",
+      "Japan",
+      "New Zealand",
+      "France",
+      "Argentina",
+      "Colombia"
+    ],
+    "submittedAt": "2026-06-08T13:25:48.795Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "ca42700d-3d62-404e-8493-2e6e510cfecd",
+    "entrantName": "Denise",
+    "email": "MrsWaldo@Outlook.com",
+    "teamName": "Team Ice Cream",
+    "tieBreakerAnswers": [
+      "179",
+      "84"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Scotland",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "France",
+      "Argentina",
+      "DR Congo"
+    ],
+    "submittedAt": "2026-06-08T13:30:58.466Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "91134441-40d4-41d7-8142-ddc53328c9d1",
+    "entrantName": "Charlie",
+    "email": "Charles.dicker@canaccord.com",
+    "teamName": "Lord of the Ings",
+    "tieBreakerAnswers": [
+      "263",
+      "118"
+    ],
+    "selectedTeams": [
+      "Scotland",
+      "Germany",
+      "Curaçao",
+      "Netherlands",
+      "Japan",
+      "New Zealand",
+      "Norway",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-08T13:39:03.882Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "fae96eee-1b1d-4507-ad4e-e292b19604e0",
+    "entrantName": "Zoe",
+    "email": "zoe.field@canaccord.com",
+    "teamName": "Cruisers",
+    "tieBreakerAnswers": [
+      "265",
+      "91"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Haiti",
+      "Germany",
+      "Cape Verde",
+      "Norway",
+      "Argentina",
+      "Austria",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-08T13:39:05.910Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "7e43a288-6ce2-4086-a1b3-f8311b412381",
+    "entrantName": "Phil Midgley",
+    "email": "phil.midgley@canaccord.com",
+    "teamName": "Not a clue",
+    "tieBreakerAnswers": [
+      "164",
+      "87"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "South Africa",
+      "Brazil",
+      "Sweden",
+      "New Zealand",
+      "Cape Verde",
+      "France",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T13:39:22.611Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "991de1a9-6c78-4e9d-882b-035d8f8b87d4",
+    "entrantName": "Michael",
+    "email": "michael.mcnally@canaccord.com",
+    "teamName": "mainline",
+    "tieBreakerAnswers": [
+      "300",
+      "64"
+    ],
+    "selectedTeams": [
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "Saudi Arabia",
+      "France",
+      "Portugal",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:44:04.847Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "898411d1-4619-47d5-b055-ce9b7404e90d",
+    "entrantName": "Richard Bolch",
+    "email": "richard.bolch@canaccord.com",
+    "teamName": "Seagulls!!!",
+    "tieBreakerAnswers": [
+      "278",
+      "82"
+    ],
+    "selectedTeams": [
+      "Spain",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "Algeria",
+      "DR Congo",
+      "Colombia",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:51:14.409Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d15da6f3-6768-42f4-a4cd-42300b1e4351",
+    "entrantName": "Sheetal",
+    "email": "sheetal.patel@canaccord.com",
+    "teamName": "The Eight Wonders of the World",
+    "tieBreakerAnswers": [
+      "181",
+      "117"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:52:37.611Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "78eec139-d34b-4d2d-b59d-cb212ef382d0",
+    "entrantName": "Lisa Moss",
+    "email": "lisajayne.sharples@gmail.com",
+    "teamName": "Moss the boss",
+    "tieBreakerAnswers": [
+      "186",
+      "85"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Türkiye",
+      "Ecuador",
+      "Egypt",
+      "Spain",
+      "Saudi Arabia",
+      "Norway",
+      "Algeria"
+    ],
+    "submittedAt": "2026-06-08T13:53:05.886Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "e0596d9b-ca7f-4434-b717-2edc4493503c",
+    "entrantName": "Matt Hart",
+    "email": "matt.hart@canaccord.com",
+    "teamName": "Name of Team",
+    "tieBreakerAnswers": [
+      "165",
+      "91"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Bosnia and Herzegovina",
+      "Paraguay",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:54:12.101Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "8b3df35d-23a2-42dd-a3fc-0fbe35d590e1",
+    "entrantName": "Bizkit",
+    "email": "prabin.mohanty@canaccord.com",
+    "teamName": "Soccer not football",
+    "tieBreakerAnswers": [
+      "500",
+      "95"
+    ],
+    "selectedTeams": [
+      "Haiti",
+      "Germany",
+      "Netherlands",
+      "Belgium",
+      "Saudi Arabia",
+      "Argentina",
+      "Jordan",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T13:55:14.155Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "cda6cb78-3b99-415c-ac4c-d6e897f4e5ea",
+    "entrantName": "Hayley",
+    "email": "Hayley.cooper@canaccord.com",
+    "teamName": "Coopers Champions",
+    "tieBreakerAnswers": [
+      "555",
+      "85"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Germany",
+      "Sweden",
+      "Belgium",
+      "New Zealand",
+      "England",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-08T13:58:04.778Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "0d7b990f-34cb-48cf-878b-796c2c09638a",
+    "entrantName": "Jack Romeril",
+    "email": "jackromeril@hotmail.com",
+    "teamName": "Still No Italy?",
+    "tieBreakerAnswers": [
+      "275",
+      "64"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Türkiye",
+      "Ivory Coast",
+      "Japan",
+      "New Zealand",
+      "Spain",
+      "Algeria"
+    ],
+    "submittedAt": "2026-06-08T14:00:39.351Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "c56f8457-32be-4988-91cb-bb54455417a4",
+    "entrantName": "SHARON",
+    "email": "sharon.blundell@canaccord.com",
+    "teamName": "A Tactical Blundell",
+    "tieBreakerAnswers": [
+      "187",
+      "83"
+    ],
+    "selectedTeams": [
+      "Canada",
+      "Switzerland",
+      "United States",
+      "Ivory Coast",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T14:04:01.416Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "ebfa8f99-9093-411b-9a82-9567011f5285",
+    "entrantName": "Alison Williams",
+    "email": "bimboundali@gmail.com",
+    "teamName": "Bimbound buccaneers",
+    "tieBreakerAnswers": [
+      "267",
+      "67"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Paraguay",
+      "Sweden",
+      "Tunisia",
+      "Spain",
+      "DR Congo",
+      "England",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-08T14:04:21.857Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "366c1ed5-56fb-431f-aa48-aa257addfb4d",
+    "entrantName": "Scott Guilbert",
+    "email": "scottguilbertgsy@gmail.com",
+    "teamName": "My Team wins",
+    "tieBreakerAnswers": [
+      "281",
+      "109"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Haiti",
+      "Germany",
+      "Curaçao",
+      "Spain",
+      "France",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T14:11:14.468Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d3fe1ca3-cbbf-40bb-8896-43d2b8b2976c",
+    "entrantName": "Stacey",
+    "email": "stacey.davies@canaccord.com",
+    "teamName": "VAR Said No",
+    "tieBreakerAnswers": [
+      "326",
+      "97"
+    ],
+    "selectedTeams": [
+      "Australia",
+      "Germany",
+      "Netherlands",
+      "Sweden",
+      "Norway",
+      "Jordan",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T14:14:39.249Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d10f4713-df13-4498-8e95-94827333cf60",
+    "entrantName": "Wayne Martel",
+    "email": "wayne.martel@cwgsy.net",
+    "teamName": "Northerners AC",
+    "tieBreakerAnswers": [
+      "288",
+      "87"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Germany",
+      "Spain",
+      "Norway",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T14:22:24.064Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "cf145636-18d7-4fc4-8289-f02ad20e6e5f",
+    "entrantName": "Tim",
+    "email": "tim.carvill@canaccord.com",
+    "teamName": "Chilli's",
+    "tieBreakerAnswers": [
+      "271",
+      "93"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Ivory Coast",
+      "Egypt",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Norway",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T15:24:15.261Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "7530a1eb-67ac-4943-8f9b-60135cde63ea",
+    "entrantName": "Phil-Mark-Dan",
+    "email": "mark.elliott2@canaccord.com",
+    "teamName": "The Breach Boys",
+    "tieBreakerAnswers": [
+      "284",
+      "109"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "Morocco",
+      "Haiti",
+      "Ivory Coast",
+      "Netherlands",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T15:42:00.081Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "52ee3f0a-3d8c-4f15-b15b-c7dad39ffa06",
+    "entrantName": "Scott Riseborough",
+    "email": "Scott.Riseborough@canaccord.com",
+    "teamName": "Messi business getting involved in that",
+    "tieBreakerAnswers": [
+      "142",
+      "89"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Czechia",
+      "Switzerland",
+      "Brazil",
+      "Curaçao",
+      "Cape Verde",
+      "France",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T15:43:14.493Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "c35d28c1-376f-426b-91d5-d87da296ac0a",
+    "entrantName": "Olly",
+    "email": "oliverswarbrick@hotmail.com",
+    "teamName": "Mr Worldwide",
+    "tieBreakerAnswers": [
+      "276",
+      "32"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Türkiye",
+      "Ivory Coast",
+      "Sweden",
+      "Egypt",
+      "France",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T15:53:44.730Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "f97a9e7f-424d-4d29-9318-a71751db6a72",
+    "entrantName": "Nick Jacques",
+    "email": "Nick.jacques@canaccord.com",
+    "teamName": "Its Coming Home FC",
+    "tieBreakerAnswers": [
+      "170",
+      "76"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Ivory Coast",
+      "Japan",
+      "New Zealand",
+      "Cape Verde",
+      "France",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-08T15:59:00.561Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "1c5d4eeb-eec9-41b2-8037-23f0227bb479",
+    "entrantName": "Lorraine Boucher",
+    "email": "Lorraine.Boucher@canaccord.com",
+    "teamName": "Jersey Beans",
+    "tieBreakerAnswers": [
+      "185",
+      "110"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Brazil",
+      "Sweden",
+      "New Zealand",
+      "Norway",
+      "Austria",
+      "England",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-08T17:35:30.377Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a12ba290-5541-44e8-978e-22448434f8f7",
+    "entrantName": "sandra Cardwell",
+    "email": "sandra.cardwell@canaccord.com",
+    "teamName": "Lyla",
+    "tieBreakerAnswers": [
+      "264",
+      "87"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Canada",
+      "Australia",
+      "Türkiye",
+      "Sweden",
+      "Cape Verde",
+      "Saudi Arabia",
+      "Panama"
+    ],
+    "submittedAt": "2026-06-08T17:35:42.058Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d5a35700-88f2-4970-883b-268888d6660a",
+    "entrantName": "Emma",
+    "email": "emma.queripel@canaccord.com",
+    "teamName": "Bruno over Rice",
+    "tieBreakerAnswers": [
+      "189",
+      "92"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Morocco",
+      "Sweden",
+      "Spain",
+      "France",
+      "Jordan",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T17:41:15.087Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "e527fed6-96c2-4f49-bf77-42394eed9bcd",
+    "entrantName": "Emma",
+    "email": "queripel_01@hotmail.com",
+    "teamName": "Just in case",
+    "tieBreakerAnswers": [
+      "201",
+      "79"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Haiti",
+      "Belgium",
+      "Spain",
+      "France",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T17:45:12.971Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "424cc660-6b81-4669-8c73-5561d64d5414",
+    "entrantName": "Maciej",
+    "email": "macierniak@gmail.com",
+    "teamName": "Offcider",
+    "tieBreakerAnswers": [
+      "175",
+      "105"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Türkiye",
+      "Curaçao",
+      "Iran",
+      "Uruguay",
+      "France",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T18:03:43.858Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "ed71db05-2817-4e8f-bcbd-9bed81c4c86a",
+    "entrantName": "Toby",
+    "email": "tobyallebon@gmail.com",
+    "teamName": "Tunnocks ekitecakes",
+    "tieBreakerAnswers": [
+      "262",
+      "73"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Ivory Coast",
+      "Ecuador",
+      "New Zealand",
+      "Spain",
+      "France",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T18:15:10.715Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "87ebcc4c-c62a-4dea-9e58-10400025a86b",
+    "entrantName": "Martin W",
+    "email": "martin.whitwam@gov.gg",
+    "teamName": "Uddersfield",
+    "tieBreakerAnswers": [
+      "145",
+      "77"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Egypt",
+      "Spain",
+      "Saudi Arabia",
+      "Argentina",
+      "Austria",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T19:25:26.354Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "f98396f6-2057-4253-b07b-017be6c34887",
+    "entrantName": "Stephi",
+    "email": "stephanie.whitwam@canaccord.com",
+    "teamName": "Come on REF!",
+    "tieBreakerAnswers": [
+      "180",
+      "82"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Morocco",
+      "Haiti",
+      "Germany",
+      "New Zealand",
+      "France",
+      "Norway"
+    ],
+    "submittedAt": "2026-06-08T19:31:31.402Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a79b21b1-c6b2-46a4-914b-8b2af8321e4c",
+    "entrantName": "Katie Rogers",
+    "email": "katie.rogers@apax.com",
+    "teamName": "Qatar 'Bove The Rest",
+    "tieBreakerAnswers": [
+      "308",
+      "76"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Morocco",
+      "Ivory Coast",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Argentina",
+      "DR Congo"
+    ],
+    "submittedAt": "2026-06-08T19:36:18.393Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bd75f4b1-0294-45d9-ba5d-f5b10d0408f3",
+    "entrantName": "Oliver Whitwam",
+    "email": "martin.whitwam@gov.gg",
+    "teamName": "GK KING!",
+    "tieBreakerAnswers": [
+      "197",
+      "82"
+    ],
+    "selectedTeams": [
+      "Morocco",
+      "Haiti",
+      "Sweden",
+      "Egypt",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Norway"
+    ],
+    "submittedAt": "2026-06-08T19:46:27.476Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4b7e490d-fe55-4cab-b80d-2a870900a15b",
+    "entrantName": "Steve",
+    "email": "Steveharvey26@gmail.com",
+    "teamName": "Ashton Gate Eight",
+    "tieBreakerAnswers": [
+      "188",
+      "78"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "United States",
+      "Sweden",
+      "Spain",
+      "France",
+      "Norway",
+      "Algeria",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T20:15:06.655Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "83ce7e7c-64cd-47ce-8825-c8554168bdcf",
+    "entrantName": "Julie Sebire",
+    "email": "julie.sebire@canaccord.com",
+    "teamName": "Haaland Globetrotters",
+    "tieBreakerAnswers": [
+      "194",
+      "78"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Bosnia and Herzegovina",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "Argentina",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-08T20:30:46.272Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "6c9b4d53-822f-4c04-a7a2-be8af63bbe72",
+    "entrantName": "Eilish Brenock",
+    "email": "Eilish.Brenock@canaccord.com",
+    "teamName": "The Ireland Team!",
+    "tieBreakerAnswers": [
+      "289",
+      "63"
+    ],
+    "selectedTeams": [
+      "Türkiye",
+      "Ivory Coast",
+      "Sweden",
+      "Tunisia",
+      "Spain",
+      "France",
+      "Norway",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T06:59:41.001Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b9c5bf8b-60cb-496f-9285-a55e9ba145c6",
+    "entrantName": "Donna",
+    "email": "donna.murphy@canaccord.com",
+    "teamName": "Smurfinators",
+    "tieBreakerAnswers": [
+      "177",
+      "71"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Haiti",
+      "Curaçao",
+      "Belgium",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-09T07:04:36.111Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "e0f03509-685a-4843-b3ce-047cb8b91436",
+    "entrantName": "Migs",
+    "email": "Miguel.DeFreitas@canaccord.com",
+    "teamName": "World United ex-US",
+    "tieBreakerAnswers": [
+      "204",
+      "72"
+    ],
+    "selectedTeams": [
+      "Scotland",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Norway",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T07:12:24.221Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "2576f892-7201-4117-811f-bedda4c8f7b0",
+    "entrantName": "Antoinette Smith",
+    "email": "antoinette.smith@canaccord.com",
+    "teamName": "Unlikely Lads",
+    "tieBreakerAnswers": [
+      "185",
+      "93"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Switzerland",
+      "Morocco",
+      "Türkiye",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "Jordan"
+    ],
+    "submittedAt": "2026-06-09T07:55:01.860Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a36a48a4-e253-4a7f-9229-2fb1d1357f4b",
+    "entrantName": "Nicola",
+    "email": "nicola.hoyland-birch@canaccord.com",
+    "teamName": "The Beautiful Game",
+    "tieBreakerAnswers": [
+      "280",
+      "112"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Qatar",
+      "Switzerland",
+      "Morocco",
+      "Japan",
+      "New Zealand",
+      "Portugal",
+      "Panama"
+    ],
+    "submittedAt": "2026-06-09T08:04:30.004Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "c78fac50-daaa-4903-aa8b-c9e1d2c4e54b",
+    "entrantName": "Sarah Tardif",
+    "email": "sarah.tardif@canaccord.com",
+    "teamName": "Football Fairy",
+    "tieBreakerAnswers": [
+      "122",
+      "120"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Canada",
+      "Scotland",
+      "United States",
+      "Australia",
+      "Japan",
+      "Egypt",
+      "England"
+    ],
+    "submittedAt": "2026-06-09T08:41:35.218Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9b28e82d-75e5-4af0-b3fb-d925eb4aaaaa",
+    "entrantName": "Brandon",
+    "email": "brandonbatchelor2@gmail.com",
+    "teamName": "Brandon XI",
+    "tieBreakerAnswers": [
+      "286",
+      "73"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Brazil",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T08:54:56.852Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "899a04a7-c2ac-43af-a369-f5ea6e23eae6",
+    "entrantName": "Chris",
+    "email": "chrislovesliverpool@gmail.com",
+    "teamName": "Poolforever",
+    "tieBreakerAnswers": [
+      "472",
+      "85"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Iraq",
+      "Jordan",
+      "Uzbekistan"
+    ],
+    "submittedAt": "2026-06-09T09:05:37.988Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "4db9b41e-ff8b-481c-b8d5-4f08d608a65b",
+    "entrantName": "Corey G",
+    "email": "Corey.Gallienne@canaccord.com",
+    "teamName": "The Elite Eight",
+    "tieBreakerAnswers": [
+      "172",
+      "88"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Brazil",
+      "Germany",
+      "New Zealand",
+      "Cape Verde",
+      "France",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T09:25:15.467Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "04538198-3980-41e2-8f3c-9deb3e57db53",
+    "entrantName": "Christina",
+    "email": "christina.sharples@canaccord.com",
+    "teamName": "No Kane, No Gain",
+    "tieBreakerAnswers": [
+      "278",
+      "91"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Scotland",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-09T10:10:27.404Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9629c325-3d68-4564-b228-2b6e17dffa47",
+    "entrantName": "Faz Patel",
+    "email": "fayaz.patel@canaccord.com",
+    "teamName": "Its Coming Home.....Again!!!",
+    "tieBreakerAnswers": [
+      "170",
+      "115"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Argentina",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T10:59:17.444Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "6481e9cc-867d-4016-b572-ea07cdfbbc58",
+    "entrantName": "Nigel",
+    "email": "nigel.mather@canaccord.com",
+    "teamName": "Nige's no hopes",
+    "tieBreakerAnswers": [
+      "161",
+      "51"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Switzerland",
+      "Sweden",
+      "Belgium",
+      "Spain",
+      "Jordan",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T12:00:50.387Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "000de0df-4869-4f3a-85a5-14e7b8a56b47",
+    "entrantName": "Pierre",
+    "email": "pierredelarue87@gmail.com",
+    "teamName": "Pierre's Prestigious Picks",
+    "tieBreakerAnswers": [
+      "215",
+      "87"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Scotland",
+      "Paraguay",
+      "Germany",
+      "Ivory Coast",
+      "Netherlands",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T13:55:01.221Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "e92031fe-93a4-4efc-862c-bb7de0d572c8",
+    "entrantName": "DJ",
+    "email": "djardo@gmail.com",
+    "teamName": "Daniel Jardo",
+    "tieBreakerAnswers": [
+      "152",
+      "77"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Curaçao",
+      "Sweden",
+      "New Zealand",
+      "Saudi Arabia",
+      "Argentina",
+      "Portugal",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-09T15:11:32.423Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b6e130ab-0dac-46de-aa7c-2978f0e929f7",
+    "entrantName": "Ciara",
+    "email": "ciaralihou@gmail.com",
+    "teamName": "The Yellow & Blues",
+    "tieBreakerAnswers": [
+      "245",
+      "86"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Curaçao",
+      "Ivory Coast",
+      "Japan",
+      "Saudi Arabia",
+      "France",
+      "Argentina",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T17:07:18.724Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "45f58c2e-1c5c-402f-a30d-fd16fbc02ada",
+    "entrantName": "Luke",
+    "email": "luke@pottingshed.com",
+    "teamName": "Shed Heads",
+    "tieBreakerAnswers": [
+      "290",
+      "76"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "United States",
+      "Curaçao",
+      "France",
+      "Norway",
+      "Algeria",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T18:25:50.996Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "259daa3f-26f6-453b-b491-12499c740be0",
+    "entrantName": "Evie May Falla",
+    "email": "Gsycassandra@yahoo.com",
+    "teamName": "Evie's Excellent Eight",
+    "tieBreakerAnswers": [
+      "168",
+      "64"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Germany",
+      "Sweden",
+      "New Zealand",
+      "Portugal",
+      "England",
+      "Croatia",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T20:16:51.604Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "927b9f3c-d434-4417-bc20-874726d3e3b2",
+    "entrantName": "Josh Falla",
+    "email": "Gsycassandra@yahoo.com",
+    "teamName": "Josh's Juggernauts",
+    "tieBreakerAnswers": [
+      "171",
+      "113"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "Austria",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-09T21:09:16.390Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "97fd101d-83e8-4680-a87b-c416dd6ea5c4",
+    "entrantName": "Joe Hollis",
+    "email": "Joe.Hollis@canaccord.com",
+    "teamName": "Sven should pick Darius",
+    "tieBreakerAnswers": [
+      "260",
+      "87"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Ecuador",
+      "Japan",
+      "Spain",
+      "Norway",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-09T21:17:21.171Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "c955dcad-8592-434e-9fe8-0abf6024474e",
+    "entrantName": "Tom H",
+    "email": "tom.humphries@canaccord.com",
+    "teamName": "Lets see how good AI is",
+    "tieBreakerAnswers": [
+      "280",
+      "109"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "United States",
+      "Australia",
+      "Türkiye",
+      "Ecuador",
+      "Norway",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-10T06:57:59.703Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "7c8a0f4d-6467-4787-a4eb-42fb98a226ef",
+    "entrantName": "Emma",
+    "email": "emma.lawrence@canaccord.com",
+    "teamName": "Major League Saka",
+    "tieBreakerAnswers": [
+      "181",
+      "76"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Sweden",
+      "Cape Verde",
+      "Argentina",
+      "Jordan",
+      "Portugal",
+      "England",
+      "Panama"
+    ],
+    "submittedAt": "2026-06-10T07:59:50.882Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "05b71f6c-eb53-4c95-aea2-a2059af969d4",
+    "entrantName": "Donald Forbes",
+    "email": "donald.forbes@canaccord.com",
+    "teamName": "Artful Dodger",
+    "tieBreakerAnswers": [
+      "150",
+      "105"
+    ],
+    "selectedTeams": [
+      "Brazil",
+      "Tunisia",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Croatia",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-10T08:45:41.176Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "0b9ada7d-1dd2-48ae-8a33-ceb33b33aef1",
+    "entrantName": "Bill Saunders",
+    "email": "sbill144@gmail.com",
+    "teamName": "Play up Pompey",
+    "tieBreakerAnswers": [
+      "184",
+      "68"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Switzerland",
+      "Ivory Coast",
+      "Sweden",
+      "Uruguay",
+      "Algeria",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-10T12:10:36.751Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "77268a2f-ae75-457b-b8e5-165e79511c05",
+    "entrantName": "ChrisL",
+    "email": "Chris.Longstaff@canaccord.com",
+    "teamName": "Ashamedly Terrible Picks",
+    "tieBreakerAnswers": [
+      "164",
+      "76"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Bosnia and Herzegovina",
+      "Scotland",
+      "Ivory Coast",
+      "Japan",
+      "Egypt",
+      "France",
+      "Algeria"
+    ],
+    "submittedAt": "2026-06-10T13:18:25.262Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a30a8719-f650-428d-a49a-669bc5e598d8",
+    "entrantName": "Matt",
+    "email": "matt.atkinson@canaccord.com",
+    "teamName": "Fully Invested",
+    "tieBreakerAnswers": [
+      "155",
+      "60"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Czechia",
+      "Türkiye",
+      "Ecuador",
+      "Sweden",
+      "Tunisia",
+      "Egypt",
+      "France"
+    ],
+    "submittedAt": "2026-06-10T15:42:14.025Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a4c17a78-d4d4-4195-b83d-593fdc84b699",
+    "entrantName": "Agri Jonroy",
+    "email": "agri.jonroy@canaccord.com",
+    "teamName": "Accrual World",
+    "tieBreakerAnswers": [
+      "165",
+      "116"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "Ivory Coast",
+      "Sweden",
+      "Iraq",
+      "Austria",
+      "Portugal",
+      "Croatia"
+    ],
+    "submittedAt": "2026-06-10T17:37:24.041Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "04cbd4a1-f625-4c0d-8204-bb216b52a0a3",
+    "entrantName": "Katie",
+    "email": "katiesnashall@icloud.com",
+    "teamName": "A Messi Game",
+    "tieBreakerAnswers": [
+      "134",
+      "67"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Czechia",
+      "Brazil",
+      "Paraguay",
+      "Sweden",
+      "Portugal",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-10T19:18:30.940Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "80caad8f-1301-4cd4-bd78-eb98fca476d2",
+    "entrantName": "Austin",
+    "email": "austin.warnes@canaccord.com",
+    "teamName": "World Warnes 3",
+    "tieBreakerAnswers": [
+      "180",
+      "83"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "Qatar",
+      "Scotland",
+      "Germany",
+      "Norway",
+      "Austria",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T07:40:06.812Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5ce21c2e-824d-4074-9e21-e7e3ad141250",
+    "entrantName": "Carla De Garis",
+    "email": "carla.degaris@canaccord.com",
+    "teamName": "The Silent Contenders",
+    "tieBreakerAnswers": [
+      "150",
+      "80"
+    ],
+    "selectedTeams": [
+      "Switzerland",
+      "Haiti",
+      "Paraguay",
+      "Germany",
+      "Japan",
+      "Sweden",
+      "Portugal",
+      "Uzbekistan"
+    ],
+    "submittedAt": "2026-06-11T08:06:06.195Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "e6b1d8f1-bc16-4095-87e1-cc452f35fd93",
+    "entrantName": "Andrea",
+    "email": "andrea.melia@canaccord.com",
+    "teamName": "Mac Allister Crowley",
+    "tieBreakerAnswers": [
+      "174",
+      "85"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "South Africa",
+      "Germany",
+      "Egypt",
+      "France",
+      "Norway",
+      "Algeria",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-11T10:15:28.606Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "6ea12375-0953-4c99-be82-4ff30dfebc54",
+    "entrantName": "Rob H",
+    "email": "Robin.Hilson@canaccord.com",
+    "teamName": "Keir Starmer's a....",
+    "tieBreakerAnswers": [
+      "280",
+      "82"
+    ],
+    "selectedTeams": [
+      "South Korea",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Türkiye",
+      "France",
+      "Norway",
+      "Austria",
+      "Jordan"
+    ],
+    "submittedAt": "2026-06-11T10:35:13.130Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "25401e30-0924-4d11-a5e3-1af4a9ff4b81",
+    "entrantName": "Fabian",
+    "email": "fabian.everitt@outlook.com",
+    "teamName": "Team Chat GPT",
+    "tieBreakerAnswers": [
+      "300",
+      "108"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "United States",
+      "Germany",
+      "Japan",
+      "Uruguay",
+      "Norway",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-11T11:06:20.211Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "bcf86fe1-0f3c-4b6a-aa6f-7a229e91c783",
+    "entrantName": "Archie Despres",
+    "email": "archiedespres@gmail.com",
+    "teamName": "Desi684",
+    "tieBreakerAnswers": [
+      "174",
+      "84"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Türkiye",
+      "Sweden",
+      "Spain",
+      "Cape Verde",
+      "Colombia",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T13:06:23.589Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "10c3345e-ca3a-4d35-9b13-6fbd6bfa4d59",
+    "entrantName": "Toby K",
+    "email": "toby.king@canaccord.com",
+    "teamName": "Goal Inspector",
+    "tieBreakerAnswers": [
+      "281",
+      "71"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Netherlands",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Austria"
+    ],
+    "submittedAt": "2026-06-11T14:42:37.120Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "d689f6af-2570-4f12-96a6-f3a8b86e424b",
+    "entrantName": "Linda Nicholas",
+    "email": "Linda.Nicholas@canaccord.com",
+    "teamName": "Lindy-Loo",
+    "tieBreakerAnswers": [
+      "270",
+      "125"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Brazil",
+      "Scotland",
+      "Germany",
+      "Curaçao",
+      "New Zealand",
+      "France",
+      "Argentina"
+    ],
+    "submittedAt": "2026-06-11T15:03:09.800Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "37515468-8b78-4e64-b2a3-3b4bcfe06c72",
+    "entrantName": "Alfie Surtees",
+    "email": "alfie.surtees@canaccord.com",
+    "teamName": "Alfie's 8",
+    "tieBreakerAnswers": [
+      "260",
+      "67"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Ivory Coast",
+      "Spain",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-11T15:34:55.667Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "9381130b-2bad-408e-8c0b-216a5707212f",
+    "entrantName": "Chloe & Helen",
+    "email": "chloe.gaudion@canaccord.com",
+    "teamName": "CG & HF",
+    "tieBreakerAnswers": [
+      "222",
+      "89"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Brazil",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "Jordan",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T15:42:08.439Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "b8dc75ee-cf5d-4781-832b-eb107e424c57",
+    "entrantName": "Kelly",
+    "email": "Kelly.ogier@canaccord.com",
+    "teamName": "That's Rubbish - But i'm gonna go for it!",
+    "tieBreakerAnswers": [
+      "286",
+      "76"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Haiti",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T15:43:56.958Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "a5abf39e-504b-4b5c-b0df-b9ae969dc5f0",
+    "entrantName": "Matthew Hart",
+    "email": "mahart2012@gmail.com",
+    "teamName": "Name of Team 2",
+    "tieBreakerAnswers": [
+      "205",
+      "10"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Bosnia and Herzegovina",
+      "Morocco",
+      "New Zealand",
+      "France",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-11T15:47:54.520Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "48292b54-13e4-4f1f-af2a-55892909bc2b",
+    "entrantName": "Jayne",
+    "email": "Jayne.Jackson@canaccord.com",
+    "teamName": "Gin and the Jaffa cakes",
+    "tieBreakerAnswers": [
+      "174",
+      "88"
+    ],
+    "selectedTeams": [
+      "Haiti",
+      "Germany",
+      "Curaçao",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T15:52:06.640Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "79546c1a-7534-473a-b69d-d4e6b70a8baf",
+    "entrantName": "Thomas",
+    "email": "rjhowlett@gmail.com",
+    "teamName": "The Owletts",
+    "tieBreakerAnswers": [
+      "164",
+      "15"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Curaçao",
+      "Tunisia",
+      "Cape Verde",
+      "Iraq",
+      "Portugal",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T16:22:12.360Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5dcaace0-7a4b-4985-8a5c-c5311869059a",
+    "entrantName": "Kate Howlett",
+    "email": "katehowlett83@gmail.com",
+    "teamName": "Clueless",
+    "tieBreakerAnswers": [
+      "194",
+      "63"
+    ],
+    "selectedTeams": [
+      "Qatar",
+      "Brazil",
+      "United States",
+      "Sweden",
+      "New Zealand",
+      "Cape Verde",
+      "France",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T16:54:25.346Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "0d1d1fd0-2164-4ef6-b57f-151f2217d2b2",
+    "entrantName": "Krissy",
+    "email": "kristin@vidamour.com",
+    "teamName": "Feetkeds",
+    "tieBreakerAnswers": [
+      "273",
+      "92"
+    ],
+    "selectedTeams": [
+      "Czechia",
+      "Canada",
+      "Brazil",
+      "Haiti",
+      "United States",
+      "Germany",
+      "Netherlands",
+      "New Zealand"
+    ],
+    "submittedAt": "2026-06-11T17:03:15.949Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "18ac5575-3aa6-4089-8b56-3978fbe7448e",
+    "entrantName": "Ansel visa",
+    "email": "ansel@vidamour.con",
+    "teamName": "Shot kickers",
+    "tieBreakerAnswers": [
+      "280",
+      "85"
+    ],
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Argentina",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-11T17:03:51.676Z",
+    "paid": true,
+    "removed": false
+  },
+  {
+    "id": "5a9d9e92-8480-4b33-b5d1-28fd8d545031",
+    "entrantName": "Alicja Luberda",
+    "email": "a_luberda@hotmail.com",
+    "teamName": "Alicja Luberda",
+    "tieBreakerAnswers": [
+      "165",
+      "78"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Canada",
+      "Scotland",
+      "Ecuador",
+      "Sweden",
+      "France",
+      "Norway",
+      "England"
+    ],
+    "submittedAt": "2026-06-11T17:50:56.214Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "6f1b4bce-ab29-4b98-b615-88fb4c061980",
+    "entrantName": "Evan",
+    "email": "chantelleboyd@suremail.gg",
+    "teamName": "Evan’s choice",
+    "tieBreakerAnswers": [
+      "268",
+      "68"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "South Africa",
+      "Canada",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Germany",
+      "New Zealand",
+      "Portugal"
+    ],
+    "submittedAt": "2026-06-11T17:52:02.626Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "f59d92d2-1887-4d16-b069-88773f46cd74",
+    "entrantName": "Chantelle Boyd",
+    "email": "chantelleboyd@suremail.gg",
+    "teamName": "Chantelle's choice",
+    "tieBreakerAnswers": [
+      "272",
+      "87"
+    ],
+    "selectedTeams": [
+      "Mexico",
+      "Switzerland",
+      "Brazil",
+      "New Zealand",
+      "Cape Verde",
+      "Senegal",
+      "Portugal",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-11T17:56:27.898Z",
+    "paid": false,
+    "removed": false
+  },
+  {
+    "id": "90d8f7c7-d143-4419-9d5b-35304cd3422a",
+    "entrantName": "James",
+    "email": "jameshamilton30@gmail.com",
+    "teamName": "Megsico",
+    "tieBreakerAnswers": [
+      "177",
+      "56"
+    ],
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Ghana"
+    ],
+    "submittedAt": "2026-06-11T18:40:08.957Z",
+    "paid": false,
     "removed": false
   }
 ]
