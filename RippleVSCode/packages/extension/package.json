@@ -1,0 +1,92 @@
+{
+  "name": "ripple-vscode",
+  "displayName": "Ripple",
+  "description": "Local-first notes, daily stream and automatic task extraction. Write naturally; Ripple organises in the background.",
+  "version": "0.1.0",
+  "publisher": "ripple",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": ["Notebooks", "Other"],
+  "main": "./dist/extension.js",
+  "activationEvents": ["workspaceContains:.ripple", "onStartupFinished"],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "ripple", "title": "Ripple", "icon": "media/ripple.svg" }
+      ]
+    },
+    "views": {
+      "ripple": [
+        { "id": "ripple.stream", "name": "Stream" },
+        { "id": "ripple.tasks", "name": "Tasks" },
+        { "id": "ripple.projects", "name": "Projects" },
+        { "id": "ripple.tags", "name": "Tags" },
+        { "id": "ripple.people", "name": "People" }
+      ]
+    },
+    "commands": [
+      { "command": "ripple.openToday", "title": "Ripple: Open Today" },
+      { "command": "ripple.quickCapture", "title": "Ripple: Quick Capture" },
+      { "command": "ripple.toggleTask", "title": "Ripple: Toggle Task" },
+      { "command": "ripple.search", "title": "Ripple: Search Notes" },
+      { "command": "ripple.newProject", "title": "Ripple: New Project Note" },
+      { "command": "ripple.addFutureNote", "title": "Ripple: Add Future Note" },
+      { "command": "ripple.rebuildIndex", "title": "Ripple: Rebuild Index" },
+      { "command": "ripple.completeTask", "title": "Complete Task", "icon": "$(check)" },
+      { "command": "ripple.refresh", "title": "Refresh", "icon": "$(refresh)" }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "ripple.completeTask",
+          "when": "viewItem == ripple.openTask",
+          "group": "inline"
+        }
+      ],
+      "view/title": [
+        { "command": "ripple.refresh", "when": "view =~ /^ripple\\./", "group": "navigation" }
+      ]
+    },
+    "keybindings": [
+      { "command": "ripple.quickCapture", "key": "ctrl+alt+r", "mac": "cmd+alt+r" },
+      { "command": "ripple.openToday", "key": "ctrl+alt+t", "mac": "cmd+alt+t" },
+      {
+        "command": "ripple.toggleTask",
+        "key": "ctrl+alt+enter",
+        "mac": "cmd+alt+enter",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      { "command": "ripple.search", "key": "ctrl+alt+f", "mac": "cmd+alt+f" }
+    ],
+    "configuration": {
+      "title": "Ripple",
+      "properties": {
+        "ripple.rootPath": {
+          "type": "string",
+          "default": ".ripple",
+          "description": "Folder (relative to the workspace, or absolute) where Ripple stores its markdown files."
+        },
+        "ripple.stream.template": {
+          "type": "string",
+          "default": "# {date}\n\n",
+          "description": "Template for new daily stream files. {date} is replaced with YYYY-MM-DD."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "package": "vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@ripple/core": "*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "esbuild": "^0.24.0"
+  }
+}
