@@ -260,10 +260,10 @@
   }
 
   function buildTables(teams, matches) {
-    // Initialise rows keyed by groupId
+    // Initialise rows keyed by countryName (matches reference teams by name)
     const rows = {};
     teams.forEach(t => {
-      rows[t.groupId] = {
+      rows[t.countryName] = {
         groupId:     t.groupId,
         group:       t.group,
         countryName: t.countryName,
