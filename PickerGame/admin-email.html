@@ -106,10 +106,26 @@
     }
     .audience-btn.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
     .audience-btn:hover:not(.active) { border-color: var(--mid); }
-    .recipient-count {
-      margin-top: 8px; font-size: 0.8rem; font-weight: 700; color: var(--muted);
+
+    /* Sync contacts row */
+    .sync-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin-top: 10px;
     }
-    .recipient-count.loaded { color: var(--green); }
+    .sync-counts { font-size: 0.8rem; color: var(--muted); flex: 1; line-height: 1.4; }
+    .sync-counts strong { color: var(--ink); }
+    .btn-sync {
+      padding: 6px 14px; border: 1.5px solid var(--line);
+      border-radius: 6px; background: var(--white); color: var(--navy);
+      font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .btn-sync:hover { border-color: var(--navy); }
+    .btn-sync:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
     .btn {
@@ -167,10 +183,10 @@
 <header class="topbar">
   <div class="topbar-inner">
     <h1>PickerGame 2026 — Send Update</h1>
-    <nav class="nav">
+    <nav class="nav" aria-label="Admin navigation">
       <a href="admin.html">Entries</a>
       <a href="admin-results.html">Results</a>
-      <a href="admin-blog.html">Blog</a>
+      <a href="admin-blog.html">Updates</a>
       <a href="admin-email.html" style="background:rgba(255,255,255,0.15);">Email</a>
     </nav>
   </div>
@@ -188,11 +204,14 @@
       <div class="field">
         <label>Audience</label>
         <div class="audience-row">
-          <button class="audience-btn active" data-audience="paid" id="audiencePaid">Paid only</button>
-          <button class="audience-btn" data-audience="pending" id="audiencePending">Pending only</button>
-          <button class="audience-btn" data-audience="all" id="audienceAll">All entrants</button>
+          <button class="audience-btn active" data-audience="all" id="audienceAll">Everyone</button>
+          <button class="audience-btn" data-audience="unpaid" id="audienceUnpaid">Unpaid</button>
         </div>
-        <div class="recipient-count" id="recipientCount">Loading recipient count…</div>
+        <div class="sync-row">
+          <div class="sync-counts" id="syncCounts">Loading counts…</div>
+          <button class="btn-sync" id="syncBtn">Sync contacts →</button>
+        </div>
+        <div class="field-hint">Sync pushes all current entries into Resend before sending.</div>
       </div>
 
       <div class="field">
@@ -225,7 +244,7 @@
       <div class="actions">
         <button class="btn btn-secondary" id="previewBtn">Preview email</button>
         <button class="btn btn-secondary" id="testBtn">Send test to jamie@vidamour.com</button>
-        <button class="btn btn-danger" id="sendBtn">Send to all recipients</button>
+        <button class="btn btn-danger" id="sendBtn">Send broadcast</button>
       </div>
 
       <div class="status-msg" id="statusMsg"></div>
@@ -247,7 +266,7 @@
 <!-- Confirm send dialog -->
 <div class="confirm-overlay" id="confirmOverlay">
   <div class="confirm-box">
-    <h3>Confirm send</h3>
+    <h3>Confirm broadcast</h3>
     <p id="confirmText"></p>
     <div class="confirm-actions">
       <button class="btn btn-secondary" id="confirmCancel">Cancel</button>
@@ -260,23 +279,24 @@
   const ADMIN_TOKEN = localStorage.getItem('pg_admin_token') || prompt('Admin token:');
   if (ADMIN_TOKEN) localStorage.setItem('pg_admin_token', ADMIN_TOKEN);
 
-  const subjectInput    = document.getElementById('subjectInput');
-  const headingInput    = document.getElementById('headingInput');
-  const bodyInput       = document.getElementById('bodyInput');
-  const leaderboardUrl  = document.getElementById('leaderboardUrl');
-  const recipientCount  = document.getElementById('recipientCount');
-  const previewBtn      = document.getElementById('previewBtn');
-  const testBtn         = document.getElementById('testBtn');
-  const sendBtn         = document.getElementById('sendBtn');
-  const statusMsg       = document.getElementById('statusMsg');
-  const previewWrap     = document.getElementById('previewWrap');
-  const confirmOverlay  = document.getElementById('confirmOverlay');
-  const confirmText     = document.getElementById('confirmText');
-  const confirmCancel   = document.getElementById('confirmCancel');
-  const confirmSend     = document.getElementById('confirmSend');
+  const subjectInput   = document.getElementById('subjectInput');
+  const headingInput   = document.getElementById('headingInput');
+  const bodyInput      = document.getElementById('bodyInput');
+  const leaderboardUrl = document.getElementById('leaderboardUrl');
+  const syncCounts     = document.getElementById('syncCounts');
+  const syncBtn        = document.getElementById('syncBtn');
+  const previewBtn     = document.getElementById('previewBtn');
+  const testBtn        = document.getElementById('testBtn');
+  const sendBtn        = document.getElementById('sendBtn');
+  const statusMsg      = document.getElementById('statusMsg');
+  const previewWrap    = document.getElementById('previewWrap');
+  const confirmOverlay = document.getElementById('confirmOverlay');
+  const confirmText    = document.getElementById('confirmText');
+  const confirmCancel  = document.getElementById('confirmCancel');
+  const confirmSend    = document.getElementById('confirmSend');
 
-  let audience = 'paid';
-  let counts = { all: 0, paid: 0, pending: 0 };
+  let audience = 'all';
+  let counts = { all: 0, unpaid: 0 };
   let pendingSend = null;
 
   // Audience toggle
@@ -290,11 +310,12 @@
   });
 
   function updateCountLabel() {
-    const n = audience === 'paid' ? counts.paid : audience === 'pending' ? counts.pending : counts.all;
-    recipientCount.textContent = counts.paid === 0 && counts.all === 0
-      ? 'Loading…'
-      : `${n} recipient${n !== 1 ? 's' : ''} will receive this email`;
-    recipientCount.className = 'recipient-count' + (n > 0 ? ' loaded' : '');
+    const n = audience === 'unpaid' ? counts.unpaid : counts.all;
+    if (counts.all === 0 && counts.unpaid === 0) {
+      syncCounts.innerHTML = 'Loading…';
+      return;
+    }
+    syncCounts.innerHTML = `<strong>${counts.all}</strong> total &nbsp;·&nbsp; <strong>${counts.unpaid}</strong> unpaid`;
   }
 
   async function loadCounts() {
@@ -304,11 +325,39 @@
       });
       if (res.ok) {
         const data = await res.json();
-        counts = { all: data.all, paid: data.paid, pending: data.pending };
+        counts = { all: data.all, unpaid: data.unpaid };
         updateCountLabel();
       }
     } catch (_) {}
   }
+
+  // Sync contacts to Resend
+  syncBtn.addEventListener('click', async () => {
+    syncBtn.disabled = true;
+    syncBtn.textContent = 'Syncing…';
+    showStatus('Syncing contacts to Resend audiences…', 'info');
+    try {
+      const res = await fetch('/api/admin/sync-contacts', {
+        method: 'POST',
+        headers: { 'X-Admin-Token': ADMIN_TOKEN },
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showStatus(
+          `✓ Synced ${data.total} contacts — ${data.allSynced} to Everyone, ${data.unpaidSynced} to Unpaid.` +
+          (data.errors?.length ? ` (${data.errors.length} error(s))` : ''),
+          'success',
+        );
+      } else {
+        showStatus('Sync error: ' + (data.errors?.[0] || 'Unknown error'), 'error');
+      }
+    } catch (e) {
+      showStatus('Network error: ' + e.message, 'error');
+    } finally {
+      syncBtn.disabled = false;
+      syncBtn.textContent = 'Sync contacts →';
+    }
+  });
 
   function getPayload(testOnly) {
     return {
@@ -356,10 +405,7 @@
     try {
       const res = await fetch('/api/admin/send-update', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Admin-Token': ADMIN_TOKEN,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Token': ADMIN_TOKEN },
         body: JSON.stringify(getPayload(true)),
       });
       const data = await res.json();
@@ -373,12 +419,11 @@
     }
   });
 
-  // Send to all — show confirm dialog
+  // Send broadcast — show confirm dialog
   sendBtn.addEventListener('click', () => {
     if (!validate()) return;
-    const n = audience === 'paid' ? counts.paid : counts.all;
-    const audienceLabel = audience === 'paid' ? 'paid entrants' : 'all entrants';
-    confirmText.textContent = `This will send "${subjectInput.value.trim()}" to ${n} ${audienceLabel}. This cannot be undone.`;
+    const audienceLabel = audience === 'unpaid' ? 'Unpaid entrants' : 'Everyone';
+    confirmText.textContent = `This will send "${subjectInput.value.trim()}" to the "${audienceLabel}" Resend audience. Make sure contacts are synced. This cannot be undone.`;
     pendingSend = getPayload(false);
     confirmOverlay.classList.add('show');
   });
@@ -393,21 +438,16 @@
     if (!pendingSend) return;
     sendBtn.disabled = true;
     sendBtn.textContent = 'Sending…';
-    showStatus('Sending…', 'info');
+    showStatus('Creating broadcast…', 'info');
     try {
       const res = await fetch('/api/admin/send-update', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Admin-Token': ADMIN_TOKEN,
-        },
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Token': ADMIN_TOKEN },
         body: JSON.stringify(pendingSend),
       });
       const data = await res.json();
       if (data.ok) {
-        showStatus(`✓ Sent to ${data.sent} recipient${data.sent !== 1 ? 's' : ''}.` +
-          (data.errors?.length ? ` (${data.errors.length} batch error(s) — check console)` : ''), 'success');
-        if (data.errors) console.error('Batch errors:', data.errors);
+        showStatus(`✓ Broadcast queued (ID: ${data.broadcastId}) — Resend is delivering to your audience.`, 'success');
       } else {
         showStatus('Error: ' + (data.errors?.[0] || 'Unknown error'), 'error');
       }
@@ -415,12 +455,11 @@
       showStatus('Network error: ' + e.message, 'error');
     } finally {
       sendBtn.disabled = false;
-      sendBtn.textContent = 'Send to all recipients';
+      sendBtn.textContent = 'Send broadcast';
       pendingSend = null;
     }
   });
 
-  // Close overlay on backdrop click
   confirmOverlay.addEventListener('click', e => {
     if (e.target === confirmOverlay) {
       confirmOverlay.classList.remove('show');
@@ -433,9 +472,14 @@
   }
 
   function buildPreviewHtml(heading, body, url) {
+    const BLOCK_RE = /^\s*<(table|thead|tbody|tr|ul|ol|li|div|h[1-6]|blockquote|pre|hr)/i;
     const bodyHtml = body
       .split(/\n{2,}/)
-      .map(p => `<p style="color:#555;line-height:1.7;margin:0 0 14px;">${p.trim().replace(/\n/g, '<br>')}</p>`)
+      .map(p => {
+        const t = p.trim();
+        if (BLOCK_RE.test(t)) return t;
+        return `<p style="color:#555;line-height:1.6;margin:0 0 8px;">${t.replace(/\n/g, '<br>')}</p>`;
+      })
       .join('\n');
 
     const btnHtml = url
@@ -464,9 +508,10 @@
         </td></tr>
         <tr><td style="background:#f9f9f9;padding:20px 40px;text-align:center;border-top:1px solid #e0e0e0;">
           <p style="margin:0;font-size:12px;color:#999;">
-            Questions? Reply to this email or contact
+            Questions? Reply or contact
             <a href="mailto:pickergame@vidamour.com" style="color:#1a3352;">pickergame@vidamour.com</a>
           </p>
+          <p style="margin:8px 0 0;font-size:11px;color:#bbb;"><a href="#" style="color:#bbb;">Unsubscribe</a></p>
         </td></tr>
       </table>
     </td></tr>

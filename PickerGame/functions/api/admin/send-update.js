@@ -2,10 +2,11 @@ import { jsonResponse, onRequestOptions, requireAdmin } from './_shared.js';
 
 export { onRequestOptions };
 
-const FROM = 'PickerGame <pickergame@vidamour.com>';
-const BATCH_SIZE = 90; // Resend batch limit is 100; stay under it
+const FROM        = 'PickerGame <pickergame@vidamour.com>';
+const RESEND_BASE = 'https://api.resend.com';
 
-function buildHtml(heading, body, leaderboardUrl) {
+// unsubscribeUrl: Resend placeholder for broadcasts, or null for test sends
+function buildHtml(heading, body, leaderboardUrl, unsubscribeUrl) {
   const BLOCK_RE = /^\s*<(table|thead|tbody|tr|ul|ol|li|div|h[1-6]|blockquote|pre|hr)/i;
   const bodyHtml = body
     .split(/\n{2,}/)
@@ -15,6 +16,12 @@ function buildHtml(heading, body, leaderboardUrl) {
       return `<p style="color:#555;line-height:1.6;margin:0 0 8px;">${t.replace(/\n/g, '<br>')}</p>`;
     })
     .join('\n');
+
+  const unsubHtml = unsubscribeUrl
+    ? `<p style="margin:8px 0 0;font-size:11px;color:#bbb;">
+         <a href="${unsubscribeUrl}" style="color:#bbb;">Unsubscribe</a>
+       </p>`
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -55,6 +62,7 @@ function buildHtml(heading, body, leaderboardUrl) {
               Questions? Reply to this email or contact
               <a href="mailto:pickergame@vidamour.com" style="color:#1a3352;">pickergame@vidamour.com</a>
             </p>
+            ${unsubHtml}
           </td>
         </tr>
 
@@ -69,113 +77,115 @@ export async function onRequestPost(context) {
   const authError = requireAdmin(context);
   if (authError) return authError;
 
-  if (!context.env.ENTRIES_DB) {
-    return jsonResponse({ ok: false, errors: ['Entry database is not configured.'] }, 500);
-  }
-  if (!context.env.RESEND_API_KEY) {
-    return jsonResponse({ ok: false, errors: ['RESEND_API_KEY is not configured.'] }, 500);
-  }
+  const { RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, RESEND_AUDIENCE_UNPAID_ID } = context.env;
+
+  if (!RESEND_API_KEY) return jsonResponse({ ok: false, errors: ['RESEND_API_KEY is not configured.'] }, 500);
 
   let subject, heading, body, leaderboardUrl, audience, testOnly;
   try {
     ({ subject, heading, body, leaderboardUrl, audience, testOnly } = await context.request.json());
     if (!subject?.trim()) throw new Error('subject is required.');
     if (!heading?.trim()) throw new Error('heading is required.');
-    if (!body?.trim()) throw new Error('body is required.');
+    if (!body?.trim())    throw new Error('body is required.');
   } catch (err) {
     return jsonResponse({ ok: false, errors: [err.message || 'Invalid request body.'] }, 400);
   }
 
-  // Fetch recipient emails from D1
-  const sql = audience === 'paid'
-    ? 'SELECT DISTINCT email, entrant_name FROM entries WHERE paid = 1 AND removed = 0 AND email IS NOT NULL AND email != \'\''
-    : audience === 'pending'
-      ? 'SELECT DISTINCT email, entrant_name FROM entries WHERE paid = 0 AND removed = 0 AND email IS NOT NULL AND email != \'\''
-      : 'SELECT DISTINCT email, entrant_name FROM entries WHERE removed = 0 AND email IS NOT NULL AND email != \'\'';
-
-  const { results } = await context.env.ENTRIES_DB.prepare(sql).all();
-
-  let recipients = results.map(r => ({ email: r.email, name: r.entrant_name })).filter(r => r.email);
-
+  // Test sends use the transactional API — no audience, no unsubscribe placeholder
   if (testOnly) {
-    recipients = [{ email: 'jamie@vidamour.com', name: 'Jamie (test)' }];
+    const html = buildHtml(heading.trim(), body.trim(), leaderboardUrl?.trim() || '', null);
+    const res = await fetch(`${RESEND_BASE}/emails`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from:    FROM,
+        to:      ['jamie@vidamour.com'],
+        subject: subject.trim(),
+        html,
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      return jsonResponse({ ok: false, errors: [`Resend error: ${detail}`] }, 502);
+    }
+    return jsonResponse({ ok: true, sent: 1 });
   }
 
-  if (!recipients.length) {
-    return jsonResponse({ ok: false, errors: ['No recipients found.'] }, 400);
-  }
+  // Broadcast send
+  if (!RESEND_AUDIENCE_ALL_ID)    return jsonResponse({ ok: false, errors: ['RESEND_AUDIENCE_ALL_ID is not configured.'] }, 500);
+  if (!RESEND_AUDIENCE_UNPAID_ID) return jsonResponse({ ok: false, errors: ['RESEND_AUDIENCE_UNPAID_ID is not configured.'] }, 500);
 
+  const audienceId = audience === 'unpaid' ? RESEND_AUDIENCE_UNPAID_ID : RESEND_AUDIENCE_ALL_ID;
   const html = buildHtml(
     heading.trim(),
     body.trim(),
     leaderboardUrl?.trim() || '',
+    '{{{ RESEND_UNSUBSCRIBE_URL }}}',
   );
 
-  // Send in batches via Resend batch API
-  let totalSent = 0;
-  const errors = [];
-
-  for (let i = 0; i < recipients.length; i += BATCH_SIZE) {
-    const batch = recipients.slice(i, i + BATCH_SIZE).map(r => ({
-      from: FROM,
-      to: [r.email],
-      subject: subject.trim(),
+  // 1. Create the broadcast
+  const createRes = await fetch(`${RESEND_BASE}/broadcasts`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name:        subject.trim(),
+      audience_id: audienceId,
+      from:        FROM,
+      subject:     subject.trim(),
       html,
-    }));
-
-    try {
-      const res = await fetch('https://api.resend.com/emails/batch', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${context.env.RESEND_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(batch),
-      });
-
-      if (!res.ok) {
-        const detail = await res.text();
-        errors.push(`Batch ${Math.floor(i / BATCH_SIZE) + 1} failed (HTTP ${res.status}): ${detail}`);
-      } else {
-        totalSent += batch.length;
-      }
-    } catch (err) {
-      errors.push(`Batch ${Math.floor(i / BATCH_SIZE) + 1} error: ${err.message}`);
-    }
-  }
-
-  if (errors.length && totalSent === 0) {
-    return jsonResponse({ ok: false, errors }, 502);
-  }
-
-  return jsonResponse({
-    ok: true,
-    sent: totalSent,
-    errors: errors.length ? errors : undefined,
+    }),
   });
+
+  if (!createRes.ok) {
+    const detail = await createRes.text();
+    return jsonResponse({ ok: false, errors: [`Failed to create broadcast: ${detail}`] }, 502);
+  }
+
+  const { id: broadcastId } = await createRes.json();
+
+  // 2. Send the broadcast immediately
+  const sendRes = await fetch(`${RESEND_BASE}/broadcasts/${broadcastId}/send`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({}),
+  });
+
+  if (!sendRes.ok) {
+    const detail = await sendRes.text();
+    return jsonResponse({
+      ok: false,
+      errors: [`Broadcast created (${broadcastId}) but send failed: ${detail}`],
+    }, 502);
+  }
+
+  return jsonResponse({ ok: true, broadcastId });
 }
 
 export async function onRequestGet(context) {
   const authError = requireAdmin(context);
   if (authError) return authError;
 
-  if (!context.env.ENTRIES_DB) {
-    return jsonResponse({ ok: false, errors: ['Entry database is not configured.'] }, 500);
-  }
+  if (!context.env.ENTRIES_DB) return jsonResponse({ ok: false, errors: ['ENTRIES_DB not set.'] }, 500);
 
-  const [allRes, paidRes, pendingRes] = await Promise.all([
+  const [allRes, unpaidRes] = await Promise.all([
     context.env.ENTRIES_DB
-      .prepare('SELECT COUNT(DISTINCT email) as n FROM entries WHERE removed = 0 AND email IS NOT NULL AND email != \'\'')
+      .prepare('SELECT COUNT(DISTINCT LOWER(email)) as n FROM entries WHERE removed = 0 AND email IS NOT NULL AND email != \'\'')
       .first(),
     context.env.ENTRIES_DB
-      .prepare('SELECT COUNT(DISTINCT email) as n FROM entries WHERE paid = 1 AND removed = 0 AND email IS NOT NULL AND email != \'\'')
-      .first(),
-    context.env.ENTRIES_DB
-      .prepare('SELECT COUNT(DISTINCT email) as n FROM entries WHERE paid = 0 AND removed = 0 AND email IS NOT NULL AND email != \'\'')
+      .prepare('SELECT COUNT(DISTINCT LOWER(email)) as n FROM entries WHERE paid = 0 AND removed = 0 AND email IS NOT NULL AND email != \'\'')
       .first(),
   ]);
 
-  return jsonResponse({ ok: true, all: allRes?.n ?? 0, paid: paidRes?.n ?? 0, pending: pendingRes?.n ?? 0 });
+  return jsonResponse({ ok: true, all: allRes?.n ?? 0, unpaid: unpaidRes?.n ?? 0 });
 }
 
 export async function onRequest() {
