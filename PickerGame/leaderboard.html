@@ -659,39 +659,57 @@
     .leaderboard-row.row-highlighted:hover,
     .leaderboard-row.row-pinned:hover { filter: brightness(0.97); }
 
+    /* ─── Controls row (toggle + stats) ────────────────────────*/
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+
     /* ─── Tournament stats bar ──────────────────────────────────*/
     #tournamentStatsBar {
-      display: flex;
+      display: none;
       flex-direction: column;
-      align-items: flex-end;
-      margin-bottom: 12px;
+      gap: 4px;
     }
     .stats-bar-header {
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
       color: var(--gray-500);
-      margin-bottom: 6px;
+      margin-bottom: 2px;
     }
-    .stats-pills {
+    .stats-row {
       display: flex;
       gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
     .stats-pill {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: 20px;
-      padding: 5px 12px;
-      font-size: 13px;
+      background: var(--gray-100);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 12px;
       color: var(--gray-600);
       display: flex;
       align-items: center;
       gap: 5px;
+      white-space: nowrap;
     }
-    .stats-pill strong { color: var(--gray-900); font-weight: 600; }
+    .stats-pill strong { color: var(--gray-900); font-weight: 700; }
+    @media (min-width: 769px) {
+      #tournamentStatsBar {
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius);
+        background: var(--white);
+        padding: 8px 14px;
+      }
+    }
+    @media (max-width: 768px) {
+      .controls-row { flex-direction: column; align-items: flex-start; }
+      #tournamentStatsBar { width: 100%; }
+    }
 
     /* ─── My picks mini panel ────────────────────────────────────*/
     .my-picks-panel {
@@ -748,13 +766,14 @@
     <p>Current standings — calculated from live match results.</p>
   </div>
 
-  <div class="view-toggle">
-    <button class="view-toggle-btn" id="scoreModeToggleBtn" type="button">Round scores</button>
-  </div>
-
   <div class="error-msg" id="errorMsg"></div>
 
-  <div id="tournamentStatsBar" style="display:none;"></div>
+  <div class="controls-row">
+    <div class="view-toggle">
+      <button class="view-toggle-btn" id="scoreModeToggleBtn" type="button">Round scores</button>
+    </div>
+    <div id="tournamentStatsBar"></div>
+  </div>
 
   <!-- Find by email -->
   <div class="find-bar">
@@ -1269,11 +1288,13 @@
     el.style.display = 'flex';
     el.innerHTML = `
       <div class="stats-bar-header">Tournament stats</div>
-      <div class="stats-pills">
+      <div class="stats-row">
         <div class="stats-pill">Games played <strong>${gamesPlayed}</strong></div>
         <div class="stats-pill">Total goals <strong>${totalGoals}</strong></div>
-        <div class="stats-pill">🟨 <strong>${totalYellowCards}</strong></div>
-        <div class="stats-pill">🟥 <strong>${totalRedCards}</strong></div>
+      </div>
+      <div class="stats-row">
+        <div class="stats-pill">🟨 Yellow cards <strong>${totalYellowCards}</strong></div>
+        <div class="stats-pill">🟥 Red cards <strong>${totalRedCards}</strong></div>
       </div>
     `;
   }

@@ -110,7 +110,7 @@
       <span class="ticker-sep">•</span>
     `).join('');
     track.innerHTML = items + items;
-    track.style.animation = `ticker-scroll ${Math.max(30, POINTS_ITEMS.length * 4)}s linear infinite`;
+    track.style.animation = `ticker-scroll ${Math.max(27, POINTS_ITEMS.length * 3.6)}s linear infinite`;
     return;
   }
 
@@ -260,5 +260,5 @@
   /* ── duplicate for seamless loop ─────────────────────────── */
   const html = items.join('');
   track.innerHTML = html + html;
-  track.style.animation = `ticker-scroll ${Math.max(20, items.length * 5)}s linear infinite`;
+  track.style.animation = `ticker-scroll ${Math.max(18, items.length * 4.5)}s linear infinite`;
 })();
