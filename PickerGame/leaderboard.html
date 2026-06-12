@@ -140,7 +140,7 @@
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: var(--shadow-md);
-      overflow: hidden;
+      overflow: clip;
     }
 
     .leaderboard-header {
@@ -155,6 +155,9 @@
       text-transform: uppercase;
       letter-spacing: 0;
       border-bottom: 2px solid var(--navy-light);
+      position: sticky;
+      top: 92px;
+      z-index: 10;
     }
     @media (max-width: 768px) {
       .leaderboard-header {
@@ -709,20 +712,6 @@
       align-items: center;
     }
     .my-picks-hint { font-weight: 400; opacity: 0.8; font-size: 0.7rem; }
-    .my-picks-row {
-      display: grid;
-      grid-template-columns: 24px minmax(0, 1fr) 60px;
-      gap: 10px;
-      padding: 7px 12px;
-      border-bottom: 1px solid #bfdbfe;
-      align-items: center;
-      font-size: 0.84rem;
-    }
-    .my-picks-row:last-child { border-bottom: none; }
-    .my-picks-rank { font-weight: 800; color: var(--navy); text-align: center; font-size: 0.78rem; }
-    .my-picks-name { font-weight: 800; color: var(--navy); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .my-picks-sub { font-size: 0.7rem; color: var(--gray-600); }
-    .my-picks-score { font-weight: 800; color: var(--green); text-align: right; }
   </style>
   <script src="ticker.js" defer></script>
   <script src="/nav-phase.js"></script>
@@ -934,9 +923,13 @@
 
   /* ─── Row fragment builders ───────────────────────────────── */
   function getSelectedTeamsHtml(selectedTeams, teamScores) {
+    const sorted = [...selectedTeams].sort((a, b) => {
+      const diff = (teamScores[b] || 0) - (teamScores[a] || 0);
+      return diff !== 0 ? diff : a.localeCompare(b);
+    });
     return `
       <div class="selected-teams">
-        ${selectedTeams.map(countryName => {
+        ${sorted.map(countryName => {
           const team = getTeamByCountryName(countryName);
           const eliminated = isTeamEliminated(countryName);
           const flagUrl = team ? team.flagUrl : '';
@@ -1006,10 +999,10 @@
     let yellowCards = 0, redCards = 0;
     if (allMatches) {
       allMatches.filter(m => m.played && m.result).forEach(m => {
-        if (m.homeTeam === team.groupId) {
+        if (m.homeTeam === countryName) {
           yellowCards += m.result.homeYellow || 0;
           redCards    += m.result.homeRed    || 0;
-        } else if (m.awayTeam === team.groupId) {
+        } else if (m.awayTeam === countryName) {
           yellowCards += m.result.awayYellow || 0;
           redCards    += m.result.awayRed    || 0;
         }
@@ -1233,18 +1226,31 @@
 
     myPicksPanel.hidden = false;
     myPicksRows.innerHTML = pinned.map(({ entry, rank }) => {
+      const entryIdx = leaderboard.indexOf(entry);
       let rankDisplay = rank;
       if (rank === 1) rankDisplay = '🥇';
       else if (rank === 2) rankDisplay = '🥈';
       else if (rank === 3) rankDisplay = '🥉';
       return `
-        <div class="my-picks-row">
-          <div class="my-picks-rank">${rankDisplay}</div>
-          <div>
-            <div class="my-picks-name">${escapeHtml(entry.teamName)}</div>
-            <div class="my-picks-sub">${escapeHtml(entry.entrantName)}</div>
+        <div class="leaderboard-row row-pinned" data-team-name="${escapeHtml(entry.teamName)}">
+          <div class="rank" style="display:flex;flex-direction:column;align-items:center;gap:1px;">
+            <button class="star-btn pinned"
+                    data-team="${escapeHtml(entry.teamName)}"
+                    title="Unpin">📌</button>
+            ${rankDisplay}
           </div>
-          <div class="my-picks-score">${entry.totalScore} pts</div>
+          <div class="player-info">
+            <div class="player-name">${escapeHtml(entry.teamName)}</div>
+            <div class="team-name">${escapeHtml(entry.entrantName)}</div>
+          </div>
+          ${scoreDisplayMode === 'countries'
+            ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
+            : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
+          <div class="team-count">${entry.teamsRemaining}/${entry.selectedTeams.length}</div>
+          <div class="score-col">
+            <span>${entry.totalScore}</span>
+            ${getDeltaHtml(entry)}
+          </div>
         </div>
       `;
     }).join('');
@@ -1287,7 +1293,7 @@
     const picksLabel = scoreDisplayMode === 'countries' ? 'Picks' : 'Rounds';
     const filterHtml = scoreDisplayMode === 'countries' ? `
       <input class="picks-filter" id="picksFilterInput"
-             placeholder="filter by country…"
+             placeholder="filter by country, comma for multiple…"
              value="${escapeHtml(picksFilter)}" />
     ` : '';
     headerEl.innerHTML = `
@@ -1331,11 +1337,13 @@
 
     let filtered = getFilteredLeaderboard();
     if (scoreDisplayMode === 'countries' && picksFilter) {
-      const q = picksFilter.toLowerCase();
+      const terms = picksFilter.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
       filtered = filtered.filter(entry =>
-        entry.selectedTeams.some(name =>
-          name.toLowerCase().includes(q) ||
-          getTeamAbbreviation(name).toLowerCase().startsWith(q)
+        terms.every(q =>
+          entry.selectedTeams.some(name =>
+            name.toLowerCase().includes(q) ||
+            getTeamAbbreviation(name).toLowerCase().startsWith(q)
+          )
         )
       );
     }
@@ -1393,6 +1401,7 @@
 
   /* ─── Chip click event delegation ────────────────────────── */
   leaderboardEl.addEventListener('click', handleChipClick);
+  myPicksRows.addEventListener('click', handleChipClick);
 
   function handleChipClick(e) {
     if (e.target.closest('.expansion-close')) return;
