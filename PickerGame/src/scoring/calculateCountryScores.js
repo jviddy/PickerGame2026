@@ -195,7 +195,7 @@ export function calculateCountryScores(settings, teams, matches, results) {
     });
 
     matches.forEach((match) => {
-      const isTeamMatch = match.homeTeam === team.groupId || match.awayTeam === team.groupId;
+      const isTeamMatch = match.homeTeam === team.countryName || match.awayTeam === team.countryName;
       if (!isTeamMatch) return;
 
       const result = getResultById(results, match.matchId);
