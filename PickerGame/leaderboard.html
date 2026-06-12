@@ -156,7 +156,7 @@
       letter-spacing: 0;
       border-bottom: 2px solid var(--navy-light);
       position: sticky;
-      top: 92px;
+      top: calc(92px + var(--controls-height, 0px));
       z-index: 10;
     }
     @media (max-width: 768px) {
@@ -664,8 +664,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
       gap: 12px;
+      margin-bottom: 0;
+    }
+    @media (min-width: 769px) {
+      .controls-row {
+        position: sticky;
+        top: 92px;
+        z-index: 9;
+        background: var(--gray-100);
+        padding: 8px 0;
+        border-bottom: 1px solid var(--gray-200);
+        margin-bottom: 0;
+      }
     }
 
     /* ─── Tournament stats bar ──────────────────────────────────*/
@@ -1482,6 +1493,22 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeExpansion();
   });
+
+  /* ─── Sticky controls-row height tracker ─────────────────── */
+  (function () {
+    const row = document.querySelector('.controls-row');
+    if (!row || !window.ResizeObserver) return;
+    function sync() {
+      if (window.innerWidth >= 769) {
+        document.documentElement.style.setProperty('--controls-height', row.offsetHeight + 'px');
+      } else {
+        document.documentElement.style.setProperty('--controls-height', '0px');
+      }
+    }
+    new ResizeObserver(sync).observe(row);
+    window.addEventListener('resize', sync);
+    sync();
+  })();
 
   /* ─── Init ────────────────────────────────────────────────── */
   async function init() {
