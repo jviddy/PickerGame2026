@@ -81,8 +81,27 @@ Then open `packages/extension` in VS Code and press F5, or install the vsix
 ## Known issues / TODO next session
 
 - Create the standalone `RippleVSCode` repo and migrate this directory into it.
-- Run the integration suite (`xvfb-run -a node test/runTest.mjs` from
-  `packages/extension`) in an environment that can download VS Code; wire up CI.
+  Re-confirmed 2026-06-12 21:40 UTC: still impossible from the cloud session
+  (repo creation 403; VS Code download host blocked). Do it locally:
+
+  ```bash
+  # one-time, on a machine with git + a GitHub account
+  git clone --branch claude/vscode-note-todo-plugin-n8iqyg \
+      https://github.com/jviddy/PickerGame2026.git ripple-src
+  gh repo create jviddy/RippleVSCode --private   # or create at github.com/new
+  git clone https://github.com/jviddy/RippleVSCode.git
+  cp -R ripple-src/RippleVSCode/. RippleVSCode/
+  cd RippleVSCode && git add -A && git commit -m "Import Ripple from PickerGame2026" && git push
+  ```
+
+- Run the integration suite locally (blocked in the sandbox by network policy):
+
+  ```bash
+  cd RippleVSCode && npm install
+  npm test                                  # 24 core unit tests
+  npm run test:integration -w ripple-vscode # downloads VS Code, runs smoke suite
+  ```
+
 - Phase 4 remainder: editor decorations (#tag/@person/^date highlights, dim done
   tasks), `#`/`@` completions from the index, hovers, go-to-definition.
 - Phase 5: code-comment scanner (design §4.2 — line-oriented comment scan, `source:
