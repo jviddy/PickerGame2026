@@ -643,11 +643,11 @@
     /* ─── Star button ────────────────────────────────────────────*/
     .star-btn {
       background: none; border: none; cursor: pointer;
-      color: var(--gray-200); font-size: 0.95rem; padding: 0;
-      line-height: 1; transition: color 0.12s, transform 0.1s;
+      font-size: 0.85rem; padding: 0; opacity: 0.2;
+      line-height: 1; transition: opacity 0.12s, transform 0.1s;
     }
-    .star-btn:hover { color: #f59e0b; transform: scale(1.2); }
-    .star-btn.pinned { color: #f59e0b; }
+    .star-btn:hover { opacity: 0.7; transform: scale(1.2); }
+    .star-btn.pinned { opacity: 1; }
 
     /* ─── Row highlight states ───────────────────────────────────*/
     .leaderboard-row.row-highlighted { background: #fffbeb !important; box-shadow: inset 3px 0 0 #f59e0b; }
@@ -782,7 +782,7 @@
   <div class="my-picks-panel" id="myPicksPanel" hidden>
     <div class="my-picks-header">
       <span>⭐ My picks</span>
-      <span class="my-picks-hint">click ★ on any row to pin it</span>
+      <span class="my-picks-hint">click 📌 on any row to pin it</span>
     </div>
     <div id="myPicksRows"></div>
   </div>
@@ -1360,7 +1360,7 @@
           <div class="rank ${rankClass}" style="display:flex;flex-direction:column;align-items:center;gap:1px;">
             <button class="star-btn${pin ? ' pinned' : ''}"
                     data-team="${escapeHtml(entry.teamName)}"
-                    title="${pin ? 'Unpin' : 'Pin to My picks'}">★</button>
+                    title="${pin ? 'Unpin' : 'Pin to My picks'}">📌</button>
             ${rankEmoji}
           </div>
           <div class="player-info">
