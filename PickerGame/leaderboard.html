@@ -659,22 +659,36 @@
     /* ─── Tournament stats bar ──────────────────────────────────*/
     #tournamentStatsBar {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-end;
       margin-bottom: 12px;
+    }
+    .stats-bar-header {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gray-500);
+      margin-bottom: 6px;
+    }
+    .stats-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
     .stats-pill {
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: 20px;
-      padding: 6px 14px;
+      padding: 5px 12px;
       font-size: 13px;
       color: var(--gray-600);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
-    .stats-pill strong { color: var(--gray-900); font-size: 15px; }
+    .stats-pill strong { color: var(--gray-900); font-weight: 600; }
 
     /* ─── My picks mini panel ────────────────────────────────────*/
     .my-picks-panel {
@@ -751,6 +765,8 @@
 
   <div class="error-msg" id="errorMsg"></div>
 
+  <div id="tournamentStatsBar" style="display:none;"></div>
+
   <!-- Find by email -->
   <div class="find-bar">
     <span class="find-icon">🔍</span>
@@ -770,8 +786,6 @@
     </div>
     <div id="myPicksRows"></div>
   </div>
-
-  <div id="tournamentStatsBar" style="display:none;"></div>
 
   <div class="leaderboard" id="leaderboard">
     <div class="empty-state">
@@ -1244,10 +1258,13 @@
     if (gamesPlayed === 0) { el.style.display = 'none'; return; }
     el.style.display = 'flex';
     el.innerHTML = `
-      <div class="stats-pill">⚽ Goals <strong>${totalGoals}</strong></div>
-      <div class="stats-pill">🎮 Games <strong>${gamesPlayed}</strong></div>
-      <div class="stats-pill">🟨 Yellow cards <strong>${totalYellowCards}</strong></div>
-      <div class="stats-pill">🟥 Red cards <strong>${totalRedCards}</strong></div>
+      <div class="stats-bar-header">Tournament stats</div>
+      <div class="stats-pills">
+        <div class="stats-pill">Games played <strong>${gamesPlayed}</strong></div>
+        <div class="stats-pill">Total goals <strong>${totalGoals}</strong></div>
+        <div class="stats-pill">🟨 <strong>${totalYellowCards}</strong></div>
+        <div class="stats-pill">🟥 <strong>${totalRedCards}</strong></div>
+      </div>
     `;
   }
 
