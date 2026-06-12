@@ -760,7 +760,7 @@
   <div class="find-bar">
     <span class="find-icon">🔍</span>
     <input type="text" class="find-input" id="emailFindInput"
-           placeholder="Search by email or team name…"
+           placeholder="Search by name, team or email…"
            autocomplete="off" />
     <span class="find-status" id="findStatus"></span>
     <button class="find-clear" id="findClear" title="Clear" hidden>✕</button>
@@ -1178,7 +1178,9 @@
     } else {
       emailMatchTeams = new Set();
       const q = raw.toLowerCase().trim();
-      const count = leaderboard.filter(e => e.teamName.toLowerCase().includes(q)).length;
+      const count = leaderboard.filter(e =>
+        e.teamName.toLowerCase().includes(q) || e.entrantName.toLowerCase().includes(q)
+      ).length;
       findStatus.textContent = count ? `${count} ${count === 1 ? 'match' : 'matches'}` : 'No matches';
       findStatus.className = count ? 'find-status found' : 'find-status notfound';
     }
@@ -1189,7 +1191,9 @@
     const q = searchFilter.trim().toLowerCase();
     if (!q) return leaderboard;
     if (searchFilter.includes('@')) return leaderboard.filter(e => emailMatchTeams.has(e.teamName));
-    return leaderboard.filter(e => e.teamName.toLowerCase().includes(q));
+    return leaderboard.filter(e =>
+      e.teamName.toLowerCase().includes(q) || e.entrantName.toLowerCase().includes(q)
+    );
   }
 
   function savePins() {
