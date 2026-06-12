@@ -28,12 +28,12 @@ const indexHtml = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="0; url=entry.html" />
+  <meta http-equiv="refresh" content="0; url=leaderboard.html" />
   <title>PickerGame 2026</title>
-  <script>window.location.replace('entry.html');</script>
+  <script>window.location.replace('leaderboard.html');</script>
 </head>
 <body>
-  <p><a href="entry.html">Continue to PickerGame 2026</a></p>
+  <p><a href="leaderboard.html">Continue to PickerGame 2026</a></p>
 </body>
 </html>
 `;
