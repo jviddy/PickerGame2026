@@ -134,10 +134,10 @@ export async function onRequestPost(context) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name:        subject.trim(),
-      audience_id: audienceId,
-      from:        FROM,
-      subject:     subject.trim(),
+      name:       subject.trim(),
+      segment_id: audienceId,
+      from:       FROM,
+      subject:    subject.trim(),
       html,
     }),
   });

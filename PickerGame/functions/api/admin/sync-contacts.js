@@ -4,8 +4,8 @@ export { onRequestOptions };
 
 const RESEND_BASE = 'https://api.resend.com';
 
-async function upsertContact(apiKey, audienceId, { email, firstName, lastName, unsubscribed = false }) {
-  const res = await fetch(`${RESEND_BASE}/audiences/${audienceId}/contacts`, {
+async function upsertContact(apiKey, segmentId, { email, firstName, lastName, unsubscribed = false }) {
+  const res = await fetch(`${RESEND_BASE}/contacts`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -13,9 +13,10 @@ async function upsertContact(apiKey, audienceId, { email, firstName, lastName, u
     },
     body: JSON.stringify({
       email,
-      first_name: firstName,
-      last_name: lastName,
+      first_name:   firstName,
+      last_name:    lastName,
       unsubscribed,
+      segments:     [segmentId],
     }),
   });
   return res.ok;
