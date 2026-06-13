@@ -403,7 +403,7 @@
     if (!validate()) return;
     testBtn.disabled = true;
     testBtn.textContent = 'Sending test…';
-    showStatus('Sending test email to jamie@vidamour.com…', 'info');
+    showStatus('Sending test broadcast to test segment…', 'info');
     try {
       const res = await fetch('/api/admin/send-update', {
         method: 'POST',
@@ -411,7 +411,7 @@
         body: JSON.stringify(getPayload(true)),
       });
       const data = await res.json();
-      if (data.ok) showStatus('Test email sent to jamie@vidamour.com — check your inbox.', 'success');
+      if (data.ok) showStatus(`Test broadcast sent (${data.broadcastId}) — check your inbox.`, 'success');
       else showStatus('Error: ' + (data.errors?.[0] || 'Unknown error'), 'error');
     } catch (e) {
       showStatus('Network error: ' + e.message, 'error');

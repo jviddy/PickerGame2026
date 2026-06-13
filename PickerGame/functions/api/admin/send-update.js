@@ -77,7 +77,7 @@ export async function onRequestPost(context) {
   const authError = requireAdmin(context);
   if (authError) return authError;
 
-  const { RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, RESEND_AUDIENCE_UNPAID_ID } = context.env;
+  const { RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, RESEND_AUDIENCE_UNPAID_ID, RESEND_AUDIENCE_TEST } = context.env;
 
   if (!RESEND_API_KEY) return jsonResponse({ ok: false, errors: ['RESEND_API_KEY is not configured.'] }, 500);
 
@@ -91,27 +91,36 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: false, errors: [err.message || 'Invalid request body.'] }, 400);
   }
 
-  // Test sends use the transactional API — no audience, no unsubscribe placeholder
+  // Test sends use the broadcast API against the test segment
   if (testOnly) {
-    const html = buildHtml(heading.trim(), body.trim(), leaderboardUrl?.trim() || '', null);
-    const res = await fetch(`${RESEND_BASE}/emails`, {
+    if (!RESEND_AUDIENCE_TEST) return jsonResponse({ ok: false, errors: ['RESEND_AUDIENCE_TEST is not configured.'] }, 500);
+    const html = buildHtml(heading.trim(), body.trim(), leaderboardUrl?.trim() || '', '{{{ RESEND_UNSUBSCRIBE_URL }}}');
+    const createRes = await fetch(`${RESEND_BASE}/broadcasts`, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from:    FROM,
-        to:      ['jamie@vidamour.com'],
-        subject: subject.trim(),
+        name:       `[TEST] ${subject.trim()}`,
+        segment_id: RESEND_AUDIENCE_TEST,
+        from:       FROM,
+        subject:    `[TEST] ${subject.trim()}`,
         html,
       }),
     });
-    if (!res.ok) {
-      const detail = await res.text();
-      return jsonResponse({ ok: false, errors: [`Resend error: ${detail}`] }, 502);
+    if (!createRes.ok) {
+      const detail = await createRes.text();
+      return jsonResponse({ ok: false, errors: [`Failed to create test broadcast: ${detail}`] }, 502);
     }
-    return jsonResponse({ ok: true, sent: 1 });
+    const { id: broadcastId } = await createRes.json();
+    const sendRes = await fetch(`${RESEND_BASE}/broadcasts/${broadcastId}/send`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+    });
+    if (!sendRes.ok) {
+      const detail = await sendRes.text();
+      return jsonResponse({ ok: false, errors: [`Test broadcast created (${broadcastId}) but send failed: ${detail}`] }, 502);
+    }
+    return jsonResponse({ ok: true, broadcastId, test: true });
   }
 
   // Broadcast send
