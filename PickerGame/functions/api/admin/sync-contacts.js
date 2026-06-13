@@ -16,7 +16,7 @@ async function upsertContact(apiKey, segmentId, { email, firstName, lastName, un
       first_name:   firstName,
       last_name:    lastName,
       unsubscribed,
-      segments:     [segmentId],
+      segments:     [{ id: segmentId }],
     }),
   });
   return res.ok;
@@ -39,30 +39,32 @@ export async function onRequestPost(context) {
     )
     .all();
 
-  let allSynced = 0;
-  let unpaidSynced = 0;
-  const errors = [];
-
-  for (const entry of results) {
+  const tasks = results.map(entry => {
     const parts = (entry.entrant_name || '').trim().split(/\s+/);
     const base = {
       email:     entry.email,
       firstName: parts[0] || '',
       lastName:  parts.slice(1).join(' ') || '',
     };
+    return [
+      upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, base)
+        .then(ok => ({ list: 'all',    ok, email: entry.email }))
+        .catch(() => ({ list: 'all',   ok: false, email: entry.email })),
+      upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_UNPAID_ID, { ...base, unsubscribed: Boolean(entry.paid) })
+        .then(ok => ({ list: 'unpaid', ok, email: entry.email }))
+        .catch(() => ({ list: 'unpaid', ok: false, email: entry.email })),
+    ];
+  }).flat();
 
-    // All-entrants audience: everyone active
-    const allOk = await upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, base);
-    if (allOk) allSynced++;
-    else errors.push(`all: ${entry.email}`);
+  const settled = await Promise.all(tasks);
 
-    // Unpaid audience: active if unpaid, suppressed if paid
-    const unpaidOk = await upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_UNPAID_ID, {
-      ...base,
-      unsubscribed: Boolean(entry.paid),
-    });
-    if (unpaidOk) unpaidSynced++;
-    else errors.push(`unpaid: ${entry.email}`);
+  let allSynced = 0;
+  let unpaidSynced = 0;
+  const errors = [];
+  for (const r of settled) {
+    if (r.list === 'all'    && r.ok) allSynced++;
+    if (r.list === 'unpaid' && r.ok) unpaidSynced++;
+    if (!r.ok) errors.push(`${r.list}: ${r.email}`);
   }
 
   return jsonResponse({
