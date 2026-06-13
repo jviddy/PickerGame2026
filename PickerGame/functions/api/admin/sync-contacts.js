@@ -19,7 +19,9 @@ async function upsertContact(apiKey, segmentId, { email, firstName, lastName, un
       segments:     [{ id: segmentId }],
     }),
   });
-  return res.ok;
+  if (res.ok) return { ok: true };
+  const text = await res.text();
+  return { ok: false, error: `${res.status}: ${text}` };
 }
 
 export async function onRequestPost(context) {
@@ -48,11 +50,11 @@ export async function onRequestPost(context) {
     };
     return [
       upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, base)
-        .then(ok => ({ list: 'all',    ok, email: entry.email }))
-        .catch(() => ({ list: 'all',   ok: false, email: entry.email })),
+        .then(r => ({ list: 'all',    ...r, email: entry.email }))
+        .catch(e => ({ list: 'all',   ok: false, error: e.message, email: entry.email })),
       upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_UNPAID_ID, { ...base, unsubscribed: Boolean(entry.paid) })
-        .then(ok => ({ list: 'unpaid', ok, email: entry.email }))
-        .catch(() => ({ list: 'unpaid', ok: false, email: entry.email })),
+        .then(r => ({ list: 'unpaid', ...r, email: entry.email }))
+        .catch(e => ({ list: 'unpaid', ok: false, error: e.message, email: entry.email })),
     ];
   }).flat();
 
@@ -64,7 +66,7 @@ export async function onRequestPost(context) {
   for (const r of settled) {
     if (r.list === 'all'    && r.ok) allSynced++;
     if (r.list === 'unpaid' && r.ok) unpaidSynced++;
-    if (!r.ok) errors.push(`${r.list}: ${r.email}`);
+    if (!r.ok) errors.push(`${r.list}:${r.email} — ${r.error || 'unknown'}`);
   }
 
   return jsonResponse({
