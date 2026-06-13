@@ -4,7 +4,7 @@ export { onRequestOptions };
 
 const RESEND_BASE = 'https://api.resend.com';
 
-async function upsertContact(apiKey, segmentId, { email, firstName, lastName, unsubscribed = false }) {
+async function upsertContact(apiKey, { email, firstName, lastName, segments }) {
   const res = await fetch(`${RESEND_BASE}/contacts`, {
     method: 'POST',
     headers: {
@@ -13,15 +13,28 @@ async function upsertContact(apiKey, segmentId, { email, firstName, lastName, un
     },
     body: JSON.stringify({
       email,
-      first_name:   firstName,
-      last_name:    lastName,
-      unsubscribed,
-      segments:     [{ id: segmentId }],
+      first_name: firstName,
+      last_name:  lastName,
+      segments,
     }),
   });
   if (res.ok) return { ok: true };
   const text = await res.text();
   return { ok: false, error: `${res.status}: ${text}` };
+}
+
+async function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+async function rateLimit(tasks, perSecond = 4) {
+  const results = [];
+  const delay = Math.ceil(1000 / perSecond);
+  for (let i = 0; i < tasks.length; i++) {
+    results.push(await tasks[i]());
+    if (i < tasks.length - 1) await sleep(delay);
+  }
+  return results;
 }
 
 export async function onRequestPost(context) {
@@ -41,32 +54,30 @@ export async function onRequestPost(context) {
     )
     .all();
 
-  const tasks = results.map(entry => {
+  // One API call per contact — include unpaid segment ID only for unpaid entries
+  const tasks = results.map(entry => () => {
     const parts = (entry.entrant_name || '').trim().split(/\s+/);
-    const base = {
+    const segments = [{ id: RESEND_AUDIENCE_ALL_ID }];
+    if (!entry.paid) segments.push({ id: RESEND_AUDIENCE_UNPAID_ID });
+    return upsertContact(RESEND_API_KEY, {
       email:     entry.email,
       firstName: parts[0] || '',
       lastName:  parts.slice(1).join(' ') || '',
-    };
-    return [
-      upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_ALL_ID, base)
-        .then(r => ({ list: 'all',    ...r, email: entry.email }))
-        .catch(e => ({ list: 'all',   ok: false, error: e.message, email: entry.email })),
-      upsertContact(RESEND_API_KEY, RESEND_AUDIENCE_UNPAID_ID, { ...base, unsubscribed: Boolean(entry.paid) })
-        .then(r => ({ list: 'unpaid', ...r, email: entry.email }))
-        .catch(e => ({ list: 'unpaid', ok: false, error: e.message, email: entry.email })),
-    ];
-  }).flat();
+      segments,
+    })
+      .then(r => ({ ...r, email: entry.email, unpaid: !entry.paid }))
+      .catch(e => ({ ok: false, error: e.message, email: entry.email, unpaid: !entry.paid }));
+  });
 
-  const settled = await Promise.all(tasks);
+  // 4 requests/sec to stay under Resend's 5/sec rate limit
+  const settled = await rateLimit(tasks, 4);
 
   let allSynced = 0;
   let unpaidSynced = 0;
   const errors = [];
   for (const r of settled) {
-    if (r.list === 'all'    && r.ok) allSynced++;
-    if (r.list === 'unpaid' && r.ok) unpaidSynced++;
-    if (!r.ok) errors.push(`${r.list}:${r.email} — ${r.error || 'unknown'}`);
+    if (r.ok) { allSynced++; if (r.unpaid) unpaidSynced++; }
+    else errors.push(`${r.email} — ${r.error || 'unknown'}`);
   }
 
   return jsonResponse({
