@@ -9,6 +9,7 @@
     "entries:export": "node scripts/exportEntriesFromD1.js",
     "entries:refresh": "npm run entries:export && npm run build:static",
     "entries:publish": "npm run entries:export && npm run deploy:cloudflare",
+    "sync:contacts": "node scripts/syncResendContacts.js",
     "build:score": "node scripts/buildScores.js",
     "build:static": "npm run build:score && node scripts/prepareCloudflarePages.js",
     "deploy:cloudflare": "npm run build:static && npx wrangler pages deploy dist --project-name=pickergame2026",
