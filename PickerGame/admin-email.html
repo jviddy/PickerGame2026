@@ -343,10 +343,12 @@
       });
       const data = await res.json();
       if (data.ok) {
+        const errDetail = data.errors?.length
+          ? ` (${data.errors.length} error(s): ${data.errors.slice(0, 2).join(' | ')})`
+          : '';
         showStatus(
-          `✓ Synced ${data.total} contacts — ${data.allSynced} to Everyone, ${data.unpaidSynced} to Unpaid.` +
-          (data.errors?.length ? ` (${data.errors.length} error(s))` : ''),
-          'success',
+          `✓ Synced ${data.total} contacts — ${data.allSynced} to Everyone, ${data.unpaidSynced} to Unpaid.${errDetail}`,
+          data.errors?.length ? 'error' : 'success',
         );
       } else {
         showStatus('Sync error: ' + (data.errors?.slice(0, 3).join(' | ') || 'Unknown error'), 'error');
