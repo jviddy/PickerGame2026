@@ -294,6 +294,15 @@
       margin-top: 7px;
       color: var(--gray-600);
     }
+    .match-prediction {
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: var(--gray-400);
+    }
+    .match-prediction strong {
+      font-weight: 700;
+      color: var(--gray-500);
+    }
 
     .match-main { min-width: 0; }
     .teams {
@@ -513,7 +522,8 @@
     teams: './Data/teams.json',
     matches: './Data/matches.json',
     results: '/api/results',
-    settings: './Data/settings.json'
+    settings: './Data/settings.json',
+    predictions: './Data/predictions.json'
   };
 
   const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
@@ -531,10 +541,11 @@
   const dateSelect   = document.getElementById('dateSelect');
   const controlsBar  = document.getElementById('controlsBar');
 
-  let teams    = [];
-  let matches  = [];
-  let results  = [];
-  let settings = {};
+  let teams       = [];
+  let matches     = [];
+  let results     = [];
+  let settings    = {};
+  let predictions = {};
   let groupMode = 'round';
 
   async function loadJson(url) {
@@ -553,11 +564,12 @@
 
   async function loadData() {
     try {
-      [teams, matches, results, settings] = await Promise.all([
+      [teams, matches, results, settings, predictions] = await Promise.all([
         loadJson(DATA_URLS.teams),
         loadJson(DATA_URLS.matches),
         loadJsonWithFallback(DATA_URLS.results, './Data/results.json'),
-        loadJson(DATA_URLS.settings)
+        loadJson(DATA_URLS.settings),
+        loadJson(DATA_URLS.predictions).catch(() => ({}))
       ]);
       return true;
     } catch (error) {
@@ -775,6 +787,7 @@
             <div class="match-time">${escapeHtml(dateParts.time)} BST</div>
           </div>
           <div class="match-location">${escapeHtml(match.location)}</div>
+          ${predictions[match.matchId] ? `<div class="match-prediction">El Presidente: <strong>${escapeHtml(predictions[match.matchId])}</strong></div>` : ''}
         </div>
         <div class="match-main">
           <div class="teams">

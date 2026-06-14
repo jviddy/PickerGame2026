@@ -187,7 +187,7 @@ async function main() {
     }
 
     // Copy pass-through files from root Data/ to PickerGame/Data/
-    const passThroughFiles = ['posts.json', 'settings.json'];
+    const passThroughFiles = ['posts.json', 'settings.json', 'predictions.json'];
     for (const fileName of passThroughFiles) {
       const src = path.join(dataDir, fileName);
       const dest = path.join(path.resolve(projectRoot, 'Data'), fileName);
