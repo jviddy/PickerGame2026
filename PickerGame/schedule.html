@@ -298,11 +298,17 @@
       margin-top: 4px;
       font-size: 0.72rem;
       color: var(--gray-400);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .match-prediction strong {
       font-weight: 700;
       color: var(--gray-500);
     }
+    .pred-correct { color: #16a34a; font-weight: 700; }
+    .pred-close   { color: #d97706; font-weight: 700; }
+    .pred-wrong   { color: #dc2626; font-weight: 700; }
 
     .match-main { min-width: 0; }
     .teams {
@@ -773,12 +779,32 @@
     return `<div class="team-cards">${parts.join('')}</div>`;
   }
 
+  function renderPrediction(matchId, result) {
+    const pred = predictions[matchId];
+    if (!pred) return '';
+    const [predH, predA] = pred.split('-').map(Number);
+    let indicator = '';
+    if (isPlayed(result)) {
+      const dH = Math.abs(predH - result.homeScore);
+      const dA = Math.abs(predA - result.awayScore);
+      if (dH === 0 && dA === 0) {
+        indicator = ' <span class="pred-correct">✓</span>';
+      } else if (dH <= 1 && dA <= 1) {
+        indicator = ' <span class="pred-close">close</span>';
+      } else {
+        indicator = ' <span class="pred-wrong">✗</span>';
+      }
+    }
+    return `<div class="match-prediction">El Presidente's Prediction: <strong>${escapeHtml(pred)}</strong>${indicator}</div>`;
+  }
+
   function renderMatch(match) {
     if (!match) return '';
     const result     = getDisplayResult(match);
     const dateParts  = formatDateParts(match.date);
     const dateKey    = toBSTDateKey(match.date);
     const playedClass = isPlayed(result) ? ' played' : '';
+
     return `
       <article class="match-card${playedClass}" data-date="${escapeHtml(dateKey)}">
         <div class="match-meta">
@@ -787,7 +813,7 @@
             <div class="match-time">${escapeHtml(dateParts.time)} BST</div>
           </div>
           <div class="match-location">${escapeHtml(match.location)}</div>
-          ${predictions[match.matchId] ? `<div class="match-prediction">El Presidente's Prediction: <strong>${escapeHtml(predictions[match.matchId])}</strong></div>` : ''}
+          ${renderPrediction(match.matchId, result)}
         </div>
         <div class="match-main">
           <div class="teams">
