@@ -4,7 +4,7 @@
   var ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
 
   var ENTRY_PAGES = ['entry.html', 'entries.html', 'schedule.html', 'blog.html'];
-  var POST_PAGES  = ['leaderboard.html', 'schedule.html', 'tables.html', 'countries.html', 'blog.html'];
+  var POST_PAGES  = ['leaderboard.html', 'schedule.html', 'tables.html', 'countries.html', 'blog.html', 'match-reports.html'];
 
   function getAllowedPages() {
     var now = Date.now();

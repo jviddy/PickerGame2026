@@ -5,8 +5,8 @@ const ENTRY_OPEN  = new Date('2026-05-29T08:00:00Z').getTime();
 const ENTRY_CLOSE = new Date('2026-06-11T19:00:00Z').getTime();
 
 const ENTRY_PAGES = new Set(['entry.html', 'entries.html', 'schedule.html', 'blog.html']);
-const POST_PAGES  = new Set(['leaderboard.html', 'schedule.html', 'tables.html', 'countries.html', 'blog.html']);
-const ADMIN_PAGES = new Set(['admin.html', 'admin-results.html', 'admin-blog.html', 'admin-email.html']);
+const POST_PAGES  = new Set(['leaderboard.html', 'schedule.html', 'tables.html', 'countries.html', 'blog.html', 'match-reports.html']);
+const ADMIN_PAGES = new Set(['admin.html', 'admin-results.html', 'admin-blog.html', 'admin-email.html', 'admin-match-reports.html']);
 
 export async function onRequest({ request, next }) {
   const url  = new URL(request.url);
