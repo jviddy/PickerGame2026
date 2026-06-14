@@ -30,3 +30,11 @@ archive/
 # Logs
 *.log
 logs/
+
+# Sensitive / personal files
+resend key*.md
+useful text
+Picker game messages and updates.yaml
+
+# Claude worktrees (should never be committed)
+.claude/worktrees/
