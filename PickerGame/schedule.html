@@ -341,6 +341,7 @@
       min-width: 0;
     }
     .team-cards { display: flex; gap: 5px; flex-wrap: wrap; }
+    .team-cards:empty { min-height: 1em; }
     .team-name {
       min-width: 0;
       overflow: hidden;
@@ -469,7 +470,8 @@
       .team { gap: 5px; }
       .team-name { font-size: 0.78rem; }
       .flag { width: 20px; height: 14px; }
-      .score { font-size: 0.95rem; }
+      .scoreline { min-width: 0; }
+      .score { font-size: 0.95rem; min-height: 1.8em; display: flex; align-items: center; justify-content: center; }
       .points-team { grid-template-columns: minmax(0, 70px) minmax(0, 1fr) auto; }
       .section-pills { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
       .section-pills::-webkit-scrollbar { display: none; }
@@ -778,7 +780,7 @@
     if (!isPlayed(result)) return '';
     const yellow = side === 'home' ? (result.homeYellow || 0) : (result.awayYellow || 0);
     const red    = side === 'home' ? (result.homeRed    || 0) : (result.awayRed    || 0);
-    if (!yellow && !red) return '';
+    if (!yellow && !red) return '<div class="team-cards"></div>';
     const parts = [];
     if (yellow) parts.push(`
       <span class="card-note yellow" title="${yellow} yellow card${yellow !== 1 ? 's' : ''}">
