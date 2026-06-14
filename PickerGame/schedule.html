@@ -306,6 +306,14 @@
       font-weight: 700;
       color: var(--gray-500);
     }
+    .report-link {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      text-decoration: none;
+    }
+    .report-link:hover { color: var(--navy-light); text-decoration: underline; }
     .pred-correct { color: #16a34a; font-weight: 700; }
     .pred-close   { color: #d97706; font-weight: 700; }
     .pred-wrong   { color: #dc2626; font-weight: 700; }
@@ -478,6 +486,7 @@
       <a href="entries.html">Entries</a>
       <a href="leaderboard.html">Leaderboard</a>
       <a href="schedule.html" class="active">Matches</a>
+      <a href="match-reports.html">Reports</a>
       <a href="tables.html">Tables</a>
       <a href="countries.html">Countries</a>
       <a href="blog.html">Updates</a>
@@ -487,6 +496,7 @@
       <option value="entries.html">Entries</option>
       <option value="leaderboard.html">Leaderboard</option>
       <option value="schedule.html" selected>Matches</option>
+      <option value="match-reports.html">Reports</option>
       <option value="tables.html">Tables</option>
       <option value="countries.html">Countries</option>
       <option value="blog.html">Updates</option>
@@ -529,7 +539,8 @@
     matches: './Data/matches.json',
     results: '/api/results',
     settings: './Data/settings.json',
-    predictions: './Data/predictions.json'
+    predictions: './Data/predictions.json',
+    matchReports: './Data/matchReports.json'
   };
 
   const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
@@ -547,11 +558,12 @@
   const dateSelect   = document.getElementById('dateSelect');
   const controlsBar  = document.getElementById('controlsBar');
 
-  let teams       = [];
-  let matches     = [];
-  let results     = [];
-  let settings    = {};
-  let predictions = {};
+  let teams          = [];
+  let matches        = [];
+  let results        = [];
+  let settings       = {};
+  let predictions    = {};
+  let reportedMatchIds = new Set();
   let groupMode = 'round';
 
   async function loadJson(url) {
@@ -570,13 +582,16 @@
 
   async function loadData() {
     try {
-      [teams, matches, results, settings, predictions] = await Promise.all([
+      let matchReports = [];
+      [teams, matches, results, settings, predictions, matchReports] = await Promise.all([
         loadJson(DATA_URLS.teams),
         loadJson(DATA_URLS.matches),
         loadJsonWithFallback(DATA_URLS.results, './Data/results.json'),
         loadJson(DATA_URLS.settings),
-        loadJson(DATA_URLS.predictions).catch(() => ({}))
+        loadJson(DATA_URLS.predictions).catch(() => ({})),
+        loadJson(DATA_URLS.matchReports).catch(() => [])
       ]);
+      reportedMatchIds = new Set((matchReports || []).map(r => r.matchId));
       return true;
     } catch (error) {
       showError(error.message);
@@ -814,6 +829,7 @@
           </div>
           <div class="match-location">${escapeHtml(match.location)}</div>
           ${renderPrediction(match.matchId, result)}
+          ${reportedMatchIds.has(match.matchId) ? `<a class="report-link" href="match-reports.html#report-${escapeHtml(match.matchId)}">View report &rarr;</a>` : ''}
         </div>
         <div class="match-main">
           <div class="teams">

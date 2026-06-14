@@ -21,6 +21,8 @@ const staticFiles = [
   'admin-results.html',
   'admin-blog.html',
   'admin-email.html',
+  'match-reports.html',
+  'admin-match-reports.html',
 ];
 
 const indexHtml = `<!DOCTYPE html>

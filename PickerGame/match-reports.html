@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match Reports – PickerGame 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <style>
+    :root {
+      --navy:       #1a3352;
+      --navy-light: #2d5a8e;
+      --gold:       #e86f2c;
+      --green:      #16a34a;
+      --gray-50:    #f9fafb;
+      --gray-100:   #f0f4f8;
+      --gray-200:   #e2e8f0;
+      --gray-400:   #94a3b8;
+      --gray-600:   #475569;
+      --gray-800:   #1e293b;
+      --white:      #ffffff;
+      --radius:     10px;
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+      --amber:      #d97706;
+      --red:        #dc2626;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      color: var(--white);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo { margin: 0; font-size: 1.3rem; font-weight: 800; }
+    .logo span { color: var(--gold); }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+    nav a:hover, nav a.active { color: var(--white); }
+    .nav-select {
+      display: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .nav-select option { color: #000; }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .nav-select { display: block; }
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      grid-template-rows: auto 1fr;
+      column-gap: 28px;
+    }
+    .page-header { grid-column: 1 / -1; }
+    .page-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+      color: var(--navy);
+    }
+    .page-sub {
+      color: var(--gray-600);
+      margin: 0 0 28px;
+      font-size: 0.95rem;
+    }
+
+    .reports-col { min-width: 0; }
+
+    /* ── Report cards ── */
+    .report {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      scroll-margin-top: 100px;
+    }
+
+    .report-header {
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .report-meta {
+      color: var(--gray-400);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .report-result {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .result-score {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--navy);
+      background: var(--gray-100);
+      padding: 2px 10px;
+      border-radius: 6px;
+    }
+    .flag {
+      width: 22px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.08);
+      object-fit: cover;
+      flex: 0 0 auto;
+      vertical-align: middle;
+    }
+    .report-pens {
+      font-size: 0.8rem;
+      color: var(--amber);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .report-prediction {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      margin-top: 6px;
+    }
+    .report-prediction strong {
+      color: var(--gray-600);
+      font-weight: 700;
+    }
+    .pred-correct { color: #16a34a; font-weight: 700; }
+    .pred-close   { color: var(--amber); font-weight: 700; }
+    .pred-wrong   { color: var(--red); font-weight: 700; }
+
+    .report-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 14px;
+    }
+    .report-body {
+      color: var(--gray-800);
+      line-height: 1.75;
+      font-size: 0.96rem;
+    }
+    .report-body p { margin: 0 0 1em; }
+    .report-body p:last-child { margin-bottom: 0; }
+    .report-footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      font-style: italic;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      align-self: start;
+    }
+
+    .stage-group {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .stage-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      background: var(--navy);
+      color: var(--white);
+      cursor: pointer;
+      user-select: none;
+    }
+    .stage-heading-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stage-toggle {
+      font-size: 0.85rem;
+      line-height: 1;
+      transition: transform 0.18s;
+      display: inline-block;
+      color: rgba(255,255,255,0.7);
+    }
+    .stage-group.collapsed .stage-toggle { transform: rotate(-90deg); }
+    .stage-group.collapsed .stage-body { display: none; }
+
+    .stage-body { padding: 4px 0; }
+    .sidebar-list { list-style: none; margin: 0; padding: 0; }
+    .sidebar-item { border-bottom: 1px solid var(--gray-200); }
+    .sidebar-item:last-child { border-bottom: none; }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1.35;
+      border-radius: 4px;
+      transition: background 0.12s;
+    }
+    .sidebar-link:hover { background: var(--gray-50); }
+    .sidebar-link.read { color: var(--gray-400); font-weight: 600; }
+    .sidebar-unread-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex: 0 0 auto;
+    }
+    .sidebar-link.read .sidebar-unread-dot { display: none; }
+
+    .empty, .loading {
+      text-align: center;
+      color: var(--gray-400);
+      padding: 60px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .container { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .report { padding: 18px; }
+      header { padding: 0 14px; }
+    }
+  </style>
+  <script src="ticker.js" defer></script>
+  <script src="/nav-phase.js"></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1 class="logo">Picker<span>Game</span> 2026</h1>
+    <nav>
+      <a href="entry.html">Enter</a>
+      <a href="entries.html">Entries</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="schedule.html">Matches</a>
+      <a href="match-reports.html" class="active">Reports</a>
+      <a href="tables.html">Tables</a>
+      <a href="countries.html">Countries</a>
+      <a href="blog.html">Updates</a>
+    </nav>
+    <select class="nav-select" onchange="location.href=this.value" aria-label="Navigate">
+      <option value="entry.html">Enter</option>
+      <option value="entries.html">Entries</option>
+      <option value="leaderboard.html">Leaderboard</option>
+      <option value="schedule.html">Matches</option>
+      <option value="match-reports.html" selected>Reports</option>
+      <option value="tables.html">Tables</option>
+      <option value="countries.html">Countries</option>
+      <option value="blog.html">Updates</option>
+    </select>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-header">
+    <h1 class="page-title">Match Reports</h1>
+    <p class="page-sub">El Presidente's verdict on every match.</p>
+  </div>
+  <div class="reports-col" id="reportsRoot"><div class="loading">Loading reports…</div></div>
+  <aside class="sidebar" id="sidebar" hidden></aside>
+</main>
+
+<script>
+  const reportsRoot = document.getElementById('reportsRoot');
+  const sidebar     = document.getElementById('sidebar');
+  const READ_KEY    = 'pg2026_read_reports';
+
+  const STAGE_MAP = {
+    GS1: 'GS', GS2: 'GS', GS3: 'GS',
+    R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: 'TPP', F: 'F'
+  };
+  const STAGE_LABELS = {
+    GS: 'Group Stage', R32: 'Round of 32', R16: 'Round of 16',
+    QF: 'Quarter-finals', SF: 'Semi-finals', TPP: 'Third Place Play-off', F: 'Final'
+  };
+  const STAGE_ORDER = ['GS', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
+
+  function esc(v) {
+    return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  }
+
+  function getReadSet() {
+    try { return new Set(JSON.parse(localStorage.getItem(READ_KEY) || '[]')); } catch { return new Set(); }
+  }
+
+  function markRead(id) {
+    const s = getReadSet();
+    if (s.has(id)) return;
+    s.add(id);
+    localStorage.setItem(READ_KEY, JSON.stringify([...s]));
+    const link = sidebar.querySelector(`.sidebar-link[data-id="${id}"]`);
+    if (link) link.classList.add('read');
+  }
+
+  function renderBody(text) {
+    if (/<[a-z][\s\S]*>/i.test(text)) return text;
+    return text
+      .split(/\n{2,}/)
+      .map(para => `<p>${esc(para.trim()).replace(/\n/g, '<br>')}</p>`)
+      .join('');
+  }
+
+  function formatMatchDate(isoDate) {
+    return new Intl.DateTimeFormat('en-GB', {
+      weekday: 'short', day: 'numeric', month: 'short',
+      timeZone: 'Europe/London'
+    }).format(new Date(isoDate));
+  }
+
+  function formatMatchMeta(match) {
+    const dateStr = formatMatchDate(match.date);
+    const roundCode = match.roundCode || '';
+    if (roundCode.startsWith('GS')) {
+      const group = match.group ? `Group ${match.group}` : '';
+      const roundNum = roundCode === 'GS1' ? 1 : roundCode === 'GS2' ? 2 : 3;
+      return `${dateStr} · Group Stage ${roundNum}${group ? ' · ' + group : ''}`;
+    }
+    return `${dateStr} · ${match.round || roundCode}`;
+  }
+
+  function renderPrediction(matchId, result, predictions) {
+    const pred = predictions[matchId];
+    if (!pred) return '';
+    const parts = pred.split('-');
+    const predH = Number(parts[0]);
+    const predA = Number(parts[1]);
+    let indicator = '';
+    if (result && result.homeScore !== null && result.awayScore !== null) {
+      const dH = Math.abs(predH - result.homeScore);
+      const dA = Math.abs(predA - result.awayScore);
+      if (dH === 0 && dA === 0) {
+        indicator = ' <span class="pred-correct">&#10003;</span>';
+      } else if (dH <= 1 && dA <= 1) {
+        indicator = ' <span class="pred-close">close</span>';
+      } else {
+        indicator = ' <span class="pred-wrong">&#10007;</span>';
+      }
+    }
+    return `<div class="report-prediction">El Presidente's Prediction: <strong>${esc(pred)}</strong>${indicator}</div>`;
+  }
+
+  function renderFlag(teamName, teamMap) {
+    const team = teamMap[teamName];
+    if (!team?.flagUrl) return '';
+    return `<img class="flag" src="${esc(team.flagUrl)}" alt="${esc(teamName)} flag" loading="lazy" />`;
+  }
+
+  function getTeamDisplayName(ref, teamMap) {
+    if (!ref) return 'TBA';
+    if (teamMap[ref]) return ref;
+    // Try to find by countryName
+    return ref;
+  }
+
+  async function init() {
+    try {
+      const v = Date.now();
+      const [matchesRes, reportsRes, predictionsRes, teamsRes] = await Promise.all([
+        fetch(`./Data/matches.json?v=${v}`),
+        fetch(`./Data/matchReports.json?v=${v}`),
+        fetch(`./Data/predictions.json?v=${v}`).catch(() => null),
+        fetch(`./Data/teams.json?v=${v}`)
+      ]);
+
+      if (!matchesRes.ok || !reportsRes.ok || !teamsRes.ok) throw new Error('Failed to load data');
+
+      const matches     = await matchesRes.json();
+      const reports     = await reportsRes.json();
+      const predictions = predictionsRes && predictionsRes.ok ? await predictionsRes.json() : {};
+      const teamsArr    = await teamsRes.json();
+
+      // Build team lookup by countryName
+      const teamMap = {};
+      for (const t of teamsArr) {
+        if (t.countryName) teamMap[t.countryName] = t;
+      }
+
+      // Build match lookup by matchId
+      const matchMap = {};
+      for (const m of matches) {
+        if (m.matchId) matchMap[m.matchId] = m;
+      }
+
+      // Filter to reports that have a matching match, sort by match date newest first
+      const reportedMatchIds = new Set(reports.map(r => r.matchId));
+      const displayReports = reports
+        .filter(r => matchMap[r.matchId])
+        .sort((a, b) => new Date(matchMap[b.matchId].date) - new Date(matchMap[a.matchId].date));
+
+      if (!displayReports.length) {
+        reportsRoot.innerHTML = '<div class="empty">No match reports yet — check back after matches are played.</div>';
+        return;
+      }
+
+      const readSet = getReadSet();
+
+      // Render main articles
+      reportsRoot.innerHTML = displayReports.map(report => {
+        const match  = matchMap[report.matchId];
+        const result = match.result || null;
+        const homeName = match.homeTeam || 'TBA';
+        const awayName = match.awayTeam || 'TBA';
+
+        const homeScore = result?.homeScore ?? null;
+        const awayScore = result?.awayScore ?? null;
+        const hasPens   = result?.wentToPenalties && result?.homePenalties != null && result?.awayPenalties != null;
+
+        const scoreDisplay = (homeScore !== null && awayScore !== null)
+          ? `<span class="result-score">${homeScore} &ndash; ${awayScore}</span>`
+          : `<span class="result-score">vs</span>`;
+
+        const pensHtml = hasPens
+          ? `<div class="report-pens">(aet, pens ${result.homePenalties}&ndash;${result.awayPenalties})</div>`
+          : '';
+
+        return `
+          <article class="report" id="report-${esc(report.matchId)}" data-report-id="${esc(report.matchId)}">
+            <div class="report-header">
+              <div class="report-meta">${esc(formatMatchMeta(match))}</div>
+              <div class="report-result">
+                ${renderFlag(homeName, teamMap)}
+                ${esc(homeName)}
+                ${scoreDisplay}
+                ${esc(awayName)}
+                ${renderFlag(awayName, teamMap)}
+              </div>
+              ${pensHtml}
+              ${renderPrediction(report.matchId, result, predictions)}
+            </div>
+            <h2 class="report-title">${esc(report.title)}</h2>
+            <div class="report-body">${renderBody(report.body)}</div>
+            ${report.footer ? `<div class="report-footer">${esc(report.footer)}</div>` : ''}
+          </article>
+        `;
+      }).join('');
+
+      // Build sidebar — group by stage, only stages with reports
+      // Figure out "current stage" = stage of most recently played match with a report
+      let currentStageKey = null;
+      for (const report of displayReports) {
+        const match = matchMap[report.matchId];
+        if (match.played || (match.result?.homeScore != null)) {
+          currentStageKey = STAGE_MAP[match.roundCode] || 'GS';
+          break;
+        }
+      }
+
+      // Group sidebar items by stage
+      const stageGroups = {};
+      for (const report of [...displayReports].reverse()) { // oldest first for sidebar grouping
+        const match = matchMap[report.matchId];
+        const stageKey = STAGE_MAP[match.roundCode] || 'GS';
+        if (!stageGroups[stageKey]) stageGroups[stageKey] = [];
+        stageGroups[stageKey].push(report);
+      }
+
+      const sidebarHtml = STAGE_ORDER
+        .filter(sk => stageGroups[sk])
+        .map(sk => {
+          const isOpen = sk === currentStageKey || currentStageKey === null;
+          const items = stageGroups[sk];
+          const itemsHtml = items.map(report => {
+            const match   = matchMap[report.matchId];
+            const isRead  = readSet.has(report.matchId);
+            const label   = `${match.homeTeam || 'TBA'} vs ${match.awayTeam || 'TBA'}`;
+            return `
+              <li class="sidebar-item">
+                <a class="sidebar-link${isRead ? ' read' : ''}" href="#report-${esc(report.matchId)}" data-id="${esc(report.matchId)}">
+                  <span class="sidebar-unread-dot"></span>${esc(label)}
+                </a>
+              </li>
+            `;
+          }).join('');
+          return `
+            <div class="stage-group${isOpen ? '' : ' collapsed'}">
+              <div class="stage-heading">
+                <span class="stage-heading-label">${esc(STAGE_LABELS[sk] || sk)}</span>
+                <span class="stage-toggle">&#9662;</span>
+              </div>
+              <div class="stage-body">
+                <ul class="sidebar-list">${itemsHtml}</ul>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+      sidebar.hidden = false;
+      sidebar.innerHTML = sidebarHtml;
+
+      // Stage heading click: toggle collapse
+      sidebar.addEventListener('click', e => {
+        const heading = e.target.closest('.stage-heading');
+        if (heading) {
+          heading.closest('.stage-group').classList.toggle('collapsed');
+          return;
+        }
+        const link = e.target.closest('.sidebar-link[data-id]');
+        if (link) markRead(link.dataset.id);
+      });
+
+      // IntersectionObserver: mark reports as read when scrolled past
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.dataset.reportId;
+            if (id) markRead(id);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.report[data-report-id]').forEach(el => observer.observe(el));
+
+      // Scroll to hash if present
+      if (location.hash) {
+        const target = document.querySelector(location.hash);
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    } catch (err) {
+      reportsRoot.innerHTML = '<div class="empty">Could not load match reports.</div>';
+      console.error(err);
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
