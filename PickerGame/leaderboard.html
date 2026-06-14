@@ -134,6 +134,23 @@
       border-color: var(--navy-light);
       background: var(--green-bg);
     }
+    .view-mode-select {
+      display: none;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 10px;
+      cursor: pointer;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .view-toggle-btn { display: none; }
+      .view-mode-select { display: block; }
+      .view-toggle { width: 100%; margin: 0; justify-content: flex-start; }
+    }
 
     /* ─── Leaderboard table ───────────────────────────────────────–*/
     .leaderboard {
@@ -403,7 +420,9 @@
       .team-count { display: none; }
 
       /* Countries mode: show chips in row 2, hide entrant name */
-      .leaderboard.countries-mode .leaderboard-row { row-gap: 4px; }
+      .leaderboard.countries-mode .leaderboard-row { row-gap: 4px; align-items: start; }
+      .leaderboard.countries-mode .rank { padding-top: 2px; }
+      .leaderboard.countries-mode .score-col { padding-top: 2px; }
       .leaderboard.countries-mode .selected-teams {
         display: flex;
         grid-column: 2 / 4;
@@ -411,6 +430,8 @@
         overflow-x: auto;
         padding-bottom: 2px;
         gap: 2px;
+        min-height: 20px;
+        align-items: center;
       }
       .leaderboard.countries-mode .team-chip {
         padding: 1px 3px 1px 2px;
@@ -423,13 +444,17 @@
         font-size: 0.55rem;
       }
       /* Round mode: show round chips in row 2 */
-      .leaderboard.round-mode .leaderboard-row { row-gap: 4px; }
+      .leaderboard.round-mode .leaderboard-row { row-gap: 4px; align-items: start; }
+      .leaderboard.round-mode .rank { padding-top: 2px; }
+      .leaderboard.round-mode .score-col { padding-top: 2px; }
       .leaderboard.round-mode .round-breakdown-inline {
         display: flex;
         grid-column: 2 / 4;
         grid-row: 2;
         overflow-x: auto;
         padding-bottom: 1px;
+        min-height: 20px;
+        align-items: center;
       }
       .leaderboard.round-mode .round-chip {
         gap: 3px;
@@ -784,6 +809,10 @@
   <div class="controls-row">
     <div class="view-toggle">
       <button class="view-toggle-btn" id="scoreModeToggleBtn" type="button">Round scores</button>
+      <select class="view-mode-select" id="scoreModeSelect" aria-label="Score view">
+        <option value="countries">Country scores</option>
+        <option value="rounds">Round scores</option>
+      </select>
     </div>
     <div id="tournamentStatsBar"></div>
   </div>
@@ -854,6 +883,7 @@
   /* ─── DOM ─────────────────────────────────────────────────── */
   const leaderboardEl      = document.getElementById('leaderboard');
   const scoreModeToggleBtn = document.getElementById('scoreModeToggleBtn');
+  const scoreModeSelect    = document.getElementById('scoreModeSelect');
   const errorMsg           = document.getElementById('errorMsg');
   const emailInput         = document.getElementById('emailFindInput');
   const findStatus         = document.getElementById('findStatus');
@@ -1481,12 +1511,20 @@
 
   function updateScoreModeButton() {
     scoreModeToggleBtn.textContent = scoreDisplayMode === 'countries' ? 'Round scores' : 'Country scores';
+    scoreModeSelect.value = scoreDisplayMode;
     leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
     leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
   }
 
   scoreModeToggleBtn.addEventListener('click', () => {
     scoreDisplayMode = scoreDisplayMode === 'countries' ? 'rounds' : 'countries';
+    picksFilter = '';
+    updateScoreModeButton();
+    renderAll();
+  });
+
+  scoreModeSelect.addEventListener('change', () => {
+    scoreDisplayMode = scoreModeSelect.value;
     picksFilter = '';
     updateScoreModeButton();
     renderAll();
