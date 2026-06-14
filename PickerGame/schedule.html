@@ -299,8 +299,9 @@
       font-size: 0.72rem;
       color: var(--gray-400);
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    }
+    @media (max-width: 768px) {
+      .match-prediction { white-space: normal; }
     }
     .match-prediction strong {
       font-weight: 700;

@@ -45,6 +45,11 @@
     "paid": true
   },
   {
+    "teamName": "Ali & Gio",
+    "entrantName": "Alicja Luberda",
+    "paid": true
+  },
+  {
     "teamName": "Bimbound buccaneers",
     "entrantName": "Alison Williams",
     "paid": true
@@ -61,7 +66,7 @@
   },
   {
     "teamName": "Shot kickers",
-    "entrantName": "Ansel visa",
+    "entrantName": "Ansel V",
     "paid": true
   },
   {
@@ -95,7 +100,7 @@
     "paid": true
   },
   {
-    "teamName": "Who Ate All Dapays?",
+    "teamName": "Who Ate All Depays?",
     "entrantName": "Becca",
     "paid": true
   },
@@ -162,6 +167,11 @@
   {
     "teamName": "Turton's terrible teams",
     "entrantName": "Ceri",
+    "paid": true
+  },
+  {
+    "teamName": "Chantelle's choice",
+    "entrantName": "Chantelle Boyd",
     "paid": true
   },
   {
@@ -270,6 +280,11 @@
     "paid": true
   },
   {
+    "teamName": "Smurfinators",
+    "entrantName": "Donna",
+    "paid": true
+  },
+  {
     "teamName": "Lop sided",
     "entrantName": "Ed Peck",
     "paid": true
@@ -310,6 +325,11 @@
     "paid": true
   },
   {
+    "teamName": "Evan’s choice",
+    "entrantName": "Evan",
+    "paid": true
+  },
+  {
     "teamName": "Evie's Excellent Eight",
     "entrantName": "Evie May Falla",
     "paid": true
@@ -322,6 +342,11 @@
   {
     "teamName": "Its Coming Home.....Again!!!",
     "entrantName": "Faz Patel",
+    "paid": true
+  },
+  {
+    "teamName": "When Harry met Sonny",
+    "entrantName": "Geoff Marson",
     "paid": true
   },
   {
@@ -346,7 +371,7 @@
   },
   {
     "teamName": "Guernsey goal diggers",
-    "entrantName": "Ina Hardy",
+    "entrantName": "Ian Hardy",
     "paid": true
   },
   {
@@ -565,6 +590,11 @@
     "paid": true
   },
   {
+    "teamName": "Name of Team 2",
+    "entrantName": "Matthew Hart",
+    "paid": true
+  },
+  {
     "teamName": "Gaffa Cakes",
     "entrantName": "Michael",
     "paid": true
@@ -622,6 +652,11 @@
   {
     "teamName": "GK KING!",
     "entrantName": "Oliver Whitwam",
+    "paid": true
+  },
+  {
+    "teamName": "Mr Worldwide",
+    "entrantName": "Olly",
     "paid": true
   },
   {
@@ -825,33 +860,8 @@
     "paid": true
   },
   {
-    "teamName": "Alicja Luberda",
-    "entrantName": "Alicja Luberda",
-    "paid": false
-  },
-  {
-    "teamName": "Chantelle's choice",
-    "entrantName": "Chantelle Boyd",
-    "paid": false
-  },
-  {
-    "teamName": "Smurfinators",
-    "entrantName": "Donna",
-    "paid": false
-  },
-  {
-    "teamName": "Evan’s choice",
-    "entrantName": "Evan",
-    "paid": false
-  },
-  {
     "teamName": "The Pitch Generals",
     "entrantName": "Finlay Harley",
-    "paid": false
-  },
-  {
-    "teamName": "When Harry met Sonny",
-    "entrantName": "Geoff Marson",
     "paid": false
   },
   {
@@ -885,18 +895,8 @@
     "paid": false
   },
   {
-    "teamName": "Name of Team 2",
-    "entrantName": "Matthew Hart",
-    "paid": false
-  },
-  {
     "teamName": "mainline",
     "entrantName": "Michael",
-    "paid": false
-  },
-  {
-    "teamName": "Mr Worldwide",
-    "entrantName": "Olly",
     "paid": false
   },
   {
@@ -907,11 +907,6 @@
   {
     "teamName": "Sam Worthington",
     "entrantName": "Sam",
-    "paid": false
-  },
-  {
-    "teamName": "S TEAM",
-    "entrantName": "Sasha",
     "paid": false
   },
   {

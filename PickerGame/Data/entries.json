@@ -232,7 +232,7 @@
   {
     "id": "fb21208a-d8af-405e-8253-f3bb39236c2c",
     "entrantName": "Geoff Marson",
-    "email": "geoff.marson@canaccord.ccom",
+    "email": "geoff.marson@canaccord.com",
     "teamName": "When Harry met Sonny",
     "tieBreakerAnswers": [
       "301",
@@ -249,7 +249,7 @@
       "Ghana"
     ],
     "submittedAt": "2026-06-01T13:53:49.489Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -1222,7 +1222,7 @@
     "id": "4f6cf8d1-a52a-4014-acfb-424a74b3fd90",
     "entrantName": "Becca",
     "email": "Rebecca.LeTissier@canaccord.com",
-    "teamName": "Who Ate All Dapays?",
+    "teamName": "Who Ate All Depays?",
     "tieBreakerAnswers": [
       "207",
       "73"
@@ -2117,7 +2117,7 @@
   },
   {
     "id": "bbb44efa-e3c7-4904-a914-a591e1418f2f",
-    "entrantName": "Ina Hardy",
+    "entrantName": "Ian Hardy",
     "email": "Ian.Hardy@Canaccord.com",
     "teamName": "Guernsey goal diggers",
     "tieBreakerAnswers": [
@@ -2435,7 +2435,7 @@
     ],
     "submittedAt": "2026-06-08T13:25:48.795Z",
     "paid": false,
-    "removed": false
+    "removed": true
   },
   {
     "id": "ca42700d-3d62-404e-8493-2e6e510cfecd",
@@ -2917,7 +2917,7 @@
       "Ghana"
     ],
     "submittedAt": "2026-06-08T15:53:44.730Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -3262,7 +3262,7 @@
       "Argentina"
     ],
     "submittedAt": "2026-06-09T07:04:36.111Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -4113,7 +4113,7 @@
       "Ghana"
     ],
     "submittedAt": "2026-06-11T15:47:54.520Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -4210,8 +4210,8 @@
   },
   {
     "id": "18ac5575-3aa6-4089-8b56-3978fbe7448e",
-    "entrantName": "Ansel visa",
-    "email": "ansel@vidamour.con",
+    "entrantName": "Ansel V",
+    "email": "ansel@vidamour.com",
     "teamName": "Shot kickers",
     "tieBreakerAnswers": [
       "280",
@@ -4235,7 +4235,7 @@
     "id": "5a9d9e92-8480-4b33-b5d1-28fd8d545031",
     "entrantName": "Alicja Luberda",
     "email": "a_luberda@hotmail.com",
-    "teamName": "Alicja Luberda",
+    "teamName": "Ali & Gio",
     "tieBreakerAnswers": [
       "165",
       "78"
@@ -4251,7 +4251,7 @@
       "England"
     ],
     "submittedAt": "2026-06-11T17:50:56.214Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -4274,7 +4274,7 @@
       "Portugal"
     ],
     "submittedAt": "2026-06-11T17:52:02.626Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -4297,7 +4297,7 @@
       "Ghana"
     ],
     "submittedAt": "2026-06-11T17:56:27.898Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
