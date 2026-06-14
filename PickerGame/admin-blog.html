@@ -376,6 +376,16 @@
 
     newBtn.addEventListener('click', resetEditor);
 
+    bodyInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.isComposing) {
+        e.preventDefault();
+        const s = bodyInput.selectionStart;
+        const end = bodyInput.selectionEnd;
+        bodyInput.value = bodyInput.value.slice(0, s) + '\n' + bodyInput.value.slice(end);
+        bodyInput.selectionStart = bodyInput.selectionEnd = s + 1;
+      }
+    });
+
     if (saved) {
       // auto-load posts if token is remembered
       loadBtn.click();
