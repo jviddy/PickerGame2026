@@ -159,6 +159,11 @@
       box-shadow: var(--shadow-md);
     }
 
+    #lb-sticky-header {
+      position: sticky;
+      top: calc(58px + var(--controls-height, 0px));
+      z-index: 10;
+    }
     .leaderboard-header {
       border-radius: var(--radius) var(--radius) 0 0;
       display: grid;
@@ -172,9 +177,6 @@
       text-transform: uppercase;
       letter-spacing: 0;
       border-bottom: 2px solid var(--navy-light);
-      position: sticky;
-      top: calc(92px + var(--controls-height, 0px));
-      z-index: 10;
     }
     @media (max-width: 768px) {
       .leaderboard-header {
@@ -695,7 +697,7 @@
     @media (min-width: 769px) {
       .controls-row {
         position: sticky;
-        top: 92px;
+        top: 58px;
         z-index: 9;
         background: var(--gray-100);
         padding: 8px 0;
@@ -862,6 +864,8 @@
     </div>
     <div id="myPicksRows"></div>
   </div>
+
+  <div id="lb-sticky-header"></div>
 
   <div class="leaderboard" id="leaderboard">
     <div class="empty-state">
@@ -1378,8 +1382,8 @@
     renderTournamentStats();
     leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
     leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
-    if (!document.getElementById('lb-header')) {
-      leaderboardEl.innerHTML = '<div id="lb-header"></div><div id="lb-body"></div>';
+    if (!document.getElementById('lb-body')) {
+      leaderboardEl.innerHTML = '<div id="lb-body"></div>';
     }
     renderHeader();
     renderBody();
@@ -1387,7 +1391,7 @@
   }
 
   function renderHeader() {
-    const headerEl = document.getElementById('lb-header');
+    const headerEl = document.getElementById('lb-sticky-header');
     if (!headerEl) return;
     const picksLabel = scoreDisplayMode === 'countries' ? 'Picks' : 'Rounds';
     const filterHtml = scoreDisplayMode === 'countries' ? `
