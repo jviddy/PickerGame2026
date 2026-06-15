@@ -769,31 +769,6 @@
     }
     .my-picks-hint { font-weight: 400; opacity: 0.8; font-size: 0.7rem; }
 
-    /* ─── Scroll nav buttons ────────────────────────────────────*/
-    .scroll-nav {
-      position: fixed;
-      bottom: 20px;
-      right: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      z-index: 200;
-    }
-    .scroll-nav-btn {
-      background: var(--navy);
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.28);
-      transition: background 0.15s, opacity 0.2s, transform 0.2s;
-      white-space: nowrap;
-    }
-    .scroll-nav-btn:hover { background: var(--navy-light); }
-    .scroll-nav-btn.hidden { opacity: 0; pointer-events: none; transform: translateY(4px); }
   </style>
   <script src="ticker.js" defer></script>
   <script src="/nav-phase.js"></script>
@@ -875,10 +850,7 @@
   </div>
 </div>
 
-<div class="scroll-nav" aria-label="Page navigation">
-  <button class="scroll-nav-btn hidden" id="scrollTopBtn" type="button">↑ Top</button>
-  <button class="scroll-nav-btn" id="scrollBotBtn" type="button">↓ Bottom</button>
-</div>
+
 
 
 <script>
@@ -1594,21 +1566,7 @@
 
   init();
 
-  /* ─── Scroll nav ──────────────────────────────────────────── */
-  (function () {
-    const topBtn = document.getElementById('scrollTopBtn');
-    const botBtn = document.getElementById('scrollBotBtn');
-    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    botBtn.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
-    function update() {
-      const nearTop = window.scrollY < 120;
-      const nearBot = window.scrollY + window.innerHeight >= document.body.scrollHeight - 120;
-      topBtn.classList.toggle('hidden', nearTop);
-      botBtn.classList.toggle('hidden', nearBot);
-    }
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-  })();
+
 </script>
 </body>
 </html>
