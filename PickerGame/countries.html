@@ -679,20 +679,20 @@
         const isRound = ROUND_ORDER.includes(field);
 
         if (expandedMode && isRound) {
-          // In expanded mode, round headers change the highlighted column
+          // In expanded mode: update highlighted column and shift open detail's round
           activeRound = field;
           if (openDetail) openDetail = { countryName: openDetail.countryName, round: field };
-          renderTable();
-          return;
         }
 
+        // Always sort, regardless of expanded mode
         if (sortField === field) {
           sortDir = sortDir === 'asc' ? 'desc' : 'asc';
         } else {
           sortField = field;
           sortDir = DEFAULT_ASC.has(field) ? 'asc' : 'desc';
         }
-        openDetail = null;
+        // Only clear openDetail when not updating it above
+        if (!expandedMode || !isRound) openDetail = null;
         renderTable();
       });
     });
