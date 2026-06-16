@@ -603,6 +603,7 @@
           <tr>
             <th class="country-heading">Country</th>
             <th>Status</th>
+            <th title="Team cost">Cost</th>
             <th title="Matches played">Pld</th>
             ${ROUND_ORDER.map(round => `<th title="${escapeHtml(ROUND_LABELS[round])}">${escapeHtml(round)}</th>`).join('')}
             <th>Total</th>
@@ -623,6 +624,7 @@
                   </div>
                 </td>
                 <td><span class="status-pill ${country.inCompetition ? '' : 'out'}">${country.inCompetition ? 'In' : 'Out'}</span></td>
+                <td class="rank-cell">£${country.cost ?? '—'}</td>
                 <td class="rank-cell">${country.matchesPlayed}</td>
                 ${ROUND_ORDER.map(round => {
                   const score = country.byRound[round] || 0;
