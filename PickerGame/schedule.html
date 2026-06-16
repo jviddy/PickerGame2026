@@ -476,6 +476,47 @@
       .section-pills { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
       .section-pills::-webkit-scrollbar { display: none; }
     }
+
+    /* ── Scoring reference panel ──────────────────────────────────── */
+    .scoring-ref {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 14px 18px 10px;
+      margin-bottom: 18px;
+    }
+    .scoring-ref summary, .scoring-ref-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      list-style: none;
+      margin-bottom: 10px;
+    }
+    .scoring-ref summary::-webkit-details-marker { display: none; }
+    .scoring-ref summary::after { content: ' ▾'; font-size: 0.65rem; }
+    .scoring-ref[open] summary::after { content: ' ▴'; }
+    .scoring-ref-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 20px;
+    }
+    .pts-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-800);
+    }
+    .pts-pos { color: var(--green); font-weight: 800; }
+    .pts-neg { color: var(--red);   font-weight: 800; }
+    @media (max-width: 600px) {
+      .scoring-ref-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
   <script src="ticker.js" defer></script>
   <script src="/nav-phase.js"></script>
@@ -529,6 +570,23 @@
     <p>Fixtures, results, cards, penalties and PickerGame points by match.</p>
     <span class="time-badge">All times shown in BST</span>
   </div>
+
+  <details class="scoring-ref">
+    <summary>📊 Points guide</summary>
+    <div class="scoring-ref-grid">
+      <div class="pts-row"><span>Win</span><span class="pts-pos">+5</span></div>
+      <div class="pts-row"><span>Goal scored</span><span class="pts-pos">+3</span></div>
+      <div class="pts-row"><span>Reach knockouts</span><span class="pts-pos">+10</span></div>
+      <div class="pts-row"><span>Draw</span><span class="pts-pos">+2</span></div>
+      <div class="pts-row"><span>Goal conceded</span><span class="pts-neg">−2</span></div>
+      <div class="pts-row"><span>Each KO round</span><span class="pts-pos">+10</span></div>
+      <div class="pts-row"><span>Loss</span><span class="pts-neg">0</span></div>
+      <div class="pts-row"><span>Yellow card</span><span class="pts-neg">−1</span></div>
+      <div class="pts-row"><span>Win the final</span><span class="pts-pos">+10</span></div>
+      <div class="pts-row"><span></span><span></span></div>
+      <div class="pts-row"><span>Red card</span><span class="pts-neg">−2</span></div>
+    </div>
+  </details>
 
   <div class="error-msg" id="errorMsg"></div>
   <div id="matchesRoot">

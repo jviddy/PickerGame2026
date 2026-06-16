@@ -108,13 +108,8 @@
       gap: 8px;
       white-space: nowrap;
     }
-    .controls label {
-      color: var(--gray-600);
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .sort-select {
+    .expand-btn {
+      display: none;
       border: 1.5px solid var(--gray-200);
       border-radius: 99px;
       background: var(--white);
@@ -122,8 +117,12 @@
       cursor: pointer;
       font-size: 0.82rem;
       font-weight: 800;
-      padding: 7px 12px;
+      padding: 7px 14px;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
     }
+    .expand-btn:hover { border-color: var(--navy-light); }
+    .expand-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    @media (min-width: 769px) { .expand-btn { display: inline-block; } }
 
     .error-msg {
       display: none;
@@ -145,15 +144,21 @@
     }
     .table-wrap {
       overflow-x: auto;
+      overflow-y: auto;
+      max-height: calc(100vh - 200px);
+      min-height: 300px;
     }
     table {
       width: 100%;
-      min-width: 980px;
+      min-width: 1060px;
       border-collapse: collapse;
     }
     thead {
       background: var(--navy);
       color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 5;
     }
     th {
       padding: 10px 8px;
@@ -163,9 +168,21 @@
       text-align: center;
       white-space: nowrap;
     }
-    th.country-heading {
-      text-align: left;
-    }
+    th.country-heading { text-align: left; }
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { background: var(--navy-light); }
+    th.sort-active { background: var(--navy-light); }
+    .sort-arrow { margin-left: 2px; font-size: 0.62rem; }
+    .sort-arrow-inactive { opacity: 0.22; }
+    .round-col-active-head { background: rgba(255,255,255,0.16) !important; }
+    .round-active-marker { display: block; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; margin: 2px auto 0; }
+    .round-col-active-cell { background: rgba(233,111,44,0.07); }
+    .country-stats { display: flex; gap: 4px; margin-top: 5px; flex-wrap: wrap; }
+    .stat-item { font-size: 0.6rem; font-weight: 800; color: var(--gray-600); background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 3px; padding: 1px 5px; }
+    .stat-yc { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
+    .stat-rc { background: var(--red-bg); color: var(--red); border-color: #fecaca; }
+    .team-row[data-country] { cursor: pointer; }
+    .team-row.row-open { background: #eef3f8; }
     tbody tr.team-row {
       border-bottom: 1px solid var(--gray-200);
     }
@@ -411,12 +428,7 @@
       <p>Scores by country and round. Click any round score to inspect the point breakdown.</p>
     </div>
     <div class="controls">
-      <label for="sortSelect">Order</label>
-      <select class="sort-select" id="sortSelect">
-        <option value="score">Current score</option>
-        <option value="name">Country name</option>
-        <option value="status">Still in competition</option>
-      </select>
+      <button class="expand-btn" id="expandBtn" type="button">Expand</button>
     </div>
   </div>
 
@@ -429,130 +441,114 @@
 </main>
 
 <script>
-  const DATA_URLS = {
-    teams: './Data/teams.json'
+  const DATA_URLS   = { teams: './Data/teams.json' };
+  const ROUND_ORDER = ['GS1','GS2','GS3','R32','R16','QF','SF','TPP','F'];
+  const ROUND_LABELS = {
+    GS1:'Group Stage 1', GS2:'Group Stage 2', GS3:'Group Stage 3',
+    R32:'Round of 32',   R16:'Round of 16',   QF:'Quarter-finals',
+    SF:'Semi-finals',    TPP:'Third Place',    F:'Final'
   };
 
-  const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
-  const ROUND_LABELS = {
-    GS1: 'Group Stage 1',
-    GS2: 'Group Stage 2',
-    GS3: 'Group Stage 3',
-    R32: 'Round of 32',
-    R16: 'Round of 16',
-    QF: 'Quarter-finals',
-    SF: 'Semi-finals',
-    TPP: 'Third Place',
-    F: 'Final'
-  };
+  // Country + Status + FIFA + Cost + Cost/pt + Pld + rounds + Total
+  const TOTAL_COLS = ROUND_ORDER.length + 7;
 
   const scoresRoot = document.getElementById('scoresRoot');
-  const errorMsg = document.getElementById('errorMsg');
-  const sortSelect = document.getElementById('sortSelect');
+  const errorMsg   = document.getElementById('errorMsg');
+  const expandBtn  = document.getElementById('expandBtn');
 
   let countryScores = [];
-  let openDetail = null;
+  let openDetail    = null;   // { countryName, round } | null
+  let sortField     = 'score';
+  let sortDir       = 'desc';
+  let expandedMode  = false;
+  let activeRound   = null;
+
+  // Columns where ascending order is the natural default
+  const DEFAULT_ASC = new Set(['name', 'fifaRank', 'costPerPoint', 'status']);
 
   async function loadJson(url) {
-    const response = await fetch(`${url}?v=${Date.now()}`);
-    if (!response.ok) throw new Error(`Could not load ${url}`);
-    return response.json();
+    const res = await fetch(`${url}?v=${Date.now()}`);
+    if (!res.ok) throw new Error(`Could not load ${url}`);
+    return res.json();
   }
 
   async function loadData() {
     try {
-      const teams = await loadJson(DATA_URLS.teams);
-      countryScores = teams.map(normaliseTeamScore);
+      countryScores = (await loadJson(DATA_URLS.teams)).map(normaliseTeamScore);
       return true;
-    } catch (error) {
-      showError(error.message);
+    } catch (e) {
+      errorMsg.textContent = e.message;
+      errorMsg.classList.add('show');
       return false;
     }
   }
 
-  function showError(message) {
-    errorMsg.textContent = message;
-    errorMsg.classList.add('show');
+  function escapeHtml(v) {
+    return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   }
 
-  function escapeHtml(value) {
-    return String(value ?? '').replace(/[&<>"']/g, char => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;'
-    }[char]));
-  }
-
-  function formatDate(isoDate) {
+  function formatDate(iso) {
     return new Intl.DateTimeFormat('en-GB', {
-      weekday: 'short',
-      day: '2-digit',
-      month: 'short',
-      hour: '2-digit',
-      minute: '2-digit',
-      hourCycle: 'h23',
-      timeZone: 'Europe/London'
-    }).format(new Date(isoDate));
+      weekday:'short', day:'2-digit', month:'short',
+      hour:'2-digit', minute:'2-digit', hourCycle:'h23', timeZone:'Europe/London'
+    }).format(new Date(iso));
+  }
+
+  function getCurrentRound() {
+    for (let i = ROUND_ORDER.length - 1; i >= 0; i--) {
+      if (countryScores.some(c => (c.byRound[ROUND_ORDER[i]] || 0) > 0)) return ROUND_ORDER[i];
+    }
+    return ROUND_ORDER[0];
   }
 
   function getSortedScores() {
-    const sorted = [...countryScores];
-    const sortMode = sortSelect.value;
-
-    if (sortMode === 'name') {
-      sorted.sort((a, b) => a.countryName.localeCompare(b.countryName));
-    } else if (sortMode === 'status') {
-      sorted.sort((a, b) => {
-        if (a.inCompetition !== b.inCompetition) return a.inCompetition ? -1 : 1;
-        if (b.totalPoints !== a.totalPoints) return b.totalPoints - a.totalPoints;
-        return a.countryName.localeCompare(b.countryName);
-      });
-    } else {
-      sorted.sort((a, b) => {
-        if (b.totalPoints !== a.totalPoints) return b.totalPoints - a.totalPoints;
-        return a.countryName.localeCompare(b.countryName);
-      });
-    }
-
-    return sorted;
+    return [...countryScores].sort((a, b) => {
+      let av, bv;
+      switch (sortField) {
+        case 'name':         av = a.countryName; bv = b.countryName; break;
+        case 'status':       av = a.inCompetition ? 0 : 1; bv = b.inCompetition ? 0 : 1; break;
+        case 'fifaRank':     av = a.fifaRank || 999; bv = b.fifaRank || 999; break;
+        case 'cost':         av = a.cost || 0; bv = b.cost || 0; break;
+        case 'costPerPoint': av = a.totalPoints > 0 ? a.cost/a.totalPoints : Infinity;
+                             bv = b.totalPoints > 0 ? b.cost/b.totalPoints : Infinity; break;
+        case 'pld':          av = a.matchesPlayed; bv = b.matchesPlayed; break;
+        case 'score':        av = a.totalPoints; bv = b.totalPoints; break;
+        default:             av = a.byRound[sortField] || 0; bv = b.byRound[sortField] || 0;
+      }
+      let cmp = typeof av === 'string' ? av.localeCompare(bv) : av - bv;
+      if (sortDir === 'desc') cmp = -cmp;
+      if (cmp !== 0) return cmp;
+      if (sortField !== 'score' && a.totalPoints !== b.totalPoints) return b.totalPoints - a.totalPoints;
+      return a.countryName.localeCompare(b.countryName);
+    });
   }
 
   function normaliseTeamScore(team) {
-    const byRound = {};
-    const detailsByRound = {};
-    ROUND_ORDER.forEach(round => {
-      byRound[round] = 0;
-      detailsByRound[round] = [];
-    });
+    const byRound = {}, detailsByRound = {};
+    ROUND_ORDER.forEach(r => { byRound[r] = 0; detailsByRound[r] = []; });
 
-    (team.scoresByRound || []).forEach(roundScore => {
-      const round = roundScore.roundCode;
-      byRound[round] = roundScore.total || 0;
-      detailsByRound[round] = (roundScore.matches || []).map(match => ({
-        matchId: match.matchId,
-        date: match.date || '',
-        roundCode: round,
-        fixture: match.fixture,
-        points: {
-          items: match.points || [],
-          total: match.total || 0
-        }
+    (team.scoresByRound || []).forEach(rs => {
+      byRound[rs.roundCode] = rs.total || 0;
+      detailsByRound[rs.roundCode] = (rs.matches || []).map(m => ({
+        matchId: m.matchId, date: m.date || '', roundCode: rs.roundCode,
+        fixture: m.fixture, points: { items: m.points || [], total: m.total || 0 }
       }));
     });
 
-    const matchesPlayed = (team.scoresByRound || []).reduce(
-      (sum, r) => sum + (r.matches || []).length, 0
-    );
-
+    const allMatches = (team.scoresByRound || []).flatMap(r => r.matches || []);
     return {
       ...team,
-      totalPoints: team.totalPoints || 0,
-      inCompetition: team.inCompetition !== false,
-      matchesPlayed,
-      byRound,
-      detailsByRound
+      totalPoints:    team.totalPoints || 0,
+      inCompetition:  team.inCompetition !== false,
+      matchesPlayed:  allMatches.length,
+      byRound, detailsByRound,
+      wins:   allMatches.filter(m => m.result === 'win').length,
+      draws:  allMatches.filter(m => m.result === 'draw').length,
+      losses: allMatches.filter(m => m.result === 'loss').length,
+      gf: allMatches.reduce((s, m) => s + (m.goalsFor      || 0), 0),
+      ga: allMatches.reduce((s, m) => s + (m.goalsAgainst  || 0), 0),
+      yc: allMatches.reduce((s, m) => s + (m.yellowCards   || 0), 0),
+      rc: allMatches.reduce((s, m) => s + (m.redCards      || 0), 0),
     };
   }
 
@@ -562,118 +558,184 @@
       <span class="point-chip ${item.value < 0 ? 'negative' : 'positive'}">
         <span>${escapeHtml(item.label)}</span>
         <strong>${item.value > 0 ? '+' : ''}${item.value}</strong>
-      </span>
-    `).join('');
+      </span>`).join('');
   }
 
-  function renderRoundDetail(country) {
-    const details = country.detailsByRound[openDetail.round] || [];
-    const title = `${country.countryName} - ${ROUND_LABELS[openDetail.round] || openDetail.round}`;
-
+  function renderRoundDetail(country, round) {
+    const details = country.detailsByRound[round] || [];
     return `
       <tr class="details-row">
-        <td colspan="${ROUND_ORDER.length + 4}">
+        <td colspan="${TOTAL_COLS}">
           <div class="round-detail">
-            <div class="round-detail-title">${escapeHtml(title)}</div>
+            <div class="round-detail-title">${escapeHtml(country.countryName)} — ${escapeHtml(ROUND_LABELS[round] || round)}</div>
             ${details.length ? `
               <div class="breakdown-list">
-                ${details.map(detail => `
+                ${details.map(d => `
                   <div class="breakdown-match">
                     <div>
-                      <div class="breakdown-fixture" title="${escapeHtml(detail.fixture)}">${escapeHtml(detail.fixture)}</div>
-                    <div class="breakdown-date">${detail.date ? `${escapeHtml(formatDate(detail.date))} BST` : escapeHtml(detail.matchId)}</div>
+                      <div class="breakdown-fixture" title="${escapeHtml(d.fixture)}">${escapeHtml(d.fixture)}</div>
+                      <div class="breakdown-date">${d.date ? `${escapeHtml(formatDate(d.date))} BST` : escapeHtml(d.matchId)}</div>
                     </div>
-                    <div class="point-chips">${renderPointChips(detail.points.items)}</div>
-                    <div class="breakdown-total">${detail.points.total > 0 ? '+' : ''}${detail.points.total}</div>
-                  </div>
-                `).join('')}
-              </div>
-            ` : '<div class="empty-breakdown">No played matches or points recorded for this round yet.</div>'}
+                    <div class="point-chips">${renderPointChips(d.points.items)}</div>
+                    <div class="breakdown-total">${d.points.total > 0 ? '+' : ''}${d.points.total}</div>
+                  </div>`).join('')}
+              </div>`
+            : '<div class="empty-breakdown">No played matches or points recorded for this round yet.</div>'}
           </div>
         </td>
-      </tr>
-    `;
+      </tr>`;
+  }
+
+  function arrow(field) {
+    if (sortField !== field) return '<span class="sort-arrow sort-arrow-inactive">↕</span>';
+    return `<span class="sort-arrow">${sortDir === 'asc' ? '↑' : '↓'}</span>`;
+  }
+
+  function th(field, label, extraClass) {
+    const cls = ['sortable', sortField === field ? 'sort-active' : '', extraClass || ''].filter(Boolean).join(' ');
+    return `<th class="${cls}" data-sort="${field}">${escapeHtml(label)}${arrow(field)}</th>`;
   }
 
   function renderTable() {
-    const sortedScores = getSortedScores();
+    const rows = getSortedScores();
     scoresRoot.innerHTML = `
       <table>
         <thead>
           <tr>
-            <th class="country-heading">Country</th>
-            <th>Status</th>
-            <th title="Team cost">Cost</th>
-            <th title="Cost per point">Cost/pt</th>
-            <th title="Matches played">Pld</th>
-            ${ROUND_ORDER.map(round => `<th title="${escapeHtml(ROUND_LABELS[round])}">${escapeHtml(round)}</th>`).join('')}
-            <th>Total</th>
+            ${th('name',         'Country',  'country-heading')}
+            ${th('status',       'Status')}
+            ${th('fifaRank',     'FIFA')}
+            ${th('cost',         'Cost')}
+            ${th('costPerPoint', 'Cost/pt')}
+            ${th('pld',          'Pld')}
+            ${ROUND_ORDER.map(r => {
+              const isActive = r === activeRound;
+              const cls = ['sortable',
+                sortField === r ? 'sort-active' : '',
+                isActive ? 'round-col-active-head' : ''
+              ].filter(Boolean).join(' ');
+              return `<th class="${cls}" data-sort="${r}" data-round="${r}"
+                title="${escapeHtml(ROUND_LABELS[r])}">${escapeHtml(r)}${arrow(r)}${isActive ? '<span class="round-active-marker"></span>' : ''}</th>`;
+            }).join('')}
+            ${th('score', 'Total')}
           </tr>
         </thead>
         <tbody>
-          ${sortedScores.map(country => {
-            const isOpen = openDetail && openDetail.countryName === country.countryName;
+          ${rows.map(country => {
+            const isOpen  = openDetail && openDetail.countryName === country.countryName;
+            const openRnd = isOpen ? openDetail.round : null;
+            const costPt  = country.cost != null && country.totalPoints > 0
+              ? `MX$${(country.cost / country.totalPoints).toFixed(1)}bn` : '—';
+
+            const statsHtml = expandedMode ? `
+              <div class="country-stats">
+                <span class="stat-item">W${country.wins}</span>
+                <span class="stat-item">D${country.draws}</span>
+                <span class="stat-item">L${country.losses}</span>
+                <span class="stat-item">GF${country.gf}</span>
+                <span class="stat-item">GA${country.ga}</span>
+                ${country.yc ? `<span class="stat-item stat-yc">YC${country.yc}</span>` : ''}
+                ${country.rc ? `<span class="stat-item stat-rc">RC${country.rc}</span>` : ''}
+              </div>` : '';
+
             return `
-              <tr class="team-row">
+              <tr class="team-row${isOpen ? ' row-open' : ''}" ${expandedMode ? `data-country="${escapeHtml(country.countryName)}"` : ''}>
                 <td>
                   <div class="country-cell">
                     <img class="flag" src="${country.flagUrl}" alt="${escapeHtml(country.countryName)} flag" loading="lazy" />
                     <div>
                       <div class="country-name" title="${escapeHtml(country.countryName)}">${escapeHtml(country.countryName)}</div>
                       <div class="country-meta">Group ${escapeHtml(country.group)}</div>
+                      ${statsHtml}
                     </div>
                   </div>
                 </td>
                 <td><span class="status-pill ${country.inCompetition ? '' : 'out'}">${country.inCompetition ? 'In' : 'Out'}</span></td>
+                <td class="rank-cell">${country.fifaRank || '—'}</td>
                 <td class="rank-cell">${country.cost != null ? `MX$${country.cost}bn` : '—'}</td>
-                <td class="rank-cell">${country.cost != null && country.totalPoints > 0 ? `MX$${(country.cost / country.totalPoints).toFixed(1)}bn` : '—'}</td>
+                <td class="rank-cell">${costPt}</td>
                 <td class="rank-cell">${country.matchesPlayed}</td>
-                ${ROUND_ORDER.map(round => {
-                  const score = country.byRound[round] || 0;
-                  const active = isOpen && openDetail.round === round;
-                  return `
-                    <td>
-                      <button
-                        class="round-score-btn ${score ? 'has-score' : ''} ${active ? 'active' : ''}"
-                        type="button"
-                        data-country="${escapeHtml(country.countryName)}"
-                        data-round="${escapeHtml(round)}"
-                        title="Show ${escapeHtml(country.countryName)} ${escapeHtml(round)} breakdown"
-                      >${score}</button>
-                    </td>
-                  `;
+                ${ROUND_ORDER.map(r => {
+                  const score    = country.byRound[r] || 0;
+                  const cellOpen = openRnd === r;
+                  const colCls   = r === activeRound ? 'round-col-active-cell' : '';
+                  return `<td class="${colCls}">
+                    <button class="round-score-btn ${score ? 'has-score' : ''} ${cellOpen ? 'active' : ''}"
+                      type="button" data-country="${escapeHtml(country.countryName)}" data-round="${escapeHtml(r)}"
+                      title="${escapeHtml(country.countryName)} — ${escapeHtml(ROUND_LABELS[r])}">${score}</button>
+                  </td>`;
                 }).join('')}
                 <td class="total-cell">${country.totalPoints}</td>
               </tr>
-              ${isOpen ? renderRoundDetail(country) : ''}
-            `;
+              ${isOpen ? renderRoundDetail(country, openRnd) : ''}`;
           }).join('')}
         </tbody>
-      </table>
-    `;
+      </table>`;
 
-    document.querySelectorAll('.round-score-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const next = {
-          countryName: button.dataset.country,
-          round: button.dataset.round
-        };
-        const same = openDetail &&
-          openDetail.countryName === next.countryName &&
-          openDetail.round === next.round;
-        openDetail = same ? null : next;
+    // Column header sort + active-round clicks
+    scoresRoot.querySelectorAll('th[data-sort]').forEach(el => {
+      el.addEventListener('click', () => {
+        const field = el.dataset.sort;
+        const isRound = ROUND_ORDER.includes(field);
+
+        if (expandedMode && isRound) {
+          // In expanded mode, round headers change the highlighted column
+          activeRound = field;
+          if (openDetail) openDetail = { countryName: openDetail.countryName, round: field };
+          renderTable();
+          return;
+        }
+
+        if (sortField === field) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortField = field;
+          sortDir = DEFAULT_ASC.has(field) ? 'asc' : 'desc';
+        }
+        openDetail = null;
         renderTable();
       });
     });
+
+    // Round score button clicks
+    scoresRoot.querySelectorAll('.round-score-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const name  = btn.dataset.country;
+        const round = btn.dataset.round;
+        if (expandedMode) activeRound = round;
+        const same  = openDetail && openDetail.countryName === name && openDetail.round === round;
+        openDetail  = same ? null : { countryName: name, round };
+        renderTable();
+      });
+    });
+
+    // In expanded mode, clicking a country row opens the detail for the active round
+    if (expandedMode) {
+      scoresRoot.querySelectorAll('.team-row[data-country]').forEach(row => {
+        row.addEventListener('click', e => {
+          if (e.target.closest('button')) return;
+          const name = row.dataset.country;
+          const same = openDetail && openDetail.countryName === name;
+          openDetail = same ? null : { countryName: name, round: activeRound };
+          renderTable();
+        });
+      });
+    }
   }
 
-  sortSelect.addEventListener('change', () => {
+  expandBtn.addEventListener('click', () => {
+    expandedMode = !expandedMode;
+    expandBtn.textContent = expandedMode ? 'Collapse' : 'Expand';
+    expandBtn.classList.toggle('active', expandedMode);
     openDetail = null;
+    if (expandedMode && !activeRound) activeRound = getCurrentRound();
     renderTable();
   });
 
   async function init() {
     if (await loadData()) {
+      activeRound = getCurrentRound();
       renderTable();
     }
   }
