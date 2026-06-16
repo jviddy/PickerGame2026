@@ -679,6 +679,12 @@
     return getTeam(teamRef)?.countryName || teamRef || 'TBA';
   }
 
+  function getTeamLabel(teamRef) {
+    const team = getTeam(teamRef);
+    if (!team) return teamRef || 'TBA';
+    return team.fifaRank ? `${team.countryName} (${team.fifaRank})` : team.countryName;
+  }
+
   function getResult(matchId) {
     if (!matchId || !Array.isArray(results)) return null;
     return results.find(result => result && result.matchId === matchId) || null;
@@ -895,14 +901,14 @@
             <div class="team home">
               <div class="team-identity">
                 ${renderFlag(match.homeTeam, 'Home')}
-                <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamName(match.homeTeam))}</span>
+                <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamLabel(match.homeTeam))}</span>
               </div>
               ${renderTeamCards(result, 'home')}
             </div>
             ${renderScoreline(match, result)}
             <div class="team away">
               <div class="team-identity">
-                <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamName(match.awayTeam))}</span>
+                <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamLabel(match.awayTeam))}</span>
                 ${renderFlag(match.awayTeam, 'Away')}
               </div>
               ${renderTeamCards(result, 'away')}
