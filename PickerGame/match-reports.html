@@ -502,14 +502,14 @@
 
       // Group sidebar items by stage
       const stageGroups = {};
-      for (const report of [...displayReports].reverse()) { // oldest first for sidebar grouping
+      for (const report of displayReports) { // newest first
         const match = matchMap[report.matchId];
         const stageKey = STAGE_MAP[match.roundCode] || 'GS';
         if (!stageGroups[stageKey]) stageGroups[stageKey] = [];
         stageGroups[stageKey].push(report);
       }
 
-      const sidebarHtml = STAGE_ORDER
+      const sidebarHtml = [...STAGE_ORDER].reverse()
         .filter(sk => stageGroups[sk])
         .map(sk => {
           const isOpen = sk === currentStageKey || currentStageKey === null;
