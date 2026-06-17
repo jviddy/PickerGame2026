@@ -380,11 +380,12 @@
     const predA = Number(parts[1]);
     let indicator = '';
     if (result && result.homeScore !== null && result.awayScore !== null) {
-      const dH = Math.abs(predH - result.homeScore);
-      const dA = Math.abs(predA - result.awayScore);
-      if (dH === 0 && dA === 0) {
+      const exactScore = predH === result.homeScore && predA === result.awayScore;
+      const predResult  = predH > predA ? 'H' : predH < predA ? 'A' : 'D';
+      const actualResult = result.homeScore > result.awayScore ? 'H' : result.homeScore < result.awayScore ? 'A' : 'D';
+      if (exactScore) {
         indicator = ' <span class="pred-correct">&#10003;</span>';
-      } else if (dH <= 1 && dA <= 1) {
+      } else if (predResult === actualResult) {
         indicator = ' <span class="pred-close">close</span>';
       } else {
         indicator = ' <span class="pred-wrong">&#10007;</span>';
