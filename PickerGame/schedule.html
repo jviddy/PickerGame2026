@@ -144,6 +144,21 @@
     }
     .date-select:focus { border-color: var(--navy-light); }
 
+    .today-btn {
+      border: 1.5px solid var(--navy-light);
+      border-radius: 99px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .today-btn:hover { background: var(--navy-light); }
+    .today-btn.dim { opacity: 0.45; cursor: default; }
+
     .section-pills {
       display: flex;
       gap: 5px;
@@ -559,6 +574,7 @@
       <select class="date-select" id="dateSelect" aria-label="Jump to date">
         <option value="">Jump to date…</option>
       </select>
+      <button class="today-btn" id="todayBtn" type="button">Today</button>
     </div>
     <div class="section-pills" id="sectionPills"></div>
   </div>
@@ -1070,11 +1086,63 @@
     renderMatches();
   });
 
+  const todayBtn = document.getElementById('todayBtn');
+
+  function getTodayKey() {
+    return new Intl.DateTimeFormat('en-CA', {
+      year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Europe/London'
+    }).format(new Date());
+  }
+
+  function scrollToNextFixture() {
+    // Find the last played card and first unplayed card across all sections
+    const allCards = Array.from(matchesRoot.querySelectorAll('.match-card'));
+    if (!allCards.length) return;
+
+    const firstUpcoming = allCards.find(c => !c.classList.contains('played'));
+    if (!firstUpcoming) return; // all played, nothing to scroll to
+
+    // Expand collapsed sections containing these cards
+    [firstUpcoming].forEach(card => {
+      const section = card.closest('.round-section');
+      if (section?.classList.contains('collapsed')) section.classList.remove('collapsed');
+    });
+
+    // On desktop show next two: scroll to the card just before firstUpcoming (last played),
+    // so results are at the top and upcoming fixtures fill the viewport below.
+    const idx = allCards.indexOf(firstUpcoming);
+    const isDesktop = window.innerWidth >= 769;
+    const anchorCard = isDesktop && idx > 0 ? allCards[idx - 1] : firstUpcoming;
+
+    // Also expand the anchor's section
+    const anchorSection = anchorCard.closest('.round-section');
+    if (anchorSection?.classList.contains('collapsed')) anchorSection.classList.remove('collapsed');
+
+    scrollToEl(anchorCard);
+  }
+
+  function scrollToToday() {
+    const todayKey = getTodayKey();
+    const card = matchesRoot.querySelector(`[data-date="${todayKey}"]`);
+    if (!card) {
+      todayBtn.classList.add('dim');
+      setTimeout(() => todayBtn.classList.remove('dim'), 1200);
+      return;
+    }
+    const section = card.closest('.round-section');
+    if (section?.classList.contains('collapsed')) section.classList.remove('collapsed');
+    scrollToEl(card);
+  }
+
+  todayBtn.addEventListener('click', scrollToToday);
+
   async function init() {
     updateGroupButtons();
     if (await loadData()) {
       buildDateSelect();
       renderMatches();
+      // Auto-scroll after a brief paint delay so layout is settled
+      setTimeout(scrollToNextFixture, 80);
     }
   }
 
