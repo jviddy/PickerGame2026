@@ -1108,11 +1108,9 @@
       if (section?.classList.contains('collapsed')) section.classList.remove('collapsed');
     });
 
-    // On desktop show next two: scroll to the card just before firstUpcoming (last played),
-    // so results are at the top and upcoming fixtures fill the viewport below.
+    // Scroll to 4 results above the first upcoming so recent results are visible
     const idx = allCards.indexOf(firstUpcoming);
-    const isDesktop = window.innerWidth >= 769;
-    const anchorCard = isDesktop && idx > 0 ? allCards[idx - 1] : firstUpcoming;
+    const anchorCard = idx > 0 ? allCards[Math.max(0, idx - 4)] : firstUpcoming;
 
     // Also expand the anchor's section
     const anchorSection = anchorCard.closest('.round-section');
