@@ -927,6 +927,16 @@
       }
     }
 
+    function scrollToNextPending() {
+      const allRows = Array.from(matchesList.querySelectorAll('.match-row'));
+      if (!allRows.length) return;
+      const firstPending = allRows.find(row => !row.classList.contains('played'));
+      if (!firstPending) return;
+      const idx = allRows.indexOf(firstPending);
+      const anchorRow = allRows[Math.max(0, idx - 3)];
+      anchorRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     async function init() {
       try {
         [matches, teams, results, settings] = await Promise.all([
@@ -940,6 +950,7 @@
         renderGroupQual();
         document.getElementById('submitGroupQual').addEventListener('click', submitGroupQual);
         setStatus('Select a match to enter or update its result.');
+        setTimeout(scrollToNextPending, 80);
       } catch (error) {
         setStatus(error.message, 'error');
       }
