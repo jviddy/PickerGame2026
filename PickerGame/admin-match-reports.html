@@ -359,11 +359,16 @@
       const parts = (pred || '').split('-');
       const predH = Number(parts[0]);
       const predA = Number(parts[1]);
-      const exactScore   = predH === result.homeScore && predA === result.awayScore;
-      const predResult   = predH > predA ? 'H' : predH < predA ? 'A' : 'D';
-      const actualResult = result.homeScore > result.awayScore ? 'H' : result.homeScore < result.awayScore ? 'A' : 'D';
-      if (exactScore)                   return ' <span class="pred-correct">✓</span>';
-      if (predResult === actualResult)  return ' <span class="pred-close">close</span>';
+      const dH = Math.abs(predH - result.homeScore);
+      const dA = Math.abs(predA - result.awayScore);
+      const exactScore = dH === 0 && dA === 0;
+      const predOutcome   = predH > predA ? 'H' : predH < predA ? 'A' : 'D';
+      const actualOutcome = result.homeScore > result.awayScore ? 'H' : result.homeScore < result.awayScore ? 'A' : 'D';
+      const correctOutcome = predOutcome === actualOutcome;
+      const reversedWin = (predOutcome === 'H' && actualOutcome === 'A') || (predOutcome === 'A' && actualOutcome === 'H');
+      const withinOne = dH <= 1 && dA <= 1;
+      if (exactScore)                                    return ' <span class="pred-correct">✓</span>';
+      if (correctOutcome || (withinOne && !reversedWin)) return ' <span class="pred-close">close</span>';
       return ' <span class="pred-wrong">✗</span>';
     }
 
