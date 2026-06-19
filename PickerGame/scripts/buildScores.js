@@ -132,8 +132,8 @@ async function main() {
     ];
 
     // Daily snapshot: save current entrantTotals as baseline before overwriting
-    // Baseline updates once per UTC day so leaderboard can show "change since yesterday"
-    const todayUTC = new Date().toISOString().slice(0, 10);
+    // Baseline updates once per BST day so leaderboard can show "change since yesterday"
+    const todayBST = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date());
     let baselineUpdated = false;
     for (const outputDir of outputDirs) {
       const baselinePath = path.join(outputDir, 'pointsBaseline.json');
@@ -142,7 +142,7 @@ async function main() {
         let needsUpdate = true;
         try {
           const existing = JSON.parse(await fs.readFile(baselinePath, 'utf8'));
-          if (existing[0]?.baselineDate === todayUTC) needsUpdate = false;
+          if (existing[0]?.baselineDate === todayBST) needsUpdate = false;
         } catch (_) { /* baseline doesn't exist yet */ }
 
         if (needsUpdate) {
@@ -153,11 +153,11 @@ async function main() {
                 entrantTeamName: e.entrantTeamName,
                 entrantName:     e.entrantName,
                 totalPoints:     e.totalPoints,
-                baselineDate:    todayUTC,
+                baselineDate:    todayBST,
               }));
               await writeJSON(baselinePath, baseline);
               if (!baselineUpdated) {
-                console.log(`✓ Updated daily points baseline for ${todayUTC}`);
+                console.log(`✓ Updated daily points baseline for ${todayBST}`);
                 baselineUpdated = true;
               }
             }
