@@ -131,45 +131,47 @@ async function main() {
       path.resolve(projectRoot, 'Data'),
     ];
 
-    // Daily snapshot: save current entrantTotals as baseline before overwriting.
-    // A "day" runs 06:00–05:59 BST so the baseline rolls at 6am rather than midnight.
+    // Deterministic baseline: scores using only results from matches that kicked
+    // off before 6am BST "yesterday" (the start of the previous 6am–6am window).
+    // Delta = current scores − baseline = points earned since 6am yesterday.
+    // No file snapshotting needed — recalculated correctly on every build.
     const _now = new Date();
     const _bstHour = parseInt(
       new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: 'numeric', hour12: false }).format(_now)
     );
-    const _dayRef = _bstHour >= 6 ? _now : new Date(_now.getTime() - 24 * 60 * 60 * 1000);
-    const todayBST = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(_dayRef);
-    let baselineUpdated = false;
-    for (const outputDir of outputDirs) {
-      const baselinePath = path.join(outputDir, 'pointsBaseline.json');
-      const totalsPath   = path.join(outputDir, 'entrantTotals.json');
-      try {
-        let needsUpdate = true;
-        try {
-          const existing = JSON.parse(await fs.readFile(baselinePath, 'utf8'));
-          if (existing[0]?.baselineDate === todayBST) needsUpdate = false;
-        } catch (_) { /* baseline doesn't exist yet */ }
+    // Current BST date (rolls at 6am, not midnight)
+    const _todayRef = _bstHour >= 6 ? _now : new Date(_now.getTime() - 24 * 60 * 60 * 1000);
+    const _todayBSTStr = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(_todayRef);
+    // Previous day's date string
+    const [_ty, _tm, _td] = _todayBSTStr.split('-').map(Number);
+    const _yesterdayBSTStr = new Date(Date.UTC(_ty, _tm - 1, _td - 1)).toISOString().slice(0, 10);
+    // 6am BST on that previous day = 5am UTC (BST is UTC+1 throughout the tournament)
+    const _baselineCutoff = new Date(`${_yesterdayBSTStr}T05:00:00Z`);
 
-        if (needsUpdate) {
-          try {
-            const prevTotals = JSON.parse(await fs.readFile(totalsPath, 'utf8'));
-            if (prevTotals.length > 0) {
-              const baseline = prevTotals.map(e => ({
-                entrantTeamName: e.entrantTeamName,
-                entrantName:     e.entrantName,
-                totalPoints:     e.totalPoints,
-                baselineDate:    todayBST,
-              }));
-              await writeJSON(baselinePath, baseline);
-              if (!baselineUpdated) {
-                console.log(`✓ Updated daily points baseline for ${todayBST}`);
-                baselineUpdated = true;
-              }
-            }
-          } catch (_) { /* no existing totals to snapshot */ }
-        }
-      } catch (_) {}
+    // Build match kickoff time lookup
+    const _matchDateMap = new Map(matches.map(m => [m.matchId, new Date(m.date)]));
+
+    // Filter results to only matches that kicked off before the cutoff
+    const _baselineResults = results.filter(r => {
+      const d = _matchDateMap.get(r.matchId);
+      return d && d < _baselineCutoff;
+    });
+
+    // Recalculate team points and entrant totals for the baseline
+    const _baselineTeamPoints = calculateTeamPoints(settings, teams, matches, _baselineResults);
+    const _baselineTotals     = calculateEntrantTotals(paidEntries, _baselineTeamPoints, teams, matches, _baselineResults);
+
+    const baseline = _baselineTotals.map(e => ({
+      entrantTeamName: e.entrantTeamName,
+      entrantName:     e.entrantName,
+      totalPoints:     e.totalPoints,
+      baselineDate:    _yesterdayBSTStr,
+    }));
+
+    for (const outputDir of outputDirs) {
+      await writeJSON(path.join(outputDir, 'pointsBaseline.json'), baseline);
     }
+    console.log(`✓ Built points baseline for scores before 6am BST ${_yesterdayBSTStr} (${_baselineResults.length} results)`);
 
     for (const outputDir of outputDirs) {
       const outputs = [
