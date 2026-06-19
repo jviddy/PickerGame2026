@@ -337,39 +337,319 @@
   },
   {
     "matchId": "M008",
-    "played": false,
+    "played": true,
     "homeTeam": "Qatar",
     "awayTeam": "Switzerland",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "draw",
+      "goalsFor": 1,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 2,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": -2,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -2,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 1
+    },
+    "awayPoints": {
+      "resultType": "draw",
+      "goalsFor": 1,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 2
+    },
+    "totalPoints": 3
   },
   {
     "matchId": "M007",
-    "played": false,
+    "played": true,
     "homeTeam": "Brazil",
     "awayTeam": "Morocco",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "draw",
+      "goalsFor": 1,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 2,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": -2,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -2,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 1
+    },
+    "awayPoints": {
+      "resultType": "draw",
+      "goalsFor": 1,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Draw",
+          "value": 2,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 3
+    },
+    "totalPoints": 4
   },
   {
     "matchId": "M005",
-    "played": false,
+    "played": true,
     "homeTeam": "Haiti",
     "awayTeam": "Scotland",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "loss",
+      "goalsFor": 0,
+      "goalsAgainst": 1,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": -2,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GA",
+          "value": -2,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": -3
+    },
+    "awayPoints": {
+      "resultType": "win",
+      "goalsFor": 1,
+      "goalsAgainst": 0,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 3,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 5,
+        "goalsScored": 3,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": -3,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 3,
+          "category": "goalsScored"
+        },
+        {
+          "label": "YC",
+          "value": -3,
+          "category": "disciplinary"
+        }
+      ],
+      "total": 5
+    },
+    "totalPoints": 2
   },
   {
     "matchId": "M006",
-    "played": false,
+    "played": true,
     "homeTeam": "Australia",
     "awayTeam": "Türkiye",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "win",
+      "goalsFor": 2,
+      "goalsAgainst": 0,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 5,
+        "goalsScored": 6,
+        "goalsConceded": 0,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 6,
+          "category": "goalsScored"
+        }
+      ],
+      "total": 11
+    },
+    "awayPoints": {
+      "resultType": "loss",
+      "goalsFor": 0,
+      "goalsAgainst": 2,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 1,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 0,
+        "goalsConceded": -4,
+        "penalties": 0,
+        "disciplinary": -1,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GA",
+          "value": -4,
+          "category": "goalsConceded"
+        },
+        {
+          "label": "YC",
+          "value": -1,
+          "category": "disciplinary"
+        }
+      ],
+      "total": -5
+    },
+    "totalPoints": 6
   },
   {
     "matchId": "M010",

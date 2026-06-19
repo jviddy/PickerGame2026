@@ -1406,29 +1406,66 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/60px-Flag_of_Qatar.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 1,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 3,
+      "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -2,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 1
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 1,
+        "matches": [
+          {
+            "matchId": "M008",
+            "date": "2026-06-13T19:00:00Z",
+            "fixture": "Qatar v Switzerland",
+            "result": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 1
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1528,7 +1565,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 1,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -1539,7 +1576,55 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M008",
+          "date": "2026-06-13T19:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Qatar v Switzerland",
+          "points": {
+            "resultType": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 2,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -1559,29 +1644,66 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/60px-Flag_of_Switzerland.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 2,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 3,
+      "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 2
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 2,
+        "matches": [
+          {
+            "matchId": "M008",
+            "date": "2026-06-13T19:00:00Z",
+            "fixture": "Qatar v Switzerland",
+            "result": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 2
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1681,7 +1803,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 2,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -1692,7 +1814,55 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M008",
+          "date": "2026-06-13T19:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Qatar v Switzerland",
+          "points": {
+            "resultType": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 2,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 2
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -1712,29 +1882,66 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/60px-Flag_of_Brazil.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 1,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 3,
+      "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -2,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 1
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 1,
+        "matches": [
+          {
+            "matchId": "M007",
+            "date": "2026-06-13T22:00:00Z",
+            "fixture": "Brazil v Morocco",
+            "result": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 1
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1834,7 +2041,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 1,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -1845,7 +2052,55 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M007",
+          "date": "2026-06-13T22:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Brazil v Morocco",
+          "points": {
+            "resultType": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 2,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -1865,29 +2120,61 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/60px-Flag_of_Morocco.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 3,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
-      "goalsConceded": 0,
+      "result": 2,
+      "goalsScored": 3,
+      "goalsConceded": -2,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 3
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 2,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 3,
+        "matches": [
+          {
+            "matchId": "M007",
+            "date": "2026-06-13T22:00:00Z",
+            "fixture": "Brazil v Morocco",
+            "result": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 3
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -1987,7 +2274,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 3,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -1998,7 +2285,50 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M007",
+          "date": "2026-06-13T22:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Brazil v Morocco",
+          "points": {
+            "resultType": "draw",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 2,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Draw",
+                "value": 2,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 3
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -2018,29 +2348,56 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Haiti.svg/60px-Flag_of_Haiti.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": -3,
     "pointsTotals": {
       "result": 0,
       "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": -3
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -3,
+        "matches": [
+          {
+            "matchId": "M005",
+            "date": "2026-06-14T01:00:00Z",
+            "fixture": "Haiti v Scotland",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -2140,7 +2497,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": -3,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -2151,7 +2508,45 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M005",
+          "date": "2026-06-14T01:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Haiti v Scotland",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -2171,29 +2566,61 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Scotland.svg/60px-Flag_of_Scotland.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 5,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
+      "result": 5,
+      "goalsScored": 3,
       "goalsConceded": 0,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -3,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 5
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
+        "result": 5,
+        "goalsScored": 3,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 5,
+        "matches": [
+          {
+            "matchId": "M005",
+            "date": "2026-06-14T01:00:00Z",
+            "fixture": "Haiti v Scotland",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 5
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -2293,7 +2720,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 5,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -2304,7 +2731,50 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M005",
+          "date": "2026-06-14T01:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Haiti v Scotland",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 5,
+              "goalsScored": 3,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": 5
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -2790,29 +3260,56 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Australia.svg/60px-Flag_of_Australia.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": 11,
     "pointsTotals": {
-      "result": 0,
-      "goalsScored": 0,
+      "result": 5,
+      "goalsScored": 6,
       "goalsConceded": 0,
       "penalties": 0,
       "disciplinary": 0,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": 11
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
-        "result": 0,
-        "goalsScored": 0,
+        "result": 5,
+        "goalsScored": 6,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 11,
+        "matches": [
+          {
+            "matchId": "M006",
+            "date": "2026-06-14T04:00:00Z",
+            "fixture": "Australia v Türkiye",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              }
+            ],
+            "total": 11
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -2912,7 +3409,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": 11,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -2923,7 +3420,45 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M006",
+          "date": "2026-06-14T04:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Australia v Türkiye",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 5,
+              "goalsScored": 6,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              }
+            ],
+            "total": 11
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
@@ -2943,29 +3478,56 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/60px-Flag_of_Turkey.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 0,
+    "totalPoints": -5,
     "pointsTotals": {
       "result": 0,
       "goalsScored": 0,
-      "goalsConceded": 0,
+      "goalsConceded": -4,
       "penalties": 0,
-      "disciplinary": 0,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 0
+      "total": -5
     },
     "scoresByRound": [
       {
         "roundCode": "GS1",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -5,
+        "matches": [
+          {
+            "matchId": "M006",
+            "date": "2026-06-14T04:00:00Z",
+            "fixture": "Australia v Türkiye",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        ]
       },
       {
         "roundCode": "GS2",
@@ -3065,7 +3627,7 @@
       }
     ],
     "byRound": {
-      "GS1": 0,
+      "GS1": -5,
       "GS2": 0,
       "GS3": 0,
       "R32": 0,
@@ -3076,7 +3638,45 @@
       "F": 0
     },
     "detailsByRound": {
-      "GS1": [],
+      "GS1": [
+        {
+          "matchId": "M006",
+          "date": "2026-06-14T04:00:00Z",
+          "roundCode": "GS1",
+          "fixture": "Australia v Türkiye",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        }
+      ],
       "GS2": [],
       "GS3": [],
       "R32": [],
