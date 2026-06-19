@@ -131,9 +131,14 @@ async function main() {
       path.resolve(projectRoot, 'Data'),
     ];
 
-    // Daily snapshot: save current entrantTotals as baseline before overwriting
-    // Baseline updates once per BST day so leaderboard can show "change since yesterday"
-    const todayBST = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date());
+    // Daily snapshot: save current entrantTotals as baseline before overwriting.
+    // A "day" runs 06:00–05:59 BST so the baseline rolls at 6am rather than midnight.
+    const _now = new Date();
+    const _bstHour = parseInt(
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: 'numeric', hour12: false }).format(_now)
+    );
+    const _dayRef = _bstHour >= 6 ? _now : new Date(_now.getTime() - 24 * 60 * 60 * 1000);
+    const todayBST = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(_dayRef);
     let baselineUpdated = false;
     for (const outputDir of outputDirs) {
       const baselinePath = path.join(outputDir, 'pointsBaseline.json');
