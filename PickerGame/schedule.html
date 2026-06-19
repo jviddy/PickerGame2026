@@ -532,6 +532,55 @@
     @media (max-width: 600px) {
       .scoring-ref-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    .pred-summary {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: none;
+    }
+    .pred-summary.visible { display: block; }
+    .pred-summary-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .pred-summary-stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pred-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      min-width: 64px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--gray-50);
+      flex: 1;
+    }
+    .pred-stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .pred-stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .pred-stat.played .pred-stat-num { color: var(--gray-700); }
+    .pred-stat.correct .pred-stat-num { color: var(--green); }
+    .pred-stat.close   .pred-stat-num { color: var(--gold); }
+    .pred-stat.wrong   .pred-stat-num { color: var(--red); }
   </style>
   <script src="ticker.js" defer></script>
   <script src="/nav-phase.js"></script>
@@ -605,6 +654,10 @@
   </details>
 
   <div class="error-msg" id="errorMsg"></div>
+  <div class="pred-summary" id="predSummary">
+    <div class="pred-summary-title">El Presidente's Predictions</div>
+    <div class="pred-summary-stats" id="predSummaryStats"></div>
+  </div>
   <div id="matchesRoot">
     <div class="loading">Loading matches...</div>
   </div>
@@ -627,8 +680,10 @@
     R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: '3rd Place', F: 'Final'
   };
 
-  const matchesRoot  = document.getElementById('matchesRoot');
-  const errorMsg     = document.getElementById('errorMsg');
+  const matchesRoot    = document.getElementById('matchesRoot');
+  const errorMsg       = document.getElementById('errorMsg');
+  const predSummaryEl  = document.getElementById('predSummary');
+  const predSummaryStats = document.getElementById('predSummaryStats');
   const groupByRoundBtn = document.getElementById('groupByRoundBtn');
   const groupByGroupBtn = document.getElementById('groupByGroupBtn');
   const sectionPills = document.getElementById('sectionPills');
@@ -1026,6 +1081,35 @@
     return groupMatches.length > 0 && groupMatches.every(m => isPlayed(getDisplayResult(m)));
   }
 
+  function renderPredSummary() {
+    const played = matches.filter(m => isPlayed(getDisplayResult(m)));
+    const withPred = played.filter(m => predictions[m.matchId]);
+    if (!withPred.length) { predSummaryEl.classList.remove('visible'); return; }
+    let correct = 0, close = 0, wrong = 0;
+    for (const m of withPred) {
+      const result = getDisplayResult(m);
+      const [predH, predA] = predictions[m.matchId].split('-').map(Number);
+      const dH = Math.abs(predH - result.homeScore);
+      const dA = Math.abs(predA - result.awayScore);
+      const exactScore = dH === 0 && dA === 0;
+      const predOutcome   = predH > predA ? 'H' : predH < predA ? 'A' : 'D';
+      const actualOutcome = result.homeScore > result.awayScore ? 'H' : result.homeScore < result.awayScore ? 'A' : 'D';
+      const correctOutcome = predOutcome === actualOutcome;
+      const reversedWin = (predOutcome === 'H' && actualOutcome === 'A') || (predOutcome === 'A' && actualOutcome === 'H');
+      const withinOne = dH <= 1 && dA <= 1;
+      if (exactScore) correct++;
+      else if (correctOutcome || (withinOne && !reversedWin)) close++;
+      else wrong++;
+    }
+    predSummaryStats.innerHTML = `
+      <div class="pred-stat played"><span class="pred-stat-num">${played.length}</span><span class="pred-stat-label">Played</span></div>
+      <div class="pred-stat correct"><span class="pred-stat-num">${correct}</span><span class="pred-stat-label">Correct</span></div>
+      <div class="pred-stat close"><span class="pred-stat-num">${close}</span><span class="pred-stat-label">Close</span></div>
+      <div class="pred-stat wrong"><span class="pred-stat-num">${wrong}</span><span class="pred-stat-label">Wrong</span></div>
+    `;
+    predSummaryEl.classList.add('visible');
+  }
+
   function renderMatches() {
     const groups = groupMode === 'round' ? groupMatchesByRound() : groupMatchesByGroup();
     matchesRoot.innerHTML = Array.from(groups.entries()).map(([key, group]) => {
@@ -1145,6 +1229,7 @@
     if (await loadData()) {
       buildDateSelect();
       renderMatches();
+      renderPredSummary();
       // Auto-scroll after a brief paint delay so layout is settled
       setTimeout(scrollToNextFixture, 80);
     }
