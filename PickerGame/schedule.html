@@ -743,7 +743,10 @@
   }
 
   function getTeam(teamRef) {
-    return teams.find(team => team.groupId === teamRef || team.countryName === teamRef);
+    // Handle "1A (Mexico)" format — extract the country name from parens
+    const parenMatch = teamRef && teamRef.match(/\(([^)]+)\)$/);
+    const name = parenMatch ? parenMatch[1] : teamRef;
+    return teams.find(team => team.groupId === name || team.countryName === name);
   }
 
   function getTeamName(teamRef) {

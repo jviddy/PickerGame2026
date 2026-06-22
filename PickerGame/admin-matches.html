@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match Teams Admin - PickerGame 2026</title>
+  <style>
+    :root {
+      --pitch: #1a3352;
+      --pitch-mid: #2d5a8e;
+      --pitch-bright: #3d7bc4;
+      --ink: #1f2933;
+      --muted: #64748b;
+      --line: #d9e2dc;
+      --soft: #f5f8f6;
+      --gold: #d79a2b;
+      --danger: #b91c1c;
+      --success: #166534;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f0f4f8;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      color: var(--white);
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    h1 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.8rem); }
+
+    .nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+    }
+
+    main {
+      width: min(1280px, calc(100% - 28px));
+      margin: 18px auto 44px;
+    }
+
+    .toolbar {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+      display: flex;
+      gap: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    input, select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 9px;
+      color: var(--ink);
+      font: inherit;
+      background: var(--white);
+    }
+
+    button {
+      min-height: 38px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--pitch-mid);
+      color: var(--white);
+    }
+
+    button:disabled { opacity: 0.5; cursor: default; }
+
+    button.autofill-btn {
+      background: var(--gold);
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .round-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .round-tab {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid var(--line);
+      background: var(--white);
+      color: var(--muted);
+    }
+
+    .round-tab.active {
+      background: var(--pitch-mid);
+      color: var(--white);
+      border-color: var(--pitch-mid);
+    }
+
+    .match-section {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      background: var(--pitch);
+      color: var(--white);
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .match-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .match-row:last-child { border-bottom: none; }
+
+    .match-info {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .match-id { font-weight: 700; color: var(--ink); font-size: 0.9rem; }
+    .match-date { font-size: 0.75rem; }
+
+    .slot {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slot-ref {
+      display: inline-block;
+      background: #e8f4fd;
+      color: var(--pitch-mid);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .slot select { min-width: 160px; flex: 1; }
+
+    .save-btn {
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      min-height: 34px;
+    }
+
+    .status-msg {
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: none;
+    }
+
+    .status-msg.ok { background: #dcfce7; color: var(--success); display: inline-block; }
+    .status-msg.err { background: #fee2e2; color: var(--danger); display: inline-block; }
+
+    .global-status {
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      font-size: 0.88rem;
+      display: none;
+    }
+
+    .global-status.ok { background: #dcfce7; color: var(--success); display: block; }
+    .global-status.err { background: #fee2e2; color: var(--danger); display: block; }
+
+    @media (max-width: 700px) {
+      .match-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>Match Teams Admin</h1>
+    <nav class="nav">
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="schedule.html">Matches</a>
+      <a href="tables.html">Tables</a>
+      <a href="admin.html">Admin</a>
+      <a href="admin-results.html">Results</a>
+      <a href="admin-match-reports.html">Reports</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <div class="toolbar">
+    <label>
+      Admin token
+      <input type="password" id="tokenInput" placeholder="Enter admin token" autocomplete="off" />
+    </label>
+    <button class="autofill-btn" id="autoFillBtn" disabled>Auto-fill R32 from standings</button>
+  </div>
+
+  <div id="globalStatus" class="global-status"></div>
+
+  <div class="round-tabs" id="roundTabs"></div>
+
+  <div id="matchList"></div>
+
+  <p id="loadingMsg" style="text-align:center;color:var(--muted);padding:40px 0;">Loading match data...</p>
+</main>
+
+<script>
+  const ROUNDS = [
+    { code: 'R32', label: 'Round of 32' },
+    { code: 'R16', label: 'Round of 16' },
+    { code: 'QF',  label: 'Quarter-Finals' },
+    { code: 'SF',  label: 'Semi-Finals' },
+    { code: 'TPP', label: 'Third Place Play-off' },
+    { code: 'F',   label: 'Final' },
+  ];
+
+  const GS_ROUNDS = new Set(['GS1', 'GS2', 'GS3']);
+
+  let allTeams = [];
+  let allMatches = [];
+  let activeRound = 'R32';
+
+  const tokenInput = document.getElementById('tokenInput');
+  const autoFillBtn = document.getElementById('autoFillBtn');
+  const roundTabsEl = document.getElementById('roundTabs');
+  const matchListEl = document.getElementById('matchList');
+  const loadingMsg = document.getElementById('loadingMsg');
+  const globalStatusEl = document.getElementById('globalStatus');
+
+  function showGlobal(msg, type) {
+    globalStatusEl.textContent = msg;
+    globalStatusEl.className = 'global-status ' + type;
+  }
+
+  function clearGlobal() {
+    globalStatusEl.className = 'global-status';
+  }
+
+  function fmt(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' }) + ' BST';
+  }
+
+  // Parse "1A (Mexico)" → { ref: "1A", team: "Mexico" }
+  // Parse "Mexico"     → { ref: null, team: "Mexico" }
+  // Parse "TBD"        → { ref: null, team: null }
+  // Parse "1A"         → { ref: "1A", team: null }
+  function parseSlot(val) {
+    if (!val || val === 'TBD') return { ref: null, team: null };
+    const m = val.match(/^([^\s(]+)\s*\(([^)]+)\)$/);
+    if (m) return { ref: m[1], team: m[2] };
+    // Is it a positional ref (starts with digit, rest are letters) with no spaces?
+    if (/^\d[A-Z]+$/.test(val)) return { ref: val, team: null };
+    return { ref: null, team: val };
+  }
+
+  // Build the value to store for a slot
+  // ref: original positional ref like "1A" or "3ABCDF" (or null)
+  // teamName: selected team name (or null/empty = reset to ref or TBD)
+  function buildSlotValue(ref, teamName) {
+    if (!teamName) return ref || 'TBD';
+    if (ref) return `${ref} (${teamName})`;
+    return teamName;
+  }
+
+  // ─── Group standings ─────────────────────────────────────────────────────────
+
+  function buildGroupStandings(teams, matches) {
+    const gsMatches = matches.filter(m => GS_ROUNDS.has(m.roundCode) && m.played && m.result);
+    const groups = {};
+
+    for (const team of teams) {
+      if (!team.group) continue;
+      const g = team.group;
+      if (!groups[g]) groups[g] = [];
+      groups[g].push({
+        team,
+        pts: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0,
+      });
+    }
+
+    for (const match of gsMatches) {
+      const r = match.result;
+      const homeRow = findRow(groups, match.homeTeam);
+      const awayRow = findRow(groups, match.awayTeam);
+      if (!homeRow || !awayRow) continue;
+      homeRow.gf += r.homeScore; homeRow.ga += r.awayScore;
+      awayRow.gf += r.awayScore; awayRow.ga += r.homeScore;
+      if (r.homeScore > r.awayScore) {
+        homeRow.pts += 3; homeRow.w++;
+        awayRow.l++;
+      } else if (r.homeScore === r.awayScore) {
+        homeRow.pts += 1; homeRow.d++;
+        awayRow.pts += 1; awayRow.d++;
+      } else {
+        awayRow.pts += 3; awayRow.w++;
+        homeRow.l++;
+      }
+    }
+
+    const sorted = {};
+    for (const [g, rows] of Object.entries(groups)) {
+      sorted[g] = fifaSort(rows, gsMatches);
+    }
+    return sorted;
+  }
+
+  function findRow(groups, teamRef) {
+    for (const rows of Object.values(groups)) {
+      const r = rows.find(r =>
+        r.team.countryName === teamRef ||
+        r.team.groupId === teamRef ||
+        // handle "1A (Mexico)" stored values
+        teamRef?.match(/\(([^)]+)\)/)?.[1] === r.team.countryName
+      );
+      if (r) return r;
+    }
+    return null;
+  }
+
+  function h2hStats(teamNames, gsMatches) {
+    const stats = {};
+    for (const n of teamNames) stats[n] = { pts: 0, gd: 0, gf: 0 };
+    const set = new Set(teamNames);
+    for (const m of gsMatches) {
+      if (!set.has(m.homeTeam) || !set.has(m.awayTeam)) continue;
+      const r = m.result;
+      stats[m.homeTeam].gf += r.homeScore;
+      stats[m.homeTeam].gd += r.homeScore - r.awayScore;
+      stats[m.awayTeam].gf += r.awayScore;
+      stats[m.awayTeam].gd += r.awayScore - r.homeScore;
+      if (r.homeScore > r.awayScore) stats[m.homeTeam].pts += 3;
+      else if (r.homeScore === r.awayScore) { stats[m.homeTeam].pts += 1; stats[m.awayTeam].pts += 1; }
+      else stats[m.awayTeam].pts += 3;
+    }
+    return stats;
+  }
+
+  function fifaSort(rows, gsMatches) {
+    return [...rows].sort((a, b) => {
+      const da = a.gf - a.ga, db = b.gf - b.ga;
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      if (da !== db) return db - da;
+      if (b.gf !== a.gf) return b.gf - a.gf;
+      // H2H tiebreaker
+      const h = h2hStats([a.team.countryName, b.team.countryName], gsMatches);
+      const ha = h[a.team.countryName], hb = h[b.team.countryName];
+      if (hb.pts !== ha.pts) return hb.pts - ha.pts;
+      if (hb.gd !== ha.gd) return hb.gd - ha.gd;
+      if (hb.gf !== ha.gf) return hb.gf - ha.gf;
+      // FIFA ranking (lower = better)
+      return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+    });
+  }
+
+  // ─── Render ──────────────────────────────────────────────────────────────────
+
+  function makeTeamOptions(selectedName) {
+    const sorted = [...allTeams].sort((a, b) => a.countryName.localeCompare(b.countryName));
+    let html = '<option value="">— unassigned —</option>';
+    for (const t of sorted) {
+      const sel = t.countryName === selectedName ? ' selected' : '';
+      html += `<option value="${escHtml(t.countryName)}"${sel}>${escHtml(t.countryName)}</option>`;
+    }
+    return html;
+  }
+
+  function escHtml(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function renderRoundTabs() {
+    roundTabsEl.innerHTML = ROUNDS.map(r =>
+      `<button class="round-tab${r.code === activeRound ? ' active' : ''}" data-code="${r.code}">${r.label}</button>`
+    ).join('');
+    roundTabsEl.querySelectorAll('.round-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeRound = btn.dataset.code;
+        renderRoundTabs();
+        renderMatches();
+      });
+    });
+  }
+
+  function renderMatches() {
+    const round = ROUNDS.find(r => r.code === activeRound);
+    const matches = allMatches.filter(m => m.roundCode === activeRound);
+
+    if (!matches.length) {
+      matchListEl.innerHTML = '<p style="text-align:center;color:var(--muted);padding:30px">No matches for this round.</p>';
+      return;
+    }
+
+    let html = `<div class="match-section"><div class="section-header">${escHtml(round.label)}</div>`;
+
+    for (const match of matches) {
+      const homeSlot = parseSlot(match.homeTeam);
+      const awaySlot = parseSlot(match.awayTeam);
+      const mid = escHtml(match.matchId);
+      const homeRef = homeSlot.ref || 'TBD';
+      const awayRef = awaySlot.ref || 'TBD';
+
+      html += `
+        <div class="match-row" id="row-${mid}">
+          <div class="match-info">
+            <div class="match-id">${mid}</div>
+            <div class="match-date">${fmt(match.date)}</div>
+            <div>${escHtml(match.location || '')}</div>
+          </div>
+          <div class="slot">
+            <span class="slot-ref">${escHtml(homeRef)}</span>
+            <select id="home-${mid}" data-matchid="${mid}" data-slot="home" data-ref="${escHtml(homeSlot.ref || '')}">
+              ${makeTeamOptions(homeSlot.team)}
+            </select>
+          </div>
+          <div class="slot">
+            <span class="slot-ref">${escHtml(awayRef)}</span>
+            <select id="away-${mid}" data-matchid="${mid}" data-slot="away" data-ref="${escHtml(awaySlot.ref || '')}">
+              ${makeTeamOptions(awaySlot.team)}
+            </select>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button class="save-btn" data-matchid="${mid}">Save</button>
+            <span class="status-msg" id="status-${mid}"></span>
+          </div>
+        </div>`;
+    }
+
+    html += '</div>';
+    matchListEl.innerHTML = html;
+
+    matchListEl.querySelectorAll('.save-btn').forEach(btn => {
+      btn.addEventListener('click', () => saveMatch(btn.dataset.matchid));
+    });
+  }
+
+  async function saveMatch(matchId) {
+    const token = tokenInput.value.trim();
+    if (!token) { showGlobal('Enter admin token first.', 'err'); return; }
+
+    const homeSelect = document.getElementById(`home-${matchId}`);
+    const awaySelect = document.getElementById(`away-${matchId}`);
+    const statusEl = document.getElementById(`status-${matchId}`);
+    const saveBtn = document.querySelector(`.save-btn[data-matchid="${matchId}"]`);
+
+    const homeRef = homeSelect.dataset.ref;
+    const awayRef = awaySelect.dataset.ref;
+    const homeTeam = buildSlotValue(homeRef || null, homeSelect.value);
+    const awayTeam = buildSlotValue(awayRef || null, awaySelect.value);
+
+    saveBtn.disabled = true;
+    statusEl.className = 'status-msg';
+    statusEl.textContent = 'Saving…';
+    statusEl.style.display = 'inline-block';
+    clearGlobal();
+
+    try {
+      const res = await fetch('/api/admin/matches', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ matchId, homeTeam, awayTeam }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        statusEl.textContent = 'Saved';
+        statusEl.className = 'status-msg ok';
+        // Update local match data so slot refs update
+        const m = allMatches.find(m => m.matchId === matchId);
+        if (m) { m.homeTeam = homeTeam; m.awayTeam = awayTeam; }
+        // Refresh dropdowns to reflect updated refs
+        const homeSlot = parseSlot(homeTeam);
+        const awaySlot = parseSlot(awayTeam);
+        homeSelect.dataset.ref = homeSlot.ref || '';
+        awaySelect.dataset.ref = awaySlot.ref || '';
+      } else {
+        statusEl.textContent = data.errors?.[0] || 'Error';
+        statusEl.className = 'status-msg err';
+      }
+    } catch (err) {
+      statusEl.textContent = 'Network error';
+      statusEl.className = 'status-msg err';
+    } finally {
+      saveBtn.disabled = false;
+    }
+  }
+
+  function autoFillR32() {
+    const token = tokenInput.value.trim();
+    if (!token) { showGlobal('Enter admin token first.', 'err'); return; }
+
+    const standings = buildGroupStandings(allTeams, allMatches);
+    const r32 = allMatches.filter(m => m.roundCode === 'R32');
+    let filled = 0;
+
+    for (const match of r32) {
+      for (const slot of ['home', 'away']) {
+        const currentVal = slot === 'home' ? match.homeTeam : match.awayTeam;
+        const parsed = parseSlot(currentVal);
+        // Only auto-fill simple "1A" or "2B" refs (position + single group letter)
+        if (!parsed.ref || !/^\d[A-Z]$/.test(parsed.ref)) continue;
+        const pos = parseInt(parsed.ref[0]);
+        const grp = parsed.ref[1];
+        const groupRows = standings[grp];
+        if (!groupRows || groupRows.length < pos) continue;
+        const teamName = groupRows[pos - 1]?.team?.countryName;
+        if (!teamName) continue;
+
+        const selectEl = document.getElementById(`${slot}-${match.matchId}`);
+        if (!selectEl) continue;
+        // Set the dropdown value
+        selectEl.value = teamName;
+        if (!selectEl.value) {
+          // Team not found in options — shouldn't happen, but skip
+          continue;
+        }
+        filled++;
+      }
+    }
+
+    if (filled === 0) {
+      showGlobal('No R32 1st/2nd-place slots found to auto-fill (all may already be assigned).', 'err');
+    } else {
+      showGlobal(`Auto-filled ${filled} slot(s) from current standings. Review and save each match.`, 'ok');
+    }
+  }
+
+  // ─── Init ────────────────────────────────────────────────────────────────────
+
+  tokenInput.addEventListener('input', () => {
+    autoFillBtn.disabled = !tokenInput.value.trim();
+  });
+
+  autoFillBtn.addEventListener('click', autoFillR32);
+
+  async function init() {
+    try {
+      const [teamsRes, matchesRes] = await Promise.all([
+        fetch('/Data/teams.json'),
+        fetch('/Data/matches.json'),
+      ]);
+      allTeams = await teamsRes.json();
+      allMatches = await matchesRes.json();
+
+      loadingMsg.style.display = 'none';
+      renderRoundTabs();
+      renderMatches();
+    } catch (err) {
+      loadingMsg.textContent = 'Failed to load data: ' + err.message;
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>

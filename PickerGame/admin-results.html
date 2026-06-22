@@ -445,6 +445,7 @@
         <a href="admin-results.html" style="background:rgba(255,255,255,0.15);">Results</a>
         <a href="admin-blog.html">Updates</a>
         <a href="admin-match-reports.html">Reports</a>
+        <a href="admin-matches.html">Teams</a>
         <a href="admin-email.html">Email</a>
       </nav>
     </div>
@@ -553,7 +554,10 @@
     }
 
     function getTeam(teamRef) {
-      return teams.find(team => team.groupId === teamRef || team.countryName === teamRef);
+      // Handle "1A (Mexico)" format — extract the country name from parens
+      const parenMatch = teamRef && teamRef.match(/\(([^)]+)\)$/);
+      const name = parenMatch ? parenMatch[1] : teamRef;
+      return teams.find(team => team.groupId === name || team.countryName === name);
     }
 
     function getTeamName(teamRef) {

@@ -23,6 +23,7 @@ const staticFiles = [
   'admin-email.html',
   'match-reports.html',
   'admin-match-reports.html',
+  'admin-matches.html',
 ];
 
 const indexHtml = `<!DOCTYPE html>
