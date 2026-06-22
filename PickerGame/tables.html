@@ -261,6 +261,70 @@
     };
   }
 
+  // Compute head-to-head stats for a set of teams against each other only
+  function h2hStats(teams, gsMatches) {
+    const stats = {};
+    const names = new Set(teams.map(t => t.countryName));
+    teams.forEach(t => { stats[t.countryName] = { pts: 0, gd: 0, gf: 0 }; });
+    gsMatches.forEach(m => {
+      if (!names.has(m.homeTeam) || !names.has(m.awayTeam)) return;
+      const hg = m.result.homeScore ?? 0;
+      const ag = m.result.awayScore ?? 0;
+      stats[m.homeTeam].gf += hg;  stats[m.homeTeam].gd += hg - ag;
+      stats[m.awayTeam].gf += ag;  stats[m.awayTeam].gd += ag - hg;
+      if (hg > ag)      { stats[m.homeTeam].pts += 3; }
+      else if (hg < ag) { stats[m.awayTeam].pts += 3; }
+      else              { stats[m.homeTeam].pts += 1; stats[m.awayTeam].pts += 1; }
+    });
+    return stats;
+  }
+
+  // FIFA group stage tiebreaker order (rules 1-5, 7; rule 6 fair play skipped):
+  // 1. Points  2. H2H pts  3. H2H GD  4. H2H GF
+  // 5. Overall GD  6. Overall GF  7. FIFA ranking  8. Name (fallback)
+  function fifaSort(group, gsMatches) {
+    // Bucket teams by points
+    const buckets = new Map();
+    group.forEach(t => {
+      if (!buckets.has(t.points)) buckets.set(t.points, []);
+      buckets.get(t.points).push(t);
+    });
+
+    const result = [];
+    [...buckets.keys()].sort((a, b) => b - a).forEach(pts => {
+      const tied = buckets.get(pts);
+      if (tied.length === 1) { result.push(tied[0]); return; }
+
+      // Compute H2H stats among just these tied teams
+      const h2h = h2hStats(tied, gsMatches);
+
+      tied.sort((a, b) => {
+        const ha = h2h[a.countryName], hb = h2h[b.countryName];
+        // 1. H2H points
+        if (hb.pts !== ha.pts) return hb.pts - ha.pts;
+        // 2. H2H goal difference
+        if (hb.gd !== ha.gd)  return hb.gd - ha.gd;
+        // 3. H2H goals scored
+        if (hb.gf !== ha.gf)  return hb.gf - ha.gf;
+        // 4. Overall goal difference
+        const gdA = a.goalsFor - a.goalsAgainst;
+        const gdB = b.goalsFor - b.goalsAgainst;
+        if (gdB !== gdA) return gdB - gdA;
+        // 5. Overall goals scored
+        if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+        // 6. Fair play (skipped — no card data)
+        // 7. FIFA ranking (lower number = better rank)
+        if (a.fifaRank && b.fifaRank) return a.fifaRank - b.fifaRank;
+        if (a.fifaRank) return -1;
+        if (b.fifaRank) return 1;
+        // 8. Alphabetical fallback
+        return a.countryName.localeCompare(b.countryName);
+      });
+      result.push(...tied);
+    });
+    return result;
+  }
+
   function buildTables(teams, matches) {
     // Initialise rows keyed by countryName (matches reference teams by name)
     const rows = {};
@@ -270,6 +334,7 @@
         group:       t.group,
         countryName: t.countryName,
         flagUrl:     t.flagUrl,
+        fifaRank:    t.fifaRank || null,
         inCompetition: t.inCompetition !== false,
         played: 0, wins: 0, draws: 0, losses: 0,
         goalsFor: 0, goalsAgainst: 0, points: 0,
@@ -301,6 +366,8 @@
       }
     });
 
+    const gsMatches = matches.filter(m => m.played && GS_ROUNDS.has(m.roundCode) && m.result);
+
     // Group by group letter
     const groups = {};
     Object.values(rows).forEach(row => {
@@ -308,16 +375,9 @@
       groups[row.group].push(row);
     });
 
-    // Sort each group: pts desc, GD desc, GF desc, name asc
-    Object.values(groups).forEach(g => {
-      g.sort((a, b) => {
-        if (b.points !== a.points) return b.points - a.points;
-        const gdA = a.goalsFor - a.goalsAgainst;
-        const gdB = b.goalsFor - b.goalsAgainst;
-        if (gdB !== gdA) return gdB - gdA;
-        if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
-        return a.countryName.localeCompare(b.countryName);
-      });
+    // FIFA tiebreaker sort (rules 1-5, 7; rule 6 fair play omitted — no card data)
+    Object.keys(groups).forEach(key => {
+      groups[key] = fifaSort(groups[key], gsMatches);
     });
 
     return groups;
