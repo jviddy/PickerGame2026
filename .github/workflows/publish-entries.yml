@@ -58,6 +58,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update data snapshots [skip ci]"
+            git restore .
             git pull --rebase origin main
             git push
           fi
