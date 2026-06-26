@@ -636,5 +636,16 @@
     "awayYellow": 0,
     "homeRed": 0,
     "awayRed": 0
+  },
+  {
+    "matchId": "M060",
+    "homeScore": 0,
+    "awayScore": 0,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": 1,
+    "awayYellow": 1,
+    "homeRed": 0,
+    "awayRed": 0
   }
 ]
