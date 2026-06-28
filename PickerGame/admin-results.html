@@ -612,24 +612,48 @@
       return groupStandings;
     }
 
-    // Returns the team object for a KO slot ref like "1A", "2B", "1A (Mexico)" etc.
-    // Returns null if it can't be resolved (e.g. "3ABCDF", "TBD").
+    // Returns the team object for any ref: plain name, "1A", "1A (Mexico)", "W-M073", "L-M101"
     function resolveKOTeam(ref) {
       if (!ref || ref === 'TBD') return null;
+      // "1A (Mexico)" or "3ABCDF (Paraguay)" — extract from parens
       const parenMatch = ref.match(/\(([^)]+)\)$/);
       if (parenMatch) return teams.find(t => t.countryName === parenMatch[1]) || null;
+      // Direct country name
       const direct = teams.find(t => t.countryName === ref);
       if (direct) return direct;
-      const m = ref.match(/^(\d)([A-Z])$/);
-      if (m) return buildGroupStandings()[m[2]]?.[parseInt(m[1]) - 1]?.team || null;
+      // Group position "1A", "2B"
+      const posMatch = ref.match(/^(\d)([A-Z])$/);
+      if (posMatch) return buildGroupStandings()[posMatch[2]]?.[parseInt(posMatch[1]) - 1]?.team || null;
+      // Bracket ref "W-M073" or "L-M073"
+      const wlMatch = ref.match(/^([WL])-(.+)$/);
+      if (wlMatch) {
+        const [, side, matchId] = wlMatch;
+        const match = matches.find(m => m.matchId === matchId);
+        if (!match) return null;
+        const result = getDisplayResult(match);
+        if (!result || result.homeScore === null) return null;
+        let homeWins;
+        if (result.homeQualified !== undefined && result.awayQualified !== undefined) {
+          homeWins = Boolean(result.homeQualified);
+        } else if (result.homeScore !== result.awayScore) {
+          homeWins = result.homeScore > result.awayScore;
+        } else if (result.homePenalties !== null && result.awayPenalties !== null) {
+          homeWins = result.homePenalties > result.awayPenalties;
+        } else {
+          return null;
+        }
+        const nextRef = (side === 'W') === homeWins ? match.homeTeam : match.awayTeam;
+        return resolveKOTeam(nextRef);
+      }
       return null;
     }
 
-    // Is this ref something the admin needs to assign manually? (3rd-place or TBD)
+    // Is this ref something the admin needs to assign manually? (3rd-place or bare TBD)
     function isManualSlot(ref) {
       if (!ref || ref === 'TBD') return true;
-      if (/^\d[A-Z]{2,}/.test(ref)) return true; // "3ABCDF" etc
+      if (/^\d[A-Z]{2,}/.test(ref)) return true; // "3ABCDF" etc — multi-group 3rd place
       return false;
+      // W-Mxxx / L-Mxxx and positional "1A"/"2B" are auto-resolved, not manual
     }
 
     function getDisplayName(ref) {
@@ -706,8 +730,11 @@
       };
 
       const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
-      if (resultType === 'win') categories.result = pointRules.win || 0;
-      if (resultType === 'draw') categories.result = pointRules.draw || 0;
+      const isGS = String(match.roundCode).includes('GS');
+      if (isGS) {
+        if (resultType === 'win') categories.result = pointRules.win || 0;
+        if (resultType === 'draw') categories.result = pointRules.draw || 0;
+      }
 
       if (qualified) {
         categories.roundQualification = String(match.roundCode).includes('GS')
@@ -826,9 +853,11 @@
       const homeManual = isKO && isManualSlot(match.homeTeam);
       const awayManual = isKO && isManualSlot(match.awayTeam);
 
-      // Current prediction
+      // Current prediction — format "2-1" or "2-2|home" / "2-2|away"
       const pred = predictions[match.matchId] || '';
-      const [predH, predA] = pred ? pred.split('-').map(Number) : [null, null];
+      const [scoreStr, predPenWinner] = pred.split('|');
+      const [predH, predA] = scoreStr ? scoreStr.split('-').map(Number) : [null, null];
+      const predIsDraw = predH !== null && predA !== null && predH === predA;
 
       editor.innerHTML = `
         <div class="editor-head">
@@ -855,12 +884,25 @@
 
         <div class="form-grid">
           <div class="section-title">Your prediction</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 0 4px;grid-column:1/-1">
-            <label style="flex:none">${escapeHtml(homeName)}<input id="predHome" type="number" min="0" step="1" value="${predH ?? ''}" style="width:60px" /></label>
-            <span style="font-weight:700;align-self:flex-end;padding-bottom:4px">–</span>
-            <label style="flex:none">${escapeHtml(awayName)}<input id="predAway" type="number" min="0" step="1" value="${predA ?? ''}" style="width:60px" /></label>
-            <button id="savePrediction" type="button" style="align-self:flex-end;min-height:34px;padding:0 14px;font-size:0.85rem">Save prediction</button>
-            <span id="predStatus" style="font-size:0.8rem"></span>
+          <div style="grid-column:1/-1">
+            <div style="display:flex;align-items:center;gap:8px;padding:0 0 6px">
+              <label style="flex:none">${escapeHtml(homeName)}<input id="predHome" type="number" min="0" step="1" value="${predH ?? ''}" style="width:60px" /></label>
+              <span style="font-weight:700;align-self:flex-end;padding-bottom:4px">–</span>
+              <label style="flex:none">${escapeHtml(awayName)}<input id="predAway" type="number" min="0" step="1" value="${predA ?? ''}" style="width:60px" /></label>
+              <button id="savePrediction" type="button" style="align-self:flex-end;min-height:34px;padding:0 14px;font-size:0.85rem">Save prediction</button>
+              <span id="predStatus" style="font-size:0.8rem"></span>
+            </div>
+            ${isKO ? `<div id="penWinnerRow" style="display:${predIsDraw ? 'flex' : 'none'};gap:14px;align-items:center;font-size:0.82rem;font-weight:700;padding:2px 0 4px">
+              <span style="color:var(--muted)">Wins on pens:</span>
+              <label style="display:flex;align-items:center;gap:5px;font-weight:800;text-transform:none">
+                <input type="radio" name="predPenWinner" id="penHome" value="home" ${predPenWinner === 'home' ? 'checked' : ''} />
+                ${escapeHtml(homeName)}
+              </label>
+              <label style="display:flex;align-items:center;gap:5px;font-weight:800;text-transform:none">
+                <input type="radio" name="predPenWinner" id="penAway" value="away" ${predPenWinner === 'away' ? 'checked' : ''} />
+                ${escapeHtml(awayName)}
+              </label>
+            </div>` : ''}
           </div>
 
           <div class="section-title">Goals</div>
@@ -901,6 +943,20 @@
         input.addEventListener('input', updatePreview);
         input.addEventListener('change', updatePreview);
       });
+
+      // Show/hide pen winner radios when predicted score changes
+      if (isKO) {
+        const penRow = document.getElementById('penWinnerRow');
+        const updatePenRow = () => {
+          const h = document.getElementById('predHome')?.value;
+          const a = document.getElementById('predAway')?.value;
+          const isDraw = h !== '' && a !== '' && Number(h) === Number(a);
+          if (penRow) penRow.style.display = isDraw ? 'flex' : 'none';
+        };
+        document.getElementById('predHome')?.addEventListener('input', updatePenRow);
+        document.getElementById('predAway')?.addEventListener('input', updatePenRow);
+      }
+
       document.getElementById('submitResult').addEventListener('click', submitResult);
       document.getElementById('savePrediction').addEventListener('click', () => savePrediction(match.matchId));
       if (homeManual || awayManual) {
@@ -1105,7 +1161,12 @@
       const btn = document.getElementById('savePrediction');
       btn.disabled = true;
       statusEl.textContent = 'Saving…';
-      const prediction = (h !== '' && a !== '') ? `${h}-${a}` : null;
+      const penWinner = document.querySelector('input[name="predPenWinner"]:checked')?.value || null;
+      let prediction = null;
+      if (h !== '' && a !== '') {
+        prediction = `${h}-${a}`;
+        if (penWinner && Number(h) === Number(a)) prediction += `|${penWinner}`;
+      }
       try {
         const res = await fetch('/api/admin/predictions', {
           method: 'POST',

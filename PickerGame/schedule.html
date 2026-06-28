@@ -780,7 +780,7 @@
 
   function getTeam(teamRef) {
     if (!teamRef) return null;
-    // Handle "1A (Mexico)" format — extract the country name from parens
+    // "1A (Mexico)" or "3ABCDF (Paraguay)" — extract from parens
     const parenMatch = teamRef.match(/\(([^)]+)\)$/);
     const name = parenMatch ? parenMatch[1] : teamRef;
     const direct = teams.find(team => team.groupId === name || team.countryName === name);
@@ -788,6 +788,26 @@
     // Resolve "1A", "2B" etc from live group standings
     const pos = name.match(/^(\d)([A-Z])$/);
     if (pos) return getStandings()[pos[2]]?.[parseInt(pos[1]) - 1]?.team || null;
+    // Resolve "W-M073" or "L-M073" bracket refs
+    const wl = name.match(/^([WL])-(.+)$/);
+    if (wl) {
+      const [, side, matchId] = wl;
+      const m = matches.find(x => x.matchId === matchId);
+      if (!m || !m.result || m.result.homeScore === null) return null;
+      const r = m.result;
+      let homeWins;
+      if (r.homeQualified !== undefined && r.awayQualified !== undefined) {
+        homeWins = Boolean(r.homeQualified);
+      } else if (r.homeScore !== r.awayScore) {
+        homeWins = r.homeScore > r.awayScore;
+      } else if (r.homePenalties !== null && r.awayPenalties !== null) {
+        homeWins = r.homePenalties > r.awayPenalties;
+      } else {
+        return null;
+      }
+      const nextRef = (side === 'W') === homeWins ? m.homeTeam : m.awayTeam;
+      return getTeam(nextRef);
+    }
     return null;
   }
 

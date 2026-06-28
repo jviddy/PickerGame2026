@@ -23,9 +23,41 @@ function getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, r
   return 'draw';
 }
 
-function getFixtureLabel(teams, match) {
-  const home = getTeam(teams, match.homeTeam)?.countryName || match.homeTeam;
-  const away = getTeam(teams, match.awayTeam)?.countryName || match.awayTeam;
+// Resolves "W-M073", "L-M101", "1A (Mexico)", "3ABCDF (Paraguay)", or plain country name
+// to a team object. Recursively follows bracket refs.
+function resolveTeamRef(ref, allMatches, results, teams) {
+  if (!ref) return null;
+  // "1A (Mexico)" or "3ABCDF (Paraguay)" — extract from parens
+  const parenMatch = ref.match(/\(([^)]+)\)$/);
+  if (parenMatch) return teams.find((t) => t.countryName === parenMatch[1]) || null;
+  // Direct lookup by countryName or groupId
+  const direct = teams.find((t) => t.countryName === ref || t.groupId === ref);
+  if (direct) return direct;
+  // "W-M073" or "L-M073"
+  const wlMatch = ref.match(/^([WL])-(.+)$/);
+  if (!wlMatch) return null;
+  const [, side, matchId] = wlMatch;
+  const match = allMatches.find((m) => m.matchId === matchId);
+  if (!match) return null;
+  const result = results.find((r) => r.matchId === matchId);
+  if (!result || result.homeScore === null || result.awayScore === null) return null;
+  let homeWins;
+  if (result.homeQualified !== undefined && result.awayQualified !== undefined) {
+    homeWins = Boolean(result.homeQualified);
+  } else if (result.homeScore !== result.awayScore) {
+    homeWins = result.homeScore > result.awayScore;
+  } else if (result.homePenalties !== null && result.awayPenalties !== null) {
+    homeWins = result.homePenalties > result.awayPenalties;
+  } else {
+    return null;
+  }
+  const nextRef = (side === 'W') === homeWins ? match.homeTeam : match.awayTeam;
+  return resolveTeamRef(nextRef, allMatches, results, teams);
+}
+
+function getFixtureLabel(allMatches, results, teams, match) {
+  const home = resolveTeamRef(match.homeTeam, allMatches, results, teams)?.countryName || match.homeTeam;
+  const away = resolveTeamRef(match.awayTeam, allMatches, results, teams)?.countryName || match.awayTeam;
   return `${home} v ${away}`;
 }
 
@@ -75,8 +107,9 @@ function addItem(items, label, value, category) {
   items.push({ label, value, category });
 }
 
-function calculateTeamMatchPoints(team, match, result, settings) {
-  const isHome = match.homeTeam === team.groupId || match.homeTeam === team.countryName;
+function calculateTeamMatchPoints(team, match, result, settings, allMatches, allResults, teams) {
+  const resolvedHome = resolveTeamRef(match.homeTeam, allMatches, allResults, teams);
+  const isHome = resolvedHome?.countryName === team.countryName;
   const goalsFor = isHome ? result.homeScore : result.awayScore;
   const goalsAgainst = isHome ? result.awayScore : result.homeScore;
   const penaltiesFor = isHome ? result.homePenalties : result.awayPenalties;
@@ -96,13 +129,16 @@ function calculateTeamMatchPoints(team, match, result, settings) {
   };
 
   const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
-  if (resultType === 'win') {
-    categories.result += pointRules.win || 0;
-    addItem(items, 'Win', pointRules.win || 0, 'result');
-  }
-  if (resultType === 'draw') {
-    categories.result += pointRules.draw || 0;
-    addItem(items, 'Draw', pointRules.draw || 0, 'result');
+  const isGS = match.roundCode.includes('GS');
+  if (isGS) {
+    if (resultType === 'win') {
+      categories.result += pointRules.win || 0;
+      addItem(items, 'Win', pointRules.win || 0, 'result');
+    }
+    if (resultType === 'draw') {
+      categories.result += pointRules.draw || 0;
+      addItem(items, 'Draw', pointRules.draw || 0, 'result');
+    }
   }
 
   categories.goalsScored += goalsFor * (pointRules.goalScored || 0);
@@ -146,29 +182,38 @@ function calculateTeamMatchPoints(team, match, result, settings) {
   };
 }
 
-function isTeamInCompetition(team, matches, results) {
+function isTeamInCompetition(team, matches, results, teams) {
   const teamName = team.countryName;
+
+  function isTeamInMatch(match) {
+    const home = resolveTeamRef(match.homeTeam, matches, results, teams);
+    const away = resolveTeamRef(match.awayTeam, matches, results, teams);
+    return home?.countryName === teamName || away?.countryName === teamName;
+  }
+
+  function teamIsHome(match) {
+    return resolveTeamRef(match.homeTeam, matches, results, teams)?.countryName === teamName;
+  }
+
   const teamMatches = matches
-    .filter((match) => match.homeTeam === teamName || match.awayTeam === teamName)
+    .filter(isTeamInMatch)
     .map((match) => ({ match, result: getResultById(results, match.matchId) }))
     .filter(({ result }) => isPlayed(result));
 
   const knockoutLoss = teamMatches.some(({ match, result }) => {
     if (match.roundCode.includes('GS')) return false;
-
-    const isHome = match.homeTeam === teamName;
+    const isHome = teamIsHome(match);
     const goalsFor = isHome ? result.homeScore : result.awayScore;
     const goalsAgainst = isHome ? result.awayScore : result.homeScore;
     const penaltiesFor = isHome ? result.homePenalties : result.awayPenalties;
     const penaltiesAgainst = isHome ? result.awayPenalties : result.homePenalties;
-
     return getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode) === 'loss';
   });
 
   if (knockoutLoss) return false;
 
-  const groupMatches = matches.filter((match) =>
-    match.roundCode.includes('GS') && (match.homeTeam === teamName || match.awayTeam === teamName)
+  const groupMatches = matches.filter(
+    (match) => match.roundCode.includes('GS') && isTeamInMatch(match)
   );
   const playedGroupMatches = groupMatches
     .map((match) => ({ match, result: getResultById(results, match.matchId) }))
@@ -176,7 +221,7 @@ function isTeamInCompetition(team, matches, results) {
 
   if (groupMatches.length && playedGroupMatches.length === groupMatches.length) {
     return playedGroupMatches.some(({ match, result }) => {
-      const isHome = match.homeTeam === teamName;
+      const isHome = teamIsHome(match);
       return isHome ? result.homeQualified : result.awayQualified;
     });
   }
@@ -196,13 +241,15 @@ export function calculateCountryScores(settings, teams, matches, results) {
     });
 
     matches.forEach((match) => {
-      const isTeamMatch = match.homeTeam === team.countryName || match.awayTeam === team.countryName;
+      const homeTeam = resolveTeamRef(match.homeTeam, matches, results, teams);
+      const awayTeam = resolveTeamRef(match.awayTeam, matches, results, teams);
+      const isTeamMatch = homeTeam?.countryName === team.countryName || awayTeam?.countryName === team.countryName;
       if (!isTeamMatch) return;
 
       const result = getResultById(results, match.matchId);
       if (!isPlayed(result)) return;
 
-      const points = calculateTeamMatchPoints(team, match, result, settings);
+      const points = calculateTeamMatchPoints(team, match, result, settings, matches, results, teams);
       if (!(match.roundCode in byRound)) {
         byRound[match.roundCode] = 0;
         detailsByRound[match.roundCode] = [];
@@ -229,7 +276,7 @@ export function calculateCountryScores(settings, teams, matches, results) {
       roundBreakdown.matches.push({
         matchId: match.matchId,
         date: match.date,
-        fixture: getFixtureLabel(teams, match),
+        fixture: getFixtureLabel(matches, results, teams, match),
         result: points.resultType,
         goalsFor: points.goalsFor,
         goalsAgainst: points.goalsAgainst,
@@ -245,7 +292,7 @@ export function calculateCountryScores(settings, teams, matches, results) {
         matchId: match.matchId,
         date: match.date,
         roundCode: match.roundCode,
-        fixture: getFixtureLabel(teams, match),
+        fixture: getFixtureLabel(matches, results, teams, match),
         points,
       });
     });
@@ -260,7 +307,7 @@ export function calculateCountryScores(settings, teams, matches, results) {
       cost: team.cost,
       flagUrl: team.flagUrl,
       active: team.active,
-      inCompetition: isTeamInCompetition(team, matches, results),
+      inCompetition: isTeamInCompetition(team, matches, results, teams),
       totalPoints,
       pointsTotals,
       scoresByRound,
@@ -305,10 +352,10 @@ export function calculateMatchPoints(settings, teams, matches, results) {
       };
     }
 
-    const homeTeam = getTeam(teams, match.homeTeam);
-    const awayTeam = getTeam(teams, match.awayTeam);
-    const homePoints = homeTeam ? calculateTeamMatchPoints(homeTeam, match, result, settings) : null;
-    const awayPoints = awayTeam ? calculateTeamMatchPoints(awayTeam, match, result, settings) : null;
+    const homeTeam = resolveTeamRef(match.homeTeam, matches, results, teams);
+    const awayTeam = resolveTeamRef(match.awayTeam, matches, results, teams);
+    const homePoints = homeTeam ? calculateTeamMatchPoints(homeTeam, match, result, settings, matches, results, teams) : null;
+    const awayPoints = awayTeam ? calculateTeamMatchPoints(awayTeam, match, result, settings, matches, results, teams) : null;
 
     return {
       matchId: match.matchId,
@@ -334,10 +381,10 @@ export function calculateScoredMatches(settings, teams, matches, results) {
       };
     }
 
-    const homeTeam = getTeam(teams, match.homeTeam);
-    const awayTeam = getTeam(teams, match.awayTeam);
-    const homePoints = homeTeam ? calculateTeamMatchPoints(homeTeam, match, result, settings) : null;
-    const awayPoints = awayTeam ? calculateTeamMatchPoints(awayTeam, match, result, settings) : null;
+    const homeTeam = resolveTeamRef(match.homeTeam, matches, results, teams);
+    const awayTeam = resolveTeamRef(match.awayTeam, matches, results, teams);
+    const homePoints = homeTeam ? calculateTeamMatchPoints(homeTeam, match, result, settings, matches, results, teams) : null;
+    const awayPoints = awayTeam ? calculateTeamMatchPoints(awayTeam, match, result, settings, matches, results, teams) : null;
     const hasPenalties = result.homePenalties !== null && result.awayPenalties !== null;
 
     return {
