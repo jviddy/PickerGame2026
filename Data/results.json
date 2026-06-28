@@ -538,7 +538,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M050",
@@ -550,7 +550,7 @@
     "awayYellow": 3,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   },
   {
@@ -563,8 +563,8 @@
     "awayYellow": 2,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M052",
@@ -576,7 +576,7 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   },
   {
@@ -590,7 +590,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M054",
@@ -602,7 +602,7 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   },
   {
@@ -616,7 +616,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M056",
@@ -628,8 +628,8 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M057",
@@ -641,8 +641,8 @@
     "awayYellow": 2,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M058",
@@ -655,7 +655,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M059",
@@ -668,7 +668,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M060",
@@ -680,8 +680,8 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M061",
@@ -693,8 +693,8 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M062",
@@ -706,7 +706,7 @@
     "awayYellow": 2,
     "homeRed": 0,
     "awayRed": 1,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   },
   {
@@ -719,7 +719,7 @@
     "awayYellow": 4,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   },
   {
@@ -733,7 +733,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M065",
@@ -745,7 +745,7 @@
     "awayYellow": 3,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   },
   {
@@ -759,7 +759,7 @@
     "homeRed": 1,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M067",
@@ -772,7 +772,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M068",
@@ -784,8 +784,8 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M069",
@@ -797,8 +797,8 @@
     "awayYellow": 1,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M070",
@@ -811,7 +811,7 @@
     "homeRed": 0,
     "awayRed": 0,
     "homeQualified": false,
-    "awayQualified": false
+    "awayQualified": true
   },
   {
     "matchId": "M071",
@@ -823,8 +823,8 @@
     "awayYellow": 0,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
-    "awayQualified": false
+    "homeQualified": true,
+    "awayQualified": true
   },
   {
     "matchId": "M072",
@@ -836,7 +836,7 @@
     "awayYellow": 2,
     "homeRed": 0,
     "awayRed": 0,
-    "homeQualified": false,
+    "homeQualified": true,
     "awayQualified": false
   }
 ]
