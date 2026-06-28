@@ -179,7 +179,6 @@
     .round-col-active-cell { background: rgba(233,111,44,0.07); }
     .kq-col-head { background: rgba(255,255,255,0.08); font-size: 0.7rem; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
     .kq-col-cell { text-align: center; }
-    .kq-pts { display: inline-block; background: #d1fae5; color: #065f46; font-weight: 700; font-size: 0.78rem; border-radius: 4px; padding: 1px 5px; }
     .country-stats { display: flex; gap: 4px; margin-top: 5px; flex-wrap: wrap; }
     .stat-item { font-size: 0.6rem; font-weight: 800; color: var(--gray-600); background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 3px; padding: 1px 5px; }
     .stat-yc { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
@@ -677,7 +676,7 @@
                       title="${escapeHtml(country.countryName)} — ${escapeHtml(ROUND_LABELS[r])}">${score}</button>
                   </td>`;
                   return r === 'GS3'
-                    ? cell + `<td class="kq-col-cell"><span class="${country.koQualPts ? 'kq-pts' : ''}">${country.koQualPts || 0}</span></td>`
+                    ? cell + `<td class="kq-col-cell"><button class="round-score-btn ${country.koQualPts ? 'has-score' : ''}" style="cursor:default" title="Knockout qualification bonus">${country.koQualPts || 0}</button></td>`
                     : cell;
                 }).join('')}
                 <td class="total-cell">${country.totalPoints}</td>
