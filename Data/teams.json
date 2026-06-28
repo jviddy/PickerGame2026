@@ -165,7 +165,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 8
-    }
+    },
+    "code": "MEX"
   },
   {
     "countryName": "South Africa",
@@ -328,7 +329,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": -9
-    }
+    },
+    "code": "RSA"
   },
   {
     "countryName": "South Korea",
@@ -491,7 +493,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 9
-    }
+    },
+    "code": "KOR"
   },
   {
     "countryName": "Czechia",
@@ -654,7 +657,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": -2
-    }
+    },
+    "code": "CZE"
   },
   {
     "countryName": "Canada",
@@ -822,7 +826,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 1
-    }
+    },
+    "code": "CAN"
   },
   {
     "countryName": "Bosnia and Herzegovina",
@@ -990,7 +995,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "BIH"
   },
   {
     "countryName": "Qatar",
@@ -1158,7 +1164,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 1
-    }
+    },
+    "code": "QAT"
   },
   {
     "countryName": "Switzerland",
@@ -1326,7 +1333,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 2
-    }
+    },
+    "code": "SUI"
   },
   {
     "countryName": "Brazil",
@@ -1494,7 +1502,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 1
-    }
+    },
+    "code": "BRA"
   },
   {
     "countryName": "Morocco",
@@ -1657,7 +1666,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 3
-    }
+    },
+    "code": "MAR"
   },
   {
     "countryName": "Haiti",
@@ -1815,7 +1825,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": -3
-    }
+    },
+    "code": "HAI"
   },
   {
     "countryName": "Scotland",
@@ -1978,7 +1989,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 5
-    }
+    },
+    "code": "SCO"
   },
   {
     "countryName": "United States",
@@ -2146,7 +2158,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 14
-    }
+    },
+    "code": "USA"
   },
   {
     "countryName": "Paraguay",
@@ -2309,7 +2322,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": -10
-    }
+    },
+    "code": "PAR"
   },
   {
     "countryName": "Australia",
@@ -2336,7 +2350,7 @@
           {
             "matchId": "M006",
             "date": "2026-06-14T04:00:00Z",
-            "fixture": "Australia v Türkiye",
+            "fixture": "Australia v T\u00fcrkiye",
             "result": "win",
             "goalsFor": 2,
             "goalsAgainst": 0,
@@ -2467,10 +2481,11 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 11
-    }
+    },
+    "code": "AUS"
   },
   {
-    "countryName": "Türkiye",
+    "countryName": "T\u00fcrkiye",
     "group": "D",
     "groupId": "D4",
     "fifaRank": 22,
@@ -2494,7 +2509,7 @@
           {
             "matchId": "M006",
             "date": "2026-06-14T04:00:00Z",
-            "fixture": "Australia v Türkiye",
+            "fixture": "Australia v T\u00fcrkiye",
             "result": "loss",
             "goalsFor": 0,
             "goalsAgainst": 2,
@@ -2625,7 +2640,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": -5
-    }
+    },
+    "code": "TUR"
   },
   {
     "countryName": "Germany",
@@ -2756,16 +2772,17 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "GER"
   },
   {
-    "countryName": "Curaçao",
+    "countryName": "Cura\u00e7ao",
     "group": "E",
     "groupId": "E2",
     "fifaRank": 82,
     "cost": 1,
     "active": 1,
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1//Flag_of_Curaçao.svg/60px-Flag_of_Curacao.svg.png",
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1//Flag_of_Cura\u00e7ao.svg/60px-Flag_of_Curacao.svg.png",
     "inCompetition": true,
     "totalPoints": 0,
     "scoresByRound": [
@@ -2887,7 +2904,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "CUW"
   },
   {
     "countryName": "Ivory Coast",
@@ -2896,7 +2914,7 @@
     "fifaRank": 34,
     "cost": 13,
     "active": 1,
-    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Côte_d%27Ivoire.svg/60px-Flag_of_Côte_d%27Ivoire.svg.png",
+    "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_C\u00f4te_d%27Ivoire.svg/60px-Flag_of_C\u00f4te_d%27Ivoire.svg.png",
     "inCompetition": true,
     "totalPoints": 0,
     "scoresByRound": [
@@ -3018,7 +3036,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "CIV"
   },
   {
     "countryName": "Ecuador",
@@ -3149,7 +3168,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "ECU"
   },
   {
     "countryName": "Netherlands",
@@ -3280,7 +3300,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "NED"
   },
   {
     "countryName": "Japan",
@@ -3411,7 +3432,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "JPN"
   },
   {
     "countryName": "Sweden",
@@ -3542,7 +3564,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "SWE"
   },
   {
     "countryName": "Tunisia",
@@ -3673,7 +3696,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "TUN"
   },
   {
     "countryName": "Belgium",
@@ -3804,7 +3828,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "BEL"
   },
   {
     "countryName": "Egypt",
@@ -3935,7 +3960,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "EGY"
   },
   {
     "countryName": "Iran",
@@ -4066,7 +4092,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "IRN"
   },
   {
     "countryName": "New Zealand",
@@ -4197,7 +4224,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "NZL"
   },
   {
     "countryName": "Spain",
@@ -4328,7 +4356,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "ESP"
   },
   {
     "countryName": "Cape Verde",
@@ -4459,7 +4488,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "CPV"
   },
   {
     "countryName": "Saudi Arabia",
@@ -4590,7 +4620,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "KSA"
   },
   {
     "countryName": "Uruguay",
@@ -4721,7 +4752,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "URU"
   },
   {
     "countryName": "France",
@@ -4852,7 +4884,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "FRA"
   },
   {
     "countryName": "Senegal",
@@ -4983,7 +5016,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "SEN"
   },
   {
     "countryName": "Iraq",
@@ -5114,7 +5148,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "IRQ"
   },
   {
     "countryName": "Norway",
@@ -5245,7 +5280,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "NOR"
   },
   {
     "countryName": "Argentina",
@@ -5376,7 +5412,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "ARG"
   },
   {
     "countryName": "Algeria",
@@ -5507,7 +5544,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "ALG"
   },
   {
     "countryName": "Austria",
@@ -5638,7 +5676,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "AUT"
   },
   {
     "countryName": "Jordan",
@@ -5769,7 +5808,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "JOR"
   },
   {
     "countryName": "Portugal",
@@ -5900,7 +5940,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "POR"
   },
   {
     "countryName": "DR Congo",
@@ -6031,7 +6072,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "COD"
   },
   {
     "countryName": "Uzbekistan",
@@ -6162,7 +6204,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "UZB"
   },
   {
     "countryName": "Colombia",
@@ -6293,7 +6336,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "COL"
   },
   {
     "countryName": "England",
@@ -6424,7 +6468,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "ENG"
   },
   {
     "countryName": "Croatia",
@@ -6555,7 +6600,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "CRO"
   },
   {
     "countryName": "Ghana",
@@ -6686,7 +6732,8 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "GHA"
   },
   {
     "countryName": "Panama",
@@ -6817,6 +6864,7 @@
       "roundQualification": 0,
       "qualification": 0,
       "total": 0
-    }
+    },
+    "code": "PAN"
   }
 ]

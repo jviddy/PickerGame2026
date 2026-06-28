@@ -815,9 +815,37 @@
     return getTeam(teamRef)?.countryName || teamRef || 'TBA';
   }
 
-  function getTeamLabel(teamRef) {
+  function teamCode(team) {
+    return team?.code || team?.countryName?.slice(0, 3).toUpperCase() || '?';
+  }
+
+  // Display label for a bracket slot ref — used in match cards for unplayed KO matches.
+  // Resolved winner: single code "GER". Both teams known: "RSA/CAN". Unknown: "W M89".
+  function bracketLabel(ref, roundCode) {
+    if (!ref || ref === 'TBD') return 'TBD';
+    const resolved = getTeam(ref);
+    if (resolved) return teamCode(resolved);
+    const wl = ref.match(/^([WL])-(.+)$/);
+    if (!wl) return ref;
+    const [, side, matchId] = wl;
+    const refMatch = matches.find(x => x.matchId === matchId);
+    if (!refMatch) return ref;
+    const matchNum = matchId.replace(/^M0*/, '');
+    const homeTeam = getTeam(refMatch.homeTeam);
+    const awayTeam = getTeam(refMatch.awayTeam);
+    if (homeTeam && awayTeam) return `${teamCode(homeTeam)}/${teamCode(awayTeam)}`;
+    return `${side === 'W' ? 'W' : 'L'} M${matchNum}`;
+  }
+
+  function getTeamLabel(teamRef, matchRoundCode) {
     const team = getTeam(teamRef);
-    if (!team) return teamRef || 'TBA';
+    if (!team) {
+      // For bracket refs, show the friendly bracket label instead of the raw ref string
+      if (teamRef && (teamRef.startsWith('W-') || teamRef.startsWith('L-'))) {
+        return bracketLabel(teamRef, matchRoundCode);
+      }
+      return teamRef || 'TBA';
+    }
     return team.fifaRank ? `${team.countryName} (${team.fifaRank})` : team.countryName;
   }
 
@@ -1043,14 +1071,14 @@
             <div class="team home">
               <div class="team-identity">
                 ${renderFlag(match.homeTeam, 'Home')}
-                <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamLabel(match.homeTeam))}</span>
+                <span class="team-name" title="${escapeHtml(getTeamName(match.homeTeam))}">${escapeHtml(getTeamLabel(match.homeTeam, match.roundCode))}</span>
               </div>
               ${renderTeamCards(result, 'home')}
             </div>
             ${renderScoreline(match, result)}
             <div class="team away">
               <div class="team-identity">
-                <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamLabel(match.awayTeam))}</span>
+                <span class="team-name" title="${escapeHtml(getTeamName(match.awayTeam))}">${escapeHtml(getTeamLabel(match.awayTeam, match.roundCode))}</span>
                 ${renderFlag(match.awayTeam, 'Away')}
               </div>
               ${renderTeamCards(result, 'away')}

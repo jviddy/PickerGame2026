@@ -656,6 +656,38 @@
       // W-Mxxx / L-Mxxx and positional "1A"/"2B" are auto-resolved, not manual
     }
 
+    function teamCode(team) {
+      return team?.code || team?.countryName?.slice(0, 3).toUpperCase() || '?';
+    }
+
+    // Returns a display label for a bracket slot ref (used in match lists and editor header).
+    // If the winner is already known: single team code (e.g. "GER").
+    // If both teams of the referenced match are known but not yet played: "RSA/CAN".
+    // Otherwise (for QF+): "Winner M89" or "Loser M101".
+    function bracketLabel(ref, currentRoundCode) {
+      if (!ref || ref === 'TBD') return 'TBD';
+      // Already resolved to a single real team
+      const resolved = resolveKOTeam(ref);
+      if (resolved) return teamCode(resolved);
+      // W-Mxxx / L-Mxxx
+      const wl = ref.match(/^([WL])-(.+)$/);
+      if (!wl) return ref;
+      const [, side, matchId] = wl;
+      const refMatch = matches.find(m => m.matchId === matchId);
+      if (!refMatch) return ref;
+      const matchNum = matchId.replace(/^M0*/, '');
+      // Try to get both teams of the referenced match
+      const homeTeam = resolveKOTeam(refMatch.homeTeam);
+      const awayTeam = resolveKOTeam(refMatch.awayTeam);
+      if (homeTeam && awayTeam) {
+        return `${teamCode(homeTeam)}/${teamCode(awayTeam)}`;
+      }
+      // Teams not yet known — for R16 (refs point to R32) the teams should always resolve,
+      // but for QF+ show a readable fallback
+      const sideLabel = side === 'W' ? 'W' : 'L';
+      return `${sideLabel} M${matchNum}`;
+    }
+
     function getDisplayName(ref) {
       return resolveKOTeam(ref)?.countryName || getTeamName(ref);
     }
@@ -848,8 +880,8 @@
       }
       const result = getDisplayResult(match) || {};
       const isKO = !GS_ROUNDS.has(match.roundCode);
-      const homeName = isKO ? getDisplayName(match.homeTeam) : getTeamName(match.homeTeam);
-      const awayName = isKO ? getDisplayName(match.awayTeam) : getTeamName(match.awayTeam);
+      const homeName = isKO ? (resolveKOTeam(match.homeTeam)?.countryName || bracketLabel(match.homeTeam, match.roundCode)) : getTeamName(match.homeTeam);
+      const awayName = isKO ? (resolveKOTeam(match.awayTeam)?.countryName || bracketLabel(match.awayTeam, match.roundCode)) : getTeamName(match.awayTeam);
       const homeManual = isKO && isManualSlot(match.homeTeam);
       const awayManual = isKO && isManualSlot(match.awayTeam);
 
@@ -1000,7 +1032,7 @@
             <button class="match-row ${played ? 'played' : ''} ${selectedMatchId === match.matchId ? 'active' : ''}" type="button" data-match-id="${escapeHtml(match.matchId)}">
               <span class="match-id">${escapeHtml(match.matchId)}</span>
               <span>
-                <span class="fixture">${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.homeTeam) : getDisplayName(match.homeTeam))} v ${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.awayTeam) : getDisplayName(match.awayTeam))}</span>
+                <span class="fixture">${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.homeTeam) : bracketLabel(match.homeTeam, match.roundCode))} v ${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.awayTeam) : bracketLabel(match.awayTeam, match.roundCode))}</span>
                 <span class="meta">${escapeHtml(formatDate(match.date))} BST · ${escapeHtml(match.location)}</span>
               </span>
               <span class="score-tag ${played ? '' : 'pending'}">${escapeHtml(score)}</span>
