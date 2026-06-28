@@ -730,20 +730,36 @@
     }
 
     function readFormResult() {
-      const homeQualEl = document.getElementById('homeQualified');
-      const awayQualEl = document.getElementById('awayQualified');
+      const match = matches.find(m => m.matchId === selectedMatchId);
+      const isKO = match && !GS_ROUNDS.has(match.roundCode);
+      const homeScore = toNumber(document.getElementById('homeScore')?.value);
+      const awayScore = toNumber(document.getElementById('awayScore')?.value);
+      const homePenalties = toNumber(document.getElementById('homePenalties')?.value, true);
+      const awayPenalties = toNumber(document.getElementById('awayPenalties')?.value, true);
+
+      let homeQualified, awayQualified;
+      if (isKO) {
+        if (homeScore > awayScore) {
+          homeQualified = true; awayQualified = false;
+        } else if (awayScore > homeScore) {
+          homeQualified = false; awayQualified = true;
+        } else if (homePenalties !== null && awayPenalties !== null && homePenalties !== awayPenalties) {
+          homeQualified = homePenalties > awayPenalties;
+          awayQualified = awayPenalties > homePenalties;
+        }
+      }
+
       return {
         matchId: selectedMatchId,
-        homeScore: toNumber(document.getElementById('homeScore')?.value),
-        awayScore: toNumber(document.getElementById('awayScore')?.value),
-        homePenalties: toNumber(document.getElementById('homePenalties')?.value, true),
-        awayPenalties: toNumber(document.getElementById('awayPenalties')?.value, true),
+        homeScore,
+        awayScore,
+        homePenalties,
+        awayPenalties,
         homeYellow: toNumber(document.getElementById('homeYellow')?.value),
         awayYellow: toNumber(document.getElementById('awayYellow')?.value),
         homeRed: toNumber(document.getElementById('homeRed')?.value),
         awayRed: toNumber(document.getElementById('awayRed')?.value),
-        ...(homeQualEl ? { homeQualified: Boolean(homeQualEl.checked) } : {}),
-        ...(awayQualEl ? { awayQualified: Boolean(awayQualEl.checked) } : {}),
+        ...(isKO && homeQualified !== undefined ? { homeQualified, awayQualified } : {}),
       };
     }
 
@@ -770,6 +786,26 @@
       const away = calculateSidePoints(match, previewResult, 'away');
       document.getElementById('homePreview').innerHTML = renderPointRows(home);
       document.getElementById('awayPreview').innerHTML = renderPointRows(away);
+
+      const qualEl = document.getElementById('qualPreview');
+      if (!qualEl) return;
+      const isKO = !GS_ROUNDS.has(match.roundCode);
+      if (!isKO) return;
+      const { homeQualified, awayQualified, homeScore, awayScore, homePenalties, awayPenalties } = previewResult;
+      const homeName = getDisplayName(match.homeTeam);
+      const awayName = getDisplayName(match.awayTeam);
+      if (homeQualified !== undefined) {
+        const winner = homeQualified ? homeName : awayName;
+        const via = (homeScore === awayScore) ? ' (via penalties)' : '';
+        qualEl.textContent = `✓ ${winner} qualifies${via}`;
+        qualEl.style.color = 'var(--pitch)';
+      } else if (homeScore === awayScore && (homePenalties === null || awayPenalties === null || homePenalties === awayPenalties)) {
+        qualEl.textContent = 'Drawn — enter penalty shootout scores to determine qualifier.';
+        qualEl.style.color = 'var(--muted)';
+      } else {
+        qualEl.textContent = 'Enter goals (and penalties if drawn) to determine qualification.';
+        qualEl.style.color = 'var(--muted)';
+      }
     }
 
     function teamOptions(selectedName) {
@@ -819,7 +855,7 @@
 
         <div class="form-grid">
           <div class="section-title">Your prediction</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 0 4px">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 0 4px;grid-column:1/-1">
             <label style="flex:none">${escapeHtml(homeName)}<input id="predHome" type="number" min="0" step="1" value="${predH ?? ''}" style="width:60px" /></label>
             <span style="font-weight:700;align-self:flex-end;padding-bottom:4px">–</span>
             <label style="flex:none">${escapeHtml(awayName)}<input id="predAway" type="number" min="0" step="1" value="${predA ?? ''}" style="width:60px" /></label>
@@ -840,11 +876,9 @@
           <label>Away red<input id="awayRed" type="number" min="0" step="1" value="${result.awayRed ?? 0}" /></label>
 
           ${isKO ? `
-          <div class="section-title">Qualification</div>
-          <div class="check-row">
-            <label><input id="homeQualified" type="checkbox" ${result.homeQualified ? 'checked' : ''} /> ${escapeHtml(homeName)} qualified</label>
-            <label><input id="awayQualified" type="checkbox" ${result.awayQualified ? 'checked' : ''} /> ${escapeHtml(awayName)} qualified</label>
-          </div>` : ''}
+          <div class="section-title">Qualification (auto-calculated)</div>
+          <div id="qualPreview" style="grid-column:1/-1;font-size:0.82rem;color:var(--muted);font-weight:700;padding:2px 0 4px">Enter goals (and penalties if drawn) to determine qualification.</div>
+          ` : ''}
         </div>
         <div class="preview">
           <div class="preview-grid">
