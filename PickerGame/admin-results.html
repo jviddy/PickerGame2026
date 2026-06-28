@@ -182,7 +182,16 @@
       text-align: left;
     }
 
-    .match-row:nth-child(10n) { background: #f2f4f3; }
+    .round-header {
+      padding: 6px 12px;
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      background: var(--pitch-mid);
+      border-bottom: 1px solid var(--line);
+    }
     .match-row.active { background: #e6f5eb; }
     .match-row.played .match-id { color: var(--pitch); }
 
@@ -501,6 +510,11 @@
 
   <script>
     const ROUND_ORDER = ['GS1', 'GS2', 'GS3', 'R32', 'R16', 'QF', 'SF', 'TPP', 'F'];
+    const ROUND_LABELS = {
+      GS1: 'Group Stage · Round 1', GS2: 'Group Stage · Round 2', GS3: 'Group Stage · Round 3',
+      R32: 'Round of 32', R16: 'Round of 16', QF: 'Quarter-Finals',
+      SF: 'Semi-Finals', TPP: 'Third Place Play-off', F: 'Final',
+    };
     const DATA_URLS = {
       matches: './Data/matches.json',
       teams: './Data/teams.json',
@@ -879,20 +893,30 @@
     function renderMatches() {
       const filtered = getFilteredMatches();
       matchCount.textContent = `${filtered.length} matches`;
-      matchesList.innerHTML = filtered.map(match => {
-        const result = getDisplayResult(match);
-        const played = isPlayed(result);
-        const score = played ? `${result.homeScore}-${result.awayScore}` : 'Pending';
-        return `
-          <button class="match-row ${played ? 'played' : ''} ${selectedMatchId === match.matchId ? 'active' : ''}" type="button" data-match-id="${escapeHtml(match.matchId)}">
-            <span class="match-id">${escapeHtml(match.matchId)}<br>${escapeHtml(match.roundCode)}</span>
-            <span>
-              <span class="fixture">${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.homeTeam) : getDisplayName(match.homeTeam))} v ${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.awayTeam) : getDisplayName(match.awayTeam))}</span>
-              <span class="meta">${escapeHtml(formatDate(match.date))} BST · ${escapeHtml(match.location)}</span>
-            </span>
-            <span class="score-tag ${played ? '' : 'pending'}">${escapeHtml(score)}</span>
-          </button>
-        `;
+
+      // Group by round in canonical order
+      const byRound = {};
+      filtered.forEach(m => { (byRound[m.roundCode] = byRound[m.roundCode] || []).push(m); });
+      const roundsPresent = ROUND_ORDER.filter(r => byRound[r]);
+
+      matchesList.innerHTML = roundsPresent.map(roundCode => {
+        const roundMatches = byRound[roundCode];
+        const header = `<div class="round-header">${escapeHtml(ROUND_LABELS[roundCode] || roundCode)}</div>`;
+        const rows = roundMatches.map(match => {
+          const result = getDisplayResult(match);
+          const played = isPlayed(result);
+          const score = played ? `${result.homeScore}-${result.awayScore}` : 'Pending';
+          return `
+            <button class="match-row ${played ? 'played' : ''} ${selectedMatchId === match.matchId ? 'active' : ''}" type="button" data-match-id="${escapeHtml(match.matchId)}">
+              <span class="match-id">${escapeHtml(match.matchId)}</span>
+              <span>
+                <span class="fixture">${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.homeTeam) : getDisplayName(match.homeTeam))} v ${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.awayTeam) : getDisplayName(match.awayTeam))}</span>
+                <span class="meta">${escapeHtml(formatDate(match.date))} BST · ${escapeHtml(match.location)}</span>
+              </span>
+              <span class="score-tag ${played ? '' : 'pending'}">${escapeHtml(score)}</span>
+            </button>`;
+        }).join('');
+        return header + rows;
       }).join('');
 
       matchesList.querySelectorAll('.match-row').forEach(row => {
