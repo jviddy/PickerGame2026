@@ -43,21 +43,29 @@ async function githubRequest(endpoint, token, options = {}) {
 async function readGithubJson(repository, branch, filePath, token) {
   const encodedPath = filePath.split('/').map(encodeURIComponent).join('/');
   const endpoint = `https://api.github.com/repos/${repository}/contents/${encodedPath}?ref=${encodeURIComponent(branch)}`;
-  const file = await githubRequest(endpoint, token);
+  const response = await fetch(endpoint, {
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+      'User-Agent': 'PickerGame2026-admin',
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+  });
+  if (response.status === 404) return { sha: null, data: {} };
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`GitHub request failed with status ${response.status}: ${body}`);
+  }
+  const file = await response.json();
   return { sha: file.sha, data: JSON.parse(decodeBase64(file.content)) };
 }
 
 async function writeGithubJson(repository, branch, filePath, sha, data, message, token) {
   const encodedPath = filePath.split('/').map(encodeURIComponent).join('/');
   const endpoint = `https://api.github.com/repos/${repository}/contents/${encodedPath}`;
-  return githubRequest(endpoint, token, {
-    method: 'PUT',
-    body: JSON.stringify({
-      branch, message,
-      content: encodeBase64(`${JSON.stringify(data, null, 2)}\n`),
-      sha,
-    }),
-  });
+  const body = { branch, message, content: encodeBase64(`${JSON.stringify(data, null, 2)}\n`) };
+  if (sha) body.sha = sha; // omit sha when creating a new file
+  return githubRequest(endpoint, token, { method: 'PUT', body: JSON.stringify(body) });
 }
 
 async function dispatchPublish(repository, branch, workflowId, token) {
