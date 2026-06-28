@@ -177,6 +177,9 @@
     .round-col-active-head { background: rgba(255,255,255,0.16) !important; }
     .round-active-marker { display: block; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; margin: 2px auto 0; }
     .round-col-active-cell { background: rgba(233,111,44,0.07); }
+    .kq-col-head { background: rgba(255,255,255,0.08); font-size: 0.7rem; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
+    .kq-col-cell { text-align: center; }
+    .kq-pts { display: inline-block; background: #d1fae5; color: #065f46; font-weight: 700; font-size: 0.78rem; border-radius: 4px; padding: 1px 5px; }
     .country-stats { display: flex; gap: 4px; margin-top: 5px; flex-wrap: wrap; }
     .stat-item { font-size: 0.6rem; font-weight: 800; color: var(--gray-600); background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 3px; padding: 1px 5px; }
     .stat-yc { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
@@ -449,8 +452,8 @@
     SF:'Semi-finals',    TPP:'Third Place',    F:'Final'
   };
 
-  // Country + Status + FIFA + Cost + Cost/pt + Pld + rounds + Total
-  const TOTAL_COLS = ROUND_ORDER.length + 7;
+  // Country + Status + FIFA + Cost + Cost/pt + Pld + rounds + KQ + Total
+  const TOTAL_COLS = ROUND_ORDER.length + 8;
 
   const scoresRoot = document.getElementById('scoresRoot');
   const errorMsg   = document.getElementById('errorMsg');
@@ -527,8 +530,13 @@
     const byRound = {}, detailsByRound = {};
     ROUND_ORDER.forEach(r => { byRound[r] = 0; detailsByRound[r] = []; });
 
+    // Extract group-stage qualification bonus points separately so they can be
+    // shown in their own KQ column without double-counting against GS round totals.
+    let koQualPts = 0;
     (team.scoresByRound || []).forEach(rs => {
-      byRound[rs.roundCode] = rs.total || 0;
+      const qualPts = ['GS1','GS2','GS3'].includes(rs.roundCode) ? (rs.roundQualification || 0) : 0;
+      koQualPts += qualPts;
+      byRound[rs.roundCode] = (rs.total || 0) - qualPts;
       detailsByRound[rs.roundCode] = (rs.matches || []).map(m => ({
         matchId: m.matchId, date: m.date || '', roundCode: rs.roundCode,
         fixture: m.fixture, points: { items: m.points || [], total: m.total || 0 }
@@ -541,7 +549,7 @@
       totalPoints:    team.totalPoints || 0,
       inCompetition:  team.inCompetition !== false,
       matchesPlayed:  allMatches.length,
-      byRound, detailsByRound,
+      koQualPts, byRound, detailsByRound,
       wins:   allMatches.filter(m => m.result === 'win').length,
       draws:  allMatches.filter(m => m.result === 'draw').length,
       losses: allMatches.filter(m => m.result === 'loss').length,
@@ -614,8 +622,11 @@
                 sortField === r ? 'sort-active' : '',
                 isActive ? 'round-col-active-head' : ''
               ].filter(Boolean).join(' ');
-              return `<th class="${cls}" data-sort="${r}" data-round="${r}"
+              const cell = `<th class="${cls}" data-sort="${r}" data-round="${r}"
                 title="${escapeHtml(ROUND_LABELS[r])}">${escapeHtml(r)}${arrow(r)}${isActive ? '<span class="round-active-marker"></span>' : ''}</th>`;
+              return r === 'GS3'
+                ? cell + `<th class="kq-col-head" title="Knockout qualification bonus (10 pts)">KQ</th>`
+                : cell;
             }).join('')}
             ${th('score', 'Total')}
           </tr>
@@ -659,11 +670,14 @@
                   const score    = country.byRound[r] || 0;
                   const cellOpen = openRnd === r;
                   const colCls   = r === activeRound ? 'round-col-active-cell' : '';
-                  return `<td class="${colCls}">
+                  const cell = `<td class="${colCls}">
                     <button class="round-score-btn ${score ? 'has-score' : ''} ${cellOpen ? 'active' : ''}"
                       type="button" data-country="${escapeHtml(country.countryName)}" data-round="${escapeHtml(r)}"
                       title="${escapeHtml(country.countryName)} — ${escapeHtml(ROUND_LABELS[r])}">${score}</button>
                   </td>`;
+                  return r === 'GS3'
+                    ? cell + `<td class="kq-col-cell"><span class="${country.koQualPts ? 'kq-pts' : ''}">${country.koQualPts || 0}</span></td>`
+                    : cell;
                 }).join('')}
                 <td class="total-cell">${country.totalPoints}</td>
               </tr>

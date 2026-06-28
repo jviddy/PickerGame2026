@@ -147,15 +147,16 @@ function calculateTeamMatchPoints(team, match, result, settings) {
 }
 
 function isTeamInCompetition(team, matches, results) {
+  const teamName = team.countryName;
   const teamMatches = matches
-    .filter((match) => match.homeTeam === team.groupId || match.awayTeam === team.groupId)
+    .filter((match) => match.homeTeam === teamName || match.awayTeam === teamName)
     .map((match) => ({ match, result: getResultById(results, match.matchId) }))
     .filter(({ result }) => isPlayed(result));
 
   const knockoutLoss = teamMatches.some(({ match, result }) => {
     if (match.roundCode.includes('GS')) return false;
 
-    const isHome = match.homeTeam === team.groupId;
+    const isHome = match.homeTeam === teamName;
     const goalsFor = isHome ? result.homeScore : result.awayScore;
     const goalsAgainst = isHome ? result.awayScore : result.homeScore;
     const penaltiesFor = isHome ? result.homePenalties : result.awayPenalties;
@@ -167,7 +168,7 @@ function isTeamInCompetition(team, matches, results) {
   if (knockoutLoss) return false;
 
   const groupMatches = matches.filter((match) =>
-    match.roundCode.includes('GS') && (match.homeTeam === team.groupId || match.awayTeam === team.groupId)
+    match.roundCode.includes('GS') && (match.homeTeam === teamName || match.awayTeam === teamName)
   );
   const playedGroupMatches = groupMatches
     .map((match) => ({ match, result: getResultById(results, match.matchId) }))
@@ -175,7 +176,7 @@ function isTeamInCompetition(team, matches, results) {
 
   if (groupMatches.length && playedGroupMatches.length === groupMatches.length) {
     return playedGroupMatches.some(({ match, result }) => {
-      const isHome = match.homeTeam === team.groupId;
+      const isHome = match.homeTeam === teamName;
       return isHome ? result.homeQualified : result.awayQualified;
     });
   }

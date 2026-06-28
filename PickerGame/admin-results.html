@@ -849,12 +849,12 @@
       statusFilter.addEventListener('change', renderMatches);
     }
 
-    function isTeamQualified(teamId) {
+    function isTeamQualified(countryName) {
       for (const result of results) {
         const match = matches.find(m => m.matchId === result.matchId);
         if (!match) continue;
-        if (match.homeTeam === teamId && result.homeQualified) return true;
-        if (match.awayTeam === teamId && result.awayQualified) return true;
+        if (match.homeTeam === countryName && result.homeQualified) return true;
+        if (match.awayTeam === countryName && result.awayQualified) return true;
       }
       return false;
     }
@@ -874,8 +874,8 @@
             <div class="group-card-body">
               ${groupTeams.map(team => `
                 <div class="group-team-row">
-                  <input type="checkbox" id="gq_${escapeHtml(team.groupId)}" value="${escapeHtml(team.groupId)}" ${isTeamQualified(team.groupId) ? 'checked' : ''} />
-                  <label for="gq_${escapeHtml(team.groupId)}">${escapeHtml(team.countryName)}</label>
+                  <input type="checkbox" id="gq_${escapeHtml(team.countryName)}" value="${escapeHtml(team.countryName)}" ${isTeamQualified(team.countryName) ? 'checked' : ''} />
+                  <label for="gq_${escapeHtml(team.countryName)}">${escapeHtml(team.countryName)}</label>
                 </div>
               `).join('')}
             </div>
