@@ -1026,14 +1026,35 @@
   function renderPrediction(matchId, result) {
     const pred = predictions[matchId];
     if (!pred) return '';
-    const [predH, predA] = pred.split('-').map(Number);
+
+    // Format: "2-1" or "2-2|home" / "2-2|away"
+    const [scoreStr, penWinner] = pred.split('|');
+    const [predH, predA] = scoreStr.split('-').map(Number);
+
+    // Build the friendly prediction label
+    let predLabel = scoreStr;
+    if (penWinner && predH === predA) {
+      const match = matches.find(m => m.matchId === matchId);
+      const penTeam = penWinner === 'home'
+        ? getTeam(match?.homeTeam)
+        : getTeam(match?.awayTeam);
+      const penName = penTeam?.countryName || penWinner;
+      predLabel = `${scoreStr}: ${penName} wins on pens`;
+    }
+
     let indicator = '';
     if (isPlayed(result)) {
       const dH = Math.abs(predH - result.homeScore);
       const dA = Math.abs(predA - result.awayScore);
       const exactScore = dH === 0 && dA === 0;
-      const predOutcome   = predH > predA ? 'H' : predH < predA ? 'A' : 'D';
-      const actualOutcome = result.homeScore > result.awayScore ? 'H' : result.homeScore < result.awayScore ? 'A' : 'D';
+      // Determine predicted winner (including pen tiebreaker)
+      let predOutcome = predH > predA ? 'H' : predH < predA ? 'A' : 'D';
+      if (predOutcome === 'D' && penWinner) predOutcome = penWinner === 'home' ? 'H' : 'A';
+      // Determine actual winner (including pen tiebreaker)
+      let actualOutcome = result.homeScore > result.awayScore ? 'H' : result.homeScore < result.awayScore ? 'A' : 'D';
+      if (actualOutcome === 'D' && result.homePenalties !== null && result.awayPenalties !== null) {
+        actualOutcome = result.homePenalties > result.awayPenalties ? 'H' : 'A';
+      }
       const correctOutcome = predOutcome === actualOutcome;
       const reversedWin = (predOutcome === 'H' && actualOutcome === 'A') || (predOutcome === 'A' && actualOutcome === 'H');
       const withinOne = dH <= 1 && dA <= 1;
@@ -1045,7 +1066,7 @@
         indicator = ' <span class="pred-wrong">✗</span>';
       }
     }
-    return `<div class="match-prediction">El Presidente's Prediction: <strong>${escapeHtml(pred)}</strong>${indicator}</div>`;
+    return `<div class="match-prediction">El Presidente's Prediction: <strong>${escapeHtml(predLabel)}</strong>${indicator}</div>`;
   }
 
   function renderMatch(match) {
