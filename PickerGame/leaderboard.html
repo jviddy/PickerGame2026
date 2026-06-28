@@ -816,6 +816,11 @@
         <option value="countries">Country scores</option>
         <option value="rounds">Round scores</option>
       </select>
+      <button class="view-toggle-btn" id="sortToggleBtn" type="button">Sort: Teams left</button>
+      <select class="view-mode-select" id="sortSelect" aria-label="Sort order">
+        <option value="score">Sort: Score</option>
+        <option value="teams">Sort: Teams left</option>
+      </select>
     </div>
     <div id="tournamentStatsBar"></div>
   </div>
@@ -877,6 +882,7 @@
   let pointsBaseline = {};
   let tournamentStats = null;
   let scoreDisplayMode = 'countries';
+  let sortBy = 'score'; // 'score' | 'teams'
   let picksFilter = '';
   let expandedChipEl = null;
   let expandedExpansionEl = null;
@@ -891,6 +897,8 @@
   const leaderboardEl      = document.getElementById('leaderboard');
   const scoreModeToggleBtn = document.getElementById('scoreModeToggleBtn');
   const scoreModeSelect    = document.getElementById('scoreModeSelect');
+  const sortToggleBtn      = document.getElementById('sortToggleBtn');
+  const sortSelect         = document.getElementById('sortSelect');
   const errorMsg           = document.getElementById('errorMsg');
   const emailInput         = document.getElementById('emailFindInput');
   const findStatus         = document.getElementById('findStatus');
@@ -1412,6 +1420,14 @@
     }
 
     let filtered = getFilteredLeaderboard();
+
+    // Apply sort (leaderboard is always stored in score order; re-sort for alternate views)
+    if (sortBy === 'teams') {
+      filtered = [...filtered].sort((a, b) =>
+        b.teamsRemaining - a.teamsRemaining || b.totalScore - a.totalScore
+      );
+    }
+
     if (scoreDisplayMode === 'countries' && picksFilter) {
       const terms = picksFilter.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
       filtered = filtered.filter(entry =>
@@ -1425,13 +1441,17 @@
     }
 
     let html = '';
-    filtered.forEach(entry => {
-      const originalRank = leaderboard.indexOf(entry) + 1;
-      let rankClass = '', rankEmoji = originalRank;
-      if (originalRank === 1) { rankClass = 'first';  rankEmoji = '🥇'; }
-      else if (originalRank === 2) { rankClass = 'second'; rankEmoji = '🥈'; }
-      else if (originalRank === 3) { rankClass = 'third';  rankEmoji = '🥉'; }
+    filtered.forEach((entry, displayIdx) => {
+      const scoreRank = leaderboard.indexOf(entry) + 1;
+      const displayRank = sortBy === 'score' ? scoreRank : displayIdx + 1;
+      let rankClass = '', rankEmoji = displayRank;
+      if (sortBy === 'score') {
+        if (scoreRank === 1) { rankClass = 'first';  rankEmoji = '🥇'; }
+        else if (scoreRank === 2) { rankClass = 'second'; rankEmoji = '🥈'; }
+        else if (scoreRank === 3) { rankClass = 'third';  rankEmoji = '🥉'; }
+      }
 
+      const originalRank = scoreRank; // keep for milestone-row logic
       const entryIdx = leaderboard.indexOf(entry);
       const pin = pinnedTeams.has(entry.teamName);
       const rowClasses = [
@@ -1524,6 +1544,11 @@
     leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
   }
 
+  function updateSortButton() {
+    sortToggleBtn.textContent = sortBy === 'score' ? 'Sort: Teams left' : 'Sort: Score';
+    sortSelect.value = sortBy;
+  }
+
   scoreModeToggleBtn.addEventListener('click', () => {
     scoreDisplayMode = scoreDisplayMode === 'countries' ? 'rounds' : 'countries';
     picksFilter = '';
@@ -1536,6 +1561,18 @@
     picksFilter = '';
     updateScoreModeButton();
     renderAll();
+  });
+
+  sortToggleBtn.addEventListener('click', () => {
+    sortBy = sortBy === 'score' ? 'teams' : 'score';
+    updateSortButton();
+    renderBody();
+  });
+
+  sortSelect.addEventListener('change', () => {
+    sortBy = sortSelect.value;
+    updateSortButton();
+    renderBody();
   });
 
   document.addEventListener('keydown', e => {
