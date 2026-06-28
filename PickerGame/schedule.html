@@ -723,6 +723,7 @@
         loadJson(DATA_URLS.predictions).catch(() => ({})),
         loadJson(DATA_URLS.matchReports).catch(() => [])
       ]);
+      _standings = null; // reset standings cache after data loads
       reportedMatchIds = new Set((matchReports || []).map(r => r.matchId));
       return true;
     } catch (error) {
@@ -742,11 +743,52 @@
     }[char]));
   }
 
+  let _standings = null;
+  function getStandings() {
+    if (_standings) return _standings;
+    const GS = new Set(['GS1','GS2','GS3']);
+    const rows = {};
+    for (const t of teams) {
+      if (!t.group) continue;
+      rows[t.group] = rows[t.group] || [];
+      rows[t.group].push({ team: t, pts: 0, gf: 0, ga: 0 });
+    }
+    for (const m of matches) {
+      if (!GS.has(m.roundCode) || !m.played || !m.result) continue;
+      const r = m.result;
+      const all = Object.values(rows).flat();
+      const h = all.find(x => x.team.countryName === m.homeTeam);
+      const a = all.find(x => x.team.countryName === m.awayTeam);
+      if (!h || !a) continue;
+      h.gf += r.homeScore; h.ga += r.awayScore;
+      a.gf += r.awayScore; a.ga += r.homeScore;
+      if (r.homeScore > r.awayScore) h.pts += 3;
+      else if (r.homeScore === r.awayScore) { h.pts += 1; a.pts += 1; }
+      else a.pts += 3;
+    }
+    _standings = {};
+    for (const [g, list] of Object.entries(rows)) {
+      _standings[g] = list.sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        if ((b.gf - b.ga) !== (a.gf - a.ga)) return (b.gf - b.ga) - (a.gf - a.ga);
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+      });
+    }
+    return _standings;
+  }
+
   function getTeam(teamRef) {
+    if (!teamRef) return null;
     // Handle "1A (Mexico)" format — extract the country name from parens
-    const parenMatch = teamRef && teamRef.match(/\(([^)]+)\)$/);
+    const parenMatch = teamRef.match(/\(([^)]+)\)$/);
     const name = parenMatch ? parenMatch[1] : teamRef;
-    return teams.find(team => team.groupId === name || team.countryName === name);
+    const direct = teams.find(team => team.groupId === name || team.countryName === name);
+    if (direct) return direct;
+    // Resolve "1A", "2B" etc from live group standings
+    const pos = name.match(/^(\d)([A-Z])$/);
+    if (pos) return getStandings()[pos[2]]?.[parseInt(pos[1]) - 1]?.team || null;
+    return null;
   }
 
   function getTeamName(teamRef) {

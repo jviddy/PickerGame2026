@@ -505,6 +505,7 @@
       matches: './Data/matches.json',
       teams: './Data/teams.json',
       results: '/api/results',
+      predictions: './Data/predictions.json',
       settings: './Data/settings.json'
     };
 
@@ -519,6 +520,8 @@
     let matches = [];
     let teams = [];
     let results = [];
+    let predictions = {};
+    let groupStandings = null;
     let settings = {};
     let selectedMatchId = null;
 
@@ -558,6 +561,65 @@
       const parenMatch = teamRef && teamRef.match(/\(([^)]+)\)$/);
       const name = parenMatch ? parenMatch[1] : teamRef;
       return teams.find(team => team.groupId === name || team.countryName === name);
+    }
+
+    const GS_ROUNDS = new Set(['GS1', 'GS2', 'GS3']);
+
+    function buildGroupStandings() {
+      if (groupStandings) return groupStandings;
+      const rows = {};
+      for (const team of teams) {
+        if (!team.group) continue;
+        rows[team.group] = rows[team.group] || [];
+        rows[team.group].push({ team, pts: 0, gf: 0, ga: 0 });
+      }
+      for (const match of matches) {
+        if (!GS_ROUNDS.has(match.roundCode) || !match.played || !match.result) continue;
+        const r = match.result;
+        const h = Object.values(rows).flat().find(x => x.team.countryName === match.homeTeam);
+        const a = Object.values(rows).flat().find(x => x.team.countryName === match.awayTeam);
+        if (!h || !a) continue;
+        h.gf += r.homeScore; h.ga += r.awayScore;
+        a.gf += r.awayScore; a.ga += r.homeScore;
+        if (r.homeScore > r.awayScore) h.pts += 3;
+        else if (r.homeScore === r.awayScore) { h.pts += 1; a.pts += 1; }
+        else a.pts += 3;
+      }
+      groupStandings = {};
+      for (const [g, list] of Object.entries(rows)) {
+        groupStandings[g] = list.sort((a, b) => {
+          if (b.pts !== a.pts) return b.pts - a.pts;
+          const gda = a.gf - a.ga, gdb = b.gf - b.ga;
+          if (gdb !== gda) return gdb - gda;
+          if (b.gf !== a.gf) return b.gf - a.gf;
+          return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+        });
+      }
+      return groupStandings;
+    }
+
+    // Returns the team object for a KO slot ref like "1A", "2B", "1A (Mexico)" etc.
+    // Returns null if it can't be resolved (e.g. "3ABCDF", "TBD").
+    function resolveKOTeam(ref) {
+      if (!ref || ref === 'TBD') return null;
+      const parenMatch = ref.match(/\(([^)]+)\)$/);
+      if (parenMatch) return teams.find(t => t.countryName === parenMatch[1]) || null;
+      const direct = teams.find(t => t.countryName === ref);
+      if (direct) return direct;
+      const m = ref.match(/^(\d)([A-Z])$/);
+      if (m) return buildGroupStandings()[m[2]]?.[parseInt(m[1]) - 1]?.team || null;
+      return null;
+    }
+
+    // Is this ref something the admin needs to assign manually? (3rd-place or TBD)
+    function isManualSlot(ref) {
+      if (!ref || ref === 'TBD') return true;
+      if (/^\d[A-Z]{2,}/.test(ref)) return true; // "3ABCDF" etc
+      return false;
+    }
+
+    function getDisplayName(ref) {
+      return resolveKOTeam(ref)?.countryName || getTeamName(ref);
     }
 
     function getTeamName(teamRef) {
@@ -696,20 +758,61 @@
       document.getElementById('awayPreview').innerHTML = renderPointRows(away);
     }
 
+    function teamOptions(selectedName) {
+      const sorted = [...teams].sort((a, b) => a.countryName.localeCompare(b.countryName));
+      return '<option value="">— select team —</option>' +
+        sorted.map(t => `<option value="${escapeHtml(t.countryName)}"${t.countryName === selectedName ? ' selected' : ''}>${escapeHtml(t.countryName)}</option>`).join('');
+    }
+
     function renderEditor(match) {
       if (!match) {
         editor.innerHTML = '<div class="empty">Select a match to enter or update its result.</div>';
         return;
       }
       const result = getDisplayResult(match) || {};
-      const homeName = getTeamName(match.homeTeam);
-      const awayName = getTeamName(match.awayTeam);
+      const isKO = !GS_ROUNDS.has(match.roundCode);
+      const homeName = isKO ? getDisplayName(match.homeTeam) : getTeamName(match.homeTeam);
+      const awayName = isKO ? getDisplayName(match.awayTeam) : getTeamName(match.awayTeam);
+      const homeManual = isKO && isManualSlot(match.homeTeam);
+      const awayManual = isKO && isManualSlot(match.awayTeam);
+
+      // Current prediction
+      const pred = predictions[match.matchId] || '';
+      const [predH, predA] = pred ? pred.split('-').map(Number) : [null, null];
+
       editor.innerHTML = `
         <div class="editor-head">
           <h2>${escapeHtml(homeName)} v ${escapeHtml(awayName)}</h2>
           <div class="meta">${escapeHtml(match.matchId)} · ${escapeHtml(match.roundCode)} · ${escapeHtml(formatDate(match.date))} BST</div>
         </div>
+
+        ${(homeManual || awayManual) ? `
         <div class="form-grid">
+          <div class="section-title">Team assignment</div>
+          ${homeManual ? `
+          <label>${escapeHtml(match.homeTeam)} (home)
+            <select id="homeTeamSlot">${teamOptions(resolveKOTeam(match.homeTeam)?.countryName || '')}</select>
+          </label>` : ''}
+          ${awayManual ? `
+          <label>${escapeHtml(match.awayTeam)} (away)
+            <select id="awayTeamSlot">${teamOptions(resolveKOTeam(match.awayTeam)?.countryName || '')}</select>
+          </label>` : ''}
+          <div class="actions" style="padding:0 0 8px">
+            <button id="saveTeamSlot" type="button">Save team assignment</button>
+            <span id="teamSlotStatus" style="font-size:0.8rem;margin-left:8px"></span>
+          </div>
+        </div>` : ''}
+
+        <div class="form-grid">
+          <div class="section-title">Your prediction</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 0 4px">
+            <label style="flex:none">${escapeHtml(homeName)}<input id="predHome" type="number" min="0" step="1" value="${predH ?? ''}" style="width:60px" /></label>
+            <span style="font-weight:700;align-self:flex-end;padding-bottom:4px">–</span>
+            <label style="flex:none">${escapeHtml(awayName)}<input id="predAway" type="number" min="0" step="1" value="${predA ?? ''}" style="width:60px" /></label>
+            <button id="savePrediction" type="button" style="align-self:flex-end;min-height:34px;padding:0 14px;font-size:0.85rem">Save prediction</button>
+            <span id="predStatus" style="font-size:0.8rem"></span>
+          </div>
+
           <div class="section-title">Goals</div>
           <label>${escapeHtml(homeName)}<input id="homeScore" type="number" min="0" step="1" value="${result.homeScore ?? ''}" /></label>
           <label>${escapeHtml(awayName)}<input id="awayScore" type="number" min="0" step="1" value="${result.awayScore ?? ''}" /></label>
@@ -722,7 +825,7 @@
           <label>Home red<input id="homeRed" type="number" min="0" step="1" value="${result.homeRed ?? 0}" /></label>
           <label>Away red<input id="awayRed" type="number" min="0" step="1" value="${result.awayRed ?? 0}" /></label>
 
-          ${!String(match.roundCode).includes('GS') ? `
+          ${isKO ? `
           <div class="section-title">Qualification</div>
           <div class="check-row">
             <label><input id="homeQualified" type="checkbox" ${result.homeQualified ? 'checked' : ''} /> ${escapeHtml(homeName)} qualified</label>
@@ -746,11 +849,15 @@
         </div>
       `;
 
-      editor.querySelectorAll('input').forEach(input => {
+      editor.querySelectorAll('#homeScore,#awayScore,#homePenalties,#awayPenalties,#homeYellow,#awayYellow,#homeRed,#awayRed').forEach(input => {
         input.addEventListener('input', updatePreview);
         input.addEventListener('change', updatePreview);
       });
       document.getElementById('submitResult').addEventListener('click', submitResult);
+      document.getElementById('savePrediction').addEventListener('click', () => savePrediction(match.matchId));
+      if (homeManual || awayManual) {
+        document.getElementById('saveTeamSlot').addEventListener('click', () => saveTeamSlot(match));
+      }
       updatePreview();
     }
 
@@ -780,7 +887,7 @@
           <button class="match-row ${played ? 'played' : ''} ${selectedMatchId === match.matchId ? 'active' : ''}" type="button" data-match-id="${escapeHtml(match.matchId)}">
             <span class="match-id">${escapeHtml(match.matchId)}<br>${escapeHtml(match.roundCode)}</span>
             <span>
-              <span class="fixture">${escapeHtml(getTeamName(match.homeTeam))} v ${escapeHtml(getTeamName(match.awayTeam))}</span>
+              <span class="fixture">${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.homeTeam) : getDisplayName(match.homeTeam))} v ${escapeHtml(GS_ROUNDS.has(match.roundCode) ? getTeamName(match.awayTeam) : getDisplayName(match.awayTeam))}</span>
               <span class="meta">${escapeHtml(formatDate(match.date))} BST · ${escapeHtml(match.location)}</span>
             </span>
             <span class="score-tag ${played ? '' : 'pending'}">${escapeHtml(score)}</span>
@@ -931,6 +1038,84 @@
       }
     }
 
+    async function savePrediction(matchId) {
+      const token = tokenInput.value.trim();
+      if (!token) { setStatus('Enter your admin token first.', 'error'); return; }
+      const h = document.getElementById('predHome')?.value.trim();
+      const a = document.getElementById('predAway')?.value.trim();
+      const statusEl = document.getElementById('predStatus');
+      const btn = document.getElementById('savePrediction');
+      btn.disabled = true;
+      statusEl.textContent = 'Saving…';
+      const prediction = (h !== '' && a !== '') ? `${h}-${a}` : null;
+      try {
+        const res = await fetch('/api/admin/predictions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ matchId, prediction }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.ok === false) throw new Error((data.errors || ['Failed.']).join(' '));
+        if (prediction) predictions[matchId] = prediction;
+        else delete predictions[matchId];
+        statusEl.textContent = 'Saved';
+        statusEl.style.color = 'green';
+      } catch (err) {
+        statusEl.textContent = err.message;
+        statusEl.style.color = 'red';
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function saveTeamSlot(match) {
+      const token = tokenInput.value.trim();
+      if (!token) { setStatus('Enter your admin token first.', 'error'); return; }
+      const statusEl = document.getElementById('teamSlotStatus');
+      const btn = document.getElementById('saveTeamSlot');
+
+      const homeSlotEl = document.getElementById('homeTeamSlot');
+      const awaySlotEl = document.getElementById('awayTeamSlot');
+
+      function buildValue(originalRef, selectedCountry) {
+        if (!selectedCountry) return originalRef || 'TBD';
+        // Preserve the positional ref prefix for 3rd-place codes
+        if (/^\d[A-Z]+$/.test(originalRef || '')) return `${originalRef} (${selectedCountry})`;
+        return selectedCountry;
+      }
+
+      const payload = { matchId: match.matchId };
+      if (homeSlotEl) payload.homeTeam = buildValue(match.homeTeam, homeSlotEl.value);
+      if (awaySlotEl) payload.awayTeam = buildValue(match.awayTeam, awaySlotEl.value);
+
+      btn.disabled = true;
+      statusEl.textContent = 'Saving…';
+      try {
+        const res = await fetch('/api/admin/matches', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.ok === false) throw new Error((data.errors || ['Failed.']).join(' '));
+        // Update local match
+        const idx = matches.findIndex(m => m.matchId === match.matchId);
+        if (idx >= 0) {
+          if (payload.homeTeam) matches[idx] = { ...matches[idx], homeTeam: payload.homeTeam };
+          if (payload.awayTeam) matches[idx] = { ...matches[idx], awayTeam: payload.awayTeam };
+        }
+        statusEl.textContent = 'Saved';
+        statusEl.style.color = 'green';
+        renderMatches();
+        renderEditor(matches.find(m => m.matchId === match.matchId));
+      } catch (err) {
+        statusEl.textContent = err.message;
+        statusEl.style.color = 'red';
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
     function scrollToNextPending() {
       const allRows = Array.from(matchesList.querySelectorAll('.match-row'));
       if (!allRows.length) return;
@@ -943,12 +1128,14 @@
 
     async function init() {
       try {
-        [matches, teams, results, settings] = await Promise.all([
+        [matches, teams, results, settings, predictions] = await Promise.all([
           loadJson(DATA_URLS.matches),
           loadJson(DATA_URLS.teams),
           loadJsonWithFallback(DATA_URLS.results, './Data/results.json'),
-          loadJson(DATA_URLS.settings)
+          loadJson(DATA_URLS.settings),
+          loadJson(DATA_URLS.predictions).catch(() => ({})),
         ]);
+        groupStandings = null; // reset standings cache after data loads
         populateFilters();
         renderMatches();
         renderGroupQual();
