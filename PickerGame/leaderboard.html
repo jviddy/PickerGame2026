@@ -178,6 +178,18 @@
       letter-spacing: 0;
       border-bottom: 2px solid var(--navy-light);
     }
+    .leaderboard-header .col-sortable {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .leaderboard-header .col-sortable:hover { color: rgba(255,255,255,0.75); }
+    .leaderboard-header .col-sort-active { color: var(--gold); }
+    .sort-arrow { font-size: 0.62rem; }
+    .sort-arrow-inactive { opacity: 0.3; }
+
     @media (max-width: 768px) {
       .leaderboard-header {
         grid-template-columns: 30px minmax(0, 1fr) 44px;
@@ -816,11 +828,6 @@
         <option value="countries">Country scores</option>
         <option value="rounds">Round scores</option>
       </select>
-      <button class="view-toggle-btn" id="sortToggleBtn" type="button">Sort: Teams left</button>
-      <select class="view-mode-select" id="sortSelect" aria-label="Sort order">
-        <option value="score">Sort: Score</option>
-        <option value="teams">Sort: Teams left</option>
-      </select>
     </div>
     <div id="tournamentStatsBar"></div>
   </div>
@@ -897,8 +904,6 @@
   const leaderboardEl      = document.getElementById('leaderboard');
   const scoreModeToggleBtn = document.getElementById('scoreModeToggleBtn');
   const scoreModeSelect    = document.getElementById('scoreModeSelect');
-  const sortToggleBtn      = document.getElementById('sortToggleBtn');
-  const sortSelect         = document.getElementById('sortSelect');
   const errorMsg           = document.getElementById('errorMsg');
   const emailInput         = document.getElementById('emailFindInput');
   const findStatus         = document.getElementById('findStatus');
@@ -1380,6 +1385,10 @@
              placeholder="filter by country, comma for multiple…"
              value="${escapeHtml(picksFilter)}" />
     ` : '';
+    const sortArrow = (field) => sortBy === field
+      ? '<span class="sort-arrow">↓</span>'
+      : '<span class="sort-arrow sort-arrow-inactive">↕</span>';
+
     headerEl.innerHTML = `
       <div class="leaderboard-header">
         <div>Rank</div>
@@ -1388,10 +1397,17 @@
           <span>${picksLabel}</span>
           ${filterHtml}
         </div>
-        <div>Left</div>
-        <div>Score</div>
+        <div class="col-sortable${sortBy === 'teams' ? ' col-sort-active' : ''}" data-lb-sort="teams">Left ${sortArrow('teams')}</div>
+        <div class="col-sortable${sortBy === 'score' ? ' col-sort-active' : ''}" data-lb-sort="score">Score ${sortArrow('score')}</div>
       </div>
     `;
+    headerEl.querySelectorAll('[data-lb-sort]').forEach(el => {
+      el.addEventListener('click', () => {
+        sortBy = el.dataset.lbSort;
+        renderHeader();
+        renderBody();
+      });
+    });
     if (scoreDisplayMode === 'countries') {
       const filterInput = document.getElementById('picksFilterInput');
       if (filterInput) {
@@ -1544,10 +1560,6 @@
     leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
   }
 
-  function updateSortButton() {
-    sortToggleBtn.textContent = sortBy === 'score' ? 'Sort: Teams left' : 'Sort: Score';
-    sortSelect.value = sortBy;
-  }
 
   scoreModeToggleBtn.addEventListener('click', () => {
     scoreDisplayMode = scoreDisplayMode === 'countries' ? 'rounds' : 'countries';
@@ -1561,18 +1573,6 @@
     picksFilter = '';
     updateScoreModeButton();
     renderAll();
-  });
-
-  sortToggleBtn.addEventListener('click', () => {
-    sortBy = sortBy === 'score' ? 'teams' : 'score';
-    updateSortButton();
-    renderBody();
-  });
-
-  sortSelect.addEventListener('change', () => {
-    sortBy = sortSelect.value;
-    updateSortButton();
-    renderBody();
   });
 
   document.addEventListener('keydown', e => {
