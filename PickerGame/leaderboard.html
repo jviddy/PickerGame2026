@@ -292,7 +292,13 @@
       gap: 1px;
     }
     .team-count {
-      display: none;
+      grid-column: 4;
+      grid-row: 1;
+      align-self: center;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--gray-600);
+      font-weight: 600;
     }
     .selected-teams {
       display: flex;
@@ -1314,7 +1320,7 @@
           ${scoreDisplayMode === 'countries'
             ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
-          <div class="team-count">${entry.teamsRemaining}/${entry.selectedTeams.length}</div>
+          <div class="team-count">${entry.teamsRemaining} left</div>
           <div class="score-col">
             <span>${entry.totalScore}</span>
             ${getDeltaHtml(entry)}
@@ -1448,7 +1454,7 @@
           ${scoreDisplayMode === 'countries'
             ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
-          <div class="team-count">${entry.teamsRemaining}/${entry.selectedTeams.length}</div>
+          <div class="team-count">${entry.teamsRemaining} left</div>
           <div class="score-col">
             <span>${entry.totalScore}</span>
             ${getDeltaHtml(entry)}
