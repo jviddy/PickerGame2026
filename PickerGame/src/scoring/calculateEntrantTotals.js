@@ -165,10 +165,14 @@ export function calculateEntrantTotals(entries, teamPoints, teams, matches, resu
     });
     
     // Determine teams still in competition
+    // Prefer inCompetition from teamPoints (set by calculateCountryScores) when available,
+    // since it correctly handles KO bracket refs; fall back to local isTeamEliminated check.
     entry.selectedTeams.forEach((teamName) => {
-      if (!isTeamEliminated(teamName, teams, matches, results)) {
-        teamsRemaining += 1;
-      }
+      const tp = pointsByTeam.get(teamName);
+      const inComp = tp?.inCompetition !== undefined
+        ? tp.inCompetition
+        : !isTeamEliminated(teamName, teams, matches, results);
+      if (inComp) teamsRemaining += 1;
     });
     
     return {

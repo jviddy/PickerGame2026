@@ -57,22 +57,9 @@ async function main() {
     console.log(`✓ Loaded ${formatNumber(results.length)} match results`);
     console.log(`✓ Loaded ${formatNumber(entries.length)} entries`);
     
-    // Calculate team points
-    console.log('\n🔢 Computing team points...');
-    let teamPoints = calculateTeamPoints(settings, teams, matches, results);
-    console.log(`✓ Calculated points for ${formatNumber(teams.length)} teams`);
-
-    // Calculate country score display data
+    // Calculate country score display data (canonical scoring engine)
     console.log('\n🌍 Computing country score breakdowns...');
     const countryScores = calculateCountryScores(settings, teams, matches, results);
-    const countryStatus = new Map(countryScores.map((country) => [
-      country.countryName,
-      country.inCompetition,
-    ]));
-    teamPoints = teamPoints.map((team) => ({
-      ...team,
-      inCompetition: countryStatus.get(team.countryName) ?? true,
-    }));
     console.log(`✓ Calculated country scores for ${formatNumber(countryScores.length)} teams`);
 
     // Calculate match score display data
@@ -85,13 +72,19 @@ async function main() {
     console.log('\n🗂️ Updating team score records...');
     const scoredTeams = calculateScoredTeams(settings, teams, matches, results);
     console.log(`✓ Added round score records to ${formatNumber(scoredTeams.length)} teams`);
-    
+
+    // Legacy team points (for teamPoints.json export only)
+    console.log('\n🔢 Computing legacy team points...');
+    const teamPoints = calculateTeamPoints(settings, teams, matches, results);
+    console.log(`✓ Calculated points for ${formatNumber(teams.length)} teams`);
+
     // Calculate entrant totals (paid entries only for leaderboard)
+    // Uses countryScores (canonical engine) so leaderboard matches countries page exactly
     console.log('\n🏆 Computing entrant totals...');
     const paidEntries = entries.filter((e) => e.paid && !e.removed);
     const entrantTotals = calculateEntrantTotals(
       paidEntries,
-      teamPoints,
+      countryScores,
       teams,
       matches,
       results,
@@ -157,9 +150,9 @@ async function main() {
       return d && d < _baselineCutoff;
     });
 
-    // Recalculate team points and entrant totals for the baseline
-    const _baselineTeamPoints = calculateTeamPoints(settings, teams, matches, _baselineResults);
-    const _baselineTotals     = calculateEntrantTotals(paidEntries, _baselineTeamPoints, teams, matches, _baselineResults);
+    // Recalculate scores using canonical engine for the baseline
+    const _baselineCountryScores = calculateCountryScores(settings, teams, matches, _baselineResults);
+    const _baselineTotals        = calculateEntrantTotals(paidEntries, _baselineCountryScores, teams, matches, _baselineResults);
 
     const baseline = _baselineTotals.map(e => ({
       entrantTeamName: e.entrantTeamName,
