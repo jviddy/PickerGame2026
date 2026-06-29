@@ -406,11 +406,62 @@
     return `<img class="flag" src="${esc(team.flagUrl)}" alt="${esc(teamName)} flag" loading="lazy" />`;
   }
 
-  function getTeamDisplayName(ref, teamMap) {
-    if (!ref) return 'TBA';
+  function buildGroupStandings(matches, teamsArr) {
+    const rows = {};
+    for (const team of teamsArr) {
+      if (!team.group) continue;
+      rows[team.group] = rows[team.group] || [];
+      rows[team.group].push({ team, pts: 0, gf: 0, ga: 0 });
+    }
+    for (const match of matches) {
+      if (!match.roundCode?.includes('GS') || !match.played || !match.result) continue;
+      const r = match.result;
+      const all = Object.values(rows).flat();
+      const h = all.find(x => x.team.countryName === match.homeTeam);
+      const a = all.find(x => x.team.countryName === match.awayTeam);
+      if (!h || !a) continue;
+      h.gf += r.homeScore; h.ga += r.awayScore;
+      a.gf += r.awayScore; a.ga += r.homeScore;
+      if (r.homeScore > r.awayScore) h.pts += 3;
+      else if (r.homeScore === r.awayScore) { h.pts += 1; a.pts += 1; }
+      else a.pts += 3;
+    }
+    const standings = {};
+    for (const [g, list] of Object.entries(rows)) {
+      standings[g] = list.sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        const gda = a.gf - a.ga, gdb = b.gf - b.ga;
+        if (gdb !== gda) return gdb - gda;
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+      });
+    }
+    return standings;
+  }
+
+  function resolveTeamName(ref, matchMap, teamMap, groupStandings) {
+    if (!ref || ref === 'TBD') return null;
     if (teamMap[ref]) return ref;
-    // Try to find by countryName
-    return ref;
+    const posMatch = ref.match(/^(\d)([A-Z])$/);
+    if (posMatch) return groupStandings[posMatch[2]]?.[parseInt(posMatch[1]) - 1]?.team?.countryName || null;
+    const wlMatch = ref.match(/^([WL])-(.+)$/);
+    if (!wlMatch) return null;
+    const [, side, matchId] = wlMatch;
+    const match = matchMap[matchId];
+    if (!match?.result || match.result.homeScore === null) return null;
+    const r = match.result;
+    let homeWins;
+    if (r.homeQualified !== undefined && r.awayQualified !== undefined) {
+      homeWins = Boolean(r.homeQualified);
+    } else if (r.homeScore !== r.awayScore) {
+      homeWins = r.homeScore > r.awayScore;
+    } else if (r.homePenalties !== null && r.awayPenalties !== null) {
+      homeWins = r.homePenalties > r.awayPenalties;
+    } else {
+      return null;
+    }
+    const nextRef = (side === 'W') === homeWins ? match.homeTeam : match.awayTeam;
+    return resolveTeamName(nextRef, matchMap, teamMap, groupStandings);
   }
 
   async function init() {
@@ -442,6 +493,8 @@
         if (m.matchId) matchMap[m.matchId] = m;
       }
 
+      const groupStandings = buildGroupStandings(matches, teamsArr);
+
       // Filter to reports that have a matching match, sort by match date newest first
       const reportedMatchIds = new Set(reports.map(r => r.matchId));
       const displayReports = reports
@@ -459,8 +512,8 @@
       reportsRoot.innerHTML = displayReports.map(report => {
         const match  = matchMap[report.matchId];
         const result = match.result || null;
-        const homeName = match.homeTeam || 'TBA';
-        const awayName = match.awayTeam || 'TBA';
+        const homeName = resolveTeamName(match.homeTeam, matchMap, teamMap, groupStandings) || match.homeTeam || 'TBA';
+        const awayName = resolveTeamName(match.awayTeam, matchMap, teamMap, groupStandings) || match.awayTeam || 'TBA';
 
         const homeScore = result?.homeScore ?? null;
         const awayScore = result?.awayScore ?? null;
