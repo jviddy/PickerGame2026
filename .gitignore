@@ -27,6 +27,9 @@ Thumbs.db
 # Deprecated content
 archive/
 
+# Local backups
+backups/
+
 # Logs
 *.log
 logs/
