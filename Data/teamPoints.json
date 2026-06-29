@@ -23,7 +23,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Argentina",
@@ -49,7 +50,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Germany",
@@ -75,7 +77,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Netherlands",
@@ -101,7 +104,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Mexico",
@@ -127,7 +131,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Brazil",
@@ -153,7 +158,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Spain",
@@ -179,7 +185,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Switzerland",
@@ -205,7 +212,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "England",
@@ -231,7 +239,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Morocco",
@@ -257,7 +266,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Japan",
@@ -283,7 +293,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "United States",
@@ -309,7 +320,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Portugal",
@@ -335,7 +347,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Canada",
@@ -361,7 +374,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Norway",
@@ -387,7 +401,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Belgium",
@@ -413,7 +428,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Colombia",
@@ -439,7 +455,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Senegal",
@@ -465,7 +482,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Ivory Coast",
@@ -491,7 +509,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Croatia",
@@ -517,7 +536,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Egypt",
@@ -543,7 +563,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Sweden",
@@ -569,7 +590,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Austria",
@@ -595,7 +617,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "DR Congo",
@@ -621,7 +644,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Algeria",
@@ -647,7 +671,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Ghana",
@@ -673,7 +698,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Australia",
@@ -699,7 +725,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Ecuador",
@@ -725,7 +752,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Cape Verde",
@@ -751,7 +779,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Bosnia and Herzegovina",
@@ -777,7 +806,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "South Africa",
@@ -803,7 +833,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Paraguay",
@@ -829,7 +860,8 @@
       "qualifyKnockout": 10,
       "qualifyNextRound": 10,
       "winFinal": 0
-    }
+    },
+    "inCompetition": true
   },
   {
     "countryName": "Iran",
@@ -855,7 +887,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "South Korea",
@@ -881,7 +914,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Türkiye",
@@ -907,7 +941,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Uruguay",
@@ -933,7 +968,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Scotland",
@@ -959,7 +995,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Czechia",
@@ -985,7 +1022,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Saudi Arabia",
@@ -1011,7 +1049,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "New Zealand",
@@ -1037,7 +1076,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Jordan",
@@ -1063,7 +1103,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Panama",
@@ -1089,7 +1130,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Haiti",
@@ -1115,7 +1157,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Tunisia",
@@ -1141,7 +1184,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Qatar",
@@ -1167,7 +1211,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Curaçao",
@@ -1193,7 +1238,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Uzbekistan",
@@ -1219,7 +1265,8 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   },
   {
     "countryName": "Iraq",
@@ -1245,6 +1292,7 @@
       "qualifyKnockout": 0,
       "qualifyNextRound": 0,
       "winFinal": 0
-    }
+    },
+    "inCompetition": false
   }
 ]

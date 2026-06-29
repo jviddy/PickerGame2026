@@ -74,8 +74,13 @@ async function main() {
     console.log(`✓ Added round score records to ${formatNumber(scoredTeams.length)} teams`);
 
     // Legacy team points (for teamPoints.json export only)
+    // Overlay inCompetition from canonical engine so leaderboard chip greying still works
     console.log('\n🔢 Computing legacy team points...');
-    const teamPoints = calculateTeamPoints(settings, teams, matches, results);
+    const countryStatus = new Map(countryScores.map(c => [c.countryName, c.inCompetition]));
+    const teamPoints = calculateTeamPoints(settings, teams, matches, results).map(tp => ({
+      ...tp,
+      inCompetition: countryStatus.get(tp.countryName) ?? true,
+    }));
     console.log(`✓ Calculated points for ${formatNumber(teams.length)} teams`);
 
     // Calculate entrant totals (paid entries only for leaderboard)
