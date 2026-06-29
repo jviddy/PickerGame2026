@@ -326,6 +326,8 @@
     let allMatches    = [];
     let allReports    = [];
     let predictions   = {};
+    let teams         = [];
+    let groupStandings = null;
     let editingMatchId = null;
     let dataLoaded    = false;
 
@@ -348,11 +350,103 @@
       return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(iso));
     }
 
+    const GS_ROUNDS = new Set(['GS1', 'GS2', 'GS3']);
+
+    function buildGroupStandings() {
+      if (groupStandings) return groupStandings;
+      const rows = {};
+      for (const team of teams) {
+        if (!team.group) continue;
+        rows[team.group] = rows[team.group] || [];
+        rows[team.group].push({ team, pts: 0, gf: 0, ga: 0 });
+      }
+      for (const match of allMatches) {
+        if (!GS_ROUNDS.has(match.roundCode) || !match.played || !match.result) continue;
+        const r = match.result;
+        const all = Object.values(rows).flat();
+        const h = all.find(x => x.team.countryName === match.homeTeam);
+        const a = all.find(x => x.team.countryName === match.awayTeam);
+        if (!h || !a) continue;
+        h.gf += r.homeScore; h.ga += r.awayScore;
+        a.gf += r.awayScore; a.ga += r.homeScore;
+        if (r.homeScore > r.awayScore) h.pts += 3;
+        else if (r.homeScore === r.awayScore) { h.pts += 1; a.pts += 1; }
+        else a.pts += 3;
+      }
+      groupStandings = {};
+      for (const [g, list] of Object.entries(rows)) {
+        groupStandings[g] = list.sort((a, b) => {
+          if (b.pts !== a.pts) return b.pts - a.pts;
+          const gda = a.gf - a.ga, gdb = b.gf - b.ga;
+          if (gdb !== gda) return gdb - gda;
+          if (b.gf !== a.gf) return b.gf - a.gf;
+          return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+        });
+      }
+      return groupStandings;
+    }
+
+    function teamCode(team) {
+      return team?.code || team?.countryName?.slice(0, 3).toUpperCase() || '?';
+    }
+
+    function resolveMatchTeam(ref) {
+      if (!ref || ref === 'TBD') return null;
+      const parenMatch = ref.match(/\(([^)]+)\)$/);
+      if (parenMatch) return teams.find(t => t.countryName === parenMatch[1]) || null;
+      const direct = teams.find(t => t.countryName === ref);
+      if (direct) return direct;
+      const posMatch = ref.match(/^(\d)([A-Z])$/);
+      if (posMatch) return buildGroupStandings()[posMatch[2]]?.[parseInt(posMatch[1]) - 1]?.team || null;
+      const wlMatch = ref.match(/^([WL])-(.+)$/);
+      if (!wlMatch) return null;
+      const [, side, matchId] = wlMatch;
+      const match = allMatches.find(m => m.matchId === matchId);
+      if (!match) return null;
+      const result = match.result;
+      if (!result || result.homeScore === null) return null;
+      let homeWins;
+      if (result.homeQualified !== undefined && result.awayQualified !== undefined) {
+        homeWins = Boolean(result.homeQualified);
+      } else if (result.homeScore !== result.awayScore) {
+        homeWins = result.homeScore > result.awayScore;
+      } else if (result.homePenalties !== null && result.awayPenalties !== null) {
+        homeWins = result.homePenalties > result.awayPenalties;
+      } else {
+        return null;
+      }
+      const nextRef = (side === 'W') === homeWins ? match.homeTeam : match.awayTeam;
+      return resolveMatchTeam(nextRef);
+    }
+
+    function matchTeamLabel(ref, roundCode) {
+      if (!ref || ref === 'TBD') return 'TBD';
+      const resolved = resolveMatchTeam(ref);
+      if (resolved) return resolved.countryName;
+      // Positional ref "2A" not yet resolved
+      const posMatch = ref.match(/^(\d)([A-Z])$/);
+      if (posMatch) return `${posMatch[1]}${posMatch[2]} Group`;
+      // Bracket ref "W-M073"
+      const wlMatch = ref.match(/^([WL])-M0*(\d+)$/);
+      if (wlMatch) {
+        const prefix = wlMatch[1] === 'W' ? 'Winner' : 'Loser';
+        const refMatch = allMatches.find(m => m.matchId === `M${String(wlMatch[2]).padStart(3,'0')}`);
+        if (!refMatch) return `${prefix} M${wlMatch[2]}`;
+        const h = resolveMatchTeam(refMatch.homeTeam);
+        const a = resolveMatchTeam(refMatch.awayTeam);
+        if (h && a) return `${prefix}: ${teamCode(h)}/${teamCode(a)}`;
+        return `${prefix} M${wlMatch[2]}`;
+      }
+      return ref;
+    }
+
     function formatMatchLabel(match) {
       const date = new Intl.DateTimeFormat('en-GB', {
         day: 'numeric', month: 'short', timeZone: 'Europe/London'
       }).format(new Date(match.date));
-      return `${match.homeTeam || 'TBA'} vs ${match.awayTeam || 'TBA'} — ${date}`;
+      const home = matchTeamLabel(match.homeTeam, match.roundCode);
+      const away = matchTeamLabel(match.awayTeam, match.roundCode);
+      return `${home} vs ${away} — ${date}`;
     }
 
     function getPredictionIndicator(pred, result) {
@@ -539,15 +633,18 @@
 
     async function loadData() {
       const v = Date.now();
-      const [matchesRes, reportsData, predsRes] = await Promise.all([
+      const [matchesRes, teamsRes, reportsData, predsRes] = await Promise.all([
         fetch(`./Data/matches.json?v=${v}`).then(r => r.json()),
+        fetch(`./Data/teams.json?v=${v}`).then(r => r.json()).catch(() => []),
         apiRequest('/api/admin/match-reports'),
         fetch(`./Data/predictions.json?v=${v}`).then(r => r.json()).catch(() => ({})),
       ]);
-      allMatches  = matchesRes;
-      allReports  = reportsData.reports || [];
-      predictions = predsRes;
-      dataLoaded  = true;
+      allMatches    = matchesRes;
+      teams         = teamsRes;
+      groupStandings = null; // reset cache when data reloads
+      allReports    = reportsData.reports || [];
+      predictions   = predsRes;
+      dataLoaded    = true;
     }
 
     loadBtn.addEventListener('click', async () => {

@@ -223,6 +223,13 @@
     }
     .picks-filter::placeholder { color: rgba(255,255,255,0.45); }
     .picks-filter:focus { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.18); }
+    .filter-count {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      min-height: 1em;
+    }
     @media (max-width: 768px) { .picks-filter-wrap { display: none; } }
 
     .leaderboard-row {
@@ -1384,6 +1391,7 @@
       <input class="picks-filter" id="picksFilterInput"
              placeholder="filter by country, comma for multiple…"
              value="${escapeHtml(picksFilter)}" />
+      <span class="filter-count" id="lbFilterCount"></span>
     ` : '';
     const sortArrow = (field) => sortBy === field
       ? '<span class="sort-arrow">↓</span>'
@@ -1454,6 +1462,13 @@
           )
         )
       );
+    }
+
+    const countEl = document.getElementById('lbFilterCount');
+    if (countEl) {
+      countEl.textContent = (scoreDisplayMode === 'countries' && picksFilter)
+        ? `${filtered.length} entr${filtered.length === 1 ? 'y' : 'ies'}`
+        : '';
     }
 
     let html = '';

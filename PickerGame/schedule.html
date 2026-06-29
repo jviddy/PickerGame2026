@@ -929,8 +929,11 @@
     const addItem = (label, value) => { if (!value) return; items.push({ label, value }); };
 
     const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
-    if (resultType === 'win')  addItem('Win',  pointRules.win  || 0);
-    if (resultType === 'draw') addItem('Draw', pointRules.draw || 0);
+    const isGS = match.roundCode.includes('GS');
+    if (isGS) {
+      if (resultType === 'win')  addItem('Win',  pointRules.win  || 0);
+      if (resultType === 'draw') addItem('Draw', pointRules.draw || 0);
+    }
 
     addItem('GF', goalsFor      * (pointRules.goalScored   || 0));
     addItem('GA', goalsAgainst  * (pointRules.goalConceded || 0));

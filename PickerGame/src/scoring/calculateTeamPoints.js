@@ -81,11 +81,13 @@ function validateInputs(settings, teams, matches, results) {
     matchesById.set(match.matchId, match);
     
     // Only validate team references for matches that have results
+    // Skip validation for KO bracket refs ("W-M073", "L-M101") and positional refs ("2A", "1B")
     if (matchesWithResults.has(match.matchId)) {
-      if (!teamsById.has(match.homeTeam) && !teamsByName.has(match.homeTeam.toLowerCase())) {
+      const isKORef = (ref) => /^[WL]-/.test(ref) || /^\d[A-Z]/.test(ref) || ref === 'TBD';
+      if (!isKORef(match.homeTeam) && !teamsById.has(match.homeTeam) && !teamsByName.has(match.homeTeam.toLowerCase())) {
         throw new Error(`Unknown team in match ${match.matchId}: ${match.homeTeam}`);
       }
-      if (!teamsById.has(match.awayTeam) && !teamsByName.has(match.awayTeam.toLowerCase())) {
+      if (!isKORef(match.awayTeam) && !teamsById.has(match.awayTeam) && !teamsByName.has(match.awayTeam.toLowerCase())) {
         throw new Error(`Unknown team in match ${match.matchId}: ${match.awayTeam}`);
       }
     }
@@ -210,6 +212,9 @@ export function calculateTeamPoints(settings, teams, matches, results) {
     }
     
     // Resolve team identifiers to actual teams
+    // Skip KO matches where teams are bracket/positional refs (e.g. "W-M073", "2A")
+    const isKORef = (ref) => /^[WL]-/.test(ref) || /^\d[A-Z]/.test(ref) || ref === 'TBD';
+    if (isKORef(match.homeTeam) || isKORef(match.awayTeam)) return;
     const homeTeam = resolveTeam(match.homeTeam, teamsById, teamsByName);
     const awayTeam = resolveTeam(match.awayTeam, teamsById, teamsByName);
     

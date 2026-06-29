@@ -23,7 +23,41 @@ function getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, r
   return 'draw';
 }
 
-// Resolves "W-M073", "L-M101", "1A (Mexico)", "3ABCDF (Paraguay)", or plain country name
+function buildGroupStandings(allMatches, results, teams) {
+  const rows = {};
+  for (const team of teams) {
+    if (!team.group) continue;
+    rows[team.group] = rows[team.group] || [];
+    rows[team.group].push({ team, pts: 0, gf: 0, ga: 0 });
+  }
+  for (const match of allMatches) {
+    if (!match.roundCode.includes('GS')) continue;
+    const result = results.find((r) => r.matchId === match.matchId);
+    if (!result || result.homeScore === null || result.awayScore === null) continue;
+    const all = Object.values(rows).flat();
+    const h = all.find((x) => x.team.countryName === match.homeTeam);
+    const a = all.find((x) => x.team.countryName === match.awayTeam);
+    if (!h || !a) continue;
+    h.gf += result.homeScore; h.ga += result.awayScore;
+    a.gf += result.awayScore; a.ga += result.homeScore;
+    if (result.homeScore > result.awayScore) h.pts += 3;
+    else if (result.homeScore === result.awayScore) { h.pts += 1; a.pts += 1; }
+    else a.pts += 3;
+  }
+  const standings = {};
+  for (const [g, list] of Object.entries(rows)) {
+    standings[g] = list.sort((a, b) => {
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      const gda = a.gf - a.ga, gdb = b.gf - b.ga;
+      if (gdb !== gda) return gdb - gda;
+      if (b.gf !== a.gf) return b.gf - a.gf;
+      return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+    });
+  }
+  return standings;
+}
+
+// Resolves "W-M073", "L-M101", "1A (Mexico)", "2B", "3ABCDF (Paraguay)", or plain country name
 // to a team object. Recursively follows bracket refs.
 function resolveTeamRef(ref, allMatches, results, teams) {
   if (!ref) return null;
@@ -33,6 +67,12 @@ function resolveTeamRef(ref, allMatches, results, teams) {
   // Direct lookup by countryName or groupId
   const direct = teams.find((t) => t.countryName === ref || t.groupId === ref);
   if (direct) return direct;
+  // Positional ref "2A" → 2nd place in group A
+  const posMatch = ref.match(/^(\d)([A-Z])$/);
+  if (posMatch) {
+    const standings = buildGroupStandings(allMatches, results, teams);
+    return standings[posMatch[2]]?.[parseInt(posMatch[1]) - 1]?.team || null;
+  }
   // "W-M073" or "L-M073"
   const wlMatch = ref.match(/^([WL])-(.+)$/);
   if (!wlMatch) return null;
