@@ -442,6 +442,9 @@
   function resolveTeamName(ref, matchMap, teamMap, groupStandings) {
     if (!ref || ref === 'TBD') return null;
     if (teamMap[ref]) return ref;
+    // "3ABCDF (Paraguay)" — best-of-thirds format; extract the parenthetical name
+    const parenMatch = ref.match(/\(([^)]+)\)$/);
+    if (parenMatch) return parenMatch[1];
     const posMatch = ref.match(/^(\d)([A-Z])$/);
     if (posMatch) return groupStandings[posMatch[2]]?.[parseInt(posMatch[1]) - 1]?.team?.countryName || null;
     const wlMatch = ref.match(/^([WL])-(.+)$/);
