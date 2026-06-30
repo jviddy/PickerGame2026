@@ -576,7 +576,9 @@
           const itemsHtml = items.map(report => {
             const match   = matchMap[report.matchId];
             const isRead  = readSet.has(report.matchId);
-            const label   = `${match.homeTeam || 'TBA'} vs ${match.awayTeam || 'TBA'}`;
+            const homeLabel = resolveTeamName(match.homeTeam, matchMap, teamMap, groupStandings) || match.homeTeam || 'TBA';
+            const awayLabel = resolveTeamName(match.awayTeam, matchMap, teamMap, groupStandings) || match.awayTeam || 'TBA';
+            const label   = `${homeLabel} vs ${awayLabel}`;
             return `
               <li class="sidebar-item">
                 <a class="sidebar-link${isRead ? ' read' : ''}" href="#report-${esc(report.matchId)}" data-id="${esc(report.matchId)}">
