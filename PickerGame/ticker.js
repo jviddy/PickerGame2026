@@ -140,21 +140,84 @@
     R32: 'R32', R16: 'R16', QF: 'QF', SF: 'SF', TPP: 'TPP', F: 'Final',
   };
 
+  /* ── team ref resolution ─────────────────────────────────── */
+  function buildGroupStandings(matches, teams) {
+    const rows = {};
+    for (const t of teams) {
+      if (!t.group) continue;
+      rows[t.group] = rows[t.group] || [];
+      rows[t.group].push({ team: t, pts: 0, gf: 0, ga: 0 });
+    }
+    for (const m of matches) {
+      if (!m.roundCode?.includes('GS') || !m.played || !m.result) continue;
+      const r = m.result;
+      const all = Object.values(rows).flat();
+      const h = all.find(x => x.team.countryName === m.homeTeam);
+      const a = all.find(x => x.team.countryName === m.awayTeam);
+      if (!h || !a) continue;
+      h.gf += r.homeScore; h.ga += r.awayScore;
+      a.gf += r.awayScore; a.ga += r.homeScore;
+      if (r.homeScore > r.awayScore) h.pts += 3;
+      else if (r.homeScore === r.awayScore) { h.pts += 1; a.pts += 1; }
+      else a.pts += 3;
+    }
+    const standings = {};
+    for (const [g, list] of Object.entries(rows)) {
+      standings[g] = list.sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        const gda = a.gf - a.ga, gdb = b.gf - b.ga;
+        if (gdb !== gda) return gdb - gda;
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+      });
+    }
+    return standings;
+  }
+
+  function resolveTeam(ref, matchMap, teamMap, groupStandings) {
+    if (!ref || ref === 'TBD') return ref || 'TBA';
+    if (teamMap[ref]) return ref;
+    const parenMatch = ref.match(/\(([^)]+)\)$/);
+    if (parenMatch) return parenMatch[1];
+    const posMatch = ref.match(/^(\d)([A-Z])$/);
+    if (posMatch) return groupStandings[posMatch[2]]?.[parseInt(posMatch[1]) - 1]?.team?.countryName || ref;
+    const wlMatch = ref.match(/^([WL])-(.+)$/);
+    if (!wlMatch) return ref;
+    const [, side, matchId] = wlMatch;
+    const m = matchMap[matchId];
+    if (!m?.result || m.result.homeScore === null) return ref;
+    const r = m.result;
+    let homeWins;
+    if (r.homeQualified !== undefined) homeWins = Boolean(r.homeQualified);
+    else if (r.homeScore !== r.awayScore) homeWins = r.homeScore > r.awayScore;
+    else if (r.homePenalties != null) homeWins = r.homePenalties > r.awayPenalties;
+    else return ref;
+    const nextRef = (side === 'W') === homeWins ? m.homeTeam : m.awayTeam;
+    return resolveTeam(nextRef, matchMap, teamMap, groupStandings);
+  }
+
   /* ── load data ───────────────────────────────────────────── */
-  let matches, stats, posts;
+  let matches, stats, posts, teams;
   try {
-    const [mr, sr, pr] = await Promise.all([
+    const [mr, sr, pr, tr] = await Promise.all([
       fetch('./Data/matches.json'),
       fetch('./Data/tournamentStats.json'),
       fetch('./Data/posts.json'),
+      fetch('./Data/teams.json'),
     ]);
     matches = mr.ok ? await mr.json() : [];
     stats   = sr.ok ? await sr.json() : null;
     posts   = pr.ok ? await pr.json() : [];
+    teams   = tr.ok ? await tr.json() : [];
   } catch (_) {
     wrap.remove();
     return;
   }
+
+  const matchMap = Object.fromEntries(matches.map(m => [m.matchId, m]));
+  const teamMap  = Object.fromEntries(teams.filter(t => t.countryName).map(t => [t.countryName, t]));
+  const groupStandings = buildGroupStandings(matches, teams);
+  const rteam = ref => resolveTeam(ref, matchMap, teamMap, groupStandings);
 
   const todayBST    = bstDateStr();
   const tomorrowBST = bstDateStr(Date.now() + 86400000);
@@ -193,9 +256,9 @@
       items.push(`
         <span class="ticker-item result">
           <span class="ticker-badge">${esc(round)}</span>
-          <span>${esc(m.homeTeam)}</span>
+          <span>${esc(rteam(m.homeTeam))}</span>
           <span class="ticker-score">${r.homeScore}–${r.awayScore}</span>
-          <span>${esc(m.awayTeam)}</span>
+          <span>${esc(rteam(m.awayTeam))}</span>
         </span>
         <span class="ticker-sep">•</span>
       `);
@@ -213,7 +276,7 @@
       items.push(`
         <span class="ticker-item fixture">
           <span class="ticker-badge">${esc(round)}</span>
-          <span>${esc(m.homeTeam)} vs ${esc(m.awayTeam)}</span>
+          <span>${esc(rteam(m.homeTeam))} vs ${esc(rteam(m.awayTeam))}</span>
           <span style="color:rgba(255,255,255,0.45)">${dayLabel} ${kickoff}</span>
         </span>
         <span class="ticker-sep">•</span>
