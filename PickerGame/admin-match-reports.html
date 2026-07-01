@@ -548,9 +548,7 @@
 
       reportList.innerHTML = sorted.map(report => {
         const match = allMatches.find(m => m.matchId === report.matchId);
-        const matchLabel = match
-          ? `${match.homeTeam || 'TBA'} vs ${match.awayTeam || 'TBA'}`
-          : report.matchId;
+        const matchLabel = match ? formatMatchLabel(match) : report.matchId;
         return `
           <div class="report-item ${report.matchId === editingMatchId ? 'active' : ''}" data-matchid="${escapeHtml(report.matchId)}">
             <div class="report-item-match">${escapeHtml(matchLabel)}</div>
