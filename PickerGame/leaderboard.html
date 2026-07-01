@@ -1474,13 +1474,10 @@
     let html = '';
     filtered.forEach((entry, displayIdx) => {
       const scoreRank = leaderboard.indexOf(entry) + 1;
-      const displayRank = sortBy === 'score' ? scoreRank : displayIdx + 1;
-      let rankClass = '', rankEmoji = displayRank;
-      if (sortBy === 'score') {
-        if (scoreRank === 1) { rankClass = 'first';  rankEmoji = '🥇'; }
-        else if (scoreRank === 2) { rankClass = 'second'; rankEmoji = '🥈'; }
-        else if (scoreRank === 3) { rankClass = 'third';  rankEmoji = '🥉'; }
-      }
+      let rankClass = '', rankEmoji = scoreRank;
+      if (scoreRank === 1) { rankClass = 'first';  rankEmoji = '🥇'; }
+      else if (scoreRank === 2) { rankClass = 'second'; rankEmoji = '🥈'; }
+      else if (scoreRank === 3) { rankClass = 'third';  rankEmoji = '🥉'; }
 
       const originalRank = scoreRank; // keep for milestone-row logic
       const entryIdx = leaderboard.indexOf(entry);
