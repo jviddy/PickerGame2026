@@ -892,6 +892,19 @@
     "awayQualified": false
   },
   {
+    "matchId": "M077",
+    "homeScore": 3,
+    "awayScore": 0,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": 0,
+    "awayYellow": 0,
+    "homeRed": 0,
+    "awayRed": 0,
+    "homeQualified": true,
+    "awayQualified": false
+  },
+  {
     "matchId": "M078",
     "homeScore": 1,
     "awayScore": 2,
