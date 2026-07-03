@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Stats Admin - PickerGame 2026</title>
+  <style>
+    :root {
+      --pitch: #1a3352;
+      --pitch-mid: #2d5a8e;
+      --pitch-bright: #3d7bc4;
+      --ink: #1f2933;
+      --muted: #64748b;
+      --line: #d9e2dc;
+      --soft: #f5f8f6;
+      --gold: #d79a2b;
+      --danger: #b91c1c;
+      --success: #166534;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f0f4f8;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      color: var(--white);
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    h1 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.8rem); }
+
+    .nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+    }
+
+    main {
+      width: min(1280px, calc(100% - 28px));
+      margin: 18px auto 44px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead th {
+      background: var(--pitch);
+      color: var(--white);
+      text-align: right;
+      padding: 10px 12px;
+      font-weight: 700;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    thead th.col-country { text-align: left; }
+
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { background: var(--pitch-mid); }
+    th.sort-active { background: var(--pitch-mid); }
+
+    .sort-arrow { margin-left: 4px; font-size: 0.62rem; }
+    .sort-arrow-inactive { opacity: 0.35; }
+
+    tbody td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    tbody td.col-country {
+      text-align: left;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    tbody tr:hover { background: var(--soft); }
+
+    .flag {
+      width: 22px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    }
+
+    .muted { color: var(--muted); font-size: 0.8rem; padding: 14px 18px; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>Team Stats</h1>
+    <nav class="nav">
+      <a href="admin.html">Entries</a>
+      <a href="admin-results.html">Results</a>
+      <a href="admin-blog.html">Updates</a>
+      <a href="admin-match-reports.html">Reports</a>
+      <a href="admin-matches.html">Teams</a>
+      <a href="admin-email.html">Email</a>
+      <a href="admin-team-stats.html" style="background:rgba(255,255,255,0.15);">Stats</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <div class="panel">
+    <table>
+      <thead>
+        <tr id="headRow"></tr>
+      </thead>
+      <tbody id="bodyRows"></tbody>
+    </table>
+    <p id="loadingMsg" class="muted">Loading team stats...</p>
+  </div>
+</main>
+
+<script>
+  const COLUMNS = [
+    { field: 'countryName', label: 'Country', className: 'col-country' },
+    { field: 'played',      label: 'P' },
+    { field: 'wins',        label: 'W' },
+    { field: 'draws',       label: 'D' },
+    { field: 'losses',      label: 'L' },
+    { field: 'goalsFor',    label: 'GF' },
+    { field: 'goalsAgainst',label: 'GA' },
+    { field: 'yellowCards', label: 'YC' },
+    { field: 'redCards',    label: 'RC' },
+  ];
+
+  const DEFAULT_ASC = new Set(['countryName']);
+
+  let sortField = 'goalsFor';
+  let sortDir = 'desc';
+  let rows = [];
+
+  const headRow = document.getElementById('headRow');
+  const bodyRows = document.getElementById('bodyRows');
+  const loadingMsg = document.getElementById('loadingMsg');
+
+  function escHtml(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function buildTeamStats(teams) {
+    return teams.map(team => {
+      const stat = {
+        countryName: team.countryName,
+        flagUrl: team.flagUrl,
+        played: 0, wins: 0, draws: 0, losses: 0,
+        goalsFor: 0, goalsAgainst: 0, yellowCards: 0, redCards: 0,
+      };
+      for (const round of team.scoresByRound || []) {
+        for (const match of round.matches || []) {
+          stat.played++;
+          if (match.result === 'win') stat.wins++;
+          else if (match.result === 'draw') stat.draws++;
+          else if (match.result === 'loss') stat.losses++;
+          stat.goalsFor += match.goalsFor || 0;
+          stat.goalsAgainst += match.goalsAgainst || 0;
+          stat.yellowCards += match.yellowCards || 0;
+          stat.redCards += match.redCards || 0;
+        }
+      }
+      return stat;
+    });
+  }
+
+  function sortedRows() {
+    const copy = [...rows];
+    copy.sort((a, b) => {
+      let av = a[sortField], bv = b[sortField];
+      let cmp;
+      if (typeof av === 'string') cmp = av.localeCompare(bv);
+      else cmp = av - bv;
+      if (sortDir === 'desc') cmp = -cmp;
+      if (cmp !== 0) return cmp;
+      return a.countryName.localeCompare(b.countryName);
+    });
+    return copy;
+  }
+
+  function arrow(field) {
+    if (sortField !== field) return '<span class="sort-arrow sort-arrow-inactive">↕</span>';
+    return `<span class="sort-arrow">${sortDir === 'asc' ? '↑' : '↓'}</span>`;
+  }
+
+  function renderHead() {
+    headRow.innerHTML = COLUMNS.map(col => {
+      const cls = ['sortable', col.className || '', sortField === col.field ? 'sort-active' : ''].filter(Boolean).join(' ');
+      return `<th class="${cls}" data-sort="${col.field}">${escHtml(col.label)}${arrow(col.field)}</th>`;
+    }).join('');
+
+    headRow.querySelectorAll('th[data-sort]').forEach(el => {
+      el.addEventListener('click', () => {
+        const field = el.dataset.sort;
+        if (sortField === field) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortField = field;
+          sortDir = DEFAULT_ASC.has(field) ? 'asc' : 'desc';
+        }
+        render();
+      });
+    });
+  }
+
+  function renderBody() {
+    const sorted = sortedRows();
+    bodyRows.innerHTML = sorted.map(r => `
+      <tr>
+        <td class="col-country">${r.flagUrl ? `<img class="flag" src="${escHtml(r.flagUrl)}" alt="" />` : ''}${escHtml(r.countryName)}</td>
+        <td>${r.played}</td>
+        <td>${r.wins}</td>
+        <td>${r.draws}</td>
+        <td>${r.losses}</td>
+        <td>${r.goalsFor}</td>
+        <td>${r.goalsAgainst}</td>
+        <td>${r.yellowCards}</td>
+        <td>${r.redCards}</td>
+      </tr>
+    `).join('');
+  }
+
+  function render() {
+    renderHead();
+    renderBody();
+  }
+
+  async function init() {
+    try {
+      const res = await fetch('./Data/teams.json?v=' + Date.now());
+      const teams = await res.json();
+      rows = buildTeamStats(teams);
+      loadingMsg.style.display = 'none';
+      render();
+    } catch (err) {
+      loadingMsg.textContent = 'Failed to load team stats: ' + err.message;
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
