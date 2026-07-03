@@ -123,6 +123,19 @@
     .expand-btn:hover { border-color: var(--navy-light); }
     .expand-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
     @media (min-width: 769px) { .expand-btn { display: inline-block; } }
+    .view-btn {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      color: var(--navy);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 7px 14px;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .view-btn:hover { border-color: var(--navy-light); }
+    .view-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
     .error-msg {
       display: none;
@@ -431,6 +444,7 @@
       <p>Scores by country and round. Click any round score to inspect the point breakdown.</p>
     </div>
     <div class="controls">
+      <button class="view-btn" id="statsBtn" type="button">Stats</button>
       <button class="expand-btn" id="expandBtn" type="button">Expand</button>
     </div>
   </div>
@@ -458,6 +472,7 @@
   const scoresRoot = document.getElementById('scoresRoot');
   const errorMsg   = document.getElementById('errorMsg');
   const expandBtn  = document.getElementById('expandBtn');
+  const statsBtn   = document.getElementById('statsBtn');
 
   let countryScores = [];
   let openDetail    = null;   // { countryName, round } | null
@@ -465,9 +480,13 @@
   let sortDir       = 'desc';
   let expandedMode  = false;
   let activeRound   = null;
+  let viewMode      = 'scores'; // 'scores' | 'stats'
+  let statSortField = 'gf';
+  let statSortDir   = 'desc';
 
   // Columns where ascending order is the natural default
   const DEFAULT_ASC = new Set(['name', 'fifaRank', 'costPerPoint', 'status']);
+  const STAT_DEFAULT_ASC = new Set(['name']);
 
   async function loadJson(url) {
     const res = await fetch(`${url}?v=${Date.now()}`);
@@ -738,6 +757,98 @@
     }
   }
 
+  function getSortedStats() {
+    return [...countryScores].sort((a, b) => {
+      let av, bv;
+      switch (statSortField) {
+        case 'name':   av = a.countryName;   bv = b.countryName;   break;
+        case 'pld':    av = a.matchesPlayed; bv = b.matchesPlayed; break;
+        case 'wins':   av = a.wins;          bv = b.wins;          break;
+        case 'draws':  av = a.draws;         bv = b.draws;         break;
+        case 'losses': av = a.losses;        bv = b.losses;        break;
+        case 'gf':     av = a.gf;            bv = b.gf;            break;
+        case 'ga':     av = a.ga;            bv = b.ga;            break;
+        case 'yc':     av = a.yc;            bv = b.yc;            break;
+        case 'rc':     av = a.rc;            bv = b.rc;            break;
+        default:       av = 0; bv = 0;
+      }
+      let cmp = typeof av === 'string' ? av.localeCompare(bv) : av - bv;
+      if (statSortDir === 'desc') cmp = -cmp;
+      if (cmp !== 0) return cmp;
+      return a.countryName.localeCompare(b.countryName);
+    });
+  }
+
+  function statsArrow(field) {
+    if (statSortField !== field) return '<span class="sort-arrow sort-arrow-inactive">↕</span>';
+    return `<span class="sort-arrow">${statSortDir === 'asc' ? '↑' : '↓'}</span>`;
+  }
+
+  function statsTh(field, label, extraClass) {
+    const cls = ['sortable', statSortField === field ? 'sort-active' : '', extraClass || ''].filter(Boolean).join(' ');
+    return `<th class="${cls}" data-statsort="${field}">${escapeHtml(label)}${statsArrow(field)}</th>`;
+  }
+
+  function renderStatsTable() {
+    const rows = getSortedStats();
+    scoresRoot.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            ${statsTh('name',   'Country', 'country-heading')}
+            ${statsTh('pld',    'Played')}
+            ${statsTh('wins',   'Won')}
+            ${statsTh('draws',  'Drawn')}
+            ${statsTh('losses', 'Lost')}
+            ${statsTh('gf',     'GF')}
+            ${statsTh('ga',     'GA')}
+            ${statsTh('yc',     'YC')}
+            ${statsTh('rc',     'RC')}
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(country => `
+            <tr class="team-row">
+              <td>
+                <div class="country-cell">
+                  <img class="flag" src="${country.flagUrl}" alt="${escapeHtml(country.countryName)} flag" loading="lazy" />
+                  <div>
+                    <div class="country-name" title="${escapeHtml(country.countryName)}">${escapeHtml(country.countryName)}</div>
+                    <div class="country-meta">Group ${escapeHtml(country.group)}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="rank-cell">${country.matchesPlayed}</td>
+              <td class="rank-cell">${country.wins}</td>
+              <td class="rank-cell">${country.draws}</td>
+              <td class="rank-cell">${country.losses}</td>
+              <td class="rank-cell">${country.gf}</td>
+              <td class="rank-cell">${country.ga}</td>
+              <td class="rank-cell">${country.yc}</td>
+              <td class="rank-cell">${country.rc}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+    scoresRoot.querySelectorAll('th[data-statsort]').forEach(el => {
+      el.addEventListener('click', () => {
+        const field = el.dataset.statsort;
+        if (statSortField === field) {
+          statSortDir = statSortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          statSortField = field;
+          statSortDir = STAT_DEFAULT_ASC.has(field) ? 'asc' : 'desc';
+        }
+        renderStatsTable();
+      });
+    });
+  }
+
+  function render() {
+    if (viewMode === 'stats') renderStatsTable();
+    else renderTable();
+  }
+
   expandBtn.addEventListener('click', () => {
     expandedMode = !expandedMode;
     expandBtn.textContent = expandedMode ? 'Collapse' : 'Expand';
@@ -747,10 +858,19 @@
     renderTable();
   });
 
+  statsBtn.addEventListener('click', () => {
+    viewMode = viewMode === 'stats' ? 'scores' : 'stats';
+    statsBtn.textContent = viewMode === 'stats' ? 'Scores' : 'Stats';
+    statsBtn.classList.toggle('active', viewMode === 'stats');
+    expandBtn.style.display = viewMode === 'stats' ? 'none' : '';
+    openDetail = null;
+    render();
+  });
+
   async function init() {
     if (await loadData()) {
       activeRound = getCurrentRound();
-      renderTable();
+      render();
     }
   }
 
