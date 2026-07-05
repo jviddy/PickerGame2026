@@ -380,6 +380,78 @@
       font-weight: 700;
     }
 
+    /* ─── Combo builder panel ────────────────────────────────────*/
+    .combo-panel {
+      background: var(--white);
+      border: 1.5px solid #3b82f6;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .combo-header {
+      padding: 8px 14px;
+      background: #3b82f6;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .combo-hint { font-weight: 400; opacity: 0.85; font-size: 0.7rem; }
+    .combo-clear {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      border-radius: 99px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .combo-clear:hover { background: rgba(255,255,255,0.35); }
+    .combo-summary {
+      display: flex;
+      gap: 18px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gray-200);
+      flex-wrap: wrap;
+    }
+    .combo-stat { font-size: 0.82rem; color: var(--gray-600); }
+    .combo-stat strong { color: var(--navy); font-size: 0.95rem; }
+    .combo-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 14px;
+    }
+    .combo-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: var(--navy);
+      border-radius: 99px;
+      padding: 4px 6px 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .combo-chip-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #3b82f6;
+      font-size: 0.7rem;
+      padding: 2px;
+      line-height: 1;
+    }
+    .combo-chip-remove:hover { color: var(--red); }
+    .checkbox-col-head, .checkbox-col { width: 30px; text-align: center; }
+    .team-checkbox { width: 15px; height: 15px; cursor: pointer; }
+
     @media (max-width: 760px) {
       header { padding: 0 14px; }
       nav a {
@@ -450,6 +522,16 @@
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
+
+  <div class="combo-panel" id="comboPanel" hidden>
+    <div class="combo-header">
+      <span>🧮 Combo builder <span class="combo-hint">— tick countries below to compare combined cost &amp; points</span></span>
+      <button class="combo-clear" id="comboClear" type="button">Clear all</button>
+    </div>
+    <div class="combo-summary" id="comboSummary"></div>
+    <div class="combo-chips" id="comboChips"></div>
+  </div>
+
   <div class="scores-card">
     <div class="table-wrap" id="scoresRoot">
       <div class="loading">Loading country scores...</div>
@@ -466,13 +548,17 @@
     SF:'Semi-finals',    TPP:'Third Place',    F:'Final'
   };
 
-  // Country + Status + FIFA + Cost + Cost/pt + Pld + rounds + KQ + Total
-  const TOTAL_COLS = ROUND_ORDER.length + 8;
+  // Checkbox + Country + Status + FIFA + Cost + Cost/pt + Pld + rounds + KQ + Total
+  const TOTAL_COLS = ROUND_ORDER.length + 9;
 
-  const scoresRoot = document.getElementById('scoresRoot');
-  const errorMsg   = document.getElementById('errorMsg');
-  const expandBtn  = document.getElementById('expandBtn');
-  const statsBtn   = document.getElementById('statsBtn');
+  const scoresRoot   = document.getElementById('scoresRoot');
+  const errorMsg     = document.getElementById('errorMsg');
+  const expandBtn    = document.getElementById('expandBtn');
+  const statsBtn     = document.getElementById('statsBtn');
+  const comboPanel   = document.getElementById('comboPanel');
+  const comboSummary = document.getElementById('comboSummary');
+  const comboChips   = document.getElementById('comboChips');
+  const comboClear   = document.getElementById('comboClear');
 
   let countryScores = [];
   let openDetail    = null;   // { countryName, round } | null
@@ -483,6 +569,7 @@
   let viewMode      = 'scores'; // 'scores' | 'stats'
   let statSortField = 'gf';
   let statSortDir   = 'desc';
+  let selectedTeams = new Set();
 
   // Columns where ascending order is the natural default
   const DEFAULT_ASC = new Set(['name', 'fifaRank', 'costPerPoint', 'status']);
@@ -629,6 +716,7 @@
       <table>
         <thead>
           <tr>
+            <th class="checkbox-col-head"></th>
             ${th('name',         'Country',  'country-heading')}
             ${th('status',       'Status')}
             ${th('fifaRank',     'FIFA')}
@@ -670,6 +758,9 @@
 
             return `
               <tr class="team-row${isOpen ? ' row-open' : ''}" ${expandedMode ? `data-country="${escapeHtml(country.countryName)}"` : ''}>
+                <td class="checkbox-col">
+                  <input type="checkbox" class="team-checkbox" data-country="${escapeHtml(country.countryName)}" ${selectedTeams.has(country.countryName) ? 'checked' : ''} aria-label="Add ${escapeHtml(country.countryName)} to combo" />
+                </td>
                 <td>
                   <div class="country-cell">
                     <img class="flag" src="${country.flagUrl}" alt="${escapeHtml(country.countryName)} flag" loading="lazy" />
@@ -747,7 +838,7 @@
     if (expandedMode) {
       scoresRoot.querySelectorAll('.team-row[data-country]').forEach(row => {
         row.addEventListener('click', e => {
-          if (e.target.closest('button')) return;
+          if (e.target.closest('button') || e.target.closest('input')) return;
           const name = row.dataset.country;
           const same = openDetail && openDetail.countryName === name;
           openDetail = same ? null : { countryName: name, round: activeRound };
@@ -755,6 +846,8 @@
         });
       });
     }
+
+    bindComboCheckboxes();
   }
 
   function getSortedStats() {
@@ -795,6 +888,7 @@
       <table>
         <thead>
           <tr>
+            <th class="checkbox-col-head"></th>
             ${statsTh('name',   'Country', 'country-heading')}
             ${statsTh('pld',    'Played')}
             ${statsTh('wins',   'Won')}
@@ -809,6 +903,9 @@
         <tbody>
           ${rows.map(country => `
             <tr class="team-row">
+              <td class="checkbox-col">
+                <input type="checkbox" class="team-checkbox" data-country="${escapeHtml(country.countryName)}" ${selectedTeams.has(country.countryName) ? 'checked' : ''} aria-label="Add ${escapeHtml(country.countryName)} to combo" />
+              </td>
               <td>
                 <div class="country-cell">
                   <img class="flag" src="${country.flagUrl}" alt="${escapeHtml(country.countryName)} flag" loading="lazy" />
@@ -842,12 +939,60 @@
         renderStatsTable();
       });
     });
+
+    bindComboCheckboxes();
   }
 
   function render() {
     if (viewMode === 'stats') renderStatsTable();
     else renderTable();
   }
+
+  function bindComboCheckboxes() {
+    scoresRoot.querySelectorAll('.team-checkbox').forEach(cb => {
+      cb.addEventListener('click', e => e.stopPropagation());
+      cb.addEventListener('change', () => {
+        if (cb.checked) selectedTeams.add(cb.dataset.country);
+        else selectedTeams.delete(cb.dataset.country);
+        renderComboPanel();
+      });
+    });
+  }
+
+  function renderComboPanel() {
+    if (!selectedTeams.size) { comboPanel.hidden = true; return; }
+    comboPanel.hidden = false;
+
+    const selected = countryScores.filter(c => selectedTeams.has(c.countryName));
+    const totalCost   = selected.reduce((s, c) => s + (c.cost || 0), 0);
+    const totalPoints = selected.reduce((s, c) => s + (c.totalPoints || 0), 0);
+
+    comboSummary.innerHTML = `
+      <span class="combo-stat">${selected.length} selected</span>
+      <span class="combo-stat">Combined cost: <strong>MX$${totalCost}bn</strong></span>
+      <span class="combo-stat">Combined points: <strong>${totalPoints}</strong></span>
+    `;
+
+    comboChips.innerHTML = selected.map(c => `
+      <span class="combo-chip">
+        ${escapeHtml(c.countryName)}
+        <button class="combo-chip-remove" data-country="${escapeHtml(c.countryName)}" type="button" aria-label="Remove ${escapeHtml(c.countryName)}">✕</button>
+      </span>`).join('');
+
+    comboChips.querySelectorAll('.combo-chip-remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedTeams.delete(btn.dataset.country);
+        renderComboPanel();
+        render();
+      });
+    });
+  }
+
+  comboClear.addEventListener('click', () => {
+    selectedTeams.clear();
+    renderComboPanel();
+    render();
+  });
 
   expandBtn.addEventListener('click', () => {
     expandedMode = !expandedMode;
