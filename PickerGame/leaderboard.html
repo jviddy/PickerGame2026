@@ -167,7 +167,7 @@
     .leaderboard-header {
       border-radius: var(--radius) var(--radius) 0 0;
       display: grid;
-      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 64px;
+      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 62px 64px;
       gap: 8px;
       padding: 7px 12px;
       background: var(--navy);
@@ -197,7 +197,8 @@
         padding: 7px 10px;
       }
       .leaderboard-header > :nth-child(3),
-      .leaderboard-header > :nth-child(4) { display: none; }
+      .leaderboard-header > :nth-child(4),
+      .leaderboard-header > :nth-child(6) { display: none; }
     }
 
     /* Picks filter input inside header */
@@ -234,7 +235,7 @@
 
     .leaderboard-row {
       display: grid;
-      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 64px;
+      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 62px 64px;
       column-gap: 8px;
       row-gap: 0;
       padding: 6px 12px;
@@ -257,6 +258,7 @@
         padding: 7px 10px;
       }
       .team-count { display: none; }
+      .goals-diff-col { display: none; }
     }
 
     /* ─── Rank badge ─────────────────────────────────────────────––*/
@@ -299,7 +301,7 @@
 
     /* ─── Score display ──────────────────────────────────────────––*/
     .score-col {
-      grid-column: 5;
+      grid-column: 6;
       grid-row: 1;
       text-align: center;
       font-weight: 800;
@@ -319,6 +321,18 @@
       color: var(--gray-600);
       font-weight: 600;
     }
+    .goals-diff-col {
+      grid-column: 5;
+      grid-row: 1;
+      align-self: center;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--gray-600);
+    }
+    .goals-diff-col.pos { color: var(--green); }
+    .goals-diff-col.neg { color: var(--red); }
+    .goals-diff-col.zero { color: var(--navy); }
     .selected-teams {
       display: flex;
       grid-column: 3;
@@ -1325,6 +1339,16 @@
       if (rank === 1) rankDisplay = '🥇';
       else if (rank === 2) rankDisplay = '🥈';
       else if (rank === 3) rankDisplay = '🥉';
+
+      const goalsGuessRaw = entry.tieBreakers && entry.tieBreakers[0];
+      const goalsGuess = goalsGuessRaw != null && goalsGuessRaw !== '' ? parseInt(goalsGuessRaw, 10) : NaN;
+      const goalsDiff = (!isNaN(goalsGuess) && tournamentStats) ? goalsGuess - tournamentStats.totalGoals : null;
+      const goalsDiffCls = goalsDiff == null ? '' : goalsDiff > 0 ? 'pos' : goalsDiff < 0 ? 'neg' : 'zero';
+      const goalsDiffText = goalsDiff == null ? '—' : (goalsDiff > 0 ? '+' : '') + goalsDiff;
+      const goalsDiffTitle = goalsDiff == null
+        ? 'No goals guess on file'
+        : `Guessed ${goalsGuess} total goals — actual so far: ${tournamentStats.totalGoals}`;
+
       return `
         <div class="leaderboard-row row-pinned" data-team-name="${escapeHtml(entry.teamName)}">
           <div class="rank" style="display:flex;flex-direction:column;align-items:center;gap:1px;">
@@ -1341,6 +1365,7 @@
             ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
           <div class="team-count">${entry.teamsRemaining}</div>
+          <div class="goals-diff-col ${goalsDiffCls}" title="${escapeHtml(goalsDiffTitle)}">${goalsDiffText}</div>
           <div class="score-col">
             <span>${entry.totalScore}</span>
             ${getDeltaHtml(entry)}
@@ -1406,6 +1431,7 @@
           ${filterHtml}
         </div>
         <div class="col-sortable${sortBy === 'teams' ? ' col-sort-active' : ''}" data-lb-sort="teams">Left ${sortArrow('teams')}</div>
+        <div title="Entrant's total-goals guess minus the actual tournament goals so far">Goals Δ</div>
         <div class="col-sortable${sortBy === 'score' ? ' col-sort-active' : ''}" data-lb-sort="score">Score ${sortArrow('score')}</div>
       </div>
     `;
@@ -1482,6 +1508,15 @@
       const originalRank = scoreRank; // keep for milestone-row logic
       const entryIdx = leaderboard.indexOf(entry);
       const pin = pinnedTeams.has(entry.teamName);
+
+      const goalsGuessRaw = entry.tieBreakers && entry.tieBreakers[0];
+      const goalsGuess = goalsGuessRaw != null && goalsGuessRaw !== '' ? parseInt(goalsGuessRaw, 10) : NaN;
+      const goalsDiff = (!isNaN(goalsGuess) && tournamentStats) ? goalsGuess - tournamentStats.totalGoals : null;
+      const goalsDiffCls = goalsDiff == null ? '' : goalsDiff > 0 ? 'pos' : goalsDiff < 0 ? 'neg' : 'zero';
+      const goalsDiffText = goalsDiff == null ? '—' : (goalsDiff > 0 ? '+' : '') + goalsDiff;
+      const goalsDiffTitle = goalsDiff == null
+        ? 'No goals guess on file'
+        : `Guessed ${goalsGuess} total goals — actual so far: ${tournamentStats.totalGoals}`;
       const rowClasses = [
         originalRank % 10 === 0 ? 'milestone-row' : '',
         pin ? 'row-pinned' : '',
@@ -1503,6 +1538,7 @@
             ? getSelectedTeamsHtml(entry.selectedTeams, entry.teamScores)
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
           <div class="team-count">${entry.teamsRemaining}</div>
+          <div class="goals-diff-col ${goalsDiffCls}" title="${escapeHtml(goalsDiffTitle)}">${goalsDiffText}</div>
           <div class="score-col">
             <span>${entry.totalScore}</span>
             ${getDeltaHtml(entry)}
