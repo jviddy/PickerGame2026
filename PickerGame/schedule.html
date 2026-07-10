@@ -144,6 +144,21 @@
     }
     .date-select:focus { border-color: var(--navy-light); }
 
+    .team-select {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      cursor: pointer;
+      outline: none;
+      max-width: 180px;
+    }
+    .team-select:focus { border-color: var(--navy-light); }
+    .team-select.filtered { border-color: var(--navy); background: var(--green-bg); }
+
     .today-btn {
       border: 1.5px solid var(--navy-light);
       border-radius: 99px;
@@ -620,6 +635,9 @@
         <button class="group-toggle-btn active" id="groupByRoundBtn" type="button">By round</button>
         <button class="group-toggle-btn" id="groupByGroupBtn" type="button">By group</button>
       </div>
+      <select class="team-select" id="teamSelect" aria-label="Filter by country">
+        <option value="">All teams</option>
+      </select>
       <select class="date-select" id="dateSelect" aria-label="Jump to date">
         <option value="">Jump to date…</option>
       </select>
@@ -688,6 +706,7 @@
   const groupByGroupBtn = document.getElementById('groupByGroupBtn');
   const sectionPills = document.getElementById('sectionPills');
   const dateSelect   = document.getElementById('dateSelect');
+  const teamSelect   = document.getElementById('teamSelect');
   const controlsBar  = document.getElementById('controlsBar');
 
   let teams          = [];
@@ -697,6 +716,7 @@
   let predictions    = {};
   let reportedMatchIds = new Set();
   let groupMode = 'round';
+  let teamFilter = '';
 
   async function loadJson(url) {
     const response = await fetch(`${url}?v=${Date.now()}`);
@@ -1116,8 +1136,17 @@
 
   function sortByKickoff(a, b) { return new Date(a.date) - new Date(b.date); }
 
+  function matchInvolvesTeam(match, teamName) {
+    if (!teamName) return true;
+    return getTeamName(match.homeTeam) === teamName || getTeamName(match.awayTeam) === teamName;
+  }
+
+  function getVisibleMatches() {
+    return teamFilter ? matches.filter(m => matchInvolvesTeam(m, teamFilter)) : matches;
+  }
+
   function groupMatchesByRound() {
-    const sorted = [...matches].sort((a, b) => {
+    const sorted = [...getVisibleMatches()].sort((a, b) => {
       const roundDiff = ROUND_ORDER.indexOf(a.roundCode) - ROUND_ORDER.indexOf(b.roundCode);
       return roundDiff !== 0 ? roundDiff : sortByKickoff(a, b);
     });
@@ -1138,7 +1167,7 @@
   }
 
   function groupMatchesByGroup() {
-    const sorted = [...matches].filter(Boolean).sort((a, b) => {
+    const sorted = [...getVisibleMatches()].filter(Boolean).sort((a, b) => {
       const aGroup = getMatchGroup(a).key;
       const bGroup = getMatchGroup(b).key;
       const aIndex = GROUP_ORDER.includes(aGroup) ? GROUP_ORDER.indexOf(aGroup) : GROUP_ORDER.length;
@@ -1189,6 +1218,18 @@
     dateSelect.innerHTML = html;
   }
 
+  function buildTeamSelect() {
+    const sorted = [...teams].sort((a, b) => a.countryName.localeCompare(b.countryName));
+    teamSelect.innerHTML = '<option value="">All teams</option>' +
+      sorted.map(t => `<option value="${escapeHtml(t.countryName)}">${escapeHtml(t.countryName)}</option>`).join('');
+  }
+
+  teamSelect.addEventListener('change', e => {
+    teamFilter = e.target.value;
+    teamSelect.classList.toggle('filtered', Boolean(teamFilter));
+    renderMatches();
+  });
+
   function updateGroupButtons() {
     groupByRoundBtn.classList.toggle('active', groupMode === 'round');
     groupByGroupBtn.classList.toggle('active', groupMode === 'group');
@@ -1229,6 +1270,11 @@
 
   function renderMatches() {
     const groups = groupMode === 'round' ? groupMatchesByRound() : groupMatchesByGroup();
+    if (teamFilter && groups.size === 0) {
+      matchesRoot.innerHTML = `<p class="loading">No matches found for ${escapeHtml(teamFilter)} yet.</p>`;
+      sectionPills.innerHTML = '';
+      return;
+    }
     matchesRoot.innerHTML = Array.from(groups.entries()).map(([key, group]) => {
       const complete    = isGroupComplete(group.matches);
       const playedCount = group.matches.filter(m => isPlayed(getDisplayResult(m))).length;
@@ -1345,6 +1391,7 @@
     updateGroupButtons();
     if (await loadData()) {
       buildDateSelect();
+      buildTeamSelect();
       renderMatches();
       renderPredSummary();
       // Auto-scroll after a brief paint delay so layout is settled
