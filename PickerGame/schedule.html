@@ -1278,6 +1278,7 @@
     }
     matchesRoot.innerHTML = Array.from(groups.entries()).map(([key, group]) => {
       const complete    = isGroupComplete(group.matches);
+      const collapsed   = complete && !teamFilter;
       const playedCount = group.matches.filter(m => isPlayed(getDisplayResult(m))).length;
       const countLabel  = complete
         ? `${group.matches.length} matches · complete`
@@ -1285,7 +1286,7 @@
           ? `${playedCount}/${group.matches.length} played`
           : `${group.matches.length} matches`;
       return `
-        <section class="round-section${complete ? ' collapsed' : ''}" data-section-id="${escapeHtml(key)}">
+        <section class="round-section${collapsed ? ' collapsed' : ''}" data-section-id="${escapeHtml(key)}">
           <div class="round-heading">
             <h2>${escapeHtml(group.title)}</h2>
             <div class="round-heading-right">
