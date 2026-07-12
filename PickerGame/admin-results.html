@@ -764,7 +764,10 @@
 
       const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
       const isGS = String(match.roundCode).includes('GS');
-      if (isGS) {
+      // Third-place play-off winner gets the flat Win bonus, not the "advance to
+      // next round" bonus below — there is no next round to advance to after TPP.
+      const isTPP = match.roundCode === 'TPP';
+      if (isGS || isTPP) {
         if (resultType === 'win') categories.result = pointRules.win || 0;
         if (resultType === 'draw') categories.result = pointRules.draw || 0;
       }
@@ -772,7 +775,7 @@
       if (qualified) {
         categories.roundQualification = String(match.roundCode).includes('GS')
           ? pointRules.qualifyKnockout || 0
-          : match.roundCode === 'F' ? 0 : pointRules.qualifyNextRound || 0;
+          : (match.roundCode === 'F' || isTPP) ? 0 : pointRules.qualifyNextRound || 0;
       }
 
       if (match.roundCode === 'F' && resultType === 'win') {

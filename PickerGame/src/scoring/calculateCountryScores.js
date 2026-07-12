@@ -170,7 +170,10 @@ function calculateTeamMatchPoints(team, match, result, settings, allMatches, all
 
   const resultType = getResultType(goalsFor, goalsAgainst, penaltiesFor, penaltiesAgainst, match.roundCode);
   const isGS = match.roundCode.includes('GS');
-  if (isGS) {
+  // Third-place play-off winner gets the flat Win bonus, not the "advance to next
+  // round" bonus below — there is no next round to advance to after TPP.
+  const isTPP = match.roundCode === 'TPP';
+  if (isGS || isTPP) {
     if (resultType === 'win') {
       categories.result += pointRules.win || 0;
       addItem(items, 'Win', pointRules.win || 0, 'result');
@@ -195,7 +198,7 @@ function calculateTeamMatchPoints(team, match, result, settings, allMatches, all
     if (match.roundCode === 'GS1' || match.roundCode === 'GS2' || match.roundCode === 'GS3') {
       categories.qualification += pointRules.qualifyKnockout || 0;
       addItem(items, 'Qual', pointRules.qualifyKnockout || 0, 'qualification');
-    } else if (match.roundCode !== 'F') {
+    } else if (match.roundCode !== 'F' && !isTPP) {
       categories.qualification += pointRules.qualifyNextRound || 0;
       addItem(items, 'Advance', pointRules.qualifyNextRound || 0, 'qualification');
     }
