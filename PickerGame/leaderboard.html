@@ -167,7 +167,7 @@
     .leaderboard-header {
       border-radius: var(--radius) var(--radius) 0 0;
       display: grid;
-      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 62px 64px;
+      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 62px 58px 64px;
       gap: 8px;
       padding: 7px 12px;
       background: var(--navy);
@@ -185,6 +185,10 @@
       align-items: center;
       gap: 3px;
     }
+    .leaderboard-header .col-static {
+      display: flex;
+      align-items: center;
+    }
     .leaderboard-header .col-sortable:hover { color: rgba(255,255,255,0.75); }
     .leaderboard-header .col-sort-active { color: var(--gold); }
     .sort-arrow { font-size: 0.62rem; }
@@ -198,6 +202,7 @@
       }
       .leaderboard-header > :nth-child(3),
       .leaderboard-header > :nth-child(4),
+      .leaderboard-header > :nth-child(5),
       .leaderboard-header > :nth-child(6) { display: none; }
     }
 
@@ -235,7 +240,7 @@
 
     .leaderboard-row {
       display: grid;
-      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 62px 64px;
+      grid-template-columns: 42px minmax(245px, 300px) minmax(0, 1fr) 58px 62px 58px 64px;
       column-gap: 8px;
       row-gap: 0;
       padding: 6px 12px;
@@ -259,6 +264,7 @@
       }
       .team-count { display: none; }
       .goals-diff-col { display: none; }
+      .lastgoal-col { display: none; }
     }
 
     /* ─── Rank badge ─────────────────────────────────────────────––*/
@@ -301,7 +307,7 @@
 
     /* ─── Score display ──────────────────────────────────────────––*/
     .score-col {
-      grid-column: 6;
+      grid-column: 7;
       grid-row: 1;
       text-align: center;
       font-weight: 800;
@@ -333,6 +339,15 @@
     .goals-diff-col.pos { color: var(--green); }
     .goals-diff-col.neg { color: var(--red); }
     .goals-diff-col.zero { color: var(--navy); }
+    .lastgoal-col {
+      grid-column: 6;
+      grid-row: 1;
+      align-self: center;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gray-600);
+    }
     .selected-teams {
       display: flex;
       grid-column: 3;
@@ -1349,6 +1364,13 @@
         ? 'No goals guess on file'
         : `Guessed ${goalsGuess} total goals — actual so far: ${tournamentStats.totalGoals}`;
 
+      const lastGoalRaw = entry.tieBreakers && entry.tieBreakers[1];
+      const lastGoalGuess = lastGoalRaw != null && lastGoalRaw !== '' ? parseInt(lastGoalRaw, 10) : NaN;
+      const lastGoalText = isNaN(lastGoalGuess) ? '—' : `${lastGoalGuess}'`;
+      const lastGoalTitle = isNaN(lastGoalGuess)
+        ? 'No last-goal guess on file'
+        : `Guessed the last goal would be scored in minute ${lastGoalGuess}`;
+
       return `
         <div class="leaderboard-row row-pinned" data-team-name="${escapeHtml(entry.teamName)}">
           <div class="rank" style="display:flex;flex-direction:column;align-items:center;gap:1px;">
@@ -1366,6 +1388,7 @@
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
           <div class="team-count">${entry.teamsRemaining}</div>
           <div class="goals-diff-col ${goalsDiffCls}" title="${escapeHtml(goalsDiffTitle)}">${goalsDiffText}</div>
+          <div class="lastgoal-col" title="${escapeHtml(lastGoalTitle)}">${lastGoalText}</div>
           <div class="score-col">
             <span>${entry.totalScore}</span>
             ${getDeltaHtml(entry)}
@@ -1431,7 +1454,8 @@
           ${filterHtml}
         </div>
         <div class="col-sortable${sortBy === 'teams' ? ' col-sort-active' : ''}" data-lb-sort="teams">Left ${sortArrow('teams')}</div>
-        <div title="Entrant's total-goals guess minus the actual tournament goals so far">Goals Δ</div>
+        <div class="col-static" title="Entrant's total-goals guess minus the actual tournament goals so far">Goals Δ</div>
+        <div class="col-sortable${sortBy === 'lastGoal' ? ' col-sort-active' : ''}" data-lb-sort="lastGoal" title="Entrant's guess for the minute of the tournament's last goal">Last Goal ${sortArrow('lastGoal')}</div>
         <div class="col-sortable${sortBy === 'score' ? ' col-sort-active' : ''}" data-lb-sort="score">Score ${sortArrow('score')}</div>
       </div>
     `;
@@ -1478,6 +1502,17 @@
       );
     }
 
+    if (sortBy === 'lastGoal') {
+      filtered = [...filtered].sort((a, b) => {
+        const av = parseInt(a.tieBreakers?.[1], 10);
+        const bv = parseInt(b.tieBreakers?.[1], 10);
+        const aValid = !isNaN(av), bValid = !isNaN(bv);
+        if (aValid && bValid && av !== bv) return av - bv;
+        if (aValid !== bValid) return aValid ? -1 : 1;
+        return b.totalScore - a.totalScore;
+      });
+    }
+
     if (scoreDisplayMode === 'countries' && picksFilter) {
       const terms = picksFilter.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
       filtered = filtered.filter(entry =>
@@ -1517,6 +1552,14 @@
       const goalsDiffTitle = goalsDiff == null
         ? 'No goals guess on file'
         : `Guessed ${goalsGuess} total goals — actual so far: ${tournamentStats.totalGoals}`;
+
+      const lastGoalRaw = entry.tieBreakers && entry.tieBreakers[1];
+      const lastGoalGuess = lastGoalRaw != null && lastGoalRaw !== '' ? parseInt(lastGoalRaw, 10) : NaN;
+      const lastGoalText = isNaN(lastGoalGuess) ? '—' : `${lastGoalGuess}'`;
+      const lastGoalTitle = isNaN(lastGoalGuess)
+        ? 'No last-goal guess on file'
+        : `Guessed the last goal would be scored in minute ${lastGoalGuess}`;
+
       const rowClasses = [
         originalRank % 10 === 0 ? 'milestone-row' : '',
         pin ? 'row-pinned' : '',
@@ -1539,6 +1582,7 @@
             : getEntryRoundScoresHtml(entry.roundScores, entryIdx)}
           <div class="team-count">${entry.teamsRemaining}</div>
           <div class="goals-diff-col ${goalsDiffCls}" title="${escapeHtml(goalsDiffTitle)}">${goalsDiffText}</div>
+          <div class="lastgoal-col" title="${escapeHtml(lastGoalTitle)}">${lastGoalText}</div>
           <div class="score-col">
             <span>${entry.totalScore}</span>
             ${getDeltaHtml(entry)}
