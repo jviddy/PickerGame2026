@@ -390,6 +390,11 @@
     "paid": true
   },
   {
+    "teamName": "Megsico",
+    "entrantName": "James",
+    "paid": true
+  },
+  {
     "teamName": "No Idea FC",
     "entrantName": "James Torode",
     "paid": true
@@ -447,6 +452,11 @@
   {
     "teamName": "World What Now",
     "entrantName": "Kate dlR",
+    "paid": true
+  },
+  {
+    "teamName": "Clueless",
+    "entrantName": "Kate Howlett",
     "paid": true
   },
   {
@@ -542,6 +552,11 @@
   {
     "teamName": "VAR Oversight Committee",
     "entrantName": "Lucy",
+    "paid": true
+  },
+  {
+    "teamName": "Shed Heads",
+    "entrantName": "Luke",
     "paid": true
   },
   {
@@ -725,6 +740,11 @@
     "paid": true
   },
   {
+    "teamName": "Sam Worthington",
+    "entrantName": "Sam",
+    "paid": true
+  },
+  {
     "teamName": "Taxation's Trailblazers",
     "entrantName": "Samantha Rashid",
     "paid": true
@@ -870,23 +890,8 @@
     "paid": false
   },
   {
-    "teamName": "Megsico",
-    "entrantName": "James",
-    "paid": false
-  },
-  {
     "teamName": "One More Goal",
     "entrantName": "Jill",
-    "paid": false
-  },
-  {
-    "teamName": "Clueless",
-    "entrantName": "Kate Howlett",
-    "paid": false
-  },
-  {
-    "teamName": "Shed Heads",
-    "entrantName": "Luke",
     "paid": false
   },
   {
@@ -902,11 +907,6 @@
   {
     "teamName": "My Name is 'arry Kane",
     "entrantName": "Rob Daily",
-    "paid": false
-  },
-  {
-    "teamName": "Sam Worthington",
-    "entrantName": "Sam",
     "paid": false
   },
   {

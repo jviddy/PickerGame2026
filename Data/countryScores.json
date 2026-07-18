@@ -7,17 +7,17 @@
     "cost": 24,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/60px-Flag_of_Mexico.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 39,
+    "inCompetition": false,
+    "totalPoints": 53,
     "pointsTotals": {
       "result": 15,
-      "goalsScored": 18,
-      "goalsConceded": 0,
+      "goalsScored": 30,
+      "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": -4,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 39
+      "disciplinary": -6,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 53
     },
     "scoresByRound": [
       {
@@ -160,26 +160,85 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 6,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 16,
+        "matches": [
+          {
+            "matchId": "M079",
+            "date": "2026-07-01T01:00:00Z",
+            "fixture": "Mexico v Ecuador",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 16
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M092",
+            "date": "2026-07-06T00:00:00Z",
+            "fixture": "Mexico v England",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -234,8 +293,8 @@
       "GS1": 8,
       "GS2": 8,
       "GS3": 23,
-      "R32": 0,
-      "R16": 0,
+      "R32": 16,
+      "R16": -2,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -379,8 +438,89 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M079",
+          "date": "2026-07-01T01:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Mexico v Ecuador",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 16
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M092",
+          "date": "2026-07-06T00:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Mexico v England",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -396,16 +536,16 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/60px-Flag_of_South_Africa.svg.png",
     "active": 1,
     "inCompetition": false,
-    "totalPoints": 7,
+    "totalPoints": 6,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 6,
       "goalsConceded": -8,
       "penalties": 0,
-      "disciplinary": -8,
+      "disciplinary": -9,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 7
+      "total": 6
     },
     "scoresByRound": [
       {
@@ -414,10 +554,10 @@
         "goalsScored": 0,
         "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": -5,
+        "disciplinary": -6,
         "roundQualification": 0,
         "qualification": 0,
-        "total": -9,
+        "total": -10,
         "matches": [
           {
             "matchId": "M001",
@@ -428,7 +568,7 @@
             "goalsAgainst": 2,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 1,
+            "yellowCards": 2,
             "redCards": 2,
             "qualified": false,
             "points": [
@@ -439,7 +579,7 @@
               },
               {
                 "label": "YC",
-                "value": -1,
+                "value": -2,
                 "category": "disciplinary"
               },
               {
@@ -448,7 +588,7 @@
                 "category": "disciplinary"
               }
             ],
-            "total": -9
+            "total": -10
           }
         ]
       },
@@ -646,7 +786,7 @@
       }
     ],
     "byRound": {
-      "GS1": -9,
+      "GS1": -10,
       "GS2": 1,
       "GS3": 17,
       "R32": -2,
@@ -669,7 +809,7 @@
             "goalsAgainst": 2,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 1,
+            "yellowCards": 2,
             "redCards": 2,
             "qualified": false,
             "categories": {
@@ -677,7 +817,7 @@
               "goalsScored": 0,
               "goalsConceded": -4,
               "penalties": 0,
-              "disciplinary": -5,
+              "disciplinary": -6,
               "qualification": 0
             },
             "items": [
@@ -688,7 +828,7 @@
               },
               {
                 "label": "YC",
-                "value": -1,
+                "value": -2,
                 "category": "disciplinary"
               },
               {
@@ -697,7 +837,7 @@
                 "category": "disciplinary"
               }
             ],
-            "total": -9
+            "total": -10
           }
         }
       ],
@@ -849,16 +989,16 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/60px-Flag_of_South_Korea.svg.png",
     "active": 1,
     "inCompetition": false,
-    "totalPoints": 2,
+    "totalPoints": 1,
     "pointsTotals": {
       "result": 5,
       "goalsScored": 6,
       "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": -3,
+      "disciplinary": -4,
       "roundQualification": 0,
       "qualification": 0,
-      "total": 2
+      "total": 1
     },
     "scoresByRound": [
       {
@@ -867,10 +1007,10 @@
         "goalsScored": 6,
         "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 9,
+        "total": 8,
         "matches": [
           {
             "matchId": "M002",
@@ -881,7 +1021,7 @@
             "goalsAgainst": 1,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 0,
+            "yellowCards": 1,
             "redCards": 0,
             "qualified": false,
             "points": [
@@ -899,9 +1039,14 @@
                 "label": "GA",
                 "value": -2,
                 "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
               }
             ],
-            "total": 9
+            "total": 8
           }
         ]
       },
@@ -1057,7 +1202,7 @@
       }
     ],
     "byRound": {
-      "GS1": 9,
+      "GS1": 8,
       "GS2": -4,
       "GS3": -3,
       "R32": 0,
@@ -1080,7 +1225,7 @@
             "goalsAgainst": 1,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 0,
+            "yellowCards": 1,
             "redCards": 0,
             "qualified": false,
             "categories": {
@@ -1088,7 +1233,7 @@
               "goalsScored": 6,
               "goalsConceded": -2,
               "penalties": 0,
-              "disciplinary": 0,
+              "disciplinary": -1,
               "qualification": 0
             },
             "items": [
@@ -1106,9 +1251,14 @@
                 "label": "GA",
                 "value": -2,
                 "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
               }
             ],
-            "total": 9
+            "total": 8
           }
         }
       ],
@@ -1207,16 +1357,16 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/60px-Flag_of_the_Czech_Republic.svg.png",
     "active": 1,
     "inCompetition": false,
-    "totalPoints": -6,
+    "totalPoints": -5,
     "pointsTotals": {
       "result": 2,
       "goalsScored": 6,
       "goalsConceded": -12,
       "penalties": 0,
-      "disciplinary": -2,
+      "disciplinary": -1,
       "roundQualification": 0,
       "qualification": 0,
-      "total": -6
+      "total": -5
     },
     "scoresByRound": [
       {
@@ -1225,10 +1375,10 @@
         "goalsScored": 3,
         "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": -1,
+        "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": -2,
+        "total": -1,
         "matches": [
           {
             "matchId": "M002",
@@ -1239,7 +1389,7 @@
             "goalsAgainst": 2,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 1,
+            "yellowCards": 0,
             "redCards": 0,
             "qualified": false,
             "points": [
@@ -1252,14 +1402,9 @@
                 "label": "GA",
                 "value": -4,
                 "category": "goalsConceded"
-              },
-              {
-                "label": "YC",
-                "value": -1,
-                "category": "disciplinary"
               }
             ],
-            "total": -2
+            "total": -1
           }
         ]
       },
@@ -1420,7 +1565,7 @@
       }
     ],
     "byRound": {
-      "GS1": -2,
+      "GS1": -1,
       "GS2": 2,
       "GS3": -6,
       "R32": 0,
@@ -1443,7 +1588,7 @@
             "goalsAgainst": 2,
             "penaltiesFor": null,
             "penaltiesAgainst": null,
-            "yellowCards": 1,
+            "yellowCards": 0,
             "redCards": 0,
             "qualified": false,
             "categories": {
@@ -1451,7 +1596,7 @@
               "goalsScored": 3,
               "goalsConceded": -4,
               "penalties": 0,
-              "disciplinary": -1,
+              "disciplinary": 0,
               "qualification": 0
             },
             "items": [
@@ -1464,14 +1609,9 @@
                 "label": "GA",
                 "value": -4,
                 "category": "goalsConceded"
-              },
-              {
-                "label": "YC",
-                "value": -1,
-                "category": "disciplinary"
               }
             ],
-            "total": -2
+            "total": -1
           }
         }
       ],
@@ -1574,17 +1714,17 @@
     "cost": 14,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Canada.svg/60px-Flag_of_Canada.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 41,
+    "inCompetition": false,
+    "totalPoints": 31,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 27,
-      "goalsConceded": -6,
+      "goalsConceded": -12,
       "penalties": 0,
-      "disciplinary": -7,
+      "disciplinary": -11,
       "roundQualification": 20,
       "qualification": 20,
-      "total": 41
+      "total": 31
     },
     "scoresByRound": [
       {
@@ -1777,13 +1917,40 @@
         "roundCode": "R16",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -4,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -10,
+        "matches": [
+          {
+            "matchId": "M090",
+            "date": "2026-07-04T17:00:00Z",
+            "fixture": "Canada v Morocco",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 4,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -4,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -10
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -1839,7 +2006,7 @@
       "GS2": 22,
       "GS3": 7,
       "R32": 11,
-      "R16": 0,
+      "R16": -10,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -2032,7 +2199,45 @@
           }
         }
       ],
-      "R16": [],
+      "R16": [
+        {
+          "matchId": "M090",
+          "date": "2026-07-04T17:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Canada v Morocco",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 4,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -4,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -4,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -10
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -2047,17 +2252,17 @@
     "cost": 4,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/60px-Flag_of_Bosnia_and_Herzegovina.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 12,
+    "inCompetition": false,
+    "totalPoints": 7,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 15,
-      "goalsConceded": -12,
+      "goalsConceded": -16,
       "penalties": 0,
-      "disciplinary": -8,
+      "disciplinary": -9,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 12
+      "total": 7
     },
     "scoresByRound": [
       {
@@ -2216,13 +2421,40 @@
         "roundCode": "R32",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -5,
+        "matches": [
+          {
+            "matchId": "M081",
+            "date": "2026-07-02T00:00:00Z",
+            "fixture": "United States v Bosnia and Herzegovina",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -2289,7 +2521,7 @@
       "GS1": 0,
       "GS2": -9,
       "GS3": 21,
-      "R32": 0,
+      "R32": -5,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -2449,7 +2681,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M081",
+          "date": "2026-07-02T00:00:00Z",
+          "roundCode": "R32",
+          "fixture": "United States v Bosnia and Herzegovina",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -2853,17 +3123,17 @@
     "cost": 21,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/60px-Flag_of_Switzerland.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 34,
+    "inCompetition": false,
+    "totalPoints": 51,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 21,
-      "goalsConceded": -6,
+      "goalsScored": 30,
+      "goalsConceded": -12,
       "penalties": 0,
-      "disciplinary": -3,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 34
+      "disciplinary": -9,
+      "roundQualification": 30,
+      "qualification": 30,
+      "total": 51
     },
     "scoresByRound": [
       {
@@ -3021,14 +3291,41 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 6,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 16,
+        "matches": [
+          {
+            "matchId": "M085",
+            "date": "2026-07-03T03:00:00Z",
+            "fixture": "Switzerland v Algeria",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 16
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -3036,23 +3333,87 @@
         "goalsScored": 0,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -3,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 7,
+        "matches": [
+          {
+            "matchId": "M096",
+            "date": "2026-07-07T20:00:00Z",
+            "fixture": "Switzerland v Colombia",
+            "result": "win",
+            "goalsFor": 0,
+            "goalsAgainst": 0,
+            "penaltiesFor": 4,
+            "penaltiesAgainst": 3,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 7
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -6,
+        "matches": [
+          {
+            "matchId": "M100",
+            "date": "2026-07-12T01:00:00Z",
+            "fixture": "Argentina v Switzerland",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 1,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -6
+          }
+        ]
       },
       {
         "roundCode": "SF",
@@ -3095,9 +3456,9 @@
       "GS1": 2,
       "GS2": 14,
       "GS3": 18,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
+      "R32": 16,
+      "R16": 7,
+      "QF": -6,
       "SF": 0,
       "TPP": 0,
       "F": 0
@@ -3255,9 +3616,133 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
+      "R32": [
+        {
+          "matchId": "M085",
+          "date": "2026-07-03T03:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Switzerland v Algeria",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 16
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M096",
+          "date": "2026-07-07T20:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Switzerland v Colombia",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 0,
+            "goalsAgainst": 0,
+            "penaltiesFor": 4,
+            "penaltiesAgainst": 3,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 7
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M100",
+          "date": "2026-07-12T01:00:00Z",
+          "roundCode": "QF",
+          "fixture": "Argentina v Switzerland",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 1,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -6
+          }
+        }
+      ],
       "SF": [],
       "TPP": [],
       "F": []
@@ -3271,17 +3756,17 @@
     "cost": 29,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/60px-Flag_of_Brazil.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 36,
+    "inCompetition": false,
+    "totalPoints": 46,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 21,
-      "goalsConceded": -2,
+      "goalsScored": 30,
+      "goalsConceded": -8,
       "penalties": 0,
-      "disciplinary": -5,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 36
+      "disciplinary": -8,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 46
     },
     "scoresByRound": [
       {
@@ -3429,26 +3914,95 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -2,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 12,
+        "matches": [
+          {
+            "matchId": "M076",
+            "date": "2026-06-29T17:00:00Z",
+            "fixture": "Brazil v Japan",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 12
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M091",
+            "date": "2026-07-05T20:00:00Z",
+            "fixture": "Brazil v Norway",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -3503,8 +4057,8 @@
       "GS1": 1,
       "GS2": 13,
       "GS3": 22,
-      "R32": 0,
-      "R16": 0,
+      "R32": 12,
+      "R16": -2,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -3653,8 +4207,99 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M076",
+          "date": "2026-06-29T17:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Brazil v Japan",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 12
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M091",
+          "date": "2026-07-05T20:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Brazil v Norway",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -3669,17 +4314,17 @@
     "cost": 27,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/60px-Flag_of_Morocco.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 33,
+    "inCompetition": false,
+    "totalPoints": 53,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 18,
-      "goalsConceded": -6,
+      "goalsScored": 30,
+      "goalsConceded": -12,
       "penalties": 0,
-      "disciplinary": -1,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 33
+      "disciplinary": -7,
+      "roundQualification": 30,
+      "qualification": 30,
+      "total": 53
     },
     "scoresByRound": [
       {
@@ -3822,38 +4467,134 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 10,
+        "matches": [
+          {
+            "matchId": "M075",
+            "date": "2026-06-30T01:00:00Z",
+            "fixture": "Netherlands v Morocco",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 2,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 10
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 9,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -4,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 15,
+        "matches": [
+          {
+            "matchId": "M090",
+            "date": "2026-07-04T17:00:00Z",
+            "fixture": "Canada v Morocco",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 4,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -4,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 15
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -5,
+        "matches": [
+          {
+            "matchId": "M097",
+            "date": "2026-07-09T20:00:00Z",
+            "fixture": "France v Morocco",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        ]
       },
       {
         "roundCode": "SF",
@@ -3896,9 +4637,9 @@
       "GS1": 3,
       "GS2": 7,
       "GS3": 23,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
+      "R32": 10,
+      "R16": 15,
+      "QF": -5,
       "SF": 0,
       "TPP": 0,
       "F": 0
@@ -4041,9 +4782,138 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
+      "R32": [
+        {
+          "matchId": "M075",
+          "date": "2026-06-30T01:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Netherlands v Morocco",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 2,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 10
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M090",
+          "date": "2026-07-04T17:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Canada v Morocco",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 4,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -4,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -4,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 15
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M097",
+          "date": "2026-07-09T20:00:00Z",
+          "roundCode": "QF",
+          "fixture": "France v Morocco",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        }
+      ],
       "SF": [],
       "TPP": [],
       "F": []
@@ -4773,17 +5643,17 @@
     "cost": 22,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/60px-Flag_of_the_United_States.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 31,
+    "inCompetition": false,
+    "totalPoints": 38,
     "pointsTotals": {
       "result": 10,
-      "goalsScored": 24,
-      "goalsConceded": -8,
+      "goalsScored": 33,
+      "goalsConceded": -16,
       "penalties": 0,
-      "disciplinary": -5,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 31
+      "disciplinary": -9,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 38
     },
     "scoresByRound": [
       {
@@ -4931,26 +5801,90 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 6,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -2,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 14,
+        "matches": [
+          {
+            "matchId": "M081",
+            "date": "2026-07-02T00:00:00Z",
+            "fixture": "United States v Bosnia and Herzegovina",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 1,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -8,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -7,
+        "matches": [
+          {
+            "matchId": "M094",
+            "date": "2026-07-07T00:00:00Z",
+            "fixture": "United States v Belgium",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 4,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -8,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -7
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -5005,8 +5939,8 @@
       "GS1": 14,
       "GS2": 8,
       "GS3": 9,
-      "R32": 0,
-      "R16": 0,
+      "R32": 14,
+      "R16": -7,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -5155,8 +6089,94 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M081",
+          "date": "2026-07-02T00:00:00Z",
+          "roundCode": "R32",
+          "fixture": "United States v Bosnia and Herzegovina",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 1,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M094",
+          "date": "2026-07-07T00:00:00Z",
+          "roundCode": "R16",
+          "fixture": "United States v Belgium",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 4,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -8,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -8,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -7
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -5171,17 +6191,17 @@
     "cost": 11,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Flag_of_Paraguay.svg/60px-Flag_of_Paraguay.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 6,
+    "inCompetition": false,
+    "totalPoints": 13,
     "pointsTotals": {
       "result": 7,
-      "goalsScored": 6,
-      "goalsConceded": -8,
+      "goalsScored": 9,
+      "goalsConceded": -12,
       "penalties": 0,
-      "disciplinary": -9,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 6
+      "disciplinary": -11,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 13
     },
     "scoresByRound": [
       {
@@ -5324,26 +6344,85 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -2,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 9,
+        "matches": [
+          {
+            "matchId": "M074",
+            "date": "2026-06-29T20:30:00Z",
+            "fixture": "Germany v Paraguay",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 4,
+            "penaltiesAgainst": 3,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 9
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M089",
+            "date": "2026-07-04T21:00:00Z",
+            "fixture": "Paraguay v France",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -5398,8 +6477,8 @@
       "GS1": -10,
       "GS2": 5,
       "GS3": 11,
-      "R32": 0,
-      "R16": 0,
+      "R32": 9,
+      "R16": -2,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -5543,8 +6622,89 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M074",
+          "date": "2026-06-29T20:30:00Z",
+          "roundCode": "R32",
+          "fixture": "Germany v Paraguay",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 4,
+            "penaltiesAgainst": 3,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 9
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M089",
+          "date": "2026-07-04T21:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Paraguay v France",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -5559,17 +6719,17 @@
     "cost": 15,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Australia.svg/60px-Flag_of_Australia.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 14,
+    "inCompetition": false,
+    "totalPoints": 15,
     "pointsTotals": {
       "result": 7,
-      "goalsScored": 6,
-      "goalsConceded": -4,
+      "goalsScored": 9,
+      "goalsConceded": -6,
       "penalties": 0,
       "disciplinary": -5,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 14
+      "total": 15
     },
     "scoresByRound": [
       {
@@ -5697,14 +6857,41 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 1,
+        "matches": [
+          {
+            "matchId": "M088",
+            "date": "2026-07-03T18:00:00Z",
+            "fixture": "Australia v Egypt",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 2,
+            "penaltiesAgainst": 3,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 1
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -5771,7 +6958,7 @@
       "GS1": 11,
       "GS2": -8,
       "GS3": 11,
-      "R32": 0,
+      "R32": 1,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -5901,7 +7088,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M088",
+          "date": "2026-07-03T18:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Australia v Egypt",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 2,
+            "penaltiesAgainst": 3,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -6275,17 +7500,17 @@
     "cost": 27,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/60px-Flag_of_Germany.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 41,
+    "inCompetition": false,
+    "totalPoints": 40,
     "pointsTotals": {
       "result": 10,
-      "goalsScored": 30,
-      "goalsConceded": -8,
+      "goalsScored": 33,
+      "goalsConceded": -10,
       "penalties": 0,
-      "disciplinary": -1,
+      "disciplinary": -3,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 41
+      "total": 40
     },
     "scoresByRound": [
       {
@@ -6428,14 +7653,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -1,
+        "matches": [
+          {
+            "matchId": "M074",
+            "date": "2026-06-29T20:30:00Z",
+            "fixture": "Germany v Paraguay",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 4,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -6502,7 +7759,7 @@
       "GS1": 24,
       "GS2": 9,
       "GS3": 8,
-      "R32": 0,
+      "R32": -1,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -6647,7 +7904,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M074",
+          "date": "2026-06-29T20:30:00Z",
+          "roundCode": "R32",
+          "fixture": "Germany v Paraguay",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 4,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -7011,17 +8311,17 @@
     "cost": 13,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Côte_d%27Ivoire.svg/60px-Flag_of_Côte_d%27Ivoire.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 24,
+    "inCompetition": false,
+    "totalPoints": 23,
     "pointsTotals": {
       "result": 10,
-      "goalsScored": 12,
-      "goalsConceded": -4,
+      "goalsScored": 15,
+      "goalsConceded": -8,
       "penalties": 0,
       "disciplinary": -4,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 24
+      "total": 23
     },
     "scoresByRound": [
       {
@@ -7159,14 +8459,41 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -1,
+        "matches": [
+          {
+            "matchId": "M078",
+            "date": "2026-06-30T17:00:00Z",
+            "fixture": "Ivory Coast v Norway",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -1
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -7233,7 +8560,7 @@
       "GS1": 5,
       "GS2": -1,
       "GS3": 20,
-      "R32": 0,
+      "R32": -1,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -7373,7 +8700,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M078",
+          "date": "2026-06-30T17:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Ivory Coast v Norway",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -1
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -7389,17 +8754,17 @@
     "cost": 18,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/60px-Flag_of_Ecuador.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 14,
+    "inCompetition": false,
+    "totalPoints": 5,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 6,
-      "goalsConceded": -4,
+      "goalsConceded": -8,
       "penalties": 0,
-      "disciplinary": -5,
+      "disciplinary": -10,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 14
+      "total": 5
     },
     "scoresByRound": [
       {
@@ -7538,13 +8903,45 @@
         "roundCode": "R32",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -5,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -9,
+        "matches": [
+          {
+            "matchId": "M079",
+            "date": "2026-07-01T01:00:00Z",
+            "fixture": "Mexico v Ecuador",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 1,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -9
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -7611,7 +9008,7 @@
       "GS1": -3,
       "GS2": 1,
       "GS3": 16,
-      "R32": 0,
+      "R32": -9,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -7751,7 +9148,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M079",
+          "date": "2026-07-01T01:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Mexico v Ecuador",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 1,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -5,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -9
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -7767,17 +9207,17 @@
     "cost": 29,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/60px-Flag_of_the_Netherlands.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 41,
+    "inCompetition": false,
+    "totalPoints": 42,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 30,
-      "goalsConceded": -8,
+      "goalsScored": 33,
+      "goalsConceded": -10,
       "penalties": 0,
       "disciplinary": -3,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 41
+      "total": 42
     },
     "scoresByRound": [
       {
@@ -7925,14 +9365,41 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 1,
+        "matches": [
+          {
+            "matchId": "M075",
+            "date": "2026-06-30T01:00:00Z",
+            "fixture": "Netherlands v Morocco",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 2,
+            "penaltiesAgainst": 3,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 1
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -7999,7 +9466,7 @@
       "GS1": 1,
       "GS2": 18,
       "GS3": 22,
-      "R32": 0,
+      "R32": 1,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -8149,7 +9616,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M075",
+          "date": "2026-06-30T01:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Netherlands v Morocco",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 2,
+            "penaltiesAgainst": 3,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 1
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -8165,17 +9670,17 @@
     "cost": 22,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/60px-Flag_of_Japan.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 33,
+    "inCompetition": false,
+    "totalPoints": 29,
     "pointsTotals": {
       "result": 9,
-      "goalsScored": 21,
-      "goalsConceded": -6,
+      "goalsScored": 24,
+      "goalsConceded": -10,
       "penalties": 0,
-      "disciplinary": -1,
+      "disciplinary": -4,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 33
+      "total": 29
     },
     "scoresByRound": [
       {
@@ -8318,14 +9823,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -4,
+        "matches": [
+          {
+            "matchId": "M076",
+            "date": "2026-06-29T17:00:00Z",
+            "fixture": "Brazil v Japan",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -4
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -8392,7 +9929,7 @@
       "GS1": 4,
       "GS2": 17,
       "GS3": 12,
-      "R32": 0,
+      "R32": -4,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -8537,7 +10074,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M076",
+          "date": "2026-06-29T17:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Brazil v Japan",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -4
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -8553,17 +10133,17 @@
     "cost": 12,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/60px-Flag_of_Sweden.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 19,
+    "inCompetition": false,
+    "totalPoints": 13,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 21,
-      "goalsConceded": -14,
+      "goalsConceded": -20,
       "penalties": 0,
       "disciplinary": -5,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 19
+      "total": 13
     },
     "scoresByRound": [
       {
@@ -8712,13 +10292,35 @@
         "roundCode": "R32",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -6,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -6,
+        "matches": [
+          {
+            "matchId": "M077",
+            "date": "2026-06-30T21:00:00Z",
+            "fixture": "France v Sweden",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -6
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -8785,7 +10387,7 @@
       "GS1": 18,
       "GS2": -10,
       "GS3": 11,
-      "R32": 0,
+      "R32": -6,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -8935,7 +10537,40 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M077",
+          "date": "2026-06-30T21:00:00Z",
+          "roundCode": "R32",
+          "fixture": "France v Sweden",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": -6
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -9299,17 +10934,17 @@
     "cost": 27,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/60px-Flag_of_Belgium.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 28,
+    "inCompetition": false,
+    "totalPoints": 59,
     "pointsTotals": {
       "result": 9,
-      "goalsScored": 18,
-      "goalsConceded": -4,
+      "goalsScored": 42,
+      "goalsConceded": -14,
       "penalties": 0,
-      "disciplinary": -5,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 28
+      "disciplinary": -8,
+      "roundQualification": 30,
+      "qualification": 30,
+      "total": 59
     },
     "scoresByRound": [
       {
@@ -9457,38 +11092,139 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 14,
+        "matches": [
+          {
+            "matchId": "M082",
+            "date": "2026-07-01T20:00:00Z",
+            "fixture": "Belgium v Senegal",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 12,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 20,
+        "matches": [
+          {
+            "matchId": "M094",
+            "date": "2026-07-07T00:00:00Z",
+            "fixture": "United States v Belgium",
+            "result": "win",
+            "goalsFor": 4,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 12,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 20
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -3,
+        "matches": [
+          {
+            "matchId": "M098",
+            "date": "2026-07-10T19:00:00Z",
+            "fixture": "Spain v Belgium",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        ]
       },
       {
         "roundCode": "SF",
@@ -9531,9 +11267,9 @@
       "GS1": 1,
       "GS2": -1,
       "GS3": 28,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
+      "R32": 14,
+      "R16": 20,
+      "QF": -3,
       "SF": 0,
       "TPP": 0,
       "F": 0
@@ -9681,9 +11417,143 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
+      "R32": [
+        {
+          "matchId": "M082",
+          "date": "2026-07-01T20:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Belgium v Senegal",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M094",
+          "date": "2026-07-07T00:00:00Z",
+          "roundCode": "R16",
+          "fixture": "United States v Belgium",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 4,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 12,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 12,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 20
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M098",
+          "date": "2026-07-10T19:00:00Z",
+          "roundCode": "QF",
+          "fixture": "Spain v Belgium",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        }
+      ],
       "SF": [],
       "TPP": [],
       "F": []
@@ -9697,17 +11567,17 @@
     "cost": 15,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_Egypt.svg/60px-Flag_of_Egypt.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 22,
+    "inCompetition": false,
+    "totalPoints": 28,
     "pointsTotals": {
       "result": 9,
-      "goalsScored": 15,
-      "goalsConceded": -6,
+      "goalsScored": 24,
+      "goalsConceded": -14,
       "penalties": 0,
-      "disciplinary": -6,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 22
+      "disciplinary": -11,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 28
     },
     "scoresByRound": [
       {
@@ -9865,26 +11735,95 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -2,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 9,
+        "matches": [
+          {
+            "matchId": "M088",
+            "date": "2026-07-03T18:00:00Z",
+            "fixture": "Australia v Egypt",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 2,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 9
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -3,
+        "matches": [
+          {
+            "matchId": "M095",
+            "date": "2026-07-07T16:00:00Z",
+            "fixture": "Argentina v Egypt",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -9939,8 +11878,8 @@
       "GS1": 1,
       "GS2": 11,
       "GS3": 10,
-      "R32": 0,
-      "R16": 0,
+      "R32": 9,
+      "R16": -3,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -10099,8 +12038,99 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M088",
+          "date": "2026-07-03T18:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Australia v Egypt",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 1,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 2,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 9
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M095",
+          "date": "2026-07-07T16:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Argentina v Egypt",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -10882,16 +12912,16 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/60px-Flag_of_Spain.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 35,
+    "totalPoints": 93,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 15,
-      "goalsConceded": 0,
+      "goalsScored": 39,
+      "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": -2,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 35
+      "disciplinary": -6,
+      "roundQualification": 50,
+      "qualification": 50,
+      "total": 93
     },
     "scoresByRound": [
       {
@@ -11024,50 +13054,178 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 9,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 19,
+        "matches": [
+          {
+            "matchId": "M084",
+            "date": "2026-07-02T19:00:00Z",
+            "fixture": "Spain v Austria",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 19
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 3,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 12,
+        "matches": [
+          {
+            "matchId": "M093",
+            "date": "2026-07-06T19:00:00Z",
+            "fixture": "Portugal v Spain",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 12
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -2,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 12,
+        "matches": [
+          {
+            "matchId": "M098",
+            "date": "2026-07-10T19:00:00Z",
+            "fixture": "Spain v Belgium",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 12
+          }
+        ]
       },
       {
         "roundCode": "SF",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 6,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 15,
+        "matches": [
+          {
+            "matchId": "M101",
+            "date": "2026-07-14T19:00:00Z",
+            "fixture": "France v Spain",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 15
+          }
+        ]
       },
       {
         "roundCode": "TPP",
@@ -11098,10 +13256,10 @@
       "GS1": 1,
       "GS2": 17,
       "GS3": 17,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
+      "R32": 19,
+      "R16": 12,
+      "QF": 12,
+      "SF": 15,
       "TPP": 0,
       "F": 0
     },
@@ -11233,10 +13391,182 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
-      "SF": [],
+      "R32": [
+        {
+          "matchId": "M084",
+          "date": "2026-07-02T19:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Spain v Austria",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 19
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M093",
+          "date": "2026-07-06T19:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Portugal v Spain",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 12
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M098",
+          "date": "2026-07-10T19:00:00Z",
+          "roundCode": "QF",
+          "fixture": "Spain v Belgium",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 12
+          }
+        }
+      ],
+      "SF": [
+        {
+          "matchId": "M101",
+          "date": "2026-07-14T19:00:00Z",
+          "roundCode": "SF",
+          "fixture": "France v Spain",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 15
+          }
+        }
+      ],
       "TPP": [],
       "F": []
     }
@@ -11249,17 +13579,17 @@
     "cost": 2,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Flag_of_Cape_Verde.svg/60px-Flag_of_Cape_Verde.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 14,
+    "inCompetition": false,
+    "totalPoints": 13,
     "pointsTotals": {
       "result": 6,
-      "goalsScored": 6,
-      "goalsConceded": -4,
+      "goalsScored": 12,
+      "goalsConceded": -10,
       "penalties": 0,
-      "disciplinary": -4,
+      "disciplinary": -5,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 14
+      "total": 13
     },
     "scoresByRound": [
       {
@@ -11397,14 +13727,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -1,
+        "matches": [
+          {
+            "matchId": "M086",
+            "date": "2026-07-03T22:00:00Z",
+            "fixture": "Argentina v Cape Verde",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -11471,7 +13833,7 @@
       "GS1": 1,
       "GS2": 2,
       "GS3": 11,
-      "R32": 0,
+      "R32": -1,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -11611,7 +13973,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M086",
+          "date": "2026-07-03T22:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Argentina v Cape Verde",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -12383,17 +14788,17 @@
     "cost": 32,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/60px-Flag_of_France.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 50,
+    "inCompetition": false,
+    "totalPoints": 89,
     "pointsTotals": {
       "result": 15,
-      "goalsScored": 30,
-      "goalsConceded": -4,
+      "goalsScored": 48,
+      "goalsConceded": -8,
       "penalties": 0,
-      "disciplinary": -1,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 50
+      "disciplinary": -6,
+      "roundQualification": 40,
+      "qualification": 40,
+      "total": 89
     },
     "scoresByRound": [
       {
@@ -12536,50 +14941,163 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 9,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 19,
+        "matches": [
+          {
+            "matchId": "M077",
+            "date": "2026-06-30T21:00:00Z",
+            "fixture": "France v Sweden",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 19
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 3,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -3,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 10,
+        "matches": [
+          {
+            "matchId": "M089",
+            "date": "2026-07-04T21:00:00Z",
+            "fixture": "Paraguay v France",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 10
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 6,
         "goalsConceded": 0,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 16,
+        "matches": [
+          {
+            "matchId": "M097",
+            "date": "2026-07-09T20:00:00Z",
+            "fixture": "France v Morocco",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 16
+          }
+        ]
       },
       {
         "roundCode": "SF",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -6,
+        "matches": [
+          {
+            "matchId": "M101",
+            "date": "2026-07-14T19:00:00Z",
+            "fixture": "France v Spain",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -6
+          }
+        ]
       },
       {
         "roundCode": "TPP",
@@ -12610,10 +15128,10 @@
       "GS1": 12,
       "GS2": 14,
       "GS3": 24,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
+      "R32": 19,
+      "R16": 10,
+      "QF": 16,
+      "SF": -6,
       "TPP": 0,
       "F": 0
     },
@@ -12755,10 +15273,167 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
-      "SF": [],
+      "R32": [
+        {
+          "matchId": "M077",
+          "date": "2026-06-30T21:00:00Z",
+          "roundCode": "R32",
+          "fixture": "France v Sweden",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 19
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M089",
+          "date": "2026-07-04T21:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Paraguay v France",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 10
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M097",
+          "date": "2026-07-09T20:00:00Z",
+          "roundCode": "QF",
+          "fixture": "France v Morocco",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 16
+          }
+        }
+      ],
+      "SF": [
+        {
+          "matchId": "M101",
+          "date": "2026-07-14T19:00:00Z",
+          "roundCode": "SF",
+          "fixture": "France v Spain",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -6
+          }
+        }
+      ],
       "TPP": [],
       "F": []
     }
@@ -12771,17 +15446,17 @@
     "cost": 24,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/60px-Flag_of_Senegal.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 25,
+    "inCompetition": false,
+    "totalPoints": 24,
     "pointsTotals": {
       "result": 5,
-      "goalsScored": 24,
-      "goalsConceded": -12,
+      "goalsScored": 30,
+      "goalsConceded": -18,
       "penalties": 0,
-      "disciplinary": -2,
+      "disciplinary": -3,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 25
+      "total": 24
     },
     "scoresByRound": [
       {
@@ -12914,14 +15589,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -1,
+        "matches": [
+          {
+            "matchId": "M082",
+            "date": "2026-07-01T20:00:00Z",
+            "fixture": "Belgium v Senegal",
+            "result": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -12988,7 +15695,7 @@
       "GS1": -3,
       "GS2": 0,
       "GS3": 28,
-      "R32": 0,
+      "R32": -1,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -13123,7 +15830,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M082",
+          "date": "2026-07-01T20:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Belgium v Senegal",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 2,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -1
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -13507,17 +16257,17 @@
     "cost": 14,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/60px-Flag_of_Norway.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 29,
+    "inCompetition": false,
+    "totalPoints": 54,
     "pointsTotals": {
       "result": 10,
-      "goalsScored": 24,
-      "goalsConceded": -14,
+      "goalsScored": 39,
+      "goalsConceded": -22,
       "penalties": 0,
-      "disciplinary": -1,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 29
+      "disciplinary": -3,
+      "roundQualification": 30,
+      "qualification": 30,
+      "total": 54
     },
     "scoresByRound": [
       {
@@ -13660,38 +16410,139 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 13,
+        "matches": [
+          {
+            "matchId": "M078",
+            "date": "2026-06-30T17:00:00Z",
+            "fixture": "Ivory Coast v Norway",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 13
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 14,
+        "matches": [
+          {
+            "matchId": "M091",
+            "date": "2026-07-05T20:00:00Z",
+            "fixture": "Brazil v Norway",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M099",
+            "date": "2026-07-11T21:00:00Z",
+            "fixture": "Norway v England",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "SF",
@@ -13734,9 +16585,9 @@
       "GS1": 15,
       "GS2": 10,
       "GS3": 4,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
+      "R32": 13,
+      "R16": 14,
+      "QF": -2,
       "SF": 0,
       "TPP": 0,
       "F": 0
@@ -13879,9 +16730,143 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
+      "R32": [
+        {
+          "matchId": "M078",
+          "date": "2026-06-30T17:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Ivory Coast v Norway",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 13
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M091",
+          "date": "2026-07-05T20:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Brazil v Norway",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M099",
+          "date": "2026-07-11T21:00:00Z",
+          "roundCode": "QF",
+          "fixture": "Norway v England",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "SF": [],
       "TPP": [],
       "F": []
@@ -13896,16 +16881,16 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/60px-Flag_of_Argentina.svg.png",
     "active": 1,
     "inCompetition": true,
-    "totalPoints": 45,
+    "totalPoints": 99,
     "pointsTotals": {
       "result": 15,
-      "goalsScored": 24,
-      "goalsConceded": -2,
+      "goalsScored": 57,
+      "goalsConceded": -14,
       "penalties": 0,
-      "disciplinary": -2,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 45
+      "disciplinary": -9,
+      "roundQualification": 50,
+      "qualification": 50,
+      "total": 99
     },
     "scoresByRound": [
       {
@@ -14043,50 +17028,193 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 14,
+        "matches": [
+          {
+            "matchId": "M086",
+            "date": "2026-07-03T22:00:00Z",
+            "fixture": "Argentina v Cape Verde",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 15,
+        "matches": [
+          {
+            "matchId": "M095",
+            "date": "2026-07-07T16:00:00Z",
+            "fixture": "Argentina v Egypt",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 15
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 9,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -3,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 14,
+        "matches": [
+          {
+            "matchId": "M100",
+            "date": "2026-07-12T01:00:00Z",
+            "fixture": "Argentina v Switzerland",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        ]
       },
       {
         "roundCode": "SF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -3,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 11,
+        "matches": [
+          {
+            "matchId": "M102",
+            "date": "2026-07-15T19:00:00Z",
+            "fixture": "England v Argentina",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 11
+          }
+        ]
       },
       {
         "roundCode": "TPP",
@@ -14117,10 +17245,10 @@
       "GS1": 14,
       "GS2": 9,
       "GS3": 22,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
+      "R32": 14,
+      "R16": 15,
+      "QF": 14,
+      "SF": 11,
       "TPP": 0,
       "F": 0
     },
@@ -14257,10 +17385,197 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
-      "SF": [],
+      "R32": [
+        {
+          "matchId": "M086",
+          "date": "2026-07-03T22:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Argentina v Cape Verde",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M095",
+          "date": "2026-07-07T16:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Argentina v Egypt",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 15
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M100",
+          "date": "2026-07-12T01:00:00Z",
+          "roundCode": "QF",
+          "fixture": "Argentina v Switzerland",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        }
+      ],
+      "SF": [
+        {
+          "matchId": "M102",
+          "date": "2026-07-15T19:00:00Z",
+          "roundCode": "SF",
+          "fixture": "England v Argentina",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 11
+          }
+        }
+      ],
       "TPP": [],
       "F": []
     }
@@ -14273,17 +17588,17 @@
     "cost": 15,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/60px-Flag_of_Algeria.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 17,
+    "inCompetition": false,
+    "totalPoints": 11,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 15,
-      "goalsConceded": -14,
+      "goalsConceded": -18,
       "penalties": 0,
-      "disciplinary": -1,
+      "disciplinary": -3,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 17
+      "total": 11
     },
     "scoresByRound": [
       {
@@ -14422,13 +17737,40 @@
         "roundCode": "R32",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -6,
+        "matches": [
+          {
+            "matchId": "M085",
+            "date": "2026-07-03T03:00:00Z",
+            "fixture": "Switzerland v Algeria",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -6
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -14495,7 +17837,7 @@
       "GS1": -6,
       "GS2": 8,
       "GS3": 15,
-      "R32": 0,
+      "R32": -6,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -14635,7 +17977,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M085",
+          "date": "2026-07-03T03:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Switzerland v Algeria",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -6
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -14651,17 +18031,17 @@
     "cost": 16,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/60px-Flag_of_Austria.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 19,
+    "inCompetition": false,
+    "totalPoints": 12,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 18,
-      "goalsConceded": -12,
+      "goalsConceded": -18,
       "penalties": 0,
-      "disciplinary": -4,
+      "disciplinary": -5,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 19
+      "total": 12
     },
     "scoresByRound": [
       {
@@ -14810,13 +18190,40 @@
         "roundCode": "R32",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -6,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -7,
+        "matches": [
+          {
+            "matchId": "M084",
+            "date": "2026-07-02T19:00:00Z",
+            "fixture": "Spain v Austria",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -7
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -14883,7 +18290,7 @@
       "GS1": 11,
       "GS2": -6,
       "GS3": 14,
-      "R32": 0,
+      "R32": -7,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -15033,7 +18440,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M084",
+          "date": "2026-07-02T19:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Spain v Austria",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 3,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -6,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -6,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -7
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -15417,17 +18862,17 @@
     "cost": 31,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/60px-Flag_of_Portugal.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 31,
+    "inCompetition": false,
+    "totalPoints": 40,
     "pointsTotals": {
       "result": 9,
-      "goalsScored": 18,
-      "goalsConceded": -2,
+      "goalsScored": 24,
+      "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": -4,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 31
+      "disciplinary": -7,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 40
     },
     "scoresByRound": [
       {
@@ -15565,26 +19010,90 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 13,
+        "matches": [
+          {
+            "matchId": "M083",
+            "date": "2026-07-02T23:00:00Z",
+            "fixture": "Portugal v Croatia",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 13
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -4,
+        "matches": [
+          {
+            "matchId": "M093",
+            "date": "2026-07-06T19:00:00Z",
+            "fixture": "Portugal v Spain",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -4
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -15639,8 +19148,8 @@
       "GS1": 0,
       "GS2": 19,
       "GS3": 12,
-      "R32": 0,
-      "R16": 0,
+      "R32": 13,
+      "R16": -4,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -15779,8 +19288,94 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M083",
+          "date": "2026-07-02T23:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Portugal v Croatia",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 13
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M093",
+          "date": "2026-07-06T19:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Portugal v Spain",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -4
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -15795,17 +19390,17 @@
     "cost": 9,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/60px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 18,
+    "inCompetition": false,
+    "totalPoints": 16,
     "pointsTotals": {
       "result": 7,
-      "goalsScored": 12,
-      "goalsConceded": -6,
+      "goalsScored": 15,
+      "goalsConceded": -10,
       "penalties": 0,
-      "disciplinary": -5,
+      "disciplinary": -6,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 18
+      "total": 16
     },
     "scoresByRound": [
       {
@@ -15953,14 +19548,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M080",
+            "date": "2026-07-01T16:00:00Z",
+            "fixture": "England v DR Congo",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -16027,7 +19654,7 @@
       "GS1": 2,
       "GS2": -3,
       "GS3": 19,
-      "R32": 0,
+      "R32": -2,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -16177,7 +19804,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M080",
+          "date": "2026-07-01T16:00:00Z",
+          "roundCode": "R32",
+          "fixture": "England v DR Congo",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -16561,17 +20231,17 @@
     "cost": 25,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/60px-Flag_of_Colombia.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 28,
+    "inCompetition": false,
+    "totalPoints": 37,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 12,
+      "goalsScored": 15,
       "goalsConceded": -2,
       "penalties": 0,
-      "disciplinary": -4,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 28
+      "disciplinary": -8,
+      "roundQualification": 20,
+      "qualification": 20,
+      "total": 37
     },
     "scoresByRound": [
       {
@@ -16714,14 +20384,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
+        "goalsScored": 3,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -2,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 11,
+        "matches": [
+          {
+            "matchId": "M087",
+            "date": "2026-07-04T01:30:00Z",
+            "fixture": "Colombia v Ghana",
+            "result": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 11
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -16729,11 +20431,33 @@
         "goalsScored": 0,
         "goalsConceded": 0,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M096",
+            "date": "2026-07-07T20:00:00Z",
+            "fixture": "Switzerland v Colombia",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 0,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 4,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "QF",
@@ -16788,8 +20512,8 @@
       "GS1": 11,
       "GS2": 6,
       "GS3": 11,
-      "R32": 0,
-      "R16": 0,
+      "R32": 11,
+      "R16": -2,
       "QF": 0,
       "SF": 0,
       "TPP": 0,
@@ -16933,8 +20657,84 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
+      "R32": [
+        {
+          "matchId": "M087",
+          "date": "2026-07-04T01:30:00Z",
+          "roundCode": "R32",
+          "fixture": "Colombia v Ghana",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 1,
+            "goalsAgainst": 0,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 11
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M096",
+          "date": "2026-07-07T20:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Switzerland v Colombia",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 0,
+            "penaltiesFor": 3,
+            "penaltiesAgainst": 4,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": 0,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "QF": [],
       "SF": [],
       "TPP": [],
@@ -16949,17 +20749,17 @@
     "cost": 30,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/60px-Flag_of_England.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 34,
+    "inCompetition": false,
+    "totalPoints": 68,
     "pointsTotals": {
       "result": 12,
-      "goalsScored": 18,
-      "goalsConceded": -4,
+      "goalsScored": 42,
+      "goalsConceded": -16,
       "penalties": 0,
-      "disciplinary": -2,
-      "roundQualification": 10,
-      "qualification": 10,
-      "total": 34
+      "disciplinary": -10,
+      "roundQualification": 40,
+      "qualification": 40,
+      "total": 68
     },
     "scoresByRound": [
       {
@@ -17097,50 +20897,193 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -1,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 13,
+        "matches": [
+          {
+            "matchId": "M080",
+            "date": "2026-07-01T16:00:00Z",
+            "fixture": "England v DR Congo",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 13
+          }
+        ]
       },
       {
         "roundCode": "R16",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 9,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "disciplinary": -6,
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 9,
+        "matches": [
+          {
+            "matchId": "M092",
+            "date": "2026-07-06T00:00:00Z",
+            "fixture": "Mexico v England",
+            "result": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 4,
+            "redCards": 1,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -4,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 9
+          }
+        ]
       },
       {
         "roundCode": "QF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 6,
+        "goalsConceded": -2,
         "penalties": 0,
         "disciplinary": 0,
-        "roundQualification": 0,
-        "qualification": 0,
-        "total": 0,
-        "matches": []
+        "roundQualification": 10,
+        "qualification": 10,
+        "total": 14,
+        "matches": [
+          {
+            "matchId": "M099",
+            "date": "2026-07-11T21:00:00Z",
+            "fixture": "Norway v England",
+            "result": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        ]
       },
       {
         "roundCode": "SF",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -1,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -2,
+        "matches": [
+          {
+            "matchId": "M102",
+            "date": "2026-07-15T19:00:00Z",
+            "fixture": "England v Argentina",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        ]
       },
       {
         "roundCode": "TPP",
@@ -17171,10 +21114,10 @@
       "GS1": 13,
       "GS2": 1,
       "GS3": 20,
-      "R32": 0,
-      "R16": 0,
-      "QF": 0,
-      "SF": 0,
+      "R32": 13,
+      "R16": 9,
+      "QF": 14,
+      "SF": -2,
       "TPP": 0,
       "F": 0
     },
@@ -17311,10 +21254,197 @@
           }
         }
       ],
-      "R32": [],
-      "R16": [],
-      "QF": [],
-      "SF": [],
+      "R32": [
+        {
+          "matchId": "M080",
+          "date": "2026-07-01T16:00:00Z",
+          "roundCode": "R32",
+          "fixture": "England v DR Congo",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 13
+          }
+        }
+      ],
+      "R16": [
+        {
+          "matchId": "M092",
+          "date": "2026-07-06T00:00:00Z",
+          "roundCode": "R16",
+          "fixture": "Mexico v England",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 3,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 4,
+            "redCards": 1,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 9,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -6,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 9,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -4,
+                "category": "disciplinary"
+              },
+              {
+                "label": "RC",
+                "value": -2,
+                "category": "disciplinary"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 9
+          }
+        }
+      ],
+      "QF": [
+        {
+          "matchId": "M099",
+          "date": "2026-07-11T21:00:00Z",
+          "roundCode": "QF",
+          "fixture": "Norway v England",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 2,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 0,
+              "goalsScored": 6,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 10
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 6,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "Advance",
+                "value": 10,
+                "category": "qualification"
+              }
+            ],
+            "total": 14
+          }
+        }
+      ],
+      "SF": [
+        {
+          "matchId": "M102",
+          "date": "2026-07-15T19:00:00Z",
+          "roundCode": "SF",
+          "fixture": "England v Argentina",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 1,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -1,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -1,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -2
+          }
+        }
+      ],
       "TPP": [],
       "F": []
     }
@@ -17327,17 +21457,17 @@
     "cost": 26,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Flag_of_Croatia.svg/60px-Flag_of_Croatia.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 23,
+    "inCompetition": false,
+    "totalPoints": 20,
     "pointsTotals": {
       "result": 10,
-      "goalsScored": 15,
-      "goalsConceded": -10,
+      "goalsScored": 18,
+      "goalsConceded": -14,
       "penalties": 0,
-      "disciplinary": -2,
+      "disciplinary": -4,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 23
+      "total": 20
     },
     "scoresByRound": [
       {
@@ -17480,14 +21610,46 @@
       {
         "roundCode": "R32",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 3,
+        "goalsConceded": -4,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -2,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -3,
+        "matches": [
+          {
+            "matchId": "M083",
+            "date": "2026-07-02T23:00:00Z",
+            "fixture": "Portugal v Croatia",
+            "result": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -17554,7 +21716,7 @@
       "GS1": -2,
       "GS2": 7,
       "GS3": 18,
-      "R32": 0,
+      "R32": -3,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -17699,7 +21861,50 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M083",
+          "date": "2026-07-02T23:00:00Z",
+          "roundCode": "R32",
+          "fixture": "Portugal v Croatia",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 1,
+            "goalsAgainst": 2,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 2,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 3,
+              "goalsConceded": -4,
+              "penalties": 0,
+              "disciplinary": -2,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 3,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -4,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -2,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -3
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],
@@ -17715,17 +21920,17 @@
     "cost": 3,
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Ghana.svg/60px-Flag_of_Ghana.svg.png",
     "active": 1,
-    "inCompetition": true,
-    "totalPoints": 16,
+    "inCompetition": false,
+    "totalPoints": 11,
     "pointsTotals": {
       "result": 7,
       "goalsScored": 6,
-      "goalsConceded": -4,
+      "goalsConceded": -6,
       "penalties": 0,
-      "disciplinary": -3,
+      "disciplinary": -6,
       "roundQualification": 10,
       "qualification": 10,
-      "total": 16
+      "total": 11
     },
     "scoresByRound": [
       {
@@ -17864,13 +22069,40 @@
         "roundCode": "R32",
         "result": 0,
         "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsConceded": -2,
         "penalties": 0,
-        "disciplinary": 0,
+        "disciplinary": -3,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": -5,
+        "matches": [
+          {
+            "matchId": "M087",
+            "date": "2026-07-04T01:30:00Z",
+            "fixture": "Colombia v Ghana",
+            "result": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        ]
       },
       {
         "roundCode": "R16",
@@ -17937,7 +22169,7 @@
       "GS1": 7,
       "GS2": 1,
       "GS3": 8,
-      "R32": 0,
+      "R32": -5,
       "R16": 0,
       "QF": 0,
       "SF": 0,
@@ -18077,7 +22309,45 @@
           }
         }
       ],
-      "R32": [],
+      "R32": [
+        {
+          "matchId": "M087",
+          "date": "2026-07-04T01:30:00Z",
+          "roundCode": "R32",
+          "fixture": "Colombia v Ghana",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 0,
+            "goalsAgainst": 1,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 3,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 0,
+              "goalsConceded": -2,
+              "penalties": 0,
+              "disciplinary": -3,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GA",
+                "value": -2,
+                "category": "goalsConceded"
+              },
+              {
+                "label": "YC",
+                "value": -3,
+                "category": "disciplinary"
+              }
+            ],
+            "total": -5
+          }
+        }
+      ],
       "R16": [],
       "QF": [],
       "SF": [],

@@ -167,7 +167,7 @@
     "teamName": "Player 1",
     "tieBreakerAnswers": [
       "162",
-      "77"
+      "89"
     ],
     "selectedTeams": [
       "Canada",
@@ -190,7 +190,7 @@
     "teamName": "Player 2",
     "tieBreakerAnswers": [
       "162",
-      "77"
+      "82"
     ],
     "selectedTeams": [
       "Canada",
@@ -732,7 +732,7 @@
       "Austria"
     ],
     "submittedAt": "2026-06-01T16:09:32.051Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -3584,7 +3584,7 @@
       "Ghana"
     ],
     "submittedAt": "2026-06-09T18:25:50.996Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -4182,7 +4182,7 @@
       "England"
     ],
     "submittedAt": "2026-06-11T16:54:25.346Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   },
   {
@@ -4320,7 +4320,7 @@
       "Ghana"
     ],
     "submittedAt": "2026-06-11T18:40:08.957Z",
-    "paid": false,
+    "paid": true,
     "removed": false
   }
 ]
