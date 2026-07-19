@@ -198,6 +198,72 @@
     ]
   },
   {
+    "entrantTeamName": "Alfie's 8",
+    "entrantName": "Alfie Surtees",
+    "entrantEmail": "alfie.surtees@canaccord.com",
+    "totalPoints": 351,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 55,
+      "GS2": 23,
+      "GS3": 113,
+      "R32": 53,
+      "R16": 45,
+      "QF": 40,
+      "SF": 7,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Ivory Coast",
+      "Spain",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Ivory Coast",
+        "points": 23
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      }
+    ],
+    "tieBreakers": [
+      "260",
+      "67"
+    ]
+  },
+  {
     "entrantTeamName": "Its Coming Home.....Again!!!",
     "entrantName": "Faz Patel",
     "entrantEmail": "fayaz.patel@canaccord.com",
@@ -330,29 +396,161 @@
     ]
   },
   {
-    "entrantTeamName": "Alfie's 8",
-    "entrantName": "Alfie Surtees",
-    "entrantEmail": "alfie.surtees@canaccord.com",
-    "totalPoints": 336,
-    "teamsRemaining": 1,
+    "entrantTeamName": "Name of Team 2",
+    "entrantName": "Matthew Hart",
+    "entrantEmail": "mahart2012@gmail.com",
+    "totalPoints": 340,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 55,
-      "GS2": 23,
-      "GS3": 113,
-      "R32": 53,
-      "R16": 45,
-      "QF": 40,
-      "SF": 7,
-      "TPP": 0,
+      "GS1": 62,
+      "GS2": 27,
+      "GS3": 114,
+      "R32": 61,
+      "R16": 46,
+      "QF": 23,
+      "SF": -8,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
+      "Mexico",
       "Bosnia and Herzegovina",
-      "Ivory Coast",
-      "Spain",
+      "Morocco",
+      "New Zealand",
+      "France",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Mexico",
+        "points": 53
+      },
+      {
+        "countryName": "Morocco",
+        "points": 53
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      }
+    ],
+    "tieBreakers": [
+      "205",
+      "10"
+    ]
+  },
+  {
+    "entrantTeamName": "Haaland Globetrotters",
+    "entrantName": "Julie Sebire",
+    "entrantEmail": "julie.sebire@canaccord.com",
+    "totalPoints": 335,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 71,
+      "GS2": 12,
+      "GS3": 95,
+      "R32": 49,
+      "R16": 48,
+      "QF": 42,
+      "SF": 3,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Korea",
+      "Bosnia and Herzegovina",
       "Saudi Arabia",
       "France",
       "Norway",
+      "Argentina",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Argentina",
+        "points": 99
+      },
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "South Korea",
+        "points": 1
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      }
+    ],
+    "tieBreakers": [
+      "194",
+      "78"
+    ]
+  },
+  {
+    "entrantTeamName": "The Eight Wonders of the World",
+    "entrantName": "Sheetal",
+    "entrantEmail": "sheetal.patel@canaccord.com",
+    "totalPoints": 331,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 29,
+      "GS2": 44,
+      "GS3": 110,
+      "R32": 55,
+      "R16": 29,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
       "England",
       "Ghana"
     ],
@@ -367,32 +565,32 @@
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
+        "countryName": "Brazil",
+        "points": 46
       },
       {
-        "countryName": "Ivory Coast",
-        "points": 23
+        "countryName": "Cape Verde",
+        "points": 13
       },
       {
         "countryName": "Ghana",
         "points": 11
       },
       {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
+        "countryName": "South Africa",
+        "points": 6
       },
       {
-        "countryName": "Saudi Arabia",
-        "points": -9
+        "countryName": "New Zealand",
+        "points": -10
       }
     ],
     "tieBreakers": [
-      "260",
-      "67"
+      "181",
+      "117"
     ]
   },
   {
@@ -528,95 +726,29 @@
     ]
   },
   {
-    "entrantTeamName": "Name of Team 2",
-    "entrantName": "Matthew Hart",
-    "entrantEmail": "mahart2012@gmail.com",
-    "totalPoints": 325,
-    "teamsRemaining": 0,
+    "entrantTeamName": "Uddersfield",
+    "entrantName": "Martin W",
+    "entrantEmail": "martin.whitwam@gov.gg",
+    "totalPoints": 324,
+    "teamsRemaining": 2,
     "byRound": {
-      "GS1": 62,
-      "GS2": 27,
-      "GS3": 114,
-      "R32": 61,
-      "R16": 46,
-      "QF": 23,
-      "SF": -8,
-      "TPP": 0,
+      "GS1": 49,
+      "GS2": 14,
+      "GS3": 111,
+      "R32": 38,
+      "R16": 33,
+      "QF": 40,
+      "SF": 24,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Mexico",
       "Bosnia and Herzegovina",
-      "Morocco",
-      "New Zealand",
-      "France",
-      "Norway",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Mexico",
-        "points": 53
-      },
-      {
-        "countryName": "Morocco",
-        "points": 53
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      }
-    ],
-    "tieBreakers": [
-      "205",
-      "10"
-    ]
-  },
-  {
-    "entrantTeamName": "Haaland Globetrotters",
-    "entrantName": "Julie Sebire",
-    "entrantEmail": "julie.sebire@canaccord.com",
-    "totalPoints": 320,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 71,
-      "GS2": 12,
-      "GS3": 95,
-      "R32": 49,
-      "R16": 48,
-      "QF": 42,
-      "SF": 3,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Korea",
-      "Bosnia and Herzegovina",
+      "Egypt",
+      "Spain",
       "Saudi Arabia",
-      "France",
-      "Norway",
       "Argentina",
+      "Austria",
       "England",
       "Ghana"
     ],
@@ -626,16 +758,20 @@
         "points": 99
       },
       {
-        "countryName": "France",
-        "points": 89
+        "countryName": "Spain",
+        "points": 93
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "Austria",
+        "points": 12
       },
       {
         "countryName": "Ghana",
@@ -646,17 +782,145 @@
         "points": 7
       },
       {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
         "countryName": "Saudi Arabia",
         "points": -9
       }
     ],
     "tieBreakers": [
-      "194",
-      "78"
+      "145",
+      "77"
+    ]
+  },
+  {
+    "entrantTeamName": "A Tactical Blundell",
+    "entrantName": "SHARON",
+    "entrantEmail": "sharon.blundell@canaccord.com",
+    "totalPoints": 322,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 41,
+      "GS2": 58,
+      "GS3": 93,
+      "R32": 71,
+      "R16": 11,
+      "QF": 20,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Canada",
+      "Switzerland",
+      "United States",
+      "Ivory Coast",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Switzerland",
+        "points": 51
+      },
+      {
+        "countryName": "United States",
+        "points": 38
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Ivory Coast",
+        "points": 23
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      }
+    ],
+    "tieBreakers": [
+      "187",
+      "83"
+    ]
+  },
+  {
+    "entrantTeamName": "The Lucky Eight",
+    "entrantName": "Jason",
+    "entrantEmail": "Jason.Robilliard@canaccord.com",
+    "totalPoints": 319,
+    "teamsRemaining": 2,
+    "byRound": {
+      "GS1": 54,
+      "GS2": 1,
+      "GS3": 86,
+      "R32": 51,
+      "R16": 50,
+      "QF": 38,
+      "SF": 24,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Sweden",
+      "Spain",
+      "Saudi Arabia",
+      "Norway",
+      "Argentina",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Argentina",
+        "points": 99
+      },
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "267",
+      "79"
     ]
   },
   {
@@ -726,29 +990,29 @@
     ]
   },
   {
-    "entrantTeamName": "The Eight Wonders of the World",
-    "entrantName": "Sheetal",
-    "entrantEmail": "sheetal.patel@canaccord.com",
-    "totalPoints": 316,
+    "entrantTeamName": "Kempes Winners",
+    "entrantName": "Adrian Kemp",
+    "entrantEmail": "adrian.kemp@canaccord.com",
+    "totalPoints": 315,
     "teamsRemaining": 1,
     "byRound": {
-      "GS1": 29,
-      "GS2": 44,
-      "GS3": 110,
-      "R32": 55,
-      "R16": 29,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
+      "GS1": 83,
+      "GS2": 45,
+      "GS3": 66,
+      "R32": 44,
+      "R16": 25,
+      "QF": 24,
+      "SF": 13,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
-      "Brazil",
+      "Canada",
+      "Germany",
+      "Sweden",
       "New Zealand",
       "Spain",
-      "Cape Verde",
-      "France",
+      "Norway",
       "England",
       "Ghana"
     ],
@@ -758,19 +1022,23 @@
         "points": 93
       },
       {
-        "countryName": "France",
-        "points": 89
-      },
-      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Brazil",
-        "points": 46
+        "countryName": "Norway",
+        "points": 54
       },
       {
-        "countryName": "Cape Verde",
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Sweden",
         "points": 13
       },
       {
@@ -778,17 +1046,13 @@
         "points": 11
       },
       {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
         "countryName": "New Zealand",
         "points": -10
       }
     ],
     "tieBreakers": [
-      "181",
-      "117"
+      "260",
+      "78"
     ]
   },
   {
@@ -924,52 +1188,48 @@
     ]
   },
   {
-    "entrantTeamName": "Uddersfield",
-    "entrantName": "Martin W",
-    "entrantEmail": "martin.whitwam@gov.gg",
-    "totalPoints": 309,
-    "teamsRemaining": 2,
+    "entrantTeamName": "The Slot Thickens",
+    "entrantName": "AJ",
+    "entrantEmail": "Arabella.Jones@canaccord.com",
+    "totalPoints": 308,
+    "teamsRemaining": 1,
     "byRound": {
-      "GS1": 49,
-      "GS2": 14,
-      "GS3": 111,
-      "R32": 38,
-      "R16": 33,
-      "QF": 40,
-      "SF": 24,
-      "TPP": 0,
+      "GS1": 35,
+      "GS2": 30,
+      "GS3": 97,
+      "R32": 53,
+      "R16": 29,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
       "Bosnia and Herzegovina",
-      "Egypt",
+      "Brazil",
+      "New Zealand",
       "Spain",
-      "Saudi Arabia",
-      "Argentina",
-      "Austria",
+      "France",
+      "Jordan",
       "England",
       "Ghana"
     ],
     "teamBreakdown": [
       {
-        "countryName": "Argentina",
-        "points": 99
-      },
-      {
         "countryName": "Spain",
         "points": 93
       },
       {
+        "countryName": "France",
+        "points": 89
+      },
+      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Austria",
-        "points": 12
+        "countryName": "Brazil",
+        "points": 46
       },
       {
         "countryName": "Ghana",
@@ -980,79 +1240,17 @@
         "points": 7
       },
       {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      }
-    ],
-    "tieBreakers": [
-      "145",
-      "77"
-    ]
-  },
-  {
-    "entrantTeamName": "A Tactical Blundell",
-    "entrantName": "SHARON",
-    "entrantEmail": "sharon.blundell@canaccord.com",
-    "totalPoints": 307,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 41,
-      "GS2": 58,
-      "GS3": 93,
-      "R32": 71,
-      "R16": 11,
-      "QF": 20,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Canada",
-      "Switzerland",
-      "United States",
-      "Ivory Coast",
-      "New Zealand",
-      "Spain",
-      "Cape Verde",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Switzerland",
-        "points": 51
-      },
-      {
-        "countryName": "United States",
-        "points": 38
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "Ivory Coast",
-        "points": 23
-      },
-      {
-        "countryName": "Cape Verde",
-        "points": 13
-      },
-      {
         "countryName": "New Zealand",
         "points": -10
+      },
+      {
+        "countryName": "Jordan",
+        "points": -11
       }
     ],
     "tieBreakers": [
-      "187",
-      "83"
+      "239",
+      "78"
     ]
   },
   {
@@ -1122,69 +1320,69 @@
     ]
   },
   {
-    "entrantTeamName": "The Lucky Eight",
-    "entrantName": "Jason",
-    "entrantEmail": "Jason.Robilliard@canaccord.com",
+    "entrantTeamName": "Ødegaardians of the Galaxy",
+    "entrantName": "Darren",
+    "entrantEmail": "Darren.Batiste@canaccord.com",
     "totalPoints": 304,
-    "teamsRemaining": 2,
+    "teamsRemaining": 1,
     "byRound": {
-      "GS1": 54,
-      "GS2": 1,
-      "GS3": 86,
-      "R32": 51,
-      "R16": 50,
-      "QF": 38,
-      "SF": 24,
-      "TPP": 0,
+      "GS1": 41,
+      "GS2": 34,
+      "GS3": 78,
+      "R32": 70,
+      "R16": 35,
+      "QF": 18,
+      "SF": 13,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
-      "Qatar",
-      "Sweden",
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Haiti",
+      "United States",
       "Spain",
-      "Saudi Arabia",
       "Norway",
-      "Argentina",
       "England"
     ],
     "teamBreakdown": [
-      {
-        "countryName": "Argentina",
-        "points": 99
-      },
       {
         "countryName": "Spain",
         "points": 93
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
         "countryName": "Norway",
         "points": 54
       },
       {
-        "countryName": "Sweden",
-        "points": 13
+        "countryName": "Switzerland",
+        "points": 51
       },
       {
-        "countryName": "South Africa",
-        "points": 6
+        "countryName": "United States",
+        "points": 38
       },
       {
-        "countryName": "Saudi Arabia",
-        "points": -9
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
       },
       {
-        "countryName": "Qatar",
-        "points": -20
+        "countryName": "Czechia",
+        "points": -5
+      },
+      {
+        "countryName": "Haiti",
+        "points": -17
       }
     ],
     "tieBreakers": [
-      "267",
-      "79"
+      "277",
+      "76"
     ]
   },
   {
@@ -1320,6 +1518,72 @@
     ]
   },
   {
+    "entrantTeamName": "Snash International",
+    "entrantName": "Alex",
+    "entrantEmail": "alex_snashall@hotmail.com",
+    "totalPoints": 303,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 67,
+      "GS2": 26,
+      "GS3": 102,
+      "R32": 45,
+      "R16": 28,
+      "QF": 28,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Paraguay",
+      "Sweden",
+      "Egypt",
+      "France",
+      "Norway",
+      "Austria",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "Paraguay",
+        "points": 13
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Austria",
+        "points": 12
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      }
+    ],
+    "tieBreakers": [
+      "112",
+      "81"
+    ]
+  },
+  {
     "entrantTeamName": "Seagulls!!!",
     "entrantName": "Richard Bolch",
     "entrantEmail": "richard.bolch@canaccord.com",
@@ -1386,29 +1650,29 @@
     ]
   },
   {
-    "entrantTeamName": "Kempes Winners",
-    "entrantName": "Adrian Kemp",
-    "entrantEmail": "adrian.kemp@canaccord.com",
-    "totalPoints": 300,
+    "entrantTeamName": "Tunnocks ekitecakes",
+    "entrantName": "Toby",
+    "entrantEmail": "tobyallebon@gmail.com",
+    "totalPoints": 301,
     "teamsRemaining": 1,
     "byRound": {
-      "GS1": 83,
-      "GS2": 45,
-      "GS3": 66,
-      "R32": 44,
-      "R16": 25,
-      "QF": 24,
-      "SF": 13,
-      "TPP": 0,
+      "GS1": 39,
+      "GS2": 19,
+      "GS3": 117,
+      "R32": 31,
+      "R16": 31,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Canada",
-      "Germany",
-      "Sweden",
+      "Bosnia and Herzegovina",
+      "Ivory Coast",
+      "Ecuador",
       "New Zealand",
       "Spain",
-      "Norway",
+      "France",
       "England",
       "Ghana"
     ],
@@ -1418,28 +1682,28 @@
         "points": 93
       },
       {
+        "countryName": "France",
+        "points": 89
+      },
+      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Germany",
-        "points": 40
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
+        "countryName": "Ivory Coast",
+        "points": 23
       },
       {
         "countryName": "Ghana",
         "points": 11
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "Ecuador",
+        "points": 5
       },
       {
         "countryName": "New Zealand",
@@ -1447,8 +1711,8 @@
       }
     ],
     "tieBreakers": [
-      "260",
-      "78"
+      "262",
+      "73"
     ]
   },
   {
@@ -1584,126 +1848,60 @@
     ]
   },
   {
-    "entrantTeamName": "The Slot Thickens",
-    "entrantName": "AJ",
-    "entrantEmail": "Arabella.Jones@canaccord.com",
+    "entrantTeamName": "Not a clue",
+    "entrantName": "Phil Midgley",
+    "entrantEmail": "phil.midgley@canaccord.com",
     "totalPoints": 293,
-    "teamsRemaining": 1,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 35,
-      "GS2": 30,
-      "GS3": 97,
-      "R32": 53,
-      "R16": 29,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
+      "GS1": 47,
+      "GS2": 24,
+      "GS3": 119,
+      "R32": 51,
+      "R16": 15,
+      "QF": 30,
+      "SF": -8,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Bosnia and Herzegovina",
+      "Mexico",
+      "South Africa",
       "Brazil",
+      "Sweden",
       "New Zealand",
-      "Spain",
+      "Cape Verde",
       "France",
-      "Jordan",
-      "England",
-      "Ghana"
+      "England"
     ],
     "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
       {
         "countryName": "France",
         "points": 89
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
+      },
+      {
+        "countryName": "Mexico",
+        "points": 53
       },
       {
         "countryName": "Brazil",
         "points": 46
       },
       {
-        "countryName": "Ghana",
-        "points": 11
+        "countryName": "Sweden",
+        "points": 13
       },
       {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
+        "countryName": "Cape Verde",
+        "points": 13
       },
       {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Jordan",
-        "points": -11
-      }
-    ],
-    "tieBreakers": [
-      "239",
-      "78"
-    ]
-  },
-  {
-    "entrantTeamName": "Ball Ball Ball, Footy Footy Footy",
-    "entrantName": "Ric Carter",
-    "entrantEmail": "rick.carter@canaccord.com",
-    "totalPoints": 292,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 30,
-      "GS2": 60,
-      "GS3": 93,
-      "R32": 63,
-      "R16": 27,
-      "QF": 4,
-      "SF": 15,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Bosnia and Herzegovina",
-      "Switzerland",
-      "Brazil",
-      "New Zealand",
-      "Spain",
-      "Norway",
-      "Portugal",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Switzerland",
-        "points": 51
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
+        "countryName": "South Africa",
+        "points": 6
       },
       {
         "countryName": "New Zealand",
@@ -1711,8 +1909,8 @@
       }
     ],
     "tieBreakers": [
-      "278",
-      "105"
+      "164",
+      "87"
     ]
   },
   {
@@ -1779,6 +1977,72 @@
     "tieBreakers": [
       "317",
       "67"
+    ]
+  },
+  {
+    "entrantTeamName": "Ball Ball Ball, Footy Footy Footy",
+    "entrantName": "Ric Carter",
+    "entrantEmail": "rick.carter@canaccord.com",
+    "totalPoints": 292,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 30,
+      "GS2": 60,
+      "GS3": 93,
+      "R32": 63,
+      "R16": 27,
+      "QF": 4,
+      "SF": 15,
+      "TPP": 0,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Switzerland",
+      "Brazil",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "Portugal",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Switzerland",
+        "points": 51
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      }
+    ],
+    "tieBreakers": [
+      "278",
+      "105"
     ]
   },
   {
@@ -1914,72 +2178,6 @@
     ]
   },
   {
-    "entrantTeamName": "Ødegaardians of the Galaxy",
-    "entrantName": "Darren",
-    "entrantEmail": "Darren.Batiste@canaccord.com",
-    "totalPoints": 289,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 41,
-      "GS2": 34,
-      "GS3": 78,
-      "R32": 70,
-      "R16": 35,
-      "QF": 18,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Czechia",
-      "Bosnia and Herzegovina",
-      "Switzerland",
-      "Haiti",
-      "United States",
-      "Spain",
-      "Norway",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Switzerland",
-        "points": 51
-      },
-      {
-        "countryName": "United States",
-        "points": 38
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "Czechia",
-        "points": -5
-      },
-      {
-        "countryName": "Haiti",
-        "points": -17
-      }
-    ],
-    "tieBreakers": [
-      "277",
-      "76"
-    ]
-  },
-  {
     "entrantTeamName": "Silly Goose FC",
     "entrantName": "Matt Bichard",
     "entrantEmail": "frobard1759@hotmail.co.uk",
@@ -2043,6 +2241,72 @@
     "tieBreakers": [
       "256",
       "64"
+    ]
+  },
+  {
+    "entrantTeamName": "Lop sided",
+    "entrantName": "Ed Peck",
+    "entrantEmail": "ed.peck@canaccord.com",
+    "totalPoints": 288,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 49,
+      "GS2": 22,
+      "GS3": 78,
+      "R32": 44,
+      "R16": 31,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "Cape Verde",
+      "France",
+      "Iraq",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Iraq",
+        "points": -27
+      }
+    ],
+    "tieBreakers": [
+      "285",
+      "70"
     ]
   },
   {
@@ -2178,93 +2442,93 @@
     ]
   },
   {
-    "entrantTeamName": "Snash International",
-    "entrantName": "Alex",
-    "entrantEmail": "alex_snashall@hotmail.com",
-    "totalPoints": 288,
-    "teamsRemaining": 0,
+    "entrantTeamName": "Top Bin",
+    "entrantName": "Ben",
+    "entrantEmail": "benchandler@hotmail.co.uk",
+    "totalPoints": 287,
+    "teamsRemaining": 1,
     "byRound": {
-      "GS1": 67,
-      "GS2": 26,
-      "GS3": 102,
-      "R32": 45,
-      "R16": 28,
-      "QF": 28,
-      "SF": -8,
-      "TPP": 0,
+      "GS1": 37,
+      "GS2": 32,
+      "GS3": 86,
+      "R32": 36,
+      "R16": 34,
+      "QF": 44,
+      "SF": 3,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Paraguay",
-      "Sweden",
-      "Egypt",
+      "Haiti",
+      "Curaçao",
+      "Japan",
+      "Cape Verde",
       "France",
-      "Norway",
-      "Austria",
+      "Argentina",
       "England",
       "Ghana"
     ],
     "teamBreakdown": [
+      {
+        "countryName": "Argentina",
+        "points": 99
+      },
       {
         "countryName": "France",
         "points": 89
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
+        "countryName": "Japan",
+        "points": 29
       },
       {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Paraguay",
+        "countryName": "Cape Verde",
         "points": 13
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Austria",
-        "points": 12
       },
       {
         "countryName": "Ghana",
         "points": 11
+      },
+      {
+        "countryName": "Haiti",
+        "points": -17
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
       }
     ],
     "tieBreakers": [
-      "112",
-      "81"
+      "185",
+      "82"
     ]
   },
   {
-    "entrantTeamName": "Tunnocks ekitecakes",
-    "entrantName": "Toby",
-    "entrantEmail": "tobyallebon@gmail.com",
-    "totalPoints": 286,
+    "entrantTeamName": "My Team wins",
+    "entrantName": "Scott Guilbert",
+    "entrantEmail": "scottguilbertgsy@gmail.com",
+    "totalPoints": 285,
     "teamsRemaining": 1,
     "byRound": {
-      "GS1": 39,
-      "GS2": 19,
-      "GS3": 117,
-      "R32": 31,
+      "GS1": 33,
+      "GS2": 31,
+      "GS3": 83,
+      "R32": 43,
       "R16": 31,
       "QF": 42,
       "SF": 7,
-      "TPP": 0,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Bosnia and Herzegovina",
-      "Ivory Coast",
-      "Ecuador",
-      "New Zealand",
+      "South Africa",
+      "Haiti",
+      "Germany",
+      "Curaçao",
       "Spain",
       "France",
       "England",
@@ -2281,32 +2545,32 @@
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Ivory Coast",
-        "points": 23
+        "countryName": "Germany",
+        "points": 40
       },
       {
         "countryName": "Ghana",
         "points": 11
       },
       {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
+        "countryName": "South Africa",
+        "points": 6
       },
       {
-        "countryName": "Ecuador",
-        "points": 5
+        "countryName": "Haiti",
+        "points": -17
       },
       {
-        "countryName": "New Zealand",
-        "points": -10
+        "countryName": "Curaçao",
+        "points": -20
       }
     ],
     "tieBreakers": [
-      "262",
-      "73"
+      "281",
+      "109"
     ]
   },
   {
@@ -2574,72 +2838,6 @@
     ]
   },
   {
-    "entrantTeamName": "Not a clue",
-    "entrantName": "Phil Midgley",
-    "entrantEmail": "phil.midgley@canaccord.com",
-    "totalPoints": 278,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 47,
-      "GS2": 24,
-      "GS3": 119,
-      "R32": 51,
-      "R16": 15,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Mexico",
-      "South Africa",
-      "Brazil",
-      "Sweden",
-      "New Zealand",
-      "Cape Verde",
-      "France",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Mexico",
-        "points": 53
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Cape Verde",
-        "points": 13
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      }
-    ],
-    "tieBreakers": [
-      "164",
-      "87"
-    ]
-  },
-  {
     "entrantTeamName": "Northerners AC",
     "entrantName": "Wayne Martel",
     "entrantEmail": "wayne.martel@cwgsy.net",
@@ -2838,6 +3036,204 @@
     ]
   },
   {
+    "entrantTeamName": "Ali & Gio",
+    "entrantName": "Alicja Luberda",
+    "entrantEmail": "a_luberda@hotmail.com",
+    "totalPoints": 276,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 51,
+      "GS2": 36,
+      "GS3": 92,
+      "R32": 39,
+      "R16": 23,
+      "QF": 28,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Canada",
+      "Scotland",
+      "Ecuador",
+      "Sweden",
+      "France",
+      "Norway",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Ecuador",
+        "points": 5
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      }
+    ],
+    "tieBreakers": [
+      "165",
+      "78"
+    ]
+  },
+  {
+    "entrantTeamName": "Gaffa Cakes",
+    "entrantName": "Michael",
+    "entrantEmail": "michael.clark@canaccord.com",
+    "totalPoints": 275,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 42,
+      "GS2": 41,
+      "GS3": 79,
+      "R32": 48,
+      "R16": 30,
+      "QF": 28,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Scotland",
+      "Japan",
+      "Egypt",
+      "Saudi Arabia",
+      "France",
+      "Norway",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      }
+    ],
+    "tieBreakers": [
+      "342",
+      "112"
+    ]
+  },
+  {
+    "entrantTeamName": "No Kane, No Gain",
+    "entrantName": "Christina",
+    "entrantEmail": "christina.sharples@canaccord.com",
+    "totalPoints": 274,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 46,
+      "GS2": 30,
+      "GS3": 65,
+      "R32": 50,
+      "R16": 31,
+      "QF": 24,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Scotland",
+      "Sweden",
+      "New Zealand",
+      "Spain",
+      "Norway",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      }
+    ],
+    "tieBreakers": [
+      "278",
+      "91"
+    ]
+  },
+  {
     "entrantTeamName": "Bruno over Rice",
     "entrantName": "Emma",
     "entrantEmail": "emma.queripel@canaccord.com",
@@ -2904,48 +3300,52 @@
     ]
   },
   {
-    "entrantTeamName": "Lop sided",
-    "entrantName": "Ed Peck",
-    "entrantEmail": "ed.peck@canaccord.com",
-    "totalPoints": 273,
-    "teamsRemaining": 1,
+    "entrantTeamName": "Its Coming Home FC",
+    "entrantName": "Nick Jacques",
+    "entrantEmail": "Nick.jacques@canaccord.com",
+    "totalPoints": 274,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 49,
-      "GS2": 22,
-      "GS3": 78,
-      "R32": 44,
-      "R16": 31,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
+      "GS1": 39,
+      "GS2": 38,
+      "GS3": 111,
+      "R32": 34,
+      "R16": 15,
+      "QF": 30,
+      "SF": -8,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
       "Bosnia and Herzegovina",
-      "Germany",
+      "Ivory Coast",
+      "Japan",
       "New Zealand",
-      "Spain",
       "Cape Verde",
       "France",
-      "Iraq",
+      "Portugal",
       "England"
     ],
     "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
       {
         "countryName": "France",
         "points": 89
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Germany",
+        "countryName": "Portugal",
         "points": 40
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Ivory Coast",
+        "points": 23
       },
       {
         "countryName": "Cape Verde",
@@ -2958,15 +3358,11 @@
       {
         "countryName": "New Zealand",
         "points": -10
-      },
-      {
-        "countryName": "Iraq",
-        "points": -27
       }
     ],
     "tieBreakers": [
-      "285",
-      "70"
+      "170",
+      "76"
     ]
   },
   {
@@ -3102,60 +3498,60 @@
     ]
   },
   {
-    "entrantTeamName": "Top Bin",
-    "entrantName": "Ben",
-    "entrantEmail": "benchandler@hotmail.co.uk",
-    "totalPoints": 272,
-    "teamsRemaining": 1,
+    "entrantTeamName": "Carlos 74",
+    "entrantName": "Carl",
+    "entrantEmail": "carl.ham-howes@canaccord.com",
+    "totalPoints": 271,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 37,
-      "GS2": 32,
-      "GS3": 86,
-      "R32": 36,
-      "R16": 34,
-      "QF": 44,
-      "SF": 3,
-      "TPP": 0,
+      "GS1": 29,
+      "GS2": 52,
+      "GS3": 68,
+      "R32": 59,
+      "R16": 28,
+      "QF": 28,
+      "SF": -8,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Haiti",
+      "Scotland",
+      "Paraguay",
       "Curaçao",
       "Japan",
-      "Cape Verde",
+      "Egypt",
       "France",
-      "Argentina",
-      "England",
-      "Ghana"
+      "Norway",
+      "England"
     ],
     "teamBreakdown": [
-      {
-        "countryName": "Argentina",
-        "points": 99
-      },
       {
         "countryName": "France",
         "points": 89
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
       },
       {
         "countryName": "Japan",
         "points": 29
       },
       {
-        "countryName": "Cape Verde",
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "Paraguay",
         "points": 13
       },
       {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Haiti",
-        "points": -17
+        "countryName": "Scotland",
+        "points": -5
       },
       {
         "countryName": "Curaçao",
@@ -3163,8 +3559,8 @@
       }
     ],
     "tieBreakers": [
-      "185",
-      "82"
+      "320",
+      "94"
     ]
   },
   {
@@ -3234,29 +3630,161 @@
     ]
   },
   {
-    "entrantTeamName": "My Team wins",
-    "entrantName": "Scott Guilbert",
-    "entrantEmail": "scottguilbertgsy@gmail.com",
-    "totalPoints": 270,
-    "teamsRemaining": 1,
+    "entrantTeamName": "Biased North American",
+    "entrantName": "Colin Mather",
+    "entrantEmail": "colinmather2600@gmail.com",
+    "totalPoints": 271,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 33,
-      "GS2": 31,
-      "GS3": 83,
-      "R32": 43,
-      "R16": 31,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
+      "GS1": 45,
+      "GS2": 59,
+      "GS3": 70,
+      "R32": 68,
+      "R16": 4,
+      "QF": 12,
+      "SF": -2,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
-      "Haiti",
-      "Germany",
+      "Mexico",
+      "Canada",
+      "United States",
       "Curaçao",
-      "Spain",
+      "Netherlands",
+      "New Zealand",
+      "Norway",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Mexico",
+        "points": 53
+      },
+      {
+        "countryName": "Netherlands",
+        "points": 42
+      },
+      {
+        "countryName": "United States",
+        "points": 38
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "247",
+      "76"
+    ]
+  },
+  {
+    "entrantTeamName": "Kimmich Impossible",
+    "entrantName": "Darren Loveridge",
+    "entrantEmail": "dloveridgegg@gmail.com",
+    "totalPoints": 271,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 74,
+      "GS2": 29,
+      "GS3": 88,
+      "R32": 27,
+      "R16": 16,
+      "QF": 30,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Scotland",
+      "Germany",
+      "Egypt",
+      "Cape Verde",
       "France",
+      "Austria",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "Austria",
+        "points": 12
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      }
+    ],
+    "tieBreakers": [
+      "184",
+      "67"
+    ]
+  },
+  {
+    "entrantTeamName": "The Fighting Finches",
+    "entrantName": "Andy",
+    "entrantEmail": "andy.finch@canaccord.com",
+    "totalPoints": 270,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 28,
+      "GS2": 27,
+      "GS3": 83,
+      "R32": 47,
+      "R16": 33,
+      "QF": 24,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Tunisia",
+      "Spain",
+      "Norway",
       "England",
       "Ghana"
     ],
@@ -3266,37 +3794,37 @@
         "points": 93
       },
       {
-        "countryName": "France",
-        "points": 89
-      },
-      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Germany",
-        "points": 40
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
       },
       {
         "countryName": "Ghana",
         "points": 11
       },
       {
-        "countryName": "South Africa",
-        "points": 6
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
       },
       {
-        "countryName": "Haiti",
-        "points": -17
+        "countryName": "Czechia",
+        "points": -5
       },
       {
-        "countryName": "Curaçao",
-        "points": -20
+        "countryName": "Tunisia",
+        "points": -19
       }
     ],
     "tieBreakers": [
-      "281",
-      "109"
+      "278",
+      "82"
     ]
   },
   {
@@ -3429,6 +3957,72 @@
     "tieBreakers": [
       "245",
       "86"
+    ]
+  },
+  {
+    "entrantTeamName": "Shed Heads",
+    "entrantName": "Luke",
+    "entrantEmail": "luke@pottingshed.com",
+    "totalPoints": 267,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 52,
+      "GS2": 35,
+      "GS3": 71,
+      "R32": 48,
+      "R16": 26,
+      "QF": 28,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Korea",
+      "United States",
+      "Curaçao",
+      "France",
+      "Norway",
+      "Algeria",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "United States",
+        "points": 38
+      },
+      {
+        "countryName": "Algeria",
+        "points": 11
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "South Korea",
+        "points": 1
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "290",
+      "76"
     ]
   },
   {
@@ -3696,6 +4290,138 @@
     ]
   },
   {
+    "entrantTeamName": "Who Ate All Depays?",
+    "entrantName": "Becca",
+    "entrantEmail": "Rebecca.LeTissier@canaccord.com",
+    "totalPoints": 264,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 6,
+      "GS2": 35,
+      "GS3": 70,
+      "R32": 62,
+      "R16": 27,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Haiti",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
+      "France",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Haiti",
+        "points": -17
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "207",
+      "73"
+    ]
+  },
+  {
+    "entrantTeamName": "Laurenaldo FC",
+    "entrantName": "Lauren",
+    "entrantEmail": "lauren.vidamour@outlook.com",
+    "totalPoints": 264,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 9,
+      "GS2": 28,
+      "GS3": 77,
+      "R32": 59,
+      "R16": 27,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Haiti",
+      "Curaçao",
+      "Spain",
+      "France",
+      "Jordan",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "Jordan",
+        "points": -11
+      },
+      {
+        "countryName": "Haiti",
+        "points": -17
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "178",
+      "87"
+    ]
+  },
+  {
     "entrantTeamName": "World Cup Willie",
     "entrantName": "Will Holmes",
     "entrantEmail": "william.holmes@canaccord.com",
@@ -3960,31 +4686,31 @@
     ]
   },
   {
-    "entrantTeamName": "Ali & Gio",
-    "entrantName": "Alicja Luberda",
-    "entrantEmail": "a_luberda@hotmail.com",
+    "entrantTeamName": "Spain in the Arse",
+    "entrantName": "Richard Cranch",
+    "entrantEmail": "richard.cranch@canaccord.com",
     "totalPoints": 261,
     "teamsRemaining": 0,
     "byRound": {
-      "GS1": 51,
-      "GS2": 36,
-      "GS3": 92,
-      "R32": 39,
-      "R16": 23,
-      "QF": 28,
+      "GS1": 60,
+      "GS2": 12,
+      "GS3": 109,
+      "R32": 28,
+      "R16": 15,
+      "QF": 30,
       "SF": -8,
-      "TPP": 0,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
-      "Canada",
+      "Bosnia and Herzegovina",
       "Scotland",
-      "Ecuador",
+      "Ivory Coast",
       "Sweden",
       "France",
-      "Norway",
-      "England"
+      "Portugal",
+      "England",
+      "Ghana"
     ],
     "teamBreakdown": [
       {
@@ -3993,27 +4719,27 @@
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
+        "countryName": "Portugal",
+        "points": 40
       },
       {
-        "countryName": "Canada",
-        "points": 31
+        "countryName": "Ivory Coast",
+        "points": 23
       },
       {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "South Africa",
-        "points": 6
+        "countryName": "Ghana",
+        "points": 11
       },
       {
-        "countryName": "Ecuador",
-        "points": 5
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
       },
       {
         "countryName": "Scotland",
@@ -4021,8 +4747,74 @@
       }
     ],
     "tieBreakers": [
-      "165",
-      "78"
+      "277",
+      "94"
+    ]
+  },
+  {
+    "entrantTeamName": "Uncontrolled Dribbling",
+    "entrantName": "Lars de Garis",
+    "entrantEmail": "laurence.degaris@canaccord.com",
+    "totalPoints": 261,
+    "teamsRemaining": 2,
+    "byRound": {
+      "GS1": 33,
+      "GS2": 4,
+      "GS3": 62,
+      "R32": 47,
+      "R16": 36,
+      "QF": 40,
+      "SF": 24,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Qatar",
+      "Haiti",
+      "Netherlands",
+      "New Zealand",
+      "Spain",
+      "Saudi Arabia",
+      "Argentina",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Argentina",
+        "points": 99
+      },
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Netherlands",
+        "points": 42
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Haiti",
+        "points": -17
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "117",
+      "77"
     ]
   },
   {
@@ -4089,204 +4881,6 @@
     "tieBreakers": [
       "276",
       "32"
-    ]
-  },
-  {
-    "entrantTeamName": "Gaffa Cakes",
-    "entrantName": "Michael",
-    "entrantEmail": "michael.clark@canaccord.com",
-    "totalPoints": 260,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 42,
-      "GS2": 41,
-      "GS3": 79,
-      "R32": 48,
-      "R16": 30,
-      "QF": 28,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Scotland",
-      "Japan",
-      "Egypt",
-      "Saudi Arabia",
-      "France",
-      "Norway",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      }
-    ],
-    "tieBreakers": [
-      "342",
-      "112"
-    ]
-  },
-  {
-    "entrantTeamName": "No Kane, No Gain",
-    "entrantName": "Christina",
-    "entrantEmail": "christina.sharples@canaccord.com",
-    "totalPoints": 259,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 46,
-      "GS2": 30,
-      "GS3": 65,
-      "R32": 50,
-      "R16": 31,
-      "QF": 24,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Scotland",
-      "Sweden",
-      "New Zealand",
-      "Spain",
-      "Norway",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      }
-    ],
-    "tieBreakers": [
-      "278",
-      "91"
-    ]
-  },
-  {
-    "entrantTeamName": "Its Coming Home FC",
-    "entrantName": "Nick Jacques",
-    "entrantEmail": "Nick.jacques@canaccord.com",
-    "totalPoints": 259,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 39,
-      "GS2": 38,
-      "GS3": 111,
-      "R32": 34,
-      "R16": 15,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Bosnia and Herzegovina",
-      "Ivory Coast",
-      "Japan",
-      "New Zealand",
-      "Cape Verde",
-      "France",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Ivory Coast",
-        "points": 23
-      },
-      {
-        "countryName": "Cape Verde",
-        "points": 13
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      }
-    ],
-    "tieBreakers": [
-      "170",
-      "76"
     ]
   },
   {
@@ -4554,204 +5148,6 @@
     ]
   },
   {
-    "entrantTeamName": "Carlos 74",
-    "entrantName": "Carl",
-    "entrantEmail": "carl.ham-howes@canaccord.com",
-    "totalPoints": 256,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 29,
-      "GS2": 52,
-      "GS3": 68,
-      "R32": 59,
-      "R16": 28,
-      "QF": 28,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Scotland",
-      "Paraguay",
-      "Curaçao",
-      "Japan",
-      "Egypt",
-      "France",
-      "Norway",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Paraguay",
-        "points": 13
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "320",
-      "94"
-    ]
-  },
-  {
-    "entrantTeamName": "Biased North American",
-    "entrantName": "Colin Mather",
-    "entrantEmail": "colinmather2600@gmail.com",
-    "totalPoints": 256,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 45,
-      "GS2": 59,
-      "GS3": 70,
-      "R32": 68,
-      "R16": 4,
-      "QF": 12,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Mexico",
-      "Canada",
-      "United States",
-      "Curaçao",
-      "Netherlands",
-      "New Zealand",
-      "Norway",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Mexico",
-        "points": 53
-      },
-      {
-        "countryName": "Netherlands",
-        "points": 42
-      },
-      {
-        "countryName": "United States",
-        "points": 38
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "247",
-      "76"
-    ]
-  },
-  {
-    "entrantTeamName": "Kimmich Impossible",
-    "entrantName": "Darren Loveridge",
-    "entrantEmail": "dloveridgegg@gmail.com",
-    "totalPoints": 256,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 74,
-      "GS2": 29,
-      "GS3": 88,
-      "R32": 27,
-      "R16": 16,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Scotland",
-      "Germany",
-      "Egypt",
-      "Cape Verde",
-      "France",
-      "Austria",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Germany",
-        "points": 40
-      },
-      {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Cape Verde",
-        "points": 13
-      },
-      {
-        "countryName": "Austria",
-        "points": 12
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      }
-    ],
-    "tieBreakers": [
-      "184",
-      "67"
-    ]
-  },
-  {
     "entrantTeamName": "Brandon XI",
     "entrantName": "Brandon",
     "entrantEmail": "brandonbatchelor2@gmail.com",
@@ -4881,72 +5277,6 @@
     "tieBreakers": [
       "280",
       "83"
-    ]
-  },
-  {
-    "entrantTeamName": "The Fighting Finches",
-    "entrantName": "Andy",
-    "entrantEmail": "andy.finch@canaccord.com",
-    "totalPoints": 255,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 28,
-      "GS2": 27,
-      "GS3": 83,
-      "R32": 47,
-      "R16": 33,
-      "QF": 24,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Czechia",
-      "Bosnia and Herzegovina",
-      "Brazil",
-      "Tunisia",
-      "Spain",
-      "Norway",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "Czechia",
-        "points": -5
-      },
-      {
-        "countryName": "Tunisia",
-        "points": -19
-      }
-    ],
-    "tieBreakers": [
-      "278",
-      "82"
     ]
   },
   {
@@ -5082,29 +5412,29 @@
     ]
   },
   {
-    "entrantTeamName": "Shed Heads",
-    "entrantName": "Luke",
-    "entrantEmail": "luke@pottingshed.com",
+    "entrantTeamName": "It's coming home",
+    "entrantName": "Rob",
+    "entrantEmail": "robert.llewellin@canaccord.com",
     "totalPoints": 252,
     "teamsRemaining": 0,
     "byRound": {
-      "GS1": 52,
-      "GS2": 35,
-      "GS3": 71,
-      "R32": 48,
-      "R16": 26,
-      "QF": 28,
+      "GS1": 44,
+      "GS2": 22,
+      "GS3": 101,
+      "R32": 32,
+      "R16": 16,
+      "QF": 30,
       "SF": -8,
-      "TPP": 0,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
       "South Korea",
-      "United States",
-      "Curaçao",
+      "Bosnia and Herzegovina",
+      "Netherlands",
+      "Egypt",
+      "Saudi Arabia",
       "France",
-      "Norway",
-      "Algeria",
       "England",
       "Ghana"
     ],
@@ -5115,36 +5445,36 @@
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
+        "countryName": "Netherlands",
+        "points": 42
       },
       {
-        "countryName": "United States",
-        "points": 38
-      },
-      {
-        "countryName": "Algeria",
-        "points": 11
+        "countryName": "Egypt",
+        "points": 28
       },
       {
         "countryName": "Ghana",
         "points": 11
       },
       {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
         "countryName": "South Korea",
         "points": 1
       },
       {
-        "countryName": "Curaçao",
-        "points": -20
+        "countryName": "Saudi Arabia",
+        "points": -9
       }
     ],
     "tieBreakers": [
-      "290",
-      "76"
+      "280",
+      "96"
     ]
   },
   {
@@ -5211,6 +5541,138 @@
     "tieBreakers": [
       "352",
       "78"
+    ]
+  },
+  {
+    "entrantTeamName": "Clueless",
+    "entrantName": "Kate Howlett",
+    "entrantEmail": "katehowlett83@gmail.com",
+    "totalPoints": 252,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 64,
+      "GS2": 6,
+      "GS3": 84,
+      "R32": 51,
+      "R16": 10,
+      "QF": 30,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Qatar",
+      "Brazil",
+      "United States",
+      "Sweden",
+      "New Zealand",
+      "Cape Verde",
+      "France",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "United States",
+        "points": 38
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "194",
+      "63"
+    ]
+  },
+  {
+    "entrantTeamName": "Frenchy's Ballers",
+    "entrantName": "Paul",
+    "entrantEmail": "Paul.French@canaccord.com",
+    "totalPoints": 250,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 44,
+      "GS2": 45,
+      "GS3": 98,
+      "R32": 15,
+      "R16": 23,
+      "QF": 12,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Bosnia and Herzegovina",
+      "Germany",
+      "Netherlands",
+      "Japan",
+      "Norway",
+      "Jordan",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Netherlands",
+        "points": 42
+      },
+      {
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Jordan",
+        "points": -11
+      }
+    ],
+    "tieBreakers": [
+      "276",
+      "68"
     ]
   },
   {
@@ -5346,135 +5808,69 @@
     ]
   },
   {
-    "entrantTeamName": "Who Ate All Depays?",
-    "entrantName": "Becca",
-    "entrantEmail": "Rebecca.LeTissier@canaccord.com",
-    "totalPoints": 249,
-    "teamsRemaining": 1,
+    "entrantTeamName": "VAR Said No",
+    "entrantName": "Stacey",
+    "entrantEmail": "stacey.davies@canaccord.com",
+    "totalPoints": 247,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 6,
-      "GS2": 35,
-      "GS3": 70,
-      "R32": 62,
-      "R16": 27,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
+      "GS1": 86,
+      "GS2": 19,
+      "GS3": 78,
+      "R32": 16,
+      "R16": 23,
+      "QF": 12,
+      "SF": -2,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
-      "Haiti",
-      "Curaçao",
-      "New Zealand",
-      "Spain",
-      "France",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Haiti",
-        "points": -17
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "207",
-      "73"
-    ]
-  },
-  {
-    "entrantTeamName": "Laurenaldo FC",
-    "entrantName": "Lauren",
-    "entrantEmail": "lauren.vidamour@outlook.com",
-    "totalPoints": 249,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 9,
-      "GS2": 28,
-      "GS3": 77,
-      "R32": 59,
-      "R16": 27,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Bosnia and Herzegovina",
-      "Haiti",
-      "Curaçao",
-      "Spain",
-      "France",
+      "Australia",
+      "Germany",
+      "Netherlands",
+      "Sweden",
+      "Norway",
       "Jordan",
-      "Portugal",
-      "England"
+      "England",
+      "Ghana"
     ],
     "teamBreakdown": [
       {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Portugal",
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Netherlands",
+        "points": 42
+      },
+      {
+        "countryName": "Germany",
         "points": 40
       },
       {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
+        "countryName": "Australia",
+        "points": 15
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
       },
       {
         "countryName": "Jordan",
         "points": -11
-      },
-      {
-        "countryName": "Haiti",
-        "points": -17
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
       }
     ],
     "tieBreakers": [
-      "178",
-      "87"
+      "326",
+      "97"
     ]
   },
   {
@@ -5610,6 +6006,72 @@
     ]
   },
   {
+    "entrantTeamName": "Tartan Army",
+    "entrantName": "Jamie Drummond",
+    "entrantEmail": "jamieadrummond@hotmail.com",
+    "totalPoints": 247,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 56,
+      "GS2": -5,
+      "GS3": 110,
+      "R32": 32,
+      "R16": 17,
+      "QF": 30,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Bosnia and Herzegovina",
+      "Brazil",
+      "Scotland",
+      "Ivory Coast",
+      "Sweden",
+      "Saudi Arabia",
+      "France",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Ivory Coast",
+        "points": 23
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      }
+    ],
+    "tieBreakers": [
+      "200",
+      "80"
+    ]
+  },
+  {
     "entrantTeamName": "Name of Team",
     "entrantName": "Matt Hart",
     "entrantEmail": "matt.hart@canaccord.com",
@@ -5676,72 +6138,6 @@
     ]
   },
   {
-    "entrantTeamName": "Spain in the Arse",
-    "entrantName": "Richard Cranch",
-    "entrantEmail": "richard.cranch@canaccord.com",
-    "totalPoints": 246,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 60,
-      "GS2": 12,
-      "GS3": 109,
-      "R32": 28,
-      "R16": 15,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Bosnia and Herzegovina",
-      "Scotland",
-      "Ivory Coast",
-      "Sweden",
-      "France",
-      "Portugal",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Ivory Coast",
-        "points": 23
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      }
-    ],
-    "tieBreakers": [
-      "277",
-      "94"
-    ]
-  },
-  {
     "entrantTeamName": "Suffolk Punch",
     "entrantName": "Paul Philp",
     "entrantEmail": "paul.philp@canaccord.com",
@@ -5805,72 +6201,6 @@
     "tieBreakers": [
       "273",
       "86"
-    ]
-  },
-  {
-    "entrantTeamName": "Uncontrolled Dribbling",
-    "entrantName": "Lars de Garis",
-    "entrantEmail": "laurence.degaris@canaccord.com",
-    "totalPoints": 246,
-    "teamsRemaining": 2,
-    "byRound": {
-      "GS1": 33,
-      "GS2": 4,
-      "GS3": 62,
-      "R32": 47,
-      "R16": 36,
-      "QF": 40,
-      "SF": 24,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Qatar",
-      "Haiti",
-      "Netherlands",
-      "New Zealand",
-      "Spain",
-      "Saudi Arabia",
-      "Argentina",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Argentina",
-        "points": 99
-      },
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Netherlands",
-        "points": 42
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Haiti",
-        "points": -17
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "117",
-      "77"
     ]
   },
   {
@@ -6069,6 +6399,72 @@
     "tieBreakers": [
       "284",
       "109"
+    ]
+  },
+  {
+    "entrantTeamName": "Desi684",
+    "entrantName": "Archie Despres",
+    "entrantEmail": "archiedespres@gmail.com",
+    "totalPoints": 243,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 38,
+      "GS2": 6,
+      "GS3": 95,
+      "R32": 31,
+      "R16": 19,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Czechia",
+      "Bosnia and Herzegovina",
+      "Türkiye",
+      "Sweden",
+      "Spain",
+      "Cape Verde",
+      "Colombia",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Colombia",
+        "points": 37
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "Bosnia and Herzegovina",
+        "points": 7
+      },
+      {
+        "countryName": "Türkiye",
+        "points": 2
+      },
+      {
+        "countryName": "Czechia",
+        "points": -5
+      }
+    ],
+    "tieBreakers": [
+      "174",
+      "84"
     ]
   },
   {
@@ -6336,29 +6732,95 @@
     ]
   },
   {
-    "entrantTeamName": "It's coming home",
-    "entrantName": "Rob",
-    "entrantEmail": "robert.llewellin@canaccord.com",
-    "totalPoints": 237,
-    "teamsRemaining": 0,
+    "entrantTeamName": "That's Rubbish - But i'm gonna go for it!",
+    "entrantName": "Kelly",
+    "entrantEmail": "Kelly.ogier@canaccord.com",
+    "totalPoints": 238,
+    "teamsRemaining": 1,
     "byRound": {
-      "GS1": 44,
-      "GS2": 22,
-      "GS3": 101,
-      "R32": 32,
-      "R16": 16,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
+      "GS1": 17,
+      "GS2": 17,
+      "GS3": 49,
+      "R32": 64,
+      "R16": 27,
+      "QF": 42,
+      "SF": 7,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Korea",
-      "Bosnia and Herzegovina",
-      "Netherlands",
-      "Egypt",
-      "Saudi Arabia",
+      "Qatar",
+      "Haiti",
+      "Curaçao",
+      "New Zealand",
+      "Spain",
       "France",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Haiti",
+        "points": -17
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "286",
+      "76"
+    ]
+  },
+  {
+    "entrantTeamName": "Accidental Champion",
+    "entrantName": "Lisa Vidamour",
+    "entrantEmail": "lisa.vidamour@canaccord.com",
+    "totalPoints": 237,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 58,
+      "GS2": -3,
+      "GS3": 89,
+      "R32": 25,
+      "R16": 33,
+      "QF": 28,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Qatar",
+      "Türkiye",
+      "Ecuador",
+      "Sweden",
+      "France",
+      "Norway",
       "England",
       "Ghana"
     ],
@@ -6369,93 +6831,27 @@
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Netherlands",
-        "points": 42
-      },
-      {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      }
-    ],
-    "tieBreakers": [
-      "280",
-      "96"
-    ]
-  },
-  {
-    "entrantTeamName": "Clueless",
-    "entrantName": "Kate Howlett",
-    "entrantEmail": "katehowlett83@gmail.com",
-    "totalPoints": 237,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 64,
-      "GS2": 6,
-      "GS3": 84,
-      "R32": 51,
-      "R16": 10,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Qatar",
-      "Brazil",
-      "United States",
-      "Sweden",
-      "New Zealand",
-      "Cape Verde",
-      "France",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "United States",
-        "points": 38
+        "countryName": "Norway",
+        "points": 54
       },
       {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "Cape Verde",
-        "points": 13
+        "countryName": "Ghana",
+        "points": 11
       },
       {
-        "countryName": "New Zealand",
-        "points": -10
+        "countryName": "Ecuador",
+        "points": 5
+      },
+      {
+        "countryName": "Türkiye",
+        "points": 2
       },
       {
         "countryName": "Qatar",
@@ -6463,8 +6859,8 @@
       }
     ],
     "tieBreakers": [
-      "194",
-      "63"
+      "167",
+      "62"
     ]
   },
   {
@@ -6531,72 +6927,6 @@
     "tieBreakers": [
       "281",
       "101"
-    ]
-  },
-  {
-    "entrantTeamName": "Frenchy's Ballers",
-    "entrantName": "Paul",
-    "entrantEmail": "Paul.French@canaccord.com",
-    "totalPoints": 235,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 44,
-      "GS2": 45,
-      "GS3": 98,
-      "R32": 15,
-      "R16": 23,
-      "QF": 12,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Bosnia and Herzegovina",
-      "Germany",
-      "Netherlands",
-      "Japan",
-      "Norway",
-      "Jordan",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Netherlands",
-        "points": 42
-      },
-      {
-        "countryName": "Germany",
-        "points": 40
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "Jordan",
-        "points": -11
-      }
-    ],
-    "tieBreakers": [
-      "276",
-      "68"
     ]
   },
   {
@@ -6798,138 +7128,6 @@
     ]
   },
   {
-    "entrantTeamName": "VAR Said No",
-    "entrantName": "Stacey",
-    "entrantEmail": "stacey.davies@canaccord.com",
-    "totalPoints": 232,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 86,
-      "GS2": 19,
-      "GS3": 78,
-      "R32": 16,
-      "R16": 23,
-      "QF": 12,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Australia",
-      "Germany",
-      "Netherlands",
-      "Sweden",
-      "Norway",
-      "Jordan",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Netherlands",
-        "points": 42
-      },
-      {
-        "countryName": "Germany",
-        "points": 40
-      },
-      {
-        "countryName": "Australia",
-        "points": 15
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Jordan",
-        "points": -11
-      }
-    ],
-    "tieBreakers": [
-      "326",
-      "97"
-    ]
-  },
-  {
-    "entrantTeamName": "Tartan Army",
-    "entrantName": "Jamie Drummond",
-    "entrantEmail": "jamieadrummond@hotmail.com",
-    "totalPoints": 232,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 56,
-      "GS2": -5,
-      "GS3": 110,
-      "R32": 32,
-      "R16": 17,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Bosnia and Herzegovina",
-      "Brazil",
-      "Scotland",
-      "Ivory Coast",
-      "Sweden",
-      "Saudi Arabia",
-      "France",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Ivory Coast",
-        "points": 23
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      }
-    ],
-    "tieBreakers": [
-      "200",
-      "80"
-    ]
-  },
-  {
     "entrantTeamName": "Turton's terrible teams",
     "entrantName": "Ceri",
     "entrantEmail": "Ceri.Turton@canaccord.com",
@@ -7062,72 +7260,6 @@
     ]
   },
   {
-    "entrantTeamName": "Desi684",
-    "entrantName": "Archie Despres",
-    "entrantEmail": "archiedespres@gmail.com",
-    "totalPoints": 228,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 38,
-      "GS2": 6,
-      "GS3": 95,
-      "R32": 31,
-      "R16": 19,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Czechia",
-      "Bosnia and Herzegovina",
-      "Türkiye",
-      "Sweden",
-      "Spain",
-      "Cape Verde",
-      "Colombia",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Colombia",
-        "points": 37
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Cape Verde",
-        "points": 13
-      },
-      {
-        "countryName": "Bosnia and Herzegovina",
-        "points": 7
-      },
-      {
-        "countryName": "Türkiye",
-        "points": 2
-      },
-      {
-        "countryName": "Czechia",
-        "points": -5
-      }
-    ],
-    "tieBreakers": [
-      "174",
-      "84"
-    ]
-  },
-  {
     "entrantTeamName": "FAJGAMAS",
     "entrantName": "Artur",
     "entrantEmail": "arthastic@gmail.com",
@@ -7191,6 +7323,204 @@
     "tieBreakers": [
       "174",
       "87"
+    ]
+  },
+  {
+    "entrantTeamName": "CG & HF",
+    "entrantName": "Chloe & Helen",
+    "entrantEmail": "chloe.gaudion@canaccord.com",
+    "totalPoints": 227,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 31,
+      "GS2": 17,
+      "GS3": 65,
+      "R32": 41,
+      "R16": 19,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Brazil",
+      "Germany",
+      "New Zealand",
+      "Spain",
+      "Jordan",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Jordan",
+        "points": -11
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "222",
+      "89"
+    ]
+  },
+  {
+    "entrantTeamName": "Bimbound buccaneers",
+    "entrantName": "Alison Williams",
+    "entrantEmail": "bimboundali@gmail.com",
+    "totalPoints": 225,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 4,
+      "GS2": 10,
+      "GS3": 110,
+      "R32": 28,
+      "R16": 19,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Paraguay",
+      "Sweden",
+      "Tunisia",
+      "Spain",
+      "DR Congo",
+      "England",
+      "Croatia"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Croatia",
+        "points": 20
+      },
+      {
+        "countryName": "DR Congo",
+        "points": 16
+      },
+      {
+        "countryName": "Paraguay",
+        "points": 13
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Tunisia",
+        "points": -19
+      }
+    ],
+    "tieBreakers": [
+      "267",
+      "67"
+    ]
+  },
+  {
+    "entrantTeamName": "Football Fairy",
+    "entrantName": "Sarah Tardif",
+    "entrantEmail": "sarah.tardif@canaccord.com",
+    "totalPoints": 225,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 39,
+      "GS2": 49,
+      "GS3": 79,
+      "R32": 42,
+      "R16": -11,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Canada",
+      "Scotland",
+      "United States",
+      "Australia",
+      "Japan",
+      "Egypt",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "United States",
+        "points": 38
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "Australia",
+        "points": 15
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      }
+    ],
+    "tieBreakers": [
+      "122",
+      "120"
     ]
   },
   {
@@ -7260,72 +7590,6 @@
     ]
   },
   {
-    "entrantTeamName": "That's Rubbish - But i'm gonna go for it!",
-    "entrantName": "Kelly",
-    "entrantEmail": "Kelly.ogier@canaccord.com",
-    "totalPoints": 223,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 17,
-      "GS2": 17,
-      "GS3": 49,
-      "R32": 64,
-      "R16": 27,
-      "QF": 42,
-      "SF": 7,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Qatar",
-      "Haiti",
-      "Curaçao",
-      "New Zealand",
-      "Spain",
-      "France",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Haiti",
-        "points": -17
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "286",
-      "76"
-    ]
-  },
-  {
     "entrantTeamName": "Dalkey",
     "entrantName": "Dee",
     "entrantEmail": "dee.lihou@gmail.com",
@@ -7392,69 +7656,267 @@
     ]
   },
   {
-    "entrantTeamName": "Accidental Champion",
-    "entrantName": "Lisa Vidamour",
-    "entrantEmail": "lisa.vidamour@canaccord.com",
+    "entrantTeamName": "Gin and the Jaffa cakes",
+    "entrantName": "Jayne",
+    "entrantEmail": "Jayne.Jackson@canaccord.com",
     "totalPoints": 222,
-    "teamsRemaining": 0,
+    "teamsRemaining": 1,
     "byRound": {
-      "GS1": 58,
-      "GS2": -3,
-      "GS3": 89,
-      "R32": 25,
-      "R16": 33,
-      "QF": 28,
-      "SF": -8,
-      "TPP": 0,
+      "GS1": 46,
+      "GS2": 19,
+      "GS3": 48,
+      "R32": 38,
+      "R16": 17,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Qatar",
-      "Türkiye",
-      "Ecuador",
+      "Haiti",
+      "Germany",
+      "Curaçao",
       "Sweden",
-      "France",
-      "Norway",
-      "England",
-      "Ghana"
+      "New Zealand",
+      "Spain",
+      "Portugal",
+      "England"
     ],
     "teamBreakdown": [
       {
-        "countryName": "France",
-        "points": 89
+        "countryName": "Spain",
+        "points": 93
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Norway",
-        "points": 54
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
       },
       {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "Ghana",
-        "points": 11
+        "countryName": "New Zealand",
+        "points": -10
       },
       {
-        "countryName": "Ecuador",
-        "points": 5
+        "countryName": "Haiti",
+        "points": -17
       },
       {
-        "countryName": "Türkiye",
-        "points": 2
-      },
-      {
-        "countryName": "Qatar",
+        "countryName": "Curaçao",
         "points": -20
       }
     ],
     "tieBreakers": [
-      "167",
-      "62"
+      "174",
+      "88"
+    ]
+  },
+  {
+    "entrantTeamName": "VAR Oversight Committee",
+    "entrantName": "Lucy",
+    "entrantEmail": "lucy.vidamour@canaccord.com",
+    "totalPoints": 221,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 29,
+      "GS2": 51,
+      "GS3": 71,
+      "R32": 55,
+      "R16": -12,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Canada",
+      "Brazil",
+      "United States",
+      "Paraguay",
+      "Japan",
+      "New Zealand",
+      "Saudi Arabia",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "United States",
+        "points": 38
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Paraguay",
+        "points": 13
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      }
+    ],
+    "tieBreakers": [
+      "170",
+      "80"
+    ]
+  },
+  {
+    "entrantTeamName": "It's coming home!!",
+    "entrantName": "Luke Pattimore",
+    "entrantEmail": "pattimore95@hotmail.com",
+    "totalPoints": 219,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 35,
+      "GS2": 18,
+      "GS3": 57,
+      "R32": 35,
+      "R16": 22,
+      "QF": 28,
+      "SF": 9,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Korea",
+      "Brazil",
+      "Curaçao",
+      "Japan",
+      "New Zealand",
+      "Saudi Arabia",
+      "Argentina",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Argentina",
+        "points": 99
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "South Korea",
+        "points": 1
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "230",
+      "75"
+    ]
+  },
+  {
+    "entrantTeamName": "Major League Saka",
+    "entrantName": "Emma",
+    "entrantEmail": "emma.lawrence@canaccord.com",
+    "totalPoints": 219,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 38,
+      "GS2": 18,
+      "GS3": 58,
+      "R32": 33,
+      "R16": 20,
+      "QF": 28,
+      "SF": 9,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Czechia",
+      "Sweden",
+      "Cape Verde",
+      "Argentina",
+      "Jordan",
+      "Portugal",
+      "England",
+      "Panama"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Argentina",
+        "points": 99
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "Czechia",
+        "points": -5
+      },
+      {
+        "countryName": "Jordan",
+        "points": -11
+      },
+      {
+        "countryName": "Panama",
+        "points": -13
+      }
+    ],
+    "tieBreakers": [
+      "181",
+      "76"
     ]
   },
   {
@@ -7524,6 +7986,72 @@
     ]
   },
   {
+    "entrantTeamName": "Pitch Perfect",
+    "entrantName": "Debbie Bruce",
+    "entrantEmail": "debbie.bruce@canaccord.com",
+    "totalPoints": 216,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": -11,
+      "GS2": 37,
+      "GS3": 84,
+      "R32": 34,
+      "R16": 18,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Curaçao",
+      "Japan",
+      "Egypt",
+      "Spain",
+      "Senegal",
+      "Iraq",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Egypt",
+        "points": 28
+      },
+      {
+        "countryName": "Senegal",
+        "points": 24
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      },
+      {
+        "countryName": "Iraq",
+        "points": -27
+      }
+    ],
+    "tieBreakers": [
+      "179",
+      "86"
+    ]
+  },
+  {
     "entrantTeamName": "Beetroot",
     "entrantName": "Lex English",
     "entrantEmail": "alex.english@canaccord.com",
@@ -7587,6 +8115,72 @@
     "tieBreakers": [
       "225",
       "24"
+    ]
+  },
+  {
+    "entrantTeamName": "Not so Hotspur",
+    "entrantName": "Candice",
+    "entrantEmail": "Candice.LeTissier@canaccord.com",
+    "totalPoints": 214,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 60,
+      "GS2": 6,
+      "GS3": 56,
+      "R32": 40,
+      "R16": 15,
+      "QF": 30,
+      "SF": -8,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Scotland",
+      "Australia",
+      "Sweden",
+      "New Zealand",
+      "France",
+      "Jordan",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "France",
+        "points": 89
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Australia",
+        "points": 15
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Jordan",
+        "points": -11
+      }
+    ],
+    "tieBreakers": [
+      "213",
+      "13"
     ]
   },
   {
@@ -7722,30 +8316,30 @@
     ]
   },
   {
-    "entrantTeamName": "CG & HF",
-    "entrantName": "Chloe & Helen",
-    "entrantEmail": "chloe.gaudion@canaccord.com",
-    "totalPoints": 212,
+    "entrantTeamName": "Tough Luck",
+    "entrantName": "Aimee Tough",
+    "entrantEmail": "aimee.tough@canaccord.com",
+    "totalPoints": 213,
     "teamsRemaining": 1,
     "byRound": {
       "GS1": 31,
-      "GS2": 17,
-      "GS3": 65,
-      "R32": 41,
-      "R16": 19,
+      "GS2": -6,
+      "GS3": 79,
+      "R32": 38,
+      "R16": 17,
       "QF": 26,
       "SF": 13,
-      "TPP": 0,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
       "South Africa",
       "Qatar",
-      "Brazil",
-      "Germany",
-      "New Zealand",
+      "Haiti",
+      "Australia",
+      "Sweden",
       "Spain",
-      "Jordan",
+      "Portugal",
       "England"
     ],
     "teamBreakdown": [
@@ -7755,85 +8349,15 @@
       },
       {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Germany",
+        "countryName": "Portugal",
         "points": 40
       },
       {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Jordan",
-        "points": -11
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "222",
-      "89"
-    ]
-  },
-  {
-    "entrantTeamName": "Bimbound buccaneers",
-    "entrantName": "Alison Williams",
-    "entrantEmail": "bimboundali@gmail.com",
-    "totalPoints": 210,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 4,
-      "GS2": 10,
-      "GS3": 110,
-      "R32": 28,
-      "R16": 19,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Paraguay",
-      "Sweden",
-      "Tunisia",
-      "Spain",
-      "DR Congo",
-      "England",
-      "Croatia"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Croatia",
-        "points": 20
-      },
-      {
-        "countryName": "DR Congo",
-        "points": 16
-      },
-      {
-        "countryName": "Paraguay",
-        "points": 13
+        "countryName": "Australia",
+        "points": 15
       },
       {
         "countryName": "Sweden",
@@ -7844,79 +8368,17 @@
         "points": 6
       },
       {
-        "countryName": "Tunisia",
-        "points": -19
+        "countryName": "Haiti",
+        "points": -17
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
       }
     ],
     "tieBreakers": [
-      "267",
-      "67"
-    ]
-  },
-  {
-    "entrantTeamName": "Football Fairy",
-    "entrantName": "Sarah Tardif",
-    "entrantEmail": "sarah.tardif@canaccord.com",
-    "totalPoints": 210,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 39,
-      "GS2": 49,
-      "GS3": 79,
-      "R32": 42,
-      "R16": -11,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Canada",
-      "Scotland",
-      "United States",
-      "Australia",
-      "Japan",
-      "Egypt",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "United States",
-        "points": 38
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Australia",
-        "points": 15
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      }
-    ],
-    "tieBreakers": [
-      "122",
-      "120"
+      "170",
+      "62"
     ]
   },
   {
@@ -8052,60 +8514,126 @@
     ]
   },
   {
-    "entrantTeamName": "Gin and the Jaffa cakes",
-    "entrantName": "Jayne",
-    "entrantEmail": "Jayne.Jackson@canaccord.com",
+    "entrantTeamName": "A Messi Game",
+    "entrantName": "Katie",
+    "entrantEmail": "katiesnashall@icloud.com",
     "totalPoints": 207,
-    "teamsRemaining": 1,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 46,
-      "GS2": 19,
-      "GS3": 48,
-      "R32": 38,
-      "R16": 17,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
+      "GS1": 18,
+      "GS2": 32,
+      "GS3": 95,
+      "R32": 34,
+      "R16": 1,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "Haiti",
-      "Germany",
-      "Curaçao",
+      "South Africa",
+      "Czechia",
+      "Brazil",
+      "Paraguay",
       "Sweden",
-      "New Zealand",
-      "Spain",
       "Portugal",
-      "England"
+      "England",
+      "Ghana"
     ],
     "teamBreakdown": [
       {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Germany",
-        "points": 40
+        "countryName": "Brazil",
+        "points": 46
       },
       {
         "countryName": "Portugal",
         "points": 40
       },
       {
+        "countryName": "Paraguay",
+        "points": 13
+      },
+      {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "New Zealand",
-        "points": -10
+        "countryName": "Ghana",
+        "points": 11
       },
       {
-        "countryName": "Haiti",
-        "points": -17
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "Czechia",
+        "points": -5
+      }
+    ],
+    "tieBreakers": [
+      "134",
+      "67"
+    ]
+  },
+  {
+    "entrantTeamName": "Stan the man",
+    "entrantName": "Stan",
+    "entrantEmail": "delarue@suremail.gg",
+    "totalPoints": 206,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 28,
+      "GS2": 24,
+      "GS3": 61,
+      "R32": 49,
+      "R16": 19,
+      "QF": 12,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Curaçao",
+      "Tunisia",
+      "Uruguay",
+      "Norway",
+      "England",
+      "Ghana"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Mexico",
+        "points": 53
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Ghana",
+        "points": 11
+      },
+      {
+        "countryName": "Uruguay",
+        "points": -2
+      },
+      {
+        "countryName": "Tunisia",
+        "points": -19
       },
       {
         "countryName": "Curaçao",
@@ -8113,74 +8641,8 @@
       }
     ],
     "tieBreakers": [
-      "174",
-      "88"
-    ]
-  },
-  {
-    "entrantTeamName": "VAR Oversight Committee",
-    "entrantName": "Lucy",
-    "entrantEmail": "lucy.vidamour@canaccord.com",
-    "totalPoints": 206,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 29,
-      "GS2": 51,
-      "GS3": 71,
-      "R32": 55,
-      "R16": -12,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Canada",
-      "Brazil",
-      "United States",
-      "Paraguay",
-      "Japan",
-      "New Zealand",
-      "Saudi Arabia",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "United States",
-        "points": 38
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Paraguay",
-        "points": 13
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      }
-    ],
-    "tieBreakers": [
-      "170",
-      "80"
+      "249",
+      "116"
     ]
   },
   {
@@ -8250,135 +8712,69 @@
     ]
   },
   {
-    "entrantTeamName": "It's coming home!!",
-    "entrantName": "Luke Pattimore",
-    "entrantEmail": "pattimore95@hotmail.com",
-    "totalPoints": 204,
-    "teamsRemaining": 1,
+    "entrantTeamName": "Evie's Excellent Eight",
+    "entrantName": "Evie May Falla",
+    "entrantEmail": "Gsycassandra@yahoo.com",
+    "totalPoints": 203,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 35,
-      "GS2": 18,
-      "GS3": 57,
-      "R32": 35,
-      "R16": 22,
-      "QF": 28,
-      "SF": 9,
-      "TPP": 0,
+      "GS1": 54,
+      "GS2": 23,
+      "GS3": 85,
+      "R32": 9,
+      "R16": 5,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Korea",
-      "Brazil",
-      "Curaçao",
-      "Japan",
-      "New Zealand",
-      "Saudi Arabia",
-      "Argentina",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Argentina",
-        "points": 99
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "230",
-      "75"
-    ]
-  },
-  {
-    "entrantTeamName": "Major League Saka",
-    "entrantName": "Emma",
-    "entrantEmail": "emma.lawrence@canaccord.com",
-    "totalPoints": 204,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 38,
-      "GS2": 18,
-      "GS3": 58,
-      "R32": 33,
-      "R16": 20,
-      "QF": 28,
-      "SF": 9,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Czechia",
+      "South Africa",
+      "Germany",
       "Sweden",
-      "Cape Verde",
-      "Argentina",
-      "Jordan",
+      "New Zealand",
       "Portugal",
       "England",
-      "Panama"
+      "Croatia",
+      "Ghana"
     ],
     "teamBreakdown": [
       {
-        "countryName": "Argentina",
-        "points": 99
+        "countryName": "England",
+        "points": 83
       },
       {
-        "countryName": "England",
-        "points": 68
+        "countryName": "Germany",
+        "points": 40
       },
       {
         "countryName": "Portugal",
         "points": 40
       },
       {
+        "countryName": "Croatia",
+        "points": 20
+      },
+      {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "Cape Verde",
-        "points": 13
+        "countryName": "Ghana",
+        "points": 11
       },
       {
-        "countryName": "Czechia",
-        "points": -5
+        "countryName": "South Africa",
+        "points": 6
       },
       {
-        "countryName": "Jordan",
-        "points": -11
-      },
-      {
-        "countryName": "Panama",
-        "points": -13
+        "countryName": "New Zealand",
+        "points": -10
       }
     ],
     "tieBreakers": [
-      "181",
-      "76"
+      "168",
+      "64"
     ]
   },
   {
@@ -8580,72 +8976,6 @@
     ]
   },
   {
-    "entrantTeamName": "Pitch Perfect",
-    "entrantName": "Debbie Bruce",
-    "entrantEmail": "debbie.bruce@canaccord.com",
-    "totalPoints": 201,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": -11,
-      "GS2": 37,
-      "GS3": 84,
-      "R32": 34,
-      "R16": 18,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Curaçao",
-      "Japan",
-      "Egypt",
-      "Spain",
-      "Senegal",
-      "Iraq",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Egypt",
-        "points": 28
-      },
-      {
-        "countryName": "Senegal",
-        "points": 24
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      },
-      {
-        "countryName": "Iraq",
-        "points": -27
-      }
-    ],
-    "tieBreakers": [
-      "179",
-      "86"
-    ]
-  },
-  {
     "entrantTeamName": "Keir Starmer's a....",
     "entrantName": "Rob H",
     "entrantEmail": "Robin.Hilson@canaccord.com",
@@ -8775,72 +9105,6 @@
     "tieBreakers": [
       "271",
       "64"
-    ]
-  },
-  {
-    "entrantTeamName": "Not so Hotspur",
-    "entrantName": "Candice",
-    "entrantEmail": "Candice.LeTissier@canaccord.com",
-    "totalPoints": 199,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 60,
-      "GS2": 6,
-      "GS3": 56,
-      "R32": 40,
-      "R16": 15,
-      "QF": 30,
-      "SF": -8,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Scotland",
-      "Australia",
-      "Sweden",
-      "New Zealand",
-      "France",
-      "Jordan",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "France",
-        "points": 89
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Australia",
-        "points": 15
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Jordan",
-        "points": -11
-      }
-    ],
-    "tieBreakers": [
-      "213",
-      "13"
     ]
   },
   {
@@ -8976,60 +9240,60 @@
     ]
   },
   {
-    "entrantTeamName": "Tough Luck",
-    "entrantName": "Aimee Tough",
-    "entrantEmail": "aimee.tough@canaccord.com",
+    "entrantTeamName": "Jersey Beans",
+    "entrantName": "Lorraine Boucher",
+    "entrantEmail": "Lorraine.Boucher@canaccord.com",
     "totalPoints": 198,
-    "teamsRemaining": 1,
+    "teamsRemaining": 0,
     "byRound": {
-      "GS1": 31,
-      "GS2": -6,
-      "GS3": 79,
-      "R32": 38,
-      "R16": 17,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
+      "GS1": 61,
+      "GS2": -7,
+      "GS3": 76,
+      "R32": 22,
+      "R16": 21,
+      "QF": 12,
+      "SF": -2,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
       "Qatar",
-      "Haiti",
-      "Australia",
+      "Brazil",
       "Sweden",
-      "Spain",
-      "Portugal",
-      "England"
+      "New Zealand",
+      "Norway",
+      "Austria",
+      "England",
+      "Croatia"
     ],
     "teamBreakdown": [
       {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Portugal",
-        "points": 40
+        "countryName": "Norway",
+        "points": 54
       },
       {
-        "countryName": "Australia",
-        "points": 15
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Croatia",
+        "points": 20
       },
       {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "South Africa",
-        "points": 6
+        "countryName": "Austria",
+        "points": 12
       },
       {
-        "countryName": "Haiti",
-        "points": -17
+        "countryName": "New Zealand",
+        "points": -10
       },
       {
         "countryName": "Qatar",
@@ -9037,8 +9301,74 @@
       }
     ],
     "tieBreakers": [
-      "170",
-      "62"
+      "185",
+      "110"
+    ]
+  },
+  {
+    "entrantTeamName": "World Warnes 3",
+    "entrantName": "Austin",
+    "entrantEmail": "austin.warnes@canaccord.com",
+    "totalPoints": 196,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 78,
+      "GS2": 12,
+      "GS3": 39,
+      "R32": 29,
+      "R16": 13,
+      "QF": 12,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "Qatar",
+      "Scotland",
+      "Germany",
+      "Norway",
+      "Austria",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Norway",
+        "points": 54
+      },
+      {
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Austria",
+        "points": 12
+      },
+      {
+        "countryName": "South Korea",
+        "points": 1
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "180",
+      "83"
     ]
   },
   {
@@ -9108,138 +9438,6 @@
     ]
   },
   {
-    "entrantTeamName": "A Messi Game",
-    "entrantName": "Katie",
-    "entrantEmail": "katiesnashall@icloud.com",
-    "totalPoints": 192,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 18,
-      "GS2": 32,
-      "GS3": 95,
-      "R32": 34,
-      "R16": 1,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Czechia",
-      "Brazil",
-      "Paraguay",
-      "Sweden",
-      "Portugal",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Paraguay",
-        "points": 13
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "Czechia",
-        "points": -5
-      }
-    ],
-    "tieBreakers": [
-      "134",
-      "67"
-    ]
-  },
-  {
-    "entrantTeamName": "Stan the man",
-    "entrantName": "Stan",
-    "entrantEmail": "delarue@suremail.gg",
-    "totalPoints": 191,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 28,
-      "GS2": 24,
-      "GS3": 61,
-      "R32": 49,
-      "R16": 19,
-      "QF": 12,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Mexico",
-      "Brazil",
-      "Curaçao",
-      "Tunisia",
-      "Uruguay",
-      "Norway",
-      "England",
-      "Ghana"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Mexico",
-        "points": 53
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Ghana",
-        "points": 11
-      },
-      {
-        "countryName": "Uruguay",
-        "points": -2
-      },
-      {
-        "countryName": "Tunisia",
-        "points": -19
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "249",
-      "116"
-    ]
-  },
-  {
     "entrantTeamName": "Unlikely Lads",
     "entrantName": "Antoinette Smith",
     "entrantEmail": "antoinette.smith@canaccord.com",
@@ -9303,6 +9501,138 @@
     "tieBreakers": [
       "185",
       "93"
+    ]
+  },
+  {
+    "entrantTeamName": "Coopers Champions",
+    "entrantName": "Hayley",
+    "entrantEmail": "Hayley.cooper@canaccord.com",
+    "totalPoints": 191,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 49,
+      "GS2": -15,
+      "GS3": 89,
+      "R32": 15,
+      "R16": 29,
+      "QF": 11,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Africa",
+      "Qatar",
+      "Germany",
+      "Sweden",
+      "Belgium",
+      "New Zealand",
+      "England",
+      "Croatia"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Belgium",
+        "points": 59
+      },
+      {
+        "countryName": "Germany",
+        "points": 40
+      },
+      {
+        "countryName": "Croatia",
+        "points": 20
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "South Africa",
+        "points": 6
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "555",
+      "85"
+    ]
+  },
+  {
+    "entrantTeamName": "8 it",
+    "entrantName": "Lihou 2",
+    "entrantEmail": "lihou.chris@gmail.com",
+    "totalPoints": 190,
+    "teamsRemaining": 1,
+    "byRound": {
+      "GS1": 11,
+      "GS2": 31,
+      "GS3": 36,
+      "R32": 41,
+      "R16": 17,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Czechia",
+      "Qatar",
+      "Curaçao",
+      "Japan",
+      "New Zealand",
+      "Spain",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Czechia",
+        "points": -5
+      },
+      {
+        "countryName": "New Zealand",
+        "points": -10
+      },
+      {
+        "countryName": "Qatar",
+        "points": -20
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "182",
+      "62"
     ]
   },
   {
@@ -9438,60 +9768,126 @@
     ]
   },
   {
-    "entrantTeamName": "Evie's Excellent Eight",
-    "entrantName": "Evie May Falla",
-    "entrantEmail": "Gsycassandra@yahoo.com",
-    "totalPoints": 188,
-    "teamsRemaining": 0,
+    "entrantTeamName": "It's called football",
+    "entrantName": "Stephen",
+    "entrantEmail": "stephen.prout@canaccord.com",
+    "totalPoints": 187,
+    "teamsRemaining": 1,
     "byRound": {
-      "GS1": 54,
-      "GS2": 23,
-      "GS3": 85,
-      "R32": 9,
-      "R16": 5,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
+      "GS1": 17,
+      "GS2": -11,
+      "GS3": 74,
+      "R32": 34,
+      "R16": 19,
+      "QF": 26,
+      "SF": 13,
+      "TPP": 15,
       "F": 0
     },
     "selectedTeams": [
-      "South Africa",
-      "Germany",
+      "South Korea",
+      "Qatar",
+      "Paraguay",
+      "Curaçao",
       "Sweden",
-      "New Zealand",
-      "Portugal",
-      "England",
-      "Croatia",
-      "Ghana"
+      "Spain",
+      "Senegal",
+      "England"
     ],
     "teamBreakdown": [
       {
+        "countryName": "Spain",
+        "points": 93
+      },
+      {
         "countryName": "England",
-        "points": 68
+        "points": 83
       },
       {
-        "countryName": "Germany",
-        "points": 40
+        "countryName": "Senegal",
+        "points": 24
       },
       {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Croatia",
-        "points": 20
+        "countryName": "Paraguay",
+        "points": 13
       },
       {
         "countryName": "Sweden",
         "points": 13
       },
       {
-        "countryName": "Ghana",
-        "points": 11
+        "countryName": "South Korea",
+        "points": 1
       },
       {
-        "countryName": "South Africa",
-        "points": 6
+        "countryName": "Qatar",
+        "points": -20
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      }
+    ],
+    "tieBreakers": [
+      "283",
+      "82"
+    ]
+  },
+  {
+    "entrantTeamName": "The Mara Donar Kebabs",
+    "entrantName": "Tony Rogers",
+    "entrantEmail": "tony.rogers@canaccord.com",
+    "totalPoints": 186,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 56,
+      "GS2": 13,
+      "GS3": 77,
+      "R32": 14,
+      "R16": -1,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Korea",
+      "Canada",
+      "Australia",
+      "Japan",
+      "Sweden",
+      "New Zealand",
+      "Senegal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Canada",
+        "points": 31
+      },
+      {
+        "countryName": "Japan",
+        "points": 29
+      },
+      {
+        "countryName": "Senegal",
+        "points": 24
+      },
+      {
+        "countryName": "Australia",
+        "points": 15
+      },
+      {
+        "countryName": "Sweden",
+        "points": 13
+      },
+      {
+        "countryName": "South Korea",
+        "points": 1
       },
       {
         "countryName": "New Zealand",
@@ -9499,8 +9895,8 @@
       }
     ],
     "tieBreakers": [
-      "168",
-      "64"
+      "208",
+      "77"
     ]
   },
   {
@@ -9636,72 +10032,6 @@
     ]
   },
   {
-    "entrantTeamName": "Jersey Beans",
-    "entrantName": "Lorraine Boucher",
-    "entrantEmail": "Lorraine.Boucher@canaccord.com",
-    "totalPoints": 183,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 61,
-      "GS2": -7,
-      "GS3": 76,
-      "R32": 22,
-      "R16": 21,
-      "QF": 12,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Qatar",
-      "Brazil",
-      "Sweden",
-      "New Zealand",
-      "Norway",
-      "Austria",
-      "England",
-      "Croatia"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Croatia",
-        "points": 20
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "Austria",
-        "points": 12
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "185",
-      "110"
-    ]
-  },
-  {
     "entrantTeamName": "World In Motion",
     "entrantName": "Michael",
     "entrantEmail": "Michael.Heyes@canaccord.com",
@@ -9765,72 +10095,6 @@
     "tieBreakers": [
       "180",
       "77"
-    ]
-  },
-  {
-    "entrantTeamName": "World Warnes 3",
-    "entrantName": "Austin",
-    "entrantEmail": "austin.warnes@canaccord.com",
-    "totalPoints": 181,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 78,
-      "GS2": 12,
-      "GS3": 39,
-      "R32": 29,
-      "R16": 13,
-      "QF": 12,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Korea",
-      "Canada",
-      "Qatar",
-      "Scotland",
-      "Germany",
-      "Norway",
-      "Austria",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Norway",
-        "points": 54
-      },
-      {
-        "countryName": "Germany",
-        "points": 40
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "Austria",
-        "points": 12
-      },
-      {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "180",
-      "83"
     ]
   },
   {
@@ -10032,72 +10296,6 @@
     ]
   },
   {
-    "entrantTeamName": "Coopers Champions",
-    "entrantName": "Hayley",
-    "entrantEmail": "Hayley.cooper@canaccord.com",
-    "totalPoints": 176,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 49,
-      "GS2": -15,
-      "GS3": 89,
-      "R32": 15,
-      "R16": 29,
-      "QF": 11,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Africa",
-      "Qatar",
-      "Germany",
-      "Sweden",
-      "Belgium",
-      "New Zealand",
-      "England",
-      "Croatia"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Belgium",
-        "points": 59
-      },
-      {
-        "countryName": "Germany",
-        "points": 40
-      },
-      {
-        "countryName": "Croatia",
-        "points": 20
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "South Africa",
-        "points": 6
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "555",
-      "85"
-    ]
-  },
-  {
     "entrantTeamName": "99 problems but a pitch ain't one",
     "entrantName": "Lewis Drummy",
     "entrantEmail": "lewis.drummy@canaccord.com",
@@ -10161,72 +10359,6 @@
     "tieBreakers": [
       "312",
       "84"
-    ]
-  },
-  {
-    "entrantTeamName": "8 it",
-    "entrantName": "Lihou 2",
-    "entrantEmail": "lihou.chris@gmail.com",
-    "totalPoints": 175,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 11,
-      "GS2": 31,
-      "GS3": 36,
-      "R32": 41,
-      "R16": 17,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Czechia",
-      "Qatar",
-      "Curaçao",
-      "Japan",
-      "New Zealand",
-      "Spain",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Czechia",
-        "points": -5
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "182",
-      "62"
     ]
   },
   {
@@ -10296,138 +10428,6 @@
     ]
   },
   {
-    "entrantTeamName": "It's called football",
-    "entrantName": "Stephen",
-    "entrantEmail": "stephen.prout@canaccord.com",
-    "totalPoints": 172,
-    "teamsRemaining": 1,
-    "byRound": {
-      "GS1": 17,
-      "GS2": -11,
-      "GS3": 74,
-      "R32": 34,
-      "R16": 19,
-      "QF": 26,
-      "SF": 13,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Korea",
-      "Qatar",
-      "Paraguay",
-      "Curaçao",
-      "Sweden",
-      "Spain",
-      "Senegal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "Spain",
-        "points": 93
-      },
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Senegal",
-        "points": 24
-      },
-      {
-        "countryName": "Paraguay",
-        "points": 13
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
-        "countryName": "Qatar",
-        "points": -20
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      }
-    ],
-    "tieBreakers": [
-      "283",
-      "82"
-    ]
-  },
-  {
-    "entrantTeamName": "The Mara Donar Kebabs",
-    "entrantName": "Tony Rogers",
-    "entrantEmail": "tony.rogers@canaccord.com",
-    "totalPoints": 171,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 56,
-      "GS2": 13,
-      "GS3": 77,
-      "R32": 14,
-      "R16": -1,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Korea",
-      "Canada",
-      "Australia",
-      "Japan",
-      "Sweden",
-      "New Zealand",
-      "Senegal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Canada",
-        "points": 31
-      },
-      {
-        "countryName": "Japan",
-        "points": 29
-      },
-      {
-        "countryName": "Senegal",
-        "points": 24
-      },
-      {
-        "countryName": "Australia",
-        "points": 15
-      },
-      {
-        "countryName": "Sweden",
-        "points": 13
-      },
-      {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
-        "countryName": "New Zealand",
-        "points": -10
-      }
-    ],
-    "tieBreakers": [
-      "208",
-      "77"
-    ]
-  },
-  {
     "entrantTeamName": "Lord of the Ings",
     "entrantName": "Charlie",
     "entrantEmail": "Charles.dicker@canaccord.com",
@@ -10491,6 +10491,72 @@
     "tieBreakers": [
       "263",
       "118"
+    ]
+  },
+  {
+    "entrantTeamName": "The Owletts",
+    "entrantName": "Thomas",
+    "entrantEmail": "rjhowlett@gmail.com",
+    "totalPoints": 169,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": -2,
+      "GS2": 25,
+      "GS3": 65,
+      "R32": 53,
+      "R16": 1,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "Mexico",
+      "Brazil",
+      "Curaçao",
+      "Tunisia",
+      "Cape Verde",
+      "Iraq",
+      "Portugal",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Mexico",
+        "points": 53
+      },
+      {
+        "countryName": "Brazil",
+        "points": 46
+      },
+      {
+        "countryName": "Portugal",
+        "points": 40
+      },
+      {
+        "countryName": "Cape Verde",
+        "points": 13
+      },
+      {
+        "countryName": "Tunisia",
+        "points": -19
+      },
+      {
+        "countryName": "Curaçao",
+        "points": -20
+      },
+      {
+        "countryName": "Iraq",
+        "points": -27
+      }
+    ],
+    "tieBreakers": [
+      "164",
+      "15"
     ]
   },
   {
@@ -10626,6 +10692,72 @@
     ]
   },
   {
+    "entrantTeamName": "Guernsey goal diggers",
+    "entrantName": "Ian Hardy",
+    "entrantEmail": "Ian.Hardy@Canaccord.com",
+    "totalPoints": 162,
+    "teamsRemaining": 0,
+    "byRound": {
+      "GS1": 56,
+      "GS2": -13,
+      "GS3": 76,
+      "R32": 7,
+      "R16": 9,
+      "QF": 14,
+      "SF": -2,
+      "TPP": 15,
+      "F": 0
+    },
+    "selectedTeams": [
+      "South Korea",
+      "Scotland",
+      "Australia",
+      "Ivory Coast",
+      "Netherlands",
+      "Saudi Arabia",
+      "Austria",
+      "England"
+    ],
+    "teamBreakdown": [
+      {
+        "countryName": "England",
+        "points": 83
+      },
+      {
+        "countryName": "Netherlands",
+        "points": 42
+      },
+      {
+        "countryName": "Ivory Coast",
+        "points": 23
+      },
+      {
+        "countryName": "Australia",
+        "points": 15
+      },
+      {
+        "countryName": "Austria",
+        "points": 12
+      },
+      {
+        "countryName": "South Korea",
+        "points": 1
+      },
+      {
+        "countryName": "Scotland",
+        "points": -5
+      },
+      {
+        "countryName": "Saudi Arabia",
+        "points": -9
+      }
+    ],
+    "tieBreakers": [
+      "245",
+      "84"
+    ]
+  },
+  {
     "entrantTeamName": "Lets see how good AI is",
     "entrantName": "Tom H",
     "entrantEmail": "tom.humphries@canaccord.com",
@@ -10689,72 +10821,6 @@
     "tieBreakers": [
       "280",
       "109"
-    ]
-  },
-  {
-    "entrantTeamName": "The Owletts",
-    "entrantName": "Thomas",
-    "entrantEmail": "rjhowlett@gmail.com",
-    "totalPoints": 154,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": -2,
-      "GS2": 25,
-      "GS3": 65,
-      "R32": 53,
-      "R16": 1,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "Mexico",
-      "Brazil",
-      "Curaçao",
-      "Tunisia",
-      "Cape Verde",
-      "Iraq",
-      "Portugal",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Mexico",
-        "points": 53
-      },
-      {
-        "countryName": "Brazil",
-        "points": 46
-      },
-      {
-        "countryName": "Portugal",
-        "points": 40
-      },
-      {
-        "countryName": "Cape Verde",
-        "points": 13
-      },
-      {
-        "countryName": "Tunisia",
-        "points": -19
-      },
-      {
-        "countryName": "Curaçao",
-        "points": -20
-      },
-      {
-        "countryName": "Iraq",
-        "points": -27
-      }
-    ],
-    "tieBreakers": [
-      "164",
-      "15"
     ]
   },
   {
@@ -10887,72 +10953,6 @@
     "tieBreakers": [
       "184",
       "68"
-    ]
-  },
-  {
-    "entrantTeamName": "Guernsey goal diggers",
-    "entrantName": "Ian Hardy",
-    "entrantEmail": "Ian.Hardy@Canaccord.com",
-    "totalPoints": 147,
-    "teamsRemaining": 0,
-    "byRound": {
-      "GS1": 56,
-      "GS2": -13,
-      "GS3": 76,
-      "R32": 7,
-      "R16": 9,
-      "QF": 14,
-      "SF": -2,
-      "TPP": 0,
-      "F": 0
-    },
-    "selectedTeams": [
-      "South Korea",
-      "Scotland",
-      "Australia",
-      "Ivory Coast",
-      "Netherlands",
-      "Saudi Arabia",
-      "Austria",
-      "England"
-    ],
-    "teamBreakdown": [
-      {
-        "countryName": "England",
-        "points": 68
-      },
-      {
-        "countryName": "Netherlands",
-        "points": 42
-      },
-      {
-        "countryName": "Ivory Coast",
-        "points": 23
-      },
-      {
-        "countryName": "Australia",
-        "points": 15
-      },
-      {
-        "countryName": "Austria",
-        "points": 12
-      },
-      {
-        "countryName": "South Korea",
-        "points": 1
-      },
-      {
-        "countryName": "Scotland",
-        "points": -5
-      },
-      {
-        "countryName": "Saudi Arabia",
-        "points": -9
-      }
-    ],
-    "tieBreakers": [
-      "245",
-      "84"
     ]
   },
   {

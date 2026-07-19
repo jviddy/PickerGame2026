@@ -8089,12 +8089,77 @@
   },
   {
     "matchId": "M103",
-    "played": false,
+    "played": true,
     "homeTeam": "L-M101",
     "awayTeam": "L-M102",
-    "homePoints": null,
-    "awayPoints": null,
-    "totalPoints": 0
+    "homePoints": {
+      "resultType": "loss",
+      "goalsFor": 4,
+      "goalsAgainst": 6,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": false,
+      "categories": {
+        "result": 0,
+        "goalsScored": 12,
+        "goalsConceded": -12,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "GF",
+          "value": 12,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -12,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 0
+    },
+    "awayPoints": {
+      "resultType": "win",
+      "goalsFor": 6,
+      "goalsAgainst": 4,
+      "penaltiesFor": null,
+      "penaltiesAgainst": null,
+      "yellowCards": 0,
+      "redCards": 0,
+      "qualified": true,
+      "categories": {
+        "result": 5,
+        "goalsScored": 18,
+        "goalsConceded": -8,
+        "penalties": 0,
+        "disciplinary": 0,
+        "qualification": 0
+      },
+      "items": [
+        {
+          "label": "Win",
+          "value": 5,
+          "category": "result"
+        },
+        {
+          "label": "GF",
+          "value": 18,
+          "category": "goalsScored"
+        },
+        {
+          "label": "GA",
+          "value": -8,
+          "category": "goalsConceded"
+        }
+      ],
+      "total": 15
+    },
+    "totalPoints": 15
   },
   {
     "matchId": "M104",

@@ -14792,8 +14792,8 @@
     "totalPoints": 89,
     "pointsTotals": {
       "result": 15,
-      "goalsScored": 48,
-      "goalsConceded": -8,
+      "goalsScored": 60,
+      "goalsConceded": -20,
       "penalties": 0,
       "disciplinary": -6,
       "roundQualification": 40,
@@ -15102,14 +15102,41 @@
       {
         "roundCode": "TPP",
         "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "goalsScored": 12,
+        "goalsConceded": -12,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
         "total": 0,
-        "matches": []
+        "matches": [
+          {
+            "matchId": "M103",
+            "date": "2026-07-18T21:00:00Z",
+            "fixture": "France v England",
+            "result": "loss",
+            "goalsFor": 4,
+            "goalsAgainst": 6,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "points": [
+              {
+                "label": "GF",
+                "value": 12,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -12,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 0
+          }
+        ]
       },
       {
         "roundCode": "F",
@@ -15434,7 +15461,45 @@
           }
         }
       ],
-      "TPP": [],
+      "TPP": [
+        {
+          "matchId": "M103",
+          "date": "2026-07-18T21:00:00Z",
+          "roundCode": "TPP",
+          "fixture": "France v England",
+          "points": {
+            "resultType": "loss",
+            "goalsFor": 4,
+            "goalsAgainst": 6,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": false,
+            "categories": {
+              "result": 0,
+              "goalsScored": 12,
+              "goalsConceded": -12,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "GF",
+                "value": 12,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -12,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 0
+          }
+        }
+      ],
       "F": []
     }
   },
@@ -20750,16 +20815,16 @@
     "flagUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/60px-Flag_of_England.svg.png",
     "active": 1,
     "inCompetition": false,
-    "totalPoints": 68,
+    "totalPoints": 83,
     "pointsTotals": {
-      "result": 12,
-      "goalsScored": 42,
-      "goalsConceded": -16,
+      "result": 17,
+      "goalsScored": 60,
+      "goalsConceded": -24,
       "penalties": 0,
       "disciplinary": -10,
       "roundQualification": 40,
       "qualification": 40,
-      "total": 68
+      "total": 83
     },
     "scoresByRound": [
       {
@@ -21087,15 +21152,47 @@
       },
       {
         "roundCode": "TPP",
-        "result": 0,
-        "goalsScored": 0,
-        "goalsConceded": 0,
+        "result": 5,
+        "goalsScored": 18,
+        "goalsConceded": -8,
         "penalties": 0,
         "disciplinary": 0,
         "roundQualification": 0,
         "qualification": 0,
-        "total": 0,
-        "matches": []
+        "total": 15,
+        "matches": [
+          {
+            "matchId": "M103",
+            "date": "2026-07-18T21:00:00Z",
+            "fixture": "France v England",
+            "result": "win",
+            "goalsFor": 6,
+            "goalsAgainst": 4,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "points": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 18,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -8,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 15
+          }
+        ]
       },
       {
         "roundCode": "F",
@@ -21118,7 +21215,7 @@
       "R16": 9,
       "QF": 14,
       "SF": -2,
-      "TPP": 0,
+      "TPP": 15,
       "F": 0
     },
     "detailsByRound": {
@@ -21445,7 +21542,50 @@
           }
         }
       ],
-      "TPP": [],
+      "TPP": [
+        {
+          "matchId": "M103",
+          "date": "2026-07-18T21:00:00Z",
+          "roundCode": "TPP",
+          "fixture": "France v England",
+          "points": {
+            "resultType": "win",
+            "goalsFor": 6,
+            "goalsAgainst": 4,
+            "penaltiesFor": null,
+            "penaltiesAgainst": null,
+            "yellowCards": 0,
+            "redCards": 0,
+            "qualified": true,
+            "categories": {
+              "result": 5,
+              "goalsScored": 18,
+              "goalsConceded": -8,
+              "penalties": 0,
+              "disciplinary": 0,
+              "qualification": 0
+            },
+            "items": [
+              {
+                "label": "Win",
+                "value": 5,
+                "category": "result"
+              },
+              {
+                "label": "GF",
+                "value": 18,
+                "category": "goalsScored"
+              },
+              {
+                "label": "GA",
+                "value": -8,
+                "category": "goalsConceded"
+              }
+            ],
+            "total": 15
+          }
+        }
+      ],
       "F": []
     }
   },
