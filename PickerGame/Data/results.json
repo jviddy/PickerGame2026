@@ -1228,5 +1228,18 @@
     "awayRed": 0,
     "homeQualified": false,
     "awayQualified": true
+  },
+  {
+    "matchId": "M103",
+    "homeScore": 4,
+    "awayScore": 6,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": 0,
+    "awayYellow": 0,
+    "homeRed": 0,
+    "awayRed": 0,
+    "homeQualified": false,
+    "awayQualified": true
   }
 ]
