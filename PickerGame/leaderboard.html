@@ -797,6 +797,50 @@
       #tournamentStatsBar { width: 100%; }
     }
 
+    /* ─── Final live score ───────────────────────────────────────*/
+    .final-score-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .final-score-head {
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      color: var(--white);
+      padding: 10px 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .final-score-teams {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px 14px;
+    }
+    .final-score-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 120px;
+    }
+    .final-team-name { font-weight: 800; font-size: 1rem; color: var(--gray-800); text-align: center; }
+    .final-team-cards { font-size: 0.82rem; color: var(--gray-600); letter-spacing: 0.02em; }
+    .final-score-value {
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    @media (max-width: 480px) {
+      .final-score-teams { gap: 10px; }
+      .final-score-side { min-width: 90px; }
+      .final-score-value { font-size: 1.4rem; }
+    }
+
     /* ─── Prize winners ────────────────────────────────────────*/
     .prize-winners {
       background: var(--white);
@@ -812,6 +856,12 @@
       padding: 10px 14px;
       font-weight: 800;
       font-size: 0.95rem;
+    }
+    .prize-winners-head .prize-winners-subtitle {
+      font-weight: 600;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
     }
     .prize-table {
       width: 100%;
@@ -897,8 +947,13 @@
 
   <div class="error-msg" id="errorMsg"></div>
 
+  <div class="final-score-card" id="finalScoreCard" hidden></div>
+
   <div class="prize-winners" id="prizeWinners" hidden>
-    <div class="prize-winners-head">🏆 Final Results — Prize Winners</div>
+    <div class="prize-winners-head" id="prizeWinnersHead">
+      🏆 Prize Winners
+      <div class="prize-winners-subtitle">Updates live as the Final's score is entered</div>
+    </div>
     <table class="prize-table">
       <tbody id="prizeWinnersBody"></tbody>
     </table>
@@ -996,13 +1051,19 @@
   const myPicksRows        = document.getElementById('myPicksRows');
 
   /* ─── Data loading ────────────────────────────────────────── */
+  // Always bypass HTTP cache — the leaderboard is expected to reflect scores
+  // entered moments ago (including live in-progress final updates).
+  function freshFetch(url) {
+    return fetch(url, { cache: 'no-store' });
+  }
+
   async function loadAllData() {
     try {
       const [teamsRes, pointsRes, totalsRes, matchesRes] = await Promise.all([
-        fetch(DATA_URLS.teams),
-        fetch(DATA_URLS.teamPoints),
-        fetch(DATA_URLS.entrantTotals),
-        fetch(DATA_URLS.matches),
+        freshFetch(DATA_URLS.teams),
+        freshFetch(DATA_URLS.teamPoints),
+        freshFetch(DATA_URLS.entrantTotals),
+        freshFetch(DATA_URLS.matches),
       ]);
 
       const [teamsData, pointsData, totalsData] = await Promise.all([
@@ -1014,7 +1075,7 @@
       allMatches = matchesRes.ok ? await matchesRes.json() : null;
 
       try {
-        const baselineRes = await fetch(DATA_URLS.baseline);
+        const baselineRes = await freshFetch(DATA_URLS.baseline);
         if (baselineRes.ok) {
           const baselineData = await baselineRes.json();
           baselineData.forEach(e => {
@@ -1024,7 +1085,7 @@
       } catch (_) {}
 
       try {
-        const statsRes = await fetch(DATA_URLS.tournamentStats);
+        const statsRes = await freshFetch(DATA_URLS.tournamentStats);
         if (statsRes.ok) tournamentStats = await statsRes.json();
       } catch (_) {}
 
@@ -1556,6 +1617,106 @@
     renderPrizeWinnersInto(document.getElementById('prizeWinners'), leaderboard, tournamentStats, finalPlayed);
   }
 
+  /* ─── Final live score ────────────────────────────────────── */
+  // Bracket refs like "W-M101" only resolve to a real country name by walking
+  // the knockout chain back to its group-stage roots — duplicated (in miniature)
+  // from ticker.js's resolveTeam, since pages here don't share client modules.
+  function buildFinalGroupStandings() {
+    const rows = {};
+    (allTeams || []).forEach(t => {
+      if (!t.group) return;
+      rows[t.group] = rows[t.group] || [];
+      rows[t.group].push({ team: t, pts: 0, gf: 0, ga: 0 });
+    });
+    (allMatches || []).forEach(m => {
+      if (!String(m.roundCode || '').includes('GS') || !m.result) return;
+      const r = m.result;
+      if (r.homeScore == null || r.awayScore == null) return;
+      const all = Object.values(rows).flat();
+      const h = all.find(x => x.team.countryName === m.homeTeam);
+      const a = all.find(x => x.team.countryName === m.awayTeam);
+      if (!h || !a) return;
+      h.gf += r.homeScore; h.ga += r.awayScore;
+      a.gf += r.awayScore; a.ga += r.homeScore;
+      if (r.homeScore > r.awayScore) h.pts += 3;
+      else if (r.homeScore === r.awayScore) { h.pts += 1; a.pts += 1; }
+      else a.pts += 3;
+    });
+    const standings = {};
+    Object.entries(rows).forEach(([g, list]) => {
+      standings[g] = list.sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        const gda = a.gf - a.ga, gdb = b.gf - b.ga;
+        if (gdb !== gda) return gdb - gda;
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return (a.team.fifaRank || 999) - (b.team.fifaRank || 999);
+      });
+    });
+    return standings;
+  }
+
+  function resolveFinalTeam(ref, standings, depth) {
+    depth = depth || 0;
+    if (!ref || ref === 'TBD' || depth > 10) return ref || 'TBA';
+    const parenMatch = ref.match(/\(([^)]+)\)$/);
+    if (parenMatch) return parenMatch[1];
+    const direct = (allTeams || []).find(t => t.countryName === ref);
+    if (direct) return direct.countryName;
+    const posMatch = ref.match(/^(\d)([A-Z])$/);
+    if (posMatch) return standings[posMatch[2]]?.[parseInt(posMatch[1], 10) - 1]?.team?.countryName || ref;
+    const wlMatch = ref.match(/^([WL])-(.+)$/);
+    if (!wlMatch) return ref;
+    const [, side, matchId] = wlMatch;
+    const m = (allMatches || []).find(x => x.matchId === matchId);
+    if (!m?.result || m.result.homeScore == null || m.result.awayScore == null) return ref;
+    const r = m.result;
+    let homeWins;
+    if (r.homeQualified !== undefined) homeWins = Boolean(r.homeQualified);
+    else if (r.homeScore !== r.awayScore) homeWins = r.homeScore > r.awayScore;
+    else if (r.homePenalties != null && r.awayPenalties != null) homeWins = r.homePenalties > r.awayPenalties;
+    else return ref;
+    const nextRef = (side === 'W') === homeWins ? m.homeTeam : m.awayTeam;
+    return resolveFinalTeam(nextRef, standings, depth + 1);
+  }
+
+  function cardBadges(yellow, red) {
+    const bits = [];
+    if (yellow) bits.push(`🟨${yellow}`);
+    if (red) bits.push(`🟥${red}`);
+    return bits.join(' ');
+  }
+
+  function renderFinalScore() {
+    const card = document.getElementById('finalScoreCard');
+    if (!card) return;
+    const finalMatch = (allMatches || []).find(m => m.roundCode === 'F');
+    const result = finalMatch ? finalMatch.result : null;
+    const hasScore = Boolean(result && result.homeScore != null && result.awayScore != null);
+    if (!finalMatch || !hasScore) { card.hidden = true; return; }
+
+    const standings = buildFinalGroupStandings();
+    const homeName = resolveFinalTeam(finalMatch.homeTeam, standings);
+    const awayName = resolveFinalTeam(finalMatch.awayTeam, standings);
+    const homeCards = cardBadges(result.homeYellow, result.homeRed);
+    const awayCards = cardBadges(result.awayYellow, result.awayRed);
+
+    card.innerHTML = `
+      <div class="final-score-head">⚽ Final — current score</div>
+      <div class="final-score-teams">
+        <div class="final-score-side">
+          <span class="final-team-name">${escapeHtml(homeName)}</span>
+          <span class="final-team-cards">${homeCards || '—'}</span>
+        </div>
+        <div class="final-score-value">${result.homeScore} – ${result.awayScore}</div>
+        <div class="final-score-side">
+          <span class="final-team-name">${escapeHtml(awayName)}</span>
+          <span class="final-team-cards">${awayCards || '—'}</span>
+        </div>
+      </div>
+    `;
+    card.hidden = false;
+  }
+
   /* ─── Rendering ───────────────────────────────────────────── */
   function renderTournamentStats() {
     const el = document.getElementById('tournamentStatsBar');
@@ -1579,6 +1740,7 @@
   function renderAll() {
     closeExpansion();
     renderTournamentStats();
+    renderFinalScore();
     renderPrizeWinners();
     leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
     leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
