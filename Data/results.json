@@ -1241,5 +1241,17 @@
     "awayRed": 0,
     "homeQualified": false,
     "awayQualified": true
+  },
+  {
+    "matchId": "M104",
+    "homeScore": 0,
+    "awayScore": 0,
+    "homePenalties": null,
+    "awayPenalties": null,
+    "homeYellow": 0,
+    "awayYellow": 1,
+    "homeRed": 0,
+    "awayRed": 0,
+    "lastGoalMinute": null
   }
 ]
