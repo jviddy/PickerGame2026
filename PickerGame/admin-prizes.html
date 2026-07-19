@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prizes Admin - PickerGame 2026</title>
+  <style>
+    :root {
+      --pitch: #1a3352;
+      --pitch-mid: #2d5a8e;
+      --ink: #1f2933;
+      --muted: #64748b;
+      --line: #d9e2dc;
+      --soft: #f5f8f6;
+      --gold: #d79a2b;
+      --gold-dark: #b5791a;
+      --danger: #b91c1c;
+      --success: #166534;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f0f4f8;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      color: var(--white);
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      box-shadow: 0 2px 10px rgba(11, 79, 47, 0.24);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 18px;
+    }
+
+    h1 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.8rem); }
+
+    .nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 6px;
+    }
+
+    main {
+      width: min(900px, calc(100% - 28px));
+      margin: 18px auto 44px;
+    }
+
+    .banner {
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+    .banner.live { background: #e4f7eb; color: var(--success); border: 1px solid #bfe8cf; }
+    .banner.preview { background: #fff1dc; color: #8a5a12; border: 1px solid #f0d8a8; }
+    .banner.empty { background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+    .card-head {
+      padding: 13px 16px;
+      color: var(--white);
+      background: var(--pitch);
+      font-weight: 900;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 9px 16px; border-bottom: 1px solid var(--line); font-size: 0.9rem; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    .prize-team { font-weight: 800; color: var(--ink); }
+    .prize-entrant { color: var(--muted); font-size: 0.8rem; }
+    .prize-amount { font-weight: 900; color: var(--gold-dark); text-align: right; white-space: nowrap; }
+    .prize-side-row { background: var(--soft); }
+    .prize-side-row td:first-child { color: var(--muted); font-weight: 700; font-size: 0.82rem; }
+    .footer-note {
+      padding: 10px 16px 14px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .rules {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>Prizes Admin</h1>
+      <nav class="nav" aria-label="Admin navigation">
+        <a href="admin.html">Entries</a>
+        <a href="admin-results.html">Results</a>
+        <a href="admin-blog.html">Updates</a>
+        <a href="admin-match-reports.html">Reports</a>
+        <a href="admin-matches.html">Teams</a>
+        <a href="admin-email.html">Email</a>
+        <a href="admin-team-stats.html">Stats</a>
+        <a href="admin-prizes.html" style="background:rgba(255,255,255,0.15);">Prizes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="banner" class="banner">Loading…</div>
+
+    <div class="card">
+      <div class="card-head">🏆 Prize Winners</div>
+      <table>
+        <tbody id="prizeWinnersBody"></tbody>
+      </table>
+      <div class="footer-note" id="prizeWinnersFooter"></div>
+    </div>
+
+    <div class="rules">
+      This preview always shows current standings, whether or not the Final has been played yet, so you can
+      sanity-check it before it appears on the public leaderboard. The public leaderboard only shows this table
+      once the Final's result has been entered on the <a href="admin-results.html">Results</a> page.
+    </div>
+  </main>
+
+  <script>
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      }[char]));
+    }
+
+    /* ─── Prize rules ─────────────────────────────────────────
+       Fixed amounts for 1st-9th, £10 for every 10th place (20th, 30th, …),
+       £10 for last place if it doesn't already land on a "×10" rank (no stacking).
+       Side prize: closest guess to the final's actual last-goal minute, tie-broken
+       by closest total-goals guess; every entrant still tied after that gets the
+       full amount. */
+    const PRIZES = {
+      currency: '£',
+      positions: { 1: 300, 2: 150, 3: 75, 4: 50, 5: 30, 6: 20, 7: 15, 8: 10, 9: 10 },
+      every10th: 10,
+      lastPlace: 10,
+      closestLastGoal: 40,
+      charityDonation: 880,
+    };
+
+    function ordinal(n) {
+      const rem100 = n % 100;
+      if (rem100 >= 11 && rem100 <= 13) return `${n}th`;
+      switch (n % 10) {
+        case 1: return `${n}st`;
+        case 2: return `${n}nd`;
+        case 3: return `${n}rd`;
+        default: return `${n}th`;
+      }
+    }
+
+    function computePrizeWinners(board, stats) {
+      const total = board.length;
+      const positionRows = [];
+      board.forEach((entry, idx) => {
+        const rank = idx + 1;
+        let amount = PRIZES.positions[rank] || 0;
+        if (!amount && rank % 10 === 0) amount = PRIZES.every10th;
+        if (!amount && rank === total) amount = PRIZES.lastPlace;
+        if (amount > 0) {
+          positionRows.push({ rank, label: ordinal(rank), teamName: entry.entrantTeamName, entrantName: entry.entrantName, amount });
+        }
+      });
+
+      let closestWinners = [];
+      const actualLastGoal = stats?.finalLastGoalMinute;
+      if (actualLastGoal != null) {
+        const guesses = board
+          .map(entry => ({ entry, guess: parseInt(entry.tieBreakers?.[1], 10) }))
+          .filter(x => !isNaN(x.guess));
+        if (guesses.length) {
+          const minDiff = Math.min(...guesses.map(x => Math.abs(x.guess - actualLastGoal)));
+          let tied = guesses.map(x => x.entry).filter(entry =>
+            Math.abs(parseInt(entry.tieBreakers?.[1], 10) - actualLastGoal) === minDiff
+          );
+          if (tied.length > 1 && stats.totalGoals != null) {
+            const goalGuesses = tied
+              .map(entry => ({ entry, goalsGuess: parseInt(entry.tieBreakers?.[0], 10) }))
+              .filter(x => !isNaN(x.goalsGuess));
+            if (goalGuesses.length) {
+              const minGoalsDiff = Math.min(...goalGuesses.map(x => Math.abs(x.goalsGuess - stats.totalGoals)));
+              tied = goalGuesses.filter(x => Math.abs(x.goalsGuess - stats.totalGoals) === minGoalsDiff).map(x => x.entry);
+            }
+          }
+          closestWinners = tied;
+        }
+      }
+
+      return { positionRows, closestWinners };
+    }
+
+    function renderPrizeTable(board, stats) {
+      const { positionRows, closestWinners } = computePrizeWinners(board, stats);
+
+      const rowsHtml = positionRows.map(row => `
+        <tr>
+          <td>${escapeHtml(row.label)}</td>
+          <td><div class="prize-team">${escapeHtml(row.teamName)}</div><div class="prize-entrant">${escapeHtml(row.entrantName)}</div></td>
+          <td class="prize-amount">${PRIZES.currency}${row.amount}</td>
+        </tr>
+      `).join('');
+
+      let closestHtml;
+      if (stats?.finalLastGoalMinute == null) {
+        closestHtml = `<tr class="prize-side-row"><td>Closest last goal</td><td colspan="2">Pending — enter the final's last goal minute on the Results page</td></tr>`;
+      } else if (!closestWinners.length) {
+        closestHtml = `<tr class="prize-side-row"><td>Closest last goal</td><td colspan="2">No valid guesses on file</td></tr>`;
+      } else {
+        closestHtml = closestWinners.map(entry => `
+          <tr class="prize-side-row">
+            <td>Closest last goal</td>
+            <td><div class="prize-team">${escapeHtml(entry.entrantTeamName)}</div><div class="prize-entrant">${escapeHtml(entry.entrantName)}</div></td>
+            <td class="prize-amount">${PRIZES.currency}${PRIZES.closestLastGoal}</td>
+          </tr>
+        `).join('');
+      }
+
+      document.getElementById('prizeWinnersBody').innerHTML = rowsHtml + closestHtml;
+      document.getElementById('prizeWinnersFooter').textContent = `Charity donation: ${PRIZES.currency}${PRIZES.charityDonation}`;
+    }
+
+    function setBanner(finalPlayed, hasLastGoal) {
+      const el = document.getElementById('banner');
+      if (finalPlayed && hasLastGoal) {
+        el.className = 'banner live';
+        el.textContent = '✓ Final played and last-goal minute entered — this matches what is now live on the public leaderboard.';
+      } else if (finalPlayed) {
+        el.className = 'banner preview';
+        el.textContent = '⚠ Final played, but the last-goal minute hasn’t been entered yet — the "Closest last goal" prize is pending. Not yet visible on the public leaderboard.';
+      } else {
+        el.className = 'banner preview';
+        el.textContent = '👁 Preview only — the Final hasn’t been played yet, so this table is not visible on the public leaderboard.';
+      }
+    }
+
+    async function init() {
+      try {
+        const v = Date.now();
+        const [entrantTotals, tournamentStats, matches] = await Promise.all([
+          fetch(`./Data/entrantTotals.json?v=${v}`).then(r => r.json()),
+          fetch(`./Data/tournamentStats.json?v=${v}`).then(r => r.json()).catch(() => null),
+          fetch(`./Data/matches.json?v=${v}`).then(r => r.json()).catch(() => []),
+        ]);
+
+        const finalMatch = matches.find(m => m.roundCode === 'F');
+        const finalResult = finalMatch ? finalMatch.result : null;
+        const finalPlayed = Boolean(finalResult && finalResult.homeScore != null && finalResult.awayScore != null);
+        const hasLastGoal = tournamentStats?.finalLastGoalMinute != null;
+
+        setBanner(finalPlayed, hasLastGoal);
+        renderPrizeTable(entrantTotals, tournamentStats);
+      } catch (error) {
+        document.getElementById('banner').className = 'banner empty';
+        document.getElementById('banner').textContent = `Could not load data: ${error.message}`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

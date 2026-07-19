@@ -104,11 +104,14 @@ async function main() {
 
     // Tournament stats for display on leaderboard
     const playedResults = results.filter(r => r.homeScore != null && r.awayScore != null);
+    const finalMatch = matches.find(m => (m.roundCode || m.round) === 'F');
+    const finalResult = finalMatch ? results.find(r => r.matchId === finalMatch.matchId) : null;
     const tournamentStats = {
-      gamesPlayed:      playedResults.length,
-      totalGoals:       playedResults.reduce((s, r) => s + r.homeScore + r.awayScore, 0),
-      totalYellowCards: playedResults.reduce((s, r) => s + (r.homeYellow || 0) + (r.awayYellow || 0), 0),
-      totalRedCards:    playedResults.reduce((s, r) => s + (r.homeRed || 0) + (r.awayRed || 0), 0),
+      gamesPlayed:        playedResults.length,
+      totalGoals:         playedResults.reduce((s, r) => s + r.homeScore + r.awayScore, 0),
+      totalYellowCards:   playedResults.reduce((s, r) => s + (r.homeYellow || 0) + (r.awayYellow || 0), 0),
+      totalRedCards:      playedResults.reduce((s, r) => s + (r.homeRed || 0) + (r.awayRed || 0), 0),
+      finalLastGoalMinute: finalResult?.lastGoalMinute ?? null,
     };
 
     // Build email hash lookup: SHA-256(normalised email) → [teamName, ...]

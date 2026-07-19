@@ -457,6 +457,7 @@
         <a href="admin-matches.html">Teams</a>
         <a href="admin-email.html">Email</a>
         <a href="admin-team-stats.html">Stats</a>
+        <a href="admin-prizes.html">Prizes</a>
       </nav>
     </div>
   </header>
@@ -799,6 +800,8 @@
       const awayScore = toNumber(document.getElementById('awayScore')?.value);
       const homePenalties = toNumber(document.getElementById('homePenalties')?.value, true);
       const awayPenalties = toNumber(document.getElementById('awayPenalties')?.value, true);
+      const isFinal = match && match.roundCode === 'F';
+      const lastGoalMinute = isFinal ? toNumber(document.getElementById('lastGoalMinute')?.value, true) : undefined;
 
       let homeQualified, awayQualified;
       if (isKO) {
@@ -823,6 +826,7 @@
         homeRed: toNumber(document.getElementById('homeRed')?.value),
         awayRed: toNumber(document.getElementById('awayRed')?.value),
         ...(isKO && homeQualified !== undefined ? { homeQualified, awayQualified } : {}),
+        ...(isFinal ? { lastGoalMinute } : {}),
       };
     }
 
@@ -888,6 +892,7 @@
       const awayName = isKO ? (resolveKOTeam(match.awayTeam)?.countryName || bracketLabel(match.awayTeam, match.roundCode)) : getTeamName(match.awayTeam);
       const homeManual = isKO && isManualSlot(match.homeTeam);
       const awayManual = isKO && isManualSlot(match.awayTeam);
+      const isFinal = match.roundCode === 'F';
 
       // Current prediction — format "2-1" or "2-2|home" / "2-2|away"
       const pred = predictions[match.matchId] || '';
@@ -956,6 +961,16 @@
           ${isKO ? `
           <div class="section-title">Qualification (auto-calculated)</div>
           <div id="qualPreview" style="grid-column:1/-1;font-size:0.82rem;color:var(--muted);font-weight:700;padding:2px 0 4px">Enter goals (and penalties if drawn) to determine qualification.</div>
+          ` : ''}
+
+          ${isFinal ? `
+          <div class="section-title">Tiebreaker 2</div>
+          <label style="grid-column:1/-1">Minute of the last goal in the final (excl. penalties)
+            <input id="lastGoalMinute" type="number" min="0" step="1" value="${result.lastGoalMinute ?? ''}" style="max-width:160px" />
+          </label>
+          <div style="grid-column:1/-1;font-size:0.78rem;color:var(--muted);font-weight:700;margin-top:-4px">
+            Feeds the "closest last goal" tiebreaker and prize on the leaderboard and <a href="admin-prizes.html">Prizes</a> page. Leave blank until known.
+          </div>
           ` : ''}
         </div>
         <div class="preview">

@@ -797,6 +797,46 @@
       #tournamentStatsBar { width: 100%; }
     }
 
+    /* ─── Prize winners ────────────────────────────────────────*/
+    .prize-winners {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .prize-winners-head {
+      background: linear-gradient(135deg, #1a3352 0%, #1e4070 100%);
+      color: var(--white);
+      padding: 10px 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .prize-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .prize-table td {
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+    .prize-table tr:last-child td { border-bottom: none; }
+    .prize-table tr:first-child td { padding-top: 12px; }
+    .prize-team { font-weight: 800; color: var(--gray-800); }
+    .prize-entrant { color: var(--gray-600); font-size: 0.8rem; }
+    .prize-amount { font-weight: 800; color: var(--gold-dark); text-align: right; white-space: nowrap; }
+    .prize-side-row td:first-child { color: var(--gray-600); font-weight: 700; font-size: 0.82rem; }
+    .prize-side-row { background: var(--gray-50); }
+    .prize-winners-footer {
+      padding: 8px 14px 12px;
+      color: var(--gray-600);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
     /* ─── My picks mini panel ────────────────────────────────────*/
     .my-picks-panel {
       background: var(--white);
@@ -856,6 +896,14 @@
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
+
+  <div class="prize-winners" id="prizeWinners" hidden>
+    <div class="prize-winners-head">🏆 Final Results — Prize Winners</div>
+    <table class="prize-table">
+      <tbody id="prizeWinnersBody"></tbody>
+    </table>
+    <div class="prize-winners-footer" id="prizeWinnersFooter"></div>
+  </div>
 
   <div class="controls-row">
     <div class="view-toggle">
@@ -1398,6 +1446,116 @@
     }).join('');
   }
 
+  /* ─── Prize winners ───────────────────────────────────────── */
+  const PRIZES = {
+    currency: '£',
+    positions: { 1: 300, 2: 150, 3: 75, 4: 50, 5: 30, 6: 20, 7: 15, 8: 10, 9: 10 },
+    every10th: 10,
+    lastPlace: 10,
+    closestLastGoal: 40,
+    charityDonation: 880,
+  };
+
+  function ordinal(n) {
+    const rem100 = n % 100;
+    if (rem100 >= 11 && rem100 <= 13) return `${n}th`;
+    switch (n % 10) {
+      case 1: return `${n}st`;
+      case 2: return `${n}nd`;
+      case 3: return `${n}rd`;
+      default: return `${n}th`;
+    }
+  }
+
+  // Position prizes: fixed amounts for 1st-9th, £10 for every 10th place (20th, 30th, …),
+  // £10 for last place if it doesn't already land on a "×10" rank (no stacking).
+  // Side prize: closest guess to the final's actual last-goal minute, tie-broken by
+  // closest total-goals guess; every entrant still tied after that gets the full amount.
+  function computePrizeWinners(board, stats) {
+    const total = board.length;
+    const positionRows = [];
+    board.forEach((entry, idx) => {
+      const rank = idx + 1;
+      let amount = PRIZES.positions[rank] || 0;
+      if (!amount && rank % 10 === 0) amount = PRIZES.every10th;
+      if (!amount && rank === total) amount = PRIZES.lastPlace;
+      if (amount > 0) {
+        positionRows.push({ rank, label: ordinal(rank), teamName: entry.teamName, entrantName: entry.entrantName, amount });
+      }
+    });
+
+    let closestWinners = [];
+    const actualLastGoal = stats?.finalLastGoalMinute;
+    if (actualLastGoal != null) {
+      const guesses = board
+        .map(entry => ({ entry, guess: parseInt(entry.tieBreakers?.[1], 10) }))
+        .filter(x => !isNaN(x.guess));
+      if (guesses.length) {
+        const minDiff = Math.min(...guesses.map(x => Math.abs(x.guess - actualLastGoal)));
+        let tied = guesses.map(x => x.entry).filter(entry =>
+          Math.abs(parseInt(entry.tieBreakers?.[1], 10) - actualLastGoal) === minDiff
+        );
+        if (tied.length > 1 && stats.totalGoals != null) {
+          const goalGuesses = tied
+            .map(entry => ({ entry, goalsGuess: parseInt(entry.tieBreakers?.[0], 10) }))
+            .filter(x => !isNaN(x.goalsGuess));
+          if (goalGuesses.length) {
+            const minGoalsDiff = Math.min(...goalGuesses.map(x => Math.abs(x.goalsGuess - stats.totalGoals)));
+            tied = goalGuesses.filter(x => Math.abs(x.goalsGuess - stats.totalGoals) === minGoalsDiff).map(x => x.entry);
+          }
+        }
+        closestWinners = tied;
+      }
+    }
+
+    return { positionRows, closestWinners };
+  }
+
+  function renderPrizeWinnersInto(section, board, stats, finalPlayed) {
+    if (!section || !finalPlayed || !board.length) {
+      if (section) section.hidden = true;
+      return;
+    }
+
+    const { positionRows, closestWinners } = computePrizeWinners(board, stats);
+
+    const rowsHtml = positionRows.map(row => `
+      <tr>
+        <td>${escapeHtml(row.label)}</td>
+        <td><div class="prize-team">${escapeHtml(row.teamName)}</div><div class="prize-entrant">${escapeHtml(row.entrantName)}</div></td>
+        <td class="prize-amount">${PRIZES.currency}${row.amount}</td>
+      </tr>
+    `).join('');
+
+    let closestHtml;
+    if (stats?.finalLastGoalMinute == null) {
+      closestHtml = `<tr class="prize-side-row"><td>Closest last goal</td><td colspan="2">Pending — enter the final's last goal minute</td></tr>`;
+    } else if (!closestWinners.length) {
+      closestHtml = `<tr class="prize-side-row"><td>Closest last goal</td><td colspan="2">No valid guesses on file</td></tr>`;
+    } else {
+      closestHtml = closestWinners.map(entry => `
+        <tr class="prize-side-row">
+          <td>Closest last goal</td>
+          <td><div class="prize-team">${escapeHtml(entry.teamName)}</div><div class="prize-entrant">${escapeHtml(entry.entrantName)}</div></td>
+          <td class="prize-amount">${PRIZES.currency}${PRIZES.closestLastGoal}</td>
+        </tr>
+      `).join('');
+    }
+
+    const body = section.querySelector('#prizeWinnersBody') || document.getElementById('prizeWinnersBody');
+    const footer = section.querySelector('#prizeWinnersFooter') || document.getElementById('prizeWinnersFooter');
+    if (body) body.innerHTML = rowsHtml + closestHtml;
+    if (footer) footer.textContent = `Charity donation: ${PRIZES.currency}${PRIZES.charityDonation}`;
+    section.hidden = false;
+  }
+
+  function renderPrizeWinners() {
+    const finalMatch = (allMatches || []).find(m => m.roundCode === 'F');
+    const finalResult = finalMatch ? finalMatch.result : null;
+    const finalPlayed = Boolean(finalResult && finalResult.homeScore != null && finalResult.awayScore != null);
+    renderPrizeWinnersInto(document.getElementById('prizeWinners'), leaderboard, tournamentStats, finalPlayed);
+  }
+
   /* ─── Rendering ───────────────────────────────────────────── */
   function renderTournamentStats() {
     const el = document.getElementById('tournamentStatsBar');
@@ -1421,6 +1579,7 @@
   function renderAll() {
     closeExpansion();
     renderTournamentStats();
+    renderPrizeWinners();
     leaderboardEl.classList.toggle('round-mode', scoreDisplayMode === 'rounds');
     leaderboardEl.classList.toggle('countries-mode', scoreDisplayMode === 'countries');
     if (!document.getElementById('lb-body')) {

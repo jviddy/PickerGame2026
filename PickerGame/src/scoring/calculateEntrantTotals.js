@@ -188,18 +188,29 @@ export function calculateEntrantTotals(entries, teamPoints, teams, matches, resu
     };
   });
   
-  // Total goals scored so far (for tiebreaker)
+  // Total goals scored so far (for tiebreaker 1)
   const actualTotalGoals = results.reduce((sum, r) => {
     if (r.homeScore != null && r.awayScore != null) return sum + r.homeScore + r.awayScore;
     return sum;
   }, 0);
 
-  // Sort: points DESC → closest goals guess ASC → teams remaining DESC
+  // Minute of the last goal in the final, once the admin has entered it (for tiebreaker 2)
+  const finalMatch = matches.find((match) => (match.roundCode || match.round) === 'F');
+  const finalResult = finalMatch ? results.find((r) => r.matchId === finalMatch.matchId) : null;
+  const actualLastGoalMinute = finalResult?.lastGoalMinute;
+  const hasActualLastGoalMinute = actualLastGoalMinute != null;
+
+  // Sort: points DESC → closest goals guess ASC → closest last-goal-minute guess ASC → teams remaining DESC
   return entrantTotals.sort((a, b) => {
     if (b.totalPoints !== a.totalPoints) return b.totalPoints - a.totalPoints;
     const aGoalsDiff = Math.abs((parseInt(a.tieBreakers[0], 10) || 0) - actualTotalGoals);
     const bGoalsDiff = Math.abs((parseInt(b.tieBreakers[0], 10) || 0) - actualTotalGoals);
     if (aGoalsDiff !== bGoalsDiff) return aGoalsDiff - bGoalsDiff;
+    if (hasActualLastGoalMinute) {
+      const aLastGoalDiff = Math.abs((parseInt(a.tieBreakers[1], 10) || 0) - actualLastGoalMinute);
+      const bLastGoalDiff = Math.abs((parseInt(b.tieBreakers[1], 10) || 0) - actualLastGoalMinute);
+      if (aLastGoalDiff !== bLastGoalDiff) return aLastGoalDiff - bLastGoalDiff;
+    }
     return b.teamsRemaining - a.teamsRemaining;
   });
 }

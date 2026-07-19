@@ -37,6 +37,11 @@ function normaliseResult(payload) {
   if (payload.homeQualified !== undefined) result.homeQualified = Boolean(payload.homeQualified);
   if (payload.awayQualified !== undefined) result.awayQualified = Boolean(payload.awayQualified);
 
+  // Minute of the last goal in the final (used for tiebreaker 2); only sent for the Final match
+  if (payload.lastGoalMinute !== undefined) {
+    result.lastGoalMinute = normaliseNumber(payload.lastGoalMinute, true);
+  }
+
   return result;
 }
 
