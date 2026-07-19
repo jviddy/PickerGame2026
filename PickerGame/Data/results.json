@@ -1251,7 +1251,7 @@
     "homeYellow": 0,
     "awayYellow": 3,
     "homeRed": 0,
-    "awayRed": 0,
+    "awayRed": 1,
     "lastGoalMinute": 98
   }
 ]
