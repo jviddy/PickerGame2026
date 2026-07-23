@@ -231,6 +231,10 @@
         <label for="postTitle">Title</label>
         <input type="text" id="postTitle" placeholder="e.g. Matchday 3 update" maxlength="120" />
 
+        <label for="postDate">Post date</label>
+        <input type="date" id="postDate" />
+        <div class="hint">Controls the date shown on the blog. Defaults to today for new posts.</div>
+
         <label for="postBody">Content</label>
         <textarea id="postBody" placeholder="Paste your email or type your update here…&#10;&#10;Blank lines between paragraphs will become separate paragraphs on the blog."></textarea>
         <div class="hint">Blank lines = new paragraph. Single line breaks become line breaks.</div>
@@ -255,6 +259,7 @@
   <script>
     const tokenInput   = document.getElementById('adminToken');
     const titleInput   = document.getElementById('postTitle');
+    const dateInput    = document.getElementById('postDate');
     const bodyInput    = document.getElementById('postBody');
     const saveBtn      = document.getElementById('saveBtn');
     const newBtn       = document.getElementById('newBtn');
@@ -268,6 +273,7 @@
 
     const saved = localStorage.getItem('pickerGameAdminToken') || '';
     tokenInput.value = saved;
+    dateInput.value = toDateInputValue();
 
     function getToken() { return tokenInput.value.trim(); }
 
@@ -301,11 +307,20 @@
       });
     }
 
+    function toDateInputValue(iso) {
+      const d = iso ? new Date(iso) : new Date();
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
     function loadPost(id) {
       const post = allPosts.find(p => p.id === id);
       if (!post) return;
       editingId = id;
       titleInput.value = post.title;
+      dateInput.value = toDateInputValue(post.publishedAt);
       bodyInput.value = post.body;
       editorHeading.textContent = 'Editing post';
       renderList();
@@ -314,6 +329,7 @@
     function resetEditor() {
       editingId = null;
       titleInput.value = '';
+      dateInput.value = toDateInputValue();
       bodyInput.value = '';
       editorHeading.textContent = 'New post';
       renderList();
@@ -352,12 +368,16 @@
       if (!title) { setStatus('Title is required.', 'error'); titleInput.focus(); return; }
       if (!body)  { setStatus('Content is required.', 'error'); bodyInput.focus(); return; }
 
+      const publishedAt = dateInput.value
+        ? new Date(`${dateInput.value}T12:00:00Z`).toISOString()
+        : undefined;
+
       saveBtn.disabled = true;
       saveBtn.textContent = 'Saving…';
       try {
         await apiRequest('/api/admin/posts', {
           method: 'POST',
-          body: JSON.stringify({ id: editingId || undefined, title, body }),
+          body: JSON.stringify({ id: editingId || undefined, title, body, publishedAt }),
         });
         setStatus('Post saved and publish started.', 'success');
         const data = await apiRequest('/api/admin/posts');

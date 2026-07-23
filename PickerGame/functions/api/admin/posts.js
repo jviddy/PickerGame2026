@@ -116,13 +116,16 @@ export async function onRequestPost(context) {
     const { sha, data: posts } = await readGithubJson(repository, branch, POSTS_PATH, token);
 
     const now = new Date().toISOString();
+    const publishedAt = incoming.publishedAt && !Number.isNaN(new Date(incoming.publishedAt).getTime())
+      ? new Date(incoming.publishedAt).toISOString()
+      : now;
     const post = incoming.id
       ? posts.find((p) => p.id === incoming.id)
         ? posts.map((p) => p.id === incoming.id
-            ? { ...p, title: incoming.title.trim(), body: incoming.body.trim(), updatedAt: now }
+            ? { ...p, title: incoming.title.trim(), body: incoming.body.trim(), publishedAt, updatedAt: now }
             : p)
-        : [...posts, { id: incoming.id, title: incoming.title.trim(), body: incoming.body.trim(), publishedAt: now, updatedAt: now }]
-      : [...posts, { id: String(Date.now()), title: incoming.title.trim(), body: incoming.body.trim(), publishedAt: now, updatedAt: now }];
+        : [...posts, { id: incoming.id, title: incoming.title.trim(), body: incoming.body.trim(), publishedAt, updatedAt: now }]
+      : [...posts, { id: String(Date.now()), title: incoming.title.trim(), body: incoming.body.trim(), publishedAt, updatedAt: now }];
 
     const updatedPosts = Array.isArray(post) ? post : post;
     updatedPosts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
