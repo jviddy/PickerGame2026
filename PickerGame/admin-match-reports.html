@@ -141,6 +141,23 @@
       margin: -10px 0 14px;
     }
 
+    .fmt-toolbar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .fmt-btn {
+      min-height: 30px;
+      min-width: 34px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--ink);
+      font-size: 0.9rem;
+    }
+    .fmt-btn:hover { background: var(--line); }
+
     button {
       min-height: 42px;
       border: 0;
@@ -285,8 +302,12 @@
         <input type="text" id="reportTitle" placeholder="e.g. A tale of two halves" maxlength="200" />
 
         <label for="reportBody">Match report</label>
+        <div class="fmt-toolbar">
+          <button type="button" class="fmt-btn" id="boldBtn" title="Bold (Ctrl/Cmd+B)"><strong>B</strong></button>
+          <button type="button" class="fmt-btn" id="italicBtn" title="Italic (Ctrl/Cmd+I)"><em>I</em></button>
+        </div>
         <textarea id="reportBody" placeholder="Your match report here…&#10;&#10;HTML supported. Blank lines = new paragraphs."></textarea>
-        <div class="hint">HTML supported. Blank lines = paragraphs.</div>
+        <div class="hint">HTML supported. Blank lines = paragraphs. Select text and use the B/I buttons (or Ctrl/Cmd+B, Ctrl/Cmd+I) to format.</div>
 
         <label for="reportFooter">Footer (optional)</label>
         <textarea class="footer-ta" id="reportFooter" placeholder="Optional footer note, stat, or quote…"></textarea>
@@ -318,6 +339,8 @@
     const titleInput      = document.getElementById('reportTitle');
     const bodyInput       = document.getElementById('reportBody');
     const footerInput     = document.getElementById('reportFooter');
+    const boldBtn         = document.getElementById('boldBtn');
+    const italicBtn       = document.getElementById('italicBtn');
     const saveBtn         = document.getElementById('saveBtn');
     const newBtn          = document.getElementById('newBtn');
     const loadBtn         = document.getElementById('loadBtn');
@@ -617,6 +640,45 @@
 
     titleInput.addEventListener('input', checkSaveEnabled);
     bodyInput.addEventListener('input', checkSaveEnabled);
+
+    function wrapSelection(marker) {
+      const start = bodyInput.selectionStart;
+      const end = bodyInput.selectionEnd;
+      const value = bodyInput.value;
+      const selected = value.slice(start, end);
+      const before = value.slice(0, start);
+      const after = value.slice(end);
+      const len = marker.length;
+
+      // toggle off if the selection is already wrapped in this marker
+      if (before.endsWith(marker) && after.startsWith(marker)) {
+        bodyInput.value = before.slice(0, -len) + selected + after.slice(len);
+        bodyInput.focus();
+        bodyInput.selectionStart = start - len;
+        bodyInput.selectionEnd = end - len;
+        checkSaveEnabled();
+        return;
+      }
+
+      bodyInput.value = before + marker + selected + marker + after;
+      bodyInput.focus();
+      if (selected) {
+        bodyInput.selectionStart = start + len;
+        bodyInput.selectionEnd = end + len;
+      } else {
+        bodyInput.selectionStart = bodyInput.selectionEnd = start + len;
+      }
+      checkSaveEnabled();
+    }
+
+    boldBtn.addEventListener('click', () => wrapSelection('**'));
+    italicBtn.addEventListener('click', () => wrapSelection('*'));
+
+    bodyInput.addEventListener('keydown', e => {
+      const mod = e.metaKey || e.ctrlKey;
+      if (mod && e.key.toLowerCase() === 'b') { e.preventDefault(); wrapSelection('**'); }
+      else if (mod && e.key.toLowerCase() === 'i') { e.preventDefault(); wrapSelection('*'); }
+    });
 
     async function apiRequest(url, options = {}) {
       const token = getToken();

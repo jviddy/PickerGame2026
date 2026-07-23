@@ -95,6 +95,14 @@
     .field:last-child { margin-bottom: 0; }
     .field-hint { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
+    .fmt-toolbar { display: flex; gap: 6px; margin-bottom: 6px; }
+    .fmt-btn {
+      min-height: 30px; min-width: 34px; padding: 4px 10px;
+      border: 1.5px solid var(--line); border-radius: 6px;
+      background: var(--soft); color: var(--ink); font-size: 0.9rem;
+    }
+    .fmt-btn:hover { background: var(--line); }
+
     .audience-row {
       display: flex; gap: 8px;
     }
@@ -234,9 +242,13 @@
 
       <div class="field">
         <label for="bodyInput">Message body</label>
+        <div class="fmt-toolbar">
+          <button type="button" class="fmt-btn" id="boldBtn" title="Bold (Ctrl/Cmd+B)"><strong>B</strong></button>
+          <button type="button" class="fmt-btn" id="italicBtn" title="Italic (Ctrl/Cmd+I)"><em>I</em></button>
+        </div>
         <textarea id="bodyInput" rows="10"
                   placeholder="Write your update here. Use blank lines to separate paragraphs."></textarea>
-        <div class="field-hint">Plain text — blank lines become new paragraphs. HTML is supported if needed.</div>
+        <div class="field-hint">Plain text — blank lines become new paragraphs. Select text and use the B/I buttons (or Ctrl/Cmd+B, Ctrl/Cmd+I) to format. HTML is supported if needed.</div>
       </div>
 
       <div class="field">
@@ -286,6 +298,8 @@
   const subjectInput   = document.getElementById('subjectInput');
   const headingInput   = document.getElementById('headingInput');
   const bodyInput      = document.getElementById('bodyInput');
+  const boldBtn        = document.getElementById('boldBtn');
+  const italicBtn      = document.getElementById('italicBtn');
   const leaderboardUrl = document.getElementById('leaderboardUrl');
   const syncCounts     = document.getElementById('syncCounts');
   const syncBtn        = document.getElementById('syncBtn');
@@ -363,6 +377,42 @@
       syncBtn.disabled = false;
       syncBtn.textContent = 'Sync contacts →';
     }
+  });
+
+  function wrapSelection(openTag, closeTag) {
+    const start = bodyInput.selectionStart;
+    const end = bodyInput.selectionEnd;
+    const value = bodyInput.value;
+    const selected = value.slice(start, end);
+    const before = value.slice(0, start);
+    const after = value.slice(end);
+
+    // toggle off if the selection is already wrapped in these tags
+    if (before.endsWith(openTag) && after.startsWith(closeTag)) {
+      bodyInput.value = before.slice(0, -openTag.length) + selected + after.slice(closeTag.length);
+      bodyInput.focus();
+      bodyInput.selectionStart = start - openTag.length;
+      bodyInput.selectionEnd = end - openTag.length;
+      return;
+    }
+
+    bodyInput.value = before + openTag + selected + closeTag + after;
+    bodyInput.focus();
+    if (selected) {
+      bodyInput.selectionStart = start + openTag.length;
+      bodyInput.selectionEnd = end + openTag.length;
+    } else {
+      bodyInput.selectionStart = bodyInput.selectionEnd = start + openTag.length;
+    }
+  }
+
+  boldBtn.addEventListener('click', () => wrapSelection('<strong>', '</strong>'));
+  italicBtn.addEventListener('click', () => wrapSelection('<em>', '</em>'));
+
+  bodyInput.addEventListener('keydown', e => {
+    const mod = e.metaKey || e.ctrlKey;
+    if (mod && e.key.toLowerCase() === 'b') { e.preventDefault(); wrapSelection('<strong>', '</strong>'); }
+    else if (mod && e.key.toLowerCase() === 'i') { e.preventDefault(); wrapSelection('<em>', '</em>'); }
   });
 
   function getPayload(testOnly) {
