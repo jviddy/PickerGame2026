@@ -264,11 +264,17 @@
     if (link) link.classList.add('read');
   }
 
+  function applyInlineFormatting(str) {
+    return str
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>');
+  }
+
   function renderBody(text) {
     if (/<[a-z][\s\S]*>/i.test(text)) return text;
     return text
       .split(/\n{2,}/)
-      .map(para => `<p>${esc(para.trim()).replace(/\n/g, '<br>')}</p>`)
+      .map(para => `<p>${applyInlineFormatting(esc(para.trim())).replace(/\n/g, '<br>')}</p>`)
       .join('');
   }
 
